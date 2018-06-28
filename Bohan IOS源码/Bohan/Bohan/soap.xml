@@ -1,0 +1,3 @@
+<?xml version=\"1.0\" encoding=\"utf-8\"?>
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+    <soap:Header><Certificate xmlns="!$nameSpace$!"><token>!$token$!</token><language>!$language$!</language></Certificate></soap:Header><soap:Body><!$methodName$! xmlns="!$nameSpace$!">!$soapBody$!</!$methodName$!></soap:Body></soap:Envelope>

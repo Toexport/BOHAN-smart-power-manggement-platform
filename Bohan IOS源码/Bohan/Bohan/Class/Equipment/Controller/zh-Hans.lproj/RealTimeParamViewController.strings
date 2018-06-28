@@ -1,0 +1,75 @@
+
+/* Class = "UILabel"; text = "功率"; ObjectID = "44v-Xc-0iu"; */
+"44v-Xc-0iu.text" = "功率";
+
+/* Class = "UILabel"; text = "设备时钟"; ObjectID = "5Es-zK-s3T"; */
+"5Es-zK-s3T.text" = "设备时钟";
+
+/* Class = "UILabel"; text = "0.00"; ObjectID = "6Gx-Rv-GLy"; */
+"6Gx-Rv-GLy.text" = "0.00";
+
+/* Class = "UILabel"; text = "kWh"; ObjectID = "BNW-la-i9N"; */
+"BNW-la-i9N.text" = "kWh";
+
+/* Class = "UILabel"; text = "设备温度"; ObjectID = "FGd-G2-0hP"; */
+"FGd-G2-0hP.text" = "设备温度";
+
+/* Class = "UILabel"; text = "电压"; ObjectID = "GuA-Dh-H1P"; */
+"GuA-Dh-H1P.text" = "电压";
+
+/* Class = "UILabel"; text = "功率因素"; ObjectID = "HyF-nH-938"; */
+"HyF-nH-938.text" = "功率因素";
+
+/* Class = "UILabel"; text = "用电总金额"; ObjectID = "JyF-Ci-uby"; */
+"JyF-Ci-uby.text" = "用电总金额";
+
+/* Class = "UILabel"; text = "V"; ObjectID = "Lzt-WV-ryt"; */
+"Lzt-WV-ryt.text" = "V";
+
+/* Class = "UILabel"; text = "℃"; ObjectID = "NBr-Ju-NFA"; */
+"NBr-Ju-NFA.text" = "℃";
+
+/* Class = "UILabel"; text = "ID"; ObjectID = "T60-nF-YxV"; */
+"T60-nF-YxV.text" = "ID";
+
+/* Class = "UILabel"; text = "0.00"; ObjectID = "Tel-Bj-c2d"; */
+"Tel-Bj-c2d.text" = "0.00";
+
+/* Class = "UILabel"; text = "0.00"; ObjectID = "XV7-cr-5Mg"; */
+"XV7-cr-5Mg.text" = "0.00";
+
+/* Class = "UILabel"; text = "累计排碳量"; ObjectID = "Z3y-jm-0XH"; */
+"Z3y-jm-0XH.text" = "累计排碳量";
+
+/* Class = "UILabel"; text = "0.00"; ObjectID = "ZM9-ZL-Abc"; */
+"ZM9-ZL-Abc.text" = "0.00";
+
+/* Class = "UILabel"; text = "0.00"; ObjectID = "ZdY-zy-EwV"; */
+"ZdY-zy-EwV.text" = "0.00";
+
+/* Class = "UILabel"; text = "0.00"; ObjectID = "a2g-36-8vg"; */
+"a2g-36-8vg.text" = "0.00";
+
+/* Class = "UILabel"; text = "电流"; ObjectID = "doM-sQ-mpW"; */
+"doM-sQ-mpW.text" = "电流";
+
+/* Class = "UILabel"; text = "元"; ObjectID = "eLG-hd-ZfD"; */
+"eLG-hd-ZfD.text" = "元";
+
+/* Class = "UILabel"; text = "A"; ObjectID = "fLD-hO-fgV"; */
+"fLD-hO-fgV.text" = "A";
+
+/* Class = "UILabel"; text = "0.00"; ObjectID = "ka4-7B-4We"; */
+"ka4-7B-4We.text" = "0.00";
+
+/* Class = "UILabel"; text = "0.00"; ObjectID = "laq-8q-3z3"; */
+"laq-8q-3z3.text" = "0.00";
+
+/* Class = "UILabel"; text = "累计用电量"; ObjectID = "p64-iM-1T7"; */
+"p64-iM-1T7.text" = "累计用电量";
+
+/* Class = "UILabel"; text = "kg"; ObjectID = "tLb-KU-5dx"; */
+"tLb-KU-5dx.text" = "kg";
+
+/* Class = "UILabel"; text = "W"; ObjectID = "xwE-xq-0p1"; */
+"xwE-xq-0p1.text" = "W";

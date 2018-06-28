@@ -1,0 +1,24 @@
+
+/* Class = "UITextField"; placeholder = "密码"; ObjectID = "CHT-q4-XhK"; */
+"CHT-q4-XhK.placeholder" = "密码";
+
+/* Class = "UIButton"; normalTitle = "了解更多伯瀚:http://www.bohan-smartec.com/"; ObjectID = "HVx-TU-7XN"; */
+"HVx-TU-7XN.normalTitle" = "了解更多伯瀚:http://www.bohan-smartec.com/";
+
+/* Class = "UIButton"; normalTitle = "注册账号"; ObjectID = "Kdr-xi-mvv"; */
+"Kdr-xi-mvv.normalTitle" = "注册账号";
+
+/* Class = "UITextField"; placeholder = "伯瀚账号"; ObjectID = "aCt-og-cik"; */
+"aCt-og-cik.placeholder" = "伯瀚账号";
+
+/* Class = "UILabel"; text = "伯瀚智能用电管理平台"; ObjectID = "amr-hY-kEp"; */
+"amr-hY-kEp.text" = "伯瀚智能用电管理平台";
+
+/* Class = "UIButton"; normalTitle = "登录"; ObjectID = "kxY-Ni-lw4"; */
+"kxY-Ni-lw4.normalTitle" = "登录";
+
+/* Class = "UILabel"; text = "the BOHAN smart power management platform"; ObjectID = "odr-mq-5gr"; */
+"odr-mq-5gr.text" = "the BOHAN smart power management platform";
+
+/* Class = "UIButton"; normalTitle = "忘记密码？"; ObjectID = "xg5-Al-Ey4"; */
+"xg5-Al-Ey4.normalTitle" = "忘记密码？";

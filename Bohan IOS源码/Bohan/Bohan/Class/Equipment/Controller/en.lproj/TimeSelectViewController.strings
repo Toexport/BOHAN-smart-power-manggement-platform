@@ -1,0 +1,51 @@
+
+/* Class = "UIButton"; normalTitle = "点击设置开始时间"; ObjectID = "BOy-kL-qpj"; */
+"BOy-kL-qpj.normalTitle" = "Click to start the time";
+
+/* Class = "UIButton"; normalTitle = "请选择日期"; ObjectID = "Bj1-PB-Z7q"; */
+"Bj1-PB-Z7q.normalTitle" = "Please selecet the date";
+
+/* Class = "UILabel"; text = "星期一"; ObjectID = "EKV-C2-mUJ"; */
+"EKV-C2-mUJ.text" = "Monday";
+
+/* Class = "UILabel"; text = "开始时间"; ObjectID = "FeV-Wn-nIM"; */
+"FeV-Wn-nIM.text" = "Start time";
+
+/* Class = "UIButton"; normalTitle = "清空设定"; ObjectID = "FpK-w7-8qt"; */
+"FpK-w7-8qt.normalTitle" = "Empty settings";
+
+/* Class = "UILabel"; text = "星期五"; ObjectID = "Knc-CC-pA2"; */
+"Knc-CC-pA2.text" = "Friday";
+
+/* Class = "UILabel"; text = "星期二"; ObjectID = "Noz-Kc-Zbg"; */
+"Noz-Kc-Zbg.text" = "Tuesday";
+
+/* Class = "UILabel"; text = "结束时间"; ObjectID = "QZW-tS-ocf"; */
+"QZW-tS-ocf.text" = "End Time";
+
+/* Class = "UIButton"; normalTitle = "确定"; ObjectID = "UuK-yi-A59"; */
+"UuK-yi-A59.normalTitle" = "confirm";
+
+/* Class = "UIButton"; normalTitle = "点击设置结束时间"; ObjectID = "asx-jO-1lx"; */
+"asx-jO-1lx.normalTitle" = "Click to stop the time";
+
+/* Class = "UIButton"; normalTitle = "取消"; ObjectID = "f4G-p0-MJz"; */
+"f4G-p0-MJz.normalTitle" = "Cancel";
+
+/* Class = "UILabel"; text = "08:00"; ObjectID = "hCh-SN-LFU"; */
+"hCh-SN-LFU.text" = "08:00";
+
+/* Class = "UILabel"; text = "星期四"; ObjectID = "ieR-4c-4et"; */
+"ieR-4c-4et.text" = "Thursday";
+
+/* Class = "UILabel"; text = "星期日"; ObjectID = "rae-2o-aDS"; */
+"rae-2o-aDS.text" = "Sunday";
+
+/* Class = "UILabel"; text = "星期六"; ObjectID = "tpc-gz-N9h"; */
+"tpc-gz-N9h.text" = "Saturday";
+
+/* Class = "UILabel"; text = "星期三"; ObjectID = "u2h-DX-uGV"; */
+"u2h-DX-uGV.text" = "Wednesday";
+
+/* Class = "UILabel"; text = "15:00"; ObjectID = "uLB-he-4K0"; */
+"uLB-he-4K0.text" = "15:00";
