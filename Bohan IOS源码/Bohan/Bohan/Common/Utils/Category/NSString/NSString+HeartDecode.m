@@ -204,24 +204,27 @@
         
         switch ([string integerValue]) {
             case 0:
-                string = Localize(@"星期一");
+//                string = Localize(@"星期一");
                 break;
             case 1:
-                string = Localize(@"星期二");
+                string = Localize(@"星期一");
                 break;
             case 2:
-                string = Localize(@"星期三");
+                string = Localize(@"星期二");
                 break;
             case 3:
-                string = Localize(@"星期四");
+                string = Localize(@"星期三");
                 break;
             case 4:
-                string = Localize(@"星期五");
+                string = Localize(@"星期四");
                 break;
             case 5:
-                string = Localize(@"星期六");
+                string = Localize(@"星期五");
                 break;
             case 6:
+                string = Localize(@"星期六");
+                break;
+            case 7:
                 string = Localize(@"星期日");
                 break;
             default:

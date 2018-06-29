@@ -51,23 +51,18 @@
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
+
+// 二维码
 - (IBAction)scanAction {
     
     ScanViewController *scan = [[ScanViewController alloc] init];
     [scan getResultStr:^(NSString *result) {
         
         if (result && result.length>0) {
-            
             deviceTF.text = result;
         }
-        
     }];
     [self presentViewController:scan animated:YES completion:nil];
-
 }
 
 - (IBAction)bindAction {

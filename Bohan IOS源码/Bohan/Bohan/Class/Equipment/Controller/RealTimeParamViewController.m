@@ -39,7 +39,7 @@
 
 - (void)deviceParams
 {
-    WebSocket *socket = [WebSocket socketManager];
+    WebSocket * socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0001";
     model.deviceNo = self.dNo;

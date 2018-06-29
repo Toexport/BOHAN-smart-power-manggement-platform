@@ -54,9 +54,7 @@ static NSString *cellIdentifier =@"EquipmentTableViewCell";
 #pragma mark 按钮的点击事件
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
- 
     if (!tableView.isEditing) {
-        
         [tableView deselectRowAtIndexPath:indexPath animated:YES];
         if (self.didSelectedBlock) {
             self.didSelectedBlock(self.datas[indexPath.row]);
