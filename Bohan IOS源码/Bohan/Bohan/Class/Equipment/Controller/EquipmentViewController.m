@@ -44,7 +44,7 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }    for (int i = 0; i<2; i++) {
         
-        TablePageModel *model= [[TablePageModel alloc] init];
+        TablePageModel * model= [[TablePageModel alloc] init];
         model.datas = [NSMutableArray array];
         model.isload = NO;
         [dataArray addObject:model];
@@ -122,13 +122,6 @@
 //    [self.pageCollection reloadData];
 //    [self.view layoutIfNeeded];
 
-}
-
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (SliderView *)sliderView

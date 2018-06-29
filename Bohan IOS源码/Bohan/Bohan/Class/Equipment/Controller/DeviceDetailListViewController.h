@@ -10,6 +10,6 @@
 
 @interface DeviceDetailListViewController : BaseViewController
 
-@property (nonatomic, copy) NSString *name;
+@property (nonatomic, copy) NSString * name;
 @property (nonatomic, assign) BOOL isPos;
 @end

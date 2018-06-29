@@ -13,6 +13,8 @@
 "year" = "年";
 "hour" = "时";
 "min" = "分";
+"prompt" = "提示";
+"Are you sure you want to log out?" = "确定要注销登录吗？";
 
 //"设备列表" = "设备列表";
 //"设备管理" = "设备管理";

@@ -37,8 +37,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = Localize(self.name);
-    
-    
     self.datas = [NSMutableArray array];
     _status = [NSArray array];
     [self.view addSubview:self.table];
@@ -73,18 +71,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     [_timer resumeTimerAfterTimeInterval:0.5];
     [super viewWillAppear:animated];
     [self loadData];
-
-}
-
-////  生命周期
-//- (void)viewWillAppear:(BOOL)animated {
-//    [super viewWillAppear:animated];
-//    [self allData];
-//    [_tableView reloadData]; // 刷新数据
-//}
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)dealloc
@@ -106,20 +92,19 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
 {
     
     NSString *key = self.isPos?@"PosName":@"LoadName";
-    
+
     [[NetworkRequest sharedInstance] requestWithUrl:GET_DEVICE_LIST_URL parameter:@{key:self.name} completion:^(id response, NSError *error) {
         
         
         dispatch_async(dispatch_queue_create(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
             
-//            dispatch_semaphore_wait(finished, DISPATCH_TIME_FOREVER);
-            
             dispatch_sync(dispatch_get_main_queue(), ^{
                 
                 [self.view stopLoading];
                 
-                DBLog(@"%@",response);
+                ZPLog(@"%@",response);
+                
                 if (!error) {
                     self.datas = [[NSArray yy_modelArrayWithClass:[DeviceModel class] json:response[@"content"]] mutableCopy];
                     
@@ -186,8 +171,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     }];
 
 }
-
-
 
 
 - (UITableView *)table

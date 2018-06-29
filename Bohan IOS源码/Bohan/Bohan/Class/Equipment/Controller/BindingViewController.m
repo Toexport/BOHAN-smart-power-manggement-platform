@@ -76,8 +76,6 @@
     [self bindDevice];
 }
 
-
-
 - (void)loadPosList
 {
     
@@ -96,8 +94,7 @@
     
 }
 
-- (void)loadBrandList
-{
+- (void)loadBrandList {
     dispatch_group_async(group, queue, ^{
         dispatch_group_enter(group);
         [[NetworkRequest sharedInstance] requestWithUrl:GET_BRAND_LIST_URL parameter:nil completion:^(id response, NSError *error) {
@@ -145,6 +142,9 @@
         if (!error) {
             WifiConnectViewController * connect = [[WifiConnectViewController alloc] init];
             connect.deviceNo = deviceTF.text;
+//            判断输入框中的数字是否包含制定的数字，如果有则不跳转直接成功，如果没有需要跳转到下个界面
+            
+            
             [self.navigationController pushViewController:connect animated:YES];
         }else
         {

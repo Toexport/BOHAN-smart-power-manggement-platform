@@ -17,7 +17,7 @@
 @property (nonatomic, copy) NSString *brand;
 @property (nonatomic, copy) NSString *appliancesort;
 @property (nonatomic, copy) NSString *type;
-@property (nonatomic, copy) NSString *powerinfo;//用电信息
+@property (nonatomic, copy) NSString * powerinfo;//用电信息
 @property (nonatomic, assign) BOOL isOpen;//是否开启
 
 

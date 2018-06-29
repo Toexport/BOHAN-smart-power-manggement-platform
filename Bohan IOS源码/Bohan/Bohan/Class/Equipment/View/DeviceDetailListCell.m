@@ -124,7 +124,7 @@
         {
             [status setText:[statusStr statusString]];
         }
-        [power setText:[self.model.powerinfo power]];
+        [power setText:[self.model.powerinfo power]];  //用电信息
         
     }else
     {
