@@ -7,7 +7,7 @@
 //
 
 #import "NSString+HeartDecode.h"
-
+#import "DebuggingANDPublishing.pch"
 @implementation NSString (HeartDecode)
 
 - (NSString *)status

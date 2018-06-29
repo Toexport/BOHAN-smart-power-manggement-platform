@@ -8,6 +8,7 @@
 
 #import "NSObject+Safe.h"
 #import <objc/runtime.h>
+#import "DebuggingANDPublishing.pch"
 @implementation NSObject (Safe)
 
 //

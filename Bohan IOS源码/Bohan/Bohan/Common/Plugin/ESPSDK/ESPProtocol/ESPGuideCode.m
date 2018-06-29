@@ -8,7 +8,7 @@
 
 #import "ESPGuideCode.h"
 #import "ESP_ByteUtil.h"
-
+#import "DebuggingANDPublishing.pch"
 #define GUIDE_CODE_LEN  4
 
 @implementation ESPGuideCode

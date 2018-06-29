@@ -7,7 +7,7 @@
 //
 
 #import "SoapManager.h"
-
+#import "DebuggingANDPublishing.pch"
 //static NSString *const defaultWebServiceNameSpace = @"http://bohansever.top/";
 static NSString *const httpServer=@"http://www.bohanserver.top:8088/webservice.asmx?wsdl";
 static NSString *const nameSpace=@"http://bohansever.top/";
@@ -74,7 +74,7 @@ static NSString *const defaultSoap12Message = @"<?xml version=\"1.0\" encoding=\
         [dic setValue:@"application/soap+xml; charset=utf-8" forKey:@"Content-Type"];
     }
     [dic setValue:[NSString stringWithFormat:@"%d",(int)[[self soapBodyMessage] length]] forKey:@"Content-Length"];
-    NSLog(@"请求头为:%@",dic);
+    ZPLog(@"请求头为:%@",dic);
     
     //    if (self.httpWay==ASIServiceHttpGet) {
     //        return [NSMutableDictionary dictionaryWithObjectsAndKeys:[self hostName],@"Host", nil];

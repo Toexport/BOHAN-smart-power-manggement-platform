@@ -9,6 +9,7 @@
 #import "ParamsSettingViewController.h"
 #import "UIViewController+NavigationBar.h"
 #import "SGActionView.h"
+#import "DebuggingANDPublishing.pch"
 @interface ParamsSettingViewController ()
 {
     NSDateFormatter *formatter;
@@ -76,7 +77,7 @@
             [HintView showHint:error.localizedDescription];
         }
         
-        NSLog(@"--------%@",response);
+        ZPLog(@"--------%@",response);
     }];
     
 }

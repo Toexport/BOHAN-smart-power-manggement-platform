@@ -7,7 +7,7 @@
 //
 
 #import "ESP_CRC8.h"
-
+#import "DebuggingANDPublishing.pch"
 @implementation ESP_CRC8
 
 static ushort crcTable[256];

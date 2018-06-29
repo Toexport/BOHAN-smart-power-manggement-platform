@@ -10,6 +10,7 @@
 #import "Utils.h"
 #import <CommonCrypto/CommonDigest.h>
 #import "sys/utsname.h"
+#import "DebuggingANDPublishing.pch"
 CGRect CGRectChangeWidth(CGRect frame, CGFloat width)
 {
     frame.size.width = width;
@@ -532,7 +533,7 @@ CGSize getTextSizeWithAttributesDic(NSString *text, CGFloat maxWidth, NSStringDr
                                                        options:NSJSONWritingPrettyPrinted // Pass 0 if you don't care about the readability of the generated string
                                                          error:&error];
     if (! jsonData) {
-        NSLog(@"Got an error: %@", error);
+        ZPLog(@"Got an error: %@", error);
     } else {
         jsonString = [[NSString alloc] initWithData:jsonData encoding:NSUTF8StringEncoding];
     }
@@ -700,6 +701,7 @@ CGSize getTextSizeWithAttributesDic(NSString *text, CGFloat maxWidth, NSStringDr
     [hexDic setObject:@"0111" forKey:@"7"];
     [hexDic setObject:@"1000" forKey:@"8"];
     [hexDic setObject:@"1001" forKey:@"9"];
+    [hexDic setObject:@"1002" forKey:@"10"];
     [hexDic setObject:@"1010" forKey:@"A"];
     [hexDic setObject:@"1011" forKey:@"B"];
     [hexDic setObject:@"1100" forKey:@"C"];

@@ -15,7 +15,7 @@
 #import "ShareView.h"
 #import "YLSheetView.h"
 #import "NSBundle+AppLanguageSwitch.h"
-
+#import "DebuggingANDPublishing.pch"
 static const CGFloat SHAREBTNHIGHT = 50;
 @interface ManagementViewController ()<UITableViewDelegate, UITableViewDataSource, NoDataViewDelegate>
 
@@ -112,6 +112,12 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
 - (void)shareAction
 {
     [[YLSheetView sharedInstace] showFromCenter:self.shareView];
+}
+
+//  生命周期
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self loadData];
 }
 
 - (void)loadData

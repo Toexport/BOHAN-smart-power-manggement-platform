@@ -8,7 +8,7 @@
 
 #import "STLoopProgressView.h"
 #import "STLoopProgressView+BaseConfiguration.h"
-
+#import "DebuggingANDPublishing.pch"
 //#define SELF_WIDTH CGRectGetWidth(self.bounds)
 //#define SELF_HEIGHT CGRectGetHeight(self.bounds)
 

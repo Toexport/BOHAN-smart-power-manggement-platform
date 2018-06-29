@@ -9,6 +9,7 @@
 #import "FeedbackViewController.h"
 #import "UIViewController+NavigationBar.h"
 //#import "EdgetTextField.h"
+#import "DebuggingANDPublishing.pch"
 #import "DescModel.h"
 #import "SGActionView.h"
 @interface FeedbackViewController ()

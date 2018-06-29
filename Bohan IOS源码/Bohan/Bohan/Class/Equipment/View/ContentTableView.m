@@ -10,7 +10,7 @@
 #import "ContentTableView.h"
 #import "EquipmentTableViewCell.h"
 #import "UIScrollView+Refresh.h"
-
+#import "DebuggingANDPublishing.pch"
 @interface ContentTableView ()<UITableViewDataSource, UITableViewDelegate>
 
 @end
@@ -31,12 +31,14 @@ static NSString *cellIdentifier =@"EquipmentTableViewCell";
     self.estimatedRowHeight = 110;
     [self registerNib:[UINib nibWithNibName:@"EquipmentTableViewCell" bundle:nil] forCellReuseIdentifier:cellIdentifier];
      self.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+    
     self.datas = [NSArray array];
     
     self. separatorColor =rgbColor(242, 242, 242);
     self.backgroundColor = rgbColor(242, 242, 242);
     
 }
+
 
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

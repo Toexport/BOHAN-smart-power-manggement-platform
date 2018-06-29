@@ -9,6 +9,7 @@
 #import "UIView+BlankTitleBack.h"
 #import <objc/runtime.h>
 //#import "JRSwizzle.h"
+#import "DebuggingANDPublishing.pch"
 @implementation UIView (BlankTitleBack)
 
 

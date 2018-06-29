@@ -8,6 +8,7 @@
 
 #import "CustomInputView.h"
 #import "SGActionView.h"
+#import "DebuggingANDPublishing.pch"
 @interface CustomInputView ()
 {
     IBOutlet UIView *view;

@@ -1,0 +1,18 @@
+
+/* Class = "UILabel"; text = "验证码"; ObjectID = "1lv-7I-Csx"; */
+"1lv-7I-Csx.text" = "验证码";
+
+/* Class = "UIButton"; normalTitle = "获取验证码"; ObjectID = "50s-fl-pXy"; */
+"50s-fl-pXy.normalTitle" = "获取验证码";
+
+/* Class = "UIButton"; normalTitle = "下一步"; ObjectID = "JLQ-dT-zi1"; */
+"JLQ-dT-zi1.normalTitle" = "下一步";
+
+/* Class = "UILabel"; text = "用户名"; ObjectID = "afm-Qu-1GR"; */
+"afm-Qu-1GR.text" = "用户名";
+
+/* Class = "UITextField"; placeholder = "请输入你的注册手机号"; ObjectID = "cUr-iK-pGj"; */
+"cUr-iK-pGj.placeholder" = "请输入你的注册手机号";
+
+/* Class = "UITextField"; placeholder = "验证码"; ObjectID = "sRD-Se-4dY"; */
+"sRD-Se-4dY.placeholder" = "验证码";

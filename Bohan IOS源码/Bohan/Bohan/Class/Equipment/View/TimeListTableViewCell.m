@@ -8,6 +8,7 @@
 
 #import "TimeListTableViewCell.h"
 #import "TimeSettingModel.h"
+#import "DebuggingANDPublishing.pch"
 @interface TimeListTableViewCell ()
 {
     __weak IBOutlet UILabel *startTime;

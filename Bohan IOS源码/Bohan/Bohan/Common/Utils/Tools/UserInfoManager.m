@@ -8,6 +8,7 @@
 
 #import "UserInfoManager.h"
 #import <SAMKeychain/SAMKeychain.h>
+#import "DebuggingANDPublishing.pch"
 @interface UserInfoManager ()
 //@property (nonatomic, strong, readwrite)UserInfoModel *userInfo;
 @end

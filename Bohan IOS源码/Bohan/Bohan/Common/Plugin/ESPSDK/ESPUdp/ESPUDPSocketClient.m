@@ -13,7 +13,7 @@
 #import <netdb.h>
 #include "ESPTouchTask.h"
 #import "ESP_NetUtil.h"
-
+#import "DebuggingANDPublishing.pch"
 #define SOCKET_NULL     -1
 
 @interface ESPUDPSocketClient ()
@@ -55,7 +55,7 @@
         self._sck_fd4 = socket(AF_INET,SOCK_DGRAM,0);
         if (DEBUG_ON)
         {
-            NSLog(@"##########################client init() _sck_fd4=%d",self._sck_fd4);
+            ZPLog(@"##########################client init() _sck_fd4=%d",self._sck_fd4);
         }
         if (self._sck_fd4 < 0)
         {
@@ -68,7 +68,7 @@
         self._sck_fd6 = socket(AF_INET6,SOCK_DGRAM,0);
         if (DEBUG_ON)
         {
-            NSLog(@"##########################client init() _sck_fd6=%d",self._sck_fd6);
+            ZPLog(@"##########################client init() _sck_fd6=%d",self._sck_fd6);
         }
         if (self._sck_fd6 < 0)
         {
@@ -87,7 +87,7 @@
 {
     if (DEBUG_ON)
     {
-        NSLog(@"###################client dealloc()");
+        ZPLog(@"###################client dealloc()");
     }
     [self close];
 }
@@ -100,7 +100,7 @@
         if (self._sck_fd4!=SOCKET_NULL) {
             if (DEBUG_ON)
             {
-                NSLog(@"###################client close() fd4=%d",self._sck_fd4);
+                ZPLog(@"###################client close() fd4=%d",self._sck_fd4);
             }
             close(self._sck_fd4);
             self._sck_fd4 = SOCKET_NULL;
@@ -108,7 +108,7 @@
         if (self._sck_fd6!=SOCKET_NULL) {
             if (DEBUG_ON)
             {
-                NSLog(@"###################client close() fd6=%d",self._sck_fd6);
+                ZPLog(@"###################client close() fd6=%d",self._sck_fd6);
             }
             close(self._sck_fd6);
             self._sck_fd6 = SOCKET_NULL;

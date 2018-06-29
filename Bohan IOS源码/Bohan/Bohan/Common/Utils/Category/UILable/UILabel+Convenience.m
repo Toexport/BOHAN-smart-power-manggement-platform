@@ -7,7 +7,7 @@
 //
 
 #import "UILabel+Convenience.h"
-
+#import "DebuggingANDPublishing.pch"
 @implementation UILabel (Convenience)
 
 +(instancetype)createLabelText:(NSString *)text textColor:(UIColor *)textColor textFontSize:(CGFloat)font{

@@ -7,7 +7,7 @@
 //
 
 #import "RealTimeParamTableViewCell.h"
-
+#import "DebuggingANDPublishing.pch"
 @interface RealTimeParamTableViewCell ()
 {
     __weak IBOutlet UILabel *name;

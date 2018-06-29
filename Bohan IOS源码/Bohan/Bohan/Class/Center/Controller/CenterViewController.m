@@ -11,18 +11,21 @@
 #import "FeedbackViewController.h"
 #import "UIButton+EdgeInsets.h"
 #import "NSBundle+AppLanguageSwitch.h"
-
+#import "SelectPhotoManager.h"
 //#import "UIImageView+WebCache.h"
+#import "DebuggingANDPublishing.pch"
 @interface CenterViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
 
     NSString *userImg;
     UIImageView *headerImg;
 }
+@property (nonatomic, strong)SelectPhotoManager * photoManager;
 @property (nonatomic,strong) UITableView *tableView;
 @property (nonatomic,strong) UIButton *footerBtn;
 @property (nonatomic,strong) NSMutableArray *data;
 @property (nonatomic, strong) UILabel * detailTextLabel; //电话
+@property (nonatomic, strong)UIImageView * HeadImage;
 
 @end
 
@@ -62,7 +65,6 @@
 }
 
 - (void)logoutAction:(UIButton *)sender {
-    
     UIAlertController * alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"提示", nil) message: NSLocalizedString(@"确定要注销登录吗?", nil)preferredStyle:UIAlertControllerStyleActionSheet];
     //  设置popover指向的item
     alert.popoverPresentationController.barButtonItem = self.navigationItem.leftBarButtonItem;
@@ -71,10 +73,10 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:LOGOUTNOTIFICATION object:nil];
         //        清除所有的数据
         
-        NSLog(@"点击了确定按钮");
+        ZPLog(@"点击了确定按钮");
     }]];
     [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"取消",nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
-        NSLog(@"点击了取消按钮");
+        ZPLog(@"点击了取消按钮");
     }]];
     [self presentViewController:alert animated:YES completion:nil];
     
@@ -135,9 +137,15 @@
     cell.detailTextLabel.font = Font(15);
     cell.selectionStyle = UITableViewCellSelectionStyleNone; // 取消Cell变灰效果
     cell.imageView.image = [UIImage imageNamed:dict_[@"image"]];
+    self.HeadImage.image = cell.imageView.image;
     
     if (indexPath.row == 0) {
         cell.accessoryView = headerImg;
+        UITapGestureRecognizer *TapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headerImage:)];
+        // 2. 将点击事件添加到label上
+        [headerImg addGestureRecognizer:TapGestureRecognizer2];
+        headerImg.userInteractionEnabled = YES; // 可以理解为设置label可被点击
+//        self.headerImg = cell.detailTextLabel;
         
     }else if(indexPath.row == 3 || indexPath.row == 4)
     {
@@ -181,6 +189,63 @@
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:ph1]];
     
 }
+- (void)headerImage:(id)sender {
+//    //初始化UIImagePickerController类
+//    UIImagePickerController * picker = [[UIImagePickerController alloc] init];
+//    //判断数据来源为相册
+//    picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
+//    //设置代理
+//    picker.delegate = self;
+//    //打开相册
+//    [self presentViewController:picker animated:YES completion:nil];
+    
+    if (!_photoManager) {
+        _photoManager = [[SelectPhotoManager alloc]init];
+    }
+    [_photoManager startSelectPhotoWithImageName:NSLocalizedString(@"Choose photos", nil)];
+    __weak typeof(self)mySelf = self;
+    //  选取照片成功
+    _photoManager.successHandle=^(SelectPhotoManager *manager,UIImage * image){
+        image = [mySelf imageWithImage:image scaledToSize:CGSizeMake(150, 150)];
+        
+        //  保存到本地
+        NSMutableArray * imageArray = [NSMutableArray array];
+        NSData * data =  UIImageJPEGRepresentation(image, 1);
+        [imageArray addObject:data];
+        [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"headerImage"];
+    };
+}
+
+- (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize {
+        // Create a graphics image context
+        UIGraphicsBeginImageContext(newSize);
+        
+        // Tell the old image to draw in this new context, with the desired
+        // new size
+        [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+        
+        // Get the new image from the context
+        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+        
+        // End the context
+        UIGraphicsEndImageContext();
+        
+        // Return the new image.
+        return newImage;
+    }
+////选择完成回调函数
+// - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+//       //获取图片
+//       UIImage *image = info[UIImagePickerControllerOriginalImage];
+//       [self dismissViewControllerAnimated:YES completion:nil];
+//
+////    .image = image;
+//    }
+// //用户取消选择
+//- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+//        [self dismissViewControllerAnimated:YES completion:nil];
+//     }
+
 
 //-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 //    return 10;

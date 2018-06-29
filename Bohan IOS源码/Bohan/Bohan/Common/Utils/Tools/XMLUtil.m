@@ -7,7 +7,7 @@
 //
 
 #import "XMLUtil.h"
-
+#import "DebuggingANDPublishing.pch"
 @implementation XMLUtil
 
 
@@ -21,7 +21,7 @@
 //几个代理方法的实现，是按逻辑上的顺序排列的，但实际调用过程中中间三个可能因为循环等问题乱掉顺序
 //开始解析
 - (void)parserDidStartDocument:(NSXMLParser *)parser{
-    NSLog(@"parserDidStartDocument...");
+    ZPLog(@"parserDidStartDocument...");
 }
 //准备节点
 - (void)parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName namespaceURI:(nullable NSString *)namespaceURI qualifiedName:(nullable NSString *)qName attributes:(NSDictionary<NSString *, NSString *> *)attributeDict{

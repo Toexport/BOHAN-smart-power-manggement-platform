@@ -11,6 +11,7 @@
 #import "DeviceInfoViewController.h"
 #import "WifiConnectViewController.h"
 #import "DeviceModel.h"
+#import "DebuggingANDPublishing.pch"
 @interface UpdateDeviceInfoViewController ()
 {
 //    __weak IBOutlet UILabel *name;
@@ -143,6 +144,7 @@
         if (!error) {
             
             [HintView showHint:Localize(@"修改成功")];
+            [self.navigationController popViewControllerAnimated:YES];
             
         }else
         {

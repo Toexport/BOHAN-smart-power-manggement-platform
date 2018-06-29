@@ -11,6 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "CustomInputView.h"
 #import "WifiConnectViewController.h"
+#import "DebuggingANDPublishing.pch"
 @interface BindingViewController ()
 {
     __weak IBOutlet UITextField *deviceTF;
@@ -69,13 +70,11 @@
     
 //    [self unBindDevice];
     if (deviceTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
-
         [HintView showHint:Localize(@"请填完整设备信息")];
         return;
     }
     [self bindDevice];
 }
-
 
 
 
@@ -138,23 +137,20 @@
 - (void)bindDevice
 {
     [self.view startLoading];
-    NSDictionary *dic = @{@"DeviceCode":deviceTF.text, @"DeviceKey":deviceTF.text, @"PosName":posInput.contentTF.text, @"LoadName":typeInput.contentTF.text, @"LoadBrand":brandInput.contentTF.text};
+    NSDictionary * dic = @{@"DeviceCode":deviceTF.text, @"DeviceKey":deviceTF.text, @"PosName":posInput.contentTF.text, @"LoadName":typeInput.contentTF.text, @"LoadBrand":brandInput.contentTF.text};
     [[NetworkRequest sharedInstance] requestWithUrl:BINDING_DEVICE_URL parameter:dic completion:^(id response, NSError *error) {
         
         [self.view stopLoading];
         //请求成功
         if (!error) {
-            
-            WifiConnectViewController *connect = [[WifiConnectViewController alloc] init];
+            WifiConnectViewController * connect = [[WifiConnectViewController alloc] init];
             connect.deviceNo = deviceTF.text;
             [self.navigationController pushViewController:connect animated:YES];
         }else
         {
             [HintView showHint:error.localizedDescription];
         }
-        
     }];
-    
 }
 
 - (void)unBindDevice
@@ -162,7 +158,6 @@
     [self.view startLoading];
     NSDictionary *dic = @{@"DeviceCode":deviceTF.text, @"DeviceKey":deviceTF.text};
     [[NetworkRequest sharedInstance] requestWithUrl:UNBINDING_DEVICE_URL parameter:dic completion:^(id response, NSError *error) {
-        
         [self.view stopLoading];
         //请求成功
         if (!error) {

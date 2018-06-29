@@ -9,6 +9,7 @@
 #import "WebSocket.h"
 //#import "CommandModel.h"
 #import "WebSocket+Utils.h"
+#import "DebuggingANDPublishing.pch"
 @interface WebSocket ()
 
 @property (nonatomic,strong, readwrite)SocketRocketUtility *serverSockt;

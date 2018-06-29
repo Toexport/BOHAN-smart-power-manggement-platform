@@ -7,7 +7,7 @@
 //
 
 #import "NSString+Reverse.h"
-
+#import "DebuggingANDPublishing.pch"
 @implementation NSString (Reverse)
 
 ///反转字符串

@@ -8,6 +8,7 @@
 //
 
 #import "ScanViewController.h"
+#import "DebuggingANDPublishing.pch"
 @interface ScanViewController ()
 
 @end

@@ -14,7 +14,7 @@
 #import "ESPUDPSocketClient.h"
 #import "ESP_NetUtil.h"
 #import "ESPTouchTaskParameter.h"
-
+#import "DebuggingANDPublishing.pch"
 #define ONE_DATA_LEN    3
 #define ESPTOUCH_VERSION    @"v0.3.5.3"
 
@@ -62,7 +62,7 @@
 
 - (id) initWithApSsid: (NSString *)apSsid andApBssid: (NSString *) apBssid andApPwd: (NSString *)apPwd
 {
-    NSLog(@"Welcome Esptouch %@",ESPTOUCH_VERSION);
+    ZPLog(@"Welcome Esptouch %@",ESPTOUCH_VERSION);
     if (apSsid==nil||[apSsid isEqualToString:@""])
     {
         perror("ESPTouchTask initWithApSsid() apSsid shouldn't be null or empty");
@@ -79,7 +79,7 @@
     {
         if (DEBUG_ON)
         {
-            NSLog(@"ESPTouchTask init");
+            ZPLog(@"ESPTouchTask init");
         }
         self._apSsid = apSsid;
         self._apPwd = apPwd;
@@ -102,7 +102,7 @@
         // update listening port for IPv6
         [self._parameter setListeningPort6:self._server.port];
         if (DEBUG_ON) {
-            NSLog(@"ESPTouchTask app server port is %d",self._server.port);
+            ZPLog(@"ESPTouchTask app server port is %d",self._server.port);
         }
         
         if (localInetAddr4!=nil) {
@@ -115,7 +115,7 @@
         if (DEBUG_ON)
         {
             // for ESPTouchGenerator only receive 4 bytes for local address no matter IPv4 or IPv6
-            NSLog(@"ESPTouchTask executeForResult() localInetAddr: %@", [ESP_NetUtil descriptionInetAddr4ByData:self._localInetAddrData]);
+            ZPLog(@"ESPTouchTask executeForResult() localInetAddr: %@", [ESP_NetUtil descriptionInetAddr4ByData:self._localInetAddrData]);
         }
         
         self._isSuc = NO;
@@ -165,7 +165,7 @@
     ++count;
     if (DEBUG_ON)
     {
-        NSLog(@"ESPTouchTask __putEsptouchResult(): count = %d",count);
+        ZPLog(@"ESPTouchTask __putEsptouchResult(): count = %d",count);
     }
     countNumber = [[NSNumber alloc]initWithInt:count];
     [self._bssidTaskSucCountDict setObject:countNumber forKey:bssid];
@@ -174,7 +174,7 @@
     {
         if (DEBUG_ON)
         {
-            NSLog(@"ESPTouchTask __putEsptouchResult(): count = %d, isn't enough", count);
+            ZPLog(@"ESPTouchTask __putEsptouchResult(): count = %d, isn't enough", count);
         }
         [self._esptouchResultArrayCondition unlock];
         return;
@@ -195,7 +195,7 @@
     {
         if (DEBUG_ON)
         {
-            NSLog(@"ESPTouchTask __putEsptouchResult(): put one more result");
+            ZPLog(@"ESPTouchTask __putEsptouchResult(): put one more result");
         }
         ESPTouchResult *esptouchResult = [[ESPTouchResult alloc]initWithIsSuc:isSuc andBssid:bssid andInetAddrData:inetAddr];
         [self._esptouchResultArray addObject:esptouchResult];
@@ -225,12 +225,12 @@
 {
     if (DEBUG_ON)
     {
-        NSLog(@"ESPTouchTask beginBackgroundTask() entrance");
+        ZPLog(@"ESPTouchTask beginBackgroundTask() entrance");
     }
     self._backgroundTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
         if (DEBUG_ON)
         {
-            NSLog(@"ESPTouchTask beginBackgroundTask() endBackgroundTask");
+            ZPLog(@"ESPTouchTask beginBackgroundTask() endBackgroundTask");
         }
         [self endBackgroundTask];
     }];
@@ -240,7 +240,7 @@
 {
     if (DEBUG_ON)
     {
-        NSLog(@"ESPTouchTask endBackgroundTask() entrance");
+        ZPLog(@"ESPTouchTask endBackgroundTask() entrance");
     }
     [[UIApplication sharedApplication] endBackgroundTask: self._backgroundTask];
     self._backgroundTask = UIBackgroundTaskInvalid;
@@ -253,14 +253,14 @@
         [self beginBackgroundTask];
         if (DEBUG_ON)
         {
-            NSLog(@"ESPTouchTask __listenAsyn() start an asyn listen task, current thread is: %@", [NSThread currentThread]);
+            ZPLog(@"ESPTouchTask __listenAsyn() start an asyn listen task, current thread is: %@", [NSThread currentThread]);
         }
         NSTimeInterval startTimestamp = [[NSDate date] timeIntervalSince1970];
         NSString *apSsidAndPwd = [NSString stringWithFormat:@"%@%@",self._apSsid,self._apPwd];
         Byte expectOneByte = [ESP_ByteUtil getBytesByNSString:apSsidAndPwd].length + 9;
         if (DEBUG_ON)
         {
-            NSLog(@"ESPTouchTask __listenAsyn() expectOneByte: %d",expectOneByte);
+            ZPLog(@"ESPTouchTask __listenAsyn() expectOneByte: %d",expectOneByte);
         }
         Byte receiveOneByte = -1;
         NSData *receiveData = nil;
@@ -287,7 +287,7 @@
                 {
                     if (DEBUG_ON)
                     {
-                        NSLog(@"ESPTouchTask __listenAsyn() receive correct broadcast");
+                        ZPLog(@"ESPTouchTask __listenAsyn() receive correct broadcast");
                     }
                     // change the socket's timeout
                     NSTimeInterval consume = [[NSDate date] timeIntervalSince1970] - startTimestamp;
@@ -301,7 +301,7 @@
                         }
                         if (DEBUG_ON)
                         {
-                            NSLog(@"ESPTouchTask __listenAsyn() esptouch timeout");
+                            ZPLog(@"ESPTouchTask __listenAsyn() esptouch timeout");
                             
                         }
                         //                    break;
@@ -310,12 +310,12 @@
                     {
                         if (DEBUG_ON)
                         {
-                            NSLog(@"ESPTouchTask __listenAsyn() socketServer's new timeout is %d milliseconds",timeout);
+                            ZPLog(@"ESPTouchTask __listenAsyn() socketServer's new timeout is %d milliseconds",timeout);
                         }
                         [self._server setSocketTimeout:timeout];
                         if (DEBUG_ON)
                         {
-                            NSLog(@"ESPTouchTask __listenAsyn() receive correct broadcast");
+                            ZPLog(@"ESPTouchTask __listenAsyn() receive correct broadcast");
                         }
                         if (receiveData != nil)
                         {
@@ -356,7 +356,7 @@
                     //                }
                     if (DEBUG_ON)
                     {
-                        NSLog(@"ESPTouchTask __listenAsyn() receive rubbish message, just ignore");
+                        ZPLog(@"ESPTouchTask __listenAsyn() receive rubbish message, just ignore");
                     }
                     
                     
@@ -369,7 +369,7 @@
         [self __interrupt];
         if (DEBUG_ON)
         {
-            NSLog(@"ESPTouchTask __listenAsyn() finish");
+            ZPLog(@"ESPTouchTask __listenAsyn() finish");
         }
         [self endBackgroundTask];
 
@@ -381,7 +381,7 @@
 {
     if (DEBUG_ON)
     {
-        NSLog(@"ESPTouchTask interrupt()");
+        ZPLog(@"ESPTouchTask interrupt()");
     }
     self.isCancelled = YES;
     [self __interrupt];
@@ -413,7 +413,7 @@
         {
             if (DEBUG_ON)
             {
-                NSLog(@"ESPTouchTask __execute() send gc code ");
+                ZPLog(@"ESPTouchTask __execute() send gc code ");
             }
             // send guide code
             while (!self._isInterrupt && [[NSDate date] timeIntervalSince1970] - currentTime < [self._parameter getTimeoutGuideCodeMillisecond]/1000.0)
@@ -507,7 +507,7 @@
 {
     if (DEBUG_ON)
     {
-        NSLog(@"ESPTouchTask __sleep() start");
+        ZPLog(@"ESPTouchTask __sleep() start");
     }
     NSDate *date = [NSDate dateWithTimeIntervalSinceNow: milliseconds/1000.0];
     [self._condition lock];
@@ -518,7 +518,7 @@
     [self._condition unlock];
     if (DEBUG_ON)
     {
-        NSLog(@"ESPTouchTask __sleep() end, receive signal is %@", signaled ? @"YES" : @"NO");
+        ZPLog(@"ESPTouchTask __sleep() end, receive signal is %@", signaled ? @"YES" : @"NO");
     }
     return signaled;
 }
@@ -528,7 +528,7 @@
 {
     if (DEBUG_ON)
     {
-        NSLog(@"ESPTouchTask __notify()");
+        ZPLog(@"ESPTouchTask __notify()");
     }
     [self._condition lock];
     self._isWakeUp = YES;

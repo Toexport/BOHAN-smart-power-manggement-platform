@@ -13,6 +13,7 @@
 #import "PowerModel.h"
 #import "DeviceModel.h"
 #import "UIImage+Color.h"
+#import "DebuggingANDPublishing.pch"
 @interface StatisticsViewController ()
 {
     NSArray *dataArray;

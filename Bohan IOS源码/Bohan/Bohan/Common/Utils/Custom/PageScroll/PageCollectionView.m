@@ -9,6 +9,7 @@
 #import "PageCollectionView.h"
 #import "TablePageModel.h"
 #import "ContentTableView.h"
+#import "DebuggingANDPublishing.pch"
 static NSString * const pageCellIdentifier = @"PageCollectionViewCell";
 
 //@interface PageCollectionViewCell()

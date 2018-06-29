@@ -8,6 +8,7 @@
 
 #import "DeviceDetailListCell.h"
 #import "DeviceModel.h"
+#import "DebuggingANDPublishing.pch"
 @interface DeviceDetailListCell ()
 {
     __weak IBOutlet UILabel *name;

@@ -7,7 +7,7 @@
 //
 
 #import "UISearchBar+Color.h"
-
+#import "DebuggingANDPublishing.pch"
 @implementation UISearchBar (Color)
 
 - (void)setSearchTextFieldBackgroundColor:(UIColor *)backgroundColor

@@ -8,6 +8,7 @@
 
 #import "BaseTableView.h"
 #import "UIScrollView+Refresh.h"
+#import "DebuggingANDPublishing.pch"
 @implementation BaseTableView
 
 - (void)awakeFromNib

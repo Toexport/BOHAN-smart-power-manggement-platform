@@ -9,7 +9,7 @@
 #import "ESPDataCode.h"
 #import "ESP_ByteUtil.h"
 #import "ESP_CRC8.h"
-
+#import "DebuggingANDPublishing.pch"
 #define INDEX_MAX   127
 
 @implementation ESPDataCode

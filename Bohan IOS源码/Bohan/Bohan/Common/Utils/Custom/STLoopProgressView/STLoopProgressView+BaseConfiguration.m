@@ -7,7 +7,7 @@
 //
 
 #import "STLoopProgressView+BaseConfiguration.h"
-
+#import "DebuggingANDPublishing.pch"
 #define DEGREES_TO_RADOANS(x) (M_PI * (x) / 180.0) // 将角度转为弧度
 
 @implementation STLoopProgressView (BaseConfiguration)

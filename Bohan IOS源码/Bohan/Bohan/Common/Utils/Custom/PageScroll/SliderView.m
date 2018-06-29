@@ -7,6 +7,7 @@
 //
 
 #import "SliderView.h"
+#import "DebuggingANDPublishing.pch"
 @interface SliderView ()
 {
 //    UIView *flageView;

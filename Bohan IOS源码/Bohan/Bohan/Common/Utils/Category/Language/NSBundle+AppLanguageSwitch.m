@@ -8,7 +8,7 @@
 
 #import "NSBundle+AppLanguageSwitch.h"
 #import <objc/runtime.h>
-
+#import "DebuggingANDPublishing.pch"
 
 NSString * const AppLanguageDidChangeNotification = @"com.app.languagedidchange";
 

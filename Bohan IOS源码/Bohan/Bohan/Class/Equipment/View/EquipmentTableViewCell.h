@@ -16,6 +16,6 @@
 @end
 
 @interface EquipmentTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *name;
+@property (weak, nonatomic) IBOutlet UILabel * name;
 @property (nonatomic, weak) id<EquipmentTableViewCellDelegate> delegate;
 @end

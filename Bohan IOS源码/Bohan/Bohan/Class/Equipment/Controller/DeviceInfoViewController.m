@@ -15,6 +15,7 @@
 #import "StatisticsViewController.h"
 #import "DeviceModel.h"
 #import "DeviceInfoCollectionCell.h"
+#import "DebuggingANDPublishing.pch"
 
 #define ItemWidth  (ScreenWidth -1)/2.0
 static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
@@ -180,7 +181,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
             [status setText:Localize(@"设备正处于离线状态")];
         }
 
-        NSLog(@"--------%@",response);
+        ZPLog(@"--------%@",response);
     }];
     
 }
@@ -212,7 +213,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
         }
         [deviceInfoCollection reloadData];
 
-        NSLog(@"--------%@",response);
+        ZPLog(@"--------%@",response);
     }];
     
 }

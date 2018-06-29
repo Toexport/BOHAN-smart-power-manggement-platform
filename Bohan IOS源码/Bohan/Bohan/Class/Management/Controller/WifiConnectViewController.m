@@ -13,7 +13,7 @@
 #import "WebSocket.h"
 #import "CommandModel.h"
 #import <SAMKeychain/SAMKeychain.h>
-
+#import "DebuggingANDPublishing.pch"
 @interface WifiConnectViewController ()<UIScrollViewDelegate>
 {
     NSUInteger currentIndex;
@@ -89,7 +89,7 @@
     model.command = @"0001";
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         
-        NSLog(@"--------%@",response);
+        ZPLog(@"--------%@",response);
     }];
 
 }

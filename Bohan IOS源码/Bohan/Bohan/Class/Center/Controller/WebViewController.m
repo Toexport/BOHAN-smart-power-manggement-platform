@@ -9,7 +9,7 @@
 #import "WebViewController.h"
 #import  <WebKit/WebKit.h>
 #import "WKWebView+Utils.h"
-
+#import "DebuggingANDPublishing.pch"
 @interface WebViewController ()<WKNavigationDelegate>
 
 @property (nonatomic, strong)WKWebView *wkwebView;
@@ -77,7 +77,7 @@
     _wkwebView.navigationDelegate = nil;
     _wkwebView.UIDelegate = nil;
     
-    NSLog(@"wkwebview dealloc");
+    ZPLog(@"wkwebview dealloc");
 }
 
 

@@ -12,7 +12,7 @@
 #import "ESP_NetUtil.h"
 #import "ESPTouchDelegate.h"
 #import <ifaddrs.h>
-
+#import "DebuggingANDPublishing.pch"
 #import <arpa/inet.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
 
@@ -103,7 +103,7 @@
         
         NSString *ipAddress = [ESP_NetUtil descriptionInetAddr4ByData:result.ipAddrData];
         NSString *port = [NSString stringWithFormat:@"%d",self._esptouchTask._server.port];
-        NSLog(@"配网成功: ipAddress=%@,port=%@", ipAddress,port);
+        ZPLog(@"配网成功: ipAddress=%@,port=%@", ipAddress,port);
         if (self.resultBlock) {
             self.resultBlock(ESPConnectResultTypeSucceed, ipAddress, port);
         }

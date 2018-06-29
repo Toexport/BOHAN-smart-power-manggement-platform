@@ -7,6 +7,7 @@
 //
 
 #import "MeteringViewController.h"
+#import "DebuggingANDPublishing.pch"
 @interface MeteringViewController ()
 {
     __weak IBOutlet UIView *lastView;
@@ -154,7 +155,7 @@
             [HintView showHint:error.localizedDescription];
         }
         
-        NSLog(@"--------%@",response);
+        ZPLog(@"--------%@",response);
     }];
 }
 

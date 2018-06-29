@@ -9,7 +9,7 @@
 #import "SGBaseMenu.h"
 #import <QuartzCore/QuartzCore.h>
 #include <sys/sysctl.h>
-
+#import "DebuggingANDPublishing.pch"
 @implementation SGButton
 
 - (id)initWithFrame:(CGRect)frame

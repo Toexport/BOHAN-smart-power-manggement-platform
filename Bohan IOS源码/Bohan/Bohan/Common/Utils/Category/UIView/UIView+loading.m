@@ -8,7 +8,7 @@
 
 #import "UIView+loading.h"
 #import "RTSpinKitView.h"
-
+#import "DebuggingANDPublishing.pch"
 
 static RTSpinKitView * spinner = nil;
 

@@ -8,6 +8,7 @@
 
 #import "RealTimeParamViewController.h"
 #import "UIViewController+NavigationBar.h"
+#import "DebuggingANDPublishing.pch"
 @interface RealTimeParamViewController ()
 {
     __weak IBOutlet UILabel *deviceNo;
@@ -58,7 +59,7 @@
             [HintView showHint:error.localizedDescription];
         }
         
-        NSLog(@"--------%@",response);
+        ZPLog(@"--------%@",response);
     }];
     
 }
@@ -77,12 +78,6 @@
     [money setText:[data money]];
     [temperature setText:[data temperature]];
 
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 

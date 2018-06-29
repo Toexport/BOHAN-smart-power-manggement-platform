@@ -9,6 +9,7 @@
 #import "LoginViewController.h"
 #import "VerificationCodeViewController.h"
 #import "WebViewController.h"
+#import "DebuggingANDPublishing.pch"
 @interface LoginViewController ()<UITextFieldDelegate>
 {
     __weak IBOutlet EdgetTextField *accountTF;

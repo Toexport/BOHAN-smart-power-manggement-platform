@@ -9,6 +9,7 @@
 #import "PowerHorizontalBarView.h"
 #import "Bohan-Bridging-Header.h"
 #import "PowerModel.h"
+#import "DebuggingANDPublishing.pch"
 @interface PowerHorizontalBarView()
 
 @property (nonatomic, strong)HorizontalBarChartView *chartBarView;

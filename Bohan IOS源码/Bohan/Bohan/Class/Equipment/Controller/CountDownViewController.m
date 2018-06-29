@@ -10,7 +10,7 @@
 #import "STLoopProgressView.h"
 #import "SGActionView.h"
 #import "NSTimer+Action.h"
-
+#import "DebuggingANDPublishing.pch"
 @interface CountDownViewController ()<UITableViewDelegate, UITableViewDataSource>
 {
     __weak IBOutlet STLoopProgressView *progressView;
@@ -95,7 +95,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 //            [weakSelf.navigationController popViewControllerAnimated:YES];
         }
         
-        NSLog(@"--------%@",response);
+        ZPLog(@"--------%@",response);
     }];
     
 }
@@ -145,7 +145,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
             [self setUpTimer];
         }
         
-        NSLog(@"--------%@",response);
+        ZPLog(@"--------%@",response);
     }];
     
 }

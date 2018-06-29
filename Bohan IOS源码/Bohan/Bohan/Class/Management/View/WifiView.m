@@ -7,7 +7,7 @@
 //
 
 #import "WifiView.h"
-
+#import "DebuggingANDPublishing.pch"
 @implementation WifiView
 
 

@@ -7,7 +7,7 @@
 //
 
 #import "NSError+Message.h"
-
+#import "DebuggingANDPublishing.pch"
 @implementation NSError (Message)
 
 - (NSError *)errorConvert{

@@ -9,6 +9,7 @@
 #import "XMLUtil.h"
 #import "NSError+Message.h"
 //#import "NSData+Base64.h"
+#import "DebuggingANDPublishing.pch"
 #import "SoapManager.h"
 
 

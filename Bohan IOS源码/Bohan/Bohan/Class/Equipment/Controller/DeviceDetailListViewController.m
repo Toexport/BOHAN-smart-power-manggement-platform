@@ -13,6 +13,7 @@
 #import "DeviceModel.h"
 #import "DeviceInfoViewController.h"
 #import "NSTimer+Action.h"
+#import "DebuggingANDPublishing.pch"
 @interface DeviceDetailListViewController ()<UITableViewDelegate, UITableViewDataSource, NoDataViewDelegate, DeviceDetailListCellDelegate, DeviceDetailMutableListCellDelegate>
 {
 //    dispatch_semaphore_t finished;
@@ -69,10 +70,18 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [_timer resumeTimerAfterTimeInterval:5];
+    [_timer resumeTimerAfterTimeInterval:0.5];
+    [super viewWillAppear:animated];
+    [self loadData];
 
 }
 
+////  生命周期
+//- (void)viewWillAppear:(BOOL)animated {
+//    [super viewWillAppear:animated];
+//    [self allData];
+//    [_tableView reloadData]; // 刷新数据
+//}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -159,7 +168,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
             shouldNotUpdate = NO;
             return ;
         }
-        NSLog(@"--------%@",response);
+        ZPLog(@"--------%@",response);
         weakSelf.status = [response componentsSeparatedByString:@","];
         
         for (DeviceModel *model in self.datas) {
@@ -297,7 +306,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     command.content = isOpen?@"00":@"01";
     MyWeakSelf
     [socket sendSingleDataWithModel:command resultBlock:^(id response, NSError *error) {
-        NSLog(@"--------%@",response);
+        ZPLog(@"--------%@",response);
         
         if (!error) {
             //******注意：开启成功后，需要重新取实时数据*******
@@ -344,7 +353,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     command.content = code;
     MyWeakSelf
     [socket sendSingleDataWithModel:command resultBlock:^(id response, NSError *error) {
-        NSLog(@"--------%@",response);
+        ZPLog(@"--------%@",response);
         
         if (!error) {
             //******注意：开启成功后，需要重新取实时数据*******

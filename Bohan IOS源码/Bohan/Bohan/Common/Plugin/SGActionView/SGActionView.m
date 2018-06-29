@@ -10,7 +10,7 @@
 #import "SGTimePick.h"
 #import "SGSheetMenu.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "DebuggingANDPublishing.pch"
 
 @interface SGActionView () <UIGestureRecognizerDelegate>
 @property (nonatomic, strong) NSMutableArray *menus;

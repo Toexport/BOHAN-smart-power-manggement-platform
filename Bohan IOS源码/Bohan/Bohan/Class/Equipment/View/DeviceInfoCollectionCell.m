@@ -7,7 +7,7 @@
 //
 
 #import "DeviceInfoCollectionCell.h"
-
+#import "DebuggingANDPublishing.pch"
 @implementation DeviceInfoCollectionCell
 
 - (void)awakeFromNib {

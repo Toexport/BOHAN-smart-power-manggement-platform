@@ -7,7 +7,7 @@
 //
 
 #import "UILabel+HTML.h"
-
+#import "DebuggingANDPublishing.pch"
 @implementation UILabel (HTML)
 
 - (void)setHtmlStr:(NSString *)html

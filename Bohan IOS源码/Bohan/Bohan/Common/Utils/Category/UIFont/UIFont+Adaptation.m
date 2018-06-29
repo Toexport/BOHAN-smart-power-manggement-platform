@@ -8,7 +8,7 @@
 
 #import "UIFont+Adaptation.h"
 #import <objc/runtime.h>
-
+#import "DebuggingANDPublishing.pch"
 @implementation UIFont (Adaptation)
 
 

@@ -8,6 +8,7 @@
 
 #import "WKWebView+Utils.h"
 #import <objc/runtime.h>
+#import "DebuggingANDPublishing.pch"
 static CGFloat const Padding = 32;
 static char imgUrlArrayKey;
 

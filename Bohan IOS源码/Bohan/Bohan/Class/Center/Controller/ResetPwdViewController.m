@@ -8,6 +8,7 @@
 
 #import "ResetPwdViewController.h"
 #import "UIButton+Disable.h"
+#import "DebuggingANDPublishing.pch"
 @interface ResetPwdViewController ()<UITextFieldDelegate>
 {
     __weak IBOutlet UITextField *pwdTF;

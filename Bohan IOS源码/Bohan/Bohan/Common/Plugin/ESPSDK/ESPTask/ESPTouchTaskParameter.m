@@ -7,7 +7,7 @@
 //
 
 #import "ESPTouchTaskParameter.h"
-
+#import "DebuggingANDPublishing.pch"
 @interface ESPTaskParameter()
 @property (nonatomic,assign) long intervalGuideCodeMillisecond;
 @property (nonatomic,assign) long intervalDataCodeMillisecond;
@@ -186,7 +186,7 @@ static int _datagramCount = 0;
     if (waitUdpTotalMillisecond < self.waitUdpReceivingMillisecond + [self getTimeoutTotalCodeMillisecond])
     {
         // if it happen, even one turn about sending udp broadcast can't be completed
-        NSLog(@"ESPTouchTaskParameter waitUdpTotalMillisecod is invalid, it is less than mWaitUdpReceivingMilliseond + [self getTimeoutTotalCodeMillisecond]");
+        ZPLog(@"ESPTouchTaskParameter waitUdpTotalMillisecod is invalid, it is less than mWaitUdpReceivingMilliseond + [self getTimeoutTotalCodeMillisecond]");
         assert(0);
     }
     self.waitUdpSendingMillisecond = waitUdpTotalMillisecond - self.waitUdpReceivingMillisecond;

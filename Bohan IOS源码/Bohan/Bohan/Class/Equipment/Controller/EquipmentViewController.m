@@ -17,7 +17,7 @@
 #import "DeviceDetailListViewController.h"
 #import "EquipmentTableViewCell.h"
 #import "NSBundle+AppLanguageSwitch.h"
-
+#import "DebuggingANDPublishing.pch"
 @interface EquipmentViewController ()<NoDataViewDelegate,EquipmentTableViewCellDelegate>
 {
     NSMutableArray *dataArray;
@@ -55,7 +55,7 @@
     
     [self.pageCollection setDatas:dataArray];
 
-    [self loadData];
+//    [self loadData];
 }
 
 - (void)bindDevice
@@ -65,6 +65,12 @@
     [self.navigationController pushViewController:bind animated:YES];
 }
 
+//  生命周期
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self loadData];
+//    [E reloadData]; // 刷新数据
+}
 
 - (void)loadData
 {
@@ -194,16 +200,16 @@
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *command = [[CommandModel alloc] init];
     command.command = @"1002";
-    
-    NSString *part = @"LoadName";
-    NSString *open = isOpen?@"00":@"01";
+//    开关不知道是不是对的，修改的07，原来是01
+    NSString * part = @"LoadName";
+    NSString * open = isOpen?@"00":@"07";
     
     if (currentIndex == 1) {
         part = @"PosName";
     }
     command.content = [NSString stringWithFormat:@"%@;%@;%@;%@",USERNAME,part,name,open];
     [socket sendMultiDataWithModel:command resultBlock:^(id response, NSError *error) {
-        NSLog(@"--------%@",response);
+        ZPLog(@"--------%@",response);
         
         if (!error) {
             [HintView showHint:isOpen?Localize(@"已开启"):Localize(@"已关闭")];

@@ -11,7 +11,7 @@
 #import "PowerHorizontalBarView.h"
 #import "PowerModel.h"
 #import "NSBundle+AppLanguageSwitch.h"
-
+#import "DebuggingANDPublishing.pch"
 @interface ElectricityViewController ()
 {
     NSArray *dataArray;

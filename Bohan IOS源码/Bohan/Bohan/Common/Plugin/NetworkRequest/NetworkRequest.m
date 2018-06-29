@@ -11,6 +11,7 @@
 #import "NSError+Message.h"
 #import "NSData+Base64.h"
 //#import "NSString+XML.h"
+#import "DebuggingANDPublishing.pch"
 static NSString *const soapNameSpace = @"http://bohansever.top/";
 
 

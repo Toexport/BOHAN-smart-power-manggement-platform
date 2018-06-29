@@ -9,6 +9,7 @@
 #import "NSArray+Safe.h"
 #import "NSObject+Safe.h"
 #import <objc/runtime.h>
+#import "DebuggingANDPublishing.pch"
 @implementation NSArray (Safe)
 
 
@@ -42,7 +43,7 @@
  空:nil 或 count = 0
  */
 - (id)emptyObjectAtIndex:(NSInteger)index{
-    NSLog(@"数组 = nil 或者 count = 0 返回 nil %s",__FUNCTION__);
+    ZPLog(@"数组 = nil 或者 count = 0 返回 nil %s",__FUNCTION__);
     return nil;
 }
 
@@ -51,7 +52,7 @@
  */
 - (id)anyObjectAtIndex:(NSInteger)index{
     if (index >= self.count || index < 0) {
-        NSLog(@"取值时: 索引越界,返回 nil %s",__FUNCTION__);
+        ZPLog(@"取值时: 索引越界,返回 nil %s",__FUNCTION__);
         return nil;
     }
     id obj = [self anyObjectAtIndex:index];
@@ -74,11 +75,11 @@
     id rightObjects[cnt];
     for (int i=0; i<cnt; i++) {
         if (objects == NULL){
-            NSLog(@"objects 为 NULL, 返回 nil %s",__FUNCTION__);
+            ZPLog(@"objects 为 NULL, 返回 nil %s",__FUNCTION__);
             return nil;
         }
         if (objects[i] == nil){
-            NSLog(@"取值时: 取出的元素为 nil, 返回 nil %s",__FUNCTION__);
+            ZPLog(@"取值时: 取出的元素为 nil, 返回 nil %s",__FUNCTION__);
 //            break;
         }else{
             
@@ -95,7 +96,7 @@
  */
 - (id)mutableObjectAtIndex:(NSInteger)index{
     if (index >= self.count || index < 0) {
-        NSLog(@"取值时: 索引越界, 返回 nil %s",__FUNCTION__);
+        ZPLog(@"取值时: 索引越界, 返回 nil %s",__FUNCTION__);
         return nil;
     }
     id obj = [self mutableObjectAtIndex:index];
@@ -113,7 +114,7 @@
     if (object) {
         [self mutableInsertObject:object atIndex:index];
     }else{
-        NSLog(@"插入值时: 元素类型为 nil, %s",__FUNCTION__);
+        ZPLog(@"插入值时: 元素类型为 nil, %s",__FUNCTION__);
         [self mutableInsertObject:[NSNull null] atIndex:index];
     }
 }
@@ -122,7 +123,7 @@
     if (object) {
         [self mutableAddObject:object];
     }else{
-        NSLog(@"插入值时: 元素类型为 nil, %s",__FUNCTION__);
+        ZPLog(@"插入值时: 元素类型为 nil, %s",__FUNCTION__);
         [self mutableAddObject:[NSNull null]];
     }
 }
@@ -134,7 +135,7 @@
  */
 - (id)singleObjectIndex:(NSInteger)index{
     if (index >= self.count || index < 0) {
-        NSLog(@"数组中只有一个元素, 取值时: 索引越界, 返回 nil %s",__FUNCTION__);
+        ZPLog(@"数组中只有一个元素, 取值时: 索引越界, 返回 nil %s",__FUNCTION__);
         return nil;
     }
     id obj = [self singleObjectIndex:index];
@@ -156,10 +157,10 @@
         Class superClass = self.superclass;
         NSString *superClassStr = NSStringFromClass(superClass);
         if (![superClassStr isEqualToString:@"NSArray"]) {
-            NSLog(@"数组中只有一个元素, 并且数组真实类型为NSMutableArray 插入值: 元素类型为 nil, %s",__FUNCTION__);
+            ZPLog(@"数组中只有一个元素, 并且数组真实类型为NSMutableArray 插入值: 元素类型为 nil, %s",__FUNCTION__);
             [self singleInsertObject:[NSNull null] atIndex:index];
         }else{
-            NSLog(@"真实类型是NSArray,什么都不做 %s",__FUNCTION__);
+            ZPLog(@"真实类型是NSArray,什么都不做 %s",__FUNCTION__);
         }
     }
 }
@@ -172,10 +173,10 @@
         Class superClass = self.superclass;
         NSString *superClassStr = NSStringFromClass(superClass);
         if (![superClassStr isEqualToString:@"NSArray"]) {
-            NSLog(@"数组中只有一个元素, 并且数组真实类型为NSMutableArray 插入值: 元素类型为 nil, %s",__FUNCTION__);
+            ZPLog(@"数组中只有一个元素, 并且数组真实类型为NSMutableArray 插入值: 元素类型为 nil, %s",__FUNCTION__);
             [self singleAddObject:[NSNull null]];
         }else{
-            NSLog(@"真实类型是NSArray,什么都不做 %s",__FUNCTION__);
+            ZPLog(@"真实类型是NSArray,什么都不做 %s",__FUNCTION__);
         }
     }
 }

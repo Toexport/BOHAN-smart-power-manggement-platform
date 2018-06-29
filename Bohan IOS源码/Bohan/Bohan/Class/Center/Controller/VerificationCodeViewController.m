@@ -10,6 +10,7 @@
 #import "ResetPwdViewController.h"
 #import "CountDownButton.h"
 #import "UIButton+Disable.h"
+#import "DebuggingANDPublishing.pch"
 @interface VerificationCodeViewController ()<UITextFieldDelegate>
 {
     __weak IBOutlet UITextField *accountTF;

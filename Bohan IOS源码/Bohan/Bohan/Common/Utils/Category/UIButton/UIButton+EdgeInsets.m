@@ -7,7 +7,7 @@
 //
 
 #import "UIButton+EdgeInsets.h"
-
+#import "DebuggingANDPublishing.pch"
 @implementation UIButton (EdgeInsets)
 
 
@@ -23,7 +23,7 @@
     // 取得titleLabel最初的center
     CGPoint startTitleLabelCenter = self.titleLabel.center;
     
-    NSLog(@"----------%@",self.titleLabel);
+    ZPLog(@"----------%@",self.titleLabel);
     
     
     // 设置imageEdgeInsets

@@ -7,7 +7,7 @@
 //
 
 #import "JHButton.h"
-
+#import "DebuggingANDPublishing.pch"
 @implementation JHButton
 
 -(id)initWithCoder:(NSCoder *)aDecoder{

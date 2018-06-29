@@ -9,7 +9,7 @@
 
 
 #import "HintView.h"
-
+#import "DebuggingANDPublishing.pch"
 @implementation HintView
 
 #define kTagHintView 5000000

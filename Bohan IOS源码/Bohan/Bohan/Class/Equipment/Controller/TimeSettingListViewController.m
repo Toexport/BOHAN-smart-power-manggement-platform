@@ -12,6 +12,7 @@
 #import "UIViewController+NavigationBar.h"
 #import "TimeSelectViewController.h"
 #import "TimeSettingModel.h"
+#import "DebuggingANDPublishing.pch"
 @interface TimeSettingListViewController ()<UITableViewDelegate, UITableViewDataSource>
 {
     NSDateFormatter *formatter;

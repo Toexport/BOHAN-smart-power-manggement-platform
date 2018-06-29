@@ -8,6 +8,7 @@
 
 #import "UIWebView+Utils.h"
 #import <objc/runtime.h>
+#import "DebuggingANDPublishing.pch"
 static char imgUrlArrayKey;
 static CGFloat const Padding = 32;
 

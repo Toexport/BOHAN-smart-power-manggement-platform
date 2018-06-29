@@ -11,7 +11,7 @@
 #import "ESP_ByteUtil.h"
 #import "ESP_CRC8.h"
 #import "ESP_NetUtil.h"
-
+#import "DebuggingANDPublishing.pch"
 // define by the Esptouch protocol, all of the datum code should add EXTRA_LEN to prevent 0
 #define EXTRA_LEN   40
 #define EXTRA_HEAD_LEN  5

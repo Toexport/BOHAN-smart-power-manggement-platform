@@ -8,6 +8,7 @@
 
 #import "WebSocket+Utils.h"
 #import "CommandModel.h"
+#import "DebuggingANDPublishing.pch"
 @implementation WebSocket (Utils)
 
 

@@ -7,7 +7,7 @@
 //
 
 #import "EquipmentTableViewCell.h"
-
+#import "DebuggingANDPublishing.pch"
 @interface EquipmentTableViewCell ()
 {
     __weak IBOutlet UIButton *openBtn;
@@ -37,15 +37,13 @@
         if (self.delegate && [self.delegate respondsToSelector:@selector(openAndCloseAll: name:)]) {
             [self.delegate openAndCloseAll:YES name:self.name.text];
         }
-    }else
-    {
+    }else {
         //全关
         if (self.delegate && [self.delegate respondsToSelector:@selector(openAndCloseAll: name:)]) {
             [self.delegate openAndCloseAll:NO name:self.name.text];
         }
     }
 }
-
 
 - (void)layoutSubviews
 {

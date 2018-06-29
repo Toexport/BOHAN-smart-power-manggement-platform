@@ -12,7 +12,7 @@
 #include <arpa/inet.h>
 #include <sys/types.h>
 #include "ESPTouchTask.h"
-
+#import "DebuggingANDPublishing.pch"
 #define SOCKET_NULL     -1
 
 @interface ESPUDPSocketServer ()
@@ -48,7 +48,7 @@
     self._sck_fd4 = socket(AF_INET,SOCK_DGRAM,0);
     if (DEBUG_ON)
     {
-        NSLog(@"##########################server init(): _sck_fd4=%d", self._sck_fd4);
+        ZPLog(@"##########################server init(): _sck_fd4=%d", self._sck_fd4);
     }
     if (self._sck_fd4 < 0)
     {
@@ -113,7 +113,7 @@
     self._sck_fd6 = socket(AF_INET6,SOCK_DGRAM,0);
     if (DEBUG_ON)
     {
-        NSLog(@"##########################server init(): _sck_fd6=%d", self._sck_fd6);
+        ZPLog(@"##########################server init(): _sck_fd6=%d", self._sck_fd6);
     }
     if (self._sck_fd6 < 0)
     {
@@ -175,7 +175,7 @@
         // init sck4
         if (![self initWithPort4:port AndSocketTimeout:socketTimeout]) {
             if (DEBUG_ON) {
-                NSLog(@"fail to init socket for ipv4");
+                ZPLog(@"fail to init socket for ipv4");
             }
             return nil;
         }
@@ -187,7 +187,7 @@
             }
             else {
                 if (DEBUG_ON) {
-                    NSLog(@"fail to get socket port for ipv4");
+                    ZPLog(@"fail to get socket port for ipv4");
                 }
                 [self close];
                 return nil;
@@ -197,7 +197,7 @@
         // init sck6
         if (![self initWithPort6:port AndSocketTimeout:socketTimeout]) {
             if (DEBUG_ON) {
-                NSLog(@"fail to init socket for ipv6");
+                ZPLog(@"fail to init socket for ipv6");
             }
             return nil;
         }
@@ -210,7 +210,7 @@
 {
     if (DEBUG_ON)
     {
-        NSLog(@"###################server dealloc()");
+        ZPLog(@"###################server dealloc()");
     }
     [self close];
 }
@@ -223,7 +223,7 @@
         if (self._sck_fd4!=SOCKET_NULL) {
             if (DEBUG_ON)
             {
-                NSLog(@"###################server close() fd4=%d",self._sck_fd4);
+                ZPLog(@"###################server close() fd4=%d",self._sck_fd4);
             }
             close(self._sck_fd4);
             self._sck_fd4 = SOCKET_NULL;
@@ -231,7 +231,7 @@
         if (self._sck_fd6!=SOCKET_NULL) {
             if (DEBUG_ON)
             {
-                NSLog(@"###################server close() fd6=%d",self._sck_fd6);
+                ZPLog(@"###################server close() fd6=%d",self._sck_fd6);
             }
             close(self._sck_fd6);
             self._sck_fd6 = SOCKET_NULL;

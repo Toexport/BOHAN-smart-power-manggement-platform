@@ -8,6 +8,7 @@
 
 #import "ShareView.h"
 #import "YLSheetView.h"
+#import "DebuggingANDPublishing.pch"
 @implementation ShareView
 
 /*

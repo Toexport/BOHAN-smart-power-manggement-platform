@@ -10,7 +10,7 @@
 #import "ESP_ByteUtil.h"
 #import "ESPGuideCode.h"
 #import "ESPDatumCode.h"
-
+#import "DebuggingANDPublishing.pch"
 
 @implementation ESPTouchGenerator
 

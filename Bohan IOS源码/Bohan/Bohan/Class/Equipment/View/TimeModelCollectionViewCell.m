@@ -7,7 +7,7 @@
 //
 
 #import "TimeModelCollectionViewCell.h"
-
+#import "DebuggingANDPublishing.pch"
 @implementation TimeModelCollectionViewCell
 
 - (void)awakeFromNib {

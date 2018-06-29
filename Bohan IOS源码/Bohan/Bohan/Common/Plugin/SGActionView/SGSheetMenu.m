@@ -8,7 +8,7 @@
 
 #import "SGSheetMenu.h"
 #import <QuartzCore/QuartzCore.h>
-
+#import "DebuggingANDPublishing.pch"
 #define kMAX_SHEET_TABLE_HEIGHT   400
 
 @interface SGSheetMenu () <UITableViewDataSource, UITableViewDelegate>

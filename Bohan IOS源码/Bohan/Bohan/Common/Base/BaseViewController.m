@@ -7,7 +7,7 @@
 //
 
 #import "BaseViewController.h"
-
+#import "DebuggingANDPublishing.pch"
 //#import "LoginViewController.h"
 @interface BaseViewController ()
 //{

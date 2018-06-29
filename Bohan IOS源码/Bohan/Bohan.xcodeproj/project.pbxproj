@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		05472D5687BB542915B46B7D /* Pods_Bohan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B7C34C415E2EAE93F66FEA /* Pods_Bohan.framework */; };
+		C4F1A24620E5D3F900052B24 /* SelectPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F1A24520E5D3F900052B24 /* SelectPhotoManager.m */; };
+		C4F1A24720E5D9EC00052B24 /* VerificationCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4F1A24920E5D9EC00052B24 /* VerificationCodeViewController.xib */; };
 		CC0F4827200CFB9700E184F8 /* NSString+HeartDecode.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0F4826200CFB9700E184F8 /* NSString+HeartDecode.m */; };
 		CC0F482B200D2CC600E184F8 /* DeviceInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0F4829200D2CC600E184F8 /* DeviceInfoViewController.m */; };
 		CC0F482F200D342700E184F8 /* JHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0F482D200D342700E184F8 /* JHButton.m */; };
@@ -74,7 +76,6 @@
 		CC24568A1FF745DB00616916 /* ResetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2456411FF745DB00616916 /* ResetPwdViewController.m */; };
 		CC24568B1FF745DB00616916 /* ResetPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC2456421FF745DB00616916 /* ResetPwdViewController.xib */; };
 		CC24568C1FF745DB00616916 /* VerificationCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2456441FF745DB00616916 /* VerificationCodeViewController.m */; };
-		CC24568D1FF745DB00616916 /* VerificationCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC2456451FF745DB00616916 /* VerificationCodeViewController.xib */; };
 		CC24568E1FF745DB00616916 /* ElectricityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC24564B1FF745DB00616916 /* ElectricityViewController.m */; };
 		CC24568F1FF745DB00616916 /* EquipmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2456511FF745DB00616916 /* EquipmentViewController.m */; };
 		CC2456901FF745DB00616916 /* EquipmentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2456551FF745DB00616916 /* EquipmentTableViewCell.m */; };
@@ -169,6 +170,12 @@
 		00B7C34C415E2EAE93F66FEA /* Pods_Bohan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bohan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		072EF8466690ECA08425C8AE /* Pods-Bohan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bohan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bohan/Pods-Bohan.debug.xcconfig"; sourceTree = "<group>"; };
 		0DCA8A6A9BE1B6D5485DB16A /* Pods-Bohan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bohan.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bohan/Pods-Bohan.release.xcconfig"; sourceTree = "<group>"; };
+		C4F1A24420E5D3F900052B24 /* SelectPhotoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectPhotoManager.h; sourceTree = "<group>"; };
+		C4F1A24520E5D3F900052B24 /* SelectPhotoManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectPhotoManager.m; sourceTree = "<group>"; };
+		C4F1A24820E5D9EC00052B24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/VerificationCodeViewController.xib; sourceTree = "<group>"; };
+		C4F1A24B20E5D9EF00052B24 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/VerificationCodeViewController.strings; sourceTree = "<group>"; };
+		C4F1A24D20E5D9F000052B24 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/VerificationCodeViewController.strings"; sourceTree = "<group>"; };
+		C4F1A24E20E605AE00052B24 /* DebuggingANDPublishing.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DebuggingANDPublishing.pch; sourceTree = "<group>"; };
 		CC0F4825200CFB9700E184F8 /* NSString+HeartDecode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+HeartDecode.h"; sourceTree = "<group>"; };
 		CC0F4826200CFB9700E184F8 /* NSString+HeartDecode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+HeartDecode.m"; sourceTree = "<group>"; };
 		CC0F4828200D2CC600E184F8 /* DeviceInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceInfoViewController.h; sourceTree = "<group>"; };
@@ -301,7 +308,6 @@
 		CC2456421FF745DB00616916 /* ResetPwdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPwdViewController.xib; sourceTree = "<group>"; };
 		CC2456431FF745DB00616916 /* VerificationCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationCodeViewController.h; sourceTree = "<group>"; };
 		CC2456441FF745DB00616916 /* VerificationCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationCodeViewController.m; sourceTree = "<group>"; };
-		CC2456451FF745DB00616916 /* VerificationCodeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VerificationCodeViewController.xib; sourceTree = "<group>"; };
 		CC24564A1FF745DB00616916 /* ElectricityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElectricityViewController.h; sourceTree = "<group>"; };
 		CC24564B1FF745DB00616916 /* ElectricityViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ElectricityViewController.m; sourceTree = "<group>"; };
 		CC2456501FF745DB00616916 /* EquipmentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EquipmentViewController.h; sourceTree = "<group>"; };
@@ -566,6 +572,7 @@
 				CC2455AA1FF7450700616916 /* AppDelegate.m */,
 				CC2455AC1FF7450700616916 /* ViewController.h */,
 				CC2455AD1FF7450700616916 /* ViewController.m */,
+				C4F1A24E20E605AE00052B24 /* DebuggingANDPublishing.pch */,
 				CC2455AF1FF7450700616916 /* Main.storyboard */,
 				CC2455B21FF7450700616916 /* Assets.xcassets */,
 				CC2455B41FF7450700616916 /* LaunchScreen.storyboard */,
@@ -906,6 +913,8 @@
 				CC2456361FF745DB00616916 /* XMLUtil.m */,
 				CC1FD94A1FFEC76C006DF1DD /* SoapManager.h */,
 				CC1FD94B1FFEC76C006DF1DD /* SoapManager.m */,
+				C4F1A24420E5D3F900052B24 /* SelectPhotoManager.h */,
+				C4F1A24520E5D3F900052B24 /* SelectPhotoManager.m */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -944,7 +953,7 @@
 				CC2456421FF745DB00616916 /* ResetPwdViewController.xib */,
 				CC2456431FF745DB00616916 /* VerificationCodeViewController.h */,
 				CC2456441FF745DB00616916 /* VerificationCodeViewController.m */,
-				CC2456451FF745DB00616916 /* VerificationCodeViewController.xib */,
+				C4F1A24920E5D9EC00052B24 /* VerificationCodeViewController.xib */,
 				CC1FD9591FFFD669006DF1DD /* WebViewController.h */,
 				CC1FD95A1FFFD669006DF1DD /* WebViewController.m */,
 				CC41853B20283D880006F457 /* FeedbackViewController.h */,
@@ -1390,7 +1399,7 @@
 				CC80906B2047166600265FE0 /* TimeSettingViewController.xib in Resources */,
 				CCCBF39120191C1C00A80D90 /* TimeModelCollectionViewCell.xib in Resources */,
 				CC80906120470ED100265FE0 /* MeteringViewController.xib in Resources */,
-				CC24568D1FF745DB00616916 /* VerificationCodeViewController.xib in Resources */,
+				C4F1A24720E5D9EC00052B24 /* VerificationCodeViewController.xib in Resources */,
 				CC8090442046FB4A00265FE0 /* FeedbackViewController.xib in Resources */,
 				CC80905C20470B4200265FE0 /* RealTimeParamViewController.xib in Resources */,
 				CC1EFF36204C4A5F002811CB /* CustomInputView.xib in Resources */,
@@ -1556,6 +1565,7 @@
 				CC42E89D2020EF0B00A64160 /* NSDictionary+Safe.m in Sources */,
 				CC0F4838200D407300E184F8 /* RealTimeParamTableViewCell.m in Sources */,
 				CCE9E59D200644FD008439F3 /* ESP_ByteUtil.m in Sources */,
+				C4F1A24620E5D3F900052B24 /* SelectPhotoManager.m in Sources */,
 				CCCDDE212003F45400DF468C /* DeviceDetailListCell.m in Sources */,
 				CC24568C1FF745DB00616916 /* VerificationCodeViewController.m in Sources */,
 				CCE9E596200644FD008439F3 /* ESPGuideCode.m in Sources */,
@@ -1599,6 +1609,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		C4F1A24920E5D9EC00052B24 /* VerificationCodeViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C4F1A24820E5D9EC00052B24 /* Base */,
+				C4F1A24B20E5D9EF00052B24 /* en */,
+				C4F1A24D20E5D9F000052B24 /* zh-Hans */,
+			);
+			name = VerificationCodeViewController.xib;
+			sourceTree = "<group>";
+		};
 		CC1EFF33204BF061002811CB /* WifiView.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

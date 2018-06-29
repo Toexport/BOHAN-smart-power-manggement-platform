@@ -14,6 +14,7 @@
 #import "LoginViewController.h"
 #import "IQKeyboardManager.h"
 #import "WebSocket.h"
+#import "DebuggingANDPublishing.pch"
 @interface AppDelegate ()
 
 @end
@@ -86,7 +87,7 @@
         UITabBarController *tabBar = [[UITabBarController alloc] init];
         tabBar.viewControllers = @[equipmentNav, managementNav,electricityNav,centerNav];
         
-        NSArray *titles = @[Localize(@"设备列表"), Localize(@"设备管理"),Localize(@"所有用电"),Localize(@"支付"),Localize(@"个人中心")];
+        NSArray *titles = @[Localize(@"设备列表"), Localize(@"设备管理"),Localize(@"所有用电"),Localize(@"个人中心")];
         NSArray *selectedImages = @[@"mainpage_main", @"mainpage_bang", @"mainpage_data",@"mainpage_me"];
         NSArray *images = @[@"mainpage_main_off", @"mainpage_bang_off", @"mainpage_data_off",@"mainpage_me_off"];
         

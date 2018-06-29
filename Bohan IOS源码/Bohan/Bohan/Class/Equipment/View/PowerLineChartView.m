@@ -9,7 +9,7 @@
 #import "PowerLineChartView.h"
 #import "Bohan-Bridging-Header.h"
 #import "PowerModel.h"
-
+#import "DebuggingANDPublishing.pch"
 @interface PowerLineChartView ()
 @property (nonatomic, strong) LineChartView *lineChartView;
 @property (nonatomic, strong) UILabel *name;

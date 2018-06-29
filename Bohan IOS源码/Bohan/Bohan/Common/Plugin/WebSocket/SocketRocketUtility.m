@@ -7,7 +7,7 @@
 //
 
 #import "SocketRocketUtility.h"
-
+#import "DebuggingANDPublishing.pch"
 #define dispatch_main_async_safe(block)\
 if ([NSThread isMainThread]) {\
 block();\
@@ -87,7 +87,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
         
         dispatch_semaphore_wait(sendSemaphore, DISPATCH_TIME_FOREVER);
 //        long result = dispatch_semaphore_wait(sendSemaphore, dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30 * NSEC_PER_SEC)));
-        
+//        
 //        if (result != 0) {
 //            //超时
 //            if (self.resultBlock) {
@@ -109,10 +109,10 @@ dispatch_sync(dispatch_get_main_queue(), block);\
 ////            }
 //
 //        }
-        
+//
         isWaiting = YES;
         self.resultBlock = [block copy];//copy后修改将self.resultBlock设置为nil不影响回调，并且能将未调用的回调重新调用
-        NSLog(@"socketSendData --------------- %@",data);
+        ZPLog(@"socketSendData --------------- %@",data);
         
         if (self.socket.readyState == SR_OPEN) {
             [self.socket send:data];    // 发送数据
@@ -141,7 +141,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
             [self webSocketClose];
             [self webSocketOpen];
         }
-        NSLog(@"重连");
+        ZPLog(@"重连");
 
     });
     
@@ -158,7 +158,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
 - (void)webSocketDidOpen:(SRWebSocket *)webSocket {
     //每次正常连接的时候清零重连时间
     reConnectTime = 0;
-    NSLog(@"************************** socket 连接成功************************** ");
+    ZPLog(@"************************** socket 连接成功************************** ");
     
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -182,7 +182,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
 
 - (void)webSocket:(SRWebSocket *)webSocket didFailWithError:(NSError *)error {
     
-    NSLog(@"************************** socket 连接失败************************** ");
+    ZPLog(@"************************** socket 连接失败************************** ");
     
     if (self.resultBlock) {
         
@@ -209,8 +209,8 @@ dispatch_sync(dispatch_get_main_queue(), block);\
 
 - (void)webSocket:(SRWebSocket *)webSocket didCloseWithCode:(NSInteger)code reason:(NSString *)reason wasClean:(BOOL)wasClean {
     
-    NSLog(@"************************** socket连接关闭************************** ");
-    NSLog(@"被关闭连接，code:%ld,reason:%@,wasClean:%d",(long)code,reason,wasClean);
+    ZPLog(@"************************** socket连接关闭************************** ");
+    ZPLog(@"被关闭连接，code:%ld,reason:%@,wasClean:%d",(long)code,reason,wasClean);
     
     if (self.resultBlock) {
         
@@ -233,8 +233,8 @@ dispatch_sync(dispatch_get_main_queue(), block);\
 
 - (void)webSocket:(SRWebSocket *)webSocket didReceiveMessage:(id)message  {
     
-    NSLog(@"************************** socket收到数据了************************** ");
-    NSLog(@"message:%@",message);
+    ZPLog(@"************************** socket收到数据了************************** ");
+    ZPLog(@"message:%@",message);
 
     if (webSocket == self.socket) {
         
@@ -245,7 +245,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
                                                               error:&err];
         NSString *content = dic[@"content"];
         
-        NSLog(@"回调block=%@",self.resultBlock);
+        ZPLog(@"回调block=%@",self.resultBlock);
 
         if (!err && [[dic[@"statusCode"] stringValue] isEqualToString:@"0"]) {
             

@@ -26,6 +26,7 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
 #import "TimeSettingModel.h"
 #import "SGActionView.h"
 #import "TimeModelCollectionViewCell.h"
+#import "DebuggingANDPublishing.pch"
 @interface TimeSettingViewController ()<UICollectionViewDataSource>
 {
     NSArray *loopModels;
@@ -112,7 +113,7 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
             [weakSelf.navigationController popViewControllerAnimated:YES];
         }
         
-        NSLog(@"--------%@",response);
+        ZPLog(@"--------%@",response);
     }];
     
 }
@@ -180,7 +181,7 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
             [HintView showHint:error.localizedDescription];
         }
         
-        NSLog(@"--------%@",response);
+        ZPLog(@"--------%@",response);
     }];
 }
 

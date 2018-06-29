@@ -7,7 +7,7 @@
 //
 
 #import "UIImage+Color.h"
-
+#import "DebuggingANDPublishing.pch"
 @implementation UIImage (Color)
 
 

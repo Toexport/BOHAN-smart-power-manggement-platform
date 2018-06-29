@@ -9,7 +9,7 @@
 #import "FSAES128.h"
 #import "NSData+AES128.h"
 #import "NSData+Base64.h"
-
+#import "DebuggingANDPublishing.pch"
 #define IV  @"vx9sNtLGhR5McqUC"//向量
 #define  KEY  @"hIhnqS1fcy60q0Eu"//密钥
 
