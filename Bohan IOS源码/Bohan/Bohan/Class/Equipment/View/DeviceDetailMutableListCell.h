@@ -19,7 +19,7 @@
 
 @interface DeviceDetailMutableListCell : UITableViewCell
 
-@property (nonatomic, strong)DeviceModel *model;
+@property (nonatomic, strong)DeviceModel * model;
 @property (nonatomic, weak) id<DeviceDetailMutableListCellDelegate> delegate;
 @property (nonatomic, strong) NSIndexPath *indexPath;
 

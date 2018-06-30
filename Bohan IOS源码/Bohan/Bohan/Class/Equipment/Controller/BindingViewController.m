@@ -81,7 +81,6 @@
     
     dispatch_group_async(group, queue, ^{
         dispatch_group_enter(group);
-
         [[NetworkRequest sharedInstance] requestWithUrl:GET_POS_NAME_LIST_URL parameter:nil completion:^(id response, NSError *error) {
             dispatch_group_leave(group);
             DBLog(@"%@",response);
@@ -136,16 +135,22 @@
     [self.view startLoading];
     NSDictionary * dic = @{@"DeviceCode":deviceTF.text, @"DeviceKey":deviceTF.text, @"PosName":posInput.contentTF.text, @"LoadName":typeInput.contentTF.text, @"LoadBrand":brandInput.contentTF.text};
     [[NetworkRequest sharedInstance] requestWithUrl:BINDING_DEVICE_URL parameter:dic completion:^(id response, NSError *error) {
-        
         [self.view stopLoading];
         //请求成功
         if (!error) {
             WifiConnectViewController * connect = [[WifiConnectViewController alloc] init];
             connect.deviceNo = deviceTF.text;
 //            判断输入框中的数字是否包含制定的数字，如果有则不跳转直接成功，如果没有需要跳转到下个界面
-            
-            
-            [self.navigationController pushViewController:connect animated:YES];
+            NSString * string = deviceTF.text;
+            if ([string hasPrefix:@"64"]) {
+                ZPLog(@"%@包含", string);
+                [self.navigationController popViewControllerAnimated:YES];
+                [HintView showHint:Localize(@"添加成功")];  // 提示框
+            }else {
+                ZPLog(@"%@不包含", string);
+                [self.navigationController pushViewController:connect animated:YES];
+            }
+//            [self.navigationController pushViewController:connect animated:YES];
         }else
         {
             [HintView showHint:error.localizedDescription];

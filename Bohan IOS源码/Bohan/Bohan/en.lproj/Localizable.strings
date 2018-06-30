@@ -506,3 +506,9 @@
 
 "提示" = "prompt";
 "确定要注销登录吗?" = "Are you sure you want to log out?";
+"修改头像" = "Change my avatar";
+"相机" = "Camera";
+"相册" = "Photo";
+"取消" = "Cancel";
+"您的设备不支持拍照" = "Your device does not support taking photos";
+"没有摄像头" = "No camera";

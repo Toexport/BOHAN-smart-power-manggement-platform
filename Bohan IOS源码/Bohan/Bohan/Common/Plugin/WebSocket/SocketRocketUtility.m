@@ -142,6 +142,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
             [self webSocketOpen];
         }
         ZPLog(@"重连");
+//        [HintView showHint:@"账号在其他设备上登录，非本人操作请尽快修改密码"];
 
     });
     
@@ -211,10 +212,11 @@ dispatch_sync(dispatch_get_main_queue(), block);\
     
     ZPLog(@"************************** socket连接关闭************************** ");
     ZPLog(@"被关闭连接，code:%ld,reason:%@,wasClean:%d",(long)code,reason,wasClean);
-    
+//    [HintView showHint:@"账号在其他设备上登录，非本人操作请尽快修改密码"];
     if (self.resultBlock) {
         
         NSError *error = [NSError errorWithDomain:NSYLErrorDomain code:YLErrorSocketClose userInfo:@{NSLocalizedDescriptionKey:Localize(@"设备连接关闭,正在重新连接")}];
+        
         dispatch_main_async_safe( ^{
             self.resultBlock(nil, error.errorConvert);
             self.resultBlock = nil;

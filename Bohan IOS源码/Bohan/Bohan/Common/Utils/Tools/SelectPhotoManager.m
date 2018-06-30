@@ -25,11 +25,11 @@
 - (void)startSelectPhotoWithImageName:(NSString *)imageName{
     _imageName = imageName;
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"Change my avatar", nil) message:nil preferredStyle: UIAlertControllerStyleActionSheet];
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"cancel",nil) style:UIAlertActionStyleCancel handler:nil];
-    [alertController addAction: [UIAlertAction actionWithTitle: NSLocalizedString(@"camera",nil) style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:NSLocalizedString(@"Cancel",nil) style:UIAlertActionStyleCancel handler:nil];
+    [alertController addAction: [UIAlertAction actionWithTitle: NSLocalizedString(@"Camera",nil) style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [self selectPhotoWithType:0];
     }]];
-    [alertController addAction: [UIAlertAction actionWithTitle: NSLocalizedString(@"photo",nil) style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+    [alertController addAction: [UIAlertAction actionWithTitle: NSLocalizedString(@"Photo",nil) style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
         [self selectPhotoWithType:1];
     }]];
     [alertController addAction:cancelAction];
@@ -130,8 +130,8 @@
                 if (_errorHandle) {
                     _errorHandle(NSLocalizedString(@"No camera",nil));
                 }
-                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"reminding",nil) message:NSLocalizedString(@"Your device does not support taking photos",nil) preferredStyle:UIAlertControllerStyleAlert];
-                [alertController addAction: [UIAlertAction actionWithTitle: NSLocalizedString(@"ok",nil) style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"prompt",nil) message:NSLocalizedString(@"Your device does not support taking photos",nil) preferredStyle:UIAlertControllerStyleAlert];
+                [alertController addAction: [UIAlertAction actionWithTitle: NSLocalizedString(@"Confirm",nil) style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                 }]];
                 [[self getCurrentVC] presentViewController:alertController animated:YES completion:nil];
                 return ;

@@ -39,19 +39,30 @@
     return on;
 }
 
+// WWWWW
+//- (NSString *)power
+//{
+//    NSString *string = @"0.00W";
+//    if (self.length >=24) {
+////        string = [self substringFromIndex:self.length - 10];
+//        string = [[self substringFromIndex:self.length - 24] substringToIndex:6];
+//        string = [NSString stringWithFormat:@"%.2fW",[string integerValue]/100.0];
+//    }
+//    return string;
+//}
 - (NSString *)power
 {
     NSString *string = @"0.00W";
-    if (self.length >=10) {
+    if(self.length >= 24+4)
+    {
+        string = [[self substringFromIndex:self.length - 24] substringToIndex:6];//先取截取10位，再截取后面4位
+        string = [NSString stringWithFormat:@"%.2fW",[string integerValue]/100.0];
+    }else{
         string = [self substringFromIndex:self.length - 6];
         string = [NSString stringWithFormat:@"%.2fW",[string integerValue]/100.0];
     }
-    
     return string;
-    
 }
-
-
 
 - (NSString *)statusString
 {
@@ -118,7 +129,7 @@
     NSString * string = @"";
     if (self.length >= 42) {
         
-        string = [self substringWithRange:NSMakeRange(36, 6)];
+        string = [self substringWithRange:NSMakeRange(36, 8)];
         string = [NSString stringWithFormat:@"%.2f",[string integerValue]/100.0];
     }
     

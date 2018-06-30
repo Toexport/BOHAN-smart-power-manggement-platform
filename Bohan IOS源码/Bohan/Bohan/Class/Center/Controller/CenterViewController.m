@@ -135,16 +135,16 @@
     cell.textLabel.textColor = kTextColor;
     cell.textLabel.font = Font(15);
     cell.detailTextLabel.font = Font(15);
-    cell.selectionStyle = UITableViewCellSelectionStyleNone; // 取消Cell变灰效果
     cell.imageView.image = [UIImage imageNamed:dict_[@"image"]];
     self.HeadImage.image = cell.imageView.image;
     
     if (indexPath.row == 0) {
         cell.accessoryView = headerImg;
-        UITapGestureRecognizer *TapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headerImage:)];
-        // 2. 将点击事件添加到label上
-        [headerImg addGestureRecognizer:TapGestureRecognizer2];
-        headerImg.userInteractionEnabled = YES; // 可以理解为设置label可被点击
+//        cell.selectionStyle = UITableViewCellSelectionStyleNone; // 取消Cell变灰效果
+//        UITapGestureRecognizer *TapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headerImage:)];
+//        // 2. 将点击事件添加到label上
+//        [headerImg addGestureRecognizer:TapGestureRecognizer2];
+//        headerImg.userInteractionEnabled = YES; // 可以理解为设置label可被点击
 //        self.headerImg = cell.detailTextLabel;
         
     }else if(indexPath.row == 3 || indexPath.row == 4)
@@ -153,16 +153,19 @@
         
         if (indexPath.row == 3) {
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@V%@",Localize(@"当前版本"),CURRENTSHORTVERSION];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone; // 取消Cell变灰效果
         }else
         {
             self.detailTextLabel = cell.detailTextLabel;
             self.detailTextLabel.text = @"0769-22890660";
-            //     1. 创建一个点击事件，点击时触发labelClick方法
-            UITapGestureRecognizer * TapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapOnLabel:)];
-            // 2. 将点击事件添加到label上
-            [cell.detailTextLabel addGestureRecognizer:TapGestureRecognizer1];
-            cell.detailTextLabel.userInteractionEnabled = YES; // 可以理解为设置label可被点击
-            self.detailTextLabel = cell.detailTextLabel;
+            self.detailTextLabel.textColor = [UIColor blueColor];
+//            cell.selectionStyle = UITableViewCellSelectionStyleNone; // 取消Cell变灰效果
+//            //     1. 创建一个点击事件，点击时触发labelClick方法
+//            UITapGestureRecognizer * TapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapOnLabel:)];
+//            // 2. 将点击事件添加到label上
+//            [cell.detailTextLabel addGestureRecognizer:TapGestureRecognizer1];
+//            cell.detailTextLabel.userInteractionEnabled = YES; // 可以理解为设置label可被点击
+//            self.detailTextLabel = cell.detailTextLabel;
             
         }
 
@@ -182,69 +185,31 @@
     return 45;
 }
 
-// 3. 在此方法中设置点击label后要触发的操作
-- (void)handleTapOnLabel:(id)sender {
-    NSString * ph1 = @"lte";
-    ph1 = [ph1 stringByAppendingString:self.detailTextLabel.text];
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:ph1]];
-    
-}
-- (void)headerImage:(id)sender {
-//    //初始化UIImagePickerController类
-//    UIImagePickerController * picker = [[UIImagePickerController alloc] init];
-//    //判断数据来源为相册
-//    picker.sourceType = UIImagePickerControllerSourceTypeSavedPhotosAlbum;
-//    //设置代理
-//    picker.delegate = self;
-//    //打开相册
-//    [self presentViewController:picker animated:YES completion:nil];
-    
-    if (!_photoManager) {
-        _photoManager = [[SelectPhotoManager alloc]init];
-    }
-    [_photoManager startSelectPhotoWithImageName:NSLocalizedString(@"Choose photos", nil)];
-    __weak typeof(self)mySelf = self;
-    //  选取照片成功
-    _photoManager.successHandle=^(SelectPhotoManager *manager,UIImage * image){
-        image = [mySelf imageWithImage:image scaledToSize:CGSizeMake(150, 150)];
-        
-        //  保存到本地
-        NSMutableArray * imageArray = [NSMutableArray array];
-        NSData * data =  UIImageJPEGRepresentation(image, 1);
-        [imageArray addObject:data];
-        [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"headerImage"];
-    };
-}
+//// 3. 在此方法中设置点击label后要触发的操作
+//- (void)handleTapOnLabel:(id)sender {
+//    NSString * ph1 = @"lte";
+//    ph1 = [ph1 stringByAppendingString:self.detailTextLabel.text];
+//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:ph1]];
+//}
 
-- (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize {
-        // Create a graphics image context
-        UIGraphicsBeginImageContext(newSize);
-        
-        // Tell the old image to draw in this new context, with the desired
-        // new size
-        [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
-        
-        // Get the new image from the context
-        UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
-        
-        // End the context
-        UIGraphicsEndImageContext();
-        
-        // Return the new image.
-        return newImage;
-    }
-////选择完成回调函数
-// - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
-//       //获取图片
-//       UIImage *image = info[UIImagePickerControllerOriginalImage];
-//       [self dismissViewControllerAnimated:YES completion:nil];
-//
-////    .image = image;
+//// 修改头像
+//- (void)headerImage:(id)sender {
+//    if (!_photoManager) {
+//        _photoManager = [[SelectPhotoManager alloc]init];
 //    }
-// //用户取消选择
-//- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
-//        [self dismissViewControllerAnimated:YES completion:nil];
-//     }
+//    [_photoManager startSelectPhotoWithImageName:NSLocalizedString(@"Choose photos", nil)];
+//    __weak typeof(self)mySelf = self;
+//    //  选取照片成功
+//    _photoManager.successHandle=^(SelectPhotoManager *manager,UIImage * image){
+//        image = [mySelf imageWithImage:image scaledToSize:CGSizeMake(150, 150)];
+//
+//        //  保存到本地
+//        NSMutableArray * imageArray = [NSMutableArray array];
+//        NSData * data =  UIImageJPEGRepresentation(image, 1);
+//        [imageArray addObject:data];
+//        [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"headerImage"];
+//    };
+//}
 
 
 //-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
@@ -257,6 +222,24 @@
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (indexPath.row == 0) {
+        ZPLog(@"第一个cell被点击");
+        if (!_photoManager) {
+            _photoManager = [[SelectPhotoManager alloc]init];
+        }
+        [_photoManager startSelectPhotoWithImageName:NSLocalizedString(@"Choose photos", nil)];
+        __weak typeof(self)mySelf = self;
+        //  选取照片成功
+        _photoManager.successHandle=^(SelectPhotoManager *manager,UIImage * image){
+            image = [mySelf imageWithImage:image scaledToSize:CGSizeMake(150, 150)];
+            
+            //  保存到本地
+            NSMutableArray * imageArray = [NSMutableArray array];
+            NSData * data =  UIImageJPEGRepresentation(image, 1);
+            [imageArray addObject:data];
+            [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"headerImage"];
+        };
+    }else
     
     if (indexPath.row == 1) {
         
@@ -270,19 +253,25 @@
         NSString *urlStr = @"http://www.bohanserver.top:8088/APPHelp_en.html";
 
         if ((language && [language isEqualToString:@"zh-Hans"]) || (!language && [localeLanguageCode isEqualToString:@"zh"])) {
-            urlStr = @"http://www.bohanserver.top:8088/APPHelp.html";
-        }
-        
+            urlStr = @"http://www.bohanserver.top:8088/APPHelp.html";        }
         WebViewController *help = [[WebViewController alloc] initWithTitle:Localize(@"操作指南") urlStr:urlStr];
         help.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:help animated:YES];
-    }else if (indexPath.row == 2)
+    }else
+        if (indexPath.row == 2)
     {
         FeedbackViewController *feedback = [[FeedbackViewController alloc] init];
         feedback.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:feedback animated:YES];
-    }else if (indexPath.row == 5)
-    {
+    }else
+        if (indexPath.row == 4) {
+        
+        NSString * ph1 = @"lte";
+        ph1 = [ph1 stringByAppendingString:self.detailTextLabel.text];
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:ph1]];
+        
+        }else
+            if (indexPath.row == 5) {
         UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:Localize(@"语言选择") message:nil preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *chinessAction = [UIAlertAction actionWithTitle:Localize(@"中文") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
@@ -298,6 +287,24 @@
         
         [self presentViewController:actionSheetController animated:YES completion:nil];
     }
+}
+
+- (UIImage*)imageWithImage:(UIImage*)image scaledToSize:(CGSize)newSize {
+    // Create a graphics image context
+    UIGraphicsBeginImageContext(newSize);
+    
+    // Tell the old image to draw in this new context, with the desired
+    // new size
+    [image drawInRect:CGRectMake(0,0,newSize.width,newSize.height)];
+    
+    // Get the new image from the context
+    UIImage* newImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // End the context
+    UIGraphicsEndImageContext();
+    
+    // Return the new image.
+    return newImage;
 }
 
 
