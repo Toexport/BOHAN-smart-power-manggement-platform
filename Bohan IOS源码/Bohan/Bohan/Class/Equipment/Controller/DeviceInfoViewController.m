@@ -40,7 +40,13 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = Localize(@"设备信息");
+    NSString * string = self.model.id;
+    NSString * strin = string;
+    if ([strin containsString:@"61"] || [strin containsString:@"62"] || [strin containsString:@"63"]){
+        datas = @[@{@"image" :@"ic_launch", @"name": Localize(@"实时参数")}, @{@"image" :@"ic_l", @"name": Localize(@"增值服务")}, @{@"image" :@"ic_laun", @"name": Localize(@"定时计量")}, @{@"image" :@"menu_summery", @"name": Localize(@"用电统计")}, @{@"image" :@"ic_launch1", @"name": Localize(@"延时/定时开关")},];
+    }else {
     datas = @[@{@"image" :@"ic_launch", @"name": Localize(@"实时参数")}, @{@"image" :@"ic_l", @"name": Localize(@"增值服务")}, @{@"image" :@"ic_laun", @"name": Localize(@"定时计量")}, @{@"image" :@"menu_summery", @"name": Localize(@"用电统计")}, @{@"image" :@"ic_launcher2", @"name": Localize(@"时段设置")}, @{@"image" :@"ic_launch1", @"name": Localize(@"延时/定时开关")},];
+    }
 //    electrictyModel = @"";
     formatter = [[NSDateFormatter alloc] init];
 
@@ -77,7 +83,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0008";
     model.deviceNo = self.model.id;
-    
+    ZPLog(@"%@",self.model.sort);
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         
@@ -275,6 +281,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
         {
             RealTimeParamViewController *params = [[RealTimeParamViewController alloc] init];
             params.dNo = self.model.id;
+            params.CoedID = self.model.sort;
             [self.navigationController pushViewController:params animated:YES];
         }
             break;
@@ -282,6 +289,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
         {
             ParamsSettingViewController *params = [[ParamsSettingViewController alloc] init];
             params.dNo = self.model.id;
+            params.Coedid = self.model.sort;
             [self.navigationController pushViewController:params animated:YES];
         }
             break;

@@ -3,7 +3,7 @@
 //  RootViewController.m
 //  NewProject
 //
-//  Created by 学鸿 张 on 13-11-29.
+//  Created by Summer on 13-11-29.
 //  Copyright (c) 2013年 Steven. All rights reserved.
 //
 
@@ -38,8 +38,6 @@
     [self.view addSubview:cancel];
 
     
-    
-
     imageView = [[UIImageView alloc]initWithFrame:CGRectMake(40, (ScreenWidth + 80 - 64)/2, ScreenWidth-80, ScreenWidth -80)] ;
     imageView.image = [UIImage imageNamed:@"pick_bg"];
     [self.view addSubview:imageView];

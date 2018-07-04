@@ -45,7 +45,89 @@
     [self getStatus];
     [self getPower];
     [self getDelayTime];
+   
 
+}
+
+// 设置指定的输入限制
+- (void)LimitL{
+    NSString * string = self.Coedid;
+    ZPLog(@"%@",self.Coedid);
+    if ([string containsString:@"YFMT"]) {
+        ZPLog(@"15000W");
+        NSString * string = @"15000";
+        if (limitTF.text <= string) {
+            [HintView showHint:Localize(@"添加成功")];  // 提示框
+        }
+        
+    }else
+        if ([string containsString:@"YFGPMT"]) {
+            ZPLog(@"15000W");
+            NSString * string = @"15000";
+            if (limitTF.text <= string) {
+                [HintView showHint:Localize(@"添加成功")];  // 提示框
+            }
+        }else
+            if ([string containsString:@"QK01"]) {
+                ZPLog(@"2500W");
+            }else
+                if ([string containsString:@"QK02"]) {
+                    ZPLog(@"2500W");
+                }else
+                    if ([string containsString:@"QK03"]) {
+                        ZPLog(@"2500W");
+                    }else
+                        if ([string containsString:@"CDMT10"]) {
+                            ZPLog(@"2500W");
+                        }else
+                            if ([string containsString:@"CDMT16"]) {
+                                ZPLog(@"3500W");
+                            }else
+                                if ([string containsString:@"CDMT60"]) {
+                                    ZPLog(@"15000W");
+                                }else
+                                    if ([string containsString:@"GP1P"]) {
+                                        ZPLog(@"15000W");
+                                    }else
+                                        if ([string containsString:@"WFMT"]) {
+                                            ZPLog(@"15000W");
+                                        }else
+                                            if ([string containsString:@"QC10"]) {
+                                                ZPLog(@"2500W");
+                                            }else
+                                                if ([string containsString:@"QC13"]) {
+                                                    ZPLog(@"3000W");
+                                                }else
+                                                    if ([string containsString:@"QC15"]) {
+                                                        ZPLog(@"3300W");
+                                                    }else
+                                                        if ([string containsString:@"QC16"]) {
+                                                            ZPLog(@"3500W");
+                                                        }else
+                                                            if ([string containsString:@"YC10"]) {
+                                                                ZPLog(@"2500W");
+                                                            }else
+                                                                if ([string containsString:@"YCGP10"]) {
+                                                                    ZPLog(@"2500W");
+                                                                }else
+                                                                    if ([string containsString:@"YC13"]) {
+                                                                        ZPLog(@"3000W");
+                                                                    }else
+                                                                        if ([string containsString:@"YC15"]) {
+                                                                            ZPLog(@"3300W");
+                                                                        }else
+                                                                            if ([string containsString:@"YC16"]) {
+                                                                                ZPLog(@"3500W");
+                                                                            }else
+                                                                                if ([string containsString:@"YCGP16"]) {
+                                                                                    ZPLog(@"3500W");
+                                                                                }else
+                                                                                    if ([string containsString:@"MC"]) {
+                                                                                        ZPLog(@"23000W");
+                                                                                    }else
+                                                                                        if ([string containsString:@"GP3P"]) {
+                                                                                            ZPLog(@"55000W");
+                                                                                        }
 }
 
 - (void)deviceParams
@@ -90,6 +172,11 @@
     model.command = @"0018";
     model.deviceNo = self.dNo;
     [self.view startLoading];
+    
+    
+    
+    
+    
     
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
@@ -303,7 +390,6 @@
 
 - (IBAction)saveAction:(UIButton *)sender {
     
-    
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.deviceNo = self.dNo;
@@ -332,7 +418,9 @@
     {
         if (power.text.length == 0)
         {
+            [self LimitL];
             [HintView showHint:Localize(@"请输入负荷门限")];
+            
             return;
         }
         model.command = @"0020";
@@ -349,7 +437,13 @@
         [weakSelf.view stopLoading];
         
         if (!error) {
-            [HintView showHint:Localize(@"保存成功")];
+//            没有完成负荷门限
+            if (limitTF.text > 0) {
+                ZPLog(@"请输入负荷门限");
+                [HintView showHint:Localize(@"请输入负荷门限")];
+            }else {
+                [HintView showHint:Localize(@"保存成功")];
+            }
             if (sender.tag == 100) {
                 
                 [price setText:[NSString stringWithFormat:@"%d.%02d",[[content substringToIndex:2] intValue],[[content substringFromIndex:2] intValue]]];

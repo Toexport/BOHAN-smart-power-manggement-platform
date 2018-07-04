@@ -51,8 +51,6 @@
     
 }
 
-
-
 // 二维码
 - (IBAction)scanAction {
     
@@ -144,14 +142,12 @@
             NSString * string = deviceTF.text;
             if ([string hasPrefix:@"65"]) {
                 ZPLog(@"%@包含", string);
-                
                 [self.navigationController pushViewController:connect animated:YES];
             }else {
                 ZPLog(@"%@不包含", string);
                 [self.navigationController popViewControllerAnimated:YES];
                 [HintView showHint:Localize(@"添加成功")];  // 提示框
             }
-//            [self.navigationController pushViewController:connect animated:YES];
         }else
         {
             [HintView showHint:error.localizedDescription];

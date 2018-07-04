@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UpdateDeviceInfoViewController">
             <connections>
+                <outlet property="alternativeButt" destination="dWC-Xs-HqA" id="I6S-LL-rxC"/>
                 <outlet property="brandInput" destination="HUv-3P-pr8" id="eS7-HD-V6J"/>
                 <outlet property="connectBtn" destination="NrD-Bq-A3F" id="IRL-sv-vCQ"/>
                 <outlet property="deviceId" destination="3p9-yP-q00" id="24e-mo-xmB"/>
@@ -216,6 +217,25 @@
                         <action selector="connectAction" destination="-1" eventType="touchUpInside" id="t2r-Ic-uT9"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dWC-Xs-HqA">
+                    <rect key="frame" x="10" y="429" width="355" height="45"/>
+                    <color key="backgroundColor" red="0.23921568630000001" green="0.55294117649999996" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="355" id="Kc1-oz-eVA"/>
+                        <constraint firstAttribute="height" constant="45" id="dgf-QR-yp5"/>
+                    </constraints>
+                    <state key="normal" title="设备查询信息">
+                        <color key="titleColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="deviceInfoAction" destination="-1" eventType="touchUpInside" id="j7s-EA-KOu"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -225,13 +245,16 @@
                 <constraint firstItem="NrD-Bq-A3F" firstAttribute="leading" secondItem="SHd-OX-o0R" secondAttribute="trailing" constant="20" id="O5Z-ge-nGp"/>
                 <constraint firstItem="NrD-Bq-A3F" firstAttribute="width" secondItem="SHd-OX-o0R" secondAttribute="width" id="OrR-0O-PnJ"/>
                 <constraint firstItem="NrD-Bq-A3F" firstAttribute="trailing" secondItem="wFj-iI-SxB" secondAttribute="trailing" id="Udg-Qf-wgx"/>
+                <constraint firstItem="dWC-Xs-HqA" firstAttribute="top" secondItem="wFj-iI-SxB" secondAttribute="bottom" constant="50" id="Ukb-5d-PKV"/>
                 <constraint firstItem="NrD-Bq-A3F" firstAttribute="top" secondItem="SHd-OX-o0R" secondAttribute="top" id="XUm-HL-NiM"/>
                 <constraint firstItem="SHd-OX-o0R" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wFj-iI-SxB" secondAttribute="bottom" constant="30" id="aA4-xi-Njn"/>
+                <constraint firstItem="dWC-Xs-HqA" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="10" id="gXA-Ls-cMf"/>
                 <constraint firstItem="wFj-iI-SxB" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" priority="750" constant="10" id="idn-qd-vf4"/>
                 <constraint firstItem="SHd-OX-o0R" firstAttribute="leading" secondItem="wFj-iI-SxB" secondAttribute="leading" id="krv-6k-Xcd"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="SHd-OX-o0R" secondAttribute="bottom" constant="10" id="o5G-J9-y1K"/>
                 <constraint firstItem="wFj-iI-SxB" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="qmM-HX-s1C"/>
                 <constraint firstAttribute="trailing" secondItem="wFj-iI-SxB" secondAttribute="trailing" constant="10" id="tcs-um-BhY"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="dWC-Xs-HqA" secondAttribute="trailing" constant="10" id="uEV-sp-TzT"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="34.5" y="53.5"/>

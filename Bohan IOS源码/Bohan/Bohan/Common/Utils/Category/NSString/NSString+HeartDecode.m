@@ -99,8 +99,18 @@
     return string;
 }
 
-// 电表数据
+// 电表数据（不带小数点）
 - (NSString *)powerr{
+    NSString * string = @"0.00W";
+    if (self.length >=24 +4) {
+        string = [[self substringFromIndex:self.length - 24] substringToIndex:6];//先取截取10位，再截取后面4位
+        string = [NSString stringWithFormat:@"%.0fW",[string integerValue]/100.0];
+    }
+    return string;
+}
+
+// 电表数据（带小数点）
+- (NSString *)powerrNo{
     NSString * string = @"0.00W";
     if (self.length >=24 +4) {
         string = [[self substringFromIndex:self.length - 24] substringToIndex:6];//先取截取10位，再截取后面4位
@@ -109,10 +119,24 @@
     return string;
 }
 
-
-// GPRS电表
+// GPRS电表(不带小数点)
 - (NSString *)powerrr
 {
+    NSString *string = @"0.00W";
+    if(self.length >= 24 + 4)
+    {
+        string = [[self substringFromIndex:self.length - 24] substringToIndex:6];//先取截取10位，再截取后面4位
+        string = [NSString stringWithFormat:@"%.0fW",[string integerValue]/1.0];
+    }
+    else{
+        string = [self substringFromIndex:self.length - 6];
+        string = [NSString stringWithFormat:@"%.0fW",[string integerValue]/1.0];
+    }
+    return string;
+}
+
+// GPRS电表 （有小数点）
+- (NSString *)powerNo {
     NSString *string = @"0.00W";
     if(self.length >= 24+4)
     {
@@ -126,6 +150,53 @@
     return string;
 }
 
+// GPRS电表（没有小数点）
+- (NSString *)powerrrr
+{
+    NSString *string = @"0.00W";
+    if(self.length >= 24)
+    {
+        string = [[self substringFromIndex:self.length - 19] substringToIndex:4];//先取截取10位，再截取后面4位
+        string = [NSString stringWithFormat:@"%.0fW",[string integerValue]/1.0];
+    }
+    else{
+        string = [self substringFromIndex:self.length - 4];
+        string = [NSString stringWithFormat:@"%.0fW",[string integerValue]/1.0];
+    }
+    return string;
+}
+
+// GPRS电表（没有小数点）
+- (NSString *)powwerrrrNo
+{
+    NSString *string = @"0.00W";
+    if(self.length >= 24 + 4)
+    {
+        string = [[self substringFromIndex:self.length - 25] substringToIndex:6];//先取截取10位，再截取后面4位
+        string = [NSString stringWithFormat:@"%.0fW",[string integerValue]/1.0];
+    }
+    else{
+        string = [self substringFromIndex:self.length - 6];
+        string = [NSString stringWithFormat:@"%.0fW",[string integerValue]/1.0];
+    }
+    return string;
+}
+
+// GPRS电表（有小数点）
+- (NSString *)powerrrrNo
+{
+    NSString *string = @"0.00W";
+    if(self.length >= 24)
+    {
+        string = [[self substringFromIndex:self.length - 19] substringToIndex:4];//先取截取10位，再截取后面4位
+        string = [NSString stringWithFormat:@"%.2fW",[string integerValue]/1.0];
+    }
+    else{
+        string = [self substringFromIndex:self.length - 4];
+        string = [NSString stringWithFormat:@"%.2fW",[string integerValue]/1.0];
+    }
+    return string;
+}
 
 - (NSString *)statusString
 {
@@ -200,7 +271,7 @@
     
 }
 
-//  用电参数调用接口(4.0位)
+//  用电参数调用接口(4.0位 带点)
 - (NSString *)realTimePowerr
 {
     NSString * string = @"";
@@ -210,6 +281,70 @@
     }else {
         string = [[self substringToIndex:self.length - 36] substringToIndex:6];//先取截取10位，再截取后面4位
         string = [NSString stringWithFormat:@"%.2f",[string integerValue]/100.0];
+    }
+    
+    return string;
+    
+}
+
+//  用电参数调用接口(4.0位 不带点)
+- (NSString *)realTimePowerrNo
+{
+    NSString * string = @"";
+    if (self.length >= 42) {
+        string = [self substringWithRange:NSMakeRange(36, 8)];
+        string = [NSString stringWithFormat:@"%.0f",[string integerValue]/100.0];
+    }else {
+        string = [[self substringToIndex:self.length - 36] substringToIndex:6];//先取截取10位，再截取后面4位
+        string = [NSString stringWithFormat:@"%.0f",[string integerValue]/100.0];
+    }
+    
+    return string;
+    
+}
+
+
+//  用电参数调用接口(4.0位，带点)
+- (NSString *)realTimePowwerr
+{
+    NSString * string = @"";
+    if (self.length >= 42) {
+        string = [self substringWithRange:NSMakeRange(38, 5)];
+        string = [NSString stringWithFormat:@"%.2f",[string integerValue]/10.0];
+    }else {
+        string = [[self substringToIndex:self.length - 38] substringToIndex:5];//先取截取10位，再截取后面4位
+        string = [NSString stringWithFormat:@"%.2f",[string integerValue]/10.0];
+    }
+    
+    return string;
+    
+}
+//  用电参数调用接口(4.0位，不带点)
+- (NSString *)realTimePowwerrNo
+{
+    NSString * string = @"";
+    if (self.length >= 42) {
+        string = [self substringWithRange:NSMakeRange(38, 5)];
+        string = [NSString stringWithFormat:@"%.0f",[string integerValue]/10.0];
+    }else {
+        string = [[self substringToIndex:self.length - 38] substringToIndex:5];//先取截取10位，再截取后面4位
+        string = [NSString stringWithFormat:@"%.0f",[string integerValue]/10.0];
+    }
+    
+    return string;
+    
+}
+
+//  用电参数调用接口(4.0位，不带点)
+- (NSString *)realTimePowwwerrNo
+{
+    NSString * string = @"";
+    if (self.length >= 42) {
+        string = [self substringWithRange:NSMakeRange(38, 6)];
+        string = [NSString stringWithFormat:@"%.0f",[string integerValue]/10.0];
+    }else {
+        string = [[self substringToIndex:self.length - 38] substringToIndex:6];//先取截取10位，再截取后面4位
+        string = [NSString stringWithFormat:@"%.0f",[string integerValue]/10.0];
     }
     
     return string;

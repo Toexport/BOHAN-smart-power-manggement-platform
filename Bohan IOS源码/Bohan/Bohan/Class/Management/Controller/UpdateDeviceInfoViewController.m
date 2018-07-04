@@ -26,6 +26,7 @@
     
     __weak IBOutlet UIButton *lookBtn;
     __weak IBOutlet UIButton *connectBtn;
+    __weak IBOutlet UIButton *alternativeButt;
     
     BOOL loadtType;
     BOOL loadtPos;
@@ -64,7 +65,21 @@
     [self loadPosList];
     [self loadNameList];
     [self loadBrandList];
+    [self IFGPRS];
     
+}
+// 判断是否是GPRS设备
+- (void)IFGPRS {
+    NSString * string = self.model.sort;
+    if ([string containsString:@"YFGPMT"] || [string containsString:@"CDMT10"] || [string containsString:@"CDMT16"] || [string containsString:@"CDMT60"] || [string containsString:@"GP1P"] || [string containsString:@"YCGP10"] || [string containsString:@"YCGP16"] || [string containsString:@"MC"] || [string containsString:@"GP3P"]) {
+        connectBtn.hidden = YES;
+        lookBtn.hidden = YES;
+        alternativeButt.hidden = NO;
+    }else {
+       connectBtn.hidden = NO;
+       alternativeButt.hidden = YES;
+       lookBtn.hidden = NO;
+    }
 }
 
 - (void)updateUI

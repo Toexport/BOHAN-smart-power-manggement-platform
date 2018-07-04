@@ -11,4 +11,5 @@
 @interface RealTimeParamViewController : BaseViewController
 
 @property (nonatomic, copy) NSString *dNo;
+@property (nonatomic, copy)  NSString * CoedID;
 @end

@@ -21,7 +21,7 @@
     __weak IBOutlet UILabel *power;
     
 }
-
+@property (nonatomic, copy)  NSString * Coedid;
 @property (nonatomic, copy) NSString *dNo;
 - (IBAction)saveAction:(UIButton *)sender;
 //- (IBAction)savePrice;

@@ -22,11 +22,19 @@
 //二位开关
 - (NSString *)powweer;
 
-//电表
+//电表数据(带小数点)
 - (NSString *)powerr;
+// 电表数据（不带小数点）
+- (NSString *)powerrNo;
 
-// GPRS电表
+// GPRS电表(有小数点)
 - (NSString *)powerrr;
+// GPRS电表 （没有小数点）
+- (NSString *)powerNo;
+// GPRS电表（有小数点）
+- (NSString *)powerrrr;
+// GPRS电表（没有有小数点）
+- (NSString *)powerrrrNo;
 
 - (NSString *)statusString;
 
@@ -41,6 +49,18 @@
 - (NSString *)realTimePower;
 //  用电参数调用接口(4.0位)
 - (NSString *)realTimePowerr;
+//  用电参数调用接口(4.0位，不带点)
+- (NSString *)realTimePowwerr;
+//  用电参数调用接口(4.0位)
+- (NSString *)realTimePowwerrNo;
+
+//  用电参数调用接口(4.0位 不带点)
+- (NSString *)realTimePowerrNo;
+//  用电参数调用接口(4.0位，不带点)
+- (NSString *)realTimePowwwerrNo;
+// GPRS电表（没有小数点）
+- (NSString *)powwerrrrNo;
+
 // 一位开关
 - (NSString *)realTimePoerrr;
 

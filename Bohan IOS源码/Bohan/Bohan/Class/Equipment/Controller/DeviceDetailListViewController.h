@@ -12,4 +12,5 @@
 
 @property (nonatomic, copy) NSString * name;
 @property (nonatomic, assign) BOOL isPos;
+@property (nonatomic, assign) NSInteger type; // 识别号
 @end

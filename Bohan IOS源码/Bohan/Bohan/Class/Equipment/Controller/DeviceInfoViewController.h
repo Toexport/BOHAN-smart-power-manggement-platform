@@ -11,4 +11,6 @@
 @interface DeviceInfoViewController : BaseViewController
 
 @property (nonatomic, strong) DeviceModel *model;
+@property (nonatomic, assign) NSInteger type; // 识别号
+@property (nonatomic, strong) NSString * sortt;
 @end

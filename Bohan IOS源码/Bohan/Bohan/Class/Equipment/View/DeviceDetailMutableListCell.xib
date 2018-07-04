@@ -80,7 +80,7 @@
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="device_list_socket_no" highlightedImage="device_list_socket" translatesAutoresizingMaskIntoConstraints="NO" id="klX-sF-lZc">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="klX-sF-lZc">
                         <rect key="frame" x="10" y="48" width="17" height="17"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="16.5" id="L7y-Lv-bfC"/>
@@ -204,8 +204,6 @@
     <resources>
         <image name="device_list_location" width="34" height="34"/>
         <image name="device_list_location_no" width="33" height="33"/>
-        <image name="device_list_socket" width="33" height="33"/>
-        <image name="device_list_socket_no" width="34" height="34"/>
         <image name="device_list_wifi_no" width="34" height="34"/>
         <image name="device_list_wifi_on" width="33" height="33"/>
         <image name="rightarrow" width="60" height="60"/>

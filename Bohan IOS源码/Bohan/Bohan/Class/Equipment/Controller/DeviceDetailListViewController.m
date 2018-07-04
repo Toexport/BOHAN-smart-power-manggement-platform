@@ -105,6 +105,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
                 
                 ZPLog(@"%@",response);
                 
+                
                 if (!error) {
                     self.datas = [[NSArray yy_modelArrayWithClass:[DeviceModel class] json:response[@"content"]] mutableCopy];
                     
@@ -254,6 +255,8 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     DeviceInfoViewController *info = [[DeviceInfoViewController alloc] init];
     DeviceModel *model = self.datas[indexPath.row];
     info.model = model;
+    info.sortt = model.sort;
+    ZPLog(@"%@",model.sort);
     [self.navigationController pushViewController:info animated:YES];
 }
 
@@ -343,19 +346,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
             //******注意：开启成功后，需要重新取实时数据*******
             
             [HintView showHint:isOpen?Localize(@"已开启"):Localize(@"已关闭")];
-//            if (isOpen) {
-//
-//                if (model.powerinfo.length>0) {
-//                    model.powerinfo = [NSString stringWithFormat:@"%@%@",code,[model.powerinfo substringFromIndex:4]];
-//                }
-//
-//            }else
-//            {
-//                if (model.powerinfo.length>0) {
-//                    model.powerinfo = @"0105000000";
-//                }
-//            }
-            
             if (model.powerinfo.length>0) {
                 model.powerinfo = [NSString stringWithFormat:@"%@%@",code,[model.powerinfo substringFromIndex:2]];
             }
@@ -376,15 +366,5 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     }];
 
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
