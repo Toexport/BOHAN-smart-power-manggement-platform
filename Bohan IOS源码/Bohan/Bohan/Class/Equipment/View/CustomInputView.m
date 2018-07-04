@@ -29,8 +29,6 @@
 - (void)awakeFromNib
 {
     [super awakeFromNib];
-    
-    
     [self setUp];
 }
 
@@ -45,7 +43,7 @@
 
 - (IBAction)selectAction:(UIButton *)sender {
     
-    
+//     点击按钮弹出视图
     [SGActionView showSheetWithTitle:nil itemTitles:self.datas itemSubTitles:nil selectedIndex:[self.datas indexOfObject:self.contentTF.text] selectedHandle:^(NSInteger index) {
         
         self.contentTF.text = self.datas[index];

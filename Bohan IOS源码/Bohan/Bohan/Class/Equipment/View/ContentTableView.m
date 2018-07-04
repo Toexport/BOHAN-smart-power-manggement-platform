@@ -47,12 +47,12 @@ static NSString *cellIdentifier =@"EquipmentTableViewCell";
 }
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    
     EquipmentTableViewCell  *cell = (EquipmentTableViewCell *)[tableView dequeueReusableCellWithIdentifier: cellIdentifier forIndexPath:indexPath];
     cell.delegate = self.actionDelegate;
     cell.name.text = self.datas[indexPath.row];
     return cell;
 }
+
 #pragma mark 按钮的点击事件
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     

@@ -512,3 +512,6 @@
 "取消" = "Cancel";
 "您的设备不支持拍照" = "Your device does not support taking photos";
 "没有摄像头" = "No camera";
+"设备正在执行循环通断模式" = "The device is executing looped on and off mode";
+"设备正处于时段运行模式" = "The device is in session mode";
+"设备正处于循环通断模式" = "The device is in cycle mode";

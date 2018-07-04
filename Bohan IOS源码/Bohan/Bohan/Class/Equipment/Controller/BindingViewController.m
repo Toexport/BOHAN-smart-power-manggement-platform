@@ -142,13 +142,14 @@
             connect.deviceNo = deviceTF.text;
 //            判断输入框中的数字是否包含制定的数字，如果有则不跳转直接成功，如果没有需要跳转到下个界面
             NSString * string = deviceTF.text;
-            if ([string hasPrefix:@"64"]) {
+            if ([string hasPrefix:@"65"]) {
                 ZPLog(@"%@包含", string);
-                [self.navigationController popViewControllerAnimated:YES];
-                [HintView showHint:Localize(@"添加成功")];  // 提示框
+                
+                [self.navigationController pushViewController:connect animated:YES];
             }else {
                 ZPLog(@"%@不包含", string);
-                [self.navigationController pushViewController:connect animated:YES];
+                [self.navigationController popViewControllerAnimated:YES];
+                [HintView showHint:Localize(@"添加成功")];  // 提示框
             }
 //            [self.navigationController pushViewController:connect animated:YES];
         }else
@@ -176,14 +177,5 @@
     
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

@@ -1969,7 +1969,7 @@
 					"\"${PODS_ROOT}/Headers/Public/YYModel\"",
 					"-I/usr/include/libxml2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bohan-smartec.bohan";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bohan-smartec.bohang";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2031,7 +2031,7 @@
 					"\"${PODS_ROOT}/Headers/Public/YYModel\"",
 					"-I/usr/include/libxml2",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.bohan-smartec.bohan";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bohan-smartec.bohang";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";

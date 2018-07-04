@@ -124,8 +124,26 @@
         {
             [status setText:[statusStr statusString]];
         }
-
-        [power setText:[self.model.powerinfo power]];  //用电信息
+        
+        NSString * string = self.model.id;
+        if ([string substringToIndex:2]) {
+            NSString * stringg = string;
+            if ([stringg hasPrefix:@"68"]) {
+                ZPLog(@"包含");
+                [power setText:[self.model.powerinfo power]];  //用电信息
+            }else
+                if ([stringg hasPrefix:@"64"]) {
+                    
+                [power setText:[self.model.powerinfo powerr]];
+                    
+                }else
+                    if ([stringg hasPrefix:@"65"] || [stringg hasPrefix:@"66"] || [string hasPrefix:@"67"]) {
+                    
+                    [power setText:[self.model.powerinfo powerrr]];  //用电信息
+                    }
+        }
+        
+//        [power setText:[self.model.powerinfo power]];  //用电信息
         
     }else
     {

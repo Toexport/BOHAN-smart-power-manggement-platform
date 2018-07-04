@@ -252,7 +252,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     {
         //运行时段模式、循环通断模式
         if (indexPath.row == 4) {
-            cell.discb.text = [electrictyModel isEqualToString:@"03"]?@"设备正处于时段运行模式":@"设备正处于循环通断模式";
+            cell.discb.text = [electrictyModel isEqualToString:@"03"]?Localize(@"设备正处于时段运行模式"):Localize(@"设备正处于循环通断模式");
         }
     }else
     {

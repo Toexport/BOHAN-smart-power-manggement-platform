@@ -154,12 +154,13 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
             return ;
         }
         ZPLog(@"--------%@",response);
-        weakSelf.status = [response componentsSeparatedByString:@","];
         
+        weakSelf.status = [response componentsSeparatedByString:@","];
         for (DeviceModel *model in self.datas) {
             
             for (NSString *content in _status) {
                 if ([content hasPrefix:model.id]) {
+                   
                     model.powerinfo = [content substringFromIndex:model.id.length];
                     model.isOpen = [model.powerinfo isOn];
                 }

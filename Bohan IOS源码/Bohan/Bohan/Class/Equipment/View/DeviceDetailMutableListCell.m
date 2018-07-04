@@ -141,9 +141,14 @@
                 theSwitch.backgroundColor = [UIColor redColor];
             }
         }
-        
-        [power setText:[self.model.powerinfo power]];
-        
+//         一二三位开关位置
+        NSString * string =  self.model.id;
+        NSString * stringg = string;
+        if ([stringg hasPrefix:@"61"] || [stringg hasPrefix:@"63"]) {
+            [power setText:[self.model.powerinfo poweer]];
+        }else if ([stringg hasPrefix:@"62"]){
+            [power setText:[self.model.powerinfo powweer]];
+        }
     }else
     {
         typeImg.highlighted = NO;
