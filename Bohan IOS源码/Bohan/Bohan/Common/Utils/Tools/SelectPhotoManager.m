@@ -131,7 +131,7 @@
                     _errorHandle(NSLocalizedString(@"No camera",nil));
                 }
                 UIAlertController *alertController = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"prompt",nil) message:NSLocalizedString(@"Your device does not support taking photos",nil) preferredStyle:UIAlertControllerStyleAlert];
-                [alertController addAction: [UIAlertAction actionWithTitle: NSLocalizedString(@"Confirm",nil) style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+                [alertController addAction: [UIAlertAction actionWithTitle: NSLocalizedString(@"确认",nil) style: UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
                 }]];
                 [[self getCurrentVC] presentViewController:alertController animated:YES completion:nil];
                 return ;

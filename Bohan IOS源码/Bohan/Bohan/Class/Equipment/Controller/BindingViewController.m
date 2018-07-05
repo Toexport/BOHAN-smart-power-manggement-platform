@@ -33,7 +33,7 @@
     group = dispatch_group_create();
     queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     posInput.name.text = Localize(@"设备位置");
-    typeInput.name.text = Localize(@"用电类型");
+    typeInput.name.text = Localize(@"设备名称");
     brandInput.name.text = Localize(@"电器品牌");
     
     [self.view startLoading];

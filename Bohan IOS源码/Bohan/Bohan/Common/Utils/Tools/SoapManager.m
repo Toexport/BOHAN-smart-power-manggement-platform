@@ -9,9 +9,11 @@
 #import "SoapManager.h"
 #import "DebuggingANDPublishing.pch"
 //static NSString *const defaultWebServiceNameSpace = @"http://bohansever.top/";
-static NSString *const httpServer=@"http://www.bohanserver.top:8088/webservice.asmx?wsdl";
+static NSString *const httpServer=@"http://www.bohanserver.top:8088/webservice.asmx?wsdl"; // 原始地址接口
+//static NSString *const httpServer=@"http://122.10.97.35/webservice.asmx?wsdl"; // 香港地址接口
 static NSString *const nameSpace=@"http://bohansever.top/";
-static NSString *const serviceURL=@"http://www.bohanserver.top:8088/";
+static NSString *const serviceURL=@"http://www.bohanserver.top:8088/"; // 原始接口
+//static NSString *const serviceURL=@"http://122.10.97.35:8088/"; // 香港接口
 
 
 

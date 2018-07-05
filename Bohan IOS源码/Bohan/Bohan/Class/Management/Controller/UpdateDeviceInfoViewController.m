@@ -55,7 +55,7 @@
     posInput.name.text = Localize(@"设备位置");
     posInput.contentTF.text = self.model.position;
     
-    typeInput.name.text = Localize(@"用电类型");
+    typeInput.name.text = Localize(@"设备名称");
     typeInput.contentTF.text = self.model.name;
 
     brandInput.name.text = Localize(@"电器品牌");

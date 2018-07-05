@@ -425,7 +425,6 @@
         }
         model.command = @"0020";
         contents = [limitTF.text componentsSeparatedByString:@"."];
-
         content = [NSString stringWithFormat:@"%04d%02d",[[contents firstObject] intValue],contents.count == 1?0:[contents[1] intValue]];
     }
     
@@ -438,7 +437,7 @@
         
         if (!error) {
 //            没有完成负荷门限
-            if (limitTF.text > 0) {
+            if (limitTF.text <= 0) {
                 ZPLog(@"请输入负荷门限");
                 [HintView showHint:Localize(@"请输入负荷门限")];
             }else {

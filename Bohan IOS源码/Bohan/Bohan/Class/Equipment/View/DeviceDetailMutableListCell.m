@@ -173,7 +173,7 @@ if (self.model.powerinfo && self.model.powerinfo.length>0) {
             typeImg.image = [UIImage imageNamed:@"device_list_socket_no"];
         }
             if ([self.model.sort containsString:@"CDMT60"] || [self.model.sort containsString:@"GP1P"] || [self.model.sort containsString:@"WFMT"]) {
-                typeImg.image = [UIImage imageNamed:@"Electric-meter.png"];
+                typeImg.image = [UIImage imageNamed:@"Electric-meterGrey.png"];
             }
                 if ([self.model.sort containsString:@"YFMT"] || [self.model.sort containsString:@"YFGPMT"]) {
                     typeImg.image = [UIImage imageNamed:@"purse.png"];

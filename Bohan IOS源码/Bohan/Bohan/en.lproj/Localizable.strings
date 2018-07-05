@@ -91,7 +91,7 @@
 "网络：" = "Website :";
 //类型 :    Gender :
 //位置 :    Designation :
-"用电类型 :" = "Electrcial Type :";
+"设备名称 :" = "Device name :";
 "状态 : 开" = "Status : On";
 "状态 : 关" = "Status : Off";
 "设备设置" = "Device Management";
@@ -314,11 +314,11 @@
 "绑定失败" = "Pairing failed";
 
 "设备位置" = "Device location";
-"用电类型" = "Type of electrical";
+"设备名称" = "Device name";
 "电器品牌" = "Brand";
 
 "请选择设备位置" = "Please select the device location";
-"请选择用电类型" = "Please select the type of electrical";
+"请选择设备名称" = "Please select the device namel";
 "请选择品牌" = "Please select the brand";
 "分享设备" = "Share the setting";
 "验证码发送成功，请留意手机号" = "Verification code sent successfully, please check on your mobile number";
