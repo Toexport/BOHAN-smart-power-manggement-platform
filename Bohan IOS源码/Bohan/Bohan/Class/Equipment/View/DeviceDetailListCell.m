@@ -71,10 +71,10 @@ openSwitch.layer.cornerRadius = 16;
 if (self.model.powerinfo && self.model.powerinfo.length>0) {
     
     [online setText:Localize(@"在线")];
-    if ([self.model.sort containsString:@"QK01"] || [self.model.sort containsString:@"QK02"] || [self.model.sort containsString:@"QK03"]) {
-        typeImg.image = [UIImage imageNamed:@"Switch_open.png"];
+    if ([self.model.sort containsString:@"QK01"] || [self.model.sort containsString:@"QK02"] || [self.model.sort containsString:@"QK03"] || [self.model.sort containsString:@"K"]) {
+        typeImg.image = [UIImage imageNamed:@"Switch-open.png"];
     }
-        if ([self.model.sort containsString:@"CDMT10"] || [self.model.sort containsString:@"CDMT16"] || [self.model.sort containsString:@"QC10"] || [self.model.sort containsString:@"QC13"] || [self.model.sort containsString:@"QC15"] || [self.model.sort containsString:@"QC16"] || [self.model.sort containsString:@"YC10"] || [self.model.sort containsString:@"YCGP10"] || [self.model.sort containsString:@"YC13"] || [self.model.sort containsString:@"YC15"] || [self.model.sort containsString:@"YC16"] || [self.model.sort containsString:@"YCGP16"] || [self.model.sort containsString:@"YC"]) {
+        if ([self.model.sort containsString:@"CDMT10"] || [self.model.sort containsString:@"CDMT16"] || [self.model.sort containsString:@"QC10"] || [self.model.sort containsString:@"QC13"] || [self.model.sort containsString:@"QC15"] || [self.model.sort containsString:@"QC16"] || [self.model.sort containsString:@"YC10"] || [self.model.sort containsString:@"YCGP10"] || [self.model.sort containsString:@"YC13"] || [self.model.sort containsString:@"YC15"] || [self.model.sort containsString:@"YC16"] || [self.model.sort containsString:@"YCGP16"] || [self.model.sort containsString:@"YC"] || [self.model.sort containsString:@"QC"]) {
             typeImg.image = [UIImage imageNamed:@"device_list_socket"];
         }
             if ([self.model.sort containsString:@"CDMT60"] || [self.model.sort containsString:@"GP1P"] || [self.model.sort containsString:@"WFMT"]) {
@@ -174,17 +174,17 @@ if (self.model.powerinfo && self.model.powerinfo.length>0) {
     }
 }else
 {
-    if ([self.model.sort containsString:@"QK01"] || [self.model.sort containsString:@"QK02"] || [self.model.sort containsString:@"QK03"]) {
-        typeImg.image = [UIImage imageNamed:@"Switch-close"];
+    if ([self.model.sort containsString:@"QK01"] || [self.model.sort containsString:@"QK02"] || [self.model.sort containsString:@"QK03"] || [self.model.sort containsString:@"K"]) {
+        typeImg.image = [UIImage imageNamed:@"Switch-close.png"];
     }
-        if ([self.model.sort containsString:@"CDMT10"] || [self.model.sort containsString:@"CDMT16"] || [self.model.sort containsString:@"QC10"] || [self.model.sort containsString:@"QC13"] || [self.model.sort containsString:@"QC15"] || [self.model.sort containsString:@"QC16"] || [self.model.sort containsString:@"YC10"] || [self.model.sort containsString:@"YCGP10"] || [self.model.sort containsString:@"YC13"] || [self.model.sort containsString:@"YC15"] || [self.model.sort containsString:@"YC16"] || [self.model.sort containsString:@"YCGP16"] || [self.model.sort containsString:@"YC"]) {
+        if ([self.model.sort containsString:@"CDMT10"] || [self.model.sort containsString:@"CDMT16"] || [self.model.sort containsString:@"QC10"] || [self.model.sort containsString:@"QC13"] || [self.model.sort containsString:@"QC15"] || [self.model.sort containsString:@"QC16"] || [self.model.sort containsString:@"YC10"] || [self.model.sort containsString:@"YCGP10"] || [self.model.sort containsString:@"YC13"] || [self.model.sort containsString:@"YC15"] || [self.model.sort containsString:@"YC16"] || [self.model.sort containsString:@"YCGP16"] || [self.model.sort containsString:@"YC"] || [self.model.sort containsString:@"QC"]) {
             typeImg.image = [UIImage imageNamed:@"device_list_socket_no"];
         }
             if ([self.model.sort containsString:@"CDMT60"] || [self.model.sort containsString:@"GP1P"] || [self.model.sort containsString:@"WFMT"]) {
                 typeImg.image = [UIImage imageNamed:@"Electric-meterGrey.png"];
             }
                 if ([self.model.sort containsString:@"YFMT"] || [self.model.sort containsString:@"YFGPMT"]) {
-                    typeImg.image = [UIImage imageNamed:@"purse.png"];
+                    typeImg.image = [UIImage imageNamed:@"purse_grey.png"];
             }
                 if ([self.model.sort containsString:@"MC"]) {
                     typeImg.image = [UIImage imageNamed:@"Electric-meterGrey.png"];

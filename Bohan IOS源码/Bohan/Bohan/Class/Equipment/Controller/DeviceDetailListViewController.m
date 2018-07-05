@@ -68,9 +68,11 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    [_timer resumeTimerAfterTimeInterval:0.5];
+    [_timer resumeTimerAfterTimeInterval:0.02];
     [super viewWillAppear:animated];
     [self loadData];
+    [self.table reloadData];
+//    [self.table removeAllObjects];
 }
 
 - (void)dealloc
@@ -88,13 +90,10 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
 }
 
 
-- (void)loadData
-{
+- (void)loadData {
     
     NSString *key = self.isPos?@"PosName":@"LoadName";
-
     [[NetworkRequest sharedInstance] requestWithUrl:GET_DEVICE_LIST_URL parameter:@{key:self.name} completion:^(id response, NSError *error) {
-        
         
         dispatch_async(dispatch_queue_create(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             
@@ -103,8 +102,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
                 
                 [self.view stopLoading];
                 
-                ZPLog(@"%@",response);
-                
+                ZPLog(@"%@",response);// 不知道是不是走这里
                 
                 if (!error) {
                     self.datas = [[NSArray yy_modelArrayWithClass:[DeviceModel class] json:response[@"content"]] mutableCopy];
@@ -132,7 +130,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
                 [self.table changeState];
                 [self.table reloadData];
                 [self.table noDataReload];
-
                 
             });
             
@@ -155,21 +152,19 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
             return ;
         }
         ZPLog(@"--------%@",response);
-        
         weakSelf.status = [response componentsSeparatedByString:@","];
         for (DeviceModel *model in self.datas) {
             
             for (NSString *content in _status) {
                 if ([content hasPrefix:model.id]) {
-                   
                     model.powerinfo = [content substringFromIndex:model.id.length];
                     model.isOpen = [model.powerinfo isOn];
+                
                 }
             }
         }
         
         [self.table reloadData];
-//        dispatch_semaphore_signal(finished);
     }];
 
 }
@@ -186,7 +181,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
         _table.tableFooterView = [[UIView alloc] init];
         _table.separatorInsetZero = YES;
         _table.noDatadelegate = self;
-        //        _deviceTable.tintColor = [UIColor getColor:@"dcecfd"];
         _table.delegate = self;
         _table.dataSource = self;
         _table.rowHeight = 120;
@@ -204,10 +198,58 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
 }
 
 
+//// 分组
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//    return 2;
+//}
+//
+//-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+//    if (section == 0) {
+//        //
+//        //   在线数据;
+//        return self.datas.count;
+//    }else{
+////        return //离线的数据 self.datas.count）
+////        return self.datas.count;re
+//
+//    }
+//}
+
+//-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+//
+//    if (indexPath.section == 0) {
+//        //在线数据
+//        DeviceModel *model = self.datas[indexPath.row];
+//
+//        if([model.id hasPrefix:@"61"] || [model.id hasPrefix:@"62"] || [model.id hasPrefix:@"63"])
+//        {
+//            DeviceDetailMutableListCell *cell = (DeviceDetailMutableListCell*)[tableView dequeueReusableCellWithIdentifier:deviceDetailMutableCellIdentifier];
+//            cell.delegate = self;
+//            cell.indexPath = indexPath;
+//            [cell setModel:model];
+//
+//            return cell;
+//            //        这个是两个cell，一个是三个按钮，一个是一个按钮
+//
+//        }else {
+//            DeviceDetailListCell *cell = (DeviceDetailListCell*)[tableView dequeueReusableCellWithIdentifier:deviceDetailCellIdentifier];
+//            cell.delegate = self;
+//            cell.indexPath = indexPath;
+//            [cell setModel:model];
+//            return cell;
+//
+//        }
+//    }else {
+////        不在线
+//    }
+//
+//}
+
+
 #pragma mark - UITableView
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.datas.count;
-    
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -215,10 +257,9 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     return UITableViewCellEditingStyleDelete | UITableViewCellEditingStyleInsert;
 }
 
-
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    DeviceModel *model = self.datas[indexPath.row];
+    DeviceModel * model = self.datas[indexPath.row];
     
     if([model.id hasPrefix:@"61"] || [model.id hasPrefix:@"62"] || [model.id hasPrefix:@"63"])
     {
@@ -229,26 +270,22 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
         
         return cell;
 
-    }else
-    {
+    }else {
         DeviceDetailListCell *cell = (DeviceDetailListCell*)[tableView dequeueReusableCellWithIdentifier:deviceDetailCellIdentifier];
         cell.delegate = self;
         cell.indexPath = indexPath;
         [cell setModel:model];
-        
         return cell;
 
     }
-    
 }
+
 #pragma mark 按钮的点击事件
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
-    
     if (self.status.count == 0) {
-        
         [HintView showHint:Localize(@"当前设备离线不可控制")];
         return;
     }
@@ -257,7 +294,12 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     info.model = model;
     info.sortt = model.sort;
     ZPLog(@"%@",model.sort);
-    [self.navigationController pushViewController:info animated:YES];
+    if (model.powerinfo == nil) {
+        ZPLog(@"%@",model.powerinfo);
+        [HintView showHint:Localize(@"当前设备离线不可控制")];
+    }else {
+        [self.navigationController pushViewController:info animated:YES]; // 设备离线不跳转
+    }
 }
 
 
@@ -283,7 +325,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
 - (void)didSwitchOpen:(BOOL)isOpen withIndexPath:(NSIndexPath *)indexPath
 {
     shouldNotUpdate = YES;
-
+    
     DeviceModel *model = self.datas[indexPath.row];
     
     WebSocket *socket = [WebSocket socketManager];
@@ -300,7 +342,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
             
             [HintView showHint:isOpen?Localize(@"已开启"):Localize(@"已关闭")];
             if (isOpen) {
-                
                 if (model.powerinfo.length>0) {
                     model.powerinfo = [NSString stringWithFormat:@"0007%@",[model.powerinfo substringFromIndex:4]];
                 }
@@ -313,8 +354,8 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
             }
             model.isOpen = isOpen;
             [weakSelf.table reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-
-
+            
+            
         }else
         {
             shouldNotUpdate = NO;
@@ -324,8 +365,10 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
             [weakSelf.table reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         }
     }];
-
+    
 }
+
+
 
 - (void)didSwitchOpen:(BOOL)isOpen switchCode:(NSString *)code withIndexPath:(NSIndexPath *)indexPath
 {

@@ -86,7 +86,6 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     ZPLog(@"%@",self.model.sort);
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
-        
         if (!error) {
             
             if (((NSString *)response).length == 120) {
@@ -96,17 +95,14 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
                 electrictyModel = [content substringFromIndex:content.length - 2];
                 
                 if ([electrictyModel isEqualToString:@"00"] || [electrictyModel isEqualToString:@"01"]) {
-                    
                     [self countDownTime];
                 }else
                 {
                     [deviceInfoCollection reloadData];
                 }
             }
-            
         }
     }];
-    
 }
 
 - (void)deviceStatus
