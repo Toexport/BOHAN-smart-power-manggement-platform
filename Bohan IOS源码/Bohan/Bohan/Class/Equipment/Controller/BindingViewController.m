@@ -97,7 +97,7 @@
         [[NetworkRequest sharedInstance] requestWithUrl:GET_BRAND_LIST_URL parameter:nil completion:^(id response, NSError *error) {
             dispatch_group_leave(group);
 
-            DBLog(@"%@",response);
+            ZPLog(@"%@",response);
             if (!error) {
                 NSArray *brands = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
                 brandInput.datas = brands;
@@ -117,7 +117,7 @@
         [[NetworkRequest sharedInstance] requestWithUrl:GET_NAME_LIST_URL parameter:nil completion:^(id response, NSError *error) {
             dispatch_group_leave(group);
 
-            DBLog(@"%@",response);
+            ZPLog(@"%@",response);
             if (!error) {
                 NSArray *names = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
                 typeInput.datas = names;
@@ -125,7 +125,6 @@
             
         }];
     });
-    
 }
 
 - (void)bindDevice
@@ -134,26 +133,43 @@
     NSDictionary * dic = @{@"DeviceCode":deviceTF.text, @"DeviceKey":deviceTF.text, @"PosName":posInput.contentTF.text, @"LoadName":typeInput.contentTF.text, @"LoadBrand":brandInput.contentTF.text};
     [[NetworkRequest sharedInstance] requestWithUrl:BINDING_DEVICE_URL parameter:dic completion:^(id response, NSError *error) {
         [self.view stopLoading];
+        ZPLog(@"%@",response);
         //请求成功
         if (!error) {
             WifiConnectViewController * connect = [[WifiConnectViewController alloc] init];
             connect.deviceNo = deviceTF.text;
+//            [self.navigationController pushViewController:connect animated:YES];
+            
 //            判断输入框中的数字是否包含制定的数字，如果有则不跳转直接成功，如果没有需要跳转到下个界面
-            NSString * string = deviceTF.text;
-            if ([string hasPrefix:@"65"]) {
-                ZPLog(@"%@包含", string);
-                [self.navigationController pushViewController:connect animated:YES];
-            }else {
-                ZPLog(@"%@不包含", string);
-                [self.navigationController popViewControllerAnimated:YES];
-                [HintView showHint:Localize(@"添加成功")];  // 提示框
-            }
+//            NSString * string = deviceTF.text;
+//            if ([string hasPrefix:@"65"]) {
+//                ZPLog(@"%@包含", string);
+            NSDictionary * dict = @{@"DeviceCode":deviceTF.text, @"DeviceKey":deviceTF.text,};
+            [[NetworkRequest sharedInstance]requestWithUrl:GET_DEVICE_INFO_URL parameter:dict completion:^(id response, NSError *error) {
+                ZPLog(@"%@",dict);
+                ZPLog(@"%@",error);
+                ZPLog(@"%@",response);
+            }];
+            
+            
+//            }else {
+//                ZPLog(@"%@不包含", string);
+//                [self.navigationController popViewControllerAnimated:YES];
+//                [HintView showHint:Localize(@"添加成功")];  // 提示框
+//            }
         }else
         {
             [HintView showHint:error.localizedDescription];
         }
     }];
 }
+
+- (void)POSTs {
+
+    
+}
+
+
 
 - (void)unBindDevice
 {

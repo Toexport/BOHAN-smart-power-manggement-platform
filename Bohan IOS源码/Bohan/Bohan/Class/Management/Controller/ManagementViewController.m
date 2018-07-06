@@ -127,7 +127,7 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
         
         [self.view stopLoading];
         
-        DBLog(@"%@",response);
+        ZPLog(@"%@",response);
         if (!error) {
             self.datas = [[NSArray yy_modelArrayWithClass:[DeviceModel class] json:response[@"content"]] mutableCopy];
 

@@ -196,7 +196,7 @@ if (self.model.powerinfo && self.model.powerinfo.length>0) {
     openSwitch.enabled = NO;
     [statusImg setImage:[UIImage imageNamed:@"open_offline"]];
     openSwitch.backgroundColor = [UIColor getColor:@"e4e4e4"];
-
+    
     [online setText:Localize(@"离线")];
     [status setText:Localize(@"设备已离线")];
     [power setText:@"0.00W"];

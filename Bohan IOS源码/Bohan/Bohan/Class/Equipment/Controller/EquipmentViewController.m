@@ -55,7 +55,6 @@
     
     [self.pageCollection setDatas:dataArray];
 
-//    [self loadData];
 }
 
 - (void)bindDevice
@@ -69,7 +68,6 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self loadData];
-//    [E reloadData]; // 刷新数据
 }
 
 - (void)loadData
@@ -88,7 +86,7 @@
         model.isload = YES;
         model.currentTable.noDatadelegate = self;
 
-        DBLog(@"%@",response);
+        ZPLog(@"%@",response);
         if (!error) {
             model.datas = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
             
@@ -189,21 +187,19 @@
 
 - (void)openAndCloseAll:(BOOL)isOpen name:(NSString *)name
 {
-    
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *command = [[CommandModel alloc] init];
     command.command = @"1002";
 //    开关不知道是不是对的，修改的07，原来是01
     NSString * part = @"LoadName";
     NSString * open = isOpen?@"00":@"07";
-    
     if (currentIndex == 1) {
         part = @"PosName";
     }
     command.content = [NSString stringWithFormat:@"%@;%@;%@;%@",USERNAME,part,name,open];
     [socket sendMultiDataWithModel:command resultBlock:^(id response, NSError *error) {
         ZPLog(@"--------%@",response);
-        
+
         if (!error) {
             [HintView showHint:isOpen?Localize(@"已开启"):Localize(@"已关闭")];
         }else

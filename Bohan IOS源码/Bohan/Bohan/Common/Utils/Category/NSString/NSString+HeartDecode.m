@@ -172,11 +172,11 @@
     NSString *string = @"0.00W";
     if(self.length >= 24 + 4)
     {
-        string = [[self substringFromIndex:self.length - 25] substringToIndex:6];//先取截取10位，再截取后面4位
+        string = [[self substringFromIndex:self.length - 25] substringToIndex:5];//先取截取10位，再截取后面4位
         string = [NSString stringWithFormat:@"%.0fW",[string integerValue]/1.0];
     }
     else{
-        string = [self substringFromIndex:self.length - 6];
+        string = [self substringFromIndex:self.length - 5];
         string = [NSString stringWithFormat:@"%.0fW",[string integerValue]/1.0];
     }
     return string;
@@ -340,10 +340,10 @@
 {
     NSString * string = @"";
     if (self.length >= 42) {
-        string = [self substringWithRange:NSMakeRange(38, 6)];
+        string = [self substringWithRange:NSMakeRange(38, 5)];
         string = [NSString stringWithFormat:@"%.0f",[string integerValue]/10.0];
     }else {
-        string = [[self substringToIndex:self.length - 38] substringToIndex:6];//先取截取10位，再截取后面4位
+        string = [[self substringToIndex:self.length - 38] substringToIndex:5];//先取截取10位，再截取后面4位
         string = [NSString stringWithFormat:@"%.0f",[string integerValue]/10.0];
     }
     

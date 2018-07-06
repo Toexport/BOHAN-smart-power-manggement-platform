@@ -47,6 +47,9 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     }else {
     datas = @[@{@"image" :@"ic_launch", @"name": Localize(@"实时参数")}, @{@"image" :@"ic_l", @"name": Localize(@"增值服务")}, @{@"image" :@"ic_laun", @"name": Localize(@"定时计量")}, @{@"image" :@"menu_summery", @"name": Localize(@"用电统计")}, @{@"image" :@"ic_launcher2", @"name": Localize(@"时段设置")}, @{@"image" :@"ic_launch1", @"name": Localize(@"延时/定时开关")},];
     }
+    if ([strin containsString:@"68"] || [strin containsString:@"66"]) {
+        datas = @[@{@"image" :@"ic_launch", @"name": Localize(@"实时参数")}, @{@"image" :@"ic_l", @"name": Localize(@"增值服务")}, @{@"image" :@"ic_laun", @"name": Localize(@"定时计量")}, @{@"image" :@"menu_summery", @"name": Localize(@"用电统计")}, @{@"image" :@"ic_launcher2", @"name": Localize(@"时段设置")}, @{@"image" :@"ic_launch1", @"name": Localize(@"延时/定时开关")},];
+    }
 //    electrictyModel = @"";
     formatter = [[NSDateFormatter alloc] init];
 
@@ -305,9 +308,23 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
             break;
         case 4:
         {
-            TimeSettingViewController * time = [[TimeSettingViewController alloc] init];
-            time.deviceNo = self.model.id;
-            [self.navigationController pushViewController:time animated:YES];
+            NSString * string = self.model.id;
+            NSString * strin = string;
+            if ([strin containsString:@"61"] || [strin containsString:@"62"] || [strin containsString:@"63"]) {
+                CountDownViewController * count = [[CountDownViewController alloc] initWithNibName:@"CountDownViewController" bundle:nil];
+                count.deviceNo = self.model.id;
+                [self.navigationController pushViewController:count animated:YES];
+            }else {
+                TimeSettingViewController * time = [[TimeSettingViewController alloc] init];
+                time.deviceNo = self.model.id;
+                [self.navigationController pushViewController:time animated:YES];
+            }
+//            if ([strin containsString:@"68"]) {
+//                TimeSettingViewController * time = [[TimeSettingViewController alloc] init];
+//                time.deviceNo = self.model.id;
+//                [self.navigationController pushViewController:time animated:YES];
+//            }
+            
         }
             break;
         case 5:

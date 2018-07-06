@@ -56,6 +56,7 @@ static NSString *const soapNameSpace = @"http://bohansever.top/";
 - (void)requestWithUrl:(NSString *)urlStr parameter:(NSDictionary *)paramater completion:(CompletionBlock)block
 {
     [self requestWithUrl:urlStr parameter:paramater isSign:NO completion:block];
+    ZPLog(@"%@",urlStr);
 }
 
 
@@ -197,5 +198,6 @@ static NSString *const soapNameSpace = @"http://bohansever.top/";
 //    }];
 //
 //}
+
 
 @end

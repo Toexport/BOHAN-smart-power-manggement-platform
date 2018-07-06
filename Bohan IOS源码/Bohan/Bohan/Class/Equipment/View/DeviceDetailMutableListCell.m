@@ -116,8 +116,9 @@ if([self.model.id hasPrefix:@"61"])
 [type  setText:self.model.type];
 [pos  setText:self.model.position];
 
-if (self.model.powerinfo && self.model.powerinfo.length>0) {
     
+//     判断设备是否在线
+if (self.model.powerinfo && self.model.powerinfo.length>0) {
     [online setText:Localize(@"在线")];
     if ([self.model.sort containsString:@"QK01"] || [self.model.sort containsString:@"QK02"] || [self.model.sort containsString:@"QK03"] || [self.model.sort containsString:@"K"]) {
         typeImg.image = [UIImage imageNamed:@"Switch-open.png"];
@@ -140,7 +141,6 @@ if (self.model.powerinfo && self.model.powerinfo.length>0) {
     
     
     NSString *str = [Utils getBinaryByHex:[self.model.powerinfo substringToIndex:2]];
-    
     for (UISwitch *theSwitch in switchs)
     {
         theSwitch.enabled = YES;
@@ -150,7 +150,6 @@ if (self.model.powerinfo && self.model.powerinfo.length>0) {
         [theSwitch setOn:isOpen];
         if (isOpen) {
             theSwitch.backgroundColor = [UIColor getColor:@"54d76a"];
-            
         }else
         {
             theSwitch.backgroundColor = [UIColor redColor];
@@ -164,8 +163,8 @@ if (self.model.powerinfo && self.model.powerinfo.length>0) {
     }else if ([stringg hasPrefix:@"62"]){
         [power setText:[self.model.powerinfo powweer]];
     }
-}else
-{
+}else {
+    
     if ([self.model.sort containsString:@"QK01"] || [self.model.sort containsString:@"QK02"] || [self.model.sort containsString:@"QK03"] || [self.model.sort containsString:@"K"]) {
         typeImg.image = [UIImage imageNamed:@"Switch-close"];
     }

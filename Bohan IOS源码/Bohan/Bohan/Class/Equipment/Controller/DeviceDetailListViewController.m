@@ -21,7 +21,8 @@
     BOOL shouldNotUpdate;
 }
 @property (nonatomic,strong)UITableView *table;
-@property (nonatomic, strong) NSMutableArray *datas;
+@property (nonatomic, strong) NSMutableArray *datas; // 在线设备数组
+@property (nonatomic, strong) NSMutableArray * dates; // 不在线设备数组
 @property (nonatomic, strong) NSArray *status;
 @property (nonatomic, weak) NSTimer *timer;
 
@@ -102,7 +103,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
                 
                 [self.view stopLoading];
                 
-                ZPLog(@"%@",response);// 不知道是不是走这里
+                ZPLog(@"%@",response);
                 
                 if (!error) {
                     self.datas = [[NSArray yy_modelArrayWithClass:[DeviceModel class] json:response[@"content"]] mutableCopy];
@@ -130,9 +131,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
                 [self.table changeState];
                 [self.table reloadData];
                 [self.table noDataReload];
-                
             });
-            
         });
         
     }];
@@ -146,7 +145,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     model.content = USERNAME;
     MyWeakSelf
     [socket sendMultiDataWithModel:model resultBlock:^(id response, NSError *error) {
-        
         if (shouldNotUpdate) {
             shouldNotUpdate = NO;
             return ;
@@ -154,19 +152,27 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
         ZPLog(@"--------%@",response);
         weakSelf.status = [response componentsSeparatedByString:@","];
         for (DeviceModel *model in self.datas) {
-            
             for (NSString *content in _status) {
                 if ([content hasPrefix:model.id]) {
                     model.powerinfo = [content substringFromIndex:model.id.length];
                     model.isOpen = [model.powerinfo isOn];
-                
+                    if (model.powerinfo && model.powerinfo.length>0) {
+                        ZPLog(@"%@,在线",model.powerinfo);
+                        ZPLog(@"%@",model.id);
+                        
+                        
+                        
+                        
+                        
+                    }else {
+                        ZPLog(@"%@,不在线",model.powerinfo);
+                        
+                    }
                 }
             }
         }
-        
         [self.table reloadData];
     }];
-
 }
 
 
@@ -267,24 +273,19 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
         cell.delegate = self;
         cell.indexPath = indexPath;
         [cell setModel:model];
-        
         return cell;
-
     }else {
         DeviceDetailListCell *cell = (DeviceDetailListCell*)[tableView dequeueReusableCellWithIdentifier:deviceDetailCellIdentifier];
         cell.delegate = self;
         cell.indexPath = indexPath;
         [cell setModel:model];
         return cell;
-
     }
 }
 
 #pragma mark 按钮的点击事件
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    
     if (self.status.count == 0) {
         [HintView showHint:Localize(@"当前设备离线不可控制")];
         return;

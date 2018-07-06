@@ -57,7 +57,6 @@ static NSString *const FEEDBACK_URL = @"UserFeedback";
 //获取单个设备信息 （传入参数：设备编号）
 static NSString *const GET_DEVICE_INFO_URL = @"GetDeviceInfo";
 
-
 //获取电器品牌列表(如：美的，格力)
 static NSString *const GET_BRAND_LIST_URL = @"GetLoadBrandList";
 
@@ -66,8 +65,6 @@ static NSString *const GET_NAME_LIST_URL = @"GetLoadNameList";
 
 //获取电器位置列表(如：客厅，卧室)
 static NSString *const GET_POS_NAME_LIST_URL = @"GetPosNameList";
-
-
 
 
 /**
