@@ -1,0 +1,9 @@
+
+/* Class = "UIButton"; normalTitle = "绑定设备"; ObjectID = "3zl-Zj-cX5"; */
+"3zl-Zj-cX5.normalTitle" = "Pair the device";
+
+/* Class = "UILabel"; text = "设备ID"; ObjectID = "BIk-HW-94n"; */
+"BIk-HW-94n.text" = "Device ID";
+
+/* Class = "UITextField"; placeholder = "请输入ID或点击右边按钮扫描"; ObjectID = "P18-r1-myx"; */
+"P18-r1-myx.placeholder" = "Please enter the key or click the right button to scan";

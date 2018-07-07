@@ -1,0 +1,85 @@
+//
+//  WebViewController.m
+//  Bohan
+//
+//  Created by Yang Lin on 2018/1/5.
+//  Copyright © 2018年 Bohan. All rights reserved.
+//
+
+#import "WebViewController.h"
+#import  <WebKit/WebKit.h>
+#import "WKWebView+Utils.h"
+#import "DebuggingANDPublishing.pch"
+@interface WebViewController ()<WKNavigationDelegate>
+
+@property (nonatomic, strong)WKWebView *wkwebView;
+
+@end
+
+@implementation WebViewController
+
+
+- (instancetype)initWithTitle:(NSString *)name urlStr:(NSString *)url
+{
+    self = [super init];
+    
+    if (self) {
+        
+        self.title = Localize(name);
+        [self.wkwebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
+        
+    }
+    return self;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    [self.view addSubview:self.wkwebView];
+    
+    [self.view startLoading];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
+
+
+- (WKWebView *)wkwebView
+{
+    if (!_wkwebView) {
+        
+        _wkwebView = [WKWebView initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
+        
+        _wkwebView.backgroundColor = [UIColor clearColor];
+//        _wkwebView.UIDelegate = self;
+        _wkwebView.navigationDelegate = self;
+        _wkwebView.allowsBackForwardNavigationGestures =YES;//打开网页间的 滑动返回
+        //
+        //        [self initProgressView];
+        //
+        //        [_wkwebView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];//注册observer 拿到加载进度
+    }
+    
+    return _wkwebView;
+}
+
+- (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
+    [self.view stopLoading];
+
+}
+
+- (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
+    [self.view stopLoading];
+}
+-(void)dealloc
+{
+    _wkwebView.navigationDelegate = nil;
+    _wkwebView.UIDelegate = nil;
+    
+    ZPLog(@"wkwebview dealloc");
+}
+
+
+
+@end

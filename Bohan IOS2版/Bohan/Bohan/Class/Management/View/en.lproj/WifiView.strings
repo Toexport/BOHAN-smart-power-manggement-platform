@@ -1,0 +1,24 @@
+
+/* Class = "UILabel"; text = "第②步:请将智能设备通电后，长按左方向键4~7秒至屏幕显示CONNECT;"; ObjectID = "5Lz-xB-Pt9"; */
+"5Lz-xB-Pt9.text" = "Step 2 : Wait 4 to 7 seconds after power On the smart device for display to show 'CONNECT' then press the left arrow key to connect device";
+
+/* Class = "UILabel"; text = "WiFi"; ObjectID = "5SU-JT-7to"; */
+"5SU-JT-7to.text" = "WiFi";
+
+/* Class = "UILabel"; text = "第①步:请您将本手机加入家庭WiFi;"; ObjectID = "LRC-6C-OdR"; */
+"LRC-6C-OdR.text" = "Step 1 : Please add your mobile to your home WiFi\nStep 2 : Wait 4 to 7 seconds after power On the smart device for display to show 'CONNECT' then press the left arrow key to connect device\nStep 3 : Please enter the Wifi password and click the 'Add' button";
+
+/* Class = "UITextField"; placeholder = "请输入WiFi"; ObjectID = "j07-hf-AZt"; */
+"j07-hf-AZt.placeholder" = "Please enter wifi account number";
+
+/* Class = "UIButton"; normalTitle = "Add"; ObjectID = "oX3-SS-xbX"; */
+"oX3-SS-xbX.normalTitle" = "Add";
+
+/* Class = "UITextField"; placeholder = "请输入密码"; ObjectID = "pfP-gd-Xms"; */
+"pfP-gd-Xms.placeholder" = "Please enter wifi password";
+
+/* Class = "UILabel"; text = "第③步:请在下方输入WiFi密码并点击添加按钮。"; ObjectID = "sZy-Je-QpU"; */
+"sZy-Je-QpU.text" = "Step 3 : Please enter the Wifi password and click the 'Add' button";
+
+/* Class = "UILabel"; text = "确认密码"; ObjectID = "u7R-yg-nMN"; */
+"u7R-yg-nMN.text" = "Confirm password";

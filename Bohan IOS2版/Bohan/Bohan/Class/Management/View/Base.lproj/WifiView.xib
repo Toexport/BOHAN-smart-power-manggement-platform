@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="WifiView">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="299"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iF1-gO-T75">
+                    <rect key="frame" x="12" y="12" width="351" height="82.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LRC-6C-OdR">
+                            <rect key="frame" x="10" y="10" width="331" height="62.5"/>
+                            <string key="text">第①步:请您将本手机加入家庭WiFi;
+第②步:请将智能设备通电后，长按左方向键4~7秒至屏幕显示CONNECT;
+第③步:请在下方输入Wifi密码并点击添加按钮"</string>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="LRC-6C-OdR" firstAttribute="leading" secondItem="iF1-gO-T75" secondAttribute="leading" constant="10" id="3ri-Ss-1b3"/>
+                        <constraint firstAttribute="bottom" secondItem="LRC-6C-OdR" secondAttribute="bottom" constant="10" id="aPp-bx-lBR"/>
+                        <constraint firstAttribute="trailing" secondItem="LRC-6C-OdR" secondAttribute="trailing" constant="10" id="aTi-iF-QM8"/>
+                        <constraint firstItem="LRC-6C-OdR" firstAttribute="top" secondItem="iF1-gO-T75" secondAttribute="top" constant="10" id="ldX-Ot-uno"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
+                            <color key="value" red="0.93333333330000001" green="0.93333333330000001" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gWl-ZZ-be4">
+                    <rect key="frame" x="12" y="106.5" width="351" height="160"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WiFi" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5SU-JT-7to">
+                            <rect key="frame" x="10" y="8" width="26.5" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="qta-VA-wKG"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入WiFi" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="j07-hf-AZt" customClass="EdgetTextField">
+                            <rect key="frame" x="10" y="29" width="331" height="30"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="JsR-0W-QBo"/>
+                            </constraints>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="next"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入密码" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="pfP-gd-Xms" customClass="EdgetTextField">
+                            <rect key="frame" x="10" y="85" width="331" height="30"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="uFk-6a-0lU"/>
+                            </constraints>
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation" returnKeyType="next" secureTextEntry="YES"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="4"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </textField>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="确认密码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u7R-yg-nMN">
+                            <rect key="frame" x="10" y="64" width="53.5" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="ICg-xg-fCM"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BXH-K7-M00">
+                            <rect key="frame" x="0.0" y="120" width="55" height="35"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="55" id="3Pi-cX-zWl"/>
+                                <constraint firstAttribute="height" constant="35" id="9jq-yO-rKf"/>
+                            </constraints>
+                            <state key="normal" image="addfast_circle_filled"/>
+                            <state key="selected" image="addfast_circle"/>
+                            <connections>
+                                <action selector="showPwdAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="e41-0G-Rk8"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oX3-SS-xbX">
+                            <rect key="frame" x="281" y="125" width="60" height="25"/>
+                            <color key="backgroundColor" red="0.047058823530000002" green="0.3411764706" blue="0.70980392160000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="60" id="451-al-Nfa"/>
+                                <constraint firstAttribute="height" constant="25" id="tdW-VS-is1"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                            <state key="normal" title="Add">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="10"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="addAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="rrb-pj-aGk"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.23921568630000001" green="0.55294117649999996" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="u7R-yg-nMN" firstAttribute="top" secondItem="j07-hf-AZt" secondAttribute="bottom" constant="5" id="2KR-eb-CPK"/>
+                        <constraint firstItem="j07-hf-AZt" firstAttribute="top" secondItem="5SU-JT-7to" secondAttribute="bottom" id="49C-GT-ZNB"/>
+                        <constraint firstItem="BXH-K7-M00" firstAttribute="top" secondItem="pfP-gd-Xms" secondAttribute="bottom" constant="5" id="6dl-HL-l7h"/>
+                        <constraint firstItem="5SU-JT-7to" firstAttribute="top" secondItem="gWl-ZZ-be4" secondAttribute="top" constant="8" id="6fq-py-v8v"/>
+                        <constraint firstItem="pfP-gd-Xms" firstAttribute="height" secondItem="j07-hf-AZt" secondAttribute="height" id="Fs1-ro-oP2"/>
+                        <constraint firstItem="5SU-JT-7to" firstAttribute="leading" secondItem="gWl-ZZ-be4" secondAttribute="leading" constant="10" id="GF8-Fm-oaB"/>
+                        <constraint firstItem="u7R-yg-nMN" firstAttribute="leading" secondItem="5SU-JT-7to" secondAttribute="leading" id="Ioy-zt-GDi"/>
+                        <constraint firstItem="pfP-gd-Xms" firstAttribute="top" secondItem="u7R-yg-nMN" secondAttribute="bottom" id="JDZ-Hu-DFp"/>
+                        <constraint firstItem="oX3-SS-xbX" firstAttribute="trailing" secondItem="pfP-gd-Xms" secondAttribute="trailing" id="NMT-tL-sEm"/>
+                        <constraint firstAttribute="trailing" secondItem="j07-hf-AZt" secondAttribute="trailing" constant="10" id="b0z-Q2-592"/>
+                        <constraint firstItem="j07-hf-AZt" firstAttribute="leading" secondItem="5SU-JT-7to" secondAttribute="leading" id="e22-Do-dX9"/>
+                        <constraint firstItem="pfP-gd-Xms" firstAttribute="trailing" secondItem="j07-hf-AZt" secondAttribute="trailing" id="exG-bT-K7L"/>
+                        <constraint firstItem="pfP-gd-Xms" firstAttribute="leading" secondItem="j07-hf-AZt" secondAttribute="leading" id="i2V-HP-zxA"/>
+                        <constraint firstItem="BXH-K7-M00" firstAttribute="leading" secondItem="gWl-ZZ-be4" secondAttribute="leading" id="jls-yb-tHs"/>
+                        <constraint firstItem="oX3-SS-xbX" firstAttribute="top" secondItem="pfP-gd-Xms" secondAttribute="bottom" constant="10" id="ohu-eE-9AY"/>
+                        <constraint firstAttribute="height" constant="160" id="r3d-XK-Rjk"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="10"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="gWl-ZZ-be4" firstAttribute="leading" secondItem="iF1-gO-T75" secondAttribute="leading" id="0AO-sg-KiO"/>
+                <constraint firstItem="gWl-ZZ-be4" firstAttribute="top" secondItem="iF1-gO-T75" secondAttribute="bottom" constant="12" id="DXc-kN-cn1"/>
+                <constraint firstItem="gWl-ZZ-be4" firstAttribute="trailing" secondItem="iF1-gO-T75" secondAttribute="trailing" id="cbO-eg-WCP"/>
+                <constraint firstItem="iF1-gO-T75" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="12" id="kcb-rl-iuB"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="iF1-gO-T75" secondAttribute="trailing" constant="12" id="pYn-4V-7Ai"/>
+                <constraint firstItem="iF1-gO-T75" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="12" id="sxs-6I-b2C"/>
+            </constraints>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="pwdTF" destination="pfP-gd-Xms" id="aws-Bk-eUd"/>
+                <outlet property="ssidTF" destination="j07-hf-AZt" id="jPl-rF-XMB"/>
+                <outlet property="steps" destination="LRC-6C-OdR" id="7ls-gc-cUs"/>
+            </connections>
+            <point key="canvasLocation" x="34.5" y="304.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="addfast_circle" width="24" height="24"/>
+        <image name="addfast_circle_filled" width="24" height="24"/>
+    </resources>
+</document>

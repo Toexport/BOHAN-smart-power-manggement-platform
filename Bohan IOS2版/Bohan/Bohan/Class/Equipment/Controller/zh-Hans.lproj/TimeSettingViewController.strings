@@ -1,0 +1,33 @@
+
+/* Class = "UIButton"; normalTitle = "设置"; ObjectID = "7pW-Ni-7vs"; */
+"7pW-Ni-7vs.normalTitle" = "设置";
+
+/* Class = "UILabel"; text = "时段运行模式"; ObjectID = "DBN-Kp-vUq"; */
+"DBN-Kp-vUq.text" = "时段运行模式";
+
+/* Class = "UIButton"; normalTitle = "00:00"; ObjectID = "P0c-cr-5Yc"; */
+"P0c-cr-5Yc.normalTitle" = "00:00";
+
+/* Class = "UIButton"; normalTitle = "开启"; ObjectID = "PIG-f7-H4B"; */
+"PIG-f7-H4B.normalTitle" = "开启";
+
+/* Class = "UILabel"; text = "循环通断模式"; ObjectID = "VHI-DR-zo2"; */
+"VHI-DR-zo2.text" = "循环通断模式";
+
+/* Class = "UILabel"; text = "设备未设置时段数据，请点击设置"; ObjectID = "VoE-lW-GIt"; */
+"VoE-lW-GIt.text" = "设备未设置时段数据，请点击设置";
+
+/* Class = "UILabel"; text = "关闭"; ObjectID = "ZNT-LU-jgc"; */
+"ZNT-LU-jgc.text" = "关闭";
+
+/* Class = "UILabel"; text = "开启"; ObjectID = "bOh-om-8oe"; */
+"bOh-om-8oe.text" = "开启";
+
+/* Class = "UIButton"; normalTitle = "00:00"; ObjectID = "fGb-02-JDR"; */
+"fGb-02-JDR.normalTitle" = "00:00";
+
+/* Class = "UIButton"; normalTitle = "取消"; ObjectID = "jGx-kk-kJ9"; */
+"jGx-kk-kJ9.normalTitle" = "取消";
+
+/* Class = "UIButton"; normalTitle = "取消"; ObjectID = "qeQ-xB-hIB"; */
+"qeQ-xB-hIB.normalTitle" = "取消";

@@ -1,0 +1,69 @@
+
+/* Class = "UILabel"; text = "单价"; ObjectID = "1dr-wN-RJv"; */
+"1dr-wN-RJv.text" = "Unit Cost";
+
+/* Class = "UITextField"; placeholder = "请输入负荷门限"; ObjectID = "8nc-PW-bZX"; */
+"8nc-PW-bZX.placeholder" = "Please enter the load threshold";
+
+/* Class = "UILabel"; text = "不断电"; ObjectID = "A2i-sd-uZc"; */
+"A2i-sd-uZc.text" = "Uninterrupted";
+
+/* Class = "UILabel"; text = "5分钟"; ObjectID = "CSy-SD-xbm"; */
+"CSy-SD-xbm.text" = "0minute";
+
+/* Class = "UILabel"; text = "智能断电控制："; ObjectID = "DnA-HN-skS"; */
+"DnA-HN-skS.text" = "Intelligent power off control:";
+
+/* Class = "UILabel"; text = "2W"; ObjectID = "Dr9-bd-rH0"; */
+"Dr9-bd-rH0.text" = "0W";
+
+/* Class = "UILabel"; text = "单价"; ObjectID = "Ef9-Sb-1L4"; */
+"Ef9-Sb-1L4.text" = "Unit Cost";
+
+/* Class = "UILabel"; text = "负荷门限"; ObjectID = "J8G-ht-ZmN"; */
+"J8G-ht-ZmN.text" = "Load Threshold";
+
+/* Class = "UILabel"; text = "ID:"; ObjectID = "Ja7-UI-BrD"; */
+"Ja7-UI-BrD.text" = "ID:";
+
+/* Class = "UILabel"; text = "负荷门限"; ObjectID = "PNs-xd-gHe"; */
+"PNs-xd-gHe.text" = "Load Threshold";
+
+/* Class = "UIButton"; normalTitle = "保存"; ObjectID = "RY6-Ea-dgw"; */
+"RY6-Ea-dgw.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "W"; ObjectID = "WUB-XW-tMI"; */
+"WUB-XW-tMI.text" = "W";
+
+/* Class = "UILabel"; text = "智能断电控制"; ObjectID = "WmK-d3-gJa"; */
+"WmK-d3-gJa.text" = "Intelligent power off control";
+
+/* Class = "UILabel"; text = "修改设置"; ObjectID = "YXI-r0-yKR"; */
+"YXI-r0-yKR.text" = "Modify settings";
+
+/* Class = "UILabel"; text = "智能断电功率设置："; ObjectID = "aeM-pk-brI"; */
+"aeM-pk-brI.text" = "Intelligent power cut power setting:";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "d55-cR-YZL"; */
+"d55-cR-YZL.text" = "0";
+
+/* Class = "UILabel"; text = "元"; ObjectID = "d6n-rt-J5F"; */
+"d6n-rt-J5F.text" = "Dollar";
+
+/* Class = "UILabel"; text = "元"; ObjectID = "e21-AC-zD1"; */
+"e21-AC-zD1.text" = "Dollar";
+
+/* Class = "UIButton"; normalTitle = "保存"; ObjectID = "kiP-CR-853"; */
+"kiP-CR-853.normalTitle" = "Save";
+
+/* Class = "UILabel"; text = "W"; ObjectID = "la6-J0-Gkd"; */
+"la6-J0-Gkd.text" = "W";
+
+/* Class = "UILabel"; text = "0"; ObjectID = "mXC-Ad-xmJ"; */
+"mXC-Ad-xmJ.text" = "0";
+
+/* Class = "UILabel"; text = "断电"; ObjectID = "pH4-32-ubO"; */
+"pH4-32-ubO.text" = "Power off";
+
+/* Class = "UITextField"; placeholder = "请输入单价"; ObjectID = "x6v-mK-ngL"; */
+"x6v-mK-ngL.placeholder" = "Please enter the unit cost";
