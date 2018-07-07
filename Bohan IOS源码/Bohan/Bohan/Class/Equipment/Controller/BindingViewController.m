@@ -136,14 +136,13 @@
     [[NetworkRequest sharedInstance] requestWithUrl:BINDING_DEVICE_URL parameter:dic completion:^(id response, NSError *error) {
         [self.view stopLoading];
         ZPLog(@"%@",response);
-        
         //请求成功
         if (!error) {
 //            [self POSTs];
             WifiConnectViewController * connect = [[WifiConnectViewController alloc] init];
             connect.deviceNo = deviceTF.text;
             [self.navigationController pushViewController:connect animated:YES];
-            
+
 //            判断输入框中的数字是否包含制定的数字，如果有则不跳转直接成功，如果没有需要跳转到下个界面
 //            NSString * string = deviceTF.text;
 //            if ([string hasPrefix:@"65"]) {
@@ -176,37 +175,38 @@
 }
 
 // 获取设备信息（单个）
+- (void)POSTs {
+    [self.view startLoading];
+    NSDictionary * dict = @{@"DeviceCode":deviceTF.text};
+    [[NetworkRequest sharedInstance]requestWithUrl:GET_DEVICE_INFO_URL parameter:dict completion:^(id response, NSError *error) {
+        [self.view stopLoading];
+        ZPLog(@"%@",dict);
+        ZPLog(@"%@",error);
+        ZPLog(@"%@",response);
+    }];
+}
+
+//// 获取所有设备，判断是否是需要加入wifi的
 //- (void)POSTs {
 //    [self.view startLoading];
-//    NSDictionary * dict = @{@"DeviceCode":deviceTF.text};
-//    [[NetworkRequest sharedInstance]requestWithUrl:GET_DEVICE_INFO_URL parameter:dict completion:^(id response, NSError *error) {
-//        [self.view stopLoading];
-//        ZPLog(@"%@",dict);
-//        ZPLog(@"%@",error);
-//        ZPLog(@"%@",response);
+//   [[NetworkRequest sharedInstance] requestWithUrl:GET_DEVICE_LIST_URL parameter:nil completion:^(id response, NSError *error) {
+//       ZPLog(@"%@",response);
+//       NSArray *array = response[@"content"];
+//       NSDictionary * dic = array[0];
+//       NSString * sort = dic[@"sort"];
+//       ZPLog(@"%@",sort);
+//       if ([sort containsString:@"FYGPMT"] || [sort containsString:@"CDMT10"] || [sort containsString:@"CDMT16"]  || [sort containsString:@"CDMT60"]  || [sort containsString:@"GP1P"]  || [sort containsString:@"YCGP10"]  || [sort containsString:@"YCGP16"] || [sort containsString:@"MC"] || [sort containsString:@"GP3P"] || [sort containsString:@"YC"]) {
+//           ZPLog(@"不需要加入wifi");
+//           [self.navigationController popViewControllerAnimated:YES];
+//          [HintView showHint:Localize(@"添加成功")];  // 提示框
+//       }else {
+//           WifiConnectViewController * connect = [[WifiConnectViewController alloc] init];
+//           connect.deviceNo = deviceTF.text;
+//        [self.navigationController pushViewController:connect animated:YES];
+//       }
 //    }];
 //}
 
-// 获取所有设备，判断是否是需要加入wifi的
-- (void)POSTs {
-    [self.view startLoading];
-   [[NetworkRequest sharedInstance] requestWithUrl:GET_DEVICE_LIST_URL parameter:nil completion:^(id response, NSError *error) {
-       ZPLog(@"%@",response);
-       NSArray *array = response[@"content"];
-       NSDictionary * dic = array[0];
-       NSString * sort = dic[@"sort"];
-       ZPLog(@"%@",sort);
-       if ([sort containsString:@"FYGPMT"] || [sort containsString:@"CDMT10"] || [sort containsString:@"CDMT16"]  || [sort containsString:@"CDMT60"]  || [sort containsString:@"GP1P"]  || [sort containsString:@"YCGP10"]  || [sort containsString:@"YCGP16"] || [sort containsString:@"MC"] || [sort containsString:@"GP3P"] || [sort containsString:@"YC"]) {
-           ZPLog(@"不需要加入wifi");
-           [self.navigationController popViewControllerAnimated:YES];
-          [HintView showHint:Localize(@"添加成功")];  // 提示框
-       }else {
-           WifiConnectViewController * connect = [[WifiConnectViewController alloc] init];
-           connect.deviceNo = deviceTF.text;
-        [self.navigationController pushViewController:connect animated:YES];
-       }
-    }];
-}
 //解绑设备 （传入参数：设备编号；设备Key）
 - (void)unBindDevice {
     [self.view startLoading];
