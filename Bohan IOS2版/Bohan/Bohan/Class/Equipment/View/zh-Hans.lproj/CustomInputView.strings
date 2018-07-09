@@ -1,9 +1,0 @@
-
-/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "ObM-dU-Bys"; */
-"ObM-dU-Bys.normalTitle" = "Button";
-
-/* Class = "UITextField"; placeholder = "信息可填写或选择"; ObjectID = "b5L-pU-5Lg"; */
-"b5L-pU-5Lg.placeholder" = "信息可填写或选择";
-
-/* Class = "UILabel"; text = "Label"; ObjectID = "qrz-7e-I0n"; */
-"qrz-7e-I0n.text" = "Label";
