@@ -58,6 +58,7 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
 -(void)animation1
 {
     if (upOrdown == NO) {

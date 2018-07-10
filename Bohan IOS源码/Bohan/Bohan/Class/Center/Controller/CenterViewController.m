@@ -137,40 +137,25 @@
     cell.detailTextLabel.font = Font(15);
     cell.imageView.image = [UIImage imageNamed:dict_[@"image"]];
     self.HeadImage.image = cell.imageView.image;
-    
     if (indexPath.row == 0) {
         cell.accessoryView = headerImg;
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone; // 取消Cell变灰效果
-//        UITapGestureRecognizer *TapGestureRecognizer2 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(headerImage:)];
-//        // 2. 将点击事件添加到label上
-//        [headerImg addGestureRecognizer:TapGestureRecognizer2];
-//        headerImg.userInteractionEnabled = YES; // 可以理解为设置label可被点击
-//        self.headerImg = cell.detailTextLabel;
-        
-    }else if(indexPath.row == 3 || indexPath.row == 4)
-    {
+    }else if(indexPath.row == 3 || indexPath.row == 4) {
         cell.accessoryType = UITableViewCellAccessoryNone;
-        
         if (indexPath.row == 3) {
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@V%@",Localize(@"当前版本"),CURRENTSHORTVERSION];
             cell.selectionStyle = UITableViewCellSelectionStyleNone; // 取消Cell变灰效果
-        }else
-        {
+        }else {
             self.detailTextLabel = cell.detailTextLabel;
             self.detailTextLabel.text = @"0769-22890660";
             self.detailTextLabel.textColor = [UIColor blueColor];
-//            cell.selectionStyle = UITableViewCellSelectionStyleNone; // 取消Cell变灰效果
-//            //     1. 创建一个点击事件，点击时触发labelClick方法
-//            UITapGestureRecognizer * TapGestureRecognizer1 = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapOnLabel:)];
-//            // 2. 将点击事件添加到label上
-//            [cell.detailTextLabel addGestureRecognizer:TapGestureRecognizer1];
-//            cell.detailTextLabel.userInteractionEnabled = YES; // 可以理解为设置label可被点击
-//            self.detailTextLabel = cell.detailTextLabel;
-            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone; // 取消Cell变灰效果
+            //     1. 创建一个点击事件，点击时触发labelClick方法
+            UITapGestureRecognizer * TapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTapOnLabel:)];
+            // 2. 将点击事件添加到label上
+            [self.detailTextLabel addGestureRecognizer:TapGestureRecognizer];
+            self.detailTextLabel.userInteractionEnabled = YES; // 可以理解为设置label可被点击
         }
-
-    }else
-    {
+    }else {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     
@@ -185,12 +170,12 @@
     return 45;
 }
 
-//// 3. 在此方法中设置点击label后要触发的操作
-//- (void)handleTapOnLabel:(id)sender {
-//    NSString * ph1 = @"lte";
-//    ph1 = [ph1 stringByAppendingString:self.detailTextLabel.text];
-//    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:ph1]];
-//}
+// 3. 在此方法中设置点击label后要触发的操作
+- (void)handleTapOnLabel:(id)sender {
+    NSString * ph1 = @"tel:";
+    ph1 = [ph1 stringByAppendingString:self.detailTextLabel.text];
+    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:ph1]];
+}
 
 //// 修改头像
 //- (void)headerImage:(id)sender {

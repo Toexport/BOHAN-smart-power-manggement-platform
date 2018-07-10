@@ -55,14 +55,20 @@
 
 // 二维码
 - (IBAction)scanAction {
-    
     ScanViewController *scan = [[ScanViewController alloc] init];
     [scan getResultStr:^(NSString *result) {
         if (result && result.length>0) {
             deviceTF.text = result;
         }
     }];
-    [self presentViewController:scan animated:YES completion:nil];
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        NSLog(@"设备具备相机");
+        [self presentViewController:scan animated:YES completion:nil];
+    }else {
+        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"提示", nil) message:NSLocalizedString(@"您的设备暂时不支持扫码", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"确定", nil) otherButtonTitles:nil, nil];
+        [alert show];
+        ZPLog(@"没有摄像");
+    }
 }
 
 

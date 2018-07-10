@@ -51,6 +51,7 @@
 //ID :    ID:
 "设备信息" = "Device Information";
 "设备信息保存成功" = "Device information saved successfully";
+"您的设备暂时不支持扫码" = "Scanning addition is not currently supported on your device";
 "智能连接" = "Smart connected";
 "信息保存成功!" = "Information saved successfully";
 //\n本设备还没有进行智能连接哦    \n The device is not connected

@@ -18,6 +18,7 @@
 "Change my avatar" = "修改头像";
 "Camera" = "相机";
 "Photo" = "相册";
+"Scanning addition is not currently supported on your device" = "您的设备暂时不支持扫码";
 "Cancel" = "取消";
 "Your device does not support taking photos" = "您的设备不支持拍照";
 "No camera" = "没有摄像头";
