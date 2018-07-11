@@ -31,7 +31,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.title = Localize(@"设备列表");
     [self rightBarImage:@"qrcode_scan" action:@selector(bindDevice)];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(languageChange) name:AppLanguageDidChangeNotification object:nil];

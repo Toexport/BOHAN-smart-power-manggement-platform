@@ -20,8 +20,7 @@
 
 #pragma mark - 生命周期
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [super awakeFromNib];
 //    [UIColor wr_setDefaultNavBarTintColor:[UIColor whiteColor]];
      //    self.view.backgroundColor = [UIColor whiteColor];
@@ -56,7 +55,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.view.backgroundColor = kBackBackroundColor;
     
 
@@ -80,36 +78,28 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
 #pragma mark - 私有方法
-
-
-
-- (void)toLogin
-{
+- (void)toLogin {
     [self toLogin:NO];
 }
 
-- (void)toLogin:(BOOL)toPrePage
-{
+- (void)toLogin:(BOOL)toPrePage {
 //    LoginViewController *login = [[LoginViewController alloc] initWithNibName:@"LoginViewController" bundle:nil];
 //    login.toPrePage = toPrePage;
 //    [self.navigationController pushViewController:login animated:YES];
 }
 
 
-- (UIView *)frontView
-{
+- (UIView *)frontView {
     if (!_frontView) {
         _frontView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
         [_frontView setBackgroundColor:[UIColor whiteColor]];
     }
-    
     return _frontView;
 }
 

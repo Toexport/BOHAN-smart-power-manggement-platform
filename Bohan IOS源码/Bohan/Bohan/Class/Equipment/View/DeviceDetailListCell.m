@@ -42,8 +42,8 @@ _model = model;
 if (sender.isOn) {
 
     openSwitch.backgroundColor = [UIColor getColor:@"54d76a"];
-}else
-{
+}else {
+    
     openSwitch.backgroundColor = [UIColor redColor];
 }
 
@@ -53,23 +53,19 @@ if (self.delegate && [self.delegate respondsToSelector:@selector(didSwitchOpen:w
 }
 }
 
-- (void)prepareForReuse
-{
+- (void)prepareForReuse {
 [super prepareForReuse];
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
 [super layoutSubviews];
 openSwitch.layer.cornerRadius = 16;
-
-[name  setText:self.model.name];
+[name setText:self.model.name];
 [deviceId  setText:[NSString stringWithFormat:@"%@%@",Localize(@"设备号："),self.model.id]];
 [type  setText:self.model.type];
 [pos  setText:self.model.position];
 
 if (self.model.powerinfo && self.model.powerinfo.length>0) {
-    
     [online setText:Localize(@"在线")];
     if ([self.model.sort containsString:@"QK01"] || [self.model.sort containsString:@"QK02"] || [self.model.sort containsString:@"QK03"] || [self.model.sort containsString:@"K"]) {
         typeImg.image = [UIImage imageNamed:@"Switch-open.png"];
@@ -99,14 +95,12 @@ if (self.model.powerinfo && self.model.powerinfo.length>0) {
         openSwitch.backgroundColor = [UIColor getColor:@"54d76a"];
         [statusImg setImage:[UIImage imageNamed:@"open_open"]];
 
-    }else
-    {
+    }else {
         openSwitch.backgroundColor = [UIColor redColor];
         [statusImg setImage:[UIImage imageNamed:@"open_close"]];
-
     }
     
-    NSString *str = [Utils getBinaryByHex:[self.model.powerinfo substringToIndex:2]];
+    NSString * str = [Utils getBinaryByHex:[self.model.powerinfo substringToIndex:2]];
     if (!self.model.isOpen && [[str substringWithRange:NSMakeRange(1, 1)] isEqualToString:@"1"]) {
         [status setText:Localize(@"设备已断电(超负荷断电)")];
         
@@ -116,8 +110,7 @@ if (self.model.powerinfo && self.model.powerinfo.length>0) {
         [attr addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(attr.length - length - 1, length)];
         status.attributedText = attr;
 
-    }else
-    {
+    }else {
         [status setText:[statusStr statusString]];
     }
     NSString * strin = self.model.sort;

@@ -12,4 +12,4 @@
 "SHd-OX-o0R.normalTitle" = "查询设备信息";
 
 /* Class = "UILabel"; text = "名称："; ObjectID = "ieF-Ws-hch"; */
-"ieF-Ws-hch.text" = "名称：";
+"ieF-Ws-hch.text" = "类型:";

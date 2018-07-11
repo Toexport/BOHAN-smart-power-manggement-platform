@@ -134,7 +134,6 @@
 
     [socket sendMultiDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
-
         NSArray *status = [response componentsSeparatedByString:@","];
         for (NSString *content in status) {
             if ([content hasPrefix:weakSelf.deviceNo]) {

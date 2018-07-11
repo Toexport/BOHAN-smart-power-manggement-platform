@@ -16,7 +16,6 @@
     if (self.length >=10) {
         statu = [self substringWithRange:NSMakeRange(2, 2)];
     }
-    
     return statu;
 }
 

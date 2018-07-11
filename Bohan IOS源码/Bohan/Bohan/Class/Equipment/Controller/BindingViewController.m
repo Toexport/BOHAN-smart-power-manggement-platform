@@ -71,9 +71,7 @@
     }
 }
 
-
 - (IBAction)bindAction {
-    
 //    [self unBindDevice];
     if (deviceTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
         [HintView showHint:Localize(@"请填完整设备信息")];

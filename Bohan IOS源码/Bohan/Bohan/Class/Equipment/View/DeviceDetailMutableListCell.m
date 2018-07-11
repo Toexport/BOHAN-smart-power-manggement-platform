@@ -67,28 +67,23 @@ _model = model;
 
 
 if (sender.isOn) {
-    
     sender.backgroundColor = [UIColor getColor:@"54d76a"];
-}else
-{
+}else {
     sender.backgroundColor = [UIColor redColor];
 }
 
 if (self.delegate && [self.delegate respondsToSelector:@selector(didSwitchOpen:switchCode:withIndexPath:)]) {
-    
     NSString *code = [NSString stringWithFormat:@"10000%@%@%@",openSwitch3.on?@"0":@"1", openSwitch2.on?@"0":@"1", openSwitch1.on?@"0":@"1"];
     
     [self.delegate didSwitchOpen:sender.on switchCode:[Utils getHexByBinary:code] withIndexPath:self.indexPath];
 }
 }
 
-- (void)prepareForReuse
-{
+- (void)prepareForReuse {
 [super prepareForReuse];
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
 [super layoutSubviews];
 //    openSwitch.layer.cornerRadius = 16;
 
@@ -118,7 +113,7 @@ if([self.model.id hasPrefix:@"61"])
 
     
 //     判断设备是否在线
-if (self.model.powerinfo && self.model.powerinfo.length>0) {
+if (self.model.powerinfo && self.model.powerinfo.length>0) { // powerinfo 是用电
     [online setText:Localize(@"在线")];
     if ([self.model.sort containsString:@"QK01"] || [self.model.sort containsString:@"QK02"] || [self.model.sort containsString:@"QK03"] || [self.model.sort containsString:@"K"]) {
         typeImg.image = [UIImage imageNamed:@"Switch-open.png"];

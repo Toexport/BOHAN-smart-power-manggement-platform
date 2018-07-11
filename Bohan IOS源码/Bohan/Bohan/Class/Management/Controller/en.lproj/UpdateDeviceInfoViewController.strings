@@ -12,4 +12,4 @@
 "SHd-OX-o0R.normalTitle" = "Query device information";
 
 /* Class = "UILabel"; text = "名称："; ObjectID = "ieF-Ws-hch"; */
-"ieF-Ws-hch.text" = "Name :";
+"ieF-Ws-hch.text" = "type:";

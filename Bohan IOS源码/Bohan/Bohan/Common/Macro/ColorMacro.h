@@ -12,8 +12,10 @@
 //颜色宏定义
 #define RGBColor(R,G,B,A) [UIColor colorWithRed:R/255.0f green:G/255.0f blue:B/255.0f alpha:A]
 #define rgbColor(R,G,B) [UIColor colorWithRed:R/255.0f green:G/255.0f blue:B/255.0f alpha:1.0f]
+
 //主色调
 #define kDefualtColor [UIColor getColor:@"3c94f2"]
+
 //控制器背景色
 #define kBackBackroundColor [UIColor getColor:@"fafafa"]
 

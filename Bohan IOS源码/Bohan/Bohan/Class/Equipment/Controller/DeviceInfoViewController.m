@@ -121,7 +121,6 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
         [weakSelf.view stopLoading];
         
         if (!error) {
-            
             isOnline = YES;
             BOOL open = YES;
 

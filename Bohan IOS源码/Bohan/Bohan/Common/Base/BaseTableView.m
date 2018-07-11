@@ -25,20 +25,16 @@
     self.datas = [NSArray array];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     return [self initWithFrame:frame shouldRefresh:NO];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame shouldRefresh:(BOOL)fresh
-{
+- (instancetype)initWithFrame:(CGRect)frame shouldRefresh:(BOOL)fresh {
     return [self initWithFrame:frame shouldRefresh:fresh shouldPage:NO];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame shouldRefresh:(BOOL)fresh shouldPage:(BOOL)page
-{
+- (instancetype)initWithFrame:(CGRect)frame shouldRefresh:(BOOL)fresh shouldPage:(BOOL)page {
     self = [super initWithFrame:frame];
-    
     if (self) {
         [self shouldRefresh:fresh shouldPage:page];
     }
@@ -46,13 +42,11 @@
     return self;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style
-{
+- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
     return [self initWithFrame:frame style:style shouldRefresh:NO];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style shouldRefresh:(BOOL)fresh
-{
+- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style shouldRefresh:(BOOL)fresh {
     return [self initWithFrame:frame style:style shouldRefresh:fresh shouldPage:NO];
 }
 
