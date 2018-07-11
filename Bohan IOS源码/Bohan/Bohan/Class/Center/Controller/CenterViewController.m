@@ -12,7 +12,7 @@
 #import "UIButton+EdgeInsets.h"
 #import "NSBundle+AppLanguageSwitch.h"
 #import "SelectPhotoManager.h"
-//#import "UIImageView+WebCache.h"
+#import "LanguageController.h"
 #import "DebuggingANDPublishing.pch"
 @interface CenterViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
@@ -257,6 +257,8 @@
         
         }else
             if (indexPath.row == 5) {
+//                LanguageController * Laguage = [[LanguageController alloc]init];
+//                [self.navigationController pushViewController:Laguage animated:YES];
         UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:Localize(@"语言选择") message:nil preferredStyle:UIAlertControllerStyleAlert];
         
         UIAlertAction *chinessAction = [UIAlertAction actionWithTitle:Localize(@"中文") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {

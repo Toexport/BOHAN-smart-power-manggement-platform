@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		05472D5687BB542915B46B7D /* Pods_Bohan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B7C34C415E2EAE93F66FEA /* Pods_Bohan.framework */; };
 		C405AE4320E7465B00ED77E4 /* ShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C405AE4520E7465B00ED77E4 /* ShareView.xib */; };
+		C47B4A9C20F5CCC100DAD5D3 /* LanguageController.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4A9A20F5CCC100DAD5D3 /* LanguageController.m */; };
+		C47B4A9D20F5CCC100DAD5D3 /* LanguageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C47B4A9B20F5CCC100DAD5D3 /* LanguageController.xib */; };
+		C47B4AAD20F5D3D500DAD5D3 /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4AAC20F5D3D500DAD5D3 /* NSBundle+Language.m */; };
+		C47B4AB520F5DF9F00DAD5D3 /* UIButton+countDown.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4AAF20F5DF9F00DAD5D3 /* UIButton+countDown.m */; };
+		C47B4AB620F5DF9F00DAD5D3 /* CALayer+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4AB320F5DF9F00DAD5D3 /* CALayer+UIColor.m */; };
+		C47B4AB720F5DF9F00DAD5D3 /* UIViewController+LLProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4AB420F5DF9F00DAD5D3 /* UIViewController+LLProgress.m */; };
 		C4F1A24620E5D3F900052B24 /* SelectPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F1A24520E5D3F900052B24 /* SelectPhotoManager.m */; };
 		C4F1A24720E5D9EC00052B24 /* VerificationCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4F1A24920E5D9EC00052B24 /* VerificationCodeViewController.xib */; };
 		CC0F4827200CFB9700E184F8 /* NSString+HeartDecode.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0F4826200CFB9700E184F8 /* NSString+HeartDecode.m */; };
@@ -173,6 +179,17 @@
 		C405AE4420E7465B00ED77E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ShareView.xib; sourceTree = "<group>"; };
 		C405AE4720E7465D00ED77E4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ShareView.strings; sourceTree = "<group>"; };
 		C405AE4920E7465F00ED77E4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ShareView.strings"; sourceTree = "<group>"; };
+		C47B4A9920F5CCC100DAD5D3 /* LanguageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LanguageController.h; sourceTree = "<group>"; };
+		C47B4A9A20F5CCC100DAD5D3 /* LanguageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LanguageController.m; sourceTree = "<group>"; };
+		C47B4A9B20F5CCC100DAD5D3 /* LanguageController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageController.xib; sourceTree = "<group>"; };
+		C47B4AAB20F5D3D400DAD5D3 /* NSBundle+Language.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSBundle+Language.h"; sourceTree = "<group>"; };
+		C47B4AAC20F5D3D500DAD5D3 /* NSBundle+Language.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSBundle+Language.m"; sourceTree = "<group>"; };
+		C47B4AAF20F5DF9F00DAD5D3 /* UIButton+countDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+countDown.m"; sourceTree = "<group>"; };
+		C47B4AB020F5DF9F00DAD5D3 /* CALayer+UIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+UIColor.h"; sourceTree = "<group>"; };
+		C47B4AB120F5DF9F00DAD5D3 /* UIViewController+LLProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LLProgress.h"; sourceTree = "<group>"; };
+		C47B4AB220F5DF9F00DAD5D3 /* UIButton+countDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+countDown.h"; sourceTree = "<group>"; };
+		C47B4AB320F5DF9F00DAD5D3 /* CALayer+UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+UIColor.m"; sourceTree = "<group>"; };
+		C47B4AB420F5DF9F00DAD5D3 /* UIViewController+LLProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LLProgress.m"; sourceTree = "<group>"; };
 		C4F1A24420E5D3F900052B24 /* SelectPhotoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectPhotoManager.h; sourceTree = "<group>"; };
 		C4F1A24520E5D3F900052B24 /* SelectPhotoManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectPhotoManager.m; sourceTree = "<group>"; };
 		C4F1A24820E5D9EC00052B24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/VerificationCodeViewController.xib; sourceTree = "<group>"; };
@@ -515,6 +532,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C47B4AAE20F5DF9F00DAD5D3 /* ZP_registrationTimerBut */ = {
+			isa = PBXGroup;
+			children = (
+				C47B4AB220F5DF9F00DAD5D3 /* UIButton+countDown.h */,
+				C47B4AAF20F5DF9F00DAD5D3 /* UIButton+countDown.m */,
+				C47B4AB020F5DF9F00DAD5D3 /* CALayer+UIColor.h */,
+				C47B4AB320F5DF9F00DAD5D3 /* CALayer+UIColor.m */,
+				C47B4AB120F5DF9F00DAD5D3 /* UIViewController+LLProgress.h */,
+				C47B4AB420F5DF9F00DAD5D3 /* UIViewController+LLProgress.m */,
+			);
+			path = ZP_registrationTimerBut;
+			sourceTree = "<group>";
+		};
 		C7BFA176DDE33FCA740149C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -607,6 +637,8 @@
 				CC2455C21FF745DB00616916 /* BaseTableView.m */,
 				CC2455C31FF745DB00616916 /* BaseViewController.h */,
 				CC2455C41FF745DB00616916 /* BaseViewController.m */,
+				C47B4AAB20F5D3D400DAD5D3 /* NSBundle+Language.h */,
+				C47B4AAC20F5D3D500DAD5D3 /* NSBundle+Language.m */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -961,6 +993,10 @@
 				CC41853B20283D880006F457 /* FeedbackViewController.h */,
 				CC41853C20283D880006F457 /* FeedbackViewController.m */,
 				CC8090462046FB4A00265FE0 /* FeedbackViewController.xib */,
+				C47B4A9920F5CCC100DAD5D3 /* LanguageController.h */,
+				C47B4A9A20F5CCC100DAD5D3 /* LanguageController.m */,
+				C47B4A9B20F5CCC100DAD5D3 /* LanguageController.xib */,
+				C47B4AAE20F5DF9F00DAD5D3 /* ZP_registrationTimerBut */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1422,6 +1458,7 @@
 				CC349F3720A890DE00BD6C6A /* DeviceInfoCollectionCell.xib in Resources */,
 				CC2455B11FF7450700616916 /* Main.storyboard in Resources */,
 				C405AE4320E7465B00ED77E4 /* ShareView.xib in Resources */,
+				C47B4A9D20F5CCC100DAD5D3 /* LanguageController.xib in Resources */,
 				CC24568B1FF745DB00616916 /* ResetPwdViewController.xib in Resources */,
 				CC2456AB1FF94D7300616916 /* DeviceTableViewCell.xib in Resources */,
 				CC1EFF31204BF061002811CB /* WifiView.xib in Resources */,
@@ -1525,6 +1562,7 @@
 				CC24565F1FF745DB00616916 /* NetworkRequest+Utils.m in Sources */,
 				CC2456A01FF8F6FA00616916 /* BindingViewController.m in Sources */,
 				CC2456781FF745DB00616916 /* UIViewController+Utils.m in Sources */,
+				C47B4AB720F5DF9F00DAD5D3 /* UIViewController+LLProgress.m in Sources */,
 				CCE9E59A200644FD008439F3 /* ESPTouchTaskParameter.m in Sources */,
 				CC2456901FF745DB00616916 /* EquipmentTableViewCell.m in Sources */,
 				CCB59D852012371F00439799 /* TimeSettingViewController.m in Sources */,
@@ -1562,12 +1600,14 @@
 				CCE9E59B200644FD008439F3 /* ESPUDPSocketClient.m in Sources */,
 				CCD5CDBF200F7C84004A2917 /* TimeSettingListViewController.m in Sources */,
 				CC24565D1FF745DB00616916 /* BaseTableView.m in Sources */,
+				C47B4AB520F5DF9F00DAD5D3 /* UIButton+countDown.m in Sources */,
 				CC2456871FF745DB00616916 /* CenterViewController.m in Sources */,
 				CC349F3620A890DE00BD6C6A /* DeviceInfoCollectionCell.m in Sources */,
 				CC1AFD212005077600366CC3 /* WifiConnectViewController.m in Sources */,
 				CC65AB962007C8CA005FB5AE /* CommandModel.m in Sources */,
 				CCCDDE152003D44A00DF468C /* PageCollectionView.m in Sources */,
 				CC42E89D2020EF0B00A64160 /* NSDictionary+Safe.m in Sources */,
+				C47B4AB620F5DF9F00DAD5D3 /* CALayer+UIColor.m in Sources */,
 				CC0F4838200D407300E184F8 /* RealTimeParamTableViewCell.m in Sources */,
 				CCE9E59D200644FD008439F3 /* ESP_ByteUtil.m in Sources */,
 				C4F1A24620E5D3F900052B24 /* SelectPhotoManager.m in Sources */,
@@ -1578,6 +1618,7 @@
 				CC2456651FF745DB00616916 /* NSData+Base64.m in Sources */,
 				CC3B2F96201E270800ADC116 /* WifiView.m in Sources */,
 				CC24567E1FF745DB00616916 /* SliderView.m in Sources */,
+				C47B4AAD20F5D3D500DAD5D3 /* NSBundle+Language.m in Sources */,
 				CC2456AA1FF94D7300616916 /* DeviceTableViewCell.m in Sources */,
 				CC41853E20283D880006F457 /* FeedbackViewController.m in Sources */,
 				CC24565E1FF745DB00616916 /* BaseViewController.m in Sources */,
@@ -1591,6 +1632,7 @@
 				CC2845D4202892F600D79935 /* NSBundle+AppLanguageSwitch.m in Sources */,
 				CCE9E594200644FD008439F3 /* ESPDataCode.m in Sources */,
 				CCCDDE182003D6B500DF468C /* DeviceDetailListViewController.m in Sources */,
+				C47B4A9C20F5CCC100DAD5D3 /* LanguageController.m in Sources */,
 				CC2456831FF745DB00616916 /* HintView.m in Sources */,
 				CC2456601FF745DB00616916 /* NetworkRequest.m in Sources */,
 				CC24566D1FF745DB00616916 /* UIFont+Adaptation.m in Sources */,

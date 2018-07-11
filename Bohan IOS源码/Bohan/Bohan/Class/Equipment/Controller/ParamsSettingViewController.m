@@ -418,7 +418,7 @@
     {
         if (power.text.length == 0)
         {
-            [self LimitL];
+//            [self LimitL];
             [HintView showHint:Localize(@"请输入负荷门限")];
             
             return;
@@ -431,17 +431,24 @@
     model.content = content;
     [self.view startLoading];
     
+    if (limitTF.text == nil && limitTF.text <=0) {
+        ZPLog(@"请输入负荷门限");
+        [HintView showHint:Localize(@"请输入负荷门限")];
+        return;
+    }else {
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
-        
         if (!error) {
-//            没有完成负荷门限
-            if (limitTF.text <= 0) {
-                ZPLog(@"请输入负荷门限");
-                [HintView showHint:Localize(@"请输入负荷门限")];
-            }else {
-                [HintView showHint:Localize(@"保存成功")];
+            if ([self.Coedid containsString:@"YC"]) {
+                if (limit.text == nil && limit.text <= 0) {
+                     ZPLog(@"请输入负荷门限");
+                    [HintView showHint:Localize(@"请输入负荷门限")];
+                }else
+                    if (limit.text.length > 2500) {
+                        [HintView showHint:Localize(@"保存成功")];
+                        return ; // 保存成功需要加return，否则保存超过2500
+                    }
             }
             if (sender.tag == 100) {
                 
@@ -457,7 +464,7 @@
         }
         
     }];
-    
+    }
 }
 
 

@@ -65,41 +65,35 @@
     [self.view addSubview:self.sliderView];
     [self.view addSubview:self.headerView];
     [self.view addSubview:self.barView];
-    
     MyWeakSelf
     [self.barView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.headerView.mas_bottom);
         make.left.right.equalTo(weakSelf.view);
         make.bottom.equalTo(weakSelf.view).offset(-kTabBarHeight);
     }];
-    
     [self loadData];
 }
 
-- (void)loadData
-{
+- (void)loadData {
     [self.view startLoading];
-
     NSString *url = urls[currentIndex];
     [formatter setDateFormat:formatters[currentIndex]];
     NSDictionary *dic = @{keys[currentIndex]:[formatter stringFromDate:selectedDate]};
-
+    
     [[NetworkRequest sharedInstance] requestWithUrl:url parameter:dic completion:^(id response, NSError *error) {
         
         [self.view stopLoading];
         
-        DBLog(@"%@",response);
+        ZPLog(@"%@",response);
         if (!error) {
             dataArray = [NSArray yy_modelArrayWithClass:[PowerModel class] json:response[@"content"]];
             
-        }else
-        {
+        }else {
             [HintView showHint:error.localizedDescription];
             dataArray = nil;
         }
         [self.barView setDatas:dataArray];
 
-        
     }];
     
     

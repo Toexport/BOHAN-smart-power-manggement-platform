@@ -288,6 +288,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
             ParamsSettingViewController *params = [[ParamsSettingViewController alloc] init];
             params.dNo = self.model.id;
             params.Coedid = self.model.sort;
+            ZPLog(@"%@",self.model.sort);
             [self.navigationController pushViewController:params animated:YES];
         }
             break;
