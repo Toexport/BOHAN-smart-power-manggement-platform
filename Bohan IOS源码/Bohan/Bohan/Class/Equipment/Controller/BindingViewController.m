@@ -95,7 +95,7 @@
     });
 }
 
-// 获取设备列表(如：客厅，卧室)
+// 获取(如：客厅，卧室)
 - (void)loadBrandList {
     dispatch_group_async(group, queue, ^{
         dispatch_group_enter(group);
@@ -114,7 +114,7 @@
     
 }
 
-// 获取设备列表(如：客厅，卧室)
+// 获取(如：客厅，卧室)
 - (void)loadNameList
 {
     dispatch_group_async(group, queue, ^{

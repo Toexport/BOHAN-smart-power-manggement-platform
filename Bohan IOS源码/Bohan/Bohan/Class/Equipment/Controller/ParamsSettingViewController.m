@@ -23,7 +23,6 @@ NSMutableArray *powerArr;
 
 - (void)viewDidLoad {
 [super viewDidLoad];
-//    [self ButStatusAttribute];
 self.title = Localize(@"增值服务");
 [self rightBarTitle:Localize(@"刷新") color:[UIColor whiteColor] action:@selector(deviceParams)];
 
@@ -38,19 +37,14 @@ for (int i = 0; i<100; i++) {
     
     [powerArr addObject:[NSString stringWithFormat:@"%d",i]];
 }
-
-
 [deviceId setText:[NSString stringWithFormat:@"ID:%@",self.dNo]];
 [self deviceParams];
 [self getStatus];
 [self getPower];
 [self getDelayTime];
-
-
 }
 
-- (void)deviceParams
-{
+- (void)deviceParams {
 WebSocket *socket = [WebSocket socketManager];
 CommandModel *model = [[CommandModel alloc] init];
 model.command = @"0003";
@@ -83,9 +77,7 @@ MyWeakSelf
 
 }
 
-
-- (void)getStatus
-{
+- (void)getStatus {
 WebSocket *socket = [WebSocket socketManager];
 CommandModel *model = [[CommandModel alloc] init];
 model.command = @"0018";
@@ -235,8 +227,7 @@ MyWeakSelf
 }
 
 
-- (void)changeTime
-{
+- (void)changeTime {
 WebSocket *socket = [WebSocket socketManager];
 CommandModel *model = [[CommandModel alloc] init];
 model.command = @"0016";
@@ -260,8 +251,7 @@ MyWeakSelf
 
 }
 
-- (void)changePower
-{
+- (void)changePower {
 WebSocket *socket = [WebSocket socketManager];
 CommandModel *model = [[CommandModel alloc] init];
 model.command = @"0021";
@@ -276,14 +266,13 @@ MyWeakSelf
     if (!error) {
         
         [HintView showHint:Localize(@"设置成功")];
-    }else
-    {
+    }else {
         [HintView showHint:error.localizedDescription];
     }
-    
 }];
 
 }
+
 // 单价BUt
 - (IBAction)priceBut:(UIButton *)sender {
 if (priceTF.text == nil || priceTF.text.length <= 0) {
@@ -314,7 +303,6 @@ model.deviceNo = self.dNo;
 NSArray *contents;
 NSString *content;
     if (price.text.length == 0) {
-        
         [HintView showHint:Localize(@"请输入单价")];
         return;
     }
@@ -346,17 +334,15 @@ MyWeakSelf
 
 // 负荷门限数据
 - (void)AllDataload {
-WebSocket *socket = [WebSocket socketManager];
+WebSocket * socket = [WebSocket socketManager];
 CommandModel *model = [[CommandModel alloc] init];
 model.deviceNo = self.dNo;
 
 NSArray *contents;
 NSString *content;
 
-    if (power.text.length == 0)
-    {
+    if (power.text.length == 0) {
         [HintView showHint:Localize(@"请输入负荷门限")];
-        
         return;
     }
     model.command = @"0020";
@@ -367,19 +353,15 @@ model.content = content;
 MyWeakSelf
 [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
     [weakSelf.view stopLoading];
-    
     if (!error) {
         [HintView showHint:Localize(@"保存成功")];
             [limit setText:[NSString stringWithFormat:@"%d.%02d",[[content substringToIndex:4] intValue],[[content substringFromIndex:4] intValue]]];
-        
     }else {
-        
         [HintView showHint:error.localizedDescription];
     }
     
 }];
 }
-
 
 
 - (IBAction)selectAction:(UIButton *)sender {
@@ -391,8 +373,7 @@ sender.selected = YES;
 
 if (sender == closeBtn) {
     openBtn.selected = NO;
-}else
-{
+}else {
     closeBtn.selected = NO;
 }
 

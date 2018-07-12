@@ -83,7 +83,7 @@
 "\n\n第②步:请将智能设备通电后，长按左方向键4~7秒至屏幕显示CONNECT;" = "Step 2 : Wait 4 to 7 seconds after power On the smart device for display to show 'CONNECT' then press the left arrow key to connect device";
 "\n\n第③步:请在下方输入Wifi密码并点击添加按钮" = "Step 3 : Please enter the Wifi password and click the 'Add' button";
 "主页" = "Main Menu";
-//设备列表    Device Parameter
+//    Device Parameter
 //所有用电    Total power consumption
 //个人中心    Personel Data
 //设备管理    Device Management

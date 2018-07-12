@@ -51,7 +51,7 @@ static NSString *const FEEDBACK_URL = @"UserFeedback";
 
 
 /**
- *  设备列表模块接口
+ *  模块接口
  */
 
 //获取单个设备信息 （传入参数：设备编号）
@@ -71,7 +71,7 @@ static NSString *const GET_POS_NAME_LIST_URL = @"GetPosNameList";
  *  设备管理模块接口
  */
 
-//获取当前连接用户下所有设备列表 传入参数：电器位置(如:客厅 可空)；电器名称(如：空调 可空)
+//获取当前连接用户下所有 传入参数：电器位置(如:客厅 可空)；电器名称(如：空调 可空)
 static NSString *const GET_DEVICE_LIST_URL = @"GetUserDeviceList";
 
 

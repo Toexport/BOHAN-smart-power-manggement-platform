@@ -114,7 +114,7 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
     [self loadData];
 }
 
-// 获取当前所有设备列表
+// 获取当前所有
 - (void)loadData
 {
     
