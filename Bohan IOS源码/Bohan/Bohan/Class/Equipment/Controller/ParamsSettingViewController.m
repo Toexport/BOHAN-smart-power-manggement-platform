@@ -15,7 +15,7 @@
     NSDateFormatter *formatter;
     NSMutableArray *muniteArr;
     NSMutableArray *powerArr;
-
+    
 }
 @end
 
@@ -23,13 +23,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+//    [self ButStatusAttribute];
     self.title = Localize(@"增值服务");
     [self rightBarTitle:Localize(@"刷新") color:[UIColor whiteColor] action:@selector(deviceParams)];
     
     muniteArr = [NSMutableArray array];
     powerArr = [NSMutableArray array];
-
+    
     for (int i = 0; i<60; i++) {
         
         [muniteArr addObject:[NSString stringWithFormat:@"%d",i]];
@@ -38,96 +38,15 @@
         
         [powerArr addObject:[NSString stringWithFormat:@"%d",i]];
     }
-
+    
     
     [deviceId setText:[NSString stringWithFormat:@"ID:%@",self.dNo]];
     [self deviceParams];
     [self getStatus];
     [self getPower];
     [self getDelayTime];
-   
-
-}
-
-// 设置指定的输入限制
-- (void)LimitL{
-    NSString * string = self.Coedid;
-    ZPLog(@"%@",self.Coedid);
-    if ([string containsString:@"YFMT"]) {
-        ZPLog(@"15000W");
-        NSString * string = @"15000";
-        if (limitTF.text <= string) {
-            [HintView showHint:Localize(@"添加成功")];  // 提示框
-        }
-        
-    }else
-        if ([string containsString:@"YFGPMT"]) {
-            ZPLog(@"15000W");
-            NSString * string = @"15000";
-            if (limitTF.text <= string) {
-                [HintView showHint:Localize(@"添加成功")];  // 提示框
-            }
-        }else
-            if ([string containsString:@"QK01"]) {
-                ZPLog(@"2500W");
-            }else
-                if ([string containsString:@"QK02"]) {
-                    ZPLog(@"2500W");
-                }else
-                    if ([string containsString:@"QK03"]) {
-                        ZPLog(@"2500W");
-                    }else
-                        if ([string containsString:@"CDMT10"]) {
-                            ZPLog(@"2500W");
-                        }else
-                            if ([string containsString:@"CDMT16"]) {
-                                ZPLog(@"3500W");
-                            }else
-                                if ([string containsString:@"CDMT60"]) {
-                                    ZPLog(@"15000W");
-                                }else
-                                    if ([string containsString:@"GP1P"]) {
-                                        ZPLog(@"15000W");
-                                    }else
-                                        if ([string containsString:@"WFMT"]) {
-                                            ZPLog(@"15000W");
-                                        }else
-                                            if ([string containsString:@"QC10"]) {
-                                                ZPLog(@"2500W");
-                                            }else
-                                                if ([string containsString:@"QC13"]) {
-                                                    ZPLog(@"3000W");
-                                                }else
-                                                    if ([string containsString:@"QC15"]) {
-                                                        ZPLog(@"3300W");
-                                                    }else
-                                                        if ([string containsString:@"QC16"]) {
-                                                            ZPLog(@"3500W");
-                                                        }else
-                                                            if ([string containsString:@"YC10"]) {
-                                                                ZPLog(@"2500W");
-                                                            }else
-                                                                if ([string containsString:@"YCGP10"]) {
-                                                                    ZPLog(@"2500W");
-                                                                }else
-                                                                    if ([string containsString:@"YC13"]) {
-                                                                        ZPLog(@"3000W");
-                                                                    }else
-                                                                        if ([string containsString:@"YC15"]) {
-                                                                            ZPLog(@"3300W");
-                                                                        }else
-                                                                            if ([string containsString:@"YC16"]) {
-                                                                                ZPLog(@"3500W");
-                                                                            }else
-                                                                                if ([string containsString:@"YCGP16"]) {
-                                                                                    ZPLog(@"3500W");
-                                                                                }else
-                                                                                    if ([string containsString:@"MC"]) {
-                                                                                        ZPLog(@"23000W");
-                                                                                    }else
-                                                                                        if ([string containsString:@"GP3P"]) {
-                                                                                            ZPLog(@"55000W");
-                                                                                        }
+    
+    
 }
 
 - (void)deviceParams
@@ -143,17 +62,17 @@
         [weakSelf.view stopLoading];
         
         if (!error) {
-
+            
             NSString *priceStr = [response substringWithRange:NSMakeRange(24, 4)];
             NSString *powerStr = [response substringWithRange:NSMakeRange(28, 6)];
-
+            
             [price setText:[NSString stringWithFormat:@"%d.%02d",[[priceStr substringToIndex:2] intValue],[[priceStr substringFromIndex:2] intValue]]];
             
             [limit setText:[NSString stringWithFormat:@"%d.%02d",[[powerStr substringToIndex:4] intValue],[[powerStr substringFromIndex:4] intValue]]];
-
             
-//            [weakSelf updateViewWithData:response];
-
+            
+            //            [weakSelf updateViewWithData:response];
+            
         }else
         {
             [HintView showHint:error.localizedDescription];
@@ -173,11 +92,6 @@
     model.deviceNo = self.dNo;
     [self.view startLoading];
     
-    
-    
-    
-    
-    
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
@@ -191,7 +105,7 @@
                 NSString *left = [binary substringWithRange:NSMakeRange(binary.length - 3, 1)];
                 NSString *center = [binary substringWithRange:NSMakeRange(binary.length - 2, 1)];
                 NSString *right = [binary substringFromIndex:binary.length - 1];
-
+                
                 BOOL open = NO;
                 //一位插座
                 if ([self.dNo hasPrefix:@"61"]) {
@@ -287,7 +201,7 @@
             if (((NSString *)response).length>26) {
                 NSString *status = [response substringWithRange:NSMakeRange(24, 2)];
                 [time setText:[NSString stringWithFormat:@"%d%@",[status intValue], Localize(@"分钟")]];
-
+                
             }
         }
         
@@ -370,34 +284,36 @@
     }];
     
 }
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+// 单价BUt
+- (IBAction)priceBut:(UIButton *)sender {
+    if (priceTF.text == nil || priceTF.text.length <= 0) {
+        ZPLog(@"没有输入文字");
+        [HintView showHint:Localize(@"请输入单价")];
+    }else {
+        [self AllDtaPrice];
+    }
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-
+// 负荷门限BUt
 - (IBAction)saveAction:(UIButton *)sender {
-    
+    if (limitTF.text == nil || limitTF.text.length <= 1) {
+        ZPLog(@"没有输入文字");
+        [HintView showHint:Localize(@"请输入负荷门限")];
+    }else{
+        [self AllDataload];
+        
+    }
+        }
+
+//  单价数据
+- (void)AllDtaPrice {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.deviceNo = self.dNo;
     
     NSArray *contents;
     NSString *content;
-    if (sender.tag == 100) {
-        
         if (price.text.length == 0) {
             
             [HintView showHint:Localize(@"请输入单价")];
@@ -405,7 +321,7 @@
         }
         model.command = @"0019";
         contents = [priceTF.text componentsSeparatedByString:@"."];
-
+        
         //    ******注意：此处1.5元会发送0105，不对，需要调整*******
         
         NSString *decimal = contents.count == 1?@"00":contents[1];
@@ -413,12 +329,33 @@
             decimal = [NSString stringWithFormat:@"%@0",decimal];
         }
         content = [NSString stringWithFormat:@"%02d%02d",[[contents firstObject] intValue],[decimal intValue]];
-        
-    }else
-    {
+    
+    model.content = content;
+    [self.view startLoading];
+    
+    MyWeakSelf
+    [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
+        [weakSelf.view stopLoading];
+        if (!error) {
+                [HintView showHint:Localize(@"保存成功")];
+                [price setText:[NSString stringWithFormat:@"%d.%02d",[[content substringToIndex:2] intValue],[[content substringFromIndex:2] intValue]]];
+        }else {
+            [HintView showHint:error.localizedDescription];
+        }
+    }];
+}
+
+// 负荷门限数据
+- (void)AllDataload {
+    WebSocket *socket = [WebSocket socketManager];
+    CommandModel *model = [[CommandModel alloc] init];
+    model.deviceNo = self.dNo;
+    
+    NSArray *contents;
+    NSString *content;
+
         if (power.text.length == 0)
         {
-//            [self LimitL];
             [HintView showHint:Localize(@"请输入负荷门限")];
             
             return;
@@ -426,46 +363,24 @@
         model.command = @"0020";
         contents = [limitTF.text componentsSeparatedByString:@"."];
         content = [NSString stringWithFormat:@"%04d%02d",[[contents firstObject] intValue],contents.count == 1?0:[contents[1] intValue]];
-    }
-    
     model.content = content;
     [self.view startLoading];
-    
-    if (limitTF.text == nil && limitTF.text <=0) {
-        ZPLog(@"请输入负荷门限");
-        [HintView showHint:Localize(@"请输入负荷门限")];
-        return;
-    }else {
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
+        
         if (!error) {
-            if ([self.Coedid containsString:@"YC"]) {
-                if (limit.text == nil && limit.text <= 0) {
-                     ZPLog(@"请输入负荷门限");
-                    [HintView showHint:Localize(@"请输入负荷门限")];
-                }else
-                    if (limit.text.length > 2500) {
-                        [HintView showHint:Localize(@"保存成功")];
-                        return ; // 保存成功需要加return，否则保存超过2500
-                    }
-            }
-            if (sender.tag == 100) {
-                
-                [price setText:[NSString stringWithFormat:@"%d.%02d",[[content substringToIndex:2] intValue],[[content substringFromIndex:2] intValue]]];
-            }else
-            {
+            [HintView showHint:Localize(@"保存成功")];
                 [limit setText:[NSString stringWithFormat:@"%d.%02d",[[content substringToIndex:4] intValue],[[content substringFromIndex:4] intValue]]];
-            }
             
-        }else
-        {
+        }else {
+            
             [HintView showHint:error.localizedDescription];
         }
         
     }];
-    }
 }
+
 
 
 - (IBAction)selectAction:(UIButton *)sender {
@@ -490,14 +405,14 @@
     [SGActionView showSheetWithTitle:nil itemTitles:muniteArr itemSubTitles:nil selectedIndex:[[time.text substringToIndex:time.text.length - Localize(@"分钟").length] integerValue] selectedHandle:^(NSInteger index) {
         [time setText:[NSString stringWithFormat:@"%ld%@",(long)index, Localize(@"分钟")]];
         [self changeTime];
-
+        
     }];
 }
 
 - (IBAction)powerEditAction {
     
     [SGActionView showSheetWithTitle:nil itemTitles:powerArr itemSubTitles:nil selectedIndex:[[power.text substringToIndex:power.text.length - 1] integerValue] selectedHandle:^(NSInteger index) {
-
+        
         [power setText:[NSString stringWithFormat:@"%ldW",(long)index]];
         [self changePower];
     }];

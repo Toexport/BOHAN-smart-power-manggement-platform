@@ -10,6 +10,8 @@
 
 @interface ParamsSettingViewController : BaseViewController
 {
+    __weak IBOutlet UIButton *PriceBut;
+    __weak IBOutlet UIButton *SaveBut;
     __weak IBOutlet UILabel *deviceId;
     __weak IBOutlet UILabel *price;
     __weak IBOutlet UILabel *limit;

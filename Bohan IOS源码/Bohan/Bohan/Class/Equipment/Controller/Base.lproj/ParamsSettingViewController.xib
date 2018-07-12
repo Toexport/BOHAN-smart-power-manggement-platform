@@ -12,6 +12,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ParamsSettingViewController">
             <connections>
+                <outlet property="PriceBut" destination="RY6-Ea-dgw" id="BJI-hE-yXL"/>
+                <outlet property="SaveBut" destination="kiP-CR-853" id="AzM-4H-DgK"/>
                 <outlet property="closeBtn" destination="yqe-UG-kjm" id="IJB-CO-GUB"/>
                 <outlet property="deviceId" destination="Ja7-UI-BrD" id="x3u-Bt-v7z"/>
                 <outlet property="limit" destination="mXC-Ad-xmJ" id="V6h-Xf-eHO"/>
@@ -185,7 +187,7 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                             <connections>
-                                <action selector="saveAction:" destination="-1" eventType="touchUpInside" id="4oS-vA-wRy"/>
+                                <action selector="priceBut:" destination="-1" eventType="touchUpInside" id="hOy-92-vcT"/>
                             </connections>
                         </button>
                         <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="umg-XD-dNb">
