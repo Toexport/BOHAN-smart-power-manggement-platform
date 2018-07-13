@@ -50,8 +50,6 @@
     lookBtn.titleLabel.numberOfLines = 2;
     connectBtn.titleLabel.numberOfLines = 2;
 
-//    group = dispatch_group_create();
-//    queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
     posInput.name.text = Localize(@"设备位置");
     posInput.contentTF.text = self.model.position;
     
@@ -66,8 +64,8 @@
     [self loadNameList];
     [self loadBrandList];
     [self IFGPRS];
-    
 }
+
 // 判断是否是GPRS设备
 - (void)IFGPRS {
     NSString * string = self.model.sort;
@@ -82,8 +80,7 @@
     }
 }
 
-- (void)updateUI
-{
+- (void)updateUI {
     
     if (loadtType && loadtType && loadtBrand) {
         

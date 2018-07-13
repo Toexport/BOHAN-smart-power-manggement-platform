@@ -18,8 +18,8 @@
 #import "EquipmentTableViewCell.h"
 #import "NSBundle+AppLanguageSwitch.h"
 #import "DebuggingANDPublishing.pch"
-@interface EquipmentViewController ()<NoDataViewDelegate,EquipmentTableViewCellDelegate>
-{
+@interface EquipmentViewController ()<NoDataViewDelegate,EquipmentTableViewCellDelegate> {
+    
     NSMutableArray *dataArray;
     NSUInteger currentIndex;
 }
@@ -38,8 +38,8 @@
     dataArray = [NSMutableArray array];
 
     if (@available(iOS 11.0, *)){
-    }else
-    {
+    }else {
+        
         self.automaticallyAdjustsScrollViewInsets = NO;
     }    for (int i = 0; i<2; i++) {
         
@@ -51,13 +51,11 @@
 
     [self.view addSubview:self.sliderView];
     [self.view addSubview:self.pageCollection];
-    
     [self.pageCollection setDatas:dataArray];
 
 }
 
-- (void)bindDevice
-{
+- (void)bindDevice {
     BindingViewController *bind = [[BindingViewController alloc] init];
     bind.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:bind animated:YES];
@@ -69,12 +67,11 @@
     [self loadData];
 }
 
-- (void)loadData
-{
+- (void)loadData {
+    
     TablePageModel *model = dataArray[currentIndex];
     
     if (model.isload == NO) {
-        
         [model.currentTable startLoading];
     }
     
@@ -93,8 +90,7 @@
                 model.currentTable.noDataTitle = Localize(@"暂无数据");
                 model.currentTable.noDataDetail = Localize(@"过会再来吧");
             }
-        }else
-        {
+        }else {
             model.currentTable.noDataTitle = error.localizedDescription;
             model.currentTable.noDataDetail = Localize(@"请稍后再试吧！");
         }
@@ -103,26 +99,17 @@
         [model.currentTable changeState];
         [model.currentTable noDataReload];
     }];
-    
-
 }
 
-- (void)languageChange{
+- (void)languageChange {
     
     self.title = Localize(@"设备列表");
     [_sliderView setDatas:@[Localize(@"名称"), Localize(@"位置")]];
-//    _pageCollection = nil;
     [self.pageCollection reloadData];
-//    [_pageCollection removeFromSuperview];
-//    _pageCollection = nil;
-//    [self.view addSubview:self.pageCollection];
-//    [self.pageCollection reloadData];
-//    [self.view layoutIfNeeded];
 
 }
 
-- (SliderView *)sliderView
-{
+- (SliderView *)sliderView {
 
     if (!_sliderView) {
         _sliderView = [[SliderView alloc] initWithFrame:CGRectMake(0, kTopHeight, ScreenWidth, 45) datas:@[Localize(@"名称"), Localize(@"位置")]];
@@ -137,8 +124,8 @@
     
     return _sliderView;
 }
-- (PageCollectionView *)pageCollection
-{
+
+- (PageCollectionView *)pageCollection {
     if (!_pageCollection) {
         _pageCollection = [[PageCollectionView alloc]initWithFrame:CGRectMake(0, CGRectGetMaxY(self.sliderView.frame), ScreenWidth, ScreenHeight-CGRectGetMaxY(self.sliderView.frame) - kNavBarHeight) contentClassStr:@"ContentTableView"];
         _pageCollection.actionDelegate = self;
@@ -168,13 +155,13 @@
 }
 
 #pragma mark - NoDataViewDelegate
-- (void)reloadDidClick
-{
+- (void)reloadDidClick {
+    
     [self loadData];
 }
 
-- (BOOL)shouldShowNoDataView
-{
+- (BOOL)shouldShowNoDataView {
+    
     TablePageModel *model = dataArray[currentIndex];
     if (model.datas.count == 0) {
         return YES;
@@ -183,9 +170,7 @@
 }
 
 #pragma mark - EquipmentTableViewCellDelegate
-
-- (void)openAndCloseAll:(BOOL)isOpen name:(NSString *)name
-{
+- (void)openAndCloseAll:(BOOL)isOpen name:(NSString *)name {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *command = [[CommandModel alloc] init];
     command.command = @"1002";
@@ -201,9 +186,9 @@
 
         if (!error) {
             [HintView showHint:isOpen?Localize(@"已开启"):Localize(@"已关闭")];
-        }else
-        {
-            [HintView showHint:error.localizedDescription];
+        }else {
+            [HintView showHint:error.localizedDescription];// 后台返回的提示
+            
         }
     }];
     
