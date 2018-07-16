@@ -9,4 +9,5 @@
 #import "BaseViewController.h"
 #import "DeviceModel.h"
 @interface BindingViewController : BaseViewController
+
 @end

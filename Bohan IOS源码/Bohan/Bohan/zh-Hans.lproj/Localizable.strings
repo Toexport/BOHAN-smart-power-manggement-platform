@@ -25,6 +25,10 @@
 "The device is executing looped on and off mode" = "设备正在执行循环通断模式";
 "The device is in session mode" = "设备正处于时段运行模式";
 "The device is in cycle mode" = "设备正处于循环通断模式";
+"Please enter the correct device ID" = "请输入正确的设备ID";
+"Switch1" = "开关1";
+"Switch2" = "开关2";
+"Switch3" = "开关3";
 //"" = "";
 //"设备管理" = "设备管理";
 //"所有用电" = "所有用电";

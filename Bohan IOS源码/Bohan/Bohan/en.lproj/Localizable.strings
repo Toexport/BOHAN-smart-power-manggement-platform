@@ -223,6 +223,10 @@
 "开关3" = "Turn on 3";
 "墙壁开关" = "Wall Turn on";
 "添加设备" = "Add Device";
+"请输入正确的设备ID" = "Please enter the correct device ID";
+"开关1" = "Switch1";
+"开关2" = "Switch2";
+"开关3" = "Switch3";
 "亲，你还没有绑定任何设备哦\n如果你要绑定设备，请点击下面按钮，\n扫描设备上的条形码，进行绑定" = "You have not set any setting \n If you want to setup, please click the button below \n and scan the barcode to setup";
 "离线" = "Offline";
 "状态: 开" = "Status : On";

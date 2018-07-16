@@ -11,17 +11,16 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BindingViewController">
             <connections>
-                <outlet property="TypeInput2LayoutConstraint" destination="HZY-p9-2Nr" id="0Gy-Lu-Scf"/>
-                <outlet property="TypeInput3LayoutConstraint" destination="5Rg-LN-4ey" id="FuR-Y5-uwj"/>
-                <outlet property="VariableLayoutConstraint" destination="lwX-Iy-Cjf" id="qI3-P3-sDM"/>
+                <outlet property="TypeInput2LayoutConstraint" destination="HZY-p9-2Nr" id="OJh-lV-t0b"/>
+                <outlet property="TypeInput3LayoutConstraint" destination="5Rg-LN-4ey" id="6IR-zz-rgt"/>
                 <outlet property="bdffLayoutConstraint" destination="gz2-ao-hYe" id="8i0-tv-nYE"/>
                 <outlet property="brandInput" destination="MML-9t-uvj" id="6eF-l9-SNc"/>
                 <outlet property="deviceTF" destination="P18-r1-myx" id="fm0-DL-Hwx"/>
                 <outlet property="posInput" destination="Siu-zY-xyp" id="9gN-5w-uRC"/>
                 <outlet property="scrollView" destination="TCA-Ty-Q4l" id="qrb-SJ-d3q"/>
                 <outlet property="typeInput" destination="LT8-Hx-QAe" id="y7x-ZL-Uuu"/>
-                <outlet property="typeInput2" destination="jix-zp-Wbi" id="JJF-l0-4zg"/>
-                <outlet property="typeInput3" destination="t4C-4w-Vn7" id="Oec-H0-0ar"/>
+                <outlet property="typeInput2" destination="jix-zp-Wbi" id="HTj-qp-2Ce"/>
+                <outlet property="typeInput3" destination="t4C-4w-Vn7" id="JDB-fP-EU7"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
