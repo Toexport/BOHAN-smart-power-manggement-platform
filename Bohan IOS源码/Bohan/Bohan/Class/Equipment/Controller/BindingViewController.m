@@ -15,13 +15,20 @@
 
 @interface BindingViewController ()
 {
-    __weak IBOutlet UITextField *deviceTF;
-    __weak IBOutlet CustomInputView *posInput;
-    __weak IBOutlet CustomInputView *typeInput;
-    __weak IBOutlet CustomInputView *brandInput;
-    
+    __weak IBOutlet UITextField *deviceTF; // 设备ID输入框
+    __weak IBOutlet CustomInputView *typeInput; //文字输入1
+    __weak IBOutlet UIScrollView *scrollView; //scrollView
+    __weak IBOutlet UIView *variableView; // 需要实现隐藏与显示的View
+    __weak IBOutlet CustomInputView *typeInput2;  //文字输入2
+    __weak IBOutlet CustomInputView *typeInput3;  //文字输入3
+    __weak IBOutlet CustomInputView *posInput;  // 设备位置
+    __weak IBOutlet CustomInputView *brandInput; // 电器品牌
     dispatch_group_t group;
     dispatch_queue_t queue;
+    __weak IBOutlet NSLayoutConstraint *TypeInput2LayoutConstraint; // 输入框2的高度
+    __weak IBOutlet NSLayoutConstraint *TypeInput3LayoutConstraint; // 输入框3的高度
+    __weak IBOutlet NSLayoutConstraint *VariableLayoutConstraint; // View的高度
+    __weak IBOutlet NSLayoutConstraint *bdffLayoutConstraint; // View的高度
 }
 
 @end
@@ -31,22 +38,29 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = Localize(@"绑定设备");
-    
+/*****************************此处用来判断是否显示设备名称2-3项*********************/
+    TypeInput2LayoutConstraint.constant = CGFLOAT_MIN;
+    typeInput2.hidden = YES;
+    TypeInput3LayoutConstraint.constant = CGFLOAT_MIN;
+    typeInput3.hidden = YES;
+    bdffLayoutConstraint.constant = - 59; // (隐藏两个text输入框的高度)
+//    bdffLayoutConstraint.constant = 0; // (隐藏一个text输入框的高度)
+/****************************************************************************/
     group = dispatch_group_create();
     queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0);
-    posInput.name.text = Localize(@"设备位置");
     typeInput.name.text = Localize(@"设备名称");
+    typeInput2.name.text = Localize(@"设备名称2");
+    typeInput3.name.text = Localize(@"设备名称3");
+    posInput.name.text = Localize(@"设备位置");
     brandInput.name.text = Localize(@"电器品牌");
     
     [self.view startLoading];
     [self loadPosList];
     [self loadNameList];
     [self loadBrandList];
-    
     dispatch_group_notify(group, dispatch_get_main_queue(), ^{
         
         DBLog(@"全部请求完毕");
-        
         [self.view stopLoading];
 
     });
@@ -72,12 +86,13 @@
 }
 
 - (IBAction)bindAction {
-//    [self unBindDevice];
+//    [self unBindDevice]; // 解绑设备
     if (deviceTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
         [HintView showHint:Localize(@"请填完整设备信息")];
         return;
     }
     [self bindDevice];
+//    [self POSTs];
 }
 
 ////获取电器位置列表(如：客厅，卧室)
@@ -143,9 +158,9 @@
         //请求成功
         if (!error) {
 //            [self POSTs];
-            WifiConnectViewController * connect = [[WifiConnectViewController alloc] init];
-            connect.deviceNo = deviceTF.text;
-            [self.navigationController pushViewController:connect animated:YES];
+//            WifiConnectViewController * connect = [[WifiConnectViewController alloc] init];
+//            connect.deviceNo = deviceTF.text;
+//            [self.navigationController pushViewController:connect animated:YES];
 
 //            判断输入框中的数字是否包含制定的数字，如果有则不跳转直接成功，如果没有需要跳转到下个界面
 //            NSString * string = deviceTF.text;
@@ -181,7 +196,7 @@
 // 获取设备信息（单个）
 - (void)POSTs {
     [self.view startLoading];
-    NSDictionary * dict = @{@"DeviceCode":deviceTF.text};
+    NSDictionary * dict = @{@"DeviceCode":deviceTF.text, @"DeviceKey":deviceTF.text};
     [[NetworkRequest sharedInstance]requestWithUrl:GET_DEVICE_INFO_URL parameter:dict completion:^(id response, NSError *error) {
         [self.view stopLoading];
         ZPLog(@"%@",dict);

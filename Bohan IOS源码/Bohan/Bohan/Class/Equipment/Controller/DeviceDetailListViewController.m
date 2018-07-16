@@ -52,6 +52,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     [self loadData];
     //[self deviceStatus];
     
+    
     MyWeakSelf
     self.timer = [NSTimer scheduledTimerWithTimeInterval:5 block:^{
         __strong typeof(self) strongSelf = weakSelf;
@@ -221,7 +222,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     }
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0) {
         //        在线数据
         DeviceModel *model = self.online[indexPath.row];

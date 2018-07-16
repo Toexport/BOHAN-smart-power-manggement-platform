@@ -68,14 +68,12 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
     
 }
 
-- (void)languageChange{
-    
+- (void)languageChange {
     self.title = Localize(@"设备管理");
     [self.deviceTable reloadData];
 }
 
-- (void)editAction:(UIBarButtonItem *)btn
-{
+- (void)editAction:(UIBarButtonItem *)btn {
     CGFloat origalY;
 
     if (!self.bottomView.superview) {
@@ -88,7 +86,7 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
         btn.title = @"";
         [self.deviceTable setEditing:NO animated:YES];
         origalY = ScreenHeight - kTabBarHeight;
-    }else{
+    }else {
         btn.title = Localize(@"取消");
         btn.image = nil;
         [self.deviceTable setEditing:YES animated:YES];
@@ -103,8 +101,7 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
 
 }
 
-- (void)shareAction
-{
+- (void)shareAction {
     [[YLSheetView sharedInstace] showFromCenter:self.shareView];
 }
 
@@ -115,8 +112,7 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
 }
 
 // 获取当前所有
-- (void)loadData
-{
+- (void)loadData {
     
     [[NetworkRequest sharedInstance] requestWithUrl:GET_DEVICE_LIST_URL parameter:nil completion:^(id response, NSError *error) {
         
@@ -173,8 +169,7 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
 }
 
 // 解绑设备
-- (void)unBindDeviceAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)unBindDeviceAtIndexPath:(NSIndexPath *)indexPath {
     [self.view startLoading];
     
     DeviceModel *model = self.datas[indexPath.row];
@@ -188,8 +183,7 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
             [self.datas removeObject:model];
             [self.deviceTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
             
-        }else
-        {
+        }else {
             [HintView showHint:error.localizedDescription];
         }
         
@@ -199,8 +193,7 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
 
 
 
-- (UITableView *)deviceTable
-{
+- (UITableView *)deviceTable {
     if (!_deviceTable) {
         _deviceTable = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight - kTabBarBottom)];
         [_deviceTable registerNib:[UINib nibWithNibName:@"DeviceTableViewCell" bundle:nil] forCellReuseIdentifier:deviceCellIdentifier];
@@ -229,8 +222,7 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
 }
 
 
-- (UIButton *)bottomView
-{
+- (UIButton *)bottomView {
     if (!_bottomView) {
         _bottomView = [[UIButton alloc] initWithFrame:CGRectMake(0, ScreenHeight - kTabBarHeight, ScreenWidth, SHAREBTNHIGHT)];
         [_bottomView setTitle:Localize(@"分享") forState:UIControlStateNormal];
@@ -248,8 +240,7 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
     return _bottomView;
 }
 
-- (ShareView *)shareView
-{
+- (ShareView *)shareView {
     if (!_shareView) {
         _shareView = [[[NSBundle mainBundle] loadNibNamed:@"ShareView" owner:nil options:nil] lastObject];
         [_shareView setFrame:CGRectMake(20, (ScreenHeight - 220)/2, ScreenWidth - 40, 220)];
@@ -263,20 +254,17 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
     return _shareView;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.datas.count;
     
 }
 
-- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     return UITableViewCellEditingStyleDelete;
 }
 
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
-    
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DeviceTableViewCell  *cell = (DeviceTableViewCell *)[tableView dequeueReusableCellWithIdentifier:deviceCellIdentifier];
     [cell setModel:self.datas[indexPath.row]];
 //    cell.selectedBackgroundView.backgroundColor = [UIColor redColor];//[UIColor getColor:@"dcecfd"];
@@ -298,20 +286,17 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
     }
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
     return Localize(@"删除");
 }
 
 
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
 
 #pragma mark 按钮的点击事件
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (!tableView.isEditing) {
         
@@ -326,16 +311,14 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
 }
 
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
 
 }
 
 
 
 #pragma mark - NoDataViewDelegate
-- (void)reloadDidClick
-{
+- (void)reloadDidClick {
     [self loadData];
     
 //    UpdateDeviceInfoViewController *update = [[UpdateDeviceInfoViewController alloc] init];
@@ -351,8 +334,7 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
 
 }
 
-- (BOOL)shouldShowNoDataView
-{
+- (BOOL)shouldShowNoDataView {
     if (self.datas.count == 0) {
         return YES;
     }
