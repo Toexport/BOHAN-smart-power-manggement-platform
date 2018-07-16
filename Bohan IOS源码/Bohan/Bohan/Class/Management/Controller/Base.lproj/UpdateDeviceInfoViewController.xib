@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -248,15 +247,14 @@
                 <constraint firstItem="dWC-Xs-HqA" firstAttribute="top" secondItem="wFj-iI-SxB" secondAttribute="bottom" constant="50" id="Ukb-5d-PKV"/>
                 <constraint firstItem="NrD-Bq-A3F" firstAttribute="top" secondItem="SHd-OX-o0R" secondAttribute="top" id="XUm-HL-NiM"/>
                 <constraint firstItem="SHd-OX-o0R" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wFj-iI-SxB" secondAttribute="bottom" constant="30" id="aA4-xi-Njn"/>
-                <constraint firstItem="dWC-Xs-HqA" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="10" id="gXA-Ls-cMf"/>
-                <constraint firstItem="wFj-iI-SxB" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" priority="750" constant="10" id="idn-qd-vf4"/>
+                <constraint firstItem="dWC-Xs-HqA" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="gXA-Ls-cMf"/>
+                <constraint firstItem="wFj-iI-SxB" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" priority="750" constant="10" id="idn-qd-vf4"/>
                 <constraint firstItem="SHd-OX-o0R" firstAttribute="leading" secondItem="wFj-iI-SxB" secondAttribute="leading" id="krv-6k-Xcd"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="SHd-OX-o0R" secondAttribute="bottom" constant="10" id="o5G-J9-y1K"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="SHd-OX-o0R" secondAttribute="bottom" constant="10" id="o5G-J9-y1K"/>
                 <constraint firstItem="wFj-iI-SxB" firstAttribute="top" relation="greaterThanOrEqual" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="qmM-HX-s1C"/>
                 <constraint firstAttribute="trailing" secondItem="wFj-iI-SxB" secondAttribute="trailing" constant="10" id="tcs-um-BhY"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="dWC-Xs-HqA" secondAttribute="trailing" constant="10" id="uEV-sp-TzT"/>
+                <constraint firstAttribute="trailing" secondItem="dWC-Xs-HqA" secondAttribute="trailing" constant="10" id="uEV-sp-TzT"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="34.5" y="53.5"/>
         </view>
     </objects>

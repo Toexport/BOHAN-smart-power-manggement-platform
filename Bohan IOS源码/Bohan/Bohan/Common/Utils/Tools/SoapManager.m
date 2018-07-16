@@ -9,9 +9,10 @@
 #import "SoapManager.h"
 #import "DebuggingANDPublishing.pch"
 //static NSString *const defaultWebServiceNameSpace = @"http://bohansever.top/";
-static NSString *const httpServer=@"http://www.bohanserver.top:8088/webservice.asmx?wsdl"; // 原始地址接口
+static NSString *const httpServer=@"http://www.bohanserver.top:8088/webservice.asmx/wsdl"; // 原始地址接口
 //static NSString *const httpServer=@"http://122.10.97.35/webservice.asmx?wsdl"; // 香港地址接口
 static NSString *const nameSpace=@"http://bohansever.top/";
+
 static NSString *const serviceURL=@"http://www.bohanserver.top:8088/"; // 原始接口
 //static NSString *const serviceURL=@"http://122.10.97.35:8088/"; // 香港接口
 
@@ -19,13 +20,13 @@ static NSString *const serviceURL=@"http://www.bohanserver.top:8088/"; // 原始
 
 //soap 1.1请求方式
 static NSString *const defaultSoap1Message = @"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">%@<soap:Body>%@</soap:Body></soap:Envelope>";
+
 //soap 1.2请求方式
 static NSString *const defaultSoap12Message = @"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap12:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://www.w3.org/2003/05/soap-envelope\">%@<soap12:Body>%@</soap12:Body></soap12:Envelope>";
 @implementation SoapManager
 
 
-+ (instancetype)manager
-{
++ (instancetype)manager {
     static SoapManager *instance = nil;
     
     static dispatch_once_t onceToken;
@@ -37,8 +38,7 @@ static NSString *const defaultSoap12Message = @"<?xml version=\"1.0\" encoding=\
     return instance;
 }
 
-- (void)soapWithMethodName:(NSString*)methodName soapHeader:(NSString *)soapHeader headers:(NSDictionary *)headers parameters:(NSDictionary *)parameters
-{
+- (void)soapWithMethodName:(NSString*)methodName soapHeader:(NSString *)soapHeader headers:(NSDictionary *)headers parameters:(NSDictionary *)parameters {
     self.methodName = methodName;
     self.soapHeader = soapHeader;
     self.headers = headers;
@@ -66,7 +66,7 @@ static NSString *const defaultSoap12Message = @"<?xml version=\"1.0\" encoding=\
     if (self.soapType==SoapType_soap) {
         [dic setValue:@"text/xml; charset=utf-8" forKey:@"Content-Type"];
         
-        NSString *soapAction=[NSString stringWithFormat:@"%@%@",nameSpace,self.methodName];
+        NSString *soapAction=[NSString stringWithFormat:@"%@%@",nameSpace,self.methodName]; //httpServer
         if ([soapAction length]>0) {
             [dic setValue:soapAction forKey:@"SOAPAction"];
         }
@@ -101,15 +101,13 @@ static NSString *const defaultSoap12Message = @"<?xml version=\"1.0\" encoding=\
         
         if (_soapHeader&&[_soapHeader length]>0) {
             header = [self soapName:_soapHeader xmlnStr:xmlnsStr params:_headers];
-        }else
-        {
+        }else {
             header=[self soapName:nil xmlnStr:xmlnsStr params:_headers];
             
         }
         header=[NSString stringWithFormat:@"%@%@%@",startNode,header,endNode];;
         
     }
-    
     
     if ([self.parameters count]>0) {
         NSString *soap=[self soapName:self.methodName xmlnStr:xmlnsStr params:self.parameters];

@@ -89,24 +89,24 @@
 
 - (IBAction)bindAction {
 //    [self unBindDevice]; // 解绑设备
-    if (deviceTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
-        [HintView showHint:Localize(@"请填完整设备信息")];
-        return;
-    }else
-        if ([deviceTF.text containsString:@"62"]) {
-            if (deviceTF.text.length == 0 || typeInput2.contentTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
-                [HintView showHint:Localize(@"请填完整设备信息")];
-                return;
-            }
-    }else
-        if ([deviceTF.text containsString:@"63"]) {
-            if (deviceTF.text.length == 0 || typeInput2.contentTF.text.length == 0 || typeInput3.contentTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
-                    [HintView showHint:Localize(@"请填完整设备信息")];
-                    return;
-                }
-            }
-    [self bindDevice];
-//    [self POSTs];
+//    if (deviceTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
+//        [HintView showHint:Localize(@"请填完整设备信息")];
+//        return;
+//    }else
+//        if ([deviceTF.text containsString:@"62"]) {
+//            if (deviceTF.text.length == 0 || typeInput2.contentTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
+//                [HintView showHint:Localize(@"请填完整设备信息")];
+//                return;
+//            }
+//    }else
+//        if ([deviceTF.text containsString:@"63"]) {
+//            if (deviceTF.text.length == 0 || typeInput2.contentTF.text.length == 0 || typeInput3.contentTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
+//                    [HintView showHint:Localize(@"请填完整设备信息")];
+//                    return;
+//                }
+//            }
+//    [self bindDevice];
+    [self POSTs];
 }
 
 ////获取电器位置列表(如：客厅，卧室)
@@ -144,11 +144,9 @@
 }
 
 // 获取(如：客厅，卧室)
-- (void)loadNameList
-{
+- (void)loadNameList {
     dispatch_group_async(group, queue, ^{
         dispatch_group_enter(group);
-
         [[NetworkRequest sharedInstance] requestWithUrl:GET_NAME_LIST_URL parameter:nil completion:^(id response, NSError *error) {
             dispatch_group_leave(group);
 
@@ -203,15 +201,23 @@
         }else {
             [HintView showHint:error.localizedDescription];
         }
-    }];
+  }];
 }
 
-// 获取设备信息（单个）
+// 获取设备信息（单个）这个
 - (void)POSTs {
     [self.view startLoading];
-    NSDictionary * dict = @{@"DeviceCode":deviceTF.text, @"DeviceKey":deviceTF.text};
+    NSDictionary * dict = @{@"deviceCode":deviceTF.text};
+//    NSDictionary * dic = @{@"devicecode":deviceTF.text};
     [[NetworkRequest sharedInstance]requestWithUrl:GET_DEVICE_INFO_URL parameter:dict completion:^(id response, NSError *error) {
         [self.view stopLoading];
+        NSDictionary * dic = response[@"content"];
+        if ([dic[@"sort"] isEqual:@"YC"]) { //换汤不换药
+            ZPLog(@"不跳转");
+        } else {
+            
+        }
+    
         ZPLog(@"%@",dict);
         ZPLog(@"%@",error);
         ZPLog(@"%@",response);
@@ -248,11 +254,9 @@
         //请求成功
         if (!error) {
             
-        }else
-        {
+        }else {
             [HintView showHint:error.localizedDescription];
         }
-        
     }];
 }
 
@@ -268,7 +272,7 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"changeValue" object:textField];
 }
 
--(void)changeValue:(NSNotification *)notification {
+- (void)changeValue:(NSNotification *)notification {
     UITextField * textField = notification.object;
     //要实现的监听方法操作
     ZPLog(@"%@",textField.text);
