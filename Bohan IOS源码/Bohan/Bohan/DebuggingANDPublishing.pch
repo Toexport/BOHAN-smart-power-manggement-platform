@@ -9,38 +9,38 @@
 #ifndef DebuggingANDPublishing_pch
 #define DebuggingANDPublishing_pch
 
-//测试用这个
-#ifdef DEBUG
-#if TARGET_IPHONE_SIMULATOR//模拟器
-
-#define ZPLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
-
-#elif TARGET_OS_IPHONE//真机
-
-#define ZPLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
-
-//#define ZPLog(...) fprintf(stderr,"[%s-%d行] %s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:@"%@", ##__VA_ARGS__] UTF8String]);
-#endif
-#endif
-
-////正式发布
-//#else
-//#ifdef zhengShiFaBu
+////测试用这个
+//#ifdef DEBUG
+//#if TARGET_IPHONE_SIMULATOR//模拟器
 //
-//#define NSLog(...)
+//#define ZPLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
 //
-//#else
+//#elif TARGET_OS_IPHONE//真机
 //
-//#define NSLog(...) NSLog(__VA_ARGS__)
+//#define ZPLog(...) NSLog(@"%s 第%d行 \n %@\n\n",__func__,__LINE__,[NSString stringWithFormat:__VA_ARGS__])
 //
+////#define ZPLog(...) fprintf(stderr,"[%s-%d行] %s\n",[[[NSString stringWithUTF8String:__FILE__] lastPathComponent] UTF8String], __LINE__, [[NSString stringWithFormat:@"%@", ##__VA_ARGS__] UTF8String]);
 //#endif
-//
 //#endif
-//
-//#ifdef DEBUG // 调试状态, 打开LOG功能
-//#define ZPLog(...) NSLog(__VA_ARGS__)
-//#else // 发布状态, 关闭LOG功能
-//#define ZPLog(...)
+
+//正式发布
+#else
+#ifdef zhengShiFaBu
+
+#define NSLog(...)
+
+#else
+
+#define NSLog(...) NSLog(__VA_ARGS__)
+
+#endif
+
+#endif
+
+#ifdef DEBUG // 调试状态, 打开LOG功能
+#define ZPLog(...) NSLog(__VA_ARGS__)
+#else // 发布状态, 关闭LOG功能
+#define ZPLog(...)
 
 //全局
 #define appD ((AppDelegate*)[[UIApplication sharedApplication] delegate])

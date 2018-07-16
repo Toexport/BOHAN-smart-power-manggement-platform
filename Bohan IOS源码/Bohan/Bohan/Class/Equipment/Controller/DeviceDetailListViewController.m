@@ -209,7 +209,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
 // 分组
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
-    
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

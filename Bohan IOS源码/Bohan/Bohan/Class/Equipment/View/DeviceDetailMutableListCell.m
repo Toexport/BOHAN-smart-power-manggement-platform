@@ -87,20 +87,17 @@ if (self.delegate && [self.delegate respondsToSelector:@selector(didSwitchOpen:s
 [super layoutSubviews];
 //    openSwitch.layer.cornerRadius = 16;
 
-if([self.model.id hasPrefix:@"61"])
-{
+if([self.model.id hasPrefix:@"61"]) {
     openSwitch1.hidden = YES;
     openSwitch3.hidden = YES;
     openSwitch2.hidden = NO;
     
-}else if ([self.model.id hasPrefix:@"62"])
-{
+}else if ([self.model.id hasPrefix:@"62"]) {
     openSwitch1.hidden = NO;
     openSwitch3.hidden = NO;
     openSwitch2.hidden = YES;
     
-}else if ([self.model.id hasPrefix:@"63"])
-{
+}else if ([self.model.id hasPrefix:@"63"]) {
     openSwitch1.hidden = NO;
     openSwitch3.hidden = NO;
     openSwitch2.hidden = NO;
@@ -118,26 +115,24 @@ if (self.model.powerinfo && self.model.powerinfo.length>0) { // powerinfo 是用
     if ([self.model.sort containsString:@"QK01"] || [self.model.sort containsString:@"QK02"] || [self.model.sort containsString:@"QK03"] || [self.model.sort containsString:@"K"]) {
         typeImg.image = [UIImage imageNamed:@"Switch-open.png"];
     }
-        if ([self.model.sort containsString:@"CDMT10"] || [self.model.sort containsString:@"CDMT16"] || [self.model.sort containsString:@"QC10"] || [self.model.sort containsString:@"QC13"] || [self.model.sort containsString:@"QC15"] || [self.model.sort containsString:@"QC16"] || [self.model.sort containsString:@"YC10"] || [self.model.sort containsString:@"YCGP10"] || [self.model.sort containsString:@"YC13"] || [self.model.sort containsString:@"YC15"] || [self.model.sort containsString:@"YC16"] || [self.model.sort containsString:@"YCGP16"] || [self.model.sort containsString:@"YC"] || [self.model.sort containsString:@"QC"]) {
-            typeImg.image = [UIImage imageNamed:@"device_list_socket"];
-        }
-            if ([self.model.sort containsString:@"CDMT60"] || [self.model.sort containsString:@"GP1P"] || [self.model.sort containsString:@"WFMT"]) {
-                typeImg.image = [UIImage imageNamed:@"Electric-meter.png"];
-            }
-                if ([self.model.sort containsString:@"YFMT"] || [self.model.sort containsString:@"YFGPMT"]) {
-                    typeImg.image = [UIImage imageNamed:@"purse.png"];
-                }
-                    if ([self.model.sort containsString:@"MC"]) {
-                        typeImg.image = [UIImage imageNamed:@"Electric-meter.png"];
-                    }
+    if ([self.model.sort containsString:@"CDMT10"] || [self.model.sort containsString:@"CDMT16"] || [self.model.sort containsString:@"QC10"] || [self.model.sort containsString:@"QC13"] || [self.model.sort containsString:@"QC15"] || [self.model.sort containsString:@"QC16"] || [self.model.sort containsString:@"YC10"] || [self.model.sort containsString:@"YCGP10"] || [self.model.sort containsString:@"YC13"] || [self.model.sort containsString:@"YC15"] || [self.model.sort containsString:@"YC16"] || [self.model.sort containsString:@"YCGP16"] || [self.model.sort containsString:@"YC"] || [self.model.sort containsString:@"QC"]) {
+        typeImg.image = [UIImage imageNamed:@"device_list_socket"];
+    }
+    if ([self.model.sort containsString:@"CDMT60"] || [self.model.sort containsString:@"GP1P"] || [self.model.sort containsString:@"WFMT"]) {
+        typeImg.image = [UIImage imageNamed:@"Electric-meter.png"];
+    }
+    if ([self.model.sort containsString:@"YFMT"] || [self.model.sort containsString:@"YFGPMT"]) {
+        typeImg.image = [UIImage imageNamed:@"purse.png"];
+    }
+    if ([self.model.sort containsString:@"MC"]) {
+        typeImg.image = [UIImage imageNamed:@"Electric-meter.png"];
+    }
     typeImg.highlighted = YES;
     posImg.highlighted = YES;
     onlineImg.highlighted = YES;
     
-    
     NSString *str = [Utils getBinaryByHex:[self.model.powerinfo substringToIndex:2]];
-    for (UISwitch *theSwitch in switchs)
-    {
+    for (UISwitch *theSwitch in switchs) {
         theSwitch.enabled = YES;
         
         BOOL isOpen = ![[str substringWithRange:NSMakeRange(str.length - 1 - (theSwitch.tag - 600), 1)] boolValue];
@@ -145,8 +140,7 @@ if (self.model.powerinfo && self.model.powerinfo.length>0) { // powerinfo 是用
         [theSwitch setOn:isOpen];
         if (isOpen) {
             theSwitch.backgroundColor = [UIColor getColor:@"54d76a"];
-        }else
-        {
+        }else {
             theSwitch.backgroundColor = [UIColor redColor];
         }
     }
@@ -155,31 +149,30 @@ if (self.model.powerinfo && self.model.powerinfo.length>0) { // powerinfo 是用
     NSString * stringg = string;
     if ([stringg hasPrefix:@"61"] || [stringg hasPrefix:@"63"]) {
         [power setText:[self.model.powerinfo poweer]];
-    }else if ([stringg hasPrefix:@"62"]){
-        [power setText:[self.model.powerinfo powweer]];
+    }else
+    if ([stringg hasPrefix:@"62"]){
+    [power setText:[self.model.powerinfo powweer]];
     }
 }else {
     if ([self.model.sort containsString:@"QK01"] || [self.model.sort containsString:@"QK02"] || [self.model.sort containsString:@"QK03"] || [self.model.sort containsString:@"K"]) {
         typeImg.image = [UIImage imageNamed:@"Switch-close"];
     }
-        if ([self.model.sort containsString:@"CDMT10"] || [self.model.sort containsString:@"CDMT16"] || [self.model.sort containsString:@"QC10"] || [self.model.sort containsString:@"QC13"] || [self.model.sort containsString:@"QC15"] || [self.model.sort containsString:@"QC16"] || [self.model.sort containsString:@"YC10"] || [self.model.sort containsString:@"YCGP10"] || [self.model.sort containsString:@"YC13"] || [self.model.sort containsString:@"YC15"] || [self.model.sort containsString:@"YC16"] || [self.model.sort containsString:@"YCGP16"] || [self.model.sort containsString:@"YC"] || [self.model.sort containsString:@"QC"]) {
-            typeImg.image = [UIImage imageNamed:@"device_list_socket_no"];
-        }
-            if ([self.model.sort containsString:@"CDMT60"] || [self.model.sort containsString:@"GP1P"] || [self.model.sort containsString:@"WFMT"]) {
-                typeImg.image = [UIImage imageNamed:@"Electric-meter.png"];
-            }
-                if ([self.model.sort containsString:@"YFMT"] || [self.model.sort containsString:@"YFGPMT"]) {
-                    typeImg.image = [UIImage imageNamed:@"purse_grey.png"];
-                }
-                    if ([self.model.sort containsString:@"MC"]) {
-                        typeImg.image = [UIImage imageNamed:@"purse_grey.png"];
-                    }
+    if ([self.model.sort containsString:@"CDMT10"] || [self.model.sort containsString:@"CDMT16"] || [self.model.sort containsString:@"QC10"] || [self.model.sort containsString:@"QC13"] || [self.model.sort containsString:@"QC15"] || [self.model.sort containsString:@"QC16"] || [self.model.sort containsString:@"YC10"] || [self.model.sort containsString:@"YCGP10"] || [self.model.sort containsString:@"YC13"] || [self.model.sort containsString:@"YC15"] || [self.model.sort containsString:@"YC16"] || [self.model.sort containsString:@"YCGP16"] || [self.model.sort containsString:@"YC"] || [self.model.sort containsString:@"QC"]) {
+        typeImg.image = [UIImage imageNamed:@"device_list_socket_no"];
+    }
+    if ([self.model.sort containsString:@"CDMT60"] || [self.model.sort containsString:@"GP1P"] || [self.model.sort containsString:@"WFMT"]) {
+        typeImg.image = [UIImage imageNamed:@"Electric-meter.png"];
+    }
+    if ([self.model.sort containsString:@"YFMT"] || [self.model.sort containsString:@"YFGPMT"]) {
+        typeImg.image = [UIImage imageNamed:@"purse_grey.png"];
+    }
+    if ([self.model.sort containsString:@"MC"]) {
+        typeImg.image = [UIImage imageNamed:@"purse_grey.png"];
+    }
     typeImg.highlighted = NO;
     posImg.highlighted = NO;
     onlineImg.highlighted = NO;
-    
-    for (UISwitch *theSwitch in switchs)
-    {
+    for (UISwitch *theSwitch in switchs) {
         theSwitch.on = NO;
         theSwitch.enabled = NO;
         theSwitch.backgroundColor = [UIColor getColor:@"e4e4e4"];
