@@ -89,24 +89,23 @@
 
 - (IBAction)bindAction {
 //    [self unBindDevice]; // 解绑设备
-//    if (deviceTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
-//        [HintView showHint:Localize(@"请填完整设备信息")];
-//        return;
-//    }else
-//        if ([deviceTF.text containsString:@"62"]) {
-//            if (deviceTF.text.length == 0 || typeInput2.contentTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
-//                [HintView showHint:Localize(@"请填完整设备信息")];
-//                return;
-//            }
-//    }else
-//        if ([deviceTF.text containsString:@"63"]) {
-//            if (deviceTF.text.length == 0 || typeInput2.contentTF.text.length == 0 || typeInput3.contentTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
-//                    [HintView showHint:Localize(@"请填完整设备信息")];
-//                    return;
-//                }
-//            }
-//    [self bindDevice];
-    [self POSTs];
+    if (deviceTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
+        [HintView showHint:Localize(@"请填完整设备信息")];
+        return;
+    }else
+        if ([deviceTF.text containsString:@"62"]) {
+            if (deviceTF.text.length == 0 || typeInput2.contentTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
+                [HintView showHint:Localize(@"请填完整设备信息")];
+                return;
+            }
+        }else
+            if ([deviceTF.text containsString:@"63"]) {
+                if (deviceTF.text.length == 0 || typeInput2.contentTF.text.length == 0 || typeInput3.contentTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
+                    [HintView showHint:Localize(@"请填完整设备信息")];
+                    return;
+                }
+            }
+    [self bindDevice];
 }
 
 ////获取电器位置列表(如：客厅，卧室)
@@ -130,12 +129,12 @@
         dispatch_group_enter(group);
         [[NetworkRequest sharedInstance] requestWithUrl:GET_BRAND_LIST_URL parameter:nil completion:^(id response, NSError *error) {
             dispatch_group_leave(group);
-
+            
             ZPLog(@"%@",response);
             if (!error) {
                 NSArray *brands = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
                 brandInput.datas = brands;
-
+                
             }
         }];
         
@@ -149,7 +148,7 @@
         dispatch_group_enter(group);
         [[NetworkRequest sharedInstance] requestWithUrl:GET_NAME_LIST_URL parameter:nil completion:^(id response, NSError *error) {
             dispatch_group_leave(group);
-
+            
             ZPLog(@"%@",response);
             if (!error) {
                 NSArray *names = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
@@ -169,81 +168,36 @@
         ZPLog(@"%@",response);
         //请求成功
         if (!error) {
-//            [self POSTs];
-//            WifiConnectViewController * connect = [[WifiConnectViewController alloc] init];
-//            connect.deviceNo = deviceTF.text;
-//            [self.navigationController pushViewController:connect animated:YES];
-
-//            判断输入框中的数字是否包含制定的数字，如果有则不跳转直接成功，如果没有需要跳转到下个界面
-//            NSString * string = deviceTF.text;
-//            if ([string hasPrefix:@"65"]) {
-//                ZPLog(@"%@包含", string);
-//            NSDictionary * dict = @{@"DeviceCode":deviceTF.text};
-//            [[NetworkRequest sharedInstance]requestWithUrl:GET_DEVICE_INFO_URL parameter:dict completion:^(id response, NSError *error) {
-//                [self.view startLoading];
-//                ZPLog(@"%@",dict);
-//                ZPLog(@"%@",error);
-//                ZPLog(@"%@",response);
-//            }];
-            
-//            [[NetworkRequest sharedInstance] requestWithUrl:GET_DEVICE_INFO_URL parameter:nil completion:^(id response, NSError *error) {
-//
-//                [self.view stopLoading];
-//
-//                ZPLog(@"%@",response);
-//            }];
-            
-//            }else {
-//                ZPLog(@"%@不包含", string);
-//                [self.navigationController popViewControllerAnimated:YES];
-//                [HintView showHint:Localize(@"添加成功")];  // 提示框
-//            }
+            [self POSTs];
         }else {
             [HintView showHint:error.localizedDescription];
         }
-  }];
+    }];
 }
 
 // 获取设备信息（单个）这个
+// 获取所有设备，判断是否是需要加入wifi的
 - (void)POSTs {
     [self.view startLoading];
     NSDictionary * dict = @{@"deviceCode":deviceTF.text};
-//    NSDictionary * dic = @{@"devicecode":deviceTF.text};
     [[NetworkRequest sharedInstance]requestWithUrl:GET_DEVICE_INFO_URL parameter:dict completion:^(id response, NSError *error) {
         [self.view stopLoading];
         NSDictionary * dic = response[@"content"];
-        if ([dic[@"sort"] isEqual:@"YC"]) { //换汤不换药
+        if ([dic[@"sort"] isEqual:@"FYGPMT"] || [dic[@"sort"] isEqual:@"CDMT10"] || [dic[@"sort"] isEqual:@"CDMT16"] || [dic[@"sort"] isEqual:@"CDMT60"] || [dic[@"sort"] isEqual:@"GP1P"] || [dic[@"sort"] isEqual:@"YCGP10"] || [dic[@"sort"] isEqual:@"YCGP16"] || [dic[@"sort"] isEqual:@"MC"] || [dic[@"sort"] isEqual:@"GP3P"]) { //换汤不换药
             ZPLog(@"不跳转");
+            [self.navigationController popViewControllerAnimated:YES];
+            [HintView showHint:Localize(@"添加成功")];  // 提示框
         } else {
-            
+            WifiConnectViewController * connect = [[WifiConnectViewController alloc] init];
+            connect.deviceNo = deviceTF.text;
+            [self.navigationController pushViewController:connect animated:YES];
         }
-    
+        
         ZPLog(@"%@",dict);
         ZPLog(@"%@",error);
         ZPLog(@"%@",response);
     }];
 }
-
-//// 获取所有设备，判断是否是需要加入wifi的
-//- (void)POSTs {
-//    [self.view startLoading];
-//   [[NetworkRequest sharedInstance] requestWithUrl:GET_DEVICE_LIST_URL parameter:nil completion:^(id response, NSError *error) {
-//       ZPLog(@"%@",response);
-//       NSArray *array = response[@"content"];
-//       NSDictionary * dic = array[0];
-//       NSString * sort = dic[@"sort"];
-//       ZPLog(@"%@",sort);
-//       if ([sort containsString:@"FYGPMT"] || [sort containsString:@"CDMT10"] || [sort containsString:@"CDMT16"]  || [sort containsString:@"CDMT60"]  || [sort containsString:@"GP1P"]  || [sort containsString:@"YCGP10"]  || [sort containsString:@"YCGP16"] || [sort containsString:@"MC"] || [sort containsString:@"GP3P"] || [sort containsString:@"YC"]) {
-//           ZPLog(@"不需要加入wifi");
-//           [self.navigationController popViewControllerAnimated:YES];
-//          [HintView showHint:Localize(@"添加成功")];  // 提示框
-//       }else {
-//           WifiConnectViewController * connect = [[WifiConnectViewController alloc] init];
-//           connect.deviceNo = deviceTF.text;
-//        [self.navigationController pushViewController:connect animated:YES];
-//       }
-//    }];
-//}
 
 //解绑设备 （传入参数：设备编号；设备Key）
 - (void)unBindDevice {
@@ -300,16 +254,16 @@
             TypeInput3LayoutConstraint.constant = 60;
             typeInput3.hidden = NO;
             bdffLayoutConstraint.constant = + 20; // (正常状态)
-    }else {
-        /*****************************此处用来判断是否显示设备名称2-3项*********************/
-        typeInput.name.text = Localize(@"设备名称");
-        TypeInput2LayoutConstraint.constant = CGFLOAT_MIN;
-        typeInput2.hidden = YES;
-        TypeInput3LayoutConstraint.constant = CGFLOAT_MIN;
-        typeInput3.hidden = YES;
-        bdffLayoutConstraint.constant = - 59; // (隐藏两个text输入框的高度)
-        /****************************************************************************/
-    }
+        }else {
+            /*****************************此处用来判断是否显示设备名称2-3项*********************/
+            typeInput.name.text = Localize(@"设备名称");
+            TypeInput2LayoutConstraint.constant = CGFLOAT_MIN;
+            typeInput2.hidden = YES;
+            TypeInput3LayoutConstraint.constant = CGFLOAT_MIN;
+            typeInput3.hidden = YES;
+            bdffLayoutConstraint.constant = - 59; // (隐藏两个text输入框的高度)
+            /****************************************************************************/
+        }
 }
 
 
