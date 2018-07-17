@@ -9,8 +9,7 @@
 #import "DeviceDetailListCell.h"
 #import "DeviceModel.h"
 #import "DebuggingANDPublishing.pch"
-@interface DeviceDetailListCell ()
-{
+@interface DeviceDetailListCell () {
 __weak IBOutlet UILabel *name;
 __weak IBOutlet UILabel *deviceId;
 __weak IBOutlet UILabel *type;
@@ -91,7 +90,6 @@ if (self.model.powerinfo && self.model.powerinfo.length>0) {
     NSString *statusStr = [self.model.powerinfo status];
     
     if (self.model.isOpen) {
-        
         openSwitch.backgroundColor = [UIColor getColor:@"54d76a"];
         [statusImg setImage:[UIImage imageNamed:@"open_open"]];
 

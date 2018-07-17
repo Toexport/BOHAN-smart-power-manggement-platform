@@ -58,11 +58,12 @@ if(self)
 return self;
 }
 
-- (void)setModel:(DeviceModel *)model
-{
+- (void)setModel:(DeviceModel *)model {
+    
 _model = model;
 [self setNeedsLayout];
 }
+
 - (IBAction)openAction:(UISwitch *)sender {
 
 

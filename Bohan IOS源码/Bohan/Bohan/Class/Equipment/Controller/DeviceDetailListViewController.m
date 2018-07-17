@@ -226,15 +226,15 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     if (indexPath.section == 0) {
         //        在线数据
         DeviceModel *model = self.online[indexPath.row];
-        if([model.id hasPrefix:@"61"] || [model.id hasPrefix:@"62"] || [model.id hasPrefix:@"63"]) {
-            DeviceDetailMutableListCell *cell = (DeviceDetailMutableListCell*)[tableView dequeueReusableCellWithIdentifier:deviceDetailMutableCellIdentifier];
+        if([model.id hasPrefix:@"61"] || [model.id hasPrefix:@"62"] || [model.id hasPrefix:@"63"])
+        {
+            DeviceDetailMutableListCell * cell = (DeviceDetailMutableListCell*)[tableView dequeueReusableCellWithIdentifier:deviceDetailMutableCellIdentifier];
             cell.delegate = self;
             cell.indexPath = indexPath;
             [cell setModel:model];
             return cell;
-            //        这个是两个cell，一个是三个按钮，一个是一个按钮
         }else {
-            DeviceDetailListCell *cell = (DeviceDetailListCell*)[tableView dequeueReusableCellWithIdentifier:deviceDetailCellIdentifier];
+            DeviceDetailListCell * cell = (DeviceDetailListCell*)[tableView dequeueReusableCellWithIdentifier:deviceDetailCellIdentifier];
             cell.delegate = self;
             cell.indexPath = indexPath;
             [cell setModel:model];
@@ -242,13 +242,12 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
         }
     } else {
         //        不在线
-        DeviceModel *model = self.offline[indexPath.row];
+        DeviceModel * model = self.offline[indexPath.row];
         if([model.id hasPrefix:@"61"] || [model.id hasPrefix:@"62"] || [model.id hasPrefix:@"63"]) {
             DeviceDetailMutableListCell * cell = (DeviceDetailMutableListCell*)[tableView dequeueReusableCellWithIdentifier:deviceDetailMutableCellIdentifier];
             cell.delegate = self;
             cell.indexPath = indexPath;
             [cell setModel:model];
-            
             return cell;
             //        这个是两个cell，一个是三个按钮，一个是一个按钮
         }else {
@@ -269,14 +268,14 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (indexPath.section == 0) {
-        DeviceInfoViewController *info = [[DeviceInfoViewController alloc] init];
+        DeviceInfoViewController * info = [[DeviceInfoViewController alloc] init];
         DeviceModel *model = self.online[indexPath.row];
         info.model = model;
         info.sortt = model.sort;
         [self.navigationController pushViewController:info animated:YES]; // 设备离线不跳转
-        //}
         return;
     }else {
+        
         [HintView showHint:Localize(@"当前设备离线不可控制")];
     }
 }
@@ -289,7 +288,8 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
 }
 
 - (BOOL)shouldShowNoDataView {
-    if (self.datas.count == 0) {
+    if (self.datas.count == 0) { // 默认
+//    if (self.idArray.count == 0) {
         return YES;
     }
     return NO;
@@ -299,7 +299,8 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
 #pragma mark - DeviceDetailListCellDelegate
 - (void)didSwitchOpen:(BOOL)isOpen withIndexPath:(NSIndexPath *)indexPath {
     shouldNotUpdate = YES;
-    DeviceModel *model = self.datas[indexPath.row];
+//    DeviceModel *model = self.datas[indexPath.row];
+    DeviceModel *model = self.online[indexPath.row];
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *command = [[CommandModel alloc] init];
     command.command = @"0013";
@@ -308,7 +309,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     MyWeakSelf
     [socket sendSingleDataWithModel:command resultBlock:^(id response, NSError *error) {
         ZPLog(@"--------%@",response);
-        
         if (!error) {
             //******注意：开启成功后，需要重新取实时数据*******
             [HintView showHint:isOpen?Localize(@"已开启"):Localize(@"已关闭")];
