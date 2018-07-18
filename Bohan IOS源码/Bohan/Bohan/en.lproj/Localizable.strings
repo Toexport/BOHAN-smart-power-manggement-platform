@@ -56,6 +56,7 @@
 "信息保存成功!" = "Information saved successfully";
 //\n本设备还没有进行智能连接哦    \n The device is not connected
 //暂不连接    Not connected yet
+"定时开关" = "Time Switch";
 "星期一" = "Monday";
 "星期二" = "Tuesday";
 "星期三" = "Wednesday";
