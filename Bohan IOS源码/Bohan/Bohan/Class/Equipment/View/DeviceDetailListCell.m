@@ -118,6 +118,7 @@ if (self.model.powerinfo && self.model.powerinfo.length>0) {
         if ([stringg hasPrefix:@"68"] || [string hasPrefix:@"67"]) {
             ZPLog(@"包含");
             [power setText:[self.model.powerinfo power]];  //用电信息
+            [[NSUserDefaults standardUserDefaults] setObject:self.model.powerinfo forKey:@"powerinfo"];
         }
             if ([stringg hasPrefix:@"64"]) {
                 if ([strin containsString:@"CDMT60"]) {
@@ -141,6 +142,7 @@ if (self.model.powerinfo && self.model.powerinfo.length>0) {
                     if ([strin containsString:@"GP1P"]) {
                         ZPLog(@"有小数点");
                         [power setText:[self.model.powerinfo powerrrr]];
+                        [[NSUserDefaults standardUserDefaults] setObject:self.model.powerinfo forKey:@"powerinfo"];
                     }else {
                         ZPLog(@"没有小数点");
                         [power setText:[self.model.powerinfo powerrrrNo]];
