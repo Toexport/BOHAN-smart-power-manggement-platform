@@ -26,9 +26,13 @@
     __weak IBOutlet UIButton *lookBtn;
     __weak IBOutlet UIButton *connectBtn;
     __weak IBOutlet UIButton *alternativeButt;
+    
     __weak IBOutlet NSLayoutConstraint *MaimVIEwLayoutConstraint;
-    __weak IBOutlet NSLayoutConstraint *SecondViewLayoutConstraint;
-    __weak IBOutlet NSLayoutConstraint *ssecondViewLayoutConstraint;
+    __weak IBOutlet NSLayoutConstraint *SecondViewLayoutConstraint;// 第一个View
+    __weak IBOutlet NSLayoutConstraint *ThreeViewLayoutConstraint; // 第二个View
+    __weak IBOutlet NSLayoutConstraint *ViewwLayoutConstraint;
+    
+    
     __weak IBOutlet CustomInputView *SecondView;
     __weak IBOutlet UIView *divider1View;
     __weak IBOutlet CustomInputView *ThreeView;
@@ -67,49 +71,55 @@
     [self loadBrandList];
     [self IFGPRS];
     [self MoreSwitch];
-//    [self Hidden];
+    [self Hidden];
 }
 // 默认隐藏
 - (void)Hidden {
-    SecondView.hidden = YES;
-    ThreeView.hidden = YES;
-    divider2View.hidden = YES;
-    divider1View.hidden = YES;
-    MaimVIEwLayoutConstraint.constant = 348;
-    ssecondViewLayoutConstraint.constant = -102;
-}
-// 判断是几位开关
-- (void)MoreSwitch {
-    if ([self.model.id containsString:@"61"]) {
-        ZPLog(@"%@",self.model.id);
-        ZPLog(@"一位开关，需要隐藏两位开关，View3上移1.2");
-        typeInput.name.text = Localize(@"设备名称1");
+    
+    if ([self.model.id containsString:@"60"] || [self.model.id containsString:@"64"] || [self.model.id containsString:@"65"] || [self.model.id containsString:@"66"] || [self.model.id containsString:@"67"] || [self.model.id containsString:@"68"] || [self.model.id containsString:@"69"] || [self.model.id containsString:@"70"]) {
+        typeInput.name.text = Localize(@"设备名称");
+        SecondViewLayoutConstraint.constant = CGFLOAT_MIN;
+        ThreeViewLayoutConstraint.constant = CGFLOAT_MIN;
         SecondView.hidden = YES;
         ThreeView.hidden = YES;
         divider2View.hidden = YES;
         divider1View.hidden = YES;
         MaimVIEwLayoutConstraint.constant = 348;
-        ssecondViewLayoutConstraint.constant = -102;
     }
+}
+// 判断是几位开关
+- (void)MoreSwitch {
+    if ([self.model.id containsString:@"61"]) {
+        ZPLog(@"%@",self.model.id);
+        typeInput.name.text = Localize(@"设备名称1");
+        SecondViewLayoutConstraint.constant = CGFLOAT_MIN;
+        ThreeViewLayoutConstraint.constant = CGFLOAT_MIN;
+        SecondView.hidden = YES;
+        ThreeView.hidden = YES;
+        divider2View.hidden = YES;
+        divider1View.hidden = YES;
+        MaimVIEwLayoutConstraint.constant = 348;
+    }else
         if ([self.model.id containsString:@"62"]) {
             typeInput.name.text = Localize(@"设备名称1");
             SecondView.name.text = Localize(@"设备名称2");
+            ThreeViewLayoutConstraint.constant = CGFLOAT_MIN;
             ThreeView.hidden = YES;
-            divider1View.hidden = NO;
-            SecondView.hidden = NO;
-            SecondViewLayoutConstraint.constant = - 51;
-            MaimVIEwLayoutConstraint.constant = 397;
-        }
+            divider1View.hidden = YES;
+            MaimVIEwLayoutConstraint.constant = 399;
+            
+        }else
             if ([self.model.id containsString:@"63"]) {
                 typeInput.name.text = Localize(@"设备名称1");
                 SecondView.name.text = Localize(@"设备名称2");
                 ThreeView.name.text = Localize(@"设备名称3");
+                ThreeViewLayoutConstraint.constant = 51;
+                SecondViewLayoutConstraint.constant = 51;
                 SecondView.hidden = NO;
                 ThreeView.hidden = NO;
                 divider2View.hidden = NO;
                 divider1View.hidden = NO;
                 MaimVIEwLayoutConstraint.constant = 450;
-                ssecondViewLayoutConstraint.constant = 0;
             }
 }
 // 判断是否是GPRS设备

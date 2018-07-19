@@ -12,10 +12,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UpdateDeviceInfoViewController">
             <connections>
-                <outlet property="MaimVIEwLayoutConstraint" destination="glL-7M-itW" id="Ufr-98-lDj"/>
+                <outlet property="MaimVIEwLayoutConstraint" destination="glL-7M-itW" id="dEs-Gx-1rq"/>
                 <outlet property="SecondView" destination="anz-EI-xB7" id="LWz-8S-T9O"/>
-                <outlet property="SecondViewLayoutConstraint" destination="WhW-eT-Uhz" id="jMz-BX-vHs"/>
+                <outlet property="SecondViewLayoutConstraint" destination="Mbd-7o-8UL" id="wT0-7A-v0Y"/>
                 <outlet property="ThreeView" destination="pQQ-pC-LD4" id="VuK-8i-qsA"/>
+                <outlet property="ThreeViewLayoutConstraint" destination="uDI-M9-kn2" id="Vlv-DN-m1Y"/>
+                <outlet property="ViewwLayoutConstraint" destination="RtH-3l-o6I" id="vfI-au-f0X"/>
                 <outlet property="alternativeButt" destination="dWC-Xs-HqA" id="I6S-LL-rxC"/>
                 <outlet property="brandInput" destination="HUv-3P-pr8" id="eS7-HD-V6J"/>
                 <outlet property="connectBtn" destination="NrD-Bq-A3F" id="IRL-sv-vCQ"/>
@@ -25,7 +27,6 @@
                 <outlet property="lookBtn" destination="SHd-OX-o0R" id="7L7-12-rfq"/>
                 <outlet property="nameTF" destination="NRt-U3-KVk" id="1B9-wQ-tFY"/>
                 <outlet property="posInput" destination="Wex-N1-uVp" id="ef6-qc-gBM"/>
-                <outlet property="ssecondViewLayoutConstraint" destination="nBT-Ud-dzV" id="c3C-kN-kjq"/>
                 <outlet property="typeInput" destination="Z6T-oT-fn7" id="u1H-rR-3JG"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -109,35 +110,35 @@
                                     <rect key="frame" x="5" y="153" width="345" height="297"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="anz-EI-xB7" customClass="CustomInputView">
-                                            <rect key="frame" x="0.0" y="0.0" width="345" height="50"/>
+                                            <rect key="frame" x="0.0" y="1" width="345" height="50"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="Mbd-7o-8UL"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vu5-tY-2uk">
-                                            <rect key="frame" x="0.0" y="50" width="345" height="1"/>
+                                            <rect key="frame" x="0.0" y="51" width="345" height="1"/>
                                             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="VLv-ha-WM7"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pQQ-pC-LD4" customClass="CustomInputView">
-                                            <rect key="frame" x="0.0" y="51" width="345" height="50"/>
+                                            <rect key="frame" x="0.0" y="52" width="345" height="50"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="50" id="uDI-M9-kn2"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VSq-MB-cUZ">
-                                            <rect key="frame" x="0.0" y="101" width="345" height="1"/>
+                                            <rect key="frame" x="0.0" y="102" width="345" height="1"/>
                                             <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="zyv-ay-PMq"/>
                                             </constraints>
                                         </view>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F7g-vV-Ndy">
-                                            <rect key="frame" x="0.0" y="102" width="345" height="185"/>
+                                            <rect key="frame" x="0.0" y="104" width="345" height="185"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HUv-3P-pr8" customClass="CustomInputView">
                                                     <rect key="frame" x="0.0" y="0.0" width="345" height="50"/>
@@ -216,13 +217,13 @@
                                         <constraint firstItem="anz-EI-xB7" firstAttribute="leading" secondItem="81M-7D-6dj" secondAttribute="leading" id="LeG-gQ-II2"/>
                                         <constraint firstItem="Vu5-tY-2uk" firstAttribute="top" secondItem="anz-EI-xB7" secondAttribute="bottom" id="Osu-l3-mCc"/>
                                         <constraint firstItem="F7g-vV-Ndy" firstAttribute="leading" secondItem="81M-7D-6dj" secondAttribute="leading" id="PfK-vu-6Rc"/>
-                                        <constraint firstItem="F7g-vV-Ndy" firstAttribute="top" secondItem="VSq-MB-cUZ" secondAttribute="bottom" id="WhW-eT-Uhz"/>
+                                        <constraint firstItem="F7g-vV-Ndy" firstAttribute="top" secondItem="VSq-MB-cUZ" secondAttribute="bottom" constant="1" id="WhW-eT-Uhz"/>
                                         <constraint firstAttribute="height" constant="297" id="Wst-Ho-Nb3"/>
                                         <constraint firstItem="Vu5-tY-2uk" firstAttribute="leading" secondItem="81M-7D-6dj" secondAttribute="leading" id="gBf-Fc-m9y"/>
                                         <constraint firstAttribute="trailing" secondItem="anz-EI-xB7" secondAttribute="trailing" id="h4E-6Z-Lcv"/>
                                         <constraint firstItem="VSq-MB-cUZ" firstAttribute="top" secondItem="pQQ-pC-LD4" secondAttribute="bottom" id="hx3-HU-9Jc"/>
                                         <constraint firstAttribute="trailing" secondItem="Vu5-tY-2uk" secondAttribute="trailing" id="lsl-3P-oGt"/>
-                                        <constraint firstItem="anz-EI-xB7" firstAttribute="top" secondItem="81M-7D-6dj" secondAttribute="top" id="nBT-Ud-dzV"/>
+                                        <constraint firstItem="anz-EI-xB7" firstAttribute="top" secondItem="81M-7D-6dj" secondAttribute="top" constant="1" id="nBT-Ud-dzV"/>
                                         <constraint firstAttribute="trailing" secondItem="VSq-MB-cUZ" secondAttribute="trailing" id="rAV-6p-S0P"/>
                                         <constraint firstItem="pQQ-pC-LD4" firstAttribute="leading" secondItem="81M-7D-6dj" secondAttribute="leading" id="uSD-B4-1R2"/>
                                     </constraints>
