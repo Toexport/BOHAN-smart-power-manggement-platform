@@ -9,8 +9,7 @@
 #import "DeviceTableViewCell.h"
 #import "DeviceModel.h"
 #import "DebuggingANDPublishing.pch"
-@interface DeviceTableViewCell ()
-{
+@interface DeviceTableViewCell () {
     __weak IBOutlet UILabel *name;
     __weak IBOutlet UILabel *deviceId;
     __weak IBOutlet UILabel *type;

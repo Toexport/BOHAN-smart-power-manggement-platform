@@ -14,36 +14,32 @@
 #import "DebuggingANDPublishing.pch"
 @interface UpdateDeviceInfoViewController ()
 {
-//    __weak IBOutlet UILabel *name;
     
     __weak IBOutlet UITextField *nameTF;
     __weak IBOutlet UILabel *deviceId;
     __weak IBOutlet CustomInputView *typeInput;
     __weak IBOutlet CustomInputView *posInput;
     __weak IBOutlet CustomInputView *brandInput;
-//    dispatch_group_t group;
-//    dispatch_queue_t queue;
+
     __weak IBOutlet UIButton *lookBtn;
     __weak IBOutlet UIButton *connectBtn;
     __weak IBOutlet UIButton *alternativeButt;
     
-    __weak IBOutlet NSLayoutConstraint *MaimVIEwLayoutConstraint;
+    __weak IBOutlet NSLayoutConstraint *MaimVIEwLayoutConstraint; // 主View
     __weak IBOutlet NSLayoutConstraint *SecondViewLayoutConstraint;// 第一个View
     __weak IBOutlet NSLayoutConstraint *ThreeViewLayoutConstraint; // 第二个View
     __weak IBOutlet NSLayoutConstraint *ViewwLayoutConstraint;
-    
-    
     __weak IBOutlet CustomInputView *SecondView;
-    __weak IBOutlet UIView *divider1View;
     __weak IBOutlet CustomInputView *ThreeView;
+    __weak IBOutlet UIView *divider1View;
     __weak IBOutlet UIView *divider2View;
-
+    
     BOOL loadtType;
     BOOL loadtPos;
     BOOL loadtBrand;
-
-
+    
 }
+
 @end
 
 @implementation UpdateDeviceInfoViewController
@@ -55,7 +51,7 @@
     [deviceId setText:self.model.id];
     lookBtn.titleLabel.numberOfLines = 2;
     connectBtn.titleLabel.numberOfLines = 2;
-
+    
     posInput.name.text = Localize(@"设备位置");
     posInput.contentTF.text = self.model.position;
     
@@ -64,7 +60,7 @@
     
     brandInput.name.text = Localize(@"电器品牌");
     brandInput.contentTF.text = self.model.brand;
-
+    
     [self.view startLoading];
     [self loadPosList];
     [self loadNameList];
@@ -72,10 +68,11 @@
     [self IFGPRS];
     [self MoreSwitch];
     [self Hidden];
+    
 }
+
 // 默认隐藏
 - (void)Hidden {
-    
     if ([self.model.id containsString:@"60"] || [self.model.id containsString:@"64"] || [self.model.id containsString:@"65"] || [self.model.id containsString:@"66"] || [self.model.id containsString:@"67"] || [self.model.id containsString:@"68"] || [self.model.id containsString:@"69"] || [self.model.id containsString:@"70"]) {
         typeInput.name.text = Localize(@"设备名称");
         SecondViewLayoutConstraint.constant = CGFLOAT_MIN;
@@ -87,6 +84,7 @@
         MaimVIEwLayoutConstraint.constant = 348;
     }
 }
+
 // 判断是几位开关
 - (void)MoreSwitch {
     if ([self.model.id containsString:@"61"]) {
@@ -108,19 +106,19 @@
             divider1View.hidden = YES;
             MaimVIEwLayoutConstraint.constant = 399;
             
-        }else
-            if ([self.model.id containsString:@"63"]) {
-                typeInput.name.text = Localize(@"设备名称1");
-                SecondView.name.text = Localize(@"设备名称2");
-                ThreeView.name.text = Localize(@"设备名称3");
-                ThreeViewLayoutConstraint.constant = 51;
-                SecondViewLayoutConstraint.constant = 51;
-                SecondView.hidden = NO;
-                ThreeView.hidden = NO;
-                divider2View.hidden = NO;
-                divider1View.hidden = NO;
-                MaimVIEwLayoutConstraint.constant = 450;
-            }
+    }else
+        if ([self.model.id containsString:@"63"]) {
+            typeInput.name.text = Localize(@"设备名称1");
+            SecondView.name.text = Localize(@"设备名称2");
+            ThreeView.name.text = Localize(@"设备名称3");
+            ThreeViewLayoutConstraint.constant = 51;
+            SecondViewLayoutConstraint.constant = 51;
+            SecondView.hidden = NO;
+            ThreeView.hidden = NO;
+            divider2View.hidden = NO;
+            divider1View.hidden = NO;
+            MaimVIEwLayoutConstraint.constant = 450;
+    }
 }
 // 判断是否是GPRS设备
 - (void)IFGPRS {
@@ -130,9 +128,9 @@
         lookBtn.hidden = YES;
         alternativeButt.hidden = NO;
     }else {
-       connectBtn.hidden = NO;
-       alternativeButt.hidden = YES;
-       lookBtn.hidden = NO;
+        connectBtn.hidden = NO;
+        alternativeButt.hidden = YES;
+        lookBtn.hidden = NO;
     }
 }
 
@@ -140,20 +138,19 @@
     
     if (loadtType && loadtType && loadtBrand) {
         
-        DBLog(@"全部请求完毕");
+        ZPLog(@"全部请求完毕");
         
         [self.view stopLoading];
-
+        
     }
-
+    
 }
 
-- (void)loadPosList
-{
+- (void)loadPosList {
     
     [[NetworkRequest sharedInstance] requestWithUrl:GET_POS_NAME_LIST_URL parameter:nil completion:^(id response, NSError *error) {
-//        dispatch_group_leave(group);
-        DBLog(@"%@",response);
+        //        dispatch_group_leave(group);
+        ZPLog(@"%@",response);
         loadtPos = YES;
         if (!error) {
             NSArray *postions = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
@@ -165,44 +162,37 @@
     
 }
 
-- (void)loadBrandList
-{
+- (void)loadBrandList {
     
     [[NetworkRequest sharedInstance] requestWithUrl:GET_BRAND_LIST_URL parameter:nil completion:^(id response, NSError *error) {
-//        dispatch_group_leave(group);
+        //        dispatch_group_leave(group);
         loadtBrand = YES;
-        DBLog(@"%@",response);
+        ZPLog(@"%@",response);
         if (!error) {
             NSArray *brands = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
             brandInput.datas = brands;
             [self updateUI];
-
         }
     }];
-    
 }
 
-- (void)loadNameList
-{
-    
+- (void)loadNameList {
     [[NetworkRequest sharedInstance] requestWithUrl:GET_NAME_LIST_URL parameter:nil completion:^(id response, NSError *error) {
-//        dispatch_group_leave(group);
+        //        dispatch_group_leave(group);
         loadtType = YES;
-
-        DBLog(@"%@",response);
+        
+        ZPLog(@"%@",response);
         if (!error) {
             NSArray *names = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
             typeInput.datas = names;
             [self updateUI];
-
+            
         }
         
     }];
-
 }
 
-- (void)updateDeviceInfo
-{
+- (void)updateDeviceInfo {
     [self.view startLoading];
     NSDictionary *dic = @{@"DeviceName":nameTF.text,@"DeviceCode":deviceId.text, @"PosName":posInput.contentTF.text, @"LoadName":typeInput.contentTF.text, @"LoadBrand":brandInput.contentTF.text};
     [[NetworkRequest sharedInstance] requestWithUrl:MODIFY_DEVICE_INFO_URL parameter:dic completion:^(id response, NSError *error) {
@@ -214,30 +204,11 @@
             [HintView showHint:Localize(@"修改成功")];
             [self.navigationController popViewControllerAnimated:YES];
             
-        }else
-        {
+        }else {
             [HintView showHint:error.localizedDescription];
         }
-        
     }];
-    
 }
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)saveAction {
     
@@ -254,7 +225,7 @@
     DeviceInfoViewController *info = [[DeviceInfoViewController alloc] init];
     info.model = self.model;
     [self.navigationController pushViewController:info animated:YES];
-
+    
 }
 
 - (IBAction)connectAction {
@@ -262,6 +233,6 @@
     WifiConnectViewController *connect = [[WifiConnectViewController alloc] init];
     connect.deviceNo = self.model.id;
     [self.navigationController pushViewController:connect animated:YES];
-
+    
 }
 @end

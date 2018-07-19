@@ -11,8 +11,7 @@
 @implementation WifiView
 
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [super awakeFromNib];
     
     self.pwdTF.secureTextEntry = NO;

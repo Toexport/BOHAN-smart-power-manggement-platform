@@ -108,7 +108,7 @@
     [self bindDevice];
 }
 
-////获取电器位置列表(如：客厅，卧室)
+//获取电器位置列表(如：客厅，卧室)
 - (void)loadPosList {
     dispatch_group_async(group, queue, ^{
         dispatch_group_enter(group);
@@ -134,12 +134,10 @@
             if (!error) {
                 NSArray *brands = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
                 brandInput.datas = brands;
-                
             }
         }];
         
     });
-    
 }
 
 // 获取(如：客厅，卧室)
@@ -148,7 +146,6 @@
         dispatch_group_enter(group);
         [[NetworkRequest sharedInstance] requestWithUrl:GET_NAME_LIST_URL parameter:nil completion:^(id response, NSError *error) {
             dispatch_group_leave(group);
-            
             ZPLog(@"%@",response);
             if (!error) {
                 NSArray *names = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];

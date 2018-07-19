@@ -123,8 +123,7 @@
     });
 }
 //查询设备是否已经连接
-- (void)deviceStatus
-{
+- (void)deviceStatus {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"1001";
@@ -142,7 +141,6 @@
                 [self.navigationController popToRootViewControllerAnimated:YES];
 
                 return;
-//                break;
             }
         }
         

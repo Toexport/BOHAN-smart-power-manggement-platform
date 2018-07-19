@@ -10,7 +10,8 @@
 
 @interface MultipleSwitchViewController : UIViewController
 {
-//    开关一
+    __weak IBOutlet UIScrollView *scrollView;
+    //    开关一
     __weak IBOutlet UITextField *Years1TextField;  // 年
     __weak IBOutlet UITextField *Month1TextField; // 月
     __weak IBOutlet UITextField *Day1textField;  // 日
