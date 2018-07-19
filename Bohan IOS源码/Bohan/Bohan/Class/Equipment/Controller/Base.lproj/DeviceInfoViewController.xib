@@ -28,7 +28,7 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4a-Zz-NYE">
-                            <rect key="frame" x="60" y="387" width="199" height="30"/>
+                            <rect key="frame" x="61" y="387" width="199" height="30"/>
                             <state key="normal" title="点击刷新设备最新的状态信息">
                                 <color key="titleColor" red="0.23921568630000001" green="0.55294117649999996" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>

@@ -102,6 +102,7 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
 }
 
 - (void)shareAction {
+    
     [[YLSheetView sharedInstace] showFromCenter:self.shareView];
 }
 
@@ -126,8 +127,7 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
                 self.deviceTable.noDataTitle = Localize(@"暂无数据");
                 self.deviceTable.noDataDetail = Localize(@"过会再来吧");
             }
-        }else
-        {
+        }else {
             self.deviceTable.noDataTitle = error.localizedDescription;
             self.deviceTable.noDataDetail = Localize(@"请稍后再试吧！");
         }
@@ -139,8 +139,7 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
 }
 
 // 分享设备
-- (void)shareDeviceWithTel:(NSString *)tel pwd:(NSString *)pwd
-{
+- (void)shareDeviceWithTel:(NSString *)tel pwd:(NSString *)pwd {
     
     NSMutableArray *devices = [NSMutableArray array];
     for (NSIndexPath *indexPath in _deviceTable.indexPathsForSelectedRows) {
@@ -154,14 +153,13 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
     [[NetworkRequest sharedInstance] requestWithUrl:SHARE_DEVICE_URL parameter:dic completion:^(id response, NSError *error) {
         
         [self.view stopLoading];
-        DBLog(@"%@",response);
+        ZPLog(@"%@",response);
         if (!error) {
             [HintView showHint:Localize(@"分享成功")];
             [self editAction:self.navigationItem.rightBarButtonItem];
             [[YLSheetView sharedInstace] closeView];
             
-        }else
-        {
+        }else {
             [HintView showHint:error.localizedDescription];
         }
         
@@ -179,16 +177,13 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
         [self.view stopLoading];
         //请求成功
         if (!error) {
-            
             [self.datas removeObject:model];
             [self.deviceTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
             
         }else {
             [HintView showHint:error.localizedDescription];
         }
-        
     }];
-    
 }
 
 
@@ -201,7 +196,6 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
         _deviceTable.allowsMultipleSelection = YES;
         _deviceTable.allowsMultipleSelectionDuringEditing = YES;
         _deviceTable.noDatadelegate = self;
-//        _deviceTable.tintColor = [UIColor getColor:@"dcecfd"];
         _deviceTable.delegate = self;
         _deviceTable.dataSource = self;
         _deviceTable.rowHeight = 74;
@@ -222,7 +216,7 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
 }
 
 
-- (UIButton *)bottomView {
+- (UIButton *)bottomView { // 看半天，这个继承的是个按钮，靠。
     if (!_bottomView) {
         _bottomView = [[UIButton alloc] initWithFrame:CGRectMake(0, ScreenHeight - kTabBarHeight, ScreenWidth, SHAREBTNHIGHT)];
         [_bottomView setTitle:Localize(@"分享") forState:UIControlStateNormal];
@@ -231,22 +225,21 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
         [_bottomView.titleLabel setFont:Font(14)];
         [_bottomView setTitleColor:kTextColor forState:UIControlStateNormal];
         [_bottomView addTarget:self action:@selector(shareAction) forControlEvents:UIControlEventTouchUpInside];
-
+        
         _bottomView.layer.shadowColor = [UIColor getColor:@"f2f2f2"].CGColor;
         _bottomView.layer.shadowOffset = CGSizeMake(0.0f, -1.0f);
         _bottomView.layer.shadowOpacity = 1.0f;
     }
-    
     return _bottomView;
 }
 
 - (ShareView *)shareView {
     if (!_shareView) {
         _shareView = [[[NSBundle mainBundle] loadNibNamed:@"ShareView" owner:nil options:nil] lastObject];
-        [_shareView setFrame:CGRectMake(20, (ScreenHeight - 220)/2, ScreenWidth - 40, 220)];
+        [_shareView setFrame:CGRectMake(20, (ScreenHeight - 370)/2, ScreenWidth - 40, 370)]; // 分享View大小设置
+        
         MyWeakSelf
         _shareView.submitBlock = ^(NSString *tel, NSString *pwd) {
-            
             [weakSelf shareDeviceWithTel:tel pwd:pwd];
         };
     }
@@ -254,7 +247,7 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
     return _shareView;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.datas.count;
     
 }
@@ -279,9 +272,8 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
 }
 
 
--(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{
-    if (editingStyle==UITableViewCellEditingStyleDelete) {
-        
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
         [self unBindDeviceAtIndexPath:indexPath];
     }
 }
@@ -290,20 +282,16 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
     return Localize(@"删除");
 }
 
-
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
 
 #pragma mark 按钮的点击事件
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     if (!tableView.isEditing) {
-        
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
         
         UpdateDeviceInfoViewController *update = [[UpdateDeviceInfoViewController alloc] init];
-        
         update.model = self.datas[indexPath.row];
         update.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:update animated:YES];
