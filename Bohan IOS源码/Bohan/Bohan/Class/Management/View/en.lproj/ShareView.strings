@@ -5,11 +5,27 @@
 /* Class = "UIButton"; normalTitle = "取消"; ObjectID = "H6f-ap-poy"; */
 "H6f-ap-poy.normalTitle" = "Cancel";
 
+/* Class = "UILabel"; text = "可设置负荷门限"; ObjectID = "MyC-0i-FDN"; */
+"MyC-0i-FDN.text" = "Load threshold can be set";
+
+/* Class = "UILabel"; text = "可设置充电保护和自定义智能用电控制"; ObjectID = "OAh-kG-z3O"; */
+"OAh-kG-z3O.text" = "Charge protection and power control";
+
+/* Class = "UILabel"; text = "完全权限"; ObjectID = "RKj-fc-Zrj"; */
+"RKj-fc-Zrj.text" = "Full permission";
+
+/* Class = "UILabel"; text = " 只可查询数据"; ObjectID = "WxN-HK-RGP"; */
+"WxN-HK-RGP.text" = " Only data can be queried";
+
 /* Class = "UILabel"; text = "分享"; ObjectID = "Ys3-oZ-agP"; */
 "Ys3-oZ-agP.text" = "Share";
+
+/* Class = "UILabel"; text = "选择分配权限"; ObjectID = "gcc-WU-63L"; */
+"gcc-WU-63L.text" = "Select assign permissions";
 
 /* Class = "UITextField"; placeholder = "请输入手机号"; ObjectID = "pQM-bA-yK6"; */
 "pQM-bA-yK6.placeholder" = "Please enter your cell phone number";
 
 /* Class = "UIButton"; normalTitle = "确认"; ObjectID = "yZi-jc-pOi"; */
 "yZi-jc-pOi.normalTitle" = "Confirm";
+

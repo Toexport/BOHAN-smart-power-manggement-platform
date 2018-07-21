@@ -21,7 +21,8 @@ static const CGFloat SHAREBTNHIGHT = 50;
 
 @property (nonatomic, strong) UITableView *deviceTable;
 @property (nonatomic, strong) NSMutableArray *datas;
-@property(nonatomic,strong)UIButton *bottomView;
+//@property (nonatomic,strong)UIButton *bottomView;
+@property (nonatomic, strong) UIView * ShareView;
 @property(nonatomic,strong)ShareView *shareView;
 
 @end
@@ -76,8 +77,8 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
 - (void)editAction:(UIBarButtonItem *)btn {
     CGFloat origalY;
 
-    if (!self.bottomView.superview) {
-        [self.view addSubview:self.bottomView];
+    if (!self.ShareView.superview) {
+        [self.view addSubview:self.ShareView];
     }
 
     if ([btn.title isEqualToString:Localize(@"取消")]) {
@@ -94,7 +95,7 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
     }
     
     [UIView animateWithDuration:0.25 animations:^{
-        [self.bottomView setFrame:CGRectMake(self.bottomView.frame.origin.x, origalY, self.bottomView.frame.size.width, SHAREBTNHIGHT)];
+        [self.ShareView setFrame:CGRectMake(self.ShareView.frame.origin.x, origalY, self.ShareView.frame.size.width, SHAREBTNHIGHT)];
         [self.deviceTable setFrame:CGRectChangeHeight(self.deviceTable.frame, origalY)];
     }];
     [self.deviceTable reloadData];
@@ -216,21 +217,21 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
 }
 
 
-- (UIButton *)bottomView { // 看半天，这个继承的是个按钮，靠。
-    if (!_bottomView) {
-        _bottomView = [[UIButton alloc] initWithFrame:CGRectMake(0, ScreenHeight - kTabBarHeight, ScreenWidth, SHAREBTNHIGHT)];
-        [_bottomView setTitle:Localize(@"分享") forState:UIControlStateNormal];
-        [_bottomView setBackgroundColor:[UIColor whiteColor]];
-        [_bottomView setImage:[UIImage imageNamed:@"manage_device_share"] forState:UIControlStateNormal];
-        [_bottomView.titleLabel setFont:Font(14)];
-        [_bottomView setTitleColor:kTextColor forState:UIControlStateNormal];
-        [_bottomView addTarget:self action:@selector(shareAction) forControlEvents:UIControlEventTouchUpInside];
+- (UIView *)ShareView { // 看半天，这个继承的是个按钮，靠。
+    if (!_ShareView) {
+        _ShareView = [[UIView alloc] initWithFrame:CGRectMake(0, ScreenHeight - kTabBarHeight, ScreenWidth, SHAREBTNHIGHT)];
         
-        _bottomView.layer.shadowColor = [UIColor getColor:@"f2f2f2"].CGColor;
-        _bottomView.layer.shadowOffset = CGSizeMake(0.0f, -1.0f);
-        _bottomView.layer.shadowOpacity = 1.0f;
+        _ShareView.layer.shadowColor = [UIColor getColor:@"f2f2f2"].CGColor;
+        _ShareView.layer.shadowOffset = CGSizeMake(0.0f, -1.0f);
+        _ShareView.layer.shadowOpacity = 1.0f;
+        [_ShareView setBackgroundColor:[UIColor whiteColor]];
+//        [_bottomView setTitle:Localize(@"分享") forState:UIControlStateNormal];
+//        [_bottomView setImage:[UIImage imageNamed:@"manage_device_share"] forState:UIControlStateNormal];
+//        [_bottomView.titleLabel setFont:Font(14)];
+//        [_bottomView setTitleColor:kTextColor forState:UIControlStateNormal];
+//        [_bottomView addTarget:self action:@selector(shareAction) forControlEvents:UIControlEventTouchUpInside];
     }
-    return _bottomView;
+    return _ShareView;
 }
 
 - (ShareView *)shareView {

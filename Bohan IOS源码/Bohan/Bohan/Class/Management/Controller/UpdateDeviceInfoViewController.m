@@ -20,7 +20,7 @@
     __weak IBOutlet CustomInputView *typeInput;
     __weak IBOutlet CustomInputView *posInput;
     __weak IBOutlet CustomInputView *brandInput;
-
+    
     __weak IBOutlet UIButton *lookBtn;
     __weak IBOutlet UIButton *connectBtn;
     __weak IBOutlet UIButton *alternativeButt;
@@ -55,12 +55,8 @@
     posInput.name.text = Localize(@"设备位置");
     posInput.contentTF.text = self.model.position;
     
-    typeInput.name.text = Localize(@"设备名称");
-    typeInput.contentTF.text = self.model.name;
-    
     brandInput.name.text = Localize(@"电器品牌");
     brandInput.contentTF.text = self.model.brand;
-    
     [self.view startLoading];
     [self loadPosList];
     [self loadNameList];
@@ -68,7 +64,30 @@
     [self IFGPRS];
     [self MoreSwitch];
     [self Hidden];
-    
+    [self Datas];
+}
+
+// 获取设备名称数据
+- (void)Datas {
+    if ([deviceId.text hasPrefix:@"62"] || [deviceId.text hasPrefix:@"63"]) {
+        if ([deviceId.text hasPrefix:@"62"]) {
+            NSString * string = self.model.name;
+            NSArray * strarray = [string  componentsSeparatedByString:@"@"];
+            ZPLog(@"%@",strarray);
+            typeInput.contentTF.text = strarray[0];
+            SecondView.contentTF.text = strarray[1];
+        }
+        if ([deviceId.text hasPrefix:@"63"]) {
+            NSString * string = self.model.name;
+            NSArray * strarray = [string  componentsSeparatedByString:@"@"];//获取当前某个字符前后数据
+            ZPLog(@"%@",strarray);
+            typeInput.contentTF.text = strarray[0];
+            SecondView.contentTF.text = strarray[1];
+            ThreeView.contentTF.text = strarray[2];
+        }
+    }else {
+        typeInput.contentTF.text = self.model.name;
+    }
 }
 
 // 默认隐藏
@@ -106,19 +125,19 @@
             divider1View.hidden = YES;
             MaimVIEwLayoutConstraint.constant = 399;
             
-    }else
-        if ([self.model.id containsString:@"63"]) {
-            typeInput.name.text = Localize(@"设备名称1");
-            SecondView.name.text = Localize(@"设备名称2");
-            ThreeView.name.text = Localize(@"设备名称3");
-            ThreeViewLayoutConstraint.constant = 51;
-            SecondViewLayoutConstraint.constant = 51;
-            SecondView.hidden = NO;
-            ThreeView.hidden = NO;
-            divider2View.hidden = NO;
-            divider1View.hidden = NO;
-            MaimVIEwLayoutConstraint.constant = 450;
-    }
+        }else
+            if ([self.model.id containsString:@"63"]) {
+                typeInput.name.text = Localize(@"设备名称1");
+                SecondView.name.text = Localize(@"设备名称2");
+                ThreeView.name.text = Localize(@"设备名称3");
+                ThreeViewLayoutConstraint.constant = 51;
+                SecondViewLayoutConstraint.constant = 51;
+                SecondView.hidden = NO;
+                ThreeView.hidden = NO;
+                divider2View.hidden = NO;
+                divider1View.hidden = NO;
+                MaimVIEwLayoutConstraint.constant = 450;
+            }
 }
 // 判断是否是GPRS设备
 - (void)IFGPRS {
@@ -155,7 +174,6 @@
         if (!error) {
             NSArray *postions = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
             posInput.datas = postions;
-            
             [self updateUI];
         }
     }];
@@ -180,56 +198,101 @@
     [[NetworkRequest sharedInstance] requestWithUrl:GET_NAME_LIST_URL parameter:nil completion:^(id response, NSError *error) {
         //        dispatch_group_leave(group);
         loadtType = YES;
-        
         ZPLog(@"%@",response);
         if (!error) {
             NSArray *names = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
-            typeInput.datas = names;
+            NSString * strarray = [names componentsJoinedByString:@"@"];
+            SecondView.datas  = [strarray componentsSeparatedByString:@"@"];
+            ThreeView.datas = [strarray componentsSeparatedByString:@"@"];
+            typeInput.datas = [strarray componentsSeparatedByString:@"@"];
             [self updateUI];
-            
         }
-        
     }];
 }
-
 - (void)updateDeviceInfo {
     [self.view startLoading];
-    NSDictionary *dic = @{@"DeviceName":nameTF.text,@"DeviceCode":deviceId.text, @"PosName":posInput.contentTF.text, @"LoadName":typeInput.contentTF.text, @"LoadBrand":brandInput.contentTF.text};
-    [[NetworkRequest sharedInstance] requestWithUrl:MODIFY_DEVICE_INFO_URL parameter:dic completion:^(id response, NSError *error) {
+    if ([deviceId.text hasPrefix:@"62"] || [deviceId.text hasPrefix:@"63"]) {
+        if ([deviceId.text hasPrefix:@"62"]) {
+            NSString * string = [NSString stringWithFormat:@"%@@%@",typeInput.contentTF.text,SecondView.contentTF.text];
+            NSDictionary *dic = @{@"DeviceName":nameTF.text,@"DeviceCode":deviceId.text, @"PosName":posInput.contentTF.text, @"LoadName":string, @"LoadBrand":brandInput.contentTF.text};
+            [[NetworkRequest sharedInstance] requestWithUrl:MODIFY_DEVICE_INFO_URL parameter:dic completion:^(id response, NSError *error) {
+                
+                [self.view stopLoading];
+                //请求成功
+                if (!error) {
+                    [HintView showHint:Localize(@"修改成功")];
+                    [self.navigationController popViewControllerAnimated:YES];
+                    
+                }else {
+                    [HintView showHint:error.localizedDescription];
+                }
+            }];
+        }else
+            if ([deviceId.text hasPrefix:@"63"]) {
+                NSString * string = [NSString stringWithFormat:@"%@@%@@%@",typeInput.contentTF.text,SecondView.contentTF.text,ThreeView.contentTF.text];
+                NSDictionary *dic = @{@"DeviceName":nameTF.text,@"DeviceCode":deviceId.text, @"PosName":posInput.contentTF.text, @"LoadName":string, @"LoadBrand":brandInput.contentTF.text};
+                [[NetworkRequest sharedInstance] requestWithUrl:MODIFY_DEVICE_INFO_URL parameter:dic completion:^(id response, NSError *error) {
+                    
+                    [self.view stopLoading];
+                    //请求成功
+                    if (!error) {
+                        [HintView showHint:Localize(@"修改成功")];
+                        [self.navigationController popViewControllerAnimated:YES];
+                        
+                    }else {
+                        [HintView showHint:error.localizedDescription];
+                    }
+                }];
+            }
         
-        [self.view stopLoading];
-        //请求成功
-        if (!error) {
+    }else{
+        
+        NSDictionary *dic = @{@"DeviceName":nameTF.text,@"DeviceCode":deviceId.text, @"PosName":posInput.contentTF.text, @"LoadName":typeInput.contentTF.text, @"LoadBrand":brandInput.contentTF.text};
+        [[NetworkRequest sharedInstance] requestWithUrl:MODIFY_DEVICE_INFO_URL parameter:dic completion:^(id response, NSError *error) {
             
-            [HintView showHint:Localize(@"修改成功")];
-            [self.navigationController popViewControllerAnimated:YES];
-            
-        }else {
-            [HintView showHint:error.localizedDescription];
-        }
-    }];
+            [self.view stopLoading];
+            //请求成功
+            if (!error) {
+                
+                [HintView showHint:Localize(@"修改成功")];
+                [self.navigationController popViewControllerAnimated:YES];
+                
+            }else {
+                [HintView showHint:error.localizedDescription];
+            }
+        }];
+    }
 }
 
 - (IBAction)saveAction {
-    
-    if (nameTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
-        
-        [HintView showHint:Localize(@"请填完整设备信息")];
-        return;
-    }
+    if ([deviceId.text hasPrefix:@"62"]) {
+        if (nameTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || SecondView.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
+            [HintView showHint:Localize(@"请填完整设备信息")];
+            return;
+        }
+        [self updateDeviceInfo];
+    }else
+        if ([deviceId.text hasPrefix:@"63"]) {
+            if (nameTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 ||SecondView.contentTF.text.length == 0 || ThreeView.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
+                [HintView showHint:Localize(@"请填完整设备信息")];
+                return;
+            }
+            [self updateDeviceInfo];
+        }else
+            if (nameTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
+                [HintView showHint:Localize(@"请填完整设备信息")];
+                return;
+            }
     [self updateDeviceInfo];
 }
 
 - (IBAction)deviceInfoAction {
-    
     DeviceInfoViewController *info = [[DeviceInfoViewController alloc] init];
     info.model = self.model;
     [self.navigationController pushViewController:info animated:YES];
-    
 }
 
 - (IBAction)connectAction {
-    
     WifiConnectViewController *connect = [[WifiConnectViewController alloc] init];
     connect.deviceNo = self.model.id;
     [self.navigationController pushViewController:connect animated:YES];

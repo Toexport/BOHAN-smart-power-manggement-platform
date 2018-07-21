@@ -124,12 +124,9 @@
 /**
  *  @brief  检测版本更新
  */
--(void)onCheckVersion
-{
-    
+-(void)onCheckVersion {
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        
-        NSString *URL = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@",BohanID];
+        NSString * URL = [NSString stringWithFormat:@"http://itunes.apple.com/lookup?id=%@",BohanID];
         
         NSMutableURLRequest *request = [[NSMutableURLRequest alloc] init];
         [request setURL:[NSURL URLWithString:URL]];
@@ -149,10 +146,7 @@
                     NSDictionary *releaseInfo = [infoArray objectAtIndex:0];
                     NSString *lastVersion = [releaseInfo objectForKey:@"version"];
                     
-                    
                     if ([CURRENTSHORTVERSION compare:lastVersion options:NSNumericSearch] == NSOrderedAscending) {
-                        
-                        
                         UIAlertController *alert = [UIAlertController alertControllerWithTitle:Localize(@"新版本提醒") message:Localize(@"有新的版本更新，是否前往更新？") preferredStyle:UIAlertControllerStyleAlert];
                         [alert addAction:[UIAlertAction actionWithTitle:Localize(@"马上更新") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                             NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", BohanID];

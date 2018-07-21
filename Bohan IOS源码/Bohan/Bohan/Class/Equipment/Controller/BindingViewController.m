@@ -88,7 +88,7 @@
 }
 
 - (IBAction)bindAction {
-//    [self unBindDevice]; // 解绑设备
+    //    [self unBindDevice]; // 解绑设备
     if (deviceTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
         [HintView showHint:Localize(@"请填完整设备信息")];
         return;
@@ -159,17 +159,53 @@
 // 绑定设备请求
 - (void)bindDevice {
     [self.view startLoading];
-    NSDictionary * dic = @{@"DeviceCode":deviceTF.text, @"DeviceKey":deviceTF.text, @"PosName":posInput.contentTF.text, @"LoadName":typeInput.contentTF.text, @"LoadBrand":brandInput.contentTF.text};
-    [[NetworkRequest sharedInstance] requestWithUrl:BINDING_DEVICE_URL parameter:dic completion:^(id response, NSError *error) {
-        [self.view stopLoading];
-        ZPLog(@"%@",response);
-        //请求成功
-        if (!error) {
-            [self POSTs];
-        }else {
-            [HintView showHint:error.localizedDescription];
-        }
-    }];
+    //    NSDictionary * dic = @{@"DeviceCode":deviceTF.text, @"DeviceKey":deviceTF.text, @"PosName":posInput.contentTF.text, @"LoadName":typeInput.contentTF.text, @"LoadBrand":brandInput.contentTF.text};
+    
+    if ([deviceTF.text hasPrefix:@"62"] || [deviceTF.text hasPrefix:@"63"]) {
+        if ([deviceTF.text hasPrefix:@"62"]) {
+            NSString * string = [NSString stringWithFormat:@"%@@%@",typeInput.contentTF.text,typeInput2.contentTF.text]; // 拼接字符串
+            NSDictionary * dic = @{@"DeviceCode":deviceTF.text, @"DeviceKey":deviceTF.text, @"PosName":posInput.contentTF.text, @"LoadName":string, @"LoadBrand":brandInput.contentTF.text};
+            [[NetworkRequest sharedInstance] requestWithUrl:BINDING_DEVICE_URL parameter:dic completion:^(id response, NSError *error) {
+                [self.view stopLoading];
+                ZPLog(@"%@",dic);
+                ZPLog(@"%@",response);
+                //请求成功
+                if (!error) {
+                    [self POSTs];
+                }else {
+                    [HintView showHint:error.localizedDescription];
+                }
+            }];
+        }else
+            if ([deviceTF.text hasPrefix:@"63"]) {
+                NSString * string = [NSString stringWithFormat:@"%@@%@@%@",typeInput.contentTF.text,typeInput2.contentTF.text,typeInput3.contentTF.text]; // 拼接字符串
+                NSDictionary * dic = @{@"DeviceCode":deviceTF.text, @"DeviceKey":deviceTF.text, @"PosName":posInput.contentTF.text, @"LoadName":string, @"LoadBrand":brandInput.contentTF.text};
+                [[NetworkRequest sharedInstance] requestWithUrl:BINDING_DEVICE_URL parameter:dic completion:^(id response, NSError *error) {
+                    [self.view stopLoading];
+                    ZPLog(@"%@",dic);
+                    ZPLog(@"%@",response);
+                    //请求成功
+                    if (!error) {
+                        [self POSTs];
+                    }else {
+                        [HintView showHint:error.localizedDescription];
+                    }
+                }];
+            }
+        
+    }else {
+        NSDictionary * dic = @{@"DeviceCode":deviceTF.text, @"DeviceKey":deviceTF.text, @"PosName":posInput.contentTF.text, @"LoadName":typeInput.contentTF.text, @"LoadBrand":brandInput.contentTF.text};
+        [[NetworkRequest sharedInstance] requestWithUrl:BINDING_DEVICE_URL parameter:dic completion:^(id response, NSError *error) {
+            [self.view stopLoading];
+            ZPLog(@"%@",response);
+            //请求成功
+            if (!error) {
+                [self POSTs];
+            }else {
+                [HintView showHint:error.localizedDescription];
+            }
+        }];
+    }
 }
 
 // 获取设备信息（单个）这个
@@ -180,7 +216,7 @@
     [[NetworkRequest sharedInstance]requestWithUrl:GET_DEVICE_INFO_URL parameter:dict completion:^(id response, NSError *error) {
         [self.view stopLoading];
         NSDictionary * dic = response[@"content"];
-        if ([dic[@"sort"] isEqual:@"FYGPMT"] || [dic[@"sort"] isEqual:@"CDMT10"] || [dic[@"sort"] isEqual:@"CDMT16"] || [dic[@"sort"] isEqual:@"CDMT60"] || [dic[@"sort"] isEqual:@"GP1P"] || [dic[@"sort"] isEqual:@"YCGP10"] || [dic[@"sort"] isEqual:@"YCGP16"] || [dic[@"sort"] isEqual:@"MC"] || [dic[@"sort"] isEqual:@"GP3P"]) { //换汤不换药
+        if ([dic[@"sort"] isEqual:@"FYGPMT"] || [dic[@"sort"] isEqual:@"CDMT10"] || [dic[@"sort"] isEqual:@"CDMT16"] || [dic[@"sort"] isEqual:@"CDMT60"] || [dic[@"sort"] isEqual:@"GP1P"] || [dic[@"sort"] isEqual:@"YCGP10"] || [dic[@"sort"] isEqual:@"YCGP16"] || [dic[@"sort"] isEqual:@"MC"] || [dic[@"sort"] isEqual:@"GP3P"]) {
             ZPLog(@"不跳转");
             [self.navigationController popViewControllerAnimated:YES];
             [HintView showHint:Localize(@"添加成功")];  // 提示框
@@ -230,6 +266,7 @@
     if (textField.text.length > 12) {
         ZPLog(@"输入有误");
         [HintView showHint:Localize(@"请输入正确的设备ID")];
+        return;
     }
     
     if ([textField.text hasPrefix:@"62"]) {
@@ -241,6 +278,7 @@
         bdffLayoutConstraint.constant = 0; // (隐藏一个text输入框的高度)
         TypeInput3LayoutConstraint.constant = CGFLOAT_MIN;
         typeInput3.hidden = YES;
+        return;
     }else
         if ([textField.text hasPrefix:@"63"]) {
             typeInput.name.text = Localize(@"开关1");
@@ -251,6 +289,7 @@
             TypeInput3LayoutConstraint.constant = 60;
             typeInput3.hidden = NO;
             bdffLayoutConstraint.constant = + 20; // (正常状态)
+            return;
         }else {
             /*****************************此处用来判断是否显示设备名称2-3项*********************/
             typeInput.name.text = Localize(@"设备名称");
@@ -259,6 +298,7 @@
             TypeInput3LayoutConstraint.constant = CGFLOAT_MIN;
             typeInput3.hidden = YES;
             bdffLayoutConstraint.constant = - 59; // (隐藏两个text输入框的高度)
+            return;
             /****************************************************************************/
         }
 }
