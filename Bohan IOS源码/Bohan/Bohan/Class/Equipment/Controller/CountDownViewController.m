@@ -76,7 +76,6 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         
         if (!error) {
-            
             if (((NSString *)response).length == 120) {
                 
                 NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 96, 92)];
@@ -258,7 +257,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
         cancelBtn.hidden = YES;
     }
 }
-
+// 取消
 - (IBAction)cancelAction {
     
     [CommonOperation cancelDeviceRunModel:self.deviceNo result:^(id response, NSError *error) {

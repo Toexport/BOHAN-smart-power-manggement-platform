@@ -17,13 +17,18 @@
 #import "NSBundle+AppLanguageSwitch.h"
 #import "DebuggingANDPublishing.pch"
 static const CGFloat SHAREBTNHIGHT = 50;
+static const CGFloat SHARBTNHIGHTX = 70;
+static const CGFloat BUTSHRENHIGHT = 70;
+static const CGFloat BUTSHRENHIGHTH = 10;
+static const CGFloat BUTSHRENHIGHTW = 35;
 @interface ManagementViewController ()<UITableViewDelegate, UITableViewDataSource, NoDataViewDelegate>
 
 @property (nonatomic, strong) UITableView *deviceTable;
 @property (nonatomic, strong) NSMutableArray *datas;
-//@property (nonatomic,strong)UIButton *bottomView;
+@property (nonatomic,strong)UIButton * HaveShareBut;
 @property (nonatomic, strong) UIView * ShareView;
-@property(nonatomic,strong)ShareView *shareView;
+@property (nonatomic,strong)ShareView * shareView;
+@property (nonatomic, strong) UIButton * ShareBut;
 
 @end
 static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
@@ -107,6 +112,9 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
     [[YLSheetView sharedInstace] showFromCenter:self.shareView];
 }
 
+- (void)ShareSender {
+    ZPLog(@"已分享");
+}
 //  生命周期
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -225,11 +233,19 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
         _ShareView.layer.shadowOffset = CGSizeMake(0.0f, -1.0f);
         _ShareView.layer.shadowOpacity = 1.0f;
         [_ShareView setBackgroundColor:[UIColor whiteColor]];
-//        [_bottomView setTitle:Localize(@"分享") forState:UIControlStateNormal];
-//        [_bottomView setImage:[UIImage imageNamed:@"manage_device_share"] forState:UIControlStateNormal];
-//        [_bottomView.titleLabel setFont:Font(14)];
-//        [_bottomView setTitleColor:kTextColor forState:UIControlStateNormal];
-//        [_bottomView addTarget:self action:@selector(shareAction) forControlEvents:UIControlEventTouchUpInside];
+        self.ShareBut = [[UIButton alloc]initWithFrame:CGRectMake(ScreenHeight/5 -SHARBTNHIGHTX, BUTSHRENHIGHTH, BUTSHRENHIGHT, BUTSHRENHIGHTW)];
+        [self.ShareBut setTitle:Localize(@"分享") forState:UIControlStateNormal];
+        [self.ShareBut setImage:[UIImage imageNamed:@"manage_device_share"] forState:UIControlStateNormal];
+        [self.ShareBut.titleLabel setFont:Font(14)];
+        [self.ShareBut setTitleColor:kTextColor forState:UIControlStateNormal];
+        [self.ShareBut addTarget:self action:@selector(shareAction) forControlEvents:UIControlEventTouchUpInside];
+        self.HaveShareBut = [[UIButton alloc] initWithFrame:CGRectMake(ScreenHeight/3 + BUTSHRENHIGHTW, BUTSHRENHIGHTH, BUTSHRENHIGHT, BUTSHRENHIGHTW)];
+        [self.HaveShareBut setTitle:Localize(@"已分享") forState:UIControlStateNormal];
+        [self.HaveShareBut.titleLabel setFont:Font(14)];
+        [self.HaveShareBut setTitleColor:kTextColor forState:UIControlStateNormal];
+        [self.HaveShareBut addTarget:self action:@selector(ShareSender) forControlEvents:UIControlEventTouchUpInside];
+        [self.ShareView addSubview:self.HaveShareBut];
+        [_ShareView addSubview:self.ShareBut];
     }
     return _ShareView;
 }

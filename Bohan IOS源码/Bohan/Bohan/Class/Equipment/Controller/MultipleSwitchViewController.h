@@ -6,9 +6,9 @@
 //  Copyright © 2018年 Bohan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
-
-@interface MultipleSwitchViewController : UIViewController
+#import "BaseViewController.h"
+#import "DeviceModel.h"
+@interface MultipleSwitchViewController : BaseViewController
 {
     __weak IBOutlet UIScrollView *scrollView;
     //    开关一

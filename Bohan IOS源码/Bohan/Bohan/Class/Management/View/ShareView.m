@@ -34,8 +34,7 @@
 // 只可查询数据按钮
 - (IBAction)QueryBut:(UIButton *)sender {
     QueryBut.selected =! QueryBut.selected;
-//    if (QueryBut.selected ==! QueryBut.selected) {
-        ChargingBut.selected = NO;
+//    if (QueryBut.selected ==! QueryBut.selected) {        ChargingBut.selected = NO;
         LoadThresholdBut.selected = NO;
         AllBut.selected = NO;
 //    }

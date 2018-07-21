@@ -317,6 +317,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
 //                [self.navigationController pushViewController:count animated:YES];
                 MultipleSwitchViewController * MultipleSwitch = [[MultipleSwitchViewController alloc]init];
                 MultipleSwitch.Coedid = self.model.id;
+//                MultipleSwitch.NONDATA = self.model.;
                 [self.navigationController pushViewController:MultipleSwitch animated:YES];
             }else {
                 TimeSettingViewController * time = [[TimeSettingViewController alloc] init];

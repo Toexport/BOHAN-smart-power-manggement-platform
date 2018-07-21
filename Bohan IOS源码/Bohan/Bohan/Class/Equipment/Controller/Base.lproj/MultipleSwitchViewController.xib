@@ -156,40 +156,30 @@
                                     <nil key="textColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFj-tx-jqB">
-                                    <rect key="frame" x="160" y="83" width="70" height="30"/>
-                                    <color key="backgroundColor" red="0.60392156860000001" green="0.87843137250000003" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GFj-tx-jqB">
+                                    <rect key="frame" x="230" y="78" width="35" height="35"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="30" id="1Ra-5T-Xat"/>
-                                        <constraint firstAttribute="width" constant="70" id="OhY-Ot-8rT"/>
+                                        <constraint firstAttribute="height" constant="35" id="1Ra-5T-Xat"/>
+                                        <constraint firstAttribute="width" constant="35" id="OhY-Ot-8rT"/>
                                     </constraints>
-                                    <state key="normal" title="开">
+                                    <state key="normal" image="check_box_off">
                                         <color key="titleColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="15"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
+                                    <state key="selected" image="check_box_on"/>
                                     <connections>
                                         <action selector="Switch1OpenBut:" destination="-1" eventType="touchUpInside" id="Oo3-2F-55Z"/>
                                     </connections>
                                 </button>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ZK-3X-88N">
-                                    <rect key="frame" x="240" y="83" width="70" height="30"/>
-                                    <color key="backgroundColor" red="0.84063081173081478" green="0.45141603176140194" blue="0.39923762807827362" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7ZK-3X-88N">
+                                    <rect key="frame" x="275" y="78" width="35" height="35"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="30" id="AiU-6W-vom"/>
-                                        <constraint firstAttribute="width" constant="70" id="kAU-X0-Ppn"/>
+                                        <constraint firstAttribute="height" constant="35" id="AiU-6W-vom"/>
+                                        <constraint firstAttribute="width" constant="35" id="kAU-X0-Ppn"/>
                                     </constraints>
-                                    <state key="normal" title="关">
+                                    <state key="normal" title="关" image="check_box_off">
                                         <color key="titleColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                     </state>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                            <integer key="value" value="15"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
+                                    <state key="selected" image="check_box_on"/>
                                     <connections>
                                         <action selector="Switch1GuanBut:" destination="-1" eventType="touchUpInside" id="kF8-d6-3bI"/>
                                     </connections>
@@ -308,40 +298,30 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFy-o7-h5I">
-                                            <rect key="frame" x="160" y="83" width="70" height="30"/>
-                                            <color key="backgroundColor" red="0.60392156860000001" green="0.87843137250000003" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JFy-o7-h5I">
+                                            <rect key="frame" x="230" y="78" width="35" height="35"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="cRh-cP-7jq"/>
-                                                <constraint firstAttribute="width" constant="70" id="vqK-Qg-kz3"/>
+                                                <constraint firstAttribute="height" constant="35" id="cRh-cP-7jq"/>
+                                                <constraint firstAttribute="width" constant="35" id="vqK-Qg-kz3"/>
                                             </constraints>
-                                            <state key="normal" title="开">
+                                            <state key="normal" title="开" image="check_box_off">
                                                 <color key="titleColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="15"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
+                                            <state key="selected" image="check_box_on"/>
                                             <connections>
                                                 <action selector="Switch2OpenBut:" destination="-1" eventType="touchUpInside" id="gsi-zz-qlX"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8r-Lk-DKl">
-                                            <rect key="frame" x="240" y="83" width="70" height="30"/>
-                                            <color key="backgroundColor" red="0.84063081169999998" green="0.45141603180000001" blue="0.39923762810000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j8r-Lk-DKl">
+                                            <rect key="frame" x="275" y="78" width="35" height="35"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="70" id="Yrq-hG-FfJ"/>
-                                                <constraint firstAttribute="height" constant="30" id="zES-WJ-03c"/>
+                                                <constraint firstAttribute="width" constant="35" id="Yrq-hG-FfJ"/>
+                                                <constraint firstAttribute="height" constant="35" id="zES-WJ-03c"/>
                                             </constraints>
-                                            <state key="normal" title="关">
+                                            <state key="normal" title="关" image="check_box_off">
                                                 <color key="titleColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="15"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
+                                            <state key="selected" image="check_box_on"/>
                                             <connections>
                                                 <action selector="Switch2GuanBut:" destination="-1" eventType="touchUpInside" id="7ju-LJ-S4e"/>
                                             </connections>
@@ -356,7 +336,7 @@
                                         <constraint firstItem="e74-8H-aSh" firstAttribute="leading" secondItem="4IG-xg-lpa" secondAttribute="trailing" constant="3" id="6hf-Zv-BWk"/>
                                         <constraint firstItem="VQB-pX-hEt" firstAttribute="leading" secondItem="8lK-9s-NGU" secondAttribute="trailing" constant="3" id="7Am-rB-UnD"/>
                                         <constraint firstAttribute="trailing" secondItem="j8r-Lk-DKl" secondAttribute="trailing" constant="10" id="8d3-Bl-msk"/>
-                                        <constraint firstItem="j8r-Lk-DKl" firstAttribute="top" secondItem="VQB-pX-hEt" secondAttribute="bottom" constant="15" id="92j-oF-qEK"/>
+                                        <constraint firstItem="j8r-Lk-DKl" firstAttribute="top" secondItem="VQB-pX-hEt" secondAttribute="bottom" constant="10" id="92j-oF-qEK"/>
                                         <constraint firstItem="7sy-s5-tTh" firstAttribute="top" secondItem="1CB-Rn-wLV" secondAttribute="top" id="Ayb-tk-q2m"/>
                                         <constraint firstItem="1CB-Rn-wLV" firstAttribute="top" secondItem="VQB-pX-hEt" secondAttribute="top" id="EFg-kc-YDs"/>
                                         <constraint firstAttribute="height" constant="125" id="F2T-BH-g4Z"/>
@@ -375,7 +355,7 @@
                                         <constraint firstItem="8lK-9s-NGU" firstAttribute="top" secondItem="e74-8H-aSh" secondAttribute="top" id="uNd-Vd-uSc"/>
                                         <constraint firstItem="N3G-oo-KE5" firstAttribute="leading" secondItem="oEK-9O-TPd" secondAttribute="leading" constant="15" id="ubc-3p-glq"/>
                                         <constraint firstItem="oYn-Aa-VpK" firstAttribute="leading" secondItem="g9B-dE-6ef" secondAttribute="trailing" constant="3" id="vQ3-Ms-06x"/>
-                                        <constraint firstItem="JFy-o7-h5I" firstAttribute="top" secondItem="4IG-xg-lpa" secondAttribute="bottom" constant="15" id="vto-Sg-bK9"/>
+                                        <constraint firstItem="JFy-o7-h5I" firstAttribute="top" secondItem="4IG-xg-lpa" secondAttribute="bottom" constant="10" id="vto-Sg-bK9"/>
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wrj-bj-sAO" userLabel="分割线">
@@ -494,42 +474,31 @@
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gNM-6A-ttE">
-                                            <rect key="frame" x="160" y="83" width="70" height="30"/>
-                                            <color key="backgroundColor" red="0.60392156860000001" green="0.87843137250000003" blue="0.90980392160000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gNM-6A-ttE">
+                                            <rect key="frame" x="230" y="78" width="35" height="35"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="tg8-tC-ydx"/>
-                                                <constraint firstAttribute="width" constant="70" id="ubY-TJ-Q1J"/>
+                                                <constraint firstAttribute="height" constant="35" id="tg8-tC-ydx"/>
+                                                <constraint firstAttribute="width" constant="35" id="ubY-TJ-Q1J"/>
                                             </constraints>
-                                            <state key="normal" title="开">
+                                            <state key="normal" title="开" image="check_box_off">
                                                 <color key="titleColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="15"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
                                             <connections>
                                                 <action selector="Switch3OpenBut:" destination="-1" eventType="touchUpInside" id="HYv-4h-L0t"/>
                                             </connections>
                                         </button>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pj-Qo-zdE">
-                                            <rect key="frame" x="240" y="83" width="70" height="30"/>
-                                            <color key="backgroundColor" red="0.84063081169999998" green="0.45141603180000001" blue="0.39923762810000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2pj-Qo-zdE">
+                                            <rect key="frame" x="275" y="78" width="35" height="35"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="30" id="Eup-GW-8cA"/>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="70" id="dXC-rv-KeN"/>
-                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="e0e-qT-qZT"/>
-                                                <constraint firstAttribute="width" constant="70" id="lji-av-lwS"/>
+                                                <constraint firstAttribute="height" constant="35" id="Eup-GW-8cA"/>
+                                                <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="35" id="Gnf-mk-Del"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35" id="dXC-rv-KeN"/>
+                                                <constraint firstAttribute="width" constant="35" id="isi-Qc-E3w"/>
                                             </constraints>
-                                            <state key="normal" title="关">
+                                            <state key="normal" title="关" image="check_box_off">
                                                 <color key="titleColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
-                                            <userDefinedRuntimeAttributes>
-                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                    <integer key="value" value="15"/>
-                                                </userDefinedRuntimeAttribute>
-                                            </userDefinedRuntimeAttributes>
+                                            <state key="selected" image="check_box_on"/>
                                             <connections>
                                                 <action selector="Switch3GuanBut:" destination="-1" eventType="touchUpInside" id="nkX-AU-jSg"/>
                                             </connections>
@@ -538,12 +507,12 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="HE9-EX-xDh" firstAttribute="top" secondItem="suO-4L-U75" secondAttribute="top" id="266-ia-zFU"/>
-                                        <constraint firstItem="2pj-Qo-zdE" firstAttribute="top" secondItem="suO-4L-U75" secondAttribute="bottom" constant="15" id="6eN-ym-uQt"/>
+                                        <constraint firstItem="2pj-Qo-zdE" firstAttribute="top" secondItem="suO-4L-U75" secondAttribute="bottom" constant="10" id="6eN-ym-uQt"/>
                                         <constraint firstItem="mtR-cb-cmJ" firstAttribute="leading" secondItem="2p3-yc-L21" secondAttribute="trailing" constant="3" id="7Kv-b6-bWa"/>
                                         <constraint firstItem="2p3-yc-L21" firstAttribute="top" secondItem="jk2-MU-aH5" secondAttribute="top" id="9De-f9-YP4"/>
-                                        <constraint firstItem="2pj-Qo-zdE" firstAttribute="top" secondItem="suO-4L-U75" secondAttribute="bottom" constant="15" id="C3n-H5-IoG"/>
+                                        <constraint firstItem="2pj-Qo-zdE" firstAttribute="top" secondItem="suO-4L-U75" secondAttribute="bottom" constant="10" id="C3n-H5-IoG"/>
                                         <constraint firstItem="ecp-j2-XQb" firstAttribute="leading" secondItem="mtR-cb-cmJ" secondAttribute="trailing" constant="3" id="GDl-7O-JbP"/>
-                                        <constraint firstItem="gNM-6A-ttE" firstAttribute="top" secondItem="mtR-cb-cmJ" secondAttribute="bottom" constant="15" id="GN1-5N-HNQ"/>
+                                        <constraint firstItem="gNM-6A-ttE" firstAttribute="top" secondItem="mtR-cb-cmJ" secondAttribute="bottom" constant="10" id="GN1-5N-HNQ"/>
                                         <constraint firstItem="85J-h8-fjI" firstAttribute="top" secondItem="7XD-Zs-hBZ" secondAttribute="top" id="KU8-Uq-KSu"/>
                                         <constraint firstItem="jk2-MU-aH5" firstAttribute="leading" secondItem="85J-h8-fjI" secondAttribute="trailing" constant="3" id="OgF-Ui-Jzq"/>
                                         <constraint firstItem="85J-h8-fjI" firstAttribute="leading" secondItem="7XD-Zs-hBZ" secondAttribute="trailing" constant="3" id="POx-yl-ekv"/>
@@ -584,7 +553,7 @@
                                 <constraint firstItem="oUs-jH-LQu" firstAttribute="top" secondItem="DYI-l0-DrP" secondAttribute="top" id="8Gc-qX-aW1"/>
                                 <constraint firstItem="mmn-1X-sL0" firstAttribute="leading" secondItem="GID-zL-q1f" secondAttribute="trailing" constant="3" id="8fP-jK-LJ4"/>
                                 <constraint firstItem="mmn-1X-sL0" firstAttribute="top" secondItem="GID-zL-q1f" secondAttribute="top" id="9kM-mm-ZLQ"/>
-                                <constraint firstItem="7ZK-3X-88N" firstAttribute="top" secondItem="oUs-jH-LQu" secondAttribute="bottom" constant="15" id="9t6-bs-dFv"/>
+                                <constraint firstItem="7ZK-3X-88N" firstAttribute="top" secondItem="oUs-jH-LQu" secondAttribute="bottom" constant="10" id="9t6-bs-dFv"/>
                                 <constraint firstItem="fro-Ng-aYH" firstAttribute="leading" secondItem="W7P-Vb-3eJ" secondAttribute="leading" id="AEu-jS-ZCx"/>
                                 <constraint firstAttribute="trailing" secondItem="Wrj-bj-sAO" secondAttribute="trailing" id="C49-KQ-as8"/>
                                 <constraint firstItem="RkL-3h-kuP" firstAttribute="top" secondItem="E9p-fl-9Wn" secondAttribute="top" id="CPo-Bo-zEf"/>
@@ -610,7 +579,7 @@
                                 <constraint firstItem="qOh-Nh-Zsp" firstAttribute="leading" secondItem="W7P-Vb-3eJ" secondAttribute="leading" id="dw4-42-1fz"/>
                                 <constraint firstItem="7Wf-Z5-RKx" firstAttribute="top" secondItem="E9p-fl-9Wn" secondAttribute="bottom" constant="55" id="eUV-TJ-mmu"/>
                                 <constraint firstItem="7ZK-3X-88N" firstAttribute="leading" secondItem="GFj-tx-jqB" secondAttribute="trailing" constant="10" id="ejY-kz-n83"/>
-                                <constraint firstItem="GFj-tx-jqB" firstAttribute="top" secondItem="GID-zL-q1f" secondAttribute="bottom" constant="15" id="emP-vd-4LU"/>
+                                <constraint firstItem="GFj-tx-jqB" firstAttribute="top" secondItem="GID-zL-q1f" secondAttribute="bottom" constant="10" id="emP-vd-4LU"/>
                                 <constraint firstItem="E9p-fl-9Wn" firstAttribute="top" secondItem="zVG-4e-Pzt" secondAttribute="bottom" constant="15" id="gNw-Dh-0LH"/>
                                 <constraint firstAttribute="trailing" secondItem="fro-Ng-aYH" secondAttribute="trailing" id="hI6-ec-5AM"/>
                                 <constraint firstItem="ule-M3-TY1" firstAttribute="leading" secondItem="2ZJ-k0-SJU" secondAttribute="trailing" constant="3" id="jmS-5S-FKG"/>
@@ -648,4 +617,8 @@
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
         </view>
     </objects>
+    <resources>
+        <image name="check_box_off" width="100" height="100"/>
+        <image name="check_box_on" width="100" height="100"/>
+    </resources>
 </document>

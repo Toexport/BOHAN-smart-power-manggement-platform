@@ -8,12 +8,17 @@
 
 #import "MultipleSwitchViewController.h"
 #import "DebuggingANDPublishing.pch"
-@interface MultipleSwitchViewController ()
+@interface MultipleSwitchViewController (){
+   BOOL openg;
+NSInteger totalSecend;//总秒数
+NSInteger lastSecend;//剩余秒数点进去
+}
 @property (nonatomic, strong) NSString * string1;
 @property (nonatomic, strong) NSString * string2;
 @property (nonatomic, strong) NSString * string3;
 @property (nonatomic, strong) NSString * string4;
 @property (nonatomic, strong) NSString * string5;
+
 @end
 
 @implementation MultipleSwitchViewController
@@ -54,12 +59,12 @@
         Divider2View.hidden = YES;
     }else
         if ([self.Coedid containsString:@"62"]) {
-            ZPLog(@"%@2个开关",self.Coedid);
+//            ZPLog(@"%@2个开关",self.Coedid);
             Switch3view.hidden = YES;
             Divider2View.hidden = YES;
     }else
         if ([self.Coedid containsString:@"63"]) {
-            ZPLog(@"%@3个开关",self.Coedid);
+//            ZPLog(@"%@3个开关",self.Coedid);
             Switch2view.hidden = NO;
             Switch3view.hidden = NO;
             DividerView.hidden = NO;
@@ -70,36 +75,92 @@
 // 开关一
 // 开
 - (IBAction)Switch1OpenBut:(UIButton *)sender {
-    ZPLog(@"开1");
-        NSString * string = [NSString stringWithFormat:@"%@%@%@%@%@",self.string1,self.string2,self.string3,self.string4,self.string5];
-    ZPLog(@"%@",string);
+    if (sender.selected) {
+        return;
+    }else{
+    sender.selected =!sender.selected;
+    Guan1But.selected = NO;
+//    ZPLog(@"开1");
+        [self datas];
+        
+//    ZPLog(@"%@",string);
+    }
+}
+// 定时开关（开）
+- (void)datas{
+//    NSString * string = [NSString stringWithFormat:@"%@%@%@%@%@",self.string1,self.string2,self.string3,self.string4,self.string5];
+//    NSString * string = @"201872192FF";??
+    WebSocket *socket = [WebSocket socketManager];
+    CommandModel *command = [[CommandModel alloc] init];
+    command.command = @"002C";
+    [socket sendMultiDataWithModel:command resultBlock:^(id response, NSError *error) {
+        ZPLog(@"--------%@",response);
+        
+        if (!error) {
+//            [HintView showHint:openg?Localize(@"已开启"):Localize(@"已关闭")];//等半天了，我看了一下，002B没有002A额没有，有些请求的参数好像也是两个一个是002C这种，一个是deviceNo，我搜搜下这个是什么，但是我们已经试过了，穿着两个参数不行，我看接口文档只看到002C，所以就看不懂了是的啊，这个你自己今天先看一下，我待会还要处理一些事情，明天我不上班，明天中午帮你搞吧，你最好还是把代码发给我GIThub下，怎么把你加进去，
+        }else {
+            [HintView showHint:error.localizedDescription];// 后台返回的提示
+            
+        }
+    }];
+    
 }
 
 // 关
 - (IBAction)Switch1GuanBut:(UIButton *)sender {
+    if (sender.selected) {
+        return;
+    }else{
+    sender.selected = !sender.selected;
+    Open1But.selected = NO;
     ZPLog(@"关1");
+}
 }
 
 // 开关二
 // 开
 - (IBAction)Switch2OpenBut:(UIButton *)sender {
+    if (sender.selected) {
+        return;
+    }else{
+        sender.selected = !sender.selected;
+        Guan2But.selected = NO;
     ZPLog(@"开2");
+    }
 }
 
 // 关
 - (IBAction)Switch2GuanBut:(UIButton *)sender {
+    if (sender.selected) {
+        return;
+    }else{
+        sender.selected = !sender.selected;
+        Open2But.selected = NO;
     ZPLog(@"关2");
+    }
 }
 
 // 开关三
 //开
 - (IBAction)Switch3OpenBut:(UIButton *)sender {
+    if (sender.selected) {
+        return;
+    }else{
+        sender.selected = !sender.selected;
+        Guan3But.selected = NO;
     ZPLog(@"开3");
+    }
 }
 
 // 关
 - (IBAction)Switch3GuanBut:(UIButton *)sender {
+    if (sender.selected) {
+        return;
+    }else{
+        sender.selected = !sender.selected;
+        Open3But.selected = NO;
     ZPLog(@"关3");
+}
 }
 
 
