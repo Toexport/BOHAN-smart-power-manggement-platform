@@ -142,6 +142,8 @@ NSInteger lastSecend;//剩余秒数点进去
     CommandModel *command = [[CommandModel alloc] init];
     command.command = @"002C";
     command.deviceNo = self.deviceNo;
+//    NSMutableString *content = [NSMutableString stringWithString:[Open1But.titleLabel stringByAppendingString:closeBtn.titleLabel.text]];
+//    model.content = [content stringByReplacingOccurrencesOfString:@":" withString:@""];
 //    不用打印，我目前看的是没有拼过，我要看他是什么啊 是这样的，0027是两个拼在一起的，所以这个可能是3个拼在一起传过去的，你拼过了吗，我打印下，我现在提供两个方法给你试一下，如果不行我也不知道怎么做了，就是你的string应该是12位的，这点要肯定，目前的不够
 //    如果10位的时间不行的过就尝试一下12位的时间加上2位的开关，关于时间是怎么排的，是否显示07前面的那种“0”，你都要尝试一下，我说的这些有没有看懂？ok
     command.content = string;
