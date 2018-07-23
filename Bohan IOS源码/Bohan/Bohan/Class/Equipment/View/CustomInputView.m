@@ -18,22 +18,13 @@
 
 @implementation CustomInputView
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect {
-    // Drawing code
-}
-*/
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [super awakeFromNib];
     [self setUp];
 }
 
-- (void)setUp
-{
+- (void)setUp {
     //此处是为了解决在storyboard中加载此xib文件
     [[NSBundle mainBundle] loadNibNamed:@"CustomInputView" owner:self options:nil];
     self.frame = view.frame;
@@ -42,10 +33,8 @@
 
 
 - (IBAction)selectAction:(UIButton *)sender {
-    
 //     点击按钮弹出视图
     [SGActionView showSheetWithTitle:nil itemTitles:self.datas itemSubTitles:nil selectedIndex:[self.datas indexOfObject:self.contentTF.text] selectedHandle:^(NSInteger index) {
-        
         self.contentTF.text = self.datas[index];
         
     }];

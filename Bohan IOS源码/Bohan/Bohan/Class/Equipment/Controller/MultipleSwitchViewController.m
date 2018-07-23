@@ -12,6 +12,9 @@
    BOOL openg;
 NSInteger totalSecend;//总秒数
 NSInteger lastSecend;//剩余秒数点进去
+    NSDateFormatter *formatter;
+    NSString *start;
+    NSString *end;
 }
 @property (nonatomic, strong) NSString * string1;
 @property (nonatomic, strong) NSString * string2;
@@ -46,24 +49,25 @@ NSInteger lastSecend;//剩余秒数点进去
     Hours3TextField.keyboardType = UIKeyboardTypeNumberPad; // 设置只能输入数字
     Minutes3TextField.keyboardType = UIKeyboardTypeNumberPad; // 设置只能输入数字
     [self TimeDisplay];
-    [self YYYY];
+//    [self YYYY];
+     [self datas];
 }
 
 // 是否显示2-3号开关
 - (void)TimeDisplay {
-    if ([self.Coedid containsString:@"61"]) {
-        ZPLog(@"%@1个开关",self.Coedid);
+    if ([self.deviceNo containsString:@"61"]) {
+        ZPLog(@"%@1个开关",self.deviceNo);
         Switch2view.hidden = YES;
         Switch3view.hidden = YES;
         DividerView.hidden = YES;
         Divider2View.hidden = YES;
     }else
-        if ([self.Coedid containsString:@"62"]) {
+        if ([self.deviceNo containsString:@"62"]) {
 //            ZPLog(@"%@2个开关",self.Coedid);
             Switch3view.hidden = YES;
             Divider2View.hidden = YES;
     }else
-        if ([self.Coedid containsString:@"63"]) {
+        if ([self.deviceNo containsString:@"63"]) {
 //            ZPLog(@"%@3个开关",self.Coedid);
             Switch2view.hidden = NO;
             Switch3view.hidden = NO;
@@ -75,13 +79,40 @@ NSInteger lastSecend;//剩余秒数点进去
 // 开关一
 // 开
 - (IBAction)Switch1OpenBut:(UIButton *)sender {
+    NSString *string;
+    [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatter dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
+        
+            [formatter setDateFormat:@"yyyy-MM-dd"];
+            [Years1TextField setText:[formatter stringFromDate:selectDate]];
+        
+            [formatter setDateFormat:@"HH:mm:ss"];
+//            [cStartTime setText:[formatter stringFromDate:selectDate]];
+            
+            [formatter setDateFormat:@"yyMMddHHmmss"];
+//            start = [formatter stringFromDate:selectDate];
+        
+//        if (start.length>0 && end.length>0) {
+//            
+//            [cTotalTime setText:[Utils gapDateFrom:[formatter dateFromString:start] toDate:[formatter dateFromString:end]]];
+//        }
+    }];
+    
+    datepicker.hideBackgroundYearLabel = YES;
+    datepicker.dateLabelColor = kDefualtColor;
+    datepicker.doneButtonColor = kDefualtColor;
+    [datepicker show];
+    
+    
+    
+    
     if (sender.selected) {
         return;
     }else{
     sender.selected =!sender.selected;
     Guan1But.selected = NO;
 //    ZPLog(@"开1");
-        [self datas];
+       
         
 //    ZPLog(@"%@",string);
     }
@@ -89,15 +120,19 @@ NSInteger lastSecend;//剩余秒数点进去
 // 定时开关（开）
 - (void)datas{
 //    NSString * string = [NSString stringWithFormat:@"%@%@%@%@%@",self.string1,self.string2,self.string3,self.string4,self.string5];
-//    NSString * string = @"201872192FF";??
+    NSString * string = @"1807231800";
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *command = [[CommandModel alloc] init];
     command.command = @"002C";
-    [socket sendMultiDataWithModel:command resultBlock:^(id response, NSError *error) {
+    command.deviceNo = self.deviceNo;
+    command.content = string;
+    [self.view startLoading];
+    MyWeakSelf
+    [socket sendSingleDataWithModel:command resultBlock:^(id response, NSError *error) {
+        [weakSelf.view stopLoading];
         ZPLog(@"--------%@",response);
-        
         if (!error) {
-//            [HintView showHint:openg?Localize(@"已开启"):Localize(@"已关闭")];//等半天了，我看了一下，002B没有002A额没有，有些请求的参数好像也是两个一个是002C这种，一个是deviceNo，我搜搜下这个是什么，但是我们已经试过了，穿着两个参数不行，我看接口文档只看到002C，所以就看不懂了是的啊，这个你自己今天先看一下，我待会还要处理一些事情，明天我不上班，明天中午帮你搞吧，你最好还是把代码发给我GIThub下，怎么把你加进去，
+            [HintView showHint:openg?Localize(@"已开启"):Localize(@"已关闭")];
         }else {
             [HintView showHint:error.localizedDescription];// 后台返回的提示
             
@@ -177,26 +212,28 @@ NSInteger lastSecend;//剩余秒数点进去
     NSInteger hour = [dataCom hour]; // 时
     NSInteger minute = [dataCom minute]; // 分
     NSInteger second = [dataCom second]; // 秒
-    self.string1 = [[NSNumber numberWithInteger:year] stringValue];
-    Years1TextField.text = [NSString stringWithString:self.string1];
-    Years2TextField.text = [NSString stringWithString:self.string1];
-    Years3TextField.text = [NSString stringWithString:self.string1];
-    self.string2 = [[NSNumber numberWithInteger:month] stringValue];
-    Month1TextField.text = [NSString stringWithString:self.string2];
-    Month2TextField.text = [NSString stringWithString:self.string2];
-    Month3TextField.text = [NSString stringWithString:self.string2];
-    self.string3 = [[NSNumber numberWithInteger:day] stringValue];
-    Day1textField.text = [NSString stringWithString:self.string3];
-    Day2textField.text = [NSString stringWithString:self.string3];
-    Day3textField.text = [NSString stringWithString:self.string3];
-    self.string4 = [[NSNumber numberWithInteger:hour] stringValue];
-    Hours1TextField.text = [NSString stringWithString:self.string4];
-    Hours2TextField.text = [NSString stringWithString:self.string4];
-    Hours3TextField.text = [NSString stringWithString:self.string4];
-    self.string5 = [[NSNumber numberWithInteger:minute] stringValue];
-    Minutes1TextField.text = [NSString stringWithString:self.string5];
-    Minutes2TextField.text = [NSString stringWithString:self.string5];
-    Minutes3TextField.text = [NSString stringWithString:self.string5];
+//    self.string1 = [[NSNumber numberWithInteger:year] stringValue];
+//    Years1TextField.text = [NSString stringWithString:self.string1];
+//    Years1TextField.enabled = NO;
+//    Years2TextField.text = [NSString stringWithString:self.string1];
+//    Years3TextField.text = [NSString stringWithString:self.string1];
+//    self.string2 = [[NSNumber numberWithInteger:month] stringValue];
+//    Month1TextField.text = [NSString stringWithString:self.string2];
+//    Month2TextField.text = [NSString stringWithString:self.string2];
+//    Month3TextField.text = [NSString stringWithString:self.string2];
+//    self.string3 = [[NSNumber numberWithInteger:day] stringValue];
+//    Day1textField.text = [NSString stringWithString:self.string3];
+//    Day2textField.text = [NSString stringWithString:self.string3];
+//    Day3textField.text = [NSString stringWithString:self.string3];
+//    self.string4 = [[NSNumber numberWithInteger:hour] stringValue];
+//    Hours1TextField.text = [NSString stringWithString:self.string4];
+//    Hours2TextField.text = [NSString stringWithString:self.string4];
+//    Hours3TextField.text = [NSString stringWithString:self.string4];
+//    self.string5 = [[NSNumber numberWithInteger:minute] stringValue];
+//    Minutes1TextField.text = [NSString stringWithString:self.string5];
+//    Minutes2TextField.text = [NSString stringWithString:self.string5];
+//    Minutes3TextField.text = [NSString stringWithString:self.string5];
+    
     
     ZPLog(@"year===%ld",(long)year);
     ZPLog(@"month===%ld",(long)month);

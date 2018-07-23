@@ -18,7 +18,10 @@ __weak IBOutlet UILabel *pos;
 __weak IBOutlet UIImageView *typeImg;// 第一个图片
 __weak IBOutlet UIImageView *posImg;
 __weak IBOutlet UIImageView *onlineImg;
-
+    __weak IBOutlet UILabel *Label1;
+    __weak IBOutlet UILabel *Label2;
+    __weak IBOutlet UILabel *Label3;
+    
 //    __weak IBOutlet UIImageView *statusImg;
 __weak IBOutlet UILabel *online;
 //    __weak IBOutlet UILabel *status;
@@ -43,7 +46,6 @@ NSArray *switchs;
 {
 [super awakeFromNib];
 switchs = @[openSwitch1, openSwitch2, openSwitch3];
-
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
@@ -75,7 +77,6 @@ if (sender.isOn) {
 
 if (self.delegate && [self.delegate respondsToSelector:@selector(didSwitchOpen:switchCode:withIndexPath:)]) {
     NSString *code = [NSString stringWithFormat:@"10000%@%@%@",openSwitch3.on?@"0":@"1", openSwitch2.on?@"0":@"1", openSwitch1.on?@"0":@"1"];
-    
     [self.delegate didSwitchOpen:sender.on switchCode:[Utils getHexByBinary:code] withIndexPath:self.indexPath];
 }
 }
@@ -108,7 +109,14 @@ if([self.model.id hasPrefix:@"61"]) {
 [deviceId  setText:[NSString stringWithFormat:@"%@%@",Localize(@"设备号："),self.model.id]];
 [type  setText:self.model.type];
 [pos  setText:self.model.position];
-
+//    if ([deviceId.text hasPrefix:@"63"]) {
+//        NSString * string = self.model.name;
+//        NSArray * strarray = [string  componentsSeparatedByString:@"@"];//获取当前某个字符前后数据
+//        ZPLog(@"%@",strarray);
+//            Label1.text = strarray[0];
+//            Label1.text = strarray[1];
+//            Label1.text = strarray[2];
+//    }
     
 //     判断设备是否在线
 if (self.model.powerinfo && self.model.powerinfo.length>0) { // powerinfo 是用电
@@ -181,6 +189,6 @@ if (self.model.powerinfo && self.model.powerinfo.length>0) { // powerinfo 是用
     [online setText:Localize(@"离线")];
     [power setText:@"0.00W"];
 }
-
 }
+
 @end

@@ -42,6 +42,7 @@
     brandInput.name.text = Localize(@"电器品牌");
     deviceTF.clearButtonMode = UITextFieldViewModeWhileEditing;  // 一键删除文字
     scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag; // 滚动时键盘隐藏
+
     deviceTF.keyboardType = UIKeyboardTypeNumberPad; // 设置只能输入数字
     [self.view startLoading];
     [self loadPosList];
@@ -225,7 +226,6 @@
             connect.deviceNo = deviceTF.text;
             [self.navigationController pushViewController:connect animated:YES];
         }
-        
         ZPLog(@"%@",dict);
         ZPLog(@"%@",error);
         ZPLog(@"%@",response);
@@ -247,14 +247,40 @@
     }];
 }
 
-
 // 实时监控text输入框动向
 - (void) TextFileTest {
     [deviceTF addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    [typeInput.contentTF addTarget:self action:@selector(textFieldDidChangee:) forControlEvents:UIControlEventEditingChanged];
+    [typeInput2.contentTF addTarget:self action:@selector(textFieldDidChangee:) forControlEvents:UIControlEventEditingChanged];
+    [typeInput3.contentTF addTarget:self action:@selector(textFieldDidChangee:) forControlEvents:UIControlEventEditingChanged];
+    [posInput.contentTF addTarget:self action:@selector(textFieldDidChangee:) forControlEvents:UIControlEventEditingChanged];
+    [brandInput.contentTF addTarget:self action:@selector(textFieldDidChangee:) forControlEvents:UIControlEventEditingChanged];
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(changeValue:)   name:@"changeValue"  object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(changeValuee:)   name:@"changeValuee"  object:nil];
 }
 
-// 这两个方法实时监控text输入框
+
+// 监听输入框的文字
+-(void)textFieldDidChangee:(UITextField *)textField {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeValuee" object:textField];
+}
+
+- (void)changeValuee:(NSNotification *)notification {
+    UITextField * textField = notification.object;
+//    [self isValidateName:textField.text];
+//    if ([self isValidateName:textField.text]) {
+//            ZPLog(@"%@",textField.text);
+//    }else {
+//        [HintView showHint:Localize(@"输入不能大于4位")];
+//        return;
+//    }
+    if (textField.text.length > 8) {
+        ZPLog(@"输入有误");
+        [HintView showHint:Localize(@"请输入正确的设备ID")];
+        return;
+    }
+}
+// 这两个方法实时监控text输入框ID
 -(void)textFieldDidChange:(UITextField *)textField {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"changeValue" object:textField];
 }
@@ -268,7 +294,6 @@
         [HintView showHint:Localize(@"请输入正确的设备ID")];
         return;
     }
-    
     if ([textField.text hasPrefix:@"62"]) {
         ZPLog(@"%@",textField.text);
         typeInput.name.text = Localize(@"开关1");
@@ -303,5 +328,26 @@
         }
 }
 
+//判断字符串为6～12位“字符”
+- (BOOL)isValidateName:(NSString *)name{
+    NSUInteger  character = 0;
+    for(int i=0; i< [name length];i++){
+        int a = [name characterAtIndex:i];
+        if( a >= 0x4e00 && a <= 0x9fa5){ //判断是否为中文
+            character +=2;
+        }else{
+            character +=1;
+        }
+    }
+    if (character >=1 && character <=8) {
+        return YES;
+        ZPLog(@"111");
+    }else{
+        return NO;
+        ZPLog(@"222");
+    }
+    
+    
+}
 
 @end

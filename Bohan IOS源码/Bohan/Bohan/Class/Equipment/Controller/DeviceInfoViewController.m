@@ -87,9 +87,9 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0008";
     model.deviceNo = self.model.id;
-    ZPLog(@"%@",self.model.sort);
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
+    [weakSelf.view stopLoading];
         if (!error) {
             
             if (((NSString *)response).length == 120) {
@@ -316,8 +316,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
 //                count.deviceNo = self.model.id;
 //                [self.navigationController pushViewController:count animated:YES];
                 MultipleSwitchViewController * MultipleSwitch = [[MultipleSwitchViewController alloc]init];
-                MultipleSwitch.Coedid = self.model.id;
-//                MultipleSwitch.NONDATA = self.model.;
+                MultipleSwitch.deviceNo = self.model.id;
                 [self.navigationController pushViewController:MultipleSwitch animated:YES];
             }else {
                 TimeSettingViewController * time = [[TimeSettingViewController alloc] init];

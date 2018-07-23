@@ -13,6 +13,5 @@
 @property (nonatomic, copy)NSString *deviceNo;
 @property (nonatomic, copy)NSString *command;
 @property (nonatomic, copy)NSString *content;
-//@property (nonatomic, copy)NSString * Contentt;
 
 @end

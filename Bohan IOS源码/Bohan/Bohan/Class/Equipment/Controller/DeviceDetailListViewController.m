@@ -222,7 +222,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     }
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         //        在线数据
         DeviceModel *model = self.online[indexPath.row];
@@ -272,6 +272,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
         DeviceModel *model = self.online[indexPath.row];
         info.model = model;
         info.sortt = model.sort;
+        info.type = model.id;
         [self.navigationController pushViewController:info animated:YES]; // 设备离线不跳转
         return;
     }else {

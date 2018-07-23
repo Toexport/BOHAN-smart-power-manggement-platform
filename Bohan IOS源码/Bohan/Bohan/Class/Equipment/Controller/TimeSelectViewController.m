@@ -100,7 +100,6 @@
 
 - (IBAction)endTimeAction {
     
-    
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowHourMinute scrollToDate:[formatter dateFromString:endTime.text] CompleteBlock:^(NSDate *selectDate) {
         [endTime setText:[formatter stringFromDate:selectDate]];
 

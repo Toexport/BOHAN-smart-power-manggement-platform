@@ -42,5 +42,5 @@
     __weak IBOutlet UIView *Divider2View; // 分割线
     
 }
-@property (nonatomic, copy)  NSString * Coedid; // 设备编码
+@property (nonatomic, copy) NSString *deviceNo; // 设备编码
 @end

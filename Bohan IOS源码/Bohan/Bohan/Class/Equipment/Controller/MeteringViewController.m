@@ -60,22 +60,21 @@
     
     NSString *string;
     if (sender.tag == 300) {
-        
+
         if (![cStartDate.text isEqualToString:Localize(@"选择开始时间")]) {
-            
+
             string = [cStartDate.text stringByAppendingString:[NSString stringWithFormat:@" %@",cStartTime.text]];
         }
     }else
     {
         if (![cEndDate.text isEqualToString:Localize(@"选择结束时间")]) {
-            
+
             string = [cEndDate.text stringByAppendingString:[NSString stringWithFormat:@" %@",cEndTime.text]];
         }
-        
+
     }
     
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-    
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatter dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
         
         if (sender.tag == 300)
@@ -103,10 +102,11 @@
         }
         
         if (start.length>0 && end.length>0) {
-            
+
             [cTotalTime setText:[Utils gapDateFrom:[formatter dateFromString:start] toDate:[formatter dateFromString:end]]];
         }
     }];
+
     datepicker.hideBackgroundYearLabel = YES;
     datepicker.dateLabelColor = kDefualtColor;
     datepicker.doneButtonColor = kDefualtColor;
