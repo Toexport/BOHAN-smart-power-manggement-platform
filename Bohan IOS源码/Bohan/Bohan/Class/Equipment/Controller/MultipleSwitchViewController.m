@@ -29,6 +29,7 @@ NSInteger lastSecend;//剩余秒数点进去
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = NSLocalizedString(@"定时开关", nil);
+    formatter = [[NSDateFormatter alloc] init];
 //    .clearButtonMode = UITextFieldViewModeWhileEditing;  // 一键删除文字
     scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag; // 滚动时键盘隐藏
     Years1TextField.keyboardType = UIKeyboardTypeNumberPad; // 设置只能输入数字
@@ -83,7 +84,7 @@ NSInteger lastSecend;//剩余秒数点进去
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatter dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
         
-            [formatter setDateFormat:@"yyyy-MM-dd"];
+            [formatter setDateFormat:@"yyyy"];// 解决问题
             [Years1TextField setText:[formatter stringFromDate:selectDate]];
         
             [formatter setDateFormat:@"HH:mm:ss"];
@@ -118,13 +119,15 @@ NSInteger lastSecend;//剩余秒数点进去
     }
 }
 // 定时开关（开）
-- (void)datas{
+- (void)datas{ // 老地方，这个我说过了，要和后台联调，我把我能想到的问题都试过了，结果还是不行没办法，最后一个小问题
 //    NSString * string = [NSString stringWithFormat:@"%@%@%@%@%@",self.string1,self.string2,self.string3,self.string4,self.string5];
-    NSString * string = @"1807231800";
+    NSString * string = @"1807231800 01"; //这里的12位其中10位是时间，最后两位是开关“01”或者“”00或者FF，文档上写的
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *command = [[CommandModel alloc] init];
     command.command = @"002C";
     command.deviceNo = self.deviceNo;
+//    不用打印，我目前看的是没有拼过，我要看他是什么啊 是这样的，0027是两个拼在一起的，所以这个可能是3个拼在一起传过去的，你拼过了吗，我打印下，我现在提供两个方法给你试一下，如果不行我也不知道怎么做了，就是你的string应该是12位的，这点要肯定，目前的不够
+//    如果10位的时间不行的过就尝试一下12位的时间加上2位的开关，关于时间是怎么排的，是否显示07前面的那种“0”，你都要尝试一下，我说的这些有没有看懂？ok
     command.content = string;
     [self.view startLoading];
     MyWeakSelf
