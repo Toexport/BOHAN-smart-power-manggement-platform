@@ -84,19 +84,35 @@ NSInteger lastSecend;//剩余秒数点进去
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatter dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
         
-            [formatter setDateFormat:@"yyyy"];// 解决问题
-            [Years1TextField setText:[formatter stringFromDate:selectDate]];
+        [formatter setDateFormat:@"yyyy"];// 解决问题
+        [Years1TextField setText:[formatter stringFromDate:selectDate]];
+        [Years2TextField setText:[formatter stringFromDate:selectDate]];
+        [Years3TextField setText:[formatter stringFromDate:selectDate]];
+        [formatter setDateFormat:@"MM"];
+        [Month1TextField setText:[formatter stringFromDate:selectDate]];
+        [Month2TextField setText:[formatter stringFromDate:selectDate]];
+        [Month3TextField setText:[formatter stringFromDate:selectDate]];
+        [formatter setDateFormat:@"dd"];
+        [Day1textField setText:[formatter stringFromDate:selectDate]];
+        [Day2textField setText:[formatter stringFromDate:selectDate]];
+        [Day3textField setText:[formatter stringFromDate:selectDate]];
         
-            [formatter setDateFormat:@"HH:mm:ss"];
-//            [cStartTime setText:[formatter stringFromDate:selectDate]];
-            
-            [formatter setDateFormat:@"yyMMddHHmmss"];
-//            start = [formatter stringFromDate:selectDate];
+        [formatter setDateFormat:@"HH"];
+        [Hours1TextField setText:[formatter stringFromDate:selectDate]];
+        [Hours2TextField setText:[formatter stringFromDate:selectDate]];
+        [Hours3TextField setText:[formatter stringFromDate:selectDate]];
+        [formatter setDateFormat:@"mm"];
+        [Month1TextField setText:[formatter stringFromDate:selectDate]];
+        [Month2TextField setText:[formatter stringFromDate:selectDate]];
+        [Month3TextField setText:[formatter stringFromDate:selectDate]];
         
-//        if (start.length>0 && end.length>0) {
-//            
-//            [cTotalTime setText:[Utils gapDateFrom:[formatter dateFromString:start] toDate:[formatter dateFromString:end]]];
-//        }
+        [formatter setDateFormat:@"yyMMddHHmmss"];
+        //            start = [formatter stringFromDate:selectDate];
+        
+        //        if (start.length>0 && end.length>0) {
+        //
+        //            [cTotalTime setText:[Utils gapDateFrom:[formatter dateFromString:start] toDate:[formatter dateFromString:end]]];
+        //        }
     }];
     
     datepicker.hideBackgroundYearLabel = YES;
@@ -110,12 +126,12 @@ NSInteger lastSecend;//剩余秒数点进去
     if (sender.selected) {
         return;
     }else{
-    sender.selected =!sender.selected;
-    Guan1But.selected = NO;
-//    ZPLog(@"开1");
-       
+        sender.selected =!sender.selected;
+        Guan1But.selected = NO;
+        //    ZPLog(@"开1");
         
-//    ZPLog(@"%@",string);
+        
+        //    ZPLog(@"%@",string);
     }
 }
 // 定时开关（开）
