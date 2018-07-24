@@ -26,18 +26,20 @@
 @property (nonatomic, strong) ESPSmartConnect *espConnect;
 
 
+
 @end
 
 @implementation WifiConnectViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    //得到当前视图控制器中的所有控制器
+    [self dismissViewControllerAnimated:YES completion:nil];
     if (@available(iOS 11.0, *)){
-    }else
-    {
+    }else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
+    
     self.title = Localize(@"连接WiFi");
     [self.view addSubview:self.sliderView];
     [self.view addSubview:self.mainScroll];
@@ -73,15 +75,14 @@
 
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
+- (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
     [self.espConnect connectCancel];
+    
 }
 
 
-- (void)connectDeviceipAddress:(NSString *)ipAddress
-{
+- (void)connectDeviceipAddress:(NSString *)ipAddress {
     WebSocket *socket = [WebSocket socketManager];
 //    socket.deviceIp = ipAddress;
     CommandModel *model = [[CommandModel alloc] init];
@@ -91,35 +92,32 @@
         
         ZPLog(@"--------%@",response);
     }];
-
 }
 
-- (void)showMessageWithType:(ESPConnectResultType)resultType
-{
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self.view stopLoading];
-        
-        if (resultType == ESPConnectResultTypeSucceed) {
-            [SAMKeychain setPassword:self.autoConV.pwdTF.text forService:BUNDLEIDENTIFIER account:self.autoConV.ssidTF.text];
-            [HintView showHint:Localize(@"WIFI连接成功！")];
-            [self.navigationController popToRootViewControllerAnimated:YES];
-            
-        } else if(resultType != ESPConnectResultTypeCancel){
-//            if (resultType == ESPConnectResultTypePwdError)
-//        {
-//            [HintView showHint:@"WiFi和密码不匹配"];
-//
-//        }else if (resultType == ESPConnectResultTypeTimeout)
-//        {
-//            [HintView showHint:@"设备连接超时"];
-//
-//        }else if (resultType == ESPConnectResultTypeUnKnownError)
-//        {
-//            [HintView showHint:Localize(@"连接失败")];
-            
-            [self deviceStatus];
+- (void)showMessageWithType:(ESPConnectResultType)resultType {
+    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+            [self.view stopLoading];
+            if (resultType == ESPConnectResultTypeSucceed) {
+                [SAMKeychain setPassword:self.autoConV.pwdTF.text forService:BUNDLEIDENTIFIER account:self.autoConV.ssidTF.text];
+                [HintView showHint:Localize(@"WIFI连接成功！")];
+                [self.navigationController popToRootViewControllerAnimated:YES];
+                
+            } else if(resultType != ESPConnectResultTypeCancel){
+                //            if (resultType == ESPConnectResultTypePwdError)
+                //        {
+                //            [HintView showHint:@"WiFi和密码不匹配"];
+                //
+                //        }else if (resultType == ESPConnectResultTypeTimeout)
+                //        {
+                //            [HintView showHint:@"设备连接超时"];
+                //
+                //        }else if (resultType == ESPConnectResultTypeUnKnownError)
+                //        {
+                //            [HintView showHint:Localize(@"连接失败")];
+                [self deviceStatus];
+                
+            }
 
-        }
     });
 }
 //查询设备是否已经连接
@@ -130,7 +128,6 @@
     model.content = USERNAME;
     MyWeakSelf
     [self.view startLoading];
-
     [socket sendMultiDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
         NSArray *status = [response componentsSeparatedByString:@","];
@@ -139,7 +136,6 @@
                 [self.espConnect connectCancel];
                 [HintView showHint:Localize(@"WIFI连接成功！")];
                 [self.navigationController popToRootViewControllerAnimated:YES];
-
                 return;
             }
         }
@@ -149,14 +145,7 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-- (ESPSmartConnect *)espConnect
-{
+- (ESPSmartConnect *)espConnect {
     if (!_espConnect) {
         _espConnect = [[ESPSmartConnect alloc] init];
         MyWeakSelf
@@ -171,8 +160,7 @@
     return _espConnect;
 }
 
-- (SliderView *)sliderView
-{
+- (SliderView *)sliderView {
     
     if (!_sliderView) {
         _sliderView = [[SliderView alloc] initWithFrame:CGRectMake(0, kTopHeight, ScreenWidth, 45) datas:@[Localize(@"极速添加"), Localize(@"手动添加")]];
@@ -237,12 +225,10 @@
         }
         //设备配网
         [weakSelf.view startLoading];
-        
         dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            
             [weakSelf.espConnect connectWithApSsid:ssid apPwd:pwd];
-
         });
-
     };
 
     return view;
@@ -253,9 +239,11 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     [self scrollViewDidEndScrollingAnimation:scrollView];
 }
+
 -(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
 
     [self.sliderView selectedWithIndex:scrollView.contentOffset.x /scrollView.bounds.size.width];
 }
+
 
 @end

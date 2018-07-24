@@ -3,7 +3,7 @@
 "ObM-dU-Bys.normalTitle" = "Button";
 
 /* Class = "UITextField"; placeholder = "信息可填写或选择"; ObjectID = "b5L-pU-5Lg"; */
-"b5L-pU-5Lg.placeholder" = "Select or fill in the Information";
+"b5L-pU-5Lg.placeholder" = "Please enter 4 bits Chinese or 8 bits English";
 
 /* Class = "UILabel"; text = "Label"; ObjectID = "qrz-7e-I0n"; */
 "qrz-7e-I0n.text" = "Label";

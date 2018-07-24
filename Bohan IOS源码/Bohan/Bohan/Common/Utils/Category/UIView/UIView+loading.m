@@ -40,11 +40,9 @@ static RTSpinKitView * spinner = nil;
     [self addSubview:spinner];
 
     self.userInteractionEnabled = NO;
-
 }
 
-- (void)stopLoading
-{
+- (void)stopLoading {
     self.userInteractionEnabled = YES;
 
     for (UIView *view in self.subviews) {

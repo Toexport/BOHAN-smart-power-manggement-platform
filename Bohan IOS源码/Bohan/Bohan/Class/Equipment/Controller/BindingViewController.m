@@ -325,7 +325,7 @@
             bdffLayoutConstraint.constant = - 59; // (隐藏两个text输入框的高度)
             return;
             /****************************************************************************/
-        }
+    }
 }
 
 //判断字符串为6～12位“字符”
@@ -341,10 +341,8 @@
     }
     if (character >=1 && character <=8) {
         return YES;
-        ZPLog(@"111");
     }else{
         return NO;
-        ZPLog(@"222");
     }
     
     

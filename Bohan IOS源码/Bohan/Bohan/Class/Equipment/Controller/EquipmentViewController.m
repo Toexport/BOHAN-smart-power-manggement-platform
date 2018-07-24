@@ -136,8 +136,8 @@
             [strongSelf loadData];
         };
         
-        _pageCollection.indexBlock = ^(NSUInteger index)
-        {
+        _pageCollection.indexBlock = ^(NSUInteger index) {
+            
             currentIndex = index;
             [weakSelf loadData];
             [weakSelf.sliderView selectedWithIndex:index];
@@ -156,12 +156,10 @@
 
 #pragma mark - NoDataViewDelegate
 - (void)reloadDidClick {
-    
     [self loadData];
 }
 
 - (BOOL)shouldShowNoDataView {
-    
     TablePageModel *model = dataArray[currentIndex];
     if (model.datas.count == 0) {
         return YES;

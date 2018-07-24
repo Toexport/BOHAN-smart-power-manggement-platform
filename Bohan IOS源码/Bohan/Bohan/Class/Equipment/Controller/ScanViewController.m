@@ -128,14 +128,13 @@
     // Start
     [_session startRunning];
 }
+
 #pragma mark AVCaptureMetadataOutputObjectsDelegate
-- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection
-{
-   
+- (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
+
     NSString *stringValue;
     
-    if ([metadataObjects count] >0)
-    {
+    if ([metadataObjects count] >0) {
         AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex:0];
         stringValue = metadataObject.stringValue;
     }
@@ -147,12 +146,12 @@
     [self dismissViewControllerAnimated:YES completion:nil];
     
 }
--(void)getResultStr:(QRScanSuccess)resultBlock
-{
+-(void)getResultStr:(QRScanSuccess)resultBlock {
     scanBlock = resultBlock;
 }
-- (void)didReceiveMemoryWarning
-{
+
+
+- (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }

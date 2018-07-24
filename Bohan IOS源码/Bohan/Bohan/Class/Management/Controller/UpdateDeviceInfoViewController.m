@@ -39,7 +39,6 @@
     BOOL loadtBrand;
     
 }
-
 @end
 
 @implementation UpdateDeviceInfoViewController
