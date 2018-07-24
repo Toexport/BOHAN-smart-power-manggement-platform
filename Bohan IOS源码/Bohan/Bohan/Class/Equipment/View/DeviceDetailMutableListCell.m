@@ -103,6 +103,7 @@
             Label1.text = strarray[0];
             Label3.text = strarray[2];
         });
+            
         
     }else
         if ([self.model.id hasPrefix:@"63"]) {
@@ -119,7 +120,15 @@
         });
     }
 //    [name setText:self.model.name];
-    [name  setText:@"三位开关"];
+    if ([self.model.id hasPrefix:@"61"]) {
+        [name setText:Localize(@"一位开关")];
+    }else
+        if ([self.model.id hasPrefix:@"62"]) {
+            [name setText:Localize(@"二位开关")];
+    }else
+        if ([self.model.id hasPrefix:@"63"]) {
+            [name setText:Localize(@"三位开关")];
+    }
     [deviceId  setText:[NSString stringWithFormat:@"%@%@",Localize(@"设备号："),self.model.id]];
     [type  setText:self.model.type];
     [pos  setText:self.model.position];
