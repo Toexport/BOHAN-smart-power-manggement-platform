@@ -31,7 +31,6 @@
     __weak IBOutlet UILabel *name1;
     __weak IBOutlet UISwitch *openSwitch2;
     __weak IBOutlet UILabel *name2;
-    
     __weak IBOutlet UISwitch *openSwitch3;
     __weak IBOutlet UILabel *name3;
     NSArray *switchs;
@@ -42,18 +41,15 @@
 @implementation DeviceDetailMutableListCell
 
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [super awakeFromNib];
     switchs = @[openSwitch1, openSwitch2, openSwitch3];
 }
 
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier
-{
+- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     
-    if(self)
-    {
+    if(self) {
         switchs = @[openSwitch1, openSwitch2, openSwitch3];
     }
     
@@ -87,37 +83,46 @@
 
 - (void)layoutSubviews {
     [super layoutSubviews];
-    //    openSwitch.layer.cornerRadius = 16;
-    
     if([self.model.id hasPrefix:@"61"]) {
         openSwitch1.hidden = YES;
         openSwitch3.hidden = YES;
         openSwitch2.hidden = NO;
+        Label2.text = self.model.name;
+        Label1.hidden = YES;
+        Label3.hidden = YES;
         
-    }else if ([self.model.id hasPrefix:@"62"]) {
+    }else
+        if ([self.model.id hasPrefix:@"62"]) {
         openSwitch1.hidden = NO;
         openSwitch3.hidden = NO;
         openSwitch2.hidden = YES;
+        Label2.hidden = YES;
+        NSString * string = self.model.name;
+        NSArray * strarray = [string  componentsSeparatedByString:@"@"];
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            Label1.text = strarray[0];
+            Label3.text = strarray[2];
+        });
         
-    }else if ([self.model.id hasPrefix:@"63"]) {
+    }else
+        if ([self.model.id hasPrefix:@"63"]) {
         openSwitch1.hidden = NO;
         openSwitch3.hidden = NO;
         openSwitch2.hidden = NO;
+        NSString * string = self.model.name;
+        NSArray * strarray = [string  componentsSeparatedByString:@"@"];//获取当前某个字符前后数据
+        //ZPLog(@"%@",strarray);
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            Label1.text = strarray[0];
+            Label2.text = strarray[1];
+            Label3.text = strarray[2];
+        });
     }
-    
-    [name  setText:self.model.name];
+//    [name setText:self.model.name];
+    [name  setText:@"三位开关"];
     [deviceId  setText:[NSString stringWithFormat:@"%@%@",Localize(@"设备号："),self.model.id]];
     [type  setText:self.model.type];
     [pos  setText:self.model.position];
-    NSString * string = self.model.name;
-    NSArray * strarray = [string  componentsSeparatedByString:@"@"];//获取当前某个字符前后数据
-    //ZPLog(@"%@",strarray);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        Label1.text = strarray[0];
-        Label2.text = strarray[1];
-        Label3.text = strarray[2];
-    });
-    
     
     //     判断设备是否在线
     if (self.model.powerinfo && self.model.powerinfo.length>0) { // powerinfo 是用电
