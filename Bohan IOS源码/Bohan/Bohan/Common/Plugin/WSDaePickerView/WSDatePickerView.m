@@ -169,7 +169,6 @@ typedef void(^doneBlock)(NSDate *);
     self.buttomView.layer.masksToBounds = YES;
     self.doneButtonColor = RGB(247, 133, 51);
     self.frame=CGRectMake(0, 0, kScreenWidth, kScreenHeight);
-    
     //点击背景是否影藏
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismiss)];
     tap.delegate = self;

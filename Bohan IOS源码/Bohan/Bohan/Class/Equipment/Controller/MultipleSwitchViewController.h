@@ -43,4 +43,10 @@
     
 }
 @property (nonatomic, copy) NSString *deviceNo; // 设备编码
+@property (nonatomic, strong) NSString * str1;
+@property (nonatomic, strong) NSString * str2;
+@property (nonatomic, strong) NSString * str3;
+
+
+
 @end

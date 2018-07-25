@@ -681,6 +681,15 @@
                                         <constraint firstAttribute="height" constant="1" id="LGR-SF-TnG"/>
                                     </constraints>
                                 </view>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bT9-LA-ajt">
+                                    <rect key="frame" x="15" y="39" width="290" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="30" id="hvg-BI-Crk"/>
+                                    </constraints>
+                                    <connections>
+                                        <action selector="switch1Button:" destination="-1" eventType="touchUpInside" id="uvg-zH-1gh"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                             <constraints>
@@ -700,6 +709,8 @@
                                 <constraint firstAttribute="trailing" secondItem="qOh-Nh-Zsp" secondAttribute="trailing" id="Dv6-9z-32u"/>
                                 <constraint firstItem="PY5-Ay-3O2" firstAttribute="trailing" secondItem="GID-zL-q1f" secondAttribute="trailing" id="EEr-LF-tUX"/>
                                 <constraint firstItem="Wrj-bj-sAO" firstAttribute="leading" secondItem="W7P-Vb-3eJ" secondAttribute="leading" id="FuX-Wz-mhC"/>
+                                <constraint firstItem="bT9-LA-ajt" firstAttribute="top" secondItem="zVG-4e-Pzt" secondAttribute="bottom" constant="11" id="G7M-Eh-Nnd"/>
+                                <constraint firstAttribute="trailing" secondItem="bT9-LA-ajt" secondAttribute="trailing" constant="15" id="HT3-lb-ODW"/>
                                 <constraint firstItem="Wrj-bj-sAO" firstAttribute="top" secondItem="oEK-9O-TPd" secondAttribute="bottom" constant="1" id="Hnz-qP-dSr"/>
                                 <constraint firstItem="oUs-jH-LQu" firstAttribute="leading" secondItem="DYI-l0-DrP" secondAttribute="trailing" constant="3" id="JOm-W0-MPr"/>
                                 <constraint firstItem="a6E-JX-2pM" firstAttribute="leading" secondItem="DYI-l0-DrP" secondAttribute="leading" id="Kez-J2-OG8"/>
@@ -724,11 +735,13 @@
                                 <constraint firstItem="66t-8x-yU1" firstAttribute="top" secondItem="RkL-3h-kuP" secondAttribute="top" id="Zou-NB-p93"/>
                                 <constraint firstItem="Tuu-48-knY" firstAttribute="leading" secondItem="E9p-fl-9Wn" secondAttribute="leading" id="a4a-4R-53N"/>
                                 <constraint firstItem="DYI-l0-DrP" firstAttribute="leading" secondItem="mmn-1X-sL0" secondAttribute="trailing" constant="3" id="aDh-Bb-GeE"/>
+                                <constraint firstItem="bT9-LA-ajt" firstAttribute="leading" secondItem="W7P-Vb-3eJ" secondAttribute="leading" constant="15" id="dIr-Yh-adh"/>
                                 <constraint firstItem="qOh-Nh-Zsp" firstAttribute="leading" secondItem="W7P-Vb-3eJ" secondAttribute="leading" id="dw4-42-1fz"/>
                                 <constraint firstItem="UB6-uu-evH" firstAttribute="trailing" secondItem="2ZJ-k0-SJU" secondAttribute="trailing" id="eOE-ge-mKp"/>
                                 <constraint firstItem="7Wf-Z5-RKx" firstAttribute="top" secondItem="E9p-fl-9Wn" secondAttribute="bottom" constant="55" id="eUV-TJ-mmu"/>
                                 <constraint firstItem="7ZK-3X-88N" firstAttribute="leading" secondItem="GFj-tx-jqB" secondAttribute="trailing" constant="10" id="ejY-kz-n83"/>
                                 <constraint firstItem="GFj-tx-jqB" firstAttribute="top" secondItem="GID-zL-q1f" secondAttribute="bottom" constant="10" id="emP-vd-4LU"/>
+                                <constraint firstItem="bT9-LA-ajt" firstAttribute="centerX" secondItem="W7P-Vb-3eJ" secondAttribute="centerX" id="evo-na-EQv"/>
                                 <constraint firstItem="E9p-fl-9Wn" firstAttribute="top" secondItem="zVG-4e-Pzt" secondAttribute="bottom" constant="15" id="gNw-Dh-0LH"/>
                                 <constraint firstAttribute="trailing" secondItem="fro-Ng-aYH" secondAttribute="trailing" id="hI6-ec-5AM"/>
                                 <constraint firstItem="ule-M3-TY1" firstAttribute="leading" secondItem="2ZJ-k0-SJU" secondAttribute="trailing" constant="3" id="jmS-5S-FKG"/>

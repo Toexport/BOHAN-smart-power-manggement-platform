@@ -312,12 +312,12 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
             NSString * string = self.model.id;
             NSString * strin = string;
             if ([strin containsString:@"61"] || [strin containsString:@"62"] || [strin containsString:@"63"]) {
-                CountDownViewController * count = [[CountDownViewController alloc] initWithNibName:@"CountDownViewController" bundle:nil];
-                count.deviceNo = self.model.id;
-                [self.navigationController pushViewController:count animated:YES];
-//                MultipleSwitchViewController * MultipleSwitch = [[MultipleSwitchViewController alloc]init];
-//                MultipleSwitch.deviceNo = self.model.id;
-//                [self.navigationController pushViewController:MultipleSwitch animated:YES];
+//                CountDownViewController * count = [[CountDownViewController alloc] initWithNibName:@"CountDownViewController" bundle:nil];
+//                count.deviceNo = self.model.id;
+//                [self.navigationController pushViewController:count animated:YES];
+                MultipleSwitchViewController * MultipleSwitch = [[MultipleSwitchViewController alloc]init];
+                MultipleSwitch.deviceNo = self.model.id;
+                [self.navigationController pushViewController:MultipleSwitch animated:YES];
             }else {
                 TimeSettingViewController * time = [[TimeSettingViewController alloc] init];
                 time.deviceNo = self.model.id;
