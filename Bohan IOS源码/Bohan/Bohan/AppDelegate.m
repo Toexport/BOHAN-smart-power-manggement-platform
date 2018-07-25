@@ -58,7 +58,6 @@
 
 - (void)createTabBar
 {
-    
     if (ISLOGIN) {
         
 //        [self SRWebSocketOpen];//打开soket
@@ -67,23 +66,17 @@
 //        NSString *data = @"E768160905065800080000F20D";
 //
 //        [[SocketRocketUtility instance] sendData:data];//打开soket
-
-
         EquipmentViewController *equipment = [[EquipmentViewController alloc] init];
         ManagementViewController *management = [[ManagementViewController alloc] init];
 //        [management.view setBackgroundColor:kBackBackroundColor];
         
         ElectricityViewController *electricity = [[ElectricityViewController alloc] init];
-//        [electricity.view setBackgroundColor:kBackBackroundColor];
-
+        //        [electricity.view setBackgroundColor:kBackBackroundColor];
         CenterViewController *center = [[CenterViewController alloc] init];
-        
         UINavigationController *equipmentNav = [[UINavigationController alloc] initWithRootViewController:equipment];
         UINavigationController *managementNav = [[UINavigationController alloc] initWithRootViewController:management];
         UINavigationController *electricityNav = [[UINavigationController alloc] initWithRootViewController:electricity];
         UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:center];
-        
-        
         UITabBarController *tabBar = [[UITabBarController alloc] init];
         tabBar.viewControllers = @[equipmentNav, managementNav,electricityNav,centerNav];
         
@@ -97,8 +90,7 @@
         
         self.window.rootViewController = tabBar;
 
-    }else
-    {
+    }else{
         LoginViewController *login = [[LoginViewController alloc] init];
         UINavigationController *loginNav = [[UINavigationController alloc] initWithRootViewController:login];
         
@@ -106,18 +98,13 @@
     }
     self.window.rootViewController.view.backgroundColor = [UIColor whiteColor];
 
-    
     [[UINavigationBar appearance] setBarTintColor:kDefualtColor];
     [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
     
     [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[UIColor whiteColor], nil] forKeys:[NSArray arrayWithObjects:NSForegroundColorAttributeName, nil]]];
-    
     [[UITabBar appearance] setTintColor:kDefualtColor];
-
-    
-    
 }
 
 

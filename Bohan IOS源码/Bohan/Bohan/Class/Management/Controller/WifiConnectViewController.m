@@ -14,8 +14,8 @@
 #import "CommandModel.h"
 #import <SAMKeychain/SAMKeychain.h>
 #import "DebuggingANDPublishing.pch"
-@interface WifiConnectViewController ()<UIScrollViewDelegate>
-{
+@interface WifiConnectViewController ()<UIScrollViewDelegate> {
+    
     NSUInteger currentIndex;
 }
 @property(nonatomic,strong)SliderView *sliderView;
@@ -24,8 +24,6 @@
 @property (nonatomic, strong) WifiView *autoConV;
 @property (nonatomic, strong) WifiView *mantConV;
 @property (nonatomic, strong) ESPSmartConnect *espConnect;
-
-
 
 @end
 
@@ -53,7 +51,6 @@
     }];
     [_mainScroll setContentSize:CGSizeMake(2*ScreenWidth, self.mainScroll.frame.size.height)];
 
-    
     [self.autoConV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.mas_equalTo(0);
         make.width.mas_equalTo(weakSelf.mainScroll.mas_width);
@@ -72,19 +69,20 @@
     if (pwd && pwd.length > 0) {
         self.autoConV.pwdTF.text = pwd;
     }
-
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
-    [self.espConnect connectCancel];
     
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self.espConnect connectCancel];
+}
 
 - (void)connectDeviceipAddress:(NSString *)ipAddress {
     WebSocket *socket = [WebSocket socketManager];
-//    socket.deviceIp = ipAddress;
     CommandModel *model = [[CommandModel alloc] init];
     model.deviceNo = self.deviceNo;
     model.command = @"0001";
@@ -96,12 +94,15 @@
 
 - (void)showMessageWithType:(ESPConnectResultType)resultType {
     dispatch_async(dispatch_get_global_queue(0, 0), ^{
-            [self.view stopLoading];
+        dispatch_async(dispatch_get_main_queue(), ^{
+           [self.view stopLoading];
+        });
             if (resultType == ESPConnectResultTypeSucceed) {
                 [SAMKeychain setPassword:self.autoConV.pwdTF.text forService:BUNDLEIDENTIFIER account:self.autoConV.ssidTF.text];
-                [HintView showHint:Localize(@"WIFI连接成功！")];
-                [self.navigationController popToRootViewControllerAnimated:YES];
-                
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    [HintView showHint:Localize(@"WIFI连接成功！")];
+                     [self.navigationController popToRootViewControllerAnimated:YES];
+                });
             } else if(resultType != ESPConnectResultTypeCancel){
                 //            if (resultType == ESPConnectResultTypePwdError)
                 //        {
@@ -122,25 +123,35 @@
 }
 //查询设备是否已经连接
 - (void)deviceStatus {
+    
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"1001";
     model.content = USERNAME;
     MyWeakSelf
-    [self.view startLoading];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self.view startLoading];
+    });
     [socket sendMultiDataWithModel:model resultBlock:^(id response, NSError *error) {
-        [weakSelf.view stopLoading];
+        dispatch_async(dispatch_get_main_queue(), ^{
+           [weakSelf.view stopLoading];
+        });
         NSArray *status = [response componentsSeparatedByString:@","];
         for (NSString *content in status) {
             if ([content hasPrefix:weakSelf.deviceNo]) {
                 [self.espConnect connectCancel];
-                [HintView showHint:Localize(@"WIFI连接成功！")];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                     [HintView showHint:Localize(@"WIFI连接成功！")];
+                });
+               
                 [self.navigationController popToRootViewControllerAnimated:YES];
                 return;
             }
         }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [HintView showHint:Localize(@"连接失败")];
+        });
         
-        [HintView showHint:Localize(@"连接失败")];
     }];
     
 }
@@ -154,7 +165,7 @@
 //            if (resultType == ESPConnectResultTypeSucceed && server && port && server.length>0 && port.length>0) {
 //                [weakSelf connectDeviceipAddress:server];
 //            }
-            
+//
         };
     }
     return _espConnect;
@@ -207,34 +218,25 @@
 }
 
 
-- (WifiView *)createWifiView
-
-{
+- (WifiView *)createWifiView {
     WifiView * view = [[[NSBundle mainBundle] loadNibNamed:@"WifiView" owner:nil options:nil] lastObject];
-//    [view setFrame:CGRectMake(0, 0, ScreenWidth, 288)];
     MyWeakSelf
     view.addBock = ^(NSString *ssid, NSString *pwd) {
-
-//        dispatch_async(dispatch_get_main_queue(), ^{
-//        });
-
         if (ssid.length == 0 || pwd.length == 0) {
-            
             [HintView showHint:@"请输入wifi账号"];
             return ;
+        }else {
+                //设备配网
+                [weakSelf.view startLoading];
         }
-        //设备配网
-        [weakSelf.view startLoading];
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-            
-            [weakSelf.espConnect connectWithApSsid:ssid apPwd:pwd];
+      dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+          [weakSelf.espConnect connectWithApSsid:ssid apPwd:pwd];
         });
     };
-
     return view;
 }
 
-
+//681609050268
 #pragma mark -UIScrollView delegate
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
     [self scrollViewDidEndScrollingAnimation:scrollView];

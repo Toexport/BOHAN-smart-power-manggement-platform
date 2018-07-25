@@ -536,8 +536,7 @@
     [self._condition unlock];
 }
 
-- (void) setEsptouchDelegate: (NSObject<ESPTouchDelegate> *) esptouchDelegate
-{
+- (void) setEsptouchDelegate: (NSObject<ESPTouchDelegate> *) esptouchDelegate {
     self._esptouchDelegate = esptouchDelegate;
 }
 
