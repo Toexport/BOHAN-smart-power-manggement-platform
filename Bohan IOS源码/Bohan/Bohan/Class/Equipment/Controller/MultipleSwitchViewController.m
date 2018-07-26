@@ -34,15 +34,29 @@
 
 // 状态查询
 - (void)StateQuery {
-        [self.view startLoading];
-     NSString * jsonString = self.deviceNo;
-    NSDictionary * dic = @{@"deviceCode":jsonString};
-        [[NetworkRequest sharedInstance]requestWithUrl:GET_DEVICE_INFO_URL parameter:dic completion:^(id response, NSError *error) {
-            [self.view stopLoading];
-            ZPLog(@"%@",error);
-            ZPLog(@"jsonString");
-            ZPLog(@"%@",response);
-        }];
+    WebSocket *socket = [WebSocket socketManager];
+    CommandModel *model = [[CommandModel alloc] init];
+    model.command = @"0002";
+    model.deviceNo = self.deviceNo;
+    [self.view startLoading];
+    MyWeakSelf
+    [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
+        [weakSelf.view stopLoading];
+        ZPLog(@"--------%@",response);
+        if (!error) {
+        }else {
+            [HintView showHint:error.localizedDescription];// 后台返回的提示
+        }
+    }];
+//        [self.view startLoading];
+//     NSString * jsonString = self.deviceNo;
+//    NSDictionary * dic = @{@"deviceCode":jsonString};
+//        [[NetworkRequest sharedInstance]requestWithUrl:GET_DEVICE_INFO_URL parameter:dic completion:^(id response, NSError *error) {
+//            [self.view stopLoading];
+//            ZPLog(@"%@",error);
+//            ZPLog(@"jsonString");
+//            ZPLog(@"%@",response);
+//        }];
 }
 
 // 是否显示2-3号开关
