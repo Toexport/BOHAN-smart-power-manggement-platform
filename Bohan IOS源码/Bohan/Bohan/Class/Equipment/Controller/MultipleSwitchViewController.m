@@ -29,6 +29,20 @@
     self.title = NSLocalizedString(@"定时开关", nil);
     [self TimeDisplay];
     [self yyyyMMddHHmm];
+    [self StateQuery];
+}
+
+// 状态查询
+- (void)StateQuery {
+        [self.view startLoading];
+     NSString * jsonString = self.deviceNo;
+    NSDictionary * dic = @{@"deviceCode":jsonString};
+        [[NetworkRequest sharedInstance]requestWithUrl:GET_DEVICE_INFO_URL parameter:dic completion:^(id response, NSError *error) {
+            [self.view stopLoading];
+            ZPLog(@"%@",error);
+            ZPLog(@"jsonString");
+            ZPLog(@"%@",response);
+        }];
 }
 
 // 是否显示2-3号开关
