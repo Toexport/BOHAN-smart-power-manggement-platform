@@ -36,10 +36,10 @@
                     <rect key="frame" x="10" y="10" width="300" height="300"/>
                     <subviews>
                         <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vtv-H2-U6y">
-                            <rect key="frame" x="10" y="10" width="70" height="35"/>
+                            <rect key="frame" x="10" y="10" width="44" height="35"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="35" id="1ax-vQ-mhX"/>
-                                <constraint firstAttribute="width" constant="70" id="KcM-A7-WSq"/>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="KcM-A7-WSq"/>
                             </constraints>
                             <state key="normal" title="取消"/>
                             <userDefinedRuntimeAttributes>
@@ -127,10 +127,11 @@
                     <constraints>
                         <constraint firstItem="Q1e-k7-vih" firstAttribute="trailing" secondItem="o0v-Be-Vth" secondAttribute="trailing" id="6EJ-ck-02p"/>
                         <constraint firstItem="o0v-Be-Vth" firstAttribute="top" secondItem="BFl-2i-hjf" secondAttribute="top" constant="40" id="BzK-Po-vDI"/>
-                        <constraint firstItem="iU4-gc-MVp" firstAttribute="width" secondItem="Vtv-H2-U6y" secondAttribute="width" id="EwD-0f-VaP"/>
                         <constraint firstItem="iU4-gc-MVp" firstAttribute="top" secondItem="o0v-Be-Vth" secondAttribute="bottom" constant="15" id="Fbu-yd-D2a"/>
                         <constraint firstItem="o0v-Be-Vth" firstAttribute="centerX" secondItem="BFl-2i-hjf" secondAttribute="centerX" id="IGk-Cx-MRf"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Vtv-H2-U6y" secondAttribute="trailing" constant="20" symbolic="YES" id="J4k-cm-f3Q"/>
                         <constraint firstItem="Vtv-H2-U6y" firstAttribute="leading" secondItem="BFl-2i-hjf" secondAttribute="leading" constant="10" id="SIs-JA-bkf"/>
+                        <constraint firstItem="iU4-gc-MVp" firstAttribute="width" secondItem="Q1e-k7-vih" secondAttribute="width" id="V3Y-Mf-jSy"/>
                         <constraint firstItem="Q1e-k7-vih" firstAttribute="height" secondItem="Vtv-H2-U6y" secondAttribute="height" id="Xja-eF-2Qi"/>
                         <constraint firstItem="iU4-gc-MVp" firstAttribute="height" secondItem="Vtv-H2-U6y" secondAttribute="height" id="iKo-SS-Moj"/>
                         <constraint firstAttribute="bottom" secondItem="iU4-gc-MVp" secondAttribute="bottom" constant="10" id="n1d-i8-koN"/>
@@ -154,10 +155,10 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Qq-ix-CwZ">
-                    <rect key="frame" x="0.0" y="392" width="320" height="176"/>
+                    <rect key="frame" x="0.0" y="292" width="320" height="276"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="176" id="De5-8T-Rhi"/>
+                        <constraint firstAttribute="height" constant="276" id="De5-8T-Rhi"/>
                     </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="BU4-Ot-xtL"/>
@@ -170,7 +171,7 @@
                 <constraint firstAttribute="trailing" secondItem="BFl-2i-hjf" secondAttribute="trailing" constant="10" id="9Ag-KJ-JsA"/>
                 <constraint firstItem="BFl-2i-hjf" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" priority="750" constant="10" id="BeR-Cq-L8k"/>
                 <constraint firstItem="hpo-iu-F3B" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="HuK-Js-bI2"/>
-                <constraint firstItem="9Qq-ix-CwZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="BFl-2i-hjf" secondAttribute="bottom" id="Qck-KY-hJO"/>
+                <constraint firstItem="9Qq-ix-CwZ" firstAttribute="top" relation="lessThanOrEqual" secondItem="BFl-2i-hjf" secondAttribute="bottom" constant="45" id="Qck-KY-hJO"/>
                 <constraint firstItem="9Qq-ix-CwZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Rjh-ej-mJp"/>
                 <constraint firstAttribute="trailing" secondItem="hpo-iu-F3B" secondAttribute="trailing" id="Xew-hh-xgj"/>
                 <constraint firstItem="hpo-iu-F3B" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dhv-Nj-4vn"/>
@@ -186,7 +187,7 @@
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="9Qq-ix-CwZ" secondAttribute="trailing" priority="750" id="vbJ-Rb-XHc"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <point key="canvasLocation" x="33" y="98"/>
+            <point key="canvasLocation" x="28" y="114"/>
         </view>
     </objects>
 </document>

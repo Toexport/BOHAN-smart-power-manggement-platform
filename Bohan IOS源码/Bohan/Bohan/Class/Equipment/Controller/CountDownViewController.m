@@ -47,8 +47,8 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     _mainTable.tintColor = [UIColor getColor:@"f03c4c"];
     [progressView setPersentage:0];
     
-    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 44)];
-
+    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 144)];
+    
     UIButton *startBtn = [[UIButton alloc] initWithFrame:CGRectMake((ScreenWidth - 70)/2, 5, 70, 35)];
     [startBtn setTitle:Localize(@"完成") forState:UIControlStateNormal];
     [startBtn.titleLabel setFont:Font(15)];
@@ -57,8 +57,11 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 
     [startBtn addTarget:self action:@selector(startAction) forControlEvents:UIControlEventTouchUpInside];
     startBtn.layer.cornerRadius = 12;
-    
     [footer addSubview:startBtn];
+    
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 44, ScreenWidth, 100)];
+    view.backgroundColor = [UIColor orangeColor];
+    [footer addSubview:view];
     _mainTable.tableFooterView = footer;
     
     [self getStatus];
