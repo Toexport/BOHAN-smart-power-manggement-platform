@@ -47,7 +47,21 @@
 @property (nonatomic, strong) NSString * str2;
 @property (nonatomic, strong) NSString * str3;
 
+@property (nonatomic, strong) NSString * string1;
+@property (nonatomic, strong) NSString * string2;
+@property (nonatomic, strong) NSString * string3;
+@property (nonatomic, strong) NSString * string4;
+@property (nonatomic, strong) NSString * string5;
 
+@property (nonatomic, strong) NSString * string11;
+@property (nonatomic, strong) NSString * string22;
+@property (nonatomic, strong) NSString * string33;
+@property (nonatomic, strong) NSString * string44;
+@property (nonatomic, strong) NSString * string55;
 
-
+@property (nonatomic, strong) NSString * string111;
+@property (nonatomic, strong) NSString * string222;
+@property (nonatomic, strong) NSString * string333;
+@property (nonatomic, strong) NSString * string444;
+@property (nonatomic, strong) NSString * string555;
 @end
