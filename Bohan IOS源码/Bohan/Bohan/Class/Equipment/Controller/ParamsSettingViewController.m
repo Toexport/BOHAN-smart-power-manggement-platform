@@ -188,7 +188,6 @@ model.deviceNo = self.dNo;
 MyWeakSelf
 [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
     [weakSelf.view stopLoading];
-    
     if (!error) {
         if (((NSString *)response).length>26) {
             NSString *status = [response substringWithRange:NSMakeRange(24, 2)];
@@ -215,10 +214,8 @@ MyWeakSelf
     [weakSelf.view stopLoading];
     
     if (!error) {
-        
         [HintView showHint:Localize(@"设置成功")];
-    }else
-    {
+    }else {
         [HintView showHint:error.localizedDescription];
     }
     
@@ -240,10 +237,8 @@ MyWeakSelf
     [weakSelf.view stopLoading];
     
     if (!error) {
-        
         [HintView showHint:Localize(@"设置成功")];
-    }else
-    {
+    }else {
         [HintView showHint:error.localizedDescription];
     }
     
@@ -262,15 +257,12 @@ model.content = [NSString stringWithFormat:@"%02d",[[power.text substringToIndex
 MyWeakSelf
 [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
     [weakSelf.view stopLoading];
-    
     if (!error) {
-        
         [HintView showHint:Localize(@"设置成功")];
     }else {
         [HintView showHint:error.localizedDescription];
     }
 }];
-
 }
 
 // 单价BUt
@@ -288,7 +280,7 @@ if (priceTF.text == nil || priceTF.text.length <= 0) {
 if (limitTF.text == nil || limitTF.text.length <= 1) {
     ZPLog(@"没有输入文字");
     [HintView showHint:Localize(@"请输入负荷门限")];
-}else{
+}else {
     [self AllDataload];
     
 }
@@ -340,7 +332,6 @@ model.deviceNo = self.dNo;
 
 NSArray *contents;
 NSString *content;
-
     if (power.text.length == 0) {
         [HintView showHint:Localize(@"请输入负荷门限")];
         return;
@@ -376,23 +367,18 @@ if (sender == closeBtn) {
 }else {
     closeBtn.selected = NO;
 }
-
 [self checkClose:closeBtn.selected];
 }
 
 - (IBAction)timeEditAction {
-
 [SGActionView showSheetWithTitle:nil itemTitles:muniteArr itemSubTitles:nil selectedIndex:[[time.text substringToIndex:time.text.length - Localize(@"分钟").length] integerValue] selectedHandle:^(NSInteger index) {
     [time setText:[NSString stringWithFormat:@"%ld%@",(long)index, Localize(@"分钟")]];
     [self changeTime];
-    
 }];
 }
 
 - (IBAction)powerEditAction {
-
 [SGActionView showSheetWithTitle:nil itemTitles:powerArr itemSubTitles:nil selectedIndex:[[power.text substringToIndex:power.text.length - 1] integerValue] selectedHandle:^(NSInteger index) {
-    
     [power setText:[NSString stringWithFormat:@"%ldW",(long)index]];
     [self changePower];
 }];

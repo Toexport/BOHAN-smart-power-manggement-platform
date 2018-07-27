@@ -161,7 +161,6 @@
 
 - (IBAction)startAction {
     
-    
     if ([cStartDate.text isEqualToString:Localize(@"选择开始时间")] || [cEndDate.text isEqualToString:Localize(@"选择结束时间")]) {
 
         [HintView showHint:Localize(@"选择时间")];

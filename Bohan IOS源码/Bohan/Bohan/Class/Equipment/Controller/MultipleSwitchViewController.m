@@ -48,15 +48,6 @@
             [HintView showHint:error.localizedDescription];// 后台返回的提示
         }
     }];
-//        [self.view startLoading];
-//     NSString * jsonString = self.deviceNo;
-//    NSDictionary * dic = @{@"deviceCode":jsonString};
-//        [[NetworkRequest sharedInstance]requestWithUrl:GET_DEVICE_INFO_URL parameter:dic completion:^(id response, NSError *error) {
-//            [self.view stopLoading];
-//            ZPLog(@"%@",error);
-//            ZPLog(@"jsonString");
-//            ZPLog(@"%@",response);
-//        }];
 }
 
 // 是否显示2-3号开关
@@ -163,90 +154,6 @@
     _str2 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring1,self.string22,self.string33,self.string44,self.string55];
     NSString * sstring2 = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
     _str3 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring2,self.string222,self.string333,self.string444,self.string555];
-    NSString * stringg = [NSString stringWithFormat:@"%@FF%@FF%@01",self.str3,self.str2,self.str1];
-    //这里的12位其中10位是时间，最后两位是开关“01”或者“”00或者FF，文档上写的
-    WebSocket *socket = [WebSocket socketManager];
-    CommandModel *command = [[CommandModel alloc] init];
-    command.command = @"002C";
-    command.deviceNo = self.deviceNo;
-    command.content = stringg;
-    [self.view startLoading];
-    MyWeakSelf
-    [socket sendSingleDataWithModel:command resultBlock:^(id response, NSError *error) {
-        [weakSelf.view stopLoading];
-        ZPLog(@"--------%@",response);
-        if (!error) {
-            [HintView showHint:Localize(@"开关1定时关闭已设置")];
-        }else {
-            [HintView showHint:error.localizedDescription];// 后台返回的提示
-        }
-    }];
-}
-
-// 定时开（2）
-- (void)Opendatas2 {
-    NSString * ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];// 获取后两位数字
-    _str1 = [NSString stringWithFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
-    NSString * sstring1 = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
-    _str2 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring1,self.string22,self.string33,self.string44,self.string55];
-    NSString * sstring2 = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
-    _str3 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring2,self.string222,self.string333,self.string444,self.string555];
-    NSString * stringg = [NSString stringWithFormat:@"%@FF%@01%@FF",self.str3,self.str2,self.str1];
-    //这里的12位其中10位是时间，最后两位是开关“01”或者“”00或者FF，文档上写的
-    WebSocket *socket = [WebSocket socketManager];
-    CommandModel *command = [[CommandModel alloc] init];
-    command.command = @"002C";
-    command.deviceNo = self.deviceNo;
-    command.content = stringg;
-    [self.view startLoading];
-    MyWeakSelf
-    [socket sendSingleDataWithModel:command resultBlock:^(id response, NSError *error) {
-        [weakSelf.view stopLoading];
-        ZPLog(@"--------%@",response);
-        if (!error) {
-            [HintView showHint:Localize(@"开关2定时关闭已设置")];
-        }else {
-            [HintView showHint:error.localizedDescription];// 后台返回的提示
-        }
-    }];
-}
-
-// 定时开（3）
-- (void)Opendatas3 {
-    NSString * ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];// 获取后两位数字
-    _str1 = [NSString stringWithFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
-    NSString * sstring1 = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
-    _str2 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring1,self.string22,self.string33,self.string44,self.string55];
-    NSString * sstring2 = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
-    _str3 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring2,self.string222,self.string333,self.string444,self.string555];
-    NSString * stringg = [NSString stringWithFormat:@"%@01%@FF%@FF",self.str3,self.str2,self.str1];
-    //这里的12位其中10位是时间，最后两位是开关“01”或者“”00或者FF，文档上写的
-    WebSocket *socket = [WebSocket socketManager];
-    CommandModel *command = [[CommandModel alloc] init];
-    command.command = @"002C";
-    command.deviceNo = self.deviceNo;
-    command.content = stringg;
-    [self.view startLoading];
-    MyWeakSelf
-    [socket sendSingleDataWithModel:command resultBlock:^(id response, NSError *error) {
-        [weakSelf.view stopLoading];
-        ZPLog(@"--------%@",response);
-        if (!error) {
-            [HintView showHint:Localize(@"开关3定时关闭已设置")];
-        }else {
-            [HintView showHint:error.localizedDescription];// 后台返回的提示
-        }
-    }];
-}
-
-// 定时关（1）
-- (void)Guandatas1 {
-    NSString * ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];// 获取后两位数字
-    _str1 = [NSString stringWithFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
-    NSString * sstring1 = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
-    _str2 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring1,self.string22,self.string33,self.string44,self.string55];
-    NSString * sstring2 = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
-    _str3 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring2,self.string222,self.string333,self.string444,self.string555];
     NSString * stringg = [NSString stringWithFormat:@"%@FF%@FF%@00",self.str3,self.str2,self.str1];
     //这里的12位其中10位是时间，最后两位是开关“01”或者“”00或者FF，文档上写的
     WebSocket *socket = [WebSocket socketManager];
@@ -267,8 +174,8 @@
     }];
 }
 
-// 定时关（2）
-- (void)Guandatas2 {
+// 定时开（2）
+- (void)Opendatas2 {
     NSString * ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];// 获取后两位数字
     _str1 = [NSString stringWithFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
     NSString * sstring1 = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
@@ -295,8 +202,8 @@
     }];
 }
 
-// 定时关（3）
-- (void)Guandatas3 {
+// 定时开（3）
+- (void)Opendatas3 {
     NSString * ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];// 获取后两位数字
     _str1 = [NSString stringWithFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
     NSString * sstring1 = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
@@ -317,6 +224,90 @@
         ZPLog(@"--------%@",response);
         if (!error) {
             [HintView showHint:Localize(@"开关3定时开启已设置")];
+        }else {
+            [HintView showHint:error.localizedDescription];// 后台返回的提示
+        }
+    }];
+}
+
+// 定时关（1）
+- (void)Guandatas1 {
+    NSString * ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];// 获取后两位数字
+    _str1 = [NSString stringWithFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
+    NSString * sstring1 = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
+    _str2 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring1,self.string22,self.string33,self.string44,self.string55];
+    NSString * sstring2 = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
+    _str3 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring2,self.string222,self.string333,self.string444,self.string555];
+    NSString * stringg = [NSString stringWithFormat:@"%@FF%@FF%@01",self.str3,self.str2,self.str1];
+    //这里的12位其中10位是时间，最后两位是开关“01”或者“”00或者FF，文档上写的
+    WebSocket *socket = [WebSocket socketManager];
+    CommandModel *command = [[CommandModel alloc] init];
+    command.command = @"002C";
+    command.deviceNo = self.deviceNo;
+    command.content = stringg;
+    [self.view startLoading];
+    MyWeakSelf
+    [socket sendSingleDataWithModel:command resultBlock:^(id response, NSError *error) {
+        [weakSelf.view stopLoading];
+        ZPLog(@"--------%@",response);
+        if (!error) {
+            [HintView showHint:Localize(@"开关1定时关闭已设置")];
+        }else {
+            [HintView showHint:error.localizedDescription];// 后台返回的提示
+        }
+    }];
+}
+
+// 定时关（2）
+- (void)Guandatas2 {
+    NSString * ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];// 获取后两位数字
+    _str1 = [NSString stringWithFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
+    NSString * sstring1 = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
+    _str2 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring1,self.string22,self.string33,self.string44,self.string55];
+    NSString * sstring2 = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
+    _str3 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring2,self.string222,self.string333,self.string444,self.string555];
+    NSString * stringg = [NSString stringWithFormat:@"%@FF%@01%@FF",self.str3,self.str2,self.str1];
+    //这里的12位其中10位是时间，最后两位是开关“01”或者“”00或者FF，文档上写的
+    WebSocket *socket = [WebSocket socketManager];
+    CommandModel *command = [[CommandModel alloc] init];
+    command.command = @"002C";
+    command.deviceNo = self.deviceNo;
+    command.content = stringg;
+    [self.view startLoading];
+    MyWeakSelf
+    [socket sendSingleDataWithModel:command resultBlock:^(id response, NSError *error) {
+        [weakSelf.view stopLoading];
+        ZPLog(@"--------%@",response);
+        if (!error) {
+            [HintView showHint:Localize(@"开关2定时关闭已设置")];
+        }else {
+            [HintView showHint:error.localizedDescription];// 后台返回的提示
+        }
+    }];
+}
+
+// 定时关（3）
+- (void)Guandatas3 {
+    NSString * ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];// 获取后两位数字
+    _str1 = [NSString stringWithFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
+    NSString * sstring1 = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
+    _str2 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring1,self.string22,self.string33,self.string44,self.string55];
+    NSString * sstring2 = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
+    _str3 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring2,self.string222,self.string333,self.string444,self.string555];
+    NSString * stringg = [NSString stringWithFormat:@"%@01%@FF%@FF",self.str3,self.str2,self.str1];
+    //这里的12位其中10位是时间，最后两位是开关“01”或者“”00或者FF，文档上写的
+    WebSocket *socket = [WebSocket socketManager];
+    CommandModel *command = [[CommandModel alloc] init];
+    command.command = @"002C";
+    command.deviceNo = self.deviceNo;
+    command.content = stringg;
+    [self.view startLoading];
+    MyWeakSelf
+    [socket sendSingleDataWithModel:command resultBlock:^(id response, NSError *error) {
+        [weakSelf.view stopLoading];
+        ZPLog(@"--------%@",response);
+        if (!error) {
+            [HintView showHint:Localize(@"开关3定时关闭已设置")];
         }else {
             [HintView showHint:error.localizedDescription];// 后台返回的提示
         }
@@ -443,6 +434,8 @@
 
 // 按钮2
 - (IBAction)switch2Button:(UIButton *)sender {
+    
+    
     //    ZPLog(@"开1");
     NSString *string;
     if (!formatter) {

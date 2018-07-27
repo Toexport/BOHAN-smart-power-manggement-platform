@@ -59,7 +59,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     startBtn.layer.cornerRadius = 12;
     [footer addSubview:startBtn];
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 44, ScreenWidth, 100)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 45, ScreenWidth, 100)];
     view.backgroundColor = [UIColor orangeColor];
     [footer addSubview:view];
     _mainTable.tableFooterView = footer;
@@ -68,8 +68,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     [self loadData];
 }
 
-- (void)loadData
-{
+- (void)loadData {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0008";
@@ -314,17 +313,14 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 
             [HintView showHint:Localize(@"设置成功")];
             
-        }else
-        {
+        }else{
             [HintView showHint:error.localizedDescription];
         }
         
     }];
 }
 
-- (void)setUpTimer
-{
-    
+- (void)setUpTimer {
     //说明已经过了时间,不再开启定时器
     NSComparisonResult result =[startDate compare:[NSDate date]];
     
@@ -377,12 +373,6 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 }
 
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
 #pragma mark - UITableView delegate
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.datas.count;
@@ -390,7 +380,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 }
 
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:countCellIdentifier];
