@@ -56,14 +56,12 @@ MyWeakSelf
     [weakSelf.view stopLoading];
     
     if (!error) {
-        
         NSString *priceStr = [response substringWithRange:NSMakeRange(24, 4)];
         NSString *powerStr = [response substringWithRange:NSMakeRange(28, 6)];
         
         [price setText:[NSString stringWithFormat:@"%d.%02d",[[priceStr substringToIndex:2] intValue],[[priceStr substringFromIndex:2] intValue]]];
         
         [limit setText:[NSString stringWithFormat:@"%d.%02d",[[powerStr substringToIndex:4] intValue],[[powerStr substringFromIndex:4] intValue]]];
-        
         
         //            [weakSelf updateViewWithData:response];
         
@@ -164,9 +162,7 @@ MyWeakSelf
     [weakSelf.view stopLoading];
     
     if (!error) {
-        
         if (((NSString *)response).length>26) {
-            
             NSString *status = [response substringWithRange:NSMakeRange(24, 2)];
             [power setText:[NSString stringWithFormat:@"%dW",[status intValue]]];
             
@@ -177,8 +173,7 @@ MyWeakSelf
 
 }
 
-- (void)getDelayTime
-{
+- (void)getDelayTime {
 WebSocket *socket = [WebSocket socketManager];
 CommandModel *model = [[CommandModel alloc] init];
 model.command = @"0017";
@@ -192,10 +187,8 @@ MyWeakSelf
         if (((NSString *)response).length>26) {
             NSString *status = [response substringWithRange:NSMakeRange(24, 2)];
             [time setText:[NSString stringWithFormat:@"%d%@",[status intValue], Localize(@"分钟")]];
-            
         }
     }
-    
 }];
 
 }
@@ -356,12 +349,11 @@ MyWeakSelf
 
 
 - (IBAction)selectAction:(UIButton *)sender {
-
 if (sender.selected) {
     return;
 }
 sender.selected = YES;
-
+    
 if (sender == closeBtn) {
     openBtn.selected = NO;
 }else {
