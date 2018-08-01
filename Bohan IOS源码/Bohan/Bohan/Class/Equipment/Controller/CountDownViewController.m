@@ -30,6 +30,7 @@
 @property (copy, nonatomic) NSArray *datas;
 @property (assign, nonatomic) NSInteger selectedItemIndex;
 @property (nonatomic, weak)NSTimer *timer;//定时器
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *ViewLayoutHeight;
 
 @end
 static NSString *countCellIdentifier = @"countCellIdentifier";
@@ -47,7 +48,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     _mainTable.tintColor = [UIColor getColor:@"f03c4c"];
     [progressView setPersentage:0];
     
-    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 144)];
+    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 194)];
     
     UIButton *startBtn = [[UIButton alloc] initWithFrame:CGRectMake((ScreenWidth - 70)/2, 5, 70, 35)];
     [startBtn setTitle:Localize(@"完成") forState:UIControlStateNormal];
@@ -59,13 +60,26 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     startBtn.layer.cornerRadius = 12;
     [footer addSubview:startBtn];
     
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 45, ScreenWidth, 100)];
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 45, ScreenWidth, 150)];
     view.backgroundColor = [UIColor orangeColor];
     [footer addSubview:view];
     _mainTable.tableFooterView = footer;
     
     [self getStatus];
     [self loadData];
+}
+
+- (void)updateViewConstraints {
+    [super updateViewConstraints];
+    if (iPhone4) {
+        _ViewLayoutHeight.constant += 115;
+    }
+    if (iPhone6) {
+        _ViewLayoutHeight.constant += 85;
+    }
+    if (iPhone6splus) {
+        _ViewLayoutHeight.constant += 55;
+    }
 }
 
 - (void)loadData {

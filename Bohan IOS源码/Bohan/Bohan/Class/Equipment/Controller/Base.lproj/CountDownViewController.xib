@@ -13,6 +13,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CountDownViewController">
             <connections>
+                <outlet property="ViewLayoutHeight" destination="HuK-Js-bI2" id="fnH-Ex-Hny"/>
                 <outlet property="cancelBtn" destination="Vtv-H2-U6y" id="XdS-or-0t9"/>
                 <outlet property="closeBtn" destination="Q1e-k7-vih" id="P9Y-M5-cQJ"/>
                 <outlet property="mainTable" destination="9Qq-ix-CwZ" id="vtg-Ia-SBa"/>
@@ -154,11 +155,18 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9As-Uq-nnQ">
+                    <rect key="frame" x="10" y="187" width="300" height="55"/>
+                    <color key="backgroundColor" red="0.0" green="0.99143940210000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="55" id="E1O-53-6V8"/>
+                    </constraints>
+                </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Qq-ix-CwZ">
-                    <rect key="frame" x="0.0" y="292" width="320" height="276"/>
+                    <rect key="frame" x="0.0" y="242" width="320" height="326"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="276" id="De5-8T-Rhi"/>
+                        <constraint firstAttribute="height" constant="326" id="De5-8T-Rhi"/>
                     </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="BU4-Ot-xtL"/>
@@ -171,9 +179,11 @@
                 <constraint firstAttribute="trailing" secondItem="BFl-2i-hjf" secondAttribute="trailing" constant="10" id="9Ag-KJ-JsA"/>
                 <constraint firstItem="BFl-2i-hjf" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" priority="750" constant="10" id="BeR-Cq-L8k"/>
                 <constraint firstItem="hpo-iu-F3B" firstAttribute="height" secondItem="i5M-Pr-FkT" secondAttribute="height" id="HuK-Js-bI2"/>
-                <constraint firstItem="9Qq-ix-CwZ" firstAttribute="top" relation="lessThanOrEqual" secondItem="BFl-2i-hjf" secondAttribute="bottom" constant="45" id="Qck-KY-hJO"/>
+                <constraint firstItem="9Qq-ix-CwZ" firstAttribute="top" secondItem="9As-Uq-nnQ" secondAttribute="bottom" id="NZf-8S-O2J"/>
+                <constraint firstItem="9As-Uq-nnQ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="10" id="Ngd-gY-iyJ"/>
                 <constraint firstItem="9Qq-ix-CwZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Rjh-ej-mJp"/>
                 <constraint firstAttribute="trailing" secondItem="hpo-iu-F3B" secondAttribute="trailing" id="Xew-hh-xgj"/>
+                <constraint firstItem="9As-Uq-nnQ" firstAttribute="top" relation="lessThanOrEqual" secondItem="BFl-2i-hjf" secondAttribute="bottom" constant="45" id="Xqo-vN-2XR"/>
                 <constraint firstItem="hpo-iu-F3B" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dhv-Nj-4vn"/>
                 <constraint firstItem="9Qq-ix-CwZ" firstAttribute="bottom" secondItem="Q5M-cg-NOt" secondAttribute="bottom" id="eXm-47-Ts1"/>
                 <constraint firstItem="BFl-2i-hjf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="erM-cw-aF0"/>
@@ -184,10 +194,11 @@
                 <constraint firstItem="9Qq-ix-CwZ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" priority="750" id="n7x-tc-Jkt"/>
                 <constraint firstAttribute="bottom" secondItem="hpo-iu-F3B" secondAttribute="bottom" id="rQW-pM-Pjw"/>
                 <constraint firstItem="hpo-iu-F3B" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="t78-k5-8wg"/>
+                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="9As-Uq-nnQ" secondAttribute="trailing" constant="10" id="uiy-hF-akE"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="9Qq-ix-CwZ" secondAttribute="trailing" priority="750" id="vbJ-Rb-XHc"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
-            <point key="canvasLocation" x="28" y="114"/>
+            <point key="canvasLocation" x="11" y="329"/>
         </view>
     </objects>
 </document>

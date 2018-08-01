@@ -389,7 +389,7 @@
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0008";
-    model.deviceNo = @"681709050309";
+    model.deviceNo = [[deviceId.text componentsSeparatedByString:@":"] lastObject]; // 去掉：前面对于符合
     [self.view startLoading];
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
