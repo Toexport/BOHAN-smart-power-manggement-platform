@@ -19,6 +19,7 @@
     __weak IBOutlet UITextField *limitTF;
     __weak IBOutlet UILabel *time;
     __weak IBOutlet UILabel *power;
+    
 //     新增
     
     __weak IBOutlet UIButton *ParentsModeBut; // 家长模式

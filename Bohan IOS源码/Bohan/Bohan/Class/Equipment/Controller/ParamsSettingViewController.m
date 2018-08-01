@@ -10,11 +10,13 @@
 #import "UIViewController+NavigationBar.h"
 #import "SGActionView.h"
 #import "DebuggingANDPublishing.pch"
+#import "TimeSettingModel.h"
 @interface ParamsSettingViewController ()
 {
     NSDateFormatter *formatter;
     NSMutableArray *muniteArr;
     NSMutableArray *powerArr;
+    BOOL isParentModel;
     
 }
 @end
@@ -376,14 +378,76 @@
 - (IBAction)ParentsModeBut:(UIButton *)sender {
     sender.selected =! sender.selected;
     if (sender.selected) {
-        
+        [self loadData];
         ZPLog(@"选中");
     }else {
         ChargingProtectionBut.selected = NO;
         ZPLog(@"取消");
     }
 }
-
+- (void)loadData{
+    WebSocket *socket = [WebSocket socketManager];
+    CommandModel *model = [[CommandModel alloc] init];
+    model.command = @"0008";
+    model.deviceNo = @"681709050309";
+    [self.view startLoading];
+    MyWeakSelf
+    [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
+        [weakSelf.view stopLoading];
+        if (!error) {
+            if (((NSString *)response).length == 120) {
+                NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 96, 92)];
+                [weakSelf caculateWithString:content];
+                [HintView showHint:Localize(@"设置成功")];
+            }
+            
+        }else
+        {
+            [HintView showHint:Localize(@"加载数据失败")];
+//            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }
+        
+        ZPLog(@"--------%@",response);
+    }];
+}
+// 家长模式
+- (void)caculateWithString:(NSString *)content {
+    BOOL parent = NO;
+    BOOL isValidate = NO;
+    for (NSInteger i = 0; i < 9; i++) {
+    TimeSettingModel * model = [[TimeSettingModel alloc] init];
+//    NSString *week = [Utils getBinaryByHex:model.week];
+    NSString *time= [content substringWithRange:NSMakeRange(i*10, 10)];
+    NSMutableString *start = [[time substringToIndex:4] mutableCopy];
+        [start insertString:@":" atIndex:2];
+        NSMutableString *end = [[time substringWithRange:NSMakeRange(4, 4)] mutableCopy];
+        [end insertString:@":" atIndex:2];
+        model.startTime = start;
+        model.endTime = end;
+        model.week = [time substringFromIndex:time.length - 2];
+        NSString *week = [Utils getBinaryByHex:model.week];
+        if ([[week substringToIndex:1] isEqualToString:@"1"]) {
+            parent = YES;
+        }
+    isParentModel = parent;
+    //家长模式
+    if (isParentModel) {
+        isValidate = YES;
+        model.open = [[week substringToIndex:1] isEqualToString:@"1"]?YES:NO;
+    }else
+    {
+        if (([start isEqualToString:end] || ([[time substringToIndex:4] integerValue] > [[time substringWithRange:NSMakeRange(4, 4)] integerValue])) || [[week substringFromIndex:1] isEqualToString:@"0000000"]) {
+            model.open = NO;
+        }else
+        {
+            model.open = YES;
+            isValidate = YES;
+        }
+    }
+    
+//    [self.datas addObject:model];
+}
+}
 // 充电保护设置
 - (IBAction)ChargingProtectionBut:(UIButton *)sender {
     sender.selected =! sender.selected;
