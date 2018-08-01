@@ -20,7 +20,7 @@
 - (void)rightBarTitle:(NSString *)title color:(UIColor *)color action:(SEL)action
 {
     UIBarButtonItem *buttonItem = [[UIBarButtonItem alloc] initWithTitle:title style:UIBarButtonItemStylePlain target:self action:action];
-    [buttonItem setTitleTextAttributes:@{NSForegroundColorAttributeName:color, NSFontAttributeName:Font(16)} forState:UIControlStateNormal];
+    [buttonItem setTitleTextAttributes:@{NSForegroundColorAttributeName:color, NSFontAttributeName:Font(15)} forState:UIControlStateNormal];
     [buttonItem setTitleTextAttributes:@{NSForegroundColorAttributeName:RGBColor(255, 255, 255, 0.4), NSFontAttributeName:Font(16)} forState:UIControlStateDisabled];
 
 

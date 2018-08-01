@@ -8,8 +8,8 @@
 
 #import "BaseViewController.h"
 #import "DeviceModel.h"
-@interface MultipleSwitchViewController : BaseViewController
-{
+@interface MultipleSwitchViewController : BaseViewController {
+    
     __weak IBOutlet UIScrollView *scrollView;
     //    开关一
     __weak IBOutlet UITextField *Years1TextField;  // 年
@@ -19,6 +19,8 @@
     __weak IBOutlet UITextField *Minutes1TextField; // 分
     __weak IBOutlet UIButton *Open1But; // 开
     __weak IBOutlet UIButton *Guan1But; // 关
+    __weak IBOutlet UILabel *Prompt1Label; //提示文字
+    
 //     开关二
     __weak IBOutlet UIView *Switch2view; // 开关2View
     __weak IBOutlet UITextField *Years2TextField; // 年
@@ -46,6 +48,8 @@
 @property (nonatomic, strong) NSString * str1;
 @property (nonatomic, strong) NSString * str2;
 @property (nonatomic, strong) NSString * str3;
+
+@property (nonatomic, strong) NSString * SwitchStateStr;
 
 @property (nonatomic, strong) NSString * string1;
 @property (nonatomic, strong) NSString * string2;

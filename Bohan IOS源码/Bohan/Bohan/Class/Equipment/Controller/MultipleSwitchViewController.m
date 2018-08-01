@@ -9,15 +9,16 @@
 
 #import "MultipleSwitchViewController.h"
 #import "DebuggingANDPublishing.pch"
+#import "UIViewController+NavigationBar.h"
 @interface MultipleSwitchViewController (){
-    BOOL openg;
-    NSInteger totalSecend;//总秒数
-    NSInteger lastSecend;//剩余秒数点进去
+//    BOOL openg;
+//    NSInteger totalSecend;//总秒数
+//    NSInteger lastSecend;//剩余秒数点进去
     NSDateFormatter *formatter;
     NSDateFormatter * formatters;
-     NSDateFormatter * formatterd;
-    NSString *start;
-    NSString *end;
+    NSDateFormatter * formatterd;
+//    NSString *start;
+//    NSString *end;
 }
 
 @end
@@ -30,24 +31,64 @@
     [self TimeDisplay];
     [self yyyyMMddHHmm];
     [self StateQuery];
+//    [self rightBarTitle:Localize(@"刷新") color:[UIColor whiteColor] action:@selector(StateQuery)];
 }
 
 // 状态查询
 - (void)StateQuery {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
-    model.command = @"0002";
+    model.command = @"002D";
     model.deviceNo = self.deviceNo;
     [self.view startLoading];
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
         ZPLog(@"--------%@",response);
+        self.SwitchStateStr = response;
+        [self SwitchStateStrr];
         if (!error) {
         }else {
             [HintView showHint:error.localizedDescription];// 后台返回的提示
         }
     }];
+}
+
+// 监测开关状态
+- (void)SwitchStateStrr {
+    
+    NSString * strin = [_SwitchStateStr substringWithRange:NSMakeRange(34, 2)];
+    if ([[self.SwitchStateStr substringWithRange:NSMakeRange(34, 2)] isEqualToString:@"00"]) {
+        Open1But.selected = YES;
+        Guan1But.selected = NO;
+//        Prompt1Label.text = Localize(@"设置已开启");
+    }else
+        if ([[self.SwitchStateStr substringWithRange:NSMakeRange(34, 2)] isEqualToString:@"01"]) {
+            Guan1But.selected = YES;
+            Open1But.selected = NO;
+//            Prompt1Label.text = Localize(@"设置已关闭");
+        }
+    
+    NSString * string = [self.SwitchStateStr substringWithRange:NSMakeRange(46, 2)];
+    if ([[self.SwitchStateStr substringWithRange:NSMakeRange(46, 2)] isEqualToString:@"00"]) {
+        Open2But.selected = YES;
+        Guan2But.selected = NO;
+    }else
+        if ([[self.SwitchStateStr substringWithRange:NSMakeRange(46, 2)] isEqualToString:@"01"]) {
+            Guan2But.selected = YES;
+            Open2But.selected = NO;
+        }
+    
+    NSString * stringg = [self.SwitchStateStr substringWithRange:NSMakeRange(58, 2)];
+    if ([[self.SwitchStateStr substringWithRange:NSMakeRange(58, 2)] isEqualToString:@"00"]) {
+        Open3But.selected = YES;
+        Guan3But.selected = NO;
+    }else
+        if ([[self.SwitchStateStr substringWithRange:NSMakeRange(58, 2)] isEqualToString:@"01"]) {
+            Guan3But.selected = YES;
+            Open3But.selected = NO;
+        }
+    ZPLog(@"截取的值为: %@=%@=%@",strin,string,stringg);
 }
 
 // 是否显示2-3号开关
@@ -76,7 +117,7 @@
 - (IBAction)Switch1OpenBut:(UIButton *)sender {
     if (sender.selected) {
         return;
-    }else{
+    }else {
         sender.selected =!sender.selected;
         Guan1But.selected = NO;
         [self Opendatas1];
@@ -95,16 +136,21 @@
         ZPLog(@"开2");
     }
 }
+
 // 开关三
 //开
 - (IBAction)Switch3OpenBut:(UIButton *)sender {
+    sender.selected = !sender.selected;
     if (sender.selected) {
-        return;
-    }else{
-        sender.selected = !sender.selected;
         Guan3But.selected = NO;
         [self Opendatas3];
-        ZPLog(@"开3");
+        ZPLog(@"选中");
+        return;
+    }else {
+        Guan3But.selected = NO;
+        [self CancelTiming1];
+        ZPLog(@"取消");
+        return;
     }
 }
 
@@ -112,7 +158,7 @@
 - (IBAction)Switch1GuanBut:(UIButton *)sender {
     if (sender.selected) {
         return;
-    }else{
+    }else {
         sender.selected = !sender.selected;
         Open1But.selected = NO;
         [self Guandatas1];
@@ -125,7 +171,7 @@
 - (IBAction)Switch2GuanBut:(UIButton *)sender {
     if (sender.selected) {
         return;
-    }else{
+    }else {
         sender.selected = !sender.selected;
         Open2But.selected = NO;
         [self Guandatas2];
@@ -133,12 +179,11 @@
     }
 }
 
-
 // 关
 - (IBAction)Switch3GuanBut:(UIButton *)sender {
     if (sender.selected) {
         return;
-    }else{
+    }else {
         sender.selected = !sender.selected;
         Open3But.selected = NO;
         [self Guandatas3];
@@ -224,6 +269,62 @@
         ZPLog(@"--------%@",response);
         if (!error) {
             [HintView showHint:Localize(@"开关3定时开启已设置")];
+        }else {
+            [HintView showHint:error.localizedDescription];// 后台返回的提示
+        }
+    }];
+}
+
+// 取消定时开启
+- (void)CancelTiming1 {
+    NSString * ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];// 获取后两位数字
+    _str1 = [NSString stringWithFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
+    NSString * sstring1 = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
+    _str2 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring1,self.string22,self.string33,self.string44,self.string55];
+    NSString * sstring2 = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
+    _str3 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring2,self.string222,self.string333,self.string444,self.string555];
+    NSString * stringg = [NSString stringWithFormat:@"%@FF%@FF%@FF",self.str3,self.str2,self.str1];
+    //这里的12位其中10位是时间，最后两位是开关“01”或者“”00或者FF，文档上写的
+    WebSocket *socket = [WebSocket socketManager];
+    CommandModel *command = [[CommandModel alloc] init];
+    command.command = @"002C";
+    command.deviceNo = self.deviceNo;
+    command.content = stringg;
+    [self.view startLoading];
+    MyWeakSelf
+    [socket sendSingleDataWithModel:command resultBlock:^(id response, NSError *error) {
+        [weakSelf.view stopLoading];
+        ZPLog(@"--------%@",response);
+        if (!error) {
+            [HintView showHint:Localize(@"定时开启已取消")];
+        }else {
+            [HintView showHint:error.localizedDescription];// 后台返回的提示
+        }
+    }];
+}
+
+// 取消定时关闭
+- (void)CancelTiming2 {
+    NSString * ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];// 获取后两位数字
+    _str1 = [NSString stringWithFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
+    NSString * sstring1 = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
+    _str2 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring1,self.string22,self.string33,self.string44,self.string55];
+    NSString * sstring2 = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
+    _str3 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring2,self.string222,self.string333,self.string444,self.string555];
+    NSString * stringg = [NSString stringWithFormat:@"%@FF%@FF%@FF",self.str3,self.str2,self.str1];
+    //这里的12位其中10位是时间，最后两位是开关“01”或者“”00或者FF，文档上写的
+    WebSocket *socket = [WebSocket socketManager];
+    CommandModel *command = [[CommandModel alloc] init];
+    command.command = @"002C";
+    command.deviceNo = self.deviceNo;
+    command.content = stringg;
+    [self.view startLoading];
+    MyWeakSelf
+    [socket sendSingleDataWithModel:command resultBlock:^(id response, NSError *error) {
+        [weakSelf.view stopLoading];
+        ZPLog(@"--------%@",response);
+        if (!error) {
+            [HintView showHint:Localize(@"定时关闭已取消")];
         }else {
             [HintView showHint:error.localizedDescription];// 后台返回的提示
         }
@@ -334,7 +435,9 @@
     Years1TextField.text = [NSString stringWithString:self.string1];
     Years1TextField.enabled = NO;
     Years2TextField.text = [NSString stringWithString:self.string11];
+    Years2TextField.enabled = NO;
     Years3TextField.text = [NSString stringWithString:self.string111];
+    Years3TextField.enabled = NO;
     
     if(month >= 10) {
         self.string2 = [[NSNumber numberWithInteger:month] stringValue];
@@ -434,38 +537,36 @@
 
 // 按钮2
 - (IBAction)switch2Button:(UIButton *)sender {
-    
-    
     //    ZPLog(@"开1");
     NSString *string;
-    if (!formatter) {
-        formatter = [[NSDateFormatter alloc] init];
-        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+    if (!formatters) {
+        formatters = [[NSDateFormatter alloc] init];
+        formatters.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
     }
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-    WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatter dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
-        [formatter setDateFormat:@"yyyy"];// 解决问题
-        [Years2TextField setText:[formatter stringFromDate:selectDate]];
+    [formatters setDateFormat:@"yyyy-MM-dd HH:mm"];
+    WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatters dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
+        [formatters setDateFormat:@"yyyy"];// 解决问题
+        [Years2TextField setText:[formatters stringFromDate:selectDate]];
         self.string11 = Years2TextField.text;
         Years2TextField.text = [NSString stringWithString:self.string11];
         
-        [formatter setDateFormat:@"MM"];
-        [Month2TextField setText:[formatter stringFromDate:selectDate]];
+        [formatters setDateFormat:@"MM"];
+        [Month2TextField setText:[formatters stringFromDate:selectDate]];
         self.string22 = Month2TextField.text;
         Month2TextField.text = [NSString stringWithString:self.string22];
         
-        [formatter setDateFormat:@"dd"];
-        [Day2textField setText:[formatter stringFromDate:selectDate]];
+        [formatters setDateFormat:@"dd"];
+        [Day2textField setText:[formatters stringFromDate:selectDate]];
         self.string33 = Day2textField.text;
         Day2textField.text = [NSString stringWithString:self.string33];
         
-        [formatter setDateFormat:@"HH"];
-        [Hours2TextField setText:[formatter stringFromDate:selectDate]];
+        [formatters setDateFormat:@"HH"];
+        [Hours2TextField setText:[formatters stringFromDate:selectDate]];
         self.string44 = Hours2TextField.text;
         Hours2TextField.text = [NSString stringWithString:self.string44];
         
-        [formatter setDateFormat:@"mm"];
-        [Minutes2TextField setText:[formatter stringFromDate:selectDate]];
+        [formatters setDateFormat:@"mm"];
+        [Minutes2TextField setText:[formatters stringFromDate:selectDate]];
         self.string55 = Minutes2TextField.text;
         Minutes2TextField.text = [NSString stringWithString:self.string55];
     }];
@@ -485,9 +586,9 @@
         formatterd.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
     }
     [formatterd setDateFormat:@"yyyy-MM-dd HH:mm"];
-    WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatter dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
-        [formatter setDateFormat:@"yyyy"];// 解决问题
-        [Years3TextField setText:[formatter stringFromDate:selectDate]];
+    WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatterd dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
+        [formatterd setDateFormat:@"yyyy"];// 解决问题
+        [Years3TextField setText:[formatterd stringFromDate:selectDate]];
         self.string111 = Years3TextField.text;
         Years3TextField.text = [NSString stringWithString:self.string111];
         
