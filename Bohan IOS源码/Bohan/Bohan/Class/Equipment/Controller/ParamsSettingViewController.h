@@ -17,10 +17,21 @@
     __weak IBOutlet UILabel *limit;
     __weak IBOutlet UITextField *priceTF;
     __weak IBOutlet UITextField *limitTF;
-    __weak IBOutlet UIButton *closeBtn;
-    __weak IBOutlet UIButton *openBtn;
     __weak IBOutlet UILabel *time;
     __weak IBOutlet UILabel *power;
+//     新增
+    
+    __weak IBOutlet UIButton *ParentsModeBut; // 家长模式
+    __weak IBOutlet UIButton *ChargingProtectionBut; // 充电保护
+    __weak IBOutlet UIButton *PhoneChargingProtectionBut; // 手机充电保护
+    __weak IBOutlet UIButton *DDCChargingProtectionBut; // 电动车充电保护
+    __weak IBOutlet UIButton *ZNDDBut;  //智能断电控制
+    __weak IBOutlet UIButton *SettingBut;  // 设置按钮
+    __weak IBOutlet UIButton *timeBut; // 修改时间
+    __weak IBOutlet UIButton *PowerBut;  // 功率设置
+    
+    
+    
     
 }
 @property (nonatomic, copy)  NSString * Coedid;
@@ -28,7 +39,7 @@
 - (IBAction)saveAction:(UIButton *)sender;
 //- (IBAction)savePrice;
 //- (IBAction)saveLimit;
-- (IBAction)selectAction:(UIButton *)sender;
+//- (IBAction)selectAction:(UIButton *)sender;
 - (IBAction)timeEditAction;
 - (IBAction)powerEditAction;
 @end
