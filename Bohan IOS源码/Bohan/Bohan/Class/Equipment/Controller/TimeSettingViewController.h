@@ -20,7 +20,7 @@
     __weak IBOutlet UIView *loopView;
     
 }
-@property (nonatomic, copy) NSString *deviceNo;
+@property (nonatomic, copy) NSString * deviceNo;
 - (IBAction)settingAction;
 
 - (IBAction)openAction;

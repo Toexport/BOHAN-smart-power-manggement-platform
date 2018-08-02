@@ -11,6 +11,7 @@
 #import "SGActionView.h"
 #import "DebuggingANDPublishing.pch"
 #import "TimeSettingModel.h"
+#import "CommonOperation.h"
 @interface ParamsSettingViewController ()
 {
     NSDateFormatter *formatter;
@@ -382,9 +383,11 @@
         ZPLog(@"选中");
     }else {
         ChargingProtectionBut.selected = NO;
+        [self UnparentData];
         ZPLog(@"取消");
     }
 }
+
 - (void)loadData{
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
@@ -444,10 +447,26 @@
             isValidate = YES;
         }
     }
-    
 //    [self.datas addObject:model];
 }
 }
+
+//     取消家长模式
+- (void)UnparentData {
+    NSString * string = [[deviceId.text componentsSeparatedByString:@":"] lastObject]; // 去掉：前面对于符合
+    [CommonOperation cancelDeviceRunModel:string result:^(id response, NSError *error) {
+        if (!error) {
+            isParentModel = NO;
+            [HintView showHint:Localize(@"取消成功")];
+            [self caculateWithString:@"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004"];
+            
+        }else {
+            [HintView showHint:error.localizedDescription];
+        }
+        
+    }];
+}
+
 // 充电保护设置
 - (IBAction)ChargingProtectionBut:(UIButton *)sender {
     sender.selected =! sender.selected;
