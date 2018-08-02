@@ -273,13 +273,12 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
     UIButton *customHeader = [modelCollectionView viewWithTag:200];
     
     if (isParentModel || [modelContents containsObject:modelStr]) {
-        
         customHeader.layer.borderColor = [UIColor getColor:@"cccccc"].CGColor;
         [customHeader setBackgroundColor:[UIColor whiteColor]];
         if (isParentModel) {
+            
             selectedIndexPath = [NSIndexPath indexPathForItem:5 inSection:0];
-        }else
-        {
+        }else {
             selectedIndexPath = [NSIndexPath indexPathForItem:[modelContents indexOfObject:modelStr] inSection:0];
         }
     }else if(!isLoop)
@@ -291,9 +290,8 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
     [modelCollectionView reloadData];
 }
 
-- (void)caculateWithString:(NSString *)content
-{
-    
+- (void)caculateWithString:(NSString *)content {
+
     NSString *str = [content substringFromIndex:content.length - 2];
     if ([str isEqualToString:@"03"]) {
         
@@ -372,8 +370,7 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
     customHeader.layer.borderColor = [UIColor getColor:@"cccccc"].CGColor;
     [customHeader setBackgroundColor:[UIColor whiteColor]];
     [modelCollectionView reloadData];
-    
-    
+
     [self configNoData];
     
 }
@@ -414,7 +411,6 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
 }
 
 - (IBAction)settingAction {
-    
     TimeSettingListViewController *list = [[TimeSettingListViewController alloc] init];
     list.datas = self.datas;
     list.deviceNo = self.deviceNo;

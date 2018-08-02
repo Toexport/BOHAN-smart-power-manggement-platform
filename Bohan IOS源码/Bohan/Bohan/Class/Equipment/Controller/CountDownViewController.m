@@ -63,6 +63,9 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     if (iPhone4) {
         _ViewLayoutHeight.constant += 100;
     }
+    if (iPhone5) {
+        _ViewLayoutHeight.constant += 80;
+    }
     if (iPhone6) {
         _ViewLayoutHeight.constant += 65;
     }
@@ -263,12 +266,6 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
         
     }];
 }
-
-//// 取消
-//- (IBAction)cancelAction {
-//    ZPLog(@"111");
-//    
-//}
 
 //新增
 // 延时开关

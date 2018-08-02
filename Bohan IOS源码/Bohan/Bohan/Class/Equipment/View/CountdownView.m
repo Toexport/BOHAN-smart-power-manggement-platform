@@ -147,10 +147,10 @@
     NSString * createdAtString = str2;
     NSString * createdAtString1 = str1;
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-    if (!formatter) {
-        formatter = [[NSDateFormatter alloc] init];
-        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
-    }
+//    if (!formatter) {
+//        formatter = [[NSDateFormatter alloc] init];
+//        formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
+//    }
     formatter.dateFormat = @"yyyyMMddHHmm";
     NSDate *date2 = [formatter dateFromString:createdAtString1];
     NSDate *date1 = [formatter dateFromString:createdAtString];

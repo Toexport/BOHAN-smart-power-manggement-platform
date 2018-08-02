@@ -12,6 +12,7 @@
 #import "DebuggingANDPublishing.pch"
 #import "TimeSettingModel.h"
 #import "CommonOperation.h"
+#import "TimeSettingListViewController.h"
 @interface ParamsSettingViewController ()
 {
     NSDateFormatter *formatter;
@@ -375,6 +376,14 @@
 }
 
 // 新增
+// 家长模式设置
+- (IBAction)ParentsModeSettingBut:(UIButton *)sender {
+    TimeSettingListViewController *list = [[TimeSettingListViewController alloc] init];
+    list.deviceNo = deviceId.text;
+    list.isParentModel = isParentModel;
+    [self.navigationController pushViewController:list animated:YES];
+}
+
 // 家长模式
 - (IBAction)ParentsModeBut:(UIButton *)sender {
     sender.selected =! sender.selected;

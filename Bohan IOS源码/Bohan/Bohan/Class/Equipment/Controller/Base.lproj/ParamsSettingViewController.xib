@@ -320,15 +320,16 @@
                                 <action selector="ParentsModeBut:" destination="-1" eventType="touchUpInside" id="1YK-M6-42x"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="家长模式设置" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p87-pn-ACD">
-                            <rect key="frame" x="39" y="8" width="92" height="28"/>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jPC-et-lTr">
+                            <rect key="frame" x="41" y="8" width="62" height="28"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="28" id="AhJ-oT-oxC"/>
+                                <constraint firstAttribute="height" constant="28" id="yHe-G5-pmF"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                            <nil key="textColor"/>
-                            <nil key="highlightedColor"/>
-                        </label>
+                            <state key="normal" title="家长模式"/>
+                            <connections>
+                                <action selector="ParentsModeSettingBut:" destination="-1" eventType="touchUpInside" id="uKf-O7-dwj"/>
+                            </connections>
+                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K3p-Jh-AjO">
                             <rect key="frame" x="8" y="51" width="28" height="28"/>
                             <constraints>
@@ -396,8 +397,10 @@
                     <constraints>
                         <constraint firstItem="tqm-fK-sHh" firstAttribute="leading" secondItem="PD4-ks-sL5" secondAttribute="trailing" constant="3" id="8K2-5Y-AD5"/>
                         <constraint firstAttribute="height" constant="165" id="D6N-tw-k8S"/>
+                        <constraint firstItem="jPC-et-lTr" firstAttribute="top" secondItem="s0b-80-yNl" secondAttribute="top" id="FtO-VK-4Fc"/>
                         <constraint firstItem="dmX-an-dyC" firstAttribute="leading" secondItem="tqm-fK-sHh" secondAttribute="leading" id="It0-GX-Vnk"/>
                         <constraint firstItem="PD4-ks-sL5" firstAttribute="leading" secondItem="XZf-KG-o8x" secondAttribute="leading" constant="65" id="KX0-ko-80c"/>
+                        <constraint firstItem="jPC-et-lTr" firstAttribute="leading" secondItem="s0b-80-yNl" secondAttribute="trailing" constant="5" id="SwG-XW-tOi"/>
                         <constraint firstItem="s0b-80-yNl" firstAttribute="top" secondItem="XZf-KG-o8x" secondAttribute="top" constant="8" id="Z9J-jC-Gxv"/>
                         <constraint firstItem="PD4-ks-sL5" firstAttribute="top" secondItem="HDJ-dO-S0L" secondAttribute="bottom" constant="10" id="avS-4F-7dC"/>
                         <constraint firstItem="dmX-an-dyC" firstAttribute="top" secondItem="iRI-jn-WBE" secondAttribute="top" id="b9y-Nx-G9m"/>
@@ -407,10 +410,8 @@
                         <constraint firstItem="HDJ-dO-S0L" firstAttribute="leading" secondItem="K3p-Jh-AjO" secondAttribute="trailing" constant="3" id="fEt-mt-jpN"/>
                         <constraint firstItem="iRI-jn-WBE" firstAttribute="top" secondItem="PD4-ks-sL5" secondAttribute="bottom" constant="10" id="fUM-0d-h1g"/>
                         <constraint firstItem="K3p-Jh-AjO" firstAttribute="top" secondItem="s0b-80-yNl" secondAttribute="bottom" constant="15" id="fgj-3e-RE5"/>
-                        <constraint firstItem="p87-pn-ACD" firstAttribute="top" secondItem="s0b-80-yNl" secondAttribute="top" id="h4A-nE-Kxo"/>
                         <constraint firstItem="iRI-jn-WBE" firstAttribute="leading" secondItem="PD4-ks-sL5" secondAttribute="leading" id="iYX-mB-5Pr"/>
                         <constraint firstItem="K3p-Jh-AjO" firstAttribute="leading" secondItem="s0b-80-yNl" secondAttribute="leading" id="imc-H2-RNO"/>
-                        <constraint firstItem="p87-pn-ACD" firstAttribute="leading" secondItem="s0b-80-yNl" secondAttribute="trailing" constant="3" id="p2E-jy-A54"/>
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wJL-Qx-3rs">
