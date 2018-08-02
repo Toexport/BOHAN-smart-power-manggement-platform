@@ -47,6 +47,7 @@
     [self getStatus];
     [self getPower];
     [self getDelayTime];
+    [self configNoData];
 }
 
 - (void)deviceParams {
@@ -451,6 +452,7 @@
         }
     }
     [self.datas addObject:model];
+        
 }
 }
 
@@ -464,7 +466,6 @@
         model.open = NO;
         [arr addObject:model];
     }
-    
     self.datas = arr;
 }
 
@@ -476,6 +477,7 @@
     list.isParentModel = isParentModel;
     [self.navigationController pushViewController:list animated:YES];
 }
+
 //     取消家长模式
 - (void)UnparentData {
     NSString * string = [[deviceId.text componentsSeparatedByString:@":"] lastObject]; // 去掉：前面对于符合

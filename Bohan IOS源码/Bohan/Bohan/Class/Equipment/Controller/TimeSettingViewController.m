@@ -406,6 +406,7 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
 
 //时段设置的设置
 - (IBAction)settingAction {
+    
     TimeSettingListViewController *list = [[TimeSettingListViewController alloc] init];
     list.datas = self.datas;
     list.deviceNo = self.deviceNo;
@@ -551,18 +552,15 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
 
 
 
-- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
-{
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
     
     if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
         
         UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerReuseIdentifier forIndexPath:indexPath];
         
         if (!header) {
-            
             header = [[UICollectionReusableView alloc] initWithFrame:CGRectMake(0, 10, kViewWidth, headerHight)];
         }
-        
         
         UIButton *customHeader = [header viewWithTag:200];
         if (!customHeader) {
