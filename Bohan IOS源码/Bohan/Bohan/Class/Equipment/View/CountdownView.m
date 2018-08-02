@@ -42,16 +42,16 @@
     //IOS 8 之后
     NSUInteger integer = NSCalendarUnitYear | NSCalendarUnitMonth |NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents *dataCom = [currentCalendar components:integer fromDate:currentDate];
-    NSInteger year = [dataCom year]; // 年
+//    NSInteger year = [dataCom year]; // 年
     NSInteger month = [dataCom month]; // 月
     NSInteger day = [dataCom day]; // 日
     NSInteger hour = [dataCom hour]; // 时
     NSInteger minute = [dataCom minute]; // 分
     
-    self.string1 = [[NSNumber numberWithInteger:year] stringValue];
-    self.string11 = [[NSNumber numberWithInteger:year] stringValue];
-    YYYYTextField.text = [NSString stringWithString:self.string1];
-    YearTextField.text = [NSString stringWithString:self.string11];
+//    self.string1 = [[NSNumber numberWithInteger:year] stringValue];
+//    self.string11 = [[NSNumber numberWithInteger:year] stringValue];
+//    YYYYTextField.text = [NSString stringWithString:self.string1];
+//    YearTextField.text = [NSString stringWithString:self.string11];
     if(month >= 10) {
         self.string2 = [[NSNumber numberWithInteger:month] stringValue];
         self.string22 = [[NSNumber numberWithInteger:month] stringValue];
@@ -106,10 +106,10 @@
     }
     [formatters setDateFormat:@"yyyy-MM-dd HH:mm"];
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatters dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
-        [formatters setDateFormat:@"yyyy"];// 解决问题
-        [YearTextField setText:[formatters stringFromDate:selectDate]];
-        self.string1 = YearTextField.text;
-        YearTextField.text = [NSString stringWithString:self.string1];
+//        [formatters setDateFormat:@"yyyy"];// 解决问题
+//        [YearTextField setText:[formatters stringFromDate:selectDate]];
+//        self.string1 = YearTextField.text;
+//        YearTextField.text = [NSString stringWithString:self.string1];
         
         [formatters setDateFormat:@"MM"];
         [MonthTextField setText:[formatters stringFromDate:selectDate]];
