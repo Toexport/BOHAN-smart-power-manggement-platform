@@ -8,15 +8,16 @@
 
 #import "CountDownViewController.h"
 #import "STLoopProgressView.h"
-//#import "SGActionView.h"
+#import "CountdownView.h"
+#import "View+MASAdditions.h"
+#import "UIViewController+NavigationBar.h"
 #import "NSTimer+Action.h"
 #import "DebuggingANDPublishing.pch"
-@interface CountDownViewController ()<UITableViewDelegate, UITableViewDataSource>
-{
+@interface CountDownViewController ()<UITableViewDelegate, UITableViewDataSource> {
     __weak IBOutlet STLoopProgressView *progressView;
     __weak IBOutlet UILabel *time;
     __weak IBOutlet UILabel *status;
-    __weak IBOutlet UIButton *cancelBtn;
+//    __weak IBOutlet UIButton *cancelBtn;
     __weak IBOutlet UIButton *openBtn;
     __weak IBOutlet UIButton *closeBtn;
     NSDateFormatter *formatter;
@@ -41,44 +42,32 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     [super viewDidLoad];
     self.title = Localize(@"倒计时");
     self.datas = @[Localize(@"5分钟后"), Localize(@"10分钟后"), Localize(@"自定义时间")];
-    
     formatter = [[NSDateFormatter alloc] init];
-
     _selectedItemIndex = NSIntegerMax;
     _mainTable.tintColor = [UIColor getColor:@"f03c4c"];
     [progressView setPersentage:0];
-    
-    UIView *footer = [[UIView alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 194)];
-    
-    UIButton *startBtn = [[UIButton alloc] initWithFrame:CGRectMake((ScreenWidth - 70)/2, 5, 70, 35)];
-    [startBtn setTitle:Localize(@"完成") forState:UIControlStateNormal];
-    [startBtn.titleLabel setFont:Font(15)];
-    startBtn.backgroundColor = [UIColor getColor:@"39B3FF"];
-    [startBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-
-    [startBtn addTarget:self action:@selector(startAction) forControlEvents:UIControlEventTouchUpInside];
-    startBtn.layer.cornerRadius = 12;
-    [footer addSubview:startBtn];
-    
-    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 45, ScreenWidth, 150)];
-    view.backgroundColor = [UIColor orangeColor];
-    [footer addSubview:view];
-    _mainTable.tableFooterView = footer;
-    
+    [self rightBarTitle:Localize(@"取消") color:[UIColor whiteColor] action:@selector(canceOperation)];
     [self getStatus];
     [self loadData];
+    [self UI];
+}
+// UI
+- (void)UI {
+    CountdownView * view = [[[NSBundle mainBundle] loadNibNamed:@"CountdownView" owner:nil options:nil] firstObject];
+    _mainTable.tableFooterView = view;
+    
 }
 
 - (void)updateViewConstraints {
     [super updateViewConstraints];
     if (iPhone4) {
-        _ViewLayoutHeight.constant += 115;
+        _ViewLayoutHeight.constant += 100;
     }
     if (iPhone6) {
-        _ViewLayoutHeight.constant += 85;
+        _ViewLayoutHeight.constant += 65;
     }
     if (iPhone6splus) {
-        _ViewLayoutHeight.constant += 55;
+        _ViewLayoutHeight.constant += 45;
     }
 }
 
@@ -87,7 +76,6 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0008";
     model.deviceNo = self.deviceNo;
-    
 //    MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         
@@ -115,8 +103,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     
 }
 
-- (void)countDownTime
-{
+- (void)countDownTime {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0012";
@@ -132,7 +119,6 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
             
             NSString *statusStr = [response substringWithRange:NSMakeRange(((NSString *)response).length - 18, 2)];
 
-            
             NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 16, 12)];
             
             if ([content hasPrefix:@"00"]) {
@@ -166,8 +152,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 }
 
 
-- (void)getStatus
-{
+- (void)getStatus {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0002";
@@ -180,75 +165,66 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
         
         if (!error) {
             
-            if (((NSString *)response).length>26) {
-                
-                NSString *status = [response substringWithRange:NSMakeRange(24, 2)];
-                NSString *binary = [Utils getBinaryByHex:status];
-                NSString *left = [binary substringWithRange:NSMakeRange(binary.length - 3, 1)];
-                NSString *center = [binary substringWithRange:NSMakeRange(binary.length - 2, 1)];
-                NSString *right = [binary substringFromIndex:binary.length - 1];
-
-                //一位插座
-                if ([self.deviceNo hasPrefix:@"61"]) {
-                    if ([center isEqualToString:@"0"]) {
-                        open = NO;
-                    }else
-                    {
-                        open = YES;
-                    }
-                 //二位插座
-                }else if ([self.deviceNo hasPrefix:@"62"])
-                {
-                    if ([left isEqualToString:@"0"] || [right isEqualToString:@"0"]) {
-                        open = NO;
-                    }else
-                    {
-                        open = YES;
-                    }
-                //三位插座
-                }else if ([self.deviceNo hasPrefix:@"63"])
-                {
-                    if ([left isEqualToString:@"0"] || [right isEqualToString:@"0"] || [center isEqualToString:@"0"]) {
-                        open = NO;
-                    }else
-                    {
-                        open = YES;
-                    }
-                }else
-                {
-                    if ([status isEqualToString:@"00"]) {
-                        open = NO;
-                    }else
-                    {
-                        open = YES;
-                    }
-
-                }
-                if (!open) {
-                    //开启
-                    closeBtn.layer.borderColor = [UIColor getColor:@"39B3FF"].CGColor;
-                    closeBtn.layer.borderWidth = 1;
-                    closeBtn.backgroundColor = [UIColor whiteColor];
-                    [closeBtn setTitleColor:[UIColor getColor:@"39B3FF"] forState:UIControlStateNormal];
-                    
-                    openBtn.backgroundColor = [UIColor getColor:@"BBBBBB"];
-                    [openBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                    openBtn.layer.borderColor = [UIColor getColor:@"BBBBBB"].CGColor;
-                    
-                }else
-                {
-                    openBtn.layer.borderColor = [UIColor getColor:@"39B3FF"].CGColor;
-                    openBtn.layer.borderWidth = 1;
-                    openBtn.backgroundColor = [UIColor whiteColor];
-                    [openBtn setTitleColor:[UIColor getColor:@"39B3FF"] forState:UIControlStateNormal];
-                    
-                    closeBtn.backgroundColor = [UIColor getColor:@"BBBBBB"];
-                    [closeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-                    closeBtn.layer.borderColor = [UIColor getColor:@"BBBBBB"].CGColor;
-
-                }
-                
-            }
+//            if (((NSString *)response).length>26) {
+//                NSString *status = [response substringWithRange:NSMakeRange(24, 2)];
+//                NSString *binary = [Utils getBinaryByHex:status];
+//                NSString *left = [binary substringWithRange:NSMakeRange(binary.length - 3, 1)];
+//                NSString *center = [binary substringWithRange:NSMakeRange(binary.length - 2, 1)];
+//                NSString *right = [binary substringFromIndex:binary.length - 1];
+//
+//                //一位插座
+//                if ([self.deviceNo hasPrefix:@"61"]) {
+//                    if ([center isEqualToString:@"0"]) {
+//                        open = NO;
+//                    }else {
+//                        open = YES;
+//                    }
+//                 //二位插座
+//                }else if ([self.deviceNo hasPrefix:@"62"]) {
+//                    if ([left isEqualToString:@"0"] || [right isEqualToString:@"0"]) {
+//                        open = NO;
+//                    }else {
+//                        open = YES;
+//                    }
+//                //三位插座
+//                }else if ([self.deviceNo hasPrefix:@"63"]) {
+//                    if ([left isEqualToString:@"0"] || [right isEqualToString:@"0"] || [center isEqualToString:@"0"]) {
+//                        open = NO;
+//                    }else {
+//                        open = YES;
+//                    }
+//                }else {
+//                    if ([status isEqualToString:@"00"]) {
+//                        open = NO;
+//                    }else {
+//                        open = YES;
+//                    }
+//
+//                }
+//                if (!open) {
+//                    //开启
+//                    closeBtn.layer.borderColor = [UIColor getColor:@"39B3FF"].CGColor;
+//                    closeBtn.layer.borderWidth = 1;
+//                    closeBtn.backgroundColor = [UIColor whiteColor];
+//                    [closeBtn setTitleColor:[UIColor getColor:@"39B3FF"] forState:UIControlStateNormal];
+//
+//                    openBtn.backgroundColor = [UIColor getColor:@"BBBBBB"];
+//                    [openBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//                    openBtn.layer.borderColor = [UIColor getColor:@"BBBBBB"].CGColor;
+//
+//                }else {
+//                    openBtn.layer.borderColor = [UIColor getColor:@"39B3FF"].CGColor;
+//                    openBtn.layer.borderWidth = 1;
+//                    openBtn.backgroundColor = [UIColor whiteColor];
+//                    [openBtn setTitleColor:[UIColor getColor:@"39B3FF"] forState:UIControlStateNormal];
+//
+//                    closeBtn.backgroundColor = [UIColor getColor:@"BBBBBB"];
+//                    [closeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+//                    closeBtn.layer.borderColor = [UIColor getColor:@"BBBBBB"].CGColor;
+//
+//                }
+//
+//            }
             
         }
         
@@ -256,51 +232,52 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     
 }
 
-
-- (void)showConfig
-{
+// 隐藏与显示
+- (void)showConfig {
     if (startDate) {
-        
         _mainTable.hidden = YES;
+        PatchVIew.hidden = YES;
         openBtn.hidden = YES;
         closeBtn.hidden = YES;
-        cancelBtn.hidden = NO;
-    }else
-    {
+//        cancelBtn.hidden = NO;
+        
+    }else  {
         _mainTable.hidden = NO;
         openBtn.hidden = NO;
         closeBtn.hidden = NO;
-        cancelBtn.hidden = YES;
+        PatchVIew.hidden = NO;
+//        cancelBtn.hidden = YES;
     }
 }
 // 取消
-- (IBAction)cancelAction {
-    
+- (void)canceOperation {
     [CommonOperation cancelDeviceRunModel:self.deviceNo result:^(id response, NSError *error) {
         if (!error) {
             [self stopTimer];
             _selectedItemIndex = NSIntegerMax;
             [_mainTable reloadData];
             [HintView showHint:Localize(@"取消成功")];
-        }else
-        {
+        }else {
             [HintView showHint:error.localizedDescription];
         }
         
     }];
 }
 
-- (void)startAction
-{
-    NSString *content = [time.text stringByReplacingOccurrencesOfString:@":" withString:@""];
+//// 取消
+//- (IBAction)cancelAction {
+//    ZPLog(@"111");
+//    
+//}
 
-    
+//新增
+// 延时开关
+- (IBAction)DelayClosingBut:(UIButton *)sender {
+    NSString *content = [time.text stringByReplacingOccurrencesOfString:@":" withString:@""];
     if ([content isEqualToString:@"000000"]) {
-        
         [HintView showHint:Localize(@"请选择倒计时时间")];
         return;
     }
-    
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = open?@"000B":@"000A";
@@ -309,7 +286,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     model.content = [content substringToIndex:4];
     [self.view startLoading];
     
-//    __weak typeof(NSString *) weakContent = model.content;
+    //    __weak typeof(NSString *) weakContent = model.content;
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
@@ -324,7 +301,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
             [weakSelf showConfig];
             
             [self setUpTimer];
-
+            
             [HintView showHint:Localize(@"设置成功")];
             
         }else{
@@ -332,6 +309,10 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
         }
         
     }];
+}
+
+- (void)startAction {
+   
 }
 
 - (void)setUpTimer {
@@ -359,8 +340,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 
 }
 
-- (void)timeAction
-{
+- (void)timeAction {
     lastSecend = MAX(0, [startDate timeIntervalSinceDate:[NSDate date]]);
 
     NSComparisonResult result =[startDate compare:[NSDate date]];
@@ -373,8 +353,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 
 }
 
-- (void)stopTimer
-{
+- (void)stopTimer {
     [time setText:@"00:00:00"] ;
     [progressView setPersentage:0];
     [status setText:Localize(@"设备打开/关闭")];
@@ -395,8 +374,6 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:countCellIdentifier];
     
     if (!cell) {

@@ -9,9 +9,14 @@
 #import "BaseViewController.h"
 
 @interface CountDownViewController : BaseViewController
+{
+    __weak IBOutlet UIButton *DelayClosingBut;
+    __weak IBOutlet UIView *PatchVIew;
+    
+}
 
 @property (nonatomic, copy) NSString *deviceNo;
 @property (nonatomic, assign) BOOL *isCountDownModel;
-- (IBAction)cancelAction;
+//- (IBAction)cancelAction;
 
 @end
