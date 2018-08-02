@@ -13,8 +13,8 @@
 #import "TimeSelectViewController.h"
 #import "TimeSettingModel.h"
 #import "DebuggingANDPublishing.pch"
-@interface TimeSettingListViewController ()<UITableViewDelegate, UITableViewDataSource>
-{
+@interface TimeSettingListViewController ()<UITableViewDelegate, UITableViewDataSource> {
+    
     NSDateFormatter *formatter;
 }
 @property (nonatomic, strong) UITableView *mainTable;
@@ -26,7 +26,6 @@
 static NSString *timeCellIdentifier = @"TimeListTableViewCell";
 
 @implementation TimeSettingListViewController
-
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -46,8 +45,7 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
 }
 
 
-- (void)changeModel:(NSString *)content
-{
+- (void)changeModel:(NSString *)content {
     
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
@@ -75,8 +73,7 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
 }
 
 
-- (void)openAction
-{
+- (void)openAction {
     NSString *contentStr = @"";
     BOOL isClose = YES;
     for (TimeSettingModel *model in self.datas) {

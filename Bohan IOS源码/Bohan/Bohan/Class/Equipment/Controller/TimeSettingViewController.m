@@ -400,16 +400,11 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
     [(UIScrollView *)self.view setContentSize:CGSizeMake(ScreenWidth, CGRectGetMaxY(modelCollectionView.superview.frame)+ 10)];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)dealloc
-{
+- (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+//时段设置的设置
 - (IBAction)settingAction {
     TimeSettingListViewController *list = [[TimeSettingListViewController alloc] init];
     list.datas = self.datas;

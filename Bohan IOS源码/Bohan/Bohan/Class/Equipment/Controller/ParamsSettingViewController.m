@@ -21,6 +21,7 @@
     BOOL isParentModel;
     
 }
+@property (nonatomic, strong)NSMutableArray *datas;
 @end
 
 @implementation ParamsSettingViewController
@@ -49,6 +50,7 @@
 }
 
 - (void)deviceParams {
+    self.datas = [NSMutableArray array];
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0003";
@@ -376,14 +378,6 @@
 }
 
 // 新增
-// 家长模式设置
-- (IBAction)ParentsModeSettingBut:(UIButton *)sender {
-    TimeSettingListViewController *list = [[TimeSettingListViewController alloc] init];
-    list.deviceNo = deviceId.text;
-    list.isParentModel = isParentModel;
-    [self.navigationController pushViewController:list animated:YES];
-}
-
 // 家长模式
 - (IBAction)ParentsModeBut:(UIButton *)sender {
     sender.selected =! sender.selected;
@@ -456,10 +450,32 @@
             isValidate = YES;
         }
     }
-//    [self.datas addObject:model];
+    [self.datas addObject:model];
 }
 }
 
+- (void)configNoData {
+    NSMutableArray *arr = [NSMutableArray array];
+    for (int i = 0; i < 9 ; i++) {
+        TimeSettingModel *model = [[TimeSettingModel alloc] init];
+        model.startTime = @"00:00";
+        model.endTime = @"00:00";
+        model.week = @"00";
+        model.open = NO;
+        [arr addObject:model];
+    }
+    
+    self.datas = arr;
+}
+
+// 家长模式设置
+- (IBAction)ParentsModeSettingBut:(UIButton *)sender {
+    TimeSettingListViewController *list = [[TimeSettingListViewController alloc] init];
+    list.datas = self.datas;
+    list.deviceNo = deviceId.text;
+    list.isParentModel = isParentModel;
+    [self.navigationController pushViewController:list animated:YES];
+}
 //     取消家长模式
 - (void)UnparentData {
     NSString * string = [[deviceId.text componentsSeparatedByString:@":"] lastObject]; // 去掉：前面对于符合
