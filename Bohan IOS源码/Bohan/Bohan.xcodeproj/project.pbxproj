@@ -17,17 +17,7 @@
 		C47B4AB520F5DF9F00DAD5D3 /* UIButton+countDown.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4AAF20F5DF9F00DAD5D3 /* UIButton+countDown.m */; };
 		C47B4AB620F5DF9F00DAD5D3 /* CALayer+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4AB320F5DF9F00DAD5D3 /* CALayer+UIColor.m */; };
 		C47B4AB720F5DF9F00DAD5D3 /* UIViewController+LLProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4AB420F5DF9F00DAD5D3 /* UIViewController+LLProgress.m */; };
-		C4E11AA321128DC80060B5B4 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E11A8721128DC80060B5B4 /* NSLayoutConstraint+MASDebugAdditions.m */; };
-		C4E11AA421128DC80060B5B4 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E11A9321128DC80060B5B4 /* MASCompositeConstraint.m */; };
-		C4E11AA521128DC80060B5B4 /* MASConstraintMaker.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E11A9421128DC80060B5B4 /* MASConstraintMaker.m */; };
-		C4E11AA621128DC80060B5B4 /* MASLayoutConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E11A9521128DC80060B5B4 /* MASLayoutConstraint.m */; };
-		C4E11AA721128DC80060B5B4 /* NSArray+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E11A9621128DC80060B5B4 /* NSArray+MASAdditions.m */; };
-		C4E11AA821128DC80060B5B4 /* View+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E11A9721128DC80060B5B4 /* View+MASAdditions.m */; };
-		C4E11AA921128DC80060B5B4 /* UIView+SDAutoLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E11A9B21128DC80060B5B4 /* UIView+SDAutoLayout.m */; };
-		C4E11AAA21128DC80060B5B4 /* UITableView+SDAutoTableViewCellHeight.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E11A9E21128DC80060B5B4 /* UITableView+SDAutoTableViewCellHeight.m */; };
-		C4E11AAB21128DC80060B5B4 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E11AA021128DC80060B5B4 /* MASConstraint.m */; };
-		C4E11AAC21128DC80060B5B4 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E11AA121128DC80060B5B4 /* MASViewConstraint.m */; };
-		C4E11AAD21128DC80060B5B4 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E11AA221128DC80060B5B4 /* MASViewAttribute.m */; };
+		C4A044962113F5C300656EC2 /* ParamsSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4A044982113F5C300656EC2 /* ParamsSettingViewController.xib */; };
 		C4E11AB5211297B00060B5B4 /* CountdownView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E11AB4211297B00060B5B4 /* CountdownView.m */; };
 		C4E11AB7211297C60060B5B4 /* CountdownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4E11AB6211297C60060B5B4 /* CountdownView.xib */; };
 		C4F1A24620E5D3F900052B24 /* SelectPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F1A24520E5D3F900052B24 /* SelectPhotoManager.m */; };
@@ -142,7 +132,6 @@
 		CC80906120470ED100265FE0 /* MeteringViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC80906320470ED100265FE0 /* MeteringViewController.xib */; };
 		CC8090662047109400265FE0 /* TimeSelectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC8090682047109400265FE0 /* TimeSelectViewController.xib */; };
 		CC80906B2047166600265FE0 /* TimeSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC80906D2047166600265FE0 /* TimeSettingViewController.xib */; };
-		CC80907020471A9800265FE0 /* ParamsSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC80907220471A9800265FE0 /* ParamsSettingViewController.xib */; };
 		CC80907520471E9900265FE0 /* CountDownViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC80907720471E9900265FE0 /* CountDownViewController.xib */; };
 		CC80907A2047219700265FE0 /* TimeListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC80907C2047219700265FE0 /* TimeListTableViewCell.xib */; };
 		CC8154D5201B842300F72BFF /* CountDownViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC8154D3201B842300F72BFF /* CountDownViewController.m */; };
@@ -210,34 +199,9 @@
 		C47B4AB220F5DF9F00DAD5D3 /* UIButton+countDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+countDown.h"; sourceTree = "<group>"; };
 		C47B4AB320F5DF9F00DAD5D3 /* CALayer+UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+UIColor.m"; sourceTree = "<group>"; };
 		C47B4AB420F5DF9F00DAD5D3 /* UIViewController+LLProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LLProgress.m"; sourceTree = "<group>"; };
-		C4E11A8621128DC80060B5B4 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
-		C4E11A8721128DC80060B5B4 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
-		C4E11A8821128DC80060B5B4 /* MASConstraint+Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MASConstraint+Private.h"; sourceTree = "<group>"; };
-		C4E11A8921128DC80060B5B4 /* MASLayoutConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASLayoutConstraint.h; sourceTree = "<group>"; };
-		C4E11A8A21128DC80060B5B4 /* NSArray+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASShorthandAdditions.h"; sourceTree = "<group>"; };
-		C4E11A8B21128DC80060B5B4 /* MASConstraintMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraintMaker.h; sourceTree = "<group>"; };
-		C4E11A8C21128DC80060B5B4 /* View+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASAdditions.h"; sourceTree = "<group>"; };
-		C4E11A8D21128DC80060B5B4 /* NSArray+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+MASAdditions.h"; sourceTree = "<group>"; };
-		C4E11A8E21128DC80060B5B4 /* MASUtilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASUtilities.h; sourceTree = "<group>"; };
-		C4E11A8F21128DC80060B5B4 /* MASViewAttribute.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewAttribute.h; sourceTree = "<group>"; };
-		C4E11A9021128DC80060B5B4 /* MASViewConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASViewConstraint.h; sourceTree = "<group>"; };
-		C4E11A9121128DC80060B5B4 /* MASConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASConstraint.h; sourceTree = "<group>"; };
-		C4E11A9221128DC80060B5B4 /* NSLayoutConstraint+MASDebugAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSLayoutConstraint+MASDebugAdditions.h"; sourceTree = "<group>"; };
-		C4E11A9321128DC80060B5B4 /* MASCompositeConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASCompositeConstraint.m; sourceTree = "<group>"; };
-		C4E11A9421128DC80060B5B4 /* MASConstraintMaker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraintMaker.m; sourceTree = "<group>"; };
-		C4E11A9521128DC80060B5B4 /* MASLayoutConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASLayoutConstraint.m; sourceTree = "<group>"; };
-		C4E11A9621128DC80060B5B4 /* NSArray+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+MASAdditions.m"; sourceTree = "<group>"; };
-		C4E11A9721128DC80060B5B4 /* View+MASAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "View+MASAdditions.m"; sourceTree = "<group>"; };
-		C4E11A9821128DC80060B5B4 /* View+MASShorthandAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "View+MASShorthandAdditions.h"; sourceTree = "<group>"; };
-		C4E11A9921128DC80060B5B4 /* Masonry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Masonry.h; sourceTree = "<group>"; };
-		C4E11A9B21128DC80060B5B4 /* UIView+SDAutoLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+SDAutoLayout.m"; sourceTree = "<group>"; };
-		C4E11A9C21128DC80060B5B4 /* UITableView+SDAutoTableViewCellHeight.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+SDAutoTableViewCellHeight.h"; sourceTree = "<group>"; };
-		C4E11A9D21128DC80060B5B4 /* SDAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDAutoLayout.h; sourceTree = "<group>"; };
-		C4E11A9E21128DC80060B5B4 /* UITableView+SDAutoTableViewCellHeight.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+SDAutoTableViewCellHeight.m"; sourceTree = "<group>"; };
-		C4E11A9F21128DC80060B5B4 /* UIView+SDAutoLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+SDAutoLayout.h"; sourceTree = "<group>"; };
-		C4E11AA021128DC80060B5B4 /* MASConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASConstraint.m; sourceTree = "<group>"; };
-		C4E11AA121128DC80060B5B4 /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
-		C4E11AA221128DC80060B5B4 /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
+		C4A044972113F5C300656EC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ParamsSettingViewController.xib; sourceTree = "<group>"; };
+		C4A0449A2113F5C600656EC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ParamsSettingViewController.strings; sourceTree = "<group>"; };
+		C4A0449C2113F5C700656EC2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ParamsSettingViewController.strings"; sourceTree = "<group>"; };
 		C4E11AB3211297B00060B5B4 /* CountdownView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CountdownView.h; sourceTree = "<group>"; };
 		C4E11AB4211297B00060B5B4 /* CountdownView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CountdownView.m; sourceTree = "<group>"; };
 		C4E11AB6211297C60060B5B4 /* CountdownView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountdownView.xib; sourceTree = "<group>"; };
@@ -467,8 +431,6 @@
 		CC80906A2047109600265FE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TimeSelectViewController.strings; sourceTree = "<group>"; };
 		CC80906C2047166600265FE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TimeSettingViewController.xib; sourceTree = "<group>"; };
 		CC80906F204716AC00265FE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TimeSettingViewController.strings; sourceTree = "<group>"; };
-		CC80907120471A9800265FE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ParamsSettingViewController.xib; sourceTree = "<group>"; };
-		CC80907420471A9B00265FE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ParamsSettingViewController.strings; sourceTree = "<group>"; };
 		CC80907620471E9900265FE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CountDownViewController.xib; sourceTree = "<group>"; };
 		CC80907920471E9B00265FE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CountDownViewController.strings; sourceTree = "<group>"; };
 		CC80907B2047219700265FE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TimeListTableViewCell.xib; sourceTree = "<group>"; };
@@ -556,7 +518,6 @@
 		CCEB9A98207905C400681168 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MeteringViewController.strings"; sourceTree = "<group>"; };
 		CCEB9A9A207905CA00681168 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TimeSelectViewController.strings"; sourceTree = "<group>"; };
 		CCEB9A9C207905CE00681168 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TimeSettingViewController.strings"; sourceTree = "<group>"; };
-		CCEB9A9E2079060C00681168 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ParamsSettingViewController.strings"; sourceTree = "<group>"; };
 		CCEB9AA02079061000681168 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CountDownViewController.strings"; sourceTree = "<group>"; };
 		CCEB9AA22079062100681168 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CustomInputView.strings"; sourceTree = "<group>"; };
 		CCEB9AA42079062500681168 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TimeListTableViewCell.strings"; sourceTree = "<group>"; };
@@ -594,49 +555,6 @@
 				C47B4AB420F5DF9F00DAD5D3 /* UIViewController+LLProgress.m */,
 			);
 			path = ZP_registrationTimerBut;
-			sourceTree = "<group>";
-		};
-		C4E11A8521128DC80060B5B4 /* Masonry */ = {
-			isa = PBXGroup;
-			children = (
-				C4E11A8621128DC80060B5B4 /* MASCompositeConstraint.h */,
-				C4E11A8721128DC80060B5B4 /* NSLayoutConstraint+MASDebugAdditions.m */,
-				C4E11A8821128DC80060B5B4 /* MASConstraint+Private.h */,
-				C4E11A8921128DC80060B5B4 /* MASLayoutConstraint.h */,
-				C4E11A8A21128DC80060B5B4 /* NSArray+MASShorthandAdditions.h */,
-				C4E11A8B21128DC80060B5B4 /* MASConstraintMaker.h */,
-				C4E11A8C21128DC80060B5B4 /* View+MASAdditions.h */,
-				C4E11A8D21128DC80060B5B4 /* NSArray+MASAdditions.h */,
-				C4E11A8E21128DC80060B5B4 /* MASUtilities.h */,
-				C4E11A8F21128DC80060B5B4 /* MASViewAttribute.h */,
-				C4E11A9021128DC80060B5B4 /* MASViewConstraint.h */,
-				C4E11A9121128DC80060B5B4 /* MASConstraint.h */,
-				C4E11A9221128DC80060B5B4 /* NSLayoutConstraint+MASDebugAdditions.h */,
-				C4E11A9321128DC80060B5B4 /* MASCompositeConstraint.m */,
-				C4E11A9421128DC80060B5B4 /* MASConstraintMaker.m */,
-				C4E11A9521128DC80060B5B4 /* MASLayoutConstraint.m */,
-				C4E11A9621128DC80060B5B4 /* NSArray+MASAdditions.m */,
-				C4E11A9721128DC80060B5B4 /* View+MASAdditions.m */,
-				C4E11A9821128DC80060B5B4 /* View+MASShorthandAdditions.h */,
-				C4E11A9921128DC80060B5B4 /* Masonry.h */,
-				C4E11A9A21128DC80060B5B4 /* SDAutoLayout */,
-				C4E11AA021128DC80060B5B4 /* MASConstraint.m */,
-				C4E11AA121128DC80060B5B4 /* MASViewConstraint.m */,
-				C4E11AA221128DC80060B5B4 /* MASViewAttribute.m */,
-			);
-			path = Masonry;
-			sourceTree = "<group>";
-		};
-		C4E11A9A21128DC80060B5B4 /* SDAutoLayout */ = {
-			isa = PBXGroup;
-			children = (
-				C4E11A9B21128DC80060B5B4 /* UIView+SDAutoLayout.m */,
-				C4E11A9C21128DC80060B5B4 /* UITableView+SDAutoTableViewCellHeight.h */,
-				C4E11A9D21128DC80060B5B4 /* SDAutoLayout.h */,
-				C4E11A9E21128DC80060B5B4 /* UITableView+SDAutoTableViewCellHeight.m */,
-				C4E11A9F21128DC80060B5B4 /* UIView+SDAutoLayout.h */,
-			);
-			path = SDAutoLayout;
 			sourceTree = "<group>";
 		};
 		C7BFA176DDE33FCA740149C6 /* Frameworks */ = {
@@ -716,7 +634,6 @@
 		CC2455BF1FF745DB00616916 /* Common */ = {
 			isa = PBXGroup;
 			children = (
-				C4E11A8521128DC80060B5B4 /* Masonry */,
 				CC2455C01FF745DB00616916 /* Base */,
 				CC2455C51FF745DB00616916 /* Macro */,
 				CC2455CB1FF745DB00616916 /* Plugin */,
@@ -1190,7 +1107,7 @@
 				CC80906D2047166600265FE0 /* TimeSettingViewController.xib */,
 				CCB59D87201260FE00439799 /* ParamsSettingViewController.h */,
 				CCB59D88201260FE00439799 /* ParamsSettingViewController.m */,
-				CC80907220471A9800265FE0 /* ParamsSettingViewController.xib */,
+				C4A044982113F5C300656EC2 /* ParamsSettingViewController.xib */,
 				CC8154D2201B842300F72BFF /* CountDownViewController.h */,
 				CC8154D3201B842300F72BFF /* CountDownViewController.m */,
 				CC80907720471E9900265FE0 /* CountDownViewController.xib */,
@@ -1501,6 +1418,9 @@
 						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.ApplePay = {
+								enabled = 0;
+							};
 							com.apple.HomeKit = {
 								enabled = 0;
 							};
@@ -1558,6 +1478,7 @@
 				CC8090572047096500265FE0 /* DeviceInfoViewController.xib in Resources */,
 				CC8090662047109400265FE0 /* TimeSelectViewController.xib in Resources */,
 				CC349F3720A890DE00BD6C6A /* DeviceInfoCollectionCell.xib in Resources */,
+				C4A044962113F5C300656EC2 /* ParamsSettingViewController.xib in Resources */,
 				CC2455B11FF7450700616916 /* Main.storyboard in Resources */,
 				C405AE4320E7465B00ED77E4 /* ShareView.xib in Resources */,
 				C47B4A9D20F5CCC100DAD5D3 /* LanguageController.xib in Resources */,
@@ -1567,7 +1488,6 @@
 				C410507720FF1B1F009A46F4 /* MultipleSwitchViewController.xib in Resources */,
 				CC80907520471E9900265FE0 /* CountDownViewController.xib in Resources */,
 				CC97ABBB1FFBE48C00B4A58C /* soap.xml in Resources */,
-				CC80907020471A9800265FE0 /* ParamsSettingViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1630,7 +1550,6 @@
 				CC24566F1FF745DB00616916 /* UILabel+Convenience.m in Sources */,
 				CC3B2F91201E26D700ADC116 /* UpdateDeviceInfoViewController.m in Sources */,
 				CCCDDE0F2003CC8000DF468C /* ContentTableView.m in Sources */,
-				C4E11AA421128DC80060B5B4 /* MASCompositeConstraint.m in Sources */,
 				CC2456961FF78ECA00616916 /* UIButton+Disable.m in Sources */,
 				CC0FE9B72024AB490031BDFC /* PowerModel.m in Sources */,
 				CC5567042025E34100A8589B /* UIView+Extension.m in Sources */,
@@ -1652,8 +1571,6 @@
 				CCD5CDCD200F874A004A2917 /* TimeSelectViewController.m in Sources */,
 				CC1FD95B1FFFD669006DF1DD /* WebViewController.m in Sources */,
 				CC65AB902007BB75005FB5AE /* WebSocket.m in Sources */,
-				C4E11AAB21128DC80060B5B4 /* MASConstraint.m in Sources */,
-				C4E11AAA21128DC80060B5B4 /* UITableView+SDAutoTableViewCellHeight.m in Sources */,
 				CCFCAE8720A6C7AE0031709F /* DeviceDetailMutableListCell.m in Sources */,
 				CC24569C1FF8F30200616916 /* ScanViewController.m in Sources */,
 				CC42E89C2020EF0B00A64160 /* NSArray+Safe.m in Sources */,
@@ -1662,14 +1579,12 @@
 				CC2456621FF745DB00616916 /* AppDelegate+Configure.m in Sources */,
 				CC5567052025E34100A8589B /* WSDatePickerView.m in Sources */,
 				CC24566A1FF745DB00616916 /* UIButton+CountDown.m in Sources */,
-				C4E11AAD21128DC80060B5B4 /* MASViewAttribute.m in Sources */,
 				CCE9E59F200644FD008439F3 /* ESP_NetUtil.m in Sources */,
 				CC64E20D2015163000653D2B /* SGActionView.m in Sources */,
 				CC2456721FF745DB00616916 /* UISearchBar+Color.m in Sources */,
 				CC24565F1FF745DB00616916 /* NetworkRequest+Utils.m in Sources */,
 				CC2456A01FF8F6FA00616916 /* BindingViewController.m in Sources */,
 				CC2456781FF745DB00616916 /* UIViewController+Utils.m in Sources */,
-				C4E11AA621128DC80060B5B4 /* MASLayoutConstraint.m in Sources */,
 				C47B4AB720F5DF9F00DAD5D3 /* UIViewController+LLProgress.m in Sources */,
 				CCE9E59A200644FD008439F3 /* ESPTouchTaskParameter.m in Sources */,
 				CC2456901FF745DB00616916 /* EquipmentTableViewCell.m in Sources */,
@@ -1688,7 +1603,6 @@
 				C410507520FED0B9009A46F4 /* MultipleSwitchViewController.m in Sources */,
 				CC24567B1FF745DB00616916 /* EdgetTextField.m in Sources */,
 				CCCBF39020191C1C00A80D90 /* TimeModelCollectionViewCell.m in Sources */,
-				C4E11AA921128DC80060B5B4 /* UIView+SDAutoLayout.m in Sources */,
 				CCD5CDD1200FC5A8004A2917 /* TimeSettingModel.m in Sources */,
 				CC2456771FF745DB00616916 /* UIViewController+NavigationBar.m in Sources */,
 				CC24567A1FF745DB00616916 /* WKWebView+Utils.m in Sources */,
@@ -1707,7 +1621,6 @@
 				CCE9E59C200644FD008439F3 /* ESPUDPSocketServer.m in Sources */,
 				CC64E20E2015163000653D2B /* SGBaseMenu.m in Sources */,
 				CC12DDB1202A1A6300A0F599 /* DescModel.m in Sources */,
-				C4E11AA721128DC80060B5B4 /* NSArray+MASAdditions.m in Sources */,
 				CCE9E59B200644FD008439F3 /* ESPUDPSocketClient.m in Sources */,
 				CCD5CDBF200F7C84004A2917 /* TimeSettingListViewController.m in Sources */,
 				CC24565D1FF745DB00616916 /* BaseTableView.m in Sources */,
@@ -1720,14 +1633,11 @@
 				CCCDDE152003D44A00DF468C /* PageCollectionView.m in Sources */,
 				CC42E89D2020EF0B00A64160 /* NSDictionary+Safe.m in Sources */,
 				C47B4AB620F5DF9F00DAD5D3 /* CALayer+UIColor.m in Sources */,
-				C4E11AA321128DC80060B5B4 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				CC0F4838200D407300E184F8 /* RealTimeParamTableViewCell.m in Sources */,
 				CCE9E59D200644FD008439F3 /* ESP_ByteUtil.m in Sources */,
 				C4F1A24620E5D3F900052B24 /* SelectPhotoManager.m in Sources */,
 				CCCDDE212003F45400DF468C /* DeviceDetailListCell.m in Sources */,
-				C4E11AA821128DC80060B5B4 /* View+MASAdditions.m in Sources */,
 				CC24568C1FF745DB00616916 /* VerificationCodeViewController.m in Sources */,
-				C4E11AAC21128DC80060B5B4 /* MASViewConstraint.m in Sources */,
 				CCE9E596200644FD008439F3 /* ESPGuideCode.m in Sources */,
 				CCD5CDBB200F7C38004A2917 /* TimeListTableViewCell.m in Sources */,
 				CC2456651FF745DB00616916 /* NSData+Base64.m in Sources */,
@@ -1752,7 +1662,6 @@
 				CC2456601FF745DB00616916 /* NetworkRequest.m in Sources */,
 				CC24566D1FF745DB00616916 /* UIFont+Adaptation.m in Sources */,
 				CC2456711FF745DB00616916 /* UIScrollView+Refresh.m in Sources */,
-				C4E11AA521128DC80060B5B4 /* MASConstraintMaker.m in Sources */,
 				CC0F482B200D2CC600E184F8 /* DeviceInfoViewController.m in Sources */,
 				CC2455B91FF7450700616916 /* main.m in Sources */,
 				CC8154DF201B974300F72BFF /* STLoopProgressView+BaseConfiguration.m in Sources */,
@@ -1790,6 +1699,16 @@
 				C410507D20FF1B23009A46F4 /* zh-Hans */,
 			);
 			name = MultipleSwitchViewController.xib;
+			sourceTree = "<group>";
+		};
+		C4A044982113F5C300656EC2 /* ParamsSettingViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C4A044972113F5C300656EC2 /* Base */,
+				C4A0449A2113F5C600656EC2 /* en */,
+				C4A0449C2113F5C700656EC2 /* zh-Hans */,
+			);
+			name = ParamsSettingViewController.xib;
 			sourceTree = "<group>";
 		};
 		C4F1A24920E5D9EC00052B24 /* VerificationCodeViewController.xib */ = {
@@ -1946,16 +1865,6 @@
 				CCEB9A9C207905CE00681168 /* zh-Hans */,
 			);
 			name = TimeSettingViewController.xib;
-			sourceTree = "<group>";
-		};
-		CC80907220471A9800265FE0 /* ParamsSettingViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CC80907120471A9800265FE0 /* Base */,
-				CC80907420471A9B00265FE0 /* en */,
-				CCEB9A9E2079060C00681168 /* zh-Hans */,
-			);
-			name = ParamsSettingViewController.xib;
 			sourceTree = "<group>";
 		};
 		CC80907720471E9900265FE0 /* CountDownViewController.xib */ = {

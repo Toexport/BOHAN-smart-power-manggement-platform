@@ -2,6 +2,9 @@
 /* Class = "UILabel"; text = "单价"; ObjectID = "1dr-wN-RJv"; */
 "1dr-wN-RJv.text" = "单价";
 
+/* Class = "UIButton"; normalTitle = "设置"; ObjectID = "51W-G5-a11"; */
+"51W-G5-a11.normalTitle" = "设置";
+
 /* Class = "UITextField"; placeholder = "请输入负荷门限"; ObjectID = "8nc-PW-bZX"; */
 "8nc-PW-bZX.placeholder" = "请输入负荷门限";
 
@@ -11,8 +14,8 @@
 /* Class = "UILabel"; text = "0分钟"; ObjectID = "CSy-SD-xbm"; */
 "CSy-SD-xbm.text" = "0分钟";
 
-/* Class = "UILabel"; text = "智能断电控制："; ObjectID = "DnA-HN-skS"; */
-"DnA-HN-skS.text" = "智能断电控制：";
+/* Class = "UILabel"; text = "定时断电设置："; ObjectID = "DnA-HN-skS"; */
+"DnA-HN-skS.text" = "定时断电设置：";
 
 /* Class = "UILabel"; text = "0W"; ObjectID = "Dr9-bd-rH0"; */
 "Dr9-bd-rH0.text" = "0W";
@@ -20,11 +23,20 @@
 /* Class = "UILabel"; text = "单价"; ObjectID = "Ef9-Sb-1L4"; */
 "Ef9-Sb-1L4.text" = "单价";
 
+/* Class = "UILabel"; text = "充电保护设置"; ObjectID = "HDJ-dO-S0L"; */
+"HDJ-dO-S0L.text" = "充电保护设置";
+
 /* Class = "UILabel"; text = "负荷门限"; ObjectID = "J8G-ht-ZmN"; */
 "J8G-ht-ZmN.text" = "负荷门限";
 
 /* Class = "UILabel"; text = "ID:"; ObjectID = "Ja7-UI-BrD"; */
 "Ja7-UI-BrD.text" = "ID:";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "K3p-Jh-AjO"; */
+"K3p-Jh-AjO.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "PD4-ks-sL5"; */
+"PD4-ks-sL5.normalTitle" = "Button";
 
 /* Class = "UILabel"; text = "负荷门限"; ObjectID = "PNs-xd-gHe"; */
 "PNs-xd-gHe.text" = "负荷门限";
@@ -35,8 +47,8 @@
 /* Class = "UILabel"; text = "W"; ObjectID = "WUB-XW-tMI"; */
 "WUB-XW-tMI.text" = "W";
 
-/* Class = "UILabel"; text = "智能断电控制"; ObjectID = "WmK-d3-gJa"; */
-"WmK-d3-gJa.text" = "智能断电控制";
+/* Class = "UILabel"; text = "自定义智能断电控制"; ObjectID = "WmK-d3-gJa"; */
+"WmK-d3-gJa.text" = "自定义智能断电控制";
 
 /* Class = "UILabel"; text = "修改设置"; ObjectID = "YXI-r0-yKR"; */
 "YXI-r0-yKR.text" = "修改设置";
@@ -50,8 +62,17 @@
 /* Class = "UILabel"; text = "元"; ObjectID = "d6n-rt-J5F"; */
 "d6n-rt-J5F.text" = "元";
 
+/* Class = "UILabel"; text = "电动车充电保护"; ObjectID = "dmX-an-dyC"; */
+"dmX-an-dyC.text" = "电动车充电保护";
+
 /* Class = "UILabel"; text = "元"; ObjectID = "e21-AC-zD1"; */
 "e21-AC-zD1.text" = "元";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "iRI-jn-WBE"; */
+"iRI-jn-WBE.normalTitle" = "Button";
+
+/* Class = "UIButton"; normalTitle = "家长模式"; ObjectID = "jPC-et-lTr"; */
+"jPC-et-lTr.normalTitle" = "家长模式";
 
 /* Class = "UIButton"; normalTitle = "保存"; ObjectID = "kiP-CR-853"; */
 "kiP-CR-853.normalTitle" = "保存";
@@ -64,6 +85,12 @@
 
 /* Class = "UILabel"; text = "断电"; ObjectID = "pH4-32-ubO"; */
 "pH4-32-ubO.text" = "断电";
+
+/* Class = "UIButton"; normalTitle = "Button"; ObjectID = "s0b-80-yNl"; */
+"s0b-80-yNl.normalTitle" = "Button";
+
+/* Class = "UILabel"; text = "手机充电保护"; ObjectID = "tqm-fK-sHh"; */
+"tqm-fK-sHh.text" = "手机充电保护";
 
 /* Class = "UITextField"; placeholder = "请输入单价"; ObjectID = "x6v-mK-ngL"; */
 "x6v-mK-ngL.placeholder" = "请输入单价";

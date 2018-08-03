@@ -31,7 +31,7 @@
     [self TimeDisplay];
     [self yyyyMMddHHmm];
     [self StateQuery];
-//    [self rightBarTitle:Localize(@"刷新") color:[UIColor whiteColor] action:@selector(StateQuery)];
+    [self rightBarTitle:Localize(@"刷新") color:[UIColor whiteColor] action:@selector(StateQuery)];
 }
 
 // 状态查询
@@ -56,7 +56,6 @@
 
 // 监测开关状态
 - (void)SwitchStateStrr {
-    
     NSString * strin = [_SwitchStateStr substringWithRange:NSMakeRange(34, 2)];
     if ([[self.SwitchStateStr substringWithRange:NSMakeRange(34, 2)] isEqualToString:@"00"]) {
         Open1But.selected = YES;
@@ -115,12 +114,31 @@
 // 开关一
 // 开
 - (IBAction)Switch1OpenBut:(UIButton *)sender {
+    NSString * stringg1 = [NSString stringWithFormat:@"%@%@%@%@%@",self.string1,self.string2,self.string3,self.string4,self.string5];
+    NSString * stringg2 = [NSString stringWithFormat:@"%@%@%@%@%@",self.stringg1,self.stringg2,self.stringg3,self.stringg4,self.stringg5];
+    ZPLog(@"%@--%@",stringg1,stringg2);
     if (sender.selected) {
         return;
     }else {
         sender.selected =!sender.selected;
         Guan1But.selected = NO;
-        [self Opendatas1];
+        if ([stringg2 isEqualToString:@"(null)(null)(null)(null)(null)"]) {
+            Open1But.selected = NO;
+            Guan1But.selected = YES;
+            ZPLog(@"请修改单前时间");
+            [HintView showHint:Localize(@"设定时间必须大于当前时间")];
+            return;
+        }else
+            if (stringg1.integerValue > stringg2.integerValue) {
+                // string1系统时间 大于 string2修改时间
+                Open1But.selected = NO;
+                Guan1But.selected = YES;
+                ZPLog(@"不能小于当前时间");
+                [HintView showHint:Localize(@"设定时间必须大于当前时间")];
+                return;
+            }else {
+               [self Opendatas1];
+            }
     }
 }
 
@@ -154,20 +172,37 @@
     }
 }
 
-// 关
+// 关1
 - (IBAction)Switch1GuanBut:(UIButton *)sender {
+    NSString * stringg1 = [NSString stringWithFormat:@"%@%@%@%@%@",self.string1,self.string2,self.string3,self.string4,self.string5];
+    NSString * stringg2 = [NSString stringWithFormat:@"%@%@%@%@%@",self.stringg1,self.stringg2,self.stringg3,self.stringg4,self.stringg5];
+    ZPLog(@"%@--%@",stringg1,stringg2);
     if (sender.selected) {
         return;
     }else {
         sender.selected = !sender.selected;
         Open1But.selected = NO;
-        [self Guandatas1];
-        ZPLog(@"关1");
-        
+        if ([stringg2 isEqualToString:@"(null)(null)(null)(null)(null)"]) {
+            Open1But.selected = YES;
+            Guan1But.selected = NO;
+            ZPLog(@"请修改当前时间");
+            [HintView showHint:Localize(@"设定时间必须大于当前时间")];
+            return;
+        }else
+            if (stringg1.integerValue > stringg2.integerValue) {
+                // string1系统时间 大于 string2修改时间
+                Open1But.selected = YES;
+                Guan1But.selected = NO;
+                ZPLog(@"不能小于当前时间");
+                [HintView showHint:Localize(@"设定时间必须大于当前时间")];
+                return;
+            }else {
+                [self Guandatas1];
+            }
     }
 }
 
-// 关
+// 关2
 - (IBAction)Switch2GuanBut:(UIButton *)sender {
     if (sender.selected) {
         return;
@@ -179,7 +214,7 @@
     }
 }
 
-// 关
+// 关3
 - (IBAction)Switch3GuanBut:(UIButton *)sender {
     if (sender.selected) {
         return;
@@ -193,8 +228,8 @@
 
 // 定时开（1）
 - (void)Opendatas1 {
-    NSString * ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];// 获取后两位数字
-    _str1 = [NSString stringWithFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
+    NSString * ssting = [[NSString stringWithFormat:@"%@",self.stringg1]substringFromIndex:2];// 获取后两位数字
+    _str1 = [NSString stringWithFormat:@"%@%@%@%@%@",ssting,self.stringg2,self.stringg3,self.stringg4,self.stringg5];
     NSString * sstring1 = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
     _str2 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring1,self.string22,self.string33,self.string44,self.string55];
     NSString * sstring2 = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
@@ -333,8 +368,8 @@
 
 // 定时关（1）
 - (void)Guandatas1 {
-    NSString * ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];// 获取后两位数字
-    _str1 = [NSString stringWithFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
+    NSString * ssting = [[NSString stringWithFormat:@"%@",self.stringg1]substringFromIndex:2];// 获取后两位数字
+    _str1 = [NSString stringWithFormat:@"%@%@%@%@%@",ssting,self.stringg2,self.stringg3,self.stringg4,self.stringg5];
     NSString * sstring1 = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
     _str2 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring1,self.string22,self.string33,self.string44,self.string55];
     NSString * sstring2 = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
@@ -500,33 +535,33 @@
         formatter = [[NSDateFormatter alloc] init];
         formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
     }
-    
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatter dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
         [formatter setDateFormat:@"yyyy"];// 解决问题
         [Years1TextField setText:[formatter stringFromDate:selectDate]];
-        self.string1 = Years1TextField.text;
-        Years1TextField.text = [NSString stringWithString:self.string1];
+        self.stringg1 = Years1TextField.text;
+        Years1TextField.text = [NSString stringWithString:self.stringg1];
         
         [formatter setDateFormat:@"MM"];
         [Month1TextField setText:[formatter stringFromDate:selectDate]];
-        self.string2 = Month1TextField.text;
-        Month1TextField.text = [NSString stringWithString:self.string2];
+        self.stringg2 = Month1TextField.text;
+        Month1TextField.text = [NSString stringWithString:self.stringg2];
         
         [formatter setDateFormat:@"dd"];
         [Day1textField setText:[formatter stringFromDate:selectDate]];
-        self.string3 = Day1textField.text;
-        Day1textField.text = [NSString stringWithString:self.string3];
+        self.stringg3 = Day1textField.text;
+        Day1textField.text = [NSString stringWithString:self.stringg3];
         
         [formatter setDateFormat:@"HH"];
         [Hours1TextField setText:[formatter stringFromDate:selectDate]];
-        self.string4 = Hours1TextField.text;
-        Hours1TextField.text = [NSString stringWithString:self.string4];
+        self.stringg4 = Hours1TextField.text;
+        Hours1TextField.text = [NSString stringWithString:self.stringg4];
         
         [formatter setDateFormat:@"mm"];
         [Minutes1TextField setText:[formatter stringFromDate:selectDate]];
-        self.string5 = Minutes1TextField.text;
-        Minutes1TextField.text = [NSString stringWithString:self.string5];
+        self.stringg5 = Minutes1TextField.text;
+        Minutes1TextField.text = [NSString stringWithString:self.stringg5];
+        
     }];
     
     datepicker.hideBackgroundYearLabel = YES;

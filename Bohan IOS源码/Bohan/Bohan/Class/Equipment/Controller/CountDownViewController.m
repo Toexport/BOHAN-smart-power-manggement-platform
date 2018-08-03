@@ -64,13 +64,13 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
         _ViewLayoutHeight.constant += 100;
     }
     if (iPhone5) {
-        _ViewLayoutHeight.constant += 80;
+        _ViewLayoutHeight.constant += 90;
     }
     if (iPhone6) {
-        _ViewLayoutHeight.constant += 65;
+        _ViewLayoutHeight.constant += 45;
     }
     if (iPhone6splus) {
-        _ViewLayoutHeight.constant += 45;
+        _ViewLayoutHeight.constant += 15;
     }
 }
 

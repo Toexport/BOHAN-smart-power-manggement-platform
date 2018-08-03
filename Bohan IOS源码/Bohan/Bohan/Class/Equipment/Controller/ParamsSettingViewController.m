@@ -47,7 +47,8 @@
     [self getStatus];
     [self getPower];
     [self getDelayTime];
-    [self configNoData];
+//    [self configNoData];// 打开这个不显示家长模式是否开启
+    [self DefaultGray];
 }
 
 - (void)deviceParams {
@@ -384,10 +385,15 @@
     sender.selected =! sender.selected;
     if (sender.selected) {
         [self loadData];
+        [ParentsModeSettingBut setEnabled:YES];// 交互打开
+        ParentsModeSettingBut.alpha = 100;//透明度
         ZPLog(@"选中");
     }else {
         ChargingProtectionBut.selected = NO;
+        [ParentsModeSettingBut setEnabled:NO];// 交互关闭
+        ParentsModeSettingBut.alpha = 0.4;//透明度
         [self UnparentData];
+        
         ZPLog(@"取消");
     }
 }
@@ -445,8 +451,7 @@
     {
         if (([start isEqualToString:end] || ([[time substringToIndex:4] integerValue] > [[time substringWithRange:NSMakeRange(4, 4)] integerValue])) || [[week substringFromIndex:1] isEqualToString:@"0000000"]) {
             model.open = NO;
-        }else
-        {
+        }else {
             model.open = YES;
             isValidate = YES;
         }
@@ -523,12 +528,20 @@
         DDCChargingProtectionBut.alpha=0.4;//透明度
         [PhoneChargingProtectionBut setEnabled:NO]; //交互关闭
         PhoneChargingProtectionBut.alpha=0.4;//透明度
-        [SettingBut setEnabled:YES]; // 交互打开
-        SettingBut.alpha = 100; // 透明度
-        [timeBut setEnabled:YES]; //交互开启
-        timeBut.alpha = 100; //透明度
-        [PowerBut setEnabled:YES]; // 交互开启
-        PowerBut.alpha = 100;
+        /*****************************/
+        [SettingBut setEnabled:NO]; // 交互打开
+        SettingBut.alpha = 0.4; // 透明度
+        [timeBut setEnabled:NO]; //交互关闭
+        timeBut.alpha = 0.4; //透明度
+        [PowerBut setEnabled:NO]; // 交互关闭
+        PowerBut.alpha = 0.4;
+        
+//        [SettingBut setEnabled:YES]; // 交互打开
+//        SettingBut.alpha = 100; // 透明度
+//        [timeBut setEnabled:YES]; //交互开启
+//        timeBut.alpha = 100; //透明度
+//        [PowerBut setEnabled:YES]; // 交互开启
+//        PowerBut.alpha = 100;
     }
 }
 
@@ -587,17 +600,37 @@
             [self checkClose:ZNDDBut.selected];
         }
         ChargingProtectionBut.selected = NO;
-        [DDCChargingProtectionBut setEnabled:YES]; //交互开启
-        DDCChargingProtectionBut.alpha = 100;//透明度
-        [PhoneChargingProtectionBut setEnabled:YES]; //交互开启
-        PhoneChargingProtectionBut.alpha = 100;//透明度
+//        [DDCChargingProtectionBut setEnabled:YES]; //交互开启
+//        DDCChargingProtectionBut.alpha = 100;//透明度
+//        [PhoneChargingProtectionBut setEnabled:YES]; //交互开启
+//        PhoneChargingProtectionBut.alpha = 100;//透明度
+        [DDCChargingProtectionBut setEnabled:NO]; //交互关闭
+        DDCChargingProtectionBut.alpha = 0.4;//透明度
+        [PhoneChargingProtectionBut setEnabled:NO]; //交互关闭
+        PhoneChargingProtectionBut.alpha = 0.4;//透明度
+        /*****************************/
         [SettingBut setEnabled:NO]; // 交互打开
         SettingBut.alpha = 0.4; // 透明度
         [timeBut setEnabled:NO]; //交互关闭
         timeBut.alpha = 0.4; //透明度
         [PowerBut setEnabled:NO]; // 交互关闭
-        PowerBut.alpha = 0.4;
+        PowerBut.alpha = 0.4;//透明度
     }
 }
 
+// 默认不打勾充电保护设置，智能断电控制变灰不可点击
+- (void)DefaultGray {
+    [DDCChargingProtectionBut setEnabled:NO]; //交互关闭
+    DDCChargingProtectionBut.alpha=0.4;//透明度
+    [PhoneChargingProtectionBut setEnabled:NO]; //交互关闭
+    PhoneChargingProtectionBut.alpha=0.4;//透明度
+    [SettingBut setEnabled:NO]; // 交互打开
+    SettingBut.alpha = 0.4; // 透明度
+    [timeBut setEnabled:NO]; //交互关闭
+    timeBut.alpha = 0.4; //透明度
+    [PowerBut setEnabled:NO]; // 交互关闭
+    PowerBut.alpha = 0.4;//透明度
+    [ParentsModeSettingBut setEnabled:NO];// 交互关闭
+    ParentsModeSettingBut.alpha = 0.4;//透明度
+}
 @end

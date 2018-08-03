@@ -63,7 +63,7 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
 - (void)setUp
 {
     self.datas = [NSMutableArray array];
-    loopModels = @[Localize(@"热水器"), Localize(@"鱼缸"), Localize(@"小夜灯"), Localize(@"蚊香"), Localize(@"取暖器"), Localize(@"家长模式")];
+    loopModels = @[Localize(@"热水器"), Localize(@"鱼缸"), Localize(@"小夜灯"), Localize(@"蚊香"), Localize(@"取暖器"),Localize(@"家长模式")];
     modelContents = @[heaterModel, fishModel, lightModel, mosquitoModel, apparatusModel,parentModel];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadData) name:CHANGETIMEMODEL object:nil];
 
@@ -321,25 +321,25 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
             if ([[week substringToIndex:1] isEqualToString:@"1"]) {
                 parent = YES;
             }
-//            isParentModel = parent;
-            //家长模式
-//            if (isParentModel) {
-//                isValidate = YES;
-//                model.open = [[week substringToIndex:1] isEqualToString:@"1"]?YES:NO;
-//            }else
-//            {
-//                if (([start isEqualToString:end] || ([[time substringToIndex:4] integerValue] > [[time substringWithRange:NSMakeRange(4, 4)] integerValue])) || [[week substringFromIndex:1] isEqualToString:@"0000000"]) {
-//                    model.open = NO;
-//                }else
-//                {
-//                    model.open = YES;
-//                    isValidate = YES;
-//                }
-//            }
+            isParentModel = parent;
+//            家长模式
+            if (isParentModel) {
+                isValidate = YES;
+                model.open = [[week substringToIndex:1] isEqualToString:@"1"]?YES:NO;
+            }else
+            {
+                if (([start isEqualToString:end] || ([[time substringToIndex:4] integerValue] > [[time substringWithRange:NSMakeRange(4, 4)] integerValue])) || [[week substringFromIndex:1] isEqualToString:@"0000000"]) {
+                    model.open = NO;
+                }else
+                {
+                    model.open = YES;
+                    isValidate = YES;
+                }
+            }
 
-//            [self.datas addObject:model];
+            [self.datas addObject:model];
 
-        } 
+        }
 //
         //有效的时段设置模式
         if (isValidate) {
@@ -371,25 +371,25 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
     [customHeader setBackgroundColor:[UIColor whiteColor]];
     [modelCollectionView reloadData];
 
-//    [self configNoData];
+    [self configNoData];
     
 }
 
-//- (void)configNoData
-//{
-//    NSMutableArray *arr = [NSMutableArray array];
-//    for (int i = 0; i < 9 ; i++) {
-//        TimeSettingModel *model = [[TimeSettingModel alloc] init];
-//
-//        model.startTime = @"00:00";
-//        model.endTime = @"00:00";
-//        model.week = @"00";
-//        model.open = NO;
-//        [arr addObject:model];
-//    }
-//
-//    self.datas = arr;
-//}
+- (void)configNoData
+{
+    NSMutableArray *arr = [NSMutableArray array];
+    for (int i = 0; i < 9 ; i++) {
+        TimeSettingModel *model = [[TimeSettingModel alloc] init];
+
+        model.startTime = @"00:00";
+        model.endTime = @"00:00";
+        model.week = @"00";
+        model.open = NO;
+        [arr addObject:model];
+    }
+
+    self.datas = arr;
+}
 
 
 - (void)viewDidLayoutSubviews

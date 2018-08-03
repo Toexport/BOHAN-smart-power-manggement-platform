@@ -23,6 +23,7 @@
 //     新增
     
     __weak IBOutlet UIButton *ParentsModeBut; // 家长模式
+    __weak IBOutlet UIButton *ParentsModeSettingBut; //家长模式设置
     __weak IBOutlet UIButton *ChargingProtectionBut; // 充电保护
     __weak IBOutlet UIButton *PhoneChargingProtectionBut; // 手机充电保护
     __weak IBOutlet UIButton *DDCChargingProtectionBut; // 电动车充电保护
