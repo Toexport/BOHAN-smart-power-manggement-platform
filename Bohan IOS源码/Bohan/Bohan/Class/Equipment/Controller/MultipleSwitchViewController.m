@@ -11,14 +11,14 @@
 #import "DebuggingANDPublishing.pch"
 #import "UIViewController+NavigationBar.h"
 @interface MultipleSwitchViewController (){
-//    BOOL openg;
-//    NSInteger totalSecend;//总秒数
-//    NSInteger lastSecend;//剩余秒数点进去
+    //    BOOL openg;
+    //    NSInteger totalSecend;//总秒数
+    //    NSInteger lastSecend;//剩余秒数点进去
     NSDateFormatter *formatter;
     NSDateFormatter * formatters;
     NSDateFormatter * formatterd;
-//    NSString *start;
-//    NSString *end;
+    //    NSString *start;
+    //    NSString *end;
 }
 
 @end
@@ -60,12 +60,12 @@
     if ([[self.SwitchStateStr substringWithRange:NSMakeRange(34, 2)] isEqualToString:@"00"]) {
         Open1But.selected = YES;
         Guan1But.selected = NO;
-//        Prompt1Label.text = Localize(@"设置已开启");
+        //        Prompt1Label.text = Localize(@"设置已开启");
     }else
         if ([[self.SwitchStateStr substringWithRange:NSMakeRange(34, 2)] isEqualToString:@"01"]) {
             Guan1But.selected = YES;
             Open1But.selected = NO;
-//            Prompt1Label.text = Localize(@"设置已关闭");
+            //            Prompt1Label.text = Localize(@"设置已关闭");
         }
     
     NSString * string = [self.SwitchStateStr substringWithRange:NSMakeRange(46, 2)];
@@ -99,16 +99,16 @@
         DividerView.hidden = YES;
         Divider2View.hidden = YES;
     }else
-    if ([self.deviceNo containsString:@"62"]) {
-        Switch3view.hidden = YES;
-        Divider2View.hidden = YES;
-    }else
-    if ([self.deviceNo containsString:@"63"]) {
-        Switch2view.hidden = NO;
-        Switch3view.hidden = NO;
-        DividerView.hidden = NO;
-        Divider2View.hidden = NO;
-    }
+        if ([self.deviceNo containsString:@"62"]) {
+            Switch3view.hidden = YES;
+            Divider2View.hidden = YES;
+        }else
+            if ([self.deviceNo containsString:@"63"]) {
+                Switch2view.hidden = NO;
+                Switch3view.hidden = NO;
+                DividerView.hidden = NO;
+                Divider2View.hidden = NO;
+            }
 }
 
 // 开关一
@@ -137,7 +137,7 @@
                 [HintView showHint:Localize(@"设定时间必须大于当前时间")];
                 return;
             }else {
-               [self Opendatas1];
+                [self Opendatas1];
             }
     }
 }
@@ -145,12 +145,31 @@
 // 开关二
 // 开
 - (IBAction)Switch2OpenBut:(UIButton *)sender {
+    NSString * stringg1 = [NSString stringWithFormat:@"%@%@%@%@%@",self.string1,self.string2,self.string3,self.string4,self.string5];
+    NSString * stringg2 = [NSString stringWithFormat:@"%@%@%@%@%@",self.stringg11,self.stringg22,self.stringg33,self.stringg44,self.stringg55];
+    ZPLog(@"%@--%@",stringg1,stringg2);
     if (sender.selected) {
         return;
     }else{
         sender.selected = !sender.selected;
         Guan2But.selected = NO;
-        [self Opendatas2];
+        if ([stringg2 isEqualToString:@"(null)(null)(null)(null)(null)"]) {
+            Open2But.selected = NO;
+            Guan2But.selected = YES;
+            ZPLog(@"请修改单前时间");
+            [HintView showHint:Localize(@"设定时间必须大于当前时间")];
+            return;
+        }else
+            if (stringg1.integerValue > stringg2.integerValue) {
+                // string1系统时间 大于 string2修改时间
+                Open2But.selected = NO;
+                Guan2But.selected = YES;
+                ZPLog(@"不能小于当前时间");
+                [HintView showHint:Localize(@"设定时间必须大于当前时间")];
+                return;
+            }else {
+                [self Opendatas2];
+            }
         ZPLog(@"开2");
     }
 }
@@ -204,12 +223,31 @@
 
 // 关2
 - (IBAction)Switch2GuanBut:(UIButton *)sender {
+    NSString * stringg1 = [NSString stringWithFormat:@"%@%@%@%@%@",self.string11,self.string22,self.string33,self.string44,self.string55];
+    NSString * stringg2 = [NSString stringWithFormat:@"%@%@%@%@%@",self.stringg11,self.stringg22,self.stringg33,self.stringg44,self.stringg55];
+    ZPLog(@"%@--%@",stringg1,stringg2);
     if (sender.selected) {
         return;
     }else {
         sender.selected = !sender.selected;
         Open2But.selected = NO;
-        [self Guandatas2];
+        if ([stringg2 isEqualToString:@"(null)(null)(null)(null)(null)"]) {
+            Open2But.selected = YES;
+            Guan2But.selected = NO;
+            ZPLog(@"请修改当前时间");
+            [HintView showHint:Localize(@"设定时间必须大于当前时间")];
+            return;
+        }else
+            if (stringg1.integerValue > stringg2.integerValue) {
+                // string1系统时间 大于 string2修改时间
+                Open2But.selected = YES;
+                Guan2But.selected = NO;
+                ZPLog(@"不能小于当前时间");
+                [HintView showHint:Localize(@"设定时间必须大于当前时间")];
+                return;
+            }else {
+                [self Guandatas2];
+            }
         ZPLog(@"关2");
     }
 }
@@ -234,32 +272,55 @@
     _str2 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring1,self.string22,self.string33,self.string44,self.string55];
     NSString * sstring2 = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
     _str3 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring2,self.string222,self.string333,self.string444,self.string555];
-    NSString * stringg = [NSString stringWithFormat:@"%@FF%@FF%@00",self.str3,self.str2,self.str1];
-    //这里的12位其中10位是时间，最后两位是开关“01”或者“”00或者FF，文档上写的
-    WebSocket *socket = [WebSocket socketManager];
-    CommandModel *command = [[CommandModel alloc] init];
-    command.command = @"002C";
-    command.deviceNo = self.deviceNo;
-    command.content = stringg;
-    [self.view startLoading];
-    MyWeakSelf
-    [socket sendSingleDataWithModel:command resultBlock:^(id response, NSError *error) {
-        [weakSelf.view stopLoading];
-        ZPLog(@"--------%@",response);
-        if (!error) {
-            [HintView showHint:Localize(@"开关1定时开启已设置")];
-        }else {
-            [HintView showHint:error.localizedDescription];// 后台返回的提示
-        }
-    }];
+    if ([self.deviceNo containsString:@"61"]) {
+        NSString * stringg = [NSString stringWithFormat:@"%@FF%@00%@FF",self.str3,self.str2,self.str1];
+        //这里的12位其中10位是时间，最后两位是开关“01”或者“”00或者FF，文档上写的
+        WebSocket *socket = [WebSocket socketManager];
+        CommandModel *command = [[CommandModel alloc] init];
+        command.command = @"002C";
+        command.deviceNo = self.deviceNo;
+        command.content = stringg;
+        [self.view startLoading];
+        MyWeakSelf
+        [socket sendSingleDataWithModel:command resultBlock:^(id response, NSError *error) {
+            [weakSelf.view stopLoading];
+            ZPLog(@"--------%@",response);
+            if (!error) {
+                [HintView showHint:Localize(@"开关1定时开启已设置")];
+            }else {
+                [HintView showHint:error.localizedDescription];// 后台返回的提示
+            }
+        }];
+    }else {
+        NSString * stringg = [NSString stringWithFormat:@"%@FF%@FF%@00",self.str3,self.str2,self.str1];
+        //这里的12位其中10位是时间，最后两位是开关“01”或者“”00或者FF，文档上写的
+        WebSocket *socket = [WebSocket socketManager];
+        CommandModel *command = [[CommandModel alloc] init];
+        command.command = @"002C";
+        command.deviceNo = self.deviceNo;
+        command.content = stringg;
+        [self.view startLoading];
+        MyWeakSelf
+        [socket sendSingleDataWithModel:command resultBlock:^(id response, NSError *error) {
+            [weakSelf.view stopLoading];
+            ZPLog(@"--------%@",response);
+            if (!error) {
+                [HintView showHint:Localize(@"开关1定时开启已设置")];
+            }else {
+                [HintView showHint:error.localizedDescription];// 后台返回的提示
+            }
+        }];
+    }
+    
 }
 
 // 定时开（2）
 - (void)Opendatas2 {
     NSString * ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];// 获取后两位数字
     _str1 = [NSString stringWithFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
-    NSString * sstring1 = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
-    _str2 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring1,self.string22,self.string33,self.string44,self.string55];
+    
+    NSString * sstring1 = [[NSString stringWithFormat:@"%@",self.stringg11]substringFromIndex:2];
+    _str2 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring1,self.stringg22,self.stringg33,self.stringg44,self.stringg55];
     NSString * sstring2 = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
     _str3 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring2,self.string222,self.string333,self.string444,self.string555];
     NSString * stringg = [NSString stringWithFormat:@"%@FF%@00%@FF",self.str3,self.str2,self.str1];
@@ -286,8 +347,10 @@
 - (void)Opendatas3 {
     NSString * ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];// 获取后两位数字
     _str1 = [NSString stringWithFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
+    
     NSString * sstring1 = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
     _str2 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring1,self.string22,self.string33,self.string44,self.string55];
+    
     NSString * sstring2 = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
     _str3 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring2,self.string222,self.string333,self.string444,self.string555];
     NSString * stringg = [NSString stringWithFormat:@"%@00%@FF%@FF",self.str3,self.str2,self.str1];
@@ -370,10 +433,31 @@
 - (void)Guandatas1 {
     NSString * ssting = [[NSString stringWithFormat:@"%@",self.stringg1]substringFromIndex:2];// 获取后两位数字
     _str1 = [NSString stringWithFormat:@"%@%@%@%@%@",ssting,self.stringg2,self.stringg3,self.stringg4,self.stringg5];
+    
     NSString * sstring1 = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
     _str2 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring1,self.string22,self.string33,self.string44,self.string55];
     NSString * sstring2 = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
     _str3 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring2,self.string222,self.string333,self.string444,self.string555];
+    if ([self.deviceNo containsString:@"61"]) {
+        NSString * stringg = [NSString stringWithFormat:@"%@FF%@01%@FF",self.str3,self.str2,self.str1];
+        //这里的12位其中10位是时间，最后两位是开关“01”或者“”00或者FF，文档上写的
+        WebSocket *socket = [WebSocket socketManager];
+        CommandModel *command = [[CommandModel alloc] init];
+        command.command = @"002C";
+        command.deviceNo = self.deviceNo;
+        command.content = stringg;
+        [self.view startLoading];
+        MyWeakSelf
+        [socket sendSingleDataWithModel:command resultBlock:^(id response, NSError *error) {
+            [weakSelf.view stopLoading];
+            ZPLog(@"--------%@",response);
+            if (!error) {
+                [HintView showHint:Localize(@"开关1定时关闭已设置")];
+            }else {
+                [HintView showHint:error.localizedDescription];// 后台返回的提示
+            }
+        }];
+    }else {
     NSString * stringg = [NSString stringWithFormat:@"%@FF%@FF%@01",self.str3,self.str2,self.str1];
     //这里的12位其中10位是时间，最后两位是开关“01”或者“”00或者FF，文档上写的
     WebSocket *socket = [WebSocket socketManager];
@@ -392,14 +476,17 @@
             [HintView showHint:error.localizedDescription];// 后台返回的提示
         }
     }];
+    }
 }
 
 // 定时关（2）
 - (void)Guandatas2 {
     NSString * ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];// 获取后两位数字
     _str1 = [NSString stringWithFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
-    NSString * sstring1 = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
-    _str2 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring1,self.string22,self.string33,self.string44,self.string55];
+    
+    NSString * sstring1 = [[NSString stringWithFormat:@"%@",self.stringg11]substringFromIndex:2];
+    _str2 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring1,self.stringg22,self.stringg33,self.stringg44,self.stringg55];
+    
     NSString * sstring2 = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
     _str3 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring2,self.string222,self.string333,self.string444,self.string555];
     NSString * stringg = [NSString stringWithFormat:@"%@FF%@01%@FF",self.str3,self.str2,self.str1];
@@ -512,7 +599,6 @@
     Hours1TextField.text = [NSString stringWithString:self.string4];
     Hours2TextField.text = [NSString stringWithString:self.string44];
     Hours3TextField.text = [NSString stringWithString:self.string444];
-    
     if (minute >= 10) {
         self.string5 = [[NSNumber numberWithInteger:minute] stringValue];
         self.string55 = [[NSNumber numberWithInteger:minute] stringValue];
@@ -529,7 +615,7 @@
 
 // 按钮1
 - (IBAction)switchButton:(UIButton *)sender {
-//    ZPLog(@"开1");
+    //    ZPLog(@"开1");
     NSString *string;
     if (!formatter) {
         formatter = [[NSDateFormatter alloc] init];
@@ -561,9 +647,7 @@
         [Minutes1TextField setText:[formatter stringFromDate:selectDate]];
         self.stringg5 = Minutes1TextField.text;
         Minutes1TextField.text = [NSString stringWithString:self.stringg5];
-        
     }];
-    
     datepicker.hideBackgroundYearLabel = YES;
     datepicker.dateLabelColor = kDefualtColor;
     datepicker.doneButtonColor = kDefualtColor;
@@ -582,28 +666,28 @@
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatters dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
         [formatters setDateFormat:@"yyyy"];// 解决问题
         [Years2TextField setText:[formatters stringFromDate:selectDate]];
-        self.string11 = Years2TextField.text;
-        Years2TextField.text = [NSString stringWithString:self.string11];
+        self.stringg11 = Years2TextField.text;
+        Years2TextField.text = [NSString stringWithString:self.stringg11];
         
         [formatters setDateFormat:@"MM"];
         [Month2TextField setText:[formatters stringFromDate:selectDate]];
-        self.string22 = Month2TextField.text;
-        Month2TextField.text = [NSString stringWithString:self.string22];
+        self.stringg22 = Month2TextField.text;
+        Month2TextField.text = [NSString stringWithString:self.stringg22];
         
         [formatters setDateFormat:@"dd"];
         [Day2textField setText:[formatters stringFromDate:selectDate]];
-        self.string33 = Day2textField.text;
-        Day2textField.text = [NSString stringWithString:self.string33];
+        self.stringg33 = Day2textField.text;
+        Day2textField.text = [NSString stringWithString:self.stringg33];
         
         [formatters setDateFormat:@"HH"];
         [Hours2TextField setText:[formatters stringFromDate:selectDate]];
-        self.string44 = Hours2TextField.text;
-        Hours2TextField.text = [NSString stringWithString:self.string44];
+        self.stringg44 = Hours2TextField.text;
+        Hours2TextField.text = [NSString stringWithString:self.stringg44];
         
         [formatters setDateFormat:@"mm"];
         [Minutes2TextField setText:[formatters stringFromDate:selectDate]];
-        self.string55 = Minutes2TextField.text;
-        Minutes2TextField.text = [NSString stringWithString:self.string55];
+        self.stringg55 = Minutes2TextField.text;
+        Minutes2TextField.text = [NSString stringWithString:self.stringg55];
     }];
     
     datepicker.hideBackgroundYearLabel = YES;

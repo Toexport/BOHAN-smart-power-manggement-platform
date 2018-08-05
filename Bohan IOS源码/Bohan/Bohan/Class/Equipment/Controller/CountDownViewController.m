@@ -51,12 +51,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     [self loadData];
     [self UI];
 }
-// UI
-- (void)UI {
-    CountdownView * view = [[[NSBundle mainBundle] loadNibNamed:@"CountdownView" owner:nil options:nil] firstObject];
-    _mainTable.tableFooterView = view;
-    
-}
+
 
 - (void)updateViewConstraints {
     [super updateViewConstraints];
@@ -268,8 +263,28 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 }
 
 //新增
+
+// UI
+- (void)UI {
+    CountdownView * view = [[[NSBundle mainBundle] loadNibNamed:@"CountdownView" owner:nil options:nil] firstObject];
+    view.doneBlock = ^(NSString *selectDate) {
+        
+        time.text = selectDate;
+    };
+    view.buttonAction = ^(UIButton *sender) {
+        
+        [self startAction];
+    };
+    _mainTable.tableFooterView = view;
+    
+}
+
 // 延时开关
 - (IBAction)DelayClosingBut:(UIButton *)sender {
+    [self startAction];
+}
+// 延时数据
+- (void)startAction {
     NSString *content = [time.text stringByReplacingOccurrencesOfString:@":" withString:@""];
     if ([content isEqualToString:@"000000"]) {
         [HintView showHint:Localize(@"请选择倒计时时间")];
@@ -279,7 +294,6 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     CommandModel *model = [[CommandModel alloc] init];
     model.command = open?@"000B":@"000A";
     model.deviceNo = self.deviceNo;
-    
     model.content = [content substringToIndex:4];
     [self.view startLoading];
     
@@ -287,29 +301,19 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
-        
         if (!error) {
-            
-            int minutes = [[time.text substringToIndex:2] intValue]*60+[[time.text substringWithRange:NSMakeRange(3, 5)] intValue];
+            int minutes = [[time.text substringToIndex:4] intValue]*60+[[time.text substringWithRange:NSMakeRange(3, 5)] intValue];
             startDate = [NSDate dateWithMinutesFromNow:minutes];
             [formatter setDateFormat:@"yyMMddHHmmss"];
             startDate = [formatter dateFromString:[formatter stringFromDate:startDate]];
             totalSecend = MAX(0, [startDate timeIntervalSinceDate:[NSDate date]]);
             [weakSelf showConfig];
-            
             [self setUpTimer];
-            
             [HintView showHint:Localize(@"设置成功")];
-            
         }else{
             [HintView showHint:error.localizedDescription];
         }
-        
     }];
-}
-
-- (void)startAction {
-   
 }
 
 - (void)setUpTimer {
@@ -395,7 +399,6 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     
     if (indexPath.row == 2) {
         [formatter setDateFormat:@"HH:mm"];
-        
         WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowHourMinute scrollToDate:[formatter dateFromString:[time.text substringToIndex:5]] CompleteBlock:^(NSDate *selectDate) {
             if (self.selectedItemIndex != indexPath.row) {
                 self.selectedItemIndex = indexPath.row;
@@ -412,8 +415,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
         datepicker.doneButtonColor = kDefualtColor;
         [datepicker show];
 
-    }else
-    {
+    }else {
         if (indexPath.row == 0) {
             
             [time setText:@"00:05:00"];

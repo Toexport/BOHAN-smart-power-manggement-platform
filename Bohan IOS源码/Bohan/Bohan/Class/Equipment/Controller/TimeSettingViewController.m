@@ -46,24 +46,20 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.title = Localize(@"时段设置");
     if (@available(iOS 11.0, *)){
         [(UIScrollView *)self.view setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
-    }else
-    {
+    }else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-
     [self setUp];
     [self loadData];
     [self loopOpenCloseTime];
 }
 
-- (void)setUp
-{
+- (void)setUp {
     self.datas = [NSMutableArray array];
-    loopModels = @[Localize(@"热水器"), Localize(@"鱼缸"), Localize(@"小夜灯"), Localize(@"蚊香"), Localize(@"取暖器"),Localize(@"家长模式")];
+    loopModels = @[Localize(@"热水器"), Localize(@"鱼缸"), Localize(@"小夜灯"), Localize(@"蚊香"), Localize(@"取暖器")];
     modelContents = @[heaterModel, fishModel, lightModel, mosquitoModel, apparatusModel,parentModel];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadData) name:CHANGETIMEMODEL object:nil];
 
@@ -323,22 +319,22 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
             }
             isParentModel = parent;
 //            家长模式
-            if (isParentModel) {
-                isValidate = YES;
-                model.open = [[week substringToIndex:1] isEqualToString:@"1"]?YES:NO;
-            }else
-            {
-                if (([start isEqualToString:end] || ([[time substringToIndex:4] integerValue] > [[time substringWithRange:NSMakeRange(4, 4)] integerValue])) || [[week substringFromIndex:1] isEqualToString:@"0000000"]) {
-                    model.open = NO;
-                }else
-                {
-                    model.open = YES;
-                    isValidate = YES;
-                }
-            }
-
-            [self.datas addObject:model];
-
+//            if (isParentModel) {
+//                isValidate = YES;
+//                model.open = [[week substringToIndex:1] isEqualToString:@"1"]?YES:NO;
+//            }else
+//            {
+//                if (([start isEqualToString:end] || ([[time substringToIndex:4] integerValue] > [[time substringWithRange:NSMakeRange(4, 4)] integerValue])) || [[week substringFromIndex:1] isEqualToString:@"0000000"]) {
+//                    model.open = NO;
+//                }else
+//                {
+//                    model.open = YES;
+//                    isValidate = YES;
+//                }
+//            }
+//
+//            [self.datas addObject:model];
+//
         }
 //
         //有效的时段设置模式
@@ -533,7 +529,7 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     
-    return 6;
+    return 5;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {

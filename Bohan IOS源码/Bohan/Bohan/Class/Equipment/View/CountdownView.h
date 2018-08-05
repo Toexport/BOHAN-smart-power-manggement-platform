@@ -26,7 +26,10 @@
     __weak IBOutlet UITextField *HHTextField;  // 时
     __weak IBOutlet UITextField *MMTextField; // 分
 }
-
+typedef void(^doneBlock)(NSString *selectDate);
+@property (nonatomic,strong)doneBlock doneBlock  ;
+typedef void(^ButtonClick)(UIButton * sender);
+@property (nonatomic,copy) ButtonClick buttonAction;
 
 @property (nonatomic, strong) NSString * string1;
 @property (nonatomic, strong) NSString * string2;

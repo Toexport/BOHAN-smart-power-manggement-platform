@@ -27,11 +27,16 @@
 }
 // 设置按钮
 - (IBAction)SettingBut:(UIButton *)sender {
+//    self.CountdownBlock();
 //     NSString *content = [time.text stringByReplacingOccurrencesOfString:@":" withString:@""];
 //    if ([content isEqualToString:@"000000"]) {
-        [HintView showHint:Localize(@"请选择倒计时时间")];
-        return;
+//        [HintView showHint:Localize(@"请选择倒计时时间")];
+//        return;
 //    }
+    if (self.buttonAction) {
+        self.buttonAction(sender);
+    }
+    
 }
 
 // 获取当前年月日时间
@@ -42,16 +47,16 @@
     //IOS 8 之后
     NSUInteger integer = NSCalendarUnitYear | NSCalendarUnitMonth |NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
     NSDateComponents *dataCom = [currentCalendar components:integer fromDate:currentDate];
-//    NSInteger year = [dataCom year]; // 年
+    NSInteger year = [dataCom year]; // 年
     NSInteger month = [dataCom month]; // 月
     NSInteger day = [dataCom day]; // 日
     NSInteger hour = [dataCom hour]; // 时
     NSInteger minute = [dataCom minute]; // 分
     
-//    self.string1 = [[NSNumber numberWithInteger:year] stringValue];
-//    self.string11 = [[NSNumber numberWithInteger:year] stringValue];
-//    YYYYTextField.text = [NSString stringWithString:self.string1];
-//    YearTextField.text = [NSString stringWithString:self.string11];
+    self.string1 = [[NSNumber numberWithInteger:year] stringValue];
+    self.string11 = [[NSNumber numberWithInteger:year] stringValue];
+    YYYYTextField.text = [NSString stringWithString:self.string1];
+    YearTextField.text = [NSString stringWithString:self.string11];
     if(month >= 10) {
         self.string2 = [[NSNumber numberWithInteger:month] stringValue];
         self.string22 = [[NSNumber numberWithInteger:month] stringValue];
@@ -106,10 +111,10 @@
     }
     [formatters setDateFormat:@"yyyy-MM-dd HH:mm"];
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatters dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
-//        [formatters setDateFormat:@"yyyy"];// 解决问题
-//        [YearTextField setText:[formatters stringFromDate:selectDate]];
-//        self.string1 = YearTextField.text;
-//        YearTextField.text = [NSString stringWithString:self.string1];
+        [formatters setDateFormat:@"yyyy"];// 解决问题
+        [YearTextField setText:[formatters stringFromDate:selectDate]];
+        self.string1 = YearTextField.text;
+        YearTextField.text = [NSString stringWithString:self.string1];
         
         [formatters setDateFormat:@"MM"];
         [MonthTextField setText:[formatters stringFromDate:selectDate]];
@@ -134,6 +139,7 @@
         str2 = [NSString stringWithFormat:@"%@",string1];
         ZPLog(@"%@",str2);
         [self pleaseInsertStarTimeo:str1 andInsertEndTime:str2];
+        
     }];
     datepicker.hideBackgroundYearLabel = YES;
     datepicker.dateLabelColor = kDefualtColor;
@@ -150,12 +156,24 @@
     formatter.dateFormat = @"yyyyMMddHHmm";
     NSDate *date2 = [formatter dateFromString:createdAtString1];
     NSDate *date1 = [formatter dateFromString:createdAtString];
-    // 2.创建日历
-    NSCalendar *calendar = [NSCalendar currentCalendar];
-    NSCalendarUnit type = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute;
-    // 3.利用日历对象比较两个时间的差值
-    NSDateComponents *cmps = [calendar components:type fromDate:date2 toDate:date1 options:0];
-    // 4.输出结果
-    NSLog(@"两个时间相差%ld年%ld月%ld日%ld小时%ld分钟", (long)cmps.year, (long)cmps.month, (long)cmps.day, (long)cmps.hour, (long)cmps.minute);
+    NSDate *date3 = [NSDate dateWithTimeIntervalSinceNow:ABS(date2.timeIntervalSinceNow-date1.timeIntervalSinceNow)];
+    NSInteger count = ABS(date2.timeIntervalSinceNow-date1.timeIntervalSinceNow);
+    NSInteger hours = count /3600;
+    NSInteger mnitues = count %3600/60;
+    NSString *string = [NSString stringWithFormat:@"%.02ld:%.02ld:00",(long)hours,(long)mnitues];
+    if (self.doneBlock) {
+        self.doneBlock(string);
+        
+    }
+//    
+//    // 2.创建日历
+//    NSCalendar *calendar = [NSCalendar currentCalendar];
+//    NSCalendarUnit type = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute;
+//    // 3.利用日历对象比较两个时间的差值
+//    NSDateComponents *cmps = [calendar components:type fromDate:date2 toDate:date1 options:0];
+////    NSString * string = [NSString stringWithFormat:@"%ld%ld%ld%ld", (long)cmps.year, (long)cmps.month, (long)cmps.day, (long)cmps.hour, (long)cmps.minute];
+////    ZPLog(@"%@",string);
+//    // 4.输出结果
+//    NSLog(@"两个时间相差%ld年%ld月%ld日%ld小时%ld分钟", (long)cmps.year, (long)cmps.month, (long)cmps.day, (long)cmps.hour, (long)cmps.minute);
 }
 @end
