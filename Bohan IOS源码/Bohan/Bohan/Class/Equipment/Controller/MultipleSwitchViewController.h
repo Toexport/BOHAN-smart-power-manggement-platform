@@ -10,8 +10,11 @@
 #import "DeviceModel.h"
 @interface MultipleSwitchViewController : BaseViewController {
     __weak IBOutlet UIScrollView *scrollView;
+//    __weak IBOutlet UIView *coverView;
     
     //    开关一
+    __weak IBOutlet UIView *Switch1view;
+    //    __weak IBOutlet NSLayoutConstraint *View1LayoutConstraint;
     __weak IBOutlet UITextField *Years1TextField;  // 年
     __weak IBOutlet UITextField *Month1TextField; // 月
     __weak IBOutlet UITextField *Day1textField;  // 日
@@ -19,9 +22,11 @@
     __weak IBOutlet UITextField *Minutes1TextField; // 分
     __weak IBOutlet UIButton *Open1But; // 开
     __weak IBOutlet UIButton *Guan1But; // 关
-    __weak IBOutlet UILabel *Prompt1Label; //提示文字
+//    __weak IBOutlet UILabel *Prompt1Label; //提示文字
     
 //     开关二
+     __weak IBOutlet NSLayoutConstraint *View2LayoutConstraint;
+    __weak IBOutlet UILabel *Label2Text;
     __weak IBOutlet UIView *Switch2view; // 开关2View
     __weak IBOutlet UITextField *Years2TextField; // 年
     __weak IBOutlet UITextField *Month2TextField; // 月
@@ -32,6 +37,8 @@
     __weak IBOutlet UIButton *Guan2But; // 关
     
 //     开关三
+    __weak IBOutlet NSLayoutConstraint *View3LayoutConstraint;
+    __weak IBOutlet UILabel *Label3Text;
     __weak IBOutlet UIView *DividerView; // 分割线
     __weak IBOutlet UIView *Switch3view; // 开关3View
     __weak IBOutlet UITextField *Years3TextField; // 年

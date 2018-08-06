@@ -329,7 +329,9 @@
                                 <constraint firstAttribute="height" constant="28" id="yHe-G5-pmF"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <state key="normal" title="家长模式"/>
+                            <state key="normal" title="家长模式">
+                                <color key="titleColor" red="0.2271994447" green="0.4445286886" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            </state>
                             <connections>
                                 <action selector="ParentsModeSettingBut:" destination="-1" eventType="touchUpInside" id="uKf-O7-dwj"/>
                             </connections>
@@ -373,7 +375,7 @@
                                 <constraint firstAttribute="height" constant="28" id="FiX-Km-U4n"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iRI-jn-WBE">
@@ -394,7 +396,7 @@
                                 <constraint firstAttribute="height" constant="28" id="NhT-GR-Kdq"/>
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                            <nil key="textColor"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
@@ -441,7 +443,7 @@
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="51W-G5-a11">
                     <rect key="frame" x="295" y="466" width="65" height="28"/>
-                    <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" red="0.2271994447" green="0.4445286886" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="28" id="Leo-3I-QNy"/>
                         <constraint firstAttribute="width" constant="65" id="phL-o8-cmI"/>

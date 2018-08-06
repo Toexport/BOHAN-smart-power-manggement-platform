@@ -94,7 +94,6 @@
         [weakSelf.view stopLoading];
         
         if (!error) {
-            
             if (((NSString *)response).length>26) {
                 
                 NSString *status = [response substringWithRange:NSMakeRange(24, 2)];
@@ -122,31 +121,35 @@
                         open = YES;
                     }
                     //三位插座
-                }else if ([self.dNo hasPrefix:@"63"])
-                {
+                }else if ([self.dNo hasPrefix:@"63"]) {
                     if ([left isEqualToString:@"0"] || [right isEqualToString:@"0"] || [center isEqualToString:@"0"]) {
                         open = NO;
-                    }else
-                    {
+                    }else {
                         open = YES;
                     }
-                }else
-                {
+                }else {
                     if ([status isEqualToString:@"00"]) {
                         open = NO;
-                    }else
-                    {
+                    }else {
                         open = YES;
                     }
                 }
                 if (open) {
                     ChargingProtectionBut.selected = YES;
-                    //                PhoneChargingProtectionBut.selected = YES;
-                    //                DDCChargingProtectionBut.selected = YES;
-                }else  {
+                    ZNDDBut.selected = NO;
+                    [SettingBut setEnabled:NO]; // 交互关闭
+                    SettingBut.alpha = 0.4; // 透明度
+                    [timeBut setEnabled:NO];
+                    time.alpha = 0.4;
+                    [PowerBut setEnabled:NO];
+                    PowerBut.alpha = 0.4;
+                }else {
                     ChargingProtectionBut.selected = NO;
-                    //                PhoneChargingProtectionBut.selected = NO;
-                    //                DDCChargingProtectionBut.selected = NO;
+                    ZNDDBut.selected = YES;
+                    [PhoneChargingProtectionBut setEnabled:NO];// 交互关闭
+                    PhoneChargingProtectionBut.alpha = 0.4;
+                    [DDCChargingProtectionBut setEnabled:NO];
+                    DDCChargingProtectionBut.alpha = 0.4;
                 }
                 
             }
@@ -157,8 +160,7 @@
     
 }
 
-- (void)getPower
-{
+- (void)getPower {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0022";
@@ -201,25 +203,21 @@
     
 }
 
-- (void)checkClose:(BOOL)close
-{
+- (void)checkClose:(BOOL)close {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0015";
     model.deviceNo = self.dNo;
     model.content = close?@"01":@"00";
     [self.view startLoading];
-    
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
-        
         if (!error) {
             [HintView showHint:Localize(@"设置成功")];
         }else {
             [HintView showHint:error.localizedDescription];
         }
-        
     }];
     
 }
@@ -232,7 +230,6 @@
     model.deviceNo = self.dNo;
     model.content = [NSString stringWithFormat:@"%02d",[[time.text substringToIndex:time.text.length - 2] intValue]];
     [self.view startLoading];
-    
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
@@ -367,7 +364,6 @@
 - (IBAction)timeEditAction {
     [SGActionView showSheetWithTitle:nil itemTitles:muniteArr itemSubTitles:nil selectedIndex:[[time.text substringToIndex:time.text.length - Localize(@"分钟").length] integerValue] selectedHandle:^(NSInteger index) {
         [time setText:[NSString stringWithFormat:@"%ld%@",(long)index, Localize(@"分钟")]];
-        //    [self changeTime];
     }];
 }
 
@@ -375,7 +371,6 @@
 - (IBAction)powerEditAction {
     [SGActionView showSheetWithTitle:nil itemTitles:powerArr itemSubTitles:nil selectedIndex:[[power.text substringToIndex:power.text.length - 1] integerValue] selectedHandle:^(NSInteger index) {
         [power setText:[NSString stringWithFormat:@"%ldW",(long)index]];
-        //    [self changePower];
     }];
 }
 
@@ -393,12 +388,11 @@
         [ParentsModeSettingBut setEnabled:NO];// 交互关闭
         ParentsModeSettingBut.alpha = 0.4;//透明度
         [self UnparentData];
-        
         ZPLog(@"取消");
     }
 }
 
-- (void)loadData{
+- (void)loadData {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0008";
@@ -414,10 +408,8 @@
                 [HintView showHint:Localize(@"设置成功")];
             }
             
-        }else
-        {
+        }else {
             [HintView showHint:Localize(@"加载数据失败")];
-//            [weakSelf.navigationController popViewControllerAnimated:YES];
         }
         
         ZPLog(@"--------%@",response);
@@ -429,7 +421,6 @@
     BOOL isValidate = NO;
     for (NSInteger i = 0; i < 9; i++) {
     TimeSettingModel * model = [[TimeSettingModel alloc] init];
-//    NSString *week = [Utils getBinaryByHex:model.week];
     NSString *time= [content substringWithRange:NSMakeRange(i*10, 10)];
     NSMutableString *start = [[time substringToIndex:4] mutableCopy];
         [start insertString:@":" atIndex:2];
@@ -447,8 +438,7 @@
     if (isParentModel) {
         isValidate = YES;
         model.open = [[week substringToIndex:1] isEqualToString:@"1"]?YES:NO;
-    }else
-    {
+    }else {
         if (([start isEqualToString:end] || ([[time substringToIndex:4] integerValue] > [[time substringWithRange:NSMakeRange(4, 4)] integerValue])) || [[week substringFromIndex:1] isEqualToString:@"0000000"]) {
             model.open = NO;
         }else {
@@ -457,9 +447,10 @@
         }
     }
     [self.datas addObject:model];
-        
 }
 }
+
+
 
 - (void)configNoData {
     NSMutableArray *arr = [NSMutableArray array];
@@ -478,7 +469,7 @@
 - (IBAction)ParentsModeSettingBut:(UIButton *)sender {
     TimeSettingListViewController *list = [[TimeSettingListViewController alloc] init];
     list.datas = self.datas;
-    list.deviceNo = deviceId.text;
+    list.deviceNo = [[deviceId.text componentsSeparatedByString:@"ID:"] lastObject]; // 去掉多余的@“ID:”
     list.isParentModel = isParentModel;
     [self.navigationController pushViewController:list animated:YES];
 }
@@ -524,6 +515,7 @@
             ChargingProtectionBut.selected = NO;
             [self checkClose:ChargingProtectionBut.selected];
         }
+//        ZNDDBut.selected = NO;
         [DDCChargingProtectionBut setEnabled:NO]; //交互关闭
         DDCChargingProtectionBut.alpha=0.4;//透明度
         [PhoneChargingProtectionBut setEnabled:NO]; //交互关闭
@@ -535,13 +527,6 @@
         timeBut.alpha = 0.4; //透明度
         [PowerBut setEnabled:NO]; // 交互关闭
         PowerBut.alpha = 0.4;
-        
-//        [SettingBut setEnabled:YES]; // 交互打开
-//        SettingBut.alpha = 100; // 透明度
-//        [timeBut setEnabled:YES]; //交互开启
-//        timeBut.alpha = 100; //透明度
-//        [PowerBut setEnabled:YES]; // 交互开启
-//        PowerBut.alpha = 100;
     }
 }
 
@@ -599,11 +584,6 @@
             ZNDDBut.selected = NO;
             [self checkClose:ZNDDBut.selected];
         }
-        ChargingProtectionBut.selected = NO;
-//        [DDCChargingProtectionBut setEnabled:YES]; //交互开启
-//        DDCChargingProtectionBut.alpha = 100;//透明度
-//        [PhoneChargingProtectionBut setEnabled:YES]; //交互开启
-//        PhoneChargingProtectionBut.alpha = 100;//透明度
         [DDCChargingProtectionBut setEnabled:NO]; //交互关闭
         DDCChargingProtectionBut.alpha = 0.4;//透明度
         [PhoneChargingProtectionBut setEnabled:NO]; //交互关闭
@@ -620,16 +600,6 @@
 
 // 默认不打勾充电保护设置，智能断电控制变灰不可点击
 - (void)DefaultGray {
-    [DDCChargingProtectionBut setEnabled:NO]; //交互关闭
-    DDCChargingProtectionBut.alpha=0.4;//透明度
-    [PhoneChargingProtectionBut setEnabled:NO]; //交互关闭
-    PhoneChargingProtectionBut.alpha=0.4;//透明度
-    [SettingBut setEnabled:NO]; // 交互打开
-    SettingBut.alpha = 0.4; // 透明度
-    [timeBut setEnabled:NO]; //交互关闭
-    timeBut.alpha = 0.4; //透明度
-    [PowerBut setEnabled:NO]; // 交互关闭
-    PowerBut.alpha = 0.4;//透明度
     [ParentsModeSettingBut setEnabled:NO];// 交互关闭
     ParentsModeSettingBut.alpha = 0.4;//透明度
 }

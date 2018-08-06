@@ -101,7 +101,7 @@
         NSArray * strarray = [string  componentsSeparatedByString:@"@"];
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             Label1.text = strarray[0];
-            Label3.text = strarray[2];
+            Label3.text = strarray[1];
         });
             
         

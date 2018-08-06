@@ -46,11 +46,11 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
 
 
 - (void)changeModel:(NSString *)content {
-    
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0009";
     model.deviceNo = self.deviceNo;
+//    model.deviceNo = [[self.deviceNo componentsSeparatedByString:@"ID:"] lastObject]; // 去掉多余的@“ID:”
     model.content = content;
     [self.view startLoading];
     
@@ -133,8 +133,7 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
             [HintView showHint:Localize(@"操作成功")];
             [[NSNotificationCenter defaultCenter] postNotificationName:CHANGETIMEMODEL object:nil];
 
-        }else
-        {
+        }else {
             [HintView showHint:error.localizedDescription];
         }
         
@@ -145,13 +144,6 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
 {
     
 }
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 
 - (UITableView *)mainTable
 {
