@@ -56,38 +56,14 @@
 
 // 监测开关状态
 - (void)SwitchStateStrr {
-    NSString * strin = [_SwitchStateStr substringWithRange:NSMakeRange(34, 2)];
-    if ([[self.SwitchStateStr substringWithRange:NSMakeRange(34, 2)] isEqualToString:@"00"]) {
-        Open1But.selected = YES;
-        Guan1But.selected = NO;
-        //        Prompt1Label.text = Localize(@"设置已开启");
-    }else
-        if ([[self.SwitchStateStr substringWithRange:NSMakeRange(34, 2)] isEqualToString:@"01"]) {
-            Guan1But.selected = YES;
-            Open1But.selected = NO;
-            //            Prompt1Label.text = Localize(@"设置已关闭");
-        }
+    Open1But.selected = [[self.SwitchStateStr substringWithRange:NSMakeRange(58, 2)] isEqualToString:@"00"];
+    Guan1But.selected = !Open1But.selected;
     
-    NSString * string = [self.SwitchStateStr substringWithRange:NSMakeRange(46, 2)];
-    if ([[self.SwitchStateStr substringWithRange:NSMakeRange(46, 2)] isEqualToString:@"00"]) {
-        Open2But.selected = YES;
-        Guan2But.selected = NO;
-    }else
-        if ([[self.SwitchStateStr substringWithRange:NSMakeRange(46, 2)] isEqualToString:@"01"]) {
-            Guan2But.selected = YES;
-            Open2But.selected = NO;
-        }
+    Open2But.selected = [[self.SwitchStateStr substringWithRange:NSMakeRange(46, 2)] isEqualToString:@"00"];
+    Guan2But.selected = !Open2But.selected;
     
-    NSString * stringg = [self.SwitchStateStr substringWithRange:NSMakeRange(58, 2)];
-    if ([[self.SwitchStateStr substringWithRange:NSMakeRange(58, 2)] isEqualToString:@"00"]) {
-        Open3But.selected = YES;
-        Guan3But.selected = NO;
-    }else
-        if ([[self.SwitchStateStr substringWithRange:NSMakeRange(58, 2)] isEqualToString:@"01"]) {
-            Guan3But.selected = YES;
-            Open3But.selected = NO;
-        }
-    ZPLog(@"截取的值为: %@=%@=%@",strin,string,stringg);
+    Open3But.selected = [[self.SwitchStateStr substringWithRange:NSMakeRange(34, 2)] isEqualToString:@"00"];
+    Guan3But.selected = !Open3But.selected;
 }
 
 // 是否显示2-3号开关

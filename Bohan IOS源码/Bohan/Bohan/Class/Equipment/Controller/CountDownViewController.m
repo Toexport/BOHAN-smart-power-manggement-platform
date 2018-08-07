@@ -76,7 +76,6 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     model.deviceNo = self.deviceNo;
 //    MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
-        
         if (!error) {
             if (((NSString *)response).length == 120) {
                 

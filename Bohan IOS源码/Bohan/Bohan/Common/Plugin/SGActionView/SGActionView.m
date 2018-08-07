@@ -281,8 +281,7 @@
 + (void)showTimeWithTitle:(NSString *)title
                      type:(ActionSheetType)currentType
                  starTime:(NSDate*)starTimeDate withIndex:(NSString*)indexStr
-           selectedHandle:(SGDateTimePick)handler
-{
+           selectedHandle:(SGDateTimePick)handler{
     
     SGTimePick *menu = [[SGTimePick alloc] initWithTitle:title type:currentType starTime:starTimeDate withIndex:indexStr];
 

@@ -19,7 +19,7 @@ static NSString * const fishModel = @"000001007F020003007F040005007F060007007F08
 static NSString * const lightModel = @"000006007F220023597F000000007F000000007F000000007F000000007F000000007F000000007F000000007F03";
 static NSString * const mosquitoModel = @"200023597F000006007F000000007F000000007F000000007F000000007F000000007F000000007F000000007F03";
 static NSString * const apparatusModel = @"180023597F000006007F000000007F000000007F000000007F000000007F000000007F000000007F000000007F03";
-static NSString * const parentModel = @"17002000FF0000000000000000000000000000000000000000000000000000000000000000000000000000000003";
+//static NSString * const parentModel = @"17002000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF037";
 
 #import "TimeSettingViewController.h"
 #import "TimeSettingListViewController.h"
@@ -60,7 +60,7 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
 - (void)setUp {
     self.datas = [NSMutableArray array];
     loopModels = @[Localize(@"热水器"), Localize(@"鱼缸"), Localize(@"小夜灯"), Localize(@"蚊香"), Localize(@"取暖器")];
-    modelContents = @[heaterModel, fishModel, lightModel, mosquitoModel, apparatusModel,parentModel];
+    modelContents = @[heaterModel, fishModel, lightModel, mosquitoModel, apparatusModel];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadData) name:CHANGETIMEMODEL object:nil];
 
     formatter = [[NSDateFormatter alloc] init];
@@ -170,7 +170,7 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
             
             [HintView showHint:Localize(@"已开启循环通断模式")];
             
-            [self configRunModelWithModelStr:@"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005" isLoop:YES];
+            [self configRunModelWithModelStr:@"00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF0005" isLoop:YES];
 
         }else
         {
@@ -200,7 +200,7 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
             
             if (!error) {
                 isParentModel = NO;
-                [self caculateWithString:@"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004"];
+                [self caculateWithString:@"00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF0004"];
                 
                 selectedIndexPath = nil;
                 
@@ -319,21 +319,21 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
             }
             isParentModel = parent;
 //            家长模式
-//            if (isParentModel) {
-//                isValidate = YES;
-//                model.open = [[week substringToIndex:1] isEqualToString:@"1"]?YES:NO;
-//            }else
-//            {
-//                if (([start isEqualToString:end] || ([[time substringToIndex:4] integerValue] > [[time substringWithRange:NSMakeRange(4, 4)] integerValue])) || [[week substringFromIndex:1] isEqualToString:@"0000000"]) {
-//                    model.open = NO;
-//                }else
-//                {
-//                    model.open = YES;
-//                    isValidate = YES;
-//                }
-//            }
-//
-//            [self.datas addObject:model];
+            if (isParentModel) {
+                isValidate = YES;
+                model.open = [[week substringToIndex:1] isEqualToString:@"1"]?YES:NO;
+            }else
+            {
+                if (([start isEqualToString:end] || ([[time substringToIndex:4] integerValue] > [[time substringWithRange:NSMakeRange(4, 4)] integerValue])) || [[week substringFromIndex:1] isEqualToString:@"0000000"]) {
+                    model.open = NO;
+                }else
+                {
+                    model.open = YES;
+                    isValidate = YES;
+                }
+            }
+
+            [self.datas addObject:model];
 //
         }
 //
@@ -425,7 +425,7 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
             [openBtn setTitle:@"00:00" forState:UIControlStateNormal];
             [closeBtn setTitle:@"00:00" forState:UIControlStateNormal];
             
-            [self caculateWithString:@"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004"];
+            [self caculateWithString:@"00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF0004"];
             
         }else
         {
@@ -474,7 +474,7 @@ static NSString * const parentModel = @"17002000FF000000000000000000000000000000
         [CommonOperation cancelDeviceRunModel:self.deviceNo result:^(id response, NSError *error) {
             if (!error) {
                 
-                [self caculateWithString:@"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004"];
+                [self caculateWithString:@"00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF0004"];
                 
                 [HintView showHint:Localize(@"取消成功")];
                 

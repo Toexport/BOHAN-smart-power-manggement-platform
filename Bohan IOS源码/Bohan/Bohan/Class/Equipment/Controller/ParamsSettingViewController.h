@@ -21,7 +21,6 @@
     __weak IBOutlet UILabel *power;
     
 //     新增
-    
     __weak IBOutlet UIButton *ParentsModeBut; // 家长模式
     __weak IBOutlet UIButton *ParentsModeSettingBut; //家长模式设置
     __weak IBOutlet UIButton *ChargingProtectionBut; // 充电保护
@@ -31,17 +30,12 @@
     __weak IBOutlet UIButton *SettingBut;  // 设置按钮
     __weak IBOutlet UIButton *timeBut; // 修改时间
     __weak IBOutlet UIButton *PowerBut;  // 功率设置
-    
-    
-    
-    
 }
+
 @property (nonatomic, copy)  NSString * Coedid;
 @property (nonatomic, copy) NSString *dNo;
 - (IBAction)saveAction:(UIButton *)sender;
-//- (IBAction)savePrice;
-//- (IBAction)saveLimit;
-//- (IBAction)selectAction:(UIButton *)sender;
 - (IBAction)timeEditAction;
 - (IBAction)powerEditAction;
+
 @end

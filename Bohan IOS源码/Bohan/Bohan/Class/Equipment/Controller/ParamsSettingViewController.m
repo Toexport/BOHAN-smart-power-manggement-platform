@@ -13,6 +13,8 @@
 #import "TimeSettingModel.h"
 #import "CommonOperation.h"
 #import "TimeSettingListViewController.h"
+static NSString * const parentModel = @"17002000FF0000000000000000000000000000000000000000000000000000000000000000000000000000000003";
+static NSString * const parentModel1 = @"170020007F0000000000000000000000000000000000000000000000000000000000000000000000000000000003";
 @interface ParamsSettingViewController ()
 {
     NSDateFormatter *formatter;
@@ -44,163 +46,99 @@
     }
     [deviceId setText:[NSString stringWithFormat:@"ID:%@",self.dNo]];
     [self deviceParams];
-    [self getStatus];
-    [self getPower];
-    [self getDelayTime];
+    [self loadData];
+//    [self getStatus];
+//    [self getPower];
+//    [self getDelayTime];
 //    [self configNoData];// 打开这个不显示家长模式是否开启
-    [self DefaultGray];
+//    [self DefaultGray];
 }
 
 - (void)deviceParams {
     self.datas = [NSMutableArray array];
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
-    model.command = @"0003";
+    model.command = @"0023";
     model.deviceNo = self.dNo;
     [self.view startLoading];
     
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
+        ZPLog(@"%@",response);
         if (!error) {
             NSString *priceStr = [response substringWithRange:NSMakeRange(24, 4)];
             NSString *powerStr = [response substringWithRange:NSMakeRange(28, 6)];
-            
+            ZPLog(@"%@",self.Coedid);
             [price setText:[NSString stringWithFormat:@"%d.%02d",[[priceStr substringToIndex:2] intValue],[[priceStr substringFromIndex:2] intValue]]];
-            
+            if ([self.Coedid containsString:@"WFMT"] || [self.Coedid containsString:@"YFMT"] || [self.Coedid containsString:@"CDMT60"] || [self.Coedid containsString:@"GP1P"] || [self.Coedid containsString:@"MC"] || [self.Coedid containsString:@"GP3P"]) {
+                ZPLog(@"%@",self.Coedid);
+                [limit setText:[NSString stringWithFormat:@"%d.%02d",[[powerStr substringToIndex:6] intValue],[[powerStr substringFromIndex:6] intValue]]];
+            } else {
             [limit setText:[NSString stringWithFormat:@"%d.%02d",[[powerStr substringToIndex:4] intValue],[[powerStr substringFromIndex:4] intValue]]];
-            
-            //            [weakSelf updateViewWithData:response];
-            
-        }else
-        {
-            [HintView showHint:error.localizedDescription];
-        }
-        
-        ZPLog(@"--------%@",response);
-    }];
-    
-}
-
-- (void)getStatus {
-    WebSocket *socket = [WebSocket socketManager];
-    CommandModel *model = [[CommandModel alloc] init];
-    model.command = @"0018";
-    model.deviceNo = self.dNo;
-    [self.view startLoading];
-    
-    MyWeakSelf
-    [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
-        [weakSelf.view stopLoading];
-        
-        if (!error) {
-            if (((NSString *)response).length>26) {
-                
-                NSString *status = [response substringWithRange:NSMakeRange(24, 2)];
-                NSString *binary = [Utils getBinaryByHex:status];
-                NSString *left = [binary substringWithRange:NSMakeRange(binary.length - 3, 1)];
-                NSString *center = [binary substringWithRange:NSMakeRange(binary.length - 2, 1)];
-                NSString *right = [binary substringFromIndex:binary.length - 1];
-                
-                BOOL open = NO;
-                //一位插座
-                if ([self.dNo hasPrefix:@"61"]) {
-                    if ([center isEqualToString:@"0"]) {
-                        open = NO;
-                    }else
-                    {
-                        open = YES;
-                    }
-                    //二位插座
-                }else if ([self.dNo hasPrefix:@"62"])
-                {
-                    if ([left isEqualToString:@"0"] || [right isEqualToString:@"0"]) {
-                        open = NO;
-                    }else
-                    {
-                        open = YES;
-                    }
-                    //三位插座
-                }else if ([self.dNo hasPrefix:@"63"]) {
-                    if ([left isEqualToString:@"0"] || [right isEqualToString:@"0"] || [center isEqualToString:@"0"]) {
-                        open = NO;
-                    }else {
-                        open = YES;
-                    }
-                }else {
-                    if ([status isEqualToString:@"00"]) {
-                        open = NO;
-                    }else {
-                        open = YES;
-                    }
-                }
-                if (open) {
+            }
+            NSString * protectStr = [response substringWithRange:NSMakeRange(48, 2)];
+            NSString * powerTest = [response substringWithRange:NSMakeRange(52, 2)];
+            if ([protectStr  isEqual: @"01"]) {
+                ZPLog(@"%@",protectStr);
+                if ([powerTest isEqual:@"02"]) {
                     ChargingProtectionBut.selected = YES;
+                    PhoneChargingProtectionBut.selected = YES;
+                    DDCChargingProtectionBut.selected = NO;
+                    [SettingBut setEnabled:NO]; // 交互关闭
+                    SettingBut.alpha = 0.4; // 透明度
+                    [timeBut setEnabled:NO];
+                    timeBut.alpha = 0.4;
+                    [PowerBut setEnabled:NO];
+                    PowerBut.alpha = 0.4;
+                }else
+                    if ([powerTest isEqual:@"05"]) {
+                        ChargingProtectionBut.selected = YES;
+                        DDCChargingProtectionBut.selected = YES;
+                        PhoneChargingProtectionBut.selected = NO;
+                        [SettingBut setEnabled:NO]; // 交互关闭
+                        SettingBut.alpha = 0.4; // 透明度
+                        [timeBut setEnabled:NO];
+                        timeBut.alpha = 0.4;
+                        [PowerBut setEnabled:NO];
+                        PowerBut.alpha = 0.4;
+                }else
+                    if ([powerTest isEqual:@"06"] || [powerTest isEqual:@"07"] || [powerTest isEqual:@"08"] || [powerTest isEqual:@"09"]) {
+                        ZNDDBut.selected = YES;
+                        [SettingBut setEnabled:YES]; // 交互关闭
+                        SettingBut.alpha = 100; // 透明度
+                        [timeBut setEnabled:YES];
+                        timeBut.alpha = 100;
+                        [PowerBut setEnabled:YES];
+                        PowerBut.alpha = 100;
+                        [PhoneChargingProtectionBut setEnabled:NO];// 交互关闭
+                        PhoneChargingProtectionBut.alpha = 0.4;
+                        [DDCChargingProtectionBut setEnabled:NO];
+                        DDCChargingProtectionBut.alpha = 0.4;
+                    }
+                ZPLog(@"%@",powerTest);
+            }else
+                if ([protectStr isEqual:@"00"]) {
+                    ChargingProtectionBut.selected = NO;
                     ZNDDBut.selected = NO;
                     [SettingBut setEnabled:NO]; // 交互关闭
                     SettingBut.alpha = 0.4; // 透明度
                     [timeBut setEnabled:NO];
-                    time.alpha = 0.4;
+                    timeBut.alpha = 0.4;
                     [PowerBut setEnabled:NO];
                     PowerBut.alpha = 0.4;
-                }else {
-                    ChargingProtectionBut.selected = NO;
-                    ZNDDBut.selected = YES;
                     [PhoneChargingProtectionBut setEnabled:NO];// 交互关闭
                     PhoneChargingProtectionBut.alpha = 0.4;
                     [DDCChargingProtectionBut setEnabled:NO];
                     DDCChargingProtectionBut.alpha = 0.4;
+                    ZPLog(@"%@",protectStr);
                 }
-                
-            }
-            
+            ZPLog(@"%@",protectStr);
+        }else {
+            [HintView showHint:error.localizedDescription];
         }
-        
+        ZPLog(@"--------%@",response);
     }];
-    
-}
-
-- (void)getPower {
-    WebSocket *socket = [WebSocket socketManager];
-    CommandModel *model = [[CommandModel alloc] init];
-    model.command = @"0022";
-    model.deviceNo = self.dNo;
-    [self.view startLoading];
-    
-    MyWeakSelf
-    [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
-        [weakSelf.view stopLoading];
-        
-        if (!error) {
-            if (((NSString *)response).length>26) {
-                NSString *status = [response substringWithRange:NSMakeRange(24, 2)];
-                [power setText:[NSString stringWithFormat:@"%dW",[status intValue]]];
-                
-            }
-        }
-        
-    }];
-    
-}
-
-- (void)getDelayTime {
-    WebSocket *socket = [WebSocket socketManager];
-    CommandModel *model = [[CommandModel alloc] init];
-    model.command = @"0017";
-    model.deviceNo = self.dNo;
-    [self.view startLoading];
-    
-    MyWeakSelf
-    [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
-        [weakSelf.view stopLoading];
-        if (!error) {
-            if (((NSString *)response).length>26) {
-                NSString *status = [response substringWithRange:NSMakeRange(24, 2)];
-                [time setText:[NSString stringWithFormat:@"%d%@",[status intValue], Localize(@"分钟")]];
-            }
-        }
-    }];
-    
 }
 
 - (void)checkClose:(BOOL)close {
@@ -224,6 +162,7 @@
 
 
 - (void)changeTime {
+    
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0016";
@@ -239,9 +178,7 @@
         }else {
             [HintView showHint:error.localizedDescription];
         }
-        
     }];
-    
 }
 
 - (void)changePower {
@@ -251,10 +188,10 @@
     model.deviceNo = self.dNo;
     model.content = [NSString stringWithFormat:@"%02d",[[power.text substringToIndex:power.text.length - 1] intValue]];
     [self.view startLoading];
-    
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
+        ZPLog(@"%@",power);
         if (!error) {
             [HintView showHint:Localize(@"设置成功")];
         }else {
@@ -289,7 +226,6 @@
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.deviceNo = self.dNo;
-    
     NSArray *contents;
     NSString *content;
     if (price.text.length == 0) {
@@ -298,18 +234,13 @@
     }
     model.command = @"0019";
     contents = [priceTF.text componentsSeparatedByString:@"."];
-    
-    //    ******注意：此处1.5元会发送0105，不对，需要调整*******
-    
     NSString *decimal = contents.count == 1?@"00":contents[1];
     if (decimal.length == 1) {
         decimal = [NSString stringWithFormat:@"%@0",decimal];
     }
     content = [NSString stringWithFormat:@"%02d%02d",[[contents firstObject] intValue],[decimal intValue]];
-    
     model.content = content;
     [self.view startLoading];
-    
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
@@ -327,7 +258,6 @@
     WebSocket * socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.deviceNo = self.dNo;
-    
     NSArray *contents;
     NSString *content;
     if (power.text.length == 0) {
@@ -348,16 +278,13 @@
         }else {
             [HintView showHint:error.localizedDescription];
         }
-        
     }];
 }
-
 
 // 设置按钮
 - (IBAction)SettingBut:(UIButton *)sender {
     [self changeTime];
     [self changePower];
-    
 }
 
 // 时间设置
@@ -379,40 +306,94 @@
 - (IBAction)ParentsModeBut:(UIButton *)sender {
     sender.selected =! sender.selected;
     if (sender.selected) {
-        [self loadData];
+//        [self loadData];
+        [self changeModel:parentModel isParentCancel:NO];
         [ParentsModeSettingBut setEnabled:YES];// 交互打开
         ParentsModeSettingBut.alpha = 100;//透明度
         ZPLog(@"选中");
     }else {
-        ChargingProtectionBut.selected = NO;
+        ParentsModeSettingBut.selected = NO;
         [ParentsModeSettingBut setEnabled:NO];// 交互关闭
         ParentsModeSettingBut.alpha = 0.4;//透明度
-        [self UnparentData];
+        [self changeModell:parentModel1 isParentCancel:NO];
         ZPLog(@"取消");
     }
 }
 
+// 获取是否是家长模式数据
 - (void)loadData {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0008";
-    model.deviceNo = [[deviceId.text componentsSeparatedByString:@":"] lastObject]; // 去掉：前面对于符合
+    model.deviceNo = self.dNo;
     [self.view startLoading];
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
+        ZPLog(@"%@",response);
         if (!error) {
-            if (((NSString *)response).length == 120) {
-                NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 96, 92)];
-                [weakSelf caculateWithString:content];
-                [HintView showHint:Localize(@"设置成功")];
-            }
-            
+            NSString * ParentsMode = [response substringWithRange:NSMakeRange(32, 2)];
+            ZPLog(@"%@",ParentsMode);
+//            NSString * stringg = [self getBinaryByHex:parentModel]; // 调用16转2进制
+//            ZPLog(@"%@",stringg);
+            if ([ParentsMode containsString:@"FF"]) {
+                ParentsModeBut.selected = YES;
+                [ParentsModeSettingBut setEnabled:YES];// 交互关闭
+                ParentsModeSettingBut.alpha = 100;//透明度
+            }else
+                if ([ParentsMode containsString:@"7F"]) {
+                    ParentsModeBut.selected = NO;
+                    [ParentsModeSettingBut setEnabled:NO];// 交互关闭
+                    ParentsModeSettingBut.alpha = 0.4;//透明度
+                }
         }else {
             [HintView showHint:Localize(@"加载数据失败")];
+            [weakSelf.navigationController popViewControllerAnimated:YES];
         }
-        
-        ZPLog(@"--------%@",response);
+    }];
+}
+// 16进制转2进制
+- (NSString *)getBinaryByHex:(NSString *)hex {
+    NSMutableDictionary *hexDic = [[NSMutableDictionary alloc] initWithCapacity:16];
+    [hexDic setObject:@"1111" forKey:@"F"];
+    NSString *binary = @"";
+    for (int i=0; i<[hex length]; i++) {
+        NSString *key = [hex substringWithRange:NSMakeRange(i, 1)];
+        NSString *value = [hexDic objectForKey:key.uppercaseString];
+        if (value) {
+            binary = [binary stringByAppendingString:value];
+        }
+    }
+    return binary;
+}
+
+
+- (void)changeModel:(NSString *)content isParentCancel:(BOOL)cancel {
+    WebSocket *socket = [WebSocket socketManager];
+    CommandModel *model = [[CommandModel alloc] init];
+    model.command = @"0009";
+    model.deviceNo = self.dNo;
+    model.content = [content substringToIndex:content.length - 2];
+    [self.view startLoading];
+    MyWeakSelf
+    [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
+        [weakSelf.view stopLoading];
+        if (cancel) {
+            if (!error) {
+                isParentModel = NO;
+                [self caculateWithString:@"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004"];
+            }else {
+                [HintView showHint:error.localizedDescription];
+            }
+        }else {
+            if (!error) {
+                [weakSelf caculateWithString:content];
+                [HintView showHint:Localize(@"设置成功")];
+            }else {
+                [HintView showHint:Localize(@"设置失败")];
+            }
+        }
+     
     }];
 }
 // 家长模式
@@ -420,9 +401,9 @@
     BOOL parent = NO;
     BOOL isValidate = NO;
     for (NSInteger i = 0; i < 9; i++) {
-    TimeSettingModel * model = [[TimeSettingModel alloc] init];
-    NSString *time= [content substringWithRange:NSMakeRange(i*10, 10)];
-    NSMutableString *start = [[time substringToIndex:4] mutableCopy];
+        NSString *time= [content substringWithRange:NSMakeRange(i*10, 10)];
+        TimeSettingModel *model = [[TimeSettingModel alloc] init];
+        NSMutableString *start = [[time substringToIndex:4] mutableCopy];
         [start insertString:@":" atIndex:2];
         NSMutableString *end = [[time substringWithRange:NSMakeRange(4, 4)] mutableCopy];
         [end insertString:@":" atIndex:2];
@@ -433,58 +414,57 @@
         if ([[week substringToIndex:1] isEqualToString:@"1"]) {
             parent = YES;
         }
-    isParentModel = parent;
-    //家长模式
-    if (isParentModel) {
-        isValidate = YES;
-        model.open = [[week substringToIndex:1] isEqualToString:@"1"]?YES:NO;
-    }else {
-        if (([start isEqualToString:end] || ([[time substringToIndex:4] integerValue] > [[time substringWithRange:NSMakeRange(4, 4)] integerValue])) || [[week substringFromIndex:1] isEqualToString:@"0000000"]) {
-            model.open = NO;
-        }else {
-            model.open = YES;
+        isParentModel = parent;
+        //家长模式
+        if (isParentModel) {
             isValidate = YES;
+            model.open = [[week substringToIndex:1] isEqualToString:@"1"]?YES:NO;
+        }else {
+            if (([start isEqualToString:end] || ([[time substringToIndex:4] integerValue] > [[time substringWithRange:NSMakeRange(4, 4)] integerValue])) || [[week substringFromIndex:1] isEqualToString:@"0000000"]) {
+                model.open = NO;
+            }else {
+                model.open = YES;
+                isValidate = YES;
+            }
         }
+        [self.datas addObject:model];
     }
-    [self.datas addObject:model];
-}
-}
-
-
-
-- (void)configNoData {
-    NSMutableArray *arr = [NSMutableArray array];
-    for (int i = 0; i < 9 ; i++) {
-        TimeSettingModel *model = [[TimeSettingModel alloc] init];
-        model.startTime = @"00:00";
-        model.endTime = @"00:00";
-        model.week = @"00";
-        model.open = NO;
-        [arr addObject:model];
-    }
-    self.datas = arr;
 }
 
 // 家长模式设置
 - (IBAction)ParentsModeSettingBut:(UIButton *)sender {
     TimeSettingListViewController *list = [[TimeSettingListViewController alloc] init];
     list.datas = self.datas;
-    list.deviceNo = [[deviceId.text componentsSeparatedByString:@"ID:"] lastObject]; // 去掉多余的@“ID:”
+    list.deviceNo = self.dNo;
     list.isParentModel = isParentModel;
     [self.navigationController pushViewController:list animated:YES];
 }
 
 //     取消家长模式
-- (void)UnparentData {
-    NSString * string = [[deviceId.text componentsSeparatedByString:@":"] lastObject]; // 去掉：前面对于符合
-    [CommonOperation cancelDeviceRunModel:string result:^(id response, NSError *error) {
-        if (!error) {
-            isParentModel = NO;
-            [HintView showHint:Localize(@"取消成功")];
-            [self caculateWithString:@"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004"];
-            
+- (void)changeModell:(NSString *)contentt isParentCancel:(BOOL)cancel {
+    WebSocket *socket = [WebSocket socketManager];
+    CommandModel *model = [[CommandModel alloc] init];
+    model.command = @"0009";
+    model.deviceNo = self.dNo;
+    model.content = [contentt substringToIndex:contentt.length - 2];
+    [self.view startLoading];
+    MyWeakSelf
+    [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
+        [weakSelf.view stopLoading];
+        if (cancel) {
+            if (!error) {
+                isParentModel = NO;
+                [self caculateWithString:@"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004"];
+            }else {
+                [HintView showHint:error.localizedDescription];
+            }
         }else {
-            [HintView showHint:error.localizedDescription];
+            if (!error) {
+                [weakSelf caculateWithString:contentt];
+                [HintView showHint:Localize(@"取消成功")];
+            }else {
+                [HintView showHint:Localize(@"设置失败")];
+            }
         }
         
     }];
@@ -513,9 +493,9 @@
     }else {
         if (sender == ChargingProtectionBut) {
             ChargingProtectionBut.selected = NO;
+             ZNDDBut.selected = NO;
             [self checkClose:ChargingProtectionBut.selected];
         }
-//        ZNDDBut.selected = NO;
         [DDCChargingProtectionBut setEnabled:NO]; //交互关闭
         DDCChargingProtectionBut.alpha=0.4;//透明度
         [PhoneChargingProtectionBut setEnabled:NO]; //交互关闭
@@ -556,7 +536,6 @@
         [power setText:[NSString stringWithFormat:@"%dW",5]];
         [self changePower];
     }
-    
 }
 
 // 智能断电控制
@@ -582,6 +561,7 @@
     }else {
         if (sender == ZNDDBut) {
             ZNDDBut.selected = NO;
+            ChargingProtectionBut.selected = NO;
             [self checkClose:ZNDDBut.selected];
         }
         [DDCChargingProtectionBut setEnabled:NO]; //交互关闭
@@ -599,8 +579,10 @@
 }
 
 // 默认不打勾充电保护设置，智能断电控制变灰不可点击
-- (void)DefaultGray {
-    [ParentsModeSettingBut setEnabled:NO];// 交互关闭
-    ParentsModeSettingBut.alpha = 0.4;//透明度
-}
+//- (void)DefaultGray {
+//    [ParentsModeSettingBut setEnabled:NO];// 交互关闭
+//    ParentsModeSettingBut.alpha = 0.4;//透明度
+//}
+
+
 @end
