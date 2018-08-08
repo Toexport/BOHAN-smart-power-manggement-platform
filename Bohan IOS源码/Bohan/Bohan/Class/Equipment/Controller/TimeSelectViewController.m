@@ -25,14 +25,6 @@
     formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"HH:mm"];
 
-//    if (@available(iOS 11.0, *)){
-//        [(UIScrollView *)self.view setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
-//    }else
-//    {
-//        self.automaticallyAdjustsScrollViewInsets = NO;
-//    }
-
-    
     [self configView];
 
     
@@ -42,7 +34,6 @@
 - (void)configView
 {
     if (self.model) {
-        
         [startTime setText:self.model.startTime];
         [endTime setText:self.model.endTime];
         
@@ -62,28 +53,7 @@
         
     }
 }
-//- (void)viewDidLayoutSubviews
-//{
-////    NSLog(@"((UIScrollView *)self.view).contentSize.height=%f",((UIScrollView *)self.view).contentSize.height);
-//    [(UIScrollView *)self.view setContentSize:CGSizeMake(ScreenWidth, MIN(((UIScrollView *)self.view).contentSize.height, 503))];
-//}
 
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 - (IBAction)startTimeAction {
     
@@ -99,7 +69,6 @@
 }
 
 - (IBAction)endTimeAction {
-    
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowHourMinute scrollToDate:[formatter dateFromString:endTime.text] CompleteBlock:^(NSDate *selectDate) {
         [endTime setText:[formatter stringFromDate:selectDate]];
 
@@ -130,20 +99,18 @@
 }
 
 - (IBAction)okAction {
-    
-    
+//    if (![[formatter dateFromString:startTime.text] isLaterThanDate:[formatter dateFromString:endTime.text]]) {
+//        [HintView showHint:Localize(@"结束时间必须大于开始时间")];
+//    }else
+//        if (![[formatter dateFromString:startTime.text] isLaterThanDate:[formatter dateFromString:endTime.text]]) {
+//            [HintView showHint:Localize(@"结束时间必须大于开始时间")];
+//        }else
+
     if (![[formatter dateFromString:endTime.text] isLaterThanDate:[formatter dateFromString:startTime.text]])
     {
         [HintView showHint:Localize(@"结束时间必须大于开始时间")];
         return;
     }
-    
-    
-//    NSString *week = [Utils getBinaryByHex:_model.week];
-//
-//    if ([[week substringFromIndex:1] isEqualToString:@"0000000"]) {
-//
-//    }
     
     if (self.timeBlock) {
         

@@ -13,7 +13,7 @@
 #import "TimeSettingModel.h"
 #import "CommonOperation.h"
 #import "TimeSettingListViewController.h"
-static NSString * const parentModel = @"17002000FF0000000000000000000000000000000000000000000000000000000000000000000000000000000003";
+static NSString * const parentModel = @"00000000FF0000000000000000000000000000000000000000000000000000000000000000000000000000000003";
 static NSString * const parentModel1 = @"170020007F0000000000000000000000000000000000000000000000000000000000000000000000000000000003";
 @interface ParamsSettingViewController ()
 {
@@ -50,7 +50,7 @@ static NSString * const parentModel1 = @"170020007F00000000000000000000000000000
 //    [self getStatus];
 //    [self getPower];
 //    [self getDelayTime];
-//    [self configNoData];// 打开这个不显示家长模式是否开启
+    [self configNoData];// 打开这个不显示家长模式是否开启
 //    [self DefaultGray];
 }
 
@@ -71,7 +71,7 @@ static NSString * const parentModel1 = @"170020007F00000000000000000000000000000
             NSString *powerStr = [response substringWithRange:NSMakeRange(28, 6)];
             ZPLog(@"%@",self.Coedid);
             [price setText:[NSString stringWithFormat:@"%d.%02d",[[priceStr substringToIndex:2] intValue],[[priceStr substringFromIndex:2] intValue]]];
-            if ([self.Coedid containsString:@"WFMT"] || [self.Coedid containsString:@"YFMT"] || [self.Coedid containsString:@"CDMT60"] || [self.Coedid containsString:@"GP1P"] || [self.Coedid containsString:@"MC"] || [self.Coedid containsString:@"GP3P"]) {
+            if ([self.Coedid containsString:@"WFMT"] || [self.Coedid containsString:@"YFMT"] || [self.Coedid containsString:@"CDMT60"] || [self.Coedid containsString:@"GP1P"] || [self.Coedid containsString:@"MC"] || [self.Coedid containsString:@"GP3P"] || [self.Coedid containsString:@"YFGPMT"]) {
                 ZPLog(@"%@",self.Coedid);
                 [limit setText:[NSString stringWithFormat:@"%d.%02d",[[powerStr substringToIndex:6] intValue],[[powerStr substringFromIndex:6] intValue]]];
             } else {
@@ -152,7 +152,7 @@ static NSString * const parentModel1 = @"170020007F00000000000000000000000000000
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
         if (!error) {
-            [HintView showHint:Localize(@"设置成功")];
+//            [HintView showHint:Localize(@"设置成功")];
         }else {
             [HintView showHint:error.localizedDescription];
         }
@@ -212,14 +212,95 @@ static NSString * const parentModel1 = @"170020007F00000000000000000000000000000
 
 // 负荷门限BUt
 - (IBAction)saveAction:(UIButton *)sender {
-    if (limitTF.text == nil || limitTF.text.length <= 1) {
-        ZPLog(@"没有输入文字");
-        [HintView showHint:Localize(@"请输入负荷门限")];
-    }else {
-        [self AllDataload];
-        
-    }
+    if ([self.Coedid containsString:@"QK01"] || [self.Coedid containsString:@"QK02"]
+        || [self.Coedid containsString:@"QK03"] || [self.Coedid containsString:@"CDMT10"] || [self.Coedid containsString:@"QC10"] || [self.Coedid containsString:@"YC10"] || [self.Coedid containsString:@"YC"]) {
+        if (limitTF.text == nil || limitTF.text.length <= 1) {
+            ZPLog(@"没有输入文字");
+            [HintView showHint:Localize(@"请输入负荷门限")];
+        }else {
+            if (limitTF.text.integerValue  > 2500) {
+                [HintView showHint:Localize(@"负荷门限不能大于2500")];
+            }else {
+                [self AllDataload];
+            }
+        }
+    }else
+        if ([self.Coedid containsString:@"YFMT"] || [self.Coedid containsString:@"CDMT60"] || [self.Coedid containsString:@"GP1P"] || [self.Coedid containsString:@"WFMT"]) {
+            if (limitTF.text == nil || limitTF.text.length <= 1) {
+                ZPLog(@"没有输入文字");
+                [HintView showHint:Localize(@"请输入负荷门限")];
+            }else {
+                if (limitTF.text.integerValue  > 15000) {
+                    [HintView showHint:Localize(@"负荷门限不能大于15000")];
+                }else {
+                    [self AllDataload];
+                }
+            }
+        }else
+            if ([self.Coedid containsString:@"CDMT16"] || [self.Coedid containsString:@"QC16"] || [self.Coedid containsString:@"YC16"]) {
+                if (limitTF.text == nil || limitTF.text.length <= 1) {
+                    ZPLog(@"没有输入文字");
+                    [HintView showHint:Localize(@"请输入负荷门限")];
+                }else {
+                    if (limitTF.text.integerValue  > 3500) {
+                        [HintView showHint:Localize(@"负荷门限不能大于3500")];
+                    }else {
+                        [self AllDataload];
+                    }
+                }
+            }else
+                if ([self.Coedid containsString:@"QC13"]) {
+                    if (limitTF.text == nil || limitTF.text.length <= 1) {
+                        ZPLog(@"没有输入文字");
+                        [HintView showHint:Localize(@"请输入负荷门限")];
+                    }else {
+                        
+                        if (limitTF.text.integerValue  > 3000) {
+                            [HintView showHint:Localize(@"负荷门限不能大于3000")];
+                        }else {
+                            [self AllDataload];
+                        }
+                    }
+                }else
+                    if ([self.Coedid containsString:@"QC15"] || [self.Coedid containsString:@"YC15"]) {
+                        if (limitTF.text == nil || limitTF.text.length <= 1) {
+                            ZPLog(@"没有输入文字");
+                            [HintView showHint:Localize(@"请输入负荷门限")];
+                        }else {
+                            if (limitTF.text.integerValue  > 3300) {
+                                [HintView showHint:Localize(@"负荷门限不能大于3300")];
+                            }else {
+                                [self AllDataload];
+                            }
+                        }
+                    }else
+                        if ([self.Coedid containsString:@"MC"]) {
+                            if (limitTF.text == nil || limitTF.text.length <= 1) {
+                                ZPLog(@"没有输入文字");
+                                [HintView showHint:Localize(@"请输入负荷门限")];
+                            }else {
+                                if (limitTF.text.integerValue  > 23000) {
+                                    [HintView showHint:Localize(@"负荷门限不能大于23000")];
+                                }else {
+                                    [self AllDataload];
+                                }
+                            }
+                        }else
+                            if ([self.Coedid containsString:@"GP3P"]) {
+                                if (limitTF.text == nil || limitTF.text.length <= 1) {
+                                    ZPLog(@"没有输入文字");
+                                    [HintView showHint:Localize(@"请输入负荷门限")];
+                                }else {
+                                    if (limitTF.text.integerValue  > 45000) {
+                                        [HintView showHint:Localize(@"负荷门限不能大于45000")];
+                                    }else {
+                                        [self AllDataload];
+                                    }
+                                }
+                            }
+    
 }
+//}
 
 //  单价数据
 - (void)AllDtaPrice {
@@ -307,14 +388,14 @@ static NSString * const parentModel1 = @"170020007F00000000000000000000000000000
     sender.selected =! sender.selected;
     if (sender.selected) {
 //        [self loadData];
-        [self changeModel:parentModel isParentCancel:NO];
-        [ParentsModeSettingBut setEnabled:YES];// 交互打开
-        ParentsModeSettingBut.alpha = 100;//透明度
+//        [self changeModel:parentModel isParentCancel:NO];
+//        [ParentsModeSettingBut setEnabled:YES];// 交互打开
+//        ParentsModeSettingBut.alpha = 100;//透明度
         ZPLog(@"选中");
     }else {
-        ParentsModeSettingBut.selected = NO;
-        [ParentsModeSettingBut setEnabled:NO];// 交互关闭
-        ParentsModeSettingBut.alpha = 0.4;//透明度
+//        ParentsModeSettingBut.selected = NO;
+//        [ParentsModeSettingBut setEnabled:NO];// 交互关闭
+//        ParentsModeSettingBut.alpha = 0.4;//透明度
         [self changeModell:parentModel1 isParentCancel:NO];
         ZPLog(@"取消");
     }
@@ -338,13 +419,13 @@ static NSString * const parentModel1 = @"170020007F00000000000000000000000000000
 //            ZPLog(@"%@",stringg);
             if ([ParentsMode containsString:@"FF"]) {
                 ParentsModeBut.selected = YES;
-                [ParentsModeSettingBut setEnabled:YES];// 交互关闭
-                ParentsModeSettingBut.alpha = 100;//透明度
+//                [ParentsModeSettingBut setEnabled:YES];// 交互关闭
+//                ParentsModeSettingBut.alpha = 100;//透明度
             }else
                 if ([ParentsMode containsString:@"7F"]) {
                     ParentsModeBut.selected = NO;
-                    [ParentsModeSettingBut setEnabled:NO];// 交互关闭
-                    ParentsModeSettingBut.alpha = 0.4;//透明度
+//                    [ParentsModeSettingBut setEnabled:NO];// 交互关闭
+//                    ParentsModeSettingBut.alpha = 0.4;//透明度
                 }
         }else {
             [HintView showHint:Localize(@"加载数据失败")];
@@ -368,6 +449,8 @@ static NSString * const parentModel1 = @"170020007F00000000000000000000000000000
 }
 
 
+
+
 - (void)changeModel:(NSString *)content isParentCancel:(BOOL)cancel {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
@@ -388,9 +471,9 @@ static NSString * const parentModel1 = @"170020007F00000000000000000000000000000
         }else {
             if (!error) {
                 [weakSelf caculateWithString:content];
-                [HintView showHint:Localize(@"设置成功")];
+//                [HintView showHint:Localize(@"设置成功")];
             }else {
-                [HintView showHint:Localize(@"设置失败")];
+                [HintView showHint:Localize(@"操作失败")];
             }
         }
      
@@ -429,7 +512,24 @@ static NSString * const parentModel1 = @"170020007F00000000000000000000000000000
         }
         [self.datas addObject:model];
     }
+    [self configNoData];
 }
+
+- (void)configNoData {
+    NSMutableArray *arr = [NSMutableArray array];
+    for (int i = 0; i < 9 ; i++) {
+        TimeSettingModel *model = [[TimeSettingModel alloc] init];
+        
+        model.startTime = @"00:00";
+        model.endTime = @"00:00";
+        model.week = @"00";
+        model.open = NO;
+        [arr addObject:model];
+    }
+    
+    self.datas = arr;
+}
+
 
 // 家长模式设置
 - (IBAction)ParentsModeSettingBut:(UIButton *)sender {
@@ -461,9 +561,9 @@ static NSString * const parentModel1 = @"170020007F00000000000000000000000000000
         }else {
             if (!error) {
                 [weakSelf caculateWithString:contentt];
-                [HintView showHint:Localize(@"取消成功")];
+//                [HintView showHint:Localize(@"取消成功")];
             }else {
-                [HintView showHint:Localize(@"设置失败")];
+                [HintView showHint:Localize(@"操作失败")];
             }
         }
         
@@ -577,12 +677,6 @@ static NSString * const parentModel1 = @"170020007F00000000000000000000000000000
         PowerBut.alpha = 0.4;//透明度
     }
 }
-
-// 默认不打勾充电保护设置，智能断电控制变灰不可点击
-//- (void)DefaultGray {
-//    [ParentsModeSettingBut setEnabled:NO];// 交互关闭
-//    ParentsModeSettingBut.alpha = 0.4;//透明度
-//}
 
 
 @end

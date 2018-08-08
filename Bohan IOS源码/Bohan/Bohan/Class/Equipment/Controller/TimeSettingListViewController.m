@@ -63,7 +63,6 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
     }];
 }
 
-
 - (void)openAction {
     NSString *contentStr = @"";
     BOOL isClose = YES;
@@ -79,7 +78,6 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
                 return;
             }
         }
-        
         if (!model.open) {
             model.startTime = @"00:00";
             model.endTime = @"00:00";
@@ -94,8 +92,6 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
             week = [week stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:model.open?@"1":@"0"];
             model.week = [Utils getHexByBinary:week];
         }
-        
-
         item = [item stringByAppendingString:model.week];
 
         contentStr = [contentStr stringByAppendingString:item];
@@ -142,8 +138,7 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
 }
 
 
-- (UIButton *)bottomView
-{
+- (UIButton *)bottomView {
     if (!_bottomView) {
         _bottomView = [[UIButton alloc] initWithFrame:CGRectMake(0, ScreenHeight - kTabBarHeight, ScreenWidth, 60)];
         [_bottomView setTitle:Localize(@"确认修改") forState:UIControlStateNormal];
@@ -162,24 +157,20 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
 
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.datas.count;
-    
 }
 
-
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     TimeListTableViewCell  *cell = (TimeListTableViewCell *)[tableView dequeueReusableCellWithIdentifier:timeCellIdentifier];
     [cell setModel:self.datas[indexPath.row]];
     return cell;
 }
 #pragma mark 按钮的点击事件
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    
     TimeSelectViewController *select = [[TimeSelectViewController alloc] init];
     select.model = self.datas[indexPath.row];
     MyWeakSelf

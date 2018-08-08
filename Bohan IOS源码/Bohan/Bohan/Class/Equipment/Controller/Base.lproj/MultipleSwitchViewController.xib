@@ -217,10 +217,8 @@
                                                 <constraint firstAttribute="width" constant="35" id="WZJ-ax-NyI"/>
                                                 <constraint firstAttribute="height" constant="35" id="Zl0-Bp-3v6"/>
                                             </constraints>
-                                            <state key="normal" image="check_box_off">
-                                                <color key="titleColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
-                                            </state>
-                                            <state key="selected" image="check_box_on"/>
+                                            <state key="normal" image="green_box_off"/>
+                                            <state key="selected" image="green_box_on"/>
                                             <connections>
                                                 <action selector="Switch1OpenBut:" destination="-1" eventType="touchUpInside" id="Oo3-2F-55Z"/>
                                             </connections>
@@ -231,10 +229,10 @@
                                                 <constraint firstAttribute="height" constant="35" id="aOO-8v-Vcr"/>
                                                 <constraint firstAttribute="width" constant="35" id="law-AQ-7P6"/>
                                             </constraints>
-                                            <state key="normal" title="关" image="check_box_off">
+                                            <state key="normal" title="关" image="red_box_off">
                                                 <color key="titleColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
-                                            <state key="selected" image="check_box_on"/>
+                                            <state key="selected" image="red_box_no"/>
                                             <connections>
                                                 <action selector="Switch1GuanBut:" destination="-1" eventType="touchUpInside" id="kF8-d6-3bI"/>
                                             </connections>
@@ -451,10 +449,10 @@
                                                 <constraint firstAttribute="height" constant="35" id="cRh-cP-7jq"/>
                                                 <constraint firstAttribute="width" constant="35" id="vqK-Qg-kz3"/>
                                             </constraints>
-                                            <state key="normal" title="开" image="check_box_off">
+                                            <state key="normal" title="开" image="green_box_off">
                                                 <color key="titleColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
-                                            <state key="selected" image="check_box_on"/>
+                                            <state key="selected" image="green_box_on"/>
                                             <connections>
                                                 <action selector="Switch2OpenBut:" destination="-1" eventType="touchUpInside" id="gsi-zz-qlX"/>
                                             </connections>
@@ -465,10 +463,10 @@
                                                 <constraint firstAttribute="width" constant="35" id="Yrq-hG-FfJ"/>
                                                 <constraint firstAttribute="height" constant="35" id="zES-WJ-03c"/>
                                             </constraints>
-                                            <state key="normal" title="关" image="check_box_off">
+                                            <state key="normal" title="关" image="red_box_off">
                                                 <color key="titleColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
-                                            <state key="selected" image="check_box_on"/>
+                                            <state key="selected" image="red_box_no"/>
                                             <connections>
                                                 <action selector="Switch2GuanBut:" destination="-1" eventType="touchUpInside" id="7ju-LJ-S4e"/>
                                             </connections>
@@ -692,10 +690,10 @@
                                                 <constraint firstAttribute="height" constant="35" id="tg8-tC-ydx"/>
                                                 <constraint firstAttribute="width" constant="35" id="ubY-TJ-Q1J"/>
                                             </constraints>
-                                            <state key="normal" title="开" image="check_box_off">
+                                            <state key="normal" title="开" image="green_box_off">
                                                 <color key="titleColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
-                                            <state key="selected" image="check_box_on"/>
+                                            <state key="selected" image="green_box_on"/>
                                             <connections>
                                                 <action selector="Switch3OpenBut:" destination="-1" eventType="touchUpInside" id="HYv-4h-L0t"/>
                                             </connections>
@@ -708,10 +706,10 @@
                                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="35" id="dXC-rv-KeN"/>
                                                 <constraint firstAttribute="width" constant="35" id="isi-Qc-E3w"/>
                                             </constraints>
-                                            <state key="normal" title="关" image="check_box_off">
+                                            <state key="normal" title="关" image="red_box_off">
                                                 <color key="titleColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                             </state>
-                                            <state key="selected" image="check_box_on"/>
+                                            <state key="selected" image="red_box_no"/>
                                             <connections>
                                                 <action selector="Switch3GuanBut:" destination="-1" eventType="touchUpInside" id="nkX-AU-jSg"/>
                                             </connections>
@@ -838,7 +836,9 @@
         </view>
     </objects>
     <resources>
-        <image name="check_box_off" width="100" height="100"/>
-        <image name="check_box_on" width="100" height="100"/>
+        <image name="green_box_off" width="100" height="100"/>
+        <image name="green_box_on" width="100" height="100"/>
+        <image name="red_box_no" width="100" height="100"/>
+        <image name="red_box_off" width="100" height="100"/>
     </resources>
 </document>
