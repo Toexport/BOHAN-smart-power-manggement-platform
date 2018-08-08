@@ -50,7 +50,7 @@ static NSString * const parentModel1 = @"170020007F00000000000000000000000000000
 //    [self getStatus];
 //    [self getPower];
 //    [self getDelayTime];
-    [self configNoData];// 打开这个不显示家长模式是否开启
+//    [self configNoData];// 打开这个不显示家长模式是否开启
 //    [self DefaultGray];
 }
 
@@ -388,7 +388,7 @@ static NSString * const parentModel1 = @"170020007F00000000000000000000000000000
     sender.selected =! sender.selected;
     if (sender.selected) {
 //        [self loadData];
-//        [self changeModel:parentModel isParentCancel:NO];
+        [self changeModel:parentModel isParentCancel:NO];
 //        [ParentsModeSettingBut setEnabled:YES];// 交互打开
 //        ParentsModeSettingBut.alpha = 100;//透明度
         ZPLog(@"选中");
@@ -433,23 +433,6 @@ static NSString * const parentModel1 = @"170020007F00000000000000000000000000000
         }
     }];
 }
-// 16进制转2进制
-- (NSString *)getBinaryByHex:(NSString *)hex {
-    NSMutableDictionary *hexDic = [[NSMutableDictionary alloc] initWithCapacity:16];
-    [hexDic setObject:@"1111" forKey:@"F"];
-    NSString *binary = @"";
-    for (int i=0; i<[hex length]; i++) {
-        NSString *key = [hex substringWithRange:NSMakeRange(i, 1)];
-        NSString *value = [hexDic objectForKey:key.uppercaseString];
-        if (value) {
-            binary = [binary stringByAppendingString:value];
-        }
-    }
-    return binary;
-}
-
-
-
 
 - (void)changeModel:(NSString *)content isParentCancel:(BOOL)cancel {
     WebSocket *socket = [WebSocket socketManager];

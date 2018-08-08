@@ -94,49 +94,38 @@
 }
 
 - (IBAction)cancelAction {
-    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)okAction {
-//    if (![[formatter dateFromString:startTime.text] isLaterThanDate:[formatter dateFromString:endTime.text]]) {
-//        [HintView showHint:Localize(@"结束时间必须大于开始时间")];
-//    }else
-//        if (![[formatter dateFromString:startTime.text] isLaterThanDate:[formatter dateFromString:endTime.text]]) {
-//            [HintView showHint:Localize(@"结束时间必须大于开始时间")];
-//        }else
-
-    if (![[formatter dateFromString:endTime.text] isLaterThanDate:[formatter dateFromString:startTime.text]])
-    {
-        [HintView showHint:Localize(@"结束时间必须大于开始时间")];
-        return;
-    }
-    
-    if (self.timeBlock) {
-        
-        NSString *str = @"";
-        for (int i = 6; i>0; i--) {
+    if ([[formatter dateFromString:endTime.text] isLaterThanDate:[formatter dateFromString:startTime.text]] ||
+        ([[formatter dateFromString:startTime.text] isLaterThanDate:[formatter dateFromString:@"11:59"]]&&
+         [endTime.text isEqualToString:@"00:00"])) {
+        if (self.timeBlock) {
+            NSString *str = @"";
+            for (int i = 6; i>0; i--) {
+                UIButton *btn = [self.view viewWithTag:700+i];
+                str = [str stringByAppendingString:[@(btn.selected) stringValue]];
+            }
             
-            UIButton *btn = [self.view viewWithTag:700+i];
-            str = [str stringByAppendingString:[@(btn.selected) stringValue]];
+            str = [str stringByAppendingString:[@(((UIButton *)[self.view viewWithTag:707]).selected) stringValue]];
+            
+            NSString *week = [Utils getBinaryByHex:self.model.week];
+            
+            week = [week stringByReplacingCharactersInRange:NSMakeRange(1, 7) withString:str];
+            
+            self.model.startTime = startTime.text;
+            self.model.endTime = endTime.text;
+            self.model.open = YES;
+            
+            self.model.week = [Utils getHexByBinary:week];
+            self.timeBlock(self.model);
+            
+            [self.navigationController popViewControllerAnimated:YES];
         }
-        
-        str = [str stringByAppendingString:[@(((UIButton *)[self.view viewWithTag:707]).selected) stringValue]];
-        
-        NSString *week = [Utils getBinaryByHex:self.model.week];
-        
-        week = [week stringByReplacingCharactersInRange:NSMakeRange(1, 7) withString:str];
-        
-        self.model.startTime = startTime.text;
-        self.model.endTime = endTime.text;
-        self.model.open = YES;
-        
-        self.model.week = [Utils getHexByBinary:week];
-        self.timeBlock(self.model);
+    } else {
+        [HintView showHint:Localize(@"结束时间必须大于开始时间")];
     }
-    
-    [self.navigationController popViewControllerAnimated:YES];
-    
 }
 
 @end
