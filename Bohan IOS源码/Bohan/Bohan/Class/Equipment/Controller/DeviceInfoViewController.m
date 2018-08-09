@@ -75,14 +75,12 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [self loadData];
 }
 
-- (void)loadData
-{
+- (void)loadData {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0008";
@@ -120,13 +118,10 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
-        
         if (!error) {
             isOnline = YES;
             BOOL open = YES;
-
             if (((NSString *)response).length>26) {
-
                 NSString *string = [response substringWithRange:NSMakeRange(24, 2)];
                 NSString *binary = [Utils getBinaryByHex:string];
                 NSString *left = [binary substringWithRange:NSMakeRange(binary.length - 3, 1)];
@@ -205,7 +200,6 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
         if (!error) {
             
             NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 16, 12)];
-            
             [formatter setDateFormat:@"yyMMddHHmmss"];
             NSDate *startDate = [formatter dateFromString:content];
             
@@ -228,11 +222,6 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     
     [self deviceStatus];
 
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - UICollectionView Delegate
