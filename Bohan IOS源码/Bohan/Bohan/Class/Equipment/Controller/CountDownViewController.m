@@ -31,7 +31,7 @@
 @property (copy, nonatomic) NSArray *datas;
 @property (assign, nonatomic) NSInteger selectedItemIndex;
 @property (nonatomic, weak)NSTimer *timer;//定时器
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *ViewLayoutHeight;
+//@property (weak, nonatomic) IBOutlet NSLayoutConstraint *ViewLayoutHeight;
 
 @end
 static NSString *countCellIdentifier = @"countCellIdentifier";
@@ -55,18 +55,18 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 
 - (void)updateViewConstraints {
     [super updateViewConstraints];
-    if (iPhone4) {
-        _ViewLayoutHeight.constant += 100;
-    }
-    if (iPhone5) {
-        _ViewLayoutHeight.constant += 90;
-    }
-    if (iPhone6) {
-        _ViewLayoutHeight.constant += 45;
-    }
-    if (iPhone6splus) {
-        _ViewLayoutHeight.constant += 15;
-    }
+//    if (iPhone4) {
+//        _ViewLayoutHeight.constant += 90;
+//    }
+//    if (iPhone5) {
+//        _ViewLayoutHeight.constant += 90;
+//    }
+//    if (iPhone6) {
+//        _ViewLayoutHeight.constant += 45;
+//    }
+//    if (iPhone6splus) {
+//        _PatchViewLayoutConstraint.constant = 30;
+//    }
 }
 
 - (void)loadData {
@@ -89,10 +89,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
                 }
             }
             
-        }else
-        {
-//            [HintView showHint:Localize(@"加载数据失败")];
-//            [weakSelf.navigationController popViewControllerAnimated:YES];
+        }else{
         }
         
         ZPLog(@"--------%@",response);
@@ -109,15 +106,12 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
-        
         [weakSelf.view stopLoading];
-        
         if (!error) {
             
             NSString *statusStr = [response substringWithRange:NSMakeRange(((NSString *)response).length - 18, 2)];
 
             NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 16, 12)];
-            
             if ([content hasPrefix:@"00"]) {
                 return ;
             }
@@ -128,12 +122,10 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
             if (!startDate) {
                 return ;
             }
-            
             if ([statusStr isEqualToString:@"00"]) {
                 [status setText:Localize(@"设备关闭")];
                 
-            }else
-            {
+            }else {
                 [status setText:Localize(@"设备打开")];
             }
             
@@ -148,7 +140,6 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     
 }
 
-
 - (void)getStatus {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
@@ -161,68 +152,67 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
         [weakSelf.view stopLoading];
         
         if (!error) {
-            
-//            if (((NSString *)response).length>26) {
-//                NSString *status = [response substringWithRange:NSMakeRange(24, 2)];
-//                NSString *binary = [Utils getBinaryByHex:status];
-//                NSString *left = [binary substringWithRange:NSMakeRange(binary.length - 3, 1)];
-//                NSString *center = [binary substringWithRange:NSMakeRange(binary.length - 2, 1)];
-//                NSString *right = [binary substringFromIndex:binary.length - 1];
-//
-//                //一位插座
-//                if ([self.deviceNo hasPrefix:@"61"]) {
-//                    if ([center isEqualToString:@"0"]) {
-//                        open = NO;
-//                    }else {
-//                        open = YES;
-//                    }
-//                 //二位插座
-//                }else if ([self.deviceNo hasPrefix:@"62"]) {
-//                    if ([left isEqualToString:@"0"] || [right isEqualToString:@"0"]) {
-//                        open = NO;
-//                    }else {
-//                        open = YES;
-//                    }
-//                //三位插座
-//                }else if ([self.deviceNo hasPrefix:@"63"]) {
-//                    if ([left isEqualToString:@"0"] || [right isEqualToString:@"0"] || [center isEqualToString:@"0"]) {
-//                        open = NO;
-//                    }else {
-//                        open = YES;
-//                    }
-//                }else {
-//                    if ([status isEqualToString:@"00"]) {
-//                        open = NO;
-//                    }else {
-//                        open = YES;
-//                    }
-//
-//                }
-//                if (!open) {
-//                    //开启
-//                    closeBtn.layer.borderColor = [UIColor getColor:@"39B3FF"].CGColor;
-//                    closeBtn.layer.borderWidth = 1;
-//                    closeBtn.backgroundColor = [UIColor whiteColor];
-//                    [closeBtn setTitleColor:[UIColor getColor:@"39B3FF"] forState:UIControlStateNormal];
-//
-//                    openBtn.backgroundColor = [UIColor getColor:@"BBBBBB"];
-//                    [openBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//                    openBtn.layer.borderColor = [UIColor getColor:@"BBBBBB"].CGColor;
-//
-//                }else {
-//                    openBtn.layer.borderColor = [UIColor getColor:@"39B3FF"].CGColor;
-//                    openBtn.layer.borderWidth = 1;
-//                    openBtn.backgroundColor = [UIColor whiteColor];
-//                    [openBtn setTitleColor:[UIColor getColor:@"39B3FF"] forState:UIControlStateNormal];
-//
-//                    closeBtn.backgroundColor = [UIColor getColor:@"BBBBBB"];
-//                    [closeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-//                    closeBtn.layer.borderColor = [UIColor getColor:@"BBBBBB"].CGColor;
-//
-//                }
-//
-//            }
-            
+            if (((NSString *)response).length>26) {
+                NSString *status = [response substringWithRange:NSMakeRange(24, 2)];
+                NSString *binary = [Utils getBinaryByHex:status];
+                NSString *left = [binary substringWithRange:NSMakeRange(binary.length - 3, 1)];
+                NSString *center = [binary substringWithRange:NSMakeRange(binary.length - 2, 1)];
+                NSString *right = [binary substringFromIndex:binary.length - 1];
+
+                //一位插座
+                if ([self.deviceNo hasPrefix:@"61"]) {
+                    if ([center isEqualToString:@"0"]) {
+                        open = NO;
+                    }else {
+                        open = YES;
+                    }
+                 //二位插座
+                }else if ([self.deviceNo hasPrefix:@"62"]) {
+                    if ([left isEqualToString:@"0"] || [right isEqualToString:@"0"]) {
+                        open = NO;
+                    }else {
+                        open = YES;
+                    }
+                //三位插座
+                }else if ([self.deviceNo hasPrefix:@"63"]) {
+                    if ([left isEqualToString:@"0"] || [right isEqualToString:@"0"] || [center isEqualToString:@"0"]) {
+                        open = NO;
+                    }else {
+                        open = YES;
+                    }
+                }else {
+                    if ([status isEqualToString:@"00"]) {
+                        open = NO;
+                    }else {
+                        open = YES;
+                    }
+
+                }
+                if (!open) {
+                    //开启
+                    closeBtn.layer.borderColor = [UIColor getColor:@"39B3FF"].CGColor;
+                    closeBtn.layer.borderWidth = 1;
+                    closeBtn.backgroundColor = [UIColor whiteColor];
+                    [closeBtn setTitleColor:[UIColor getColor:@"39B3FF"] forState:UIControlStateNormal];
+
+                    openBtn.backgroundColor = [UIColor getColor:@"BBBBBB"];
+                    [openBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                    openBtn.layer.borderColor = [UIColor getColor:@"BBBBBB"].CGColor;
+
+                }else {
+                    openBtn.layer.borderColor = [UIColor getColor:@"39B3FF"].CGColor;
+                    openBtn.layer.borderWidth = 1;
+                    openBtn.backgroundColor = [UIColor whiteColor];
+                    [openBtn setTitleColor:[UIColor getColor:@"39B3FF"] forState:UIControlStateNormal];
+
+                    closeBtn.backgroundColor = [UIColor getColor:@"BBBBBB"];
+                    [closeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+                    closeBtn.layer.borderColor = [UIColor getColor:@"BBBBBB"].CGColor;
+
+                }
+
+            }
+        
         }
         
     }];
@@ -267,11 +257,9 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 - (void)UI {
     CountdownView * view = [[[NSBundle mainBundle] loadNibNamed:@"CountdownView" owner:nil options:nil] firstObject];
     view.doneBlock = ^(NSString *selectDate) {
-        
         time.text = selectDate;
     };
     view.buttonAction = ^(UIButton *sender) {
-        
         [self startAction];
     };
     _mainTable.tableFooterView = view;
@@ -318,18 +306,10 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 - (void)setUpTimer {
     //说明已经过了时间,不再开启定时器
     NSComparisonResult result =[startDate compare:[NSDate date]];
-    
     if (result != NSOrderedDescending) {
         [self stopTimer];
         return;
     }
-//
-//    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSCalendarIdentifierGregorian];
-//    // 获取两个日期的间隔
-//    NSDateComponents *comp = [calendar components:NSCalendarUnitSecond fromDate:[NSDate date] toDate:startDate options:NSCalendarWrapComponents];
-//    lastSecend = MAX(0, comp.second);
-
-
     MyWeakSelf
     _timer = [NSTimer scheduledTimerWithTimeInterval:1
                                                block:^{
@@ -372,13 +352,17 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     
 }
 
-
+/*设置cell 的宽度 */
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 40;
+    
+}
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:countCellIdentifier];
     
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:countCellIdentifier];
-        cell.textLabel.font = Font(15);
+        cell.textLabel.font = Font(13);
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     cell.textLabel.text = self.datas[indexPath.row];

@@ -687,10 +687,9 @@ CGSize getTextSizeWithAttributesDic(NSString *text, CGFloat maxWidth, NSStringDr
     return hex;
 }
 
-+ (NSString *)getBinaryByHex:(NSString *)hex
-{
-    
++ (NSString *)getBinaryByHex:(NSString *)hex {
     NSMutableDictionary *hexDic = [[NSMutableDictionary alloc] initWithCapacity:16];
+//    以上是未设置成功
     [hexDic setObject:@"0000" forKey:@"0"];
     [hexDic setObject:@"0001" forKey:@"1"];
     [hexDic setObject:@"0010" forKey:@"2"];
@@ -699,6 +698,15 @@ CGSize getTextSizeWithAttributesDic(NSString *text, CGFloat maxWidth, NSStringDr
     [hexDic setObject:@"0101" forKey:@"5"];
     [hexDic setObject:@"0110" forKey:@"6"];
     [hexDic setObject:@"0111" forKey:@"7"];
+//    [hexDic setObject:@"0000" forKey:@"8"];
+//    [hexDic setObject:@"0001" forKey:@"9"];
+//    [hexDic setObject:@"0010" forKey:@"10"];
+//    [hexDic setObject:@"0011" forKey:@"A"];
+//    [hexDic setObject:@"0100" forKey:@"B"];
+//    [hexDic setObject:@"0101" forKey:@"C"];
+//    [hexDic setObject:@"0110" forKey:@"D"];
+//    [hexDic setObject:@"0111" forKey:@"E"];
+//     以下是设置家长模式参数
     [hexDic setObject:@"1000" forKey:@"8"];
     [hexDic setObject:@"1001" forKey:@"9"];
     [hexDic setObject:@"1002" forKey:@"10"];
@@ -808,6 +816,15 @@ CGSize getTextSizeWithAttributesDic(NSString *text, CGFloat maxWidth, NSStringDr
     [binaryDic setObject:@"5" forKey:@"0101"];
     [binaryDic setObject:@"6" forKey:@"0110"];
     [binaryDic setObject:@"7" forKey:@"0111"];
+//    [binaryDic setObject:@"0" forKey:@"1000"];
+//    [binaryDic setObject:@"1" forKey:@"1001"];
+//    [binaryDic setObject:@"2" forKey:@"1010"];
+//    [binaryDic setObject:@"3" forKey:@"1011"];
+//    [binaryDic setObject:@"4" forKey:@"1100"];
+//    [binaryDic setObject:@"5" forKey:@"1101"];
+//    [binaryDic setObject:@"6" forKey:@"1110"];
+//    [binaryDic setObject:@"7" forKey:@"1111"];
+//     以下是设置成功
     [binaryDic setObject:@"8" forKey:@"1000"];
     [binaryDic setObject:@"9" forKey:@"1001"];
     [binaryDic setObject:@"A" forKey:@"1010"];

@@ -82,15 +82,15 @@
 @property (nonatomic, strong) NSString * stringg44;
 @property (nonatomic, strong) NSString * stringg55;
 /***************开关3************/
-@property (nonatomic, strong) NSString * string111;
-@property (nonatomic, strong) NSString * string222;
-@property (nonatomic, strong) NSString * string333;
-@property (nonatomic, strong) NSString * string444;
-@property (nonatomic, strong) NSString * string555;
-
 @property (nonatomic, strong) NSString * stringg111;
 @property (nonatomic, strong) NSString * stringg222;
 @property (nonatomic, strong) NSString * stringg333;
 @property (nonatomic, strong) NSString * stringg444;
 @property (nonatomic, strong) NSString * stringg555;
+
+@property (nonatomic, strong) NSString * string111;
+@property (nonatomic, strong) NSString * string222;
+@property (nonatomic, strong) NSString * string333;
+@property (nonatomic, strong) NSString * string444;
+@property (nonatomic, strong) NSString * string555;
 @end

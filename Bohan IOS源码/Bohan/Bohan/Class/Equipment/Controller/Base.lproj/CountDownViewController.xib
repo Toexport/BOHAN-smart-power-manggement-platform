@@ -13,13 +13,12 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CountDownViewController">
             <connections>
-                <outlet property="DelayClosingBut" destination="H3Z-nj-mIr" id="BGK-JH-nLS"/>
+                <outlet property="DelayClosingBut" destination="Gt8-M1-Y3K" id="gm2-8f-M1d"/>
                 <outlet property="PatchVIew" destination="9As-Uq-nnQ" id="wUO-CL-U8p"/>
                 <outlet property="PatchViewLayoutConstraint" destination="Xqo-vN-2XR" id="fau-LX-rtf"/>
-                <outlet property="ViewLayoutHeight" destination="HuK-Js-bI2" id="fnH-Ex-Hny"/>
-                <outlet property="closeBtn" destination="Q1e-k7-vih" id="P9Y-M5-cQJ"/>
+                <outlet property="closeBtn" destination="kBK-gE-Gql" id="4au-ym-e5m"/>
                 <outlet property="mainTable" destination="9Qq-ix-CwZ" id="vtg-Ia-SBa"/>
-                <outlet property="openBtn" destination="iU4-gc-MVp" id="EGT-ZR-wBX"/>
+                <outlet property="openBtn" destination="olg-8L-vEl" id="5Zg-5m-L3m"/>
                 <outlet property="progressView" destination="o0v-Be-Vth" id="ib9-Kl-YD9"/>
                 <outlet property="status" destination="Png-Cg-6GH" id="cw0-fk-eDE"/>
                 <outlet property="time" destination="qEZ-Vk-soT" id="5Bi-jt-RiV"/>
@@ -36,26 +35,26 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BFl-2i-hjf">
-                    <rect key="frame" x="10" y="10" width="394" height="389"/>
+                    <rect key="frame" x="10" y="10" width="394" height="357"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o0v-Be-Vth" customClass="STLoopProgressView">
-                            <rect key="frame" x="50" y="40" width="294" height="294"/>
+                            <rect key="frame" x="50" y="10" width="294" height="294"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="剩余" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jl3-53-HSc">
-                                    <rect key="frame" x="132" y="99" width="31" height="18"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <rect key="frame" x="134.33333333333334" y="104" width="26.666666666666657" height="15.666666666666671"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <color key="textColor" red="0.36078431370000003" green="0.36078431370000003" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qEZ-Vk-soT">
-                                    <rect key="frame" x="94" y="132" width="106.66666666666669" height="30"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                    <rect key="frame" x="102" y="134.66666666666666" width="90" height="25.333333333333343"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                     <color key="textColor" red="0.23921568630000001" green="0.55294117649999996" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备打开/关闭" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Png-Cg-6GH">
-                                    <rect key="frame" x="99" y="177" width="97" height="18"/>
-                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                    <rect key="frame" x="105.66666666666666" y="175" width="84" height="15.666666666666657"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <color key="textColor" red="0.36078431370000003" green="0.36078431370000003" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
@@ -71,10 +70,10 @@
                                 <constraint firstItem="qEZ-Vk-soT" firstAttribute="top" secondItem="jl3-53-HSc" secondAttribute="bottom" constant="15" id="xpS-Vm-wEO"/>
                             </constraints>
                         </view>
-                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iU4-gc-MVp">
-                            <rect key="frame" x="50" y="349" width="70" height="30"/>
-                            <color key="backgroundColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
-                            <state key="normal" title="开">
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iU4-gc-MVp">
+                            <rect key="frame" x="50" y="305" width="70" height="28"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal">
                                 <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -83,12 +82,13 @@
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1e-k7-vih">
-                            <rect key="frame" x="274" y="349" width="70" height="30"/>
+                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1e-k7-vih">
+                            <rect key="frame" x="274" y="305" width="70" height="28"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="70" id="7gJ-Z2-uzY"/>
                             </constraints>
-                            <state key="normal" title="关">
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal">
                                 <color key="titleColor" red="0.23921568630000001" green="0.55294117649999996" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -99,7 +99,44 @@
                                     <integer key="value" value="1"/>
                                 </userDefinedRuntimeAttribute>
                                 <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
-                                    <color key="value" red="0.22352941176470587" green="0.70196078431372544" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="value" red="0.16470588235294117" green="0.4823529411764706" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="olg-8L-vEl">
+                            <rect key="frame" x="8" y="5" width="70" height="28"/>
+                            <color key="backgroundColor" red="0.73333333329999995" green="0.73333333329999995" blue="0.73333333329999995" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="70" id="4mm-DN-Y1H"/>
+                                <constraint firstAttribute="height" constant="28" id="HYo-Cg-DMc"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="开">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kBK-gE-Gql">
+                            <rect key="frame" x="316" y="5" width="70" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="70" id="8fu-bO-vEh"/>
+                                <constraint firstAttribute="height" constant="28" id="wgx-7I-tsk"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="关"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                    <integer key="value" value="1"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
+                                    <color key="value" red="0.058823529411764705" green="0.5490196078431373" blue="0.95686274509803926" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
                         </button>
@@ -108,13 +145,17 @@
                     <gestureRecognizers/>
                     <constraints>
                         <constraint firstItem="Q1e-k7-vih" firstAttribute="trailing" secondItem="o0v-Be-Vth" secondAttribute="trailing" id="6EJ-ck-02p"/>
-                        <constraint firstItem="o0v-Be-Vth" firstAttribute="top" secondItem="BFl-2i-hjf" secondAttribute="top" constant="40" id="BzK-Po-vDI"/>
-                        <constraint firstItem="iU4-gc-MVp" firstAttribute="top" secondItem="o0v-Be-Vth" secondAttribute="bottom" constant="15" id="Fbu-yd-D2a"/>
+                        <constraint firstAttribute="trailing" secondItem="kBK-gE-Gql" secondAttribute="trailing" constant="8" id="87H-3S-ER0"/>
+                        <constraint firstItem="olg-8L-vEl" firstAttribute="top" secondItem="BFl-2i-hjf" secondAttribute="top" constant="5" id="BxN-og-WXc"/>
+                        <constraint firstItem="o0v-Be-Vth" firstAttribute="top" secondItem="BFl-2i-hjf" secondAttribute="top" constant="10" id="BzK-Po-vDI"/>
+                        <constraint firstItem="iU4-gc-MVp" firstAttribute="top" secondItem="o0v-Be-Vth" secondAttribute="bottom" constant="1" id="Fbu-yd-D2a"/>
                         <constraint firstItem="o0v-Be-Vth" firstAttribute="centerX" secondItem="BFl-2i-hjf" secondAttribute="centerX" id="IGk-Cx-MRf"/>
+                        <constraint firstItem="kBK-gE-Gql" firstAttribute="top" secondItem="olg-8L-vEl" secondAttribute="top" id="JOs-TF-B16"/>
                         <constraint firstItem="iU4-gc-MVp" firstAttribute="width" secondItem="Q1e-k7-vih" secondAttribute="width" id="V3Y-Mf-jSy"/>
-                        <constraint firstAttribute="bottom" secondItem="iU4-gc-MVp" secondAttribute="bottom" constant="10" id="n1d-i8-koN"/>
+                        <constraint firstAttribute="bottom" secondItem="iU4-gc-MVp" secondAttribute="bottom" constant="24" id="n1d-i8-koN"/>
                         <constraint firstItem="o0v-Be-Vth" firstAttribute="leading" secondItem="BFl-2i-hjf" secondAttribute="leading" constant="50" id="nPa-Mq-IkO"/>
                         <constraint firstItem="iU4-gc-MVp" firstAttribute="leading" secondItem="o0v-Be-Vth" secondAttribute="leading" id="okF-jz-eIN"/>
+                        <constraint firstItem="olg-8L-vEl" firstAttribute="leading" secondItem="BFl-2i-hjf" secondAttribute="leading" constant="8" id="p0r-4U-qQl"/>
                         <constraint firstItem="Q1e-k7-vih" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="iU4-gc-MVp" secondAttribute="trailing" id="srh-ur-fbs"/>
                         <constraint firstAttribute="trailing" secondItem="o0v-Be-Vth" secondAttribute="trailing" constant="50" id="wHx-LF-m3I"/>
                         <constraint firstItem="Q1e-k7-vih" firstAttribute="bottom" secondItem="iU4-gc-MVp" secondAttribute="bottom" id="weO-hb-F1n"/>
@@ -132,14 +173,15 @@
                     </userDefinedRuntimeAttributes>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9As-Uq-nnQ">
-                    <rect key="frame" x="10" y="391" width="394" height="55"/>
+                    <rect key="frame" x="10" y="483" width="394" height="30"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H3Z-nj-mIr">
-                            <rect key="frame" x="15" y="12" width="90" height="30"/>
+                            <rect key="frame" x="5" y="1" width="90" height="28"/>
                             <constraints>
-                                <constraint firstAttribute="width" constant="90" id="Jvw-a2-CVS"/>
-                                <constraint firstAttribute="height" constant="30" id="KXh-Dj-rhi"/>
+                                <constraint firstAttribute="width" constant="90" id="vde-4r-A0N"/>
+                                <constraint firstAttribute="height" constant="28" id="wrL-gl-y3I"/>
                             </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <state key="normal" title="延时开关">
                                 <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -150,19 +192,20 @@
                                 <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
                                     <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
-                            <connections>
-                                <action selector="DelayClosingBut:" destination="-1" eventType="touchUpInside" id="zsI-T1-zaQ"/>
-                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gt8-M1-Y3K">
-                            <rect key="frame" x="319" y="12" width="60" height="30"/>
+                            <rect key="frame" x="307" y="1" width="80" height="28"/>
                             <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="30" id="OCz-jb-ofx"/>
-                                <constraint firstAttribute="width" constant="60" id="TrW-mh-3YQ"/>
+                                <constraint firstAttribute="height" constant="28" id="3yx-VQ-JWE"/>
+                                <constraint firstAttribute="width" constant="80" id="YsA-WR-zAB"/>
                             </constraints>
-                            <state key="normal" title="取消">
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="启动">
                                 <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <userDefinedRuntimeAttributes>
@@ -172,23 +215,29 @@
                                 <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
                                     <integer key="value" value="1"/>
                                 </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="DelayClosingBut:" destination="-1" eventType="touchUpInside" id="PER-uf-meS"/>
+                            </connections>
                         </button>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="H3Z-nj-mIr" firstAttribute="leading" secondItem="9As-Uq-nnQ" secondAttribute="leading" constant="15" id="1pT-ud-EkF"/>
-                        <constraint firstAttribute="trailing" secondItem="Gt8-M1-Y3K" secondAttribute="trailing" constant="15" id="7qe-TT-NDX"/>
-                        <constraint firstAttribute="height" constant="55" id="E1O-53-6V8"/>
-                        <constraint firstItem="H3Z-nj-mIr" firstAttribute="top" secondItem="9As-Uq-nnQ" secondAttribute="top" constant="12" id="kx4-Vp-19F"/>
-                        <constraint firstItem="Gt8-M1-Y3K" firstAttribute="top" secondItem="9As-Uq-nnQ" secondAttribute="top" constant="12" id="wbA-QR-Hh7"/>
+                        <constraint firstItem="H3Z-nj-mIr" firstAttribute="leading" secondItem="9As-Uq-nnQ" secondAttribute="leading" constant="5" id="Dk8-dm-5r9"/>
+                        <constraint firstAttribute="height" constant="30" id="E1O-53-6V8"/>
+                        <constraint firstItem="Gt8-M1-Y3K" firstAttribute="top" secondItem="9As-Uq-nnQ" secondAttribute="top" constant="1" id="I4v-ZU-AmI"/>
+                        <constraint firstItem="H3Z-nj-mIr" firstAttribute="top" secondItem="9As-Uq-nnQ" secondAttribute="top" constant="1" id="Jbk-1C-HMJ"/>
+                        <constraint firstAttribute="trailing" secondItem="Gt8-M1-Y3K" secondAttribute="trailing" constant="7" id="iuL-d2-6tJ"/>
                     </constraints>
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Qq-ix-CwZ">
-                    <rect key="frame" x="0.0" y="446" width="414" height="290"/>
+                    <rect key="frame" x="0.0" y="513" width="414" height="223"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="290" id="De5-8T-Rhi"/>
+                        <constraint firstAttribute="height" constant="223" id="De5-8T-Rhi"/>
                     </constraints>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="BU4-Ot-xtL"/>
@@ -205,7 +254,7 @@
                 <constraint firstItem="9As-Uq-nnQ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" constant="10" id="Ngd-gY-iyJ"/>
                 <constraint firstItem="9Qq-ix-CwZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Rjh-ej-mJp"/>
                 <constraint firstAttribute="trailing" secondItem="hpo-iu-F3B" secondAttribute="trailing" id="Xew-hh-xgj"/>
-                <constraint firstItem="9As-Uq-nnQ" firstAttribute="top" relation="lessThanOrEqual" secondItem="BFl-2i-hjf" secondAttribute="bottom" constant="45" id="Xqo-vN-2XR"/>
+                <constraint firstItem="9As-Uq-nnQ" firstAttribute="top" relation="lessThanOrEqual" secondItem="BFl-2i-hjf" secondAttribute="bottom" constant="210" id="Xqo-vN-2XR"/>
                 <constraint firstItem="hpo-iu-F3B" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="dhv-Nj-4vn"/>
                 <constraint firstItem="9Qq-ix-CwZ" firstAttribute="bottom" secondItem="Q5M-cg-NOt" secondAttribute="bottom" id="eXm-47-Ts1"/>
                 <constraint firstItem="BFl-2i-hjf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="erM-cw-aF0"/>

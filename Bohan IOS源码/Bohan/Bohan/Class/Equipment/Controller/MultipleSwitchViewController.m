@@ -157,17 +157,32 @@
 // 开关三
 //开
 - (IBAction)Switch3OpenBut:(UIButton *)sender {
-    sender.selected = !sender.selected;
+    NSString * stringg1 = [NSString stringWithFormat:@"%@%@%@%@%@",self.string1,self.string2,self.string3,self.string4,self.string5];
+    NSString * stringg2 = [NSString stringWithFormat:@"%@%@%@%@%@",self.string111,self.string222,self.string333,self.string444,self.string555];
+    ZPLog(@"%@--%@",stringg1,stringg2);
     if (sender.selected) {
-        Guan3But.selected = NO;
-        [self Opendatas3];
-        ZPLog(@"选中");
         return;
     }else {
+        sender.selected = !sender.selected;
         Guan3But.selected = NO;
-        [self CancelTiming1];
-        ZPLog(@"取消");
-        return;
+        if ([stringg2 isEqualToString:@"(null)(null)(null)(null)(null)"]) {
+            Open3But.selected = NO;
+            Guan3But.selected = YES;
+            ZPLog(@"请修改单前时间");
+            [HintView showHint:Localize(@"设定时间必须大于当前时间")];
+            return;
+        }else
+            if (stringg1.integerValue > stringg2.integerValue) {
+                // string1系统时间 大于 string2修改时间
+                Open3But.selected = NO;
+                Guan3But.selected = YES;
+                ZPLog(@"不能小于当前时间");
+                [HintView showHint:Localize(@"设定时间必须大于当前时间")];
+                return;
+            }else {
+                [self Opendatas3];
+            }
+        ZPLog(@"开2");
     }
 }
 
@@ -234,12 +249,31 @@
 
 // 关3
 - (IBAction)Switch3GuanBut:(UIButton *)sender {
+    NSString * stringg1 = [NSString stringWithFormat:@"%@%@%@%@%@",self.string11,self.string22,self.string33,self.string44,self.string55];
+    NSString * stringg2 = [NSString stringWithFormat:@"%@%@%@%@%@",self.string111,self.string222,self.string333,self.string444,self.string555];
+    ZPLog(@"%@--%@",stringg1,stringg2);
     if (sender.selected) {
         return;
     }else {
         sender.selected = !sender.selected;
         Open3But.selected = NO;
-        [self Guandatas3];
+        if ([stringg2 isEqualToString:@"(null)(null)(null)(null)(null)"]) {
+            Open3But.selected = YES;
+            Guan3But.selected = NO;
+            ZPLog(@"请修改当前时间");
+            [HintView showHint:Localize(@"设定时间必须大于当前时间")];
+            return;
+        }else
+            if (stringg1.integerValue > stringg2.integerValue) {
+                // string1系统时间 大于 string2修改时间
+                Open3But.selected = YES;
+                Guan3But.selected = NO;
+                ZPLog(@"不能小于当前时间");
+                [HintView showHint:Localize(@"设定时间必须大于当前时间")];
+                return;
+            }else {
+                [self Guandatas3];
+            }
         ZPLog(@"关3");
     }
 }

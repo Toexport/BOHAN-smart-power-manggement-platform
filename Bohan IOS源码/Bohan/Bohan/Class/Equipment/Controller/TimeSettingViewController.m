@@ -402,7 +402,6 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
 
 //时段设置的设置
 - (IBAction)settingAction {
-    
     TimeSettingListViewController *list = [[TimeSettingListViewController alloc] init];
     list.datas = self.datas;
     list.deviceNo = self.deviceNo;
@@ -435,8 +434,6 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
     }];
 }
 - (IBAction)timeSelectAction:(UIButton *)sender {
-    
-    
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowHourMinute scrollToDate:[formatter dateFromString:sender.titleLabel.text] CompleteBlock:^(NSDate *selectDate) {
         [sender setTitle:[formatter stringFromDate:selectDate] forState:UIControlStateNormal];
 

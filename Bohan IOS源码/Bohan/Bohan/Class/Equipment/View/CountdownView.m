@@ -55,7 +55,7 @@
     
     self.string1 = [[NSNumber numberWithInteger:year] stringValue];
     self.string11 = [[NSNumber numberWithInteger:year] stringValue];
-    YYYYTextField.text = [NSString stringWithString:self.string1];
+//    YYYYTextField.text = [NSString stringWithString:self.string1];
     YearTextField.text = [NSString stringWithString:self.string11];
     if(month >= 10) {
         self.string2 = [[NSNumber numberWithInteger:month] stringValue];
@@ -64,7 +64,7 @@
         self.string2 = [NSString stringWithFormat:@"0%ld",(long)month];
         self.string22 = [NSString stringWithFormat:@"0%ld",(long)month];
     }
-    mmTextField.text = [NSString stringWithString:self.string2];
+//    mmTextField.text = [NSString stringWithString:self.string2];
     MonthTextField.text = [NSString stringWithString:self.string22];
     
     if (day >= 10) {
@@ -74,7 +74,7 @@
         self.string3 = [NSString stringWithFormat:@"0%ld",(long)day];
         self.string33 = [NSString stringWithFormat:@"0%ld",(long)day];
     }
-    DDTextField.text = [NSString stringWithString:self.string3];
+//    DDTextField.text = [NSString stringWithString:self.string3];
     DayTextField.text = [NSString stringWithString:self.string3];
     
     if (hour >= 10) {
@@ -84,7 +84,7 @@
         self.string4 = [NSString stringWithFormat:@"0%ld",(long)hour];
         self.string44 = [NSString stringWithFormat:@"0%ld",(long)hour];
     }
-    HHTextField.text = [NSString stringWithString:self.string4];
+//    HHTextField.text = [NSString stringWithString:self.string4];
     HoursTextField.text = [NSString stringWithString:self.string44];
     if (minute >= 10) {
         self.string5 = [[NSNumber numberWithInteger:minute] stringValue];
@@ -93,9 +93,9 @@
         self.string5 = [NSString stringWithFormat:@"0%ld",(long)minute];
         self.string55 = [NSString stringWithFormat:@"0%ld",(long)minute];
     }
-    MMTextField.text = [NSString stringWithString:self.string5];
+//    MMTextField.text = [NSString stringWithString:self.string5];
     MinutesTextField.text = [NSString stringWithString:self.string55];
-    NSString * string = [NSString stringWithFormat:@"%@%@%@%@%@",YYYYTextField.text,mmTextField.text,DDTextField.text,HHTextField.text,MMTextField.text];
+    NSString * string = [NSString stringWithFormat:@"%@%@%@%@%@",YearTextField.text,MonthTextField.text,DayTextField.text,HoursTextField.text,MinutesTextField.text];
     str1 = [NSString stringWithFormat:@"%@",string];
     ZPLog(@"%@",str1);
     

@@ -13,8 +13,7 @@
 #import "TimeSettingModel.h"
 #import "CommonOperation.h"
 #import "TimeSettingListViewController.h"
-//static NSString * const parentModel = @"00002000FF0000000000000000000000000000000000000000000000000000000000000000000000000000000003";
-//static NSString * const parentModel1 = @"170020007F2200230000000000000000000000000000000000000000000000000000000000000000000000000003";
+
 @interface ParamsSettingViewController ()
 {
     NSDateFormatter *formatter;
@@ -45,22 +44,26 @@
     }
     [deviceId setText:[NSString stringWithFormat:@"ID:%@",self.dNo]];
     [self deviceParams];
-    [self loadData];
-//    [self getStatus];
-//    [self getPower];
-//    [self getDelayTime];
     [self configNoData];// 打开这个不显示家长模式是否开启
-//    [self DefaultGray];
-    
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStauts:) name:CHANGETIMEMODEL object:nil];
+    
 }
-
+- (void)deviceParams {
+    [self GetDatas];
+    [self loadData];
+    [self DefaultTest]; //  默认关闭所有按钮
+}
+- (void)viewDidAppear:(BOOL)animated {
+    [self loadData];
+}
 - (void)updateStauts:(NSNotification *)noti {
     NSDictionary *dic = noti.object;
     ParentsModeBut.selected = dic;
 }
 
-- (void)deviceParams {
+// 获取数据
+
+- (void)GetDatas {
     self.datas = [NSMutableArray array];
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
@@ -219,7 +222,7 @@
 // 负荷门限BUt
 - (IBAction)saveAction:(UIButton *)sender {
     if ([self.Coedid containsString:@"QK01"] || [self.Coedid containsString:@"QK02"]
-        || [self.Coedid containsString:@"QK03"] || [self.Coedid containsString:@"CDMT10"] || [self.Coedid containsString:@"QC10"] || [self.Coedid containsString:@"YC10"] || [self.Coedid containsString:@"YC"]) {
+        || [self.Coedid containsString:@"QK03"] || [self.Coedid containsString:@"CDMT10"] || [self.Coedid containsString:@"QC10"] || [self.Coedid containsString:@"YC10"] || [self.Coedid containsString:@"YCGP10"] || [self.Coedid containsString:@"YC"]) {
         if (limitTF.text == nil || limitTF.text.length <= 1) {
             ZPLog(@"没有输入文字");
             [HintView showHint:Localize(@"请输入负荷门限")];
@@ -231,7 +234,7 @@
             }
         }
     }else
-        if ([self.Coedid containsString:@"YFMT"] || [self.Coedid containsString:@"CDMT60"] || [self.Coedid containsString:@"GP1P"] || [self.Coedid containsString:@"WFMT"]) {
+        if ([self.Coedid containsString:@"CDMT60"] ) {
             if (limitTF.text == nil || limitTF.text.length <= 1) {
                 ZPLog(@"没有输入文字");
                 [HintView showHint:Localize(@"请输入负荷门限")];
@@ -243,12 +246,12 @@
                 }
             }
         }else
-            if ([self.Coedid containsString:@"CDMT16"] || [self.Coedid containsString:@"QC16"] || [self.Coedid containsString:@"YC16"]) {
+            if ([self.Coedid containsString:@"CDMT16"] || [self.Coedid containsString:@"QC16"] || [self.Coedid containsString:@"YC16"] || [self.Coedid containsString:@"YCGP16"]) {
                 if (limitTF.text == nil || limitTF.text.length <= 1) {
                     ZPLog(@"没有输入文字");
                     [HintView showHint:Localize(@"请输入负荷门限")];
                 }else {
-                    if (limitTF.text.integerValue  > 3500) {
+                    if (limitTF.text.integerValue  > 4000) {
                         [HintView showHint:Localize(@"负荷门限不能大于3500")];
                     }else {
                         [self AllDataload];
@@ -303,7 +306,19 @@
                                         [self AllDataload];
                                     }
                                 }
-                            }
+                            }else
+                                if ([self.Coedid containsString:@"CG1P"] || [self.Coedid containsString:@"WFMT"] || [self.Coedid containsString:@"MC"]) {
+                                    if (limitTF.text == nil || limitTF.text.length <= 1) {
+                                        ZPLog(@"没有输入文字");
+                                        [HintView showHint:Localize(@"请输入负荷门限")];
+                                    }else {
+                                        if (limitTF.text.integerValue  > 25000) {
+                                            [HintView showHint:Localize(@"负荷门限不能大于25000")];
+                                        }else {
+                                            [self AllDataload];
+                                        }
+                                    }
+                                }
 }
 
 //  单价数据
@@ -391,42 +406,19 @@
 - (IBAction)ParentsModeBut:(UIButton *)sender {
     sender.selected =! sender.selected;
     if (sender.selected) {
-//        [self changeModel:parentModel isParentCancel:NO];
+        TimeSettingListViewController *list = [[TimeSettingListViewController alloc] init];
+        list.datas = self.datas;
+        list.deviceNo = self.dNo;
+        list.isParentModel = YES;
+        [self.navigationController pushViewController:list animated:YES];
         ZPLog(@"选中");
     }else {
-//        [self changeModell:parentModel1 isParentCancel:NO];
+        //        [self changeModell:parentModel1 isParentCancel:NO];
         [self cancelAction];
         [self perideRunCancel];
         ZPLog(@"取消");
     }
 }
-
-//// 获取是否是家长模式数据
-//- (void)loadData {
-//    WebSocket *socket = [WebSocket socketManager];
-//    CommandModel *model = [[CommandModel alloc] init];
-//    model.command = @"0008";
-//    model.deviceNo = self.dNo;
-//    [self.view startLoading];
-//    MyWeakSelf
-//    [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
-//        [weakSelf.view stopLoading];
-//        ZPLog(@"%@",response);
-//        if (!error) {
-//            NSString * ParentsMode = [response substringWithRange:NSMakeRange(32, 2)];
-//            ZPLog(@"%@",ParentsMode);
-////            if ([ParentsMode containsString:@"FF"]) { // FF是设置所有星期
-////                ParentsModeBut.selected = YES;
-////            }else
-//                if (![ParentsMode containsString:@"00"]) { // 取消是00
-//                    ParentsModeBut.selected = YES;
-//                }
-//        }else {
-//            [HintView showHint:Localize(@"加载数据失败")];
-//            [weakSelf.navigationController popViewControllerAnimated:YES];
-//        }
-//    }];
-//}
 
 - (void)loadData {
     WebSocket *socket = [WebSocket socketManager];
@@ -449,6 +441,7 @@
         ZPLog(@"--------%@",response);
     }];
 }
+
 - (void)changeModel:(NSString *)content isParentCancel:(BOOL)cancel {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
@@ -475,8 +468,8 @@
 // 家长模式
 - (void)caculateWithString:(NSString *)content {
     NSString *str = [content substringFromIndex:content.length - 2];
-    if ([str isEqualToString:@"03"]) {
-        [self.datas removeAllObjects];
+    if ([str isEqualToString:@"03"] || [str isEqualToString:@"04"]) {
+        [self.datas removeAllObjects]; // 关闭这个会显示出来，但是无法取消家长模式
         BOOL isValidate = NO;
         ParentsModeBut.selected = YES;
         for (NSInteger i = 0; i < 9; i++) {
@@ -490,13 +483,18 @@
             model.endTime = end;
             model.week = [time substringFromIndex:time.length - 2];
             NSString *week = [Utils getBinaryByHex:model.week];
-            if (![week  isEqualToString:@"00000000"] && !([start isEqualToString:@"00:00"] && [end isEqualToString:@"00:00"])) {
-                isParentModel = YES;
-                isValidate = YES;
-                model.open = YES;
+            if ([str isEqualToString:@"03"]) {
+                if (![week  isEqualToString:@"00000000"] && !([start isEqualToString:@"00:00"] && [end isEqualToString:@"00:00"])) {
+                    isParentModel = YES;
+                    isValidate = YES;
+                    model.open = YES;
+                } else {
+                    model.open = NO;
+                }
             } else {
                 model.open = NO;
             }
+            
             [self.datas addObject:model];
         }
         //有效的时段设置模式
@@ -510,9 +508,8 @@
         ParentsModeBut.selected = YES;
         return;
     }
-    
     ParentsModeBut.selected = NO;
-    [self configNoData];
+    //[self configNoData];
 }
 - (void)configRunModelWithModelStr:(NSString *)modelStr isLoop:(BOOL)isLoop {
     if (isLoop) {
@@ -543,7 +540,7 @@
     TimeSettingListViewController *list = [[TimeSettingListViewController alloc] init];
     list.datas = self.datas;
     list.deviceNo = self.dNo;
-    list.isParentModel = isParentModel;
+    list.isParentModel = YES;
     [self.navigationController pushViewController:list animated:YES];
 }
 
@@ -584,21 +581,13 @@
             if (!error) {
                 [self caculateWithString:@"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004"];
                 [HintView showHint:Localize(@"取消成功")];
-                
                 selectedIndexPath = nil;
-                
-//                UIButton *customHeader = [modelCollectionView viewWithTag:200];
-//                customHeader.layer.borderColor = [UIColor getColor:@"cccccc"].CGColor;
-//                [customHeader setBackgroundColor:[UIColor whiteColor]];
-//                [modelCollectionView reloadData];
-                
             }else {
                 [HintView showHint:error.localizedDescription];
             }
         }];
     }
 }
-
 
 - (void)changeModell:(NSString *)contentt isParentCancel:(BOOL)cancel {
     WebSocket *socket = [WebSocket socketManager];
@@ -620,26 +609,13 @@
         }else {
             if (!error) {
                 [weakSelf caculateWithString:contentt];
-//                [HintView showHint:Localize(@"取消成功")];
+                //                [HintView showHint:Localize(@"取消成功")];
             }else {
                 [HintView showHint:Localize(@"操作失败")];
             }
         }
-
+        
     }];
-//
-//    [CommonOperation cancelDeviceRunModel:self.dNo result:^(id response, NSError *error) {
-//        if (!error) {
-//            isParentModel = NO;
-//            [HintView showHint:Localize(@"取消成功")];
-////            [openBtn setTitle:@"00:00" forState:UIControlStateNormal];
-////            [closeBtn setTitle:@"00:00" forState:UIControlStateNormal];
-//            [self caculateWithString:@"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004"];
-//        }else {
-//
-//            [HintView showHint:error.localizedDescription];
-//        }
-//    }];
 }
 
 // 充电保护设置
@@ -665,7 +641,7 @@
     }else {
         if (sender == ChargingProtectionBut) {
             ChargingProtectionBut.selected = NO;
-             ZNDDBut.selected = NO;
+            ZNDDBut.selected = NO;
             [self checkClose:ChargingProtectionBut.selected];
         }
         [DDCChargingProtectionBut setEnabled:NO]; //交互关闭
@@ -750,5 +726,18 @@
     }
 }
 
+// 进来默认关闭所有按钮
+- (void)DefaultTest {
+    [SettingBut setEnabled:NO]; // 交互打开
+    SettingBut.alpha = 0.4; // 透明度
+    [timeBut setEnabled:NO]; //交互开启
+    timeBut.alpha = 0.4; //透明度
+    [PowerBut setEnabled:NO]; // 交互开启
+    PowerBut.alpha = 0.4;
+    [DDCChargingProtectionBut setEnabled:NO]; //交互关闭
+    DDCChargingProtectionBut.alpha=0.4;//透明度
+    [PhoneChargingProtectionBut setEnabled:NO]; //交互关闭
+    PhoneChargingProtectionBut.alpha=0.4;//透明度
+}
 
 @end

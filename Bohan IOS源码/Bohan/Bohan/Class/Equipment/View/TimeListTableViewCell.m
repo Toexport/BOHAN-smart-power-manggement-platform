@@ -9,8 +9,7 @@
 #import "TimeListTableViewCell.h"
 #import "TimeSettingModel.h"
 #import "DebuggingANDPublishing.pch"
-@interface TimeListTableViewCell ()
-{
+@interface TimeListTableViewCell () {
     __weak IBOutlet UILabel *startTime;
     __weak IBOutlet UILabel *endTime;
     __weak IBOutlet UILabel *status;
@@ -24,18 +23,15 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
 }
 
-- (void)setModel:(TimeSettingModel *)model
-{
+- (void)setModel:(TimeSettingModel *)model {
     if (_model != model) {
         _model = model;
         
@@ -44,29 +40,14 @@
     }
 }
 - (IBAction)openOrClose:(UISwitch *)sender {
-    
-//    [status setText:sender.on?Localize(@"已开启"):Localize(@"未开启")];
     _model.open = sender.on;
     
     [startTime setText:_model.startTime];
     [endTime setText:_model.endTime];
-
-    if (sender.on) {
-
-        [startTime setText:_model.startTime];
-        [endTime setText:_model.endTime];
-
-    }else
-    {
-        [startTime setText:@"00:00"];
-        [endTime setText:@"00:00"];
-    }
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
-    
     [startTime setText:_model.startTime];
     [endTime setText:_model.endTime];
     [week setText:[_model.week loopWeekByHex]];
@@ -77,13 +58,14 @@
 
     if (!([end integerValue] > [start integerValue]) || [[week substringFromIndex:1] isEqualToString:@"0000000"]) {
         [status setText:Localize(@"未开启")];
-    }else
-    {
+    }else {
         [status setText:Localize(@"已开启")];
     }
 //    [status setText:_model.open?Localize(@"已开启"):Localize(@"未开启")];
     [openSwitch setOn:_model.open];
 
 }
+
+
 
 @end

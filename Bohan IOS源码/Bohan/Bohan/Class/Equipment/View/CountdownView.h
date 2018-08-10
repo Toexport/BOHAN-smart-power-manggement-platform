@@ -18,13 +18,6 @@
     __weak IBOutlet UITextField *DayTextField; // 日
     __weak IBOutlet UITextField *HoursTextField; // 时
     __weak IBOutlet UITextField *MinutesTextField; // 分
-    /***************************显示时间******************/
-    
-    __weak IBOutlet UITextField *YYYYTextField;  // 年
-    __weak IBOutlet UITextField *mmTextField;   // 月
-    __weak IBOutlet UITextField *DDTextField;  // 日
-    __weak IBOutlet UITextField *HHTextField;  // 时
-    __weak IBOutlet UITextField *MMTextField; // 分
 }
 typedef void(^doneBlock)(NSString *selectDate);
 @property (nonatomic,strong)doneBlock doneBlock  ;
