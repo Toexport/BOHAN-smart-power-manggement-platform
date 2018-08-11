@@ -51,7 +51,7 @@
 - (void)deviceParams {
     [self GetDatas];
     [self loadData];
-    [self DefaultTest]; //  默认关闭所有按钮
+//    [self DefaultTest]; //  默认关闭所有按钮
 }
 - (void)viewDidAppear:(BOOL)animated {
     [self loadData];
@@ -70,11 +70,23 @@
     model.command = @"0023";
     model.deviceNo = self.dNo;
     [self.view startLoading];
-    
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
         ZPLog(@"%@",response);
+        NSString * stringgg = [response substringWithRange:NSMakeRange(2, 2)];
+        ZPLog(@"%@",stringgg);
+        if ([stringgg containsString:@"61"] || [stringgg containsString:@"62"] || [stringgg containsString:@"63"]) {
+            [ParentsModeBut setEnabled:NO];
+            ParentsModeBut.alpha = 0.4;
+            [ParentsModeSettingBut setEnabled:NO];
+            ParentsModeSettingBut.alpha = 0.4;
+        }else {
+            [ParentsModeBut setEnabled:YES];
+            ParentsModeBut.alpha = 100;
+            [ParentsModeSettingBut setEnabled:YES];
+            ParentsModeSettingBut.alpha = 100;
+        }
         if (!error) {
             NSString *priceStr = [response substringWithRange:NSMakeRange(24, 4)];
             NSString *powerStr = [response substringWithRange:NSMakeRange(28, 6)];
@@ -222,7 +234,7 @@
 // 负荷门限BUt
 - (IBAction)saveAction:(UIButton *)sender {
     if ([self.Coedid containsString:@"QK01"] || [self.Coedid containsString:@"QK02"]
-        || [self.Coedid containsString:@"QK03"] || [self.Coedid containsString:@"CDMT10"] || [self.Coedid containsString:@"QC10"] || [self.Coedid containsString:@"YC10"] || [self.Coedid containsString:@"YCGP10"] || [self.Coedid containsString:@"YC"]) {
+        || [self.Coedid containsString:@"QK03"] || [self.Coedid containsString:@"CDMT10"] || [self.Coedid containsString:@"QC10"] || [self.Coedid containsString:@"YC10"] || [self.Coedid containsString:@"YCGP10"]) {
         if (limitTF.text == nil || limitTF.text.length <= 1) {
             ZPLog(@"没有输入文字");
             [HintView showHint:Localize(@"请输入负荷门限")];
@@ -234,25 +246,37 @@
             }
         }
     }else
-        if ([self.Coedid containsString:@"CDMT60"] ) {
-            if (limitTF.text == nil || limitTF.text.length <= 1) {
-                ZPLog(@"没有输入文字");
-                [HintView showHint:Localize(@"请输入负荷门限")];
-            }else {
-                if (limitTF.text.integerValue  > 15000) {
-                    [HintView showHint:Localize(@"负荷门限不能大于15000")];
+//        if ([self.Coedid containsString:@"YC"] ) {
+//            if (limitTF.text == nil || limitTF.text.length <= 1) {
+//                ZPLog(@"没有输入文字");
+//                [HintView showHint:Localize(@"请输入负荷门限")];
+//            }else {
+//                if (limitTF.text.integerValue  > 2500) {
+//                    [HintView showHint:Localize(@"负荷门限不能大于2500")];
+//                }else {
+//                    [self AllDataload];
+//                }
+//            }
+//        }else
+            if ([self.Coedid containsString:@"CDMT60"] ) {
+                if (limitTF.text == nil || limitTF.text.length <= 1) {
+                    ZPLog(@"没有输入文字");
+                    [HintView showHint:Localize(@"请输入负荷门限")];
                 }else {
-                    [self AllDataload];
+                    if (limitTF.text.integerValue  > 15000) {
+                        [HintView showHint:Localize(@"负荷门限不能大于15000")];
+                    }else {
+                        [self AllDataload];
+                    }
                 }
-            }
-        }else
+            }else
             if ([self.Coedid containsString:@"CDMT16"] || [self.Coedid containsString:@"QC16"] || [self.Coedid containsString:@"YC16"] || [self.Coedid containsString:@"YCGP16"]) {
                 if (limitTF.text == nil || limitTF.text.length <= 1) {
                     ZPLog(@"没有输入文字");
                     [HintView showHint:Localize(@"请输入负荷门限")];
                 }else {
                     if (limitTF.text.integerValue  > 4000) {
-                        [HintView showHint:Localize(@"负荷门限不能大于3500")];
+                        [HintView showHint:Localize(@"负荷门限不能大于4000")];
                     }else {
                         [self AllDataload];
                     }
@@ -307,7 +331,7 @@
                                     }
                                 }
                             }else
-                                if ([self.Coedid containsString:@"CG1P"] || [self.Coedid containsString:@"WFMT"] || [self.Coedid containsString:@"MC"]) {
+                                if ([self.Coedid containsString:@"CG1P"] || [self.Coedid containsString:@"WFMT"] || [self.Coedid containsString:@"MC"] || [self.Coedid containsString:@"GP1P"] || [self.Coedid containsString:@"YFGPMT"]) {
                                     if (limitTF.text == nil || limitTF.text.length <= 1) {
                                         ZPLog(@"没有输入文字");
                                         [HintView showHint:Localize(@"请输入负荷门限")];
@@ -367,7 +391,8 @@
     model.command = @"0020";
     contents = [limitTF.text componentsSeparatedByString:@"."];
     content = [NSString stringWithFormat:@"%04d%02d",[[contents firstObject] intValue],contents.count == 1?0:[contents[1] intValue]];
-    model.content = content;
+    NSString * contentStr = [content substringWithRange:NSMakeRange(0, 6)];
+    model.content = contentStr;
     [self.view startLoading];
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
@@ -469,7 +494,7 @@
 - (void)caculateWithString:(NSString *)content {
     NSString *str = [content substringFromIndex:content.length - 2];
     if ([str isEqualToString:@"03"] || [str isEqualToString:@"04"]) {
-        [self.datas removeAllObjects]; // 关闭这个会显示出来，但是无法取消家长模式
+        [self.datas removeAllObjects];
         BOOL isValidate = NO;
         ParentsModeBut.selected = YES;
         for (NSInteger i = 0; i < 9; i++) {
@@ -491,10 +516,15 @@
                 } else {
                     model.open = NO;
                 }
-            } else {
-                model.open = NO;
+            } else  if ([str isEqualToString:@"04"]) {
+                if (![week  isEqualToString:@"00000000"] && !([start isEqualToString:@"00:00"] && [end isEqualToString:@"00:00"])) {
+                    isParentModel = NO;
+                    isValidate = YES;
+                    model.open = NO;
+                } else {
+                    model.open = NO;
+                }
             }
-            
             [self.datas addObject:model];
         }
         //有效的时段设置模式
@@ -728,6 +758,10 @@
 
 // 进来默认关闭所有按钮
 - (void)DefaultTest {
+    [ParentsModeBut setEnabled:NO];
+    ParentsModeBut.alpha = 0.4;
+    [ParentsModeSettingBut setEnabled:NO];
+    ParentsModeSettingBut.alpha;
     [SettingBut setEnabled:NO]; // 交互打开
     SettingBut.alpha = 0.4; // 透明度
     [timeBut setEnabled:NO]; //交互开启

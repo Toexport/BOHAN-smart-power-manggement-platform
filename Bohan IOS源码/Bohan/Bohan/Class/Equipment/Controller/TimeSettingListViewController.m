@@ -14,7 +14,6 @@
 #import "TimeSettingModel.h"
 #import "DebuggingANDPublishing.pch"
 @interface TimeSettingListViewController ()<UITableViewDelegate, UITableViewDataSource> {
-    
     NSDateFormatter *formatter;
 }
 @property (nonatomic, strong) UITableView *mainTable;
@@ -71,11 +70,9 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
         [weakSelf.view stopLoading];
         if (!error) {
              NSString * Power = [response substringWithRange:NSMakeRange(52, 2)];
-
             ZPLog(@"%@",Power);
-//            [time setText:[NSString stringWithFormat:@"%d分钟",[[Time substringToIndex:2] intValue]]];
 
-        }else {// 看见没
+        }else {
             [HintView showHint:Localize(@"加载数据失败")];
         }
         ZPLog(@"--------%@",response);

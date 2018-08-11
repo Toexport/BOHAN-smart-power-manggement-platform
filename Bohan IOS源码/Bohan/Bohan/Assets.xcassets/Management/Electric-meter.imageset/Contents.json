@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Electric-meter.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "Electric-meter.png",
       "scale" : "2x"
     },
     {

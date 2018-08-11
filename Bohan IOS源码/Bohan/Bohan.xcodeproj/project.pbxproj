@@ -18,8 +18,8 @@
 		C47B4AB620F5DF9F00DAD5D3 /* CALayer+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4AB320F5DF9F00DAD5D3 /* CALayer+UIColor.m */; };
 		C47B4AB720F5DF9F00DAD5D3 /* UIViewController+LLProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4AB420F5DF9F00DAD5D3 /* UIViewController+LLProgress.m */; };
 		C4A044962113F5C300656EC2 /* ParamsSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4A044982113F5C300656EC2 /* ParamsSettingViewController.xib */; };
+		C4BBC63E211E7119009B0854 /* CountdownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4BBC640211E7119009B0854 /* CountdownView.xib */; };
 		C4E11AB5211297B00060B5B4 /* CountdownView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4E11AB4211297B00060B5B4 /* CountdownView.m */; };
-		C4E11AB7211297C60060B5B4 /* CountdownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4E11AB6211297C60060B5B4 /* CountdownView.xib */; };
 		C4F1A24620E5D3F900052B24 /* SelectPhotoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F1A24520E5D3F900052B24 /* SelectPhotoManager.m */; };
 		C4F1A24720E5D9EC00052B24 /* VerificationCodeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4F1A24920E5D9EC00052B24 /* VerificationCodeViewController.xib */; };
 		CC0F4827200CFB9700E184F8 /* NSString+HeartDecode.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0F4826200CFB9700E184F8 /* NSString+HeartDecode.m */; };
@@ -202,9 +202,13 @@
 		C4A044972113F5C300656EC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ParamsSettingViewController.xib; sourceTree = "<group>"; };
 		C4A0449A2113F5C600656EC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ParamsSettingViewController.strings; sourceTree = "<group>"; };
 		C4A0449C2113F5C700656EC2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ParamsSettingViewController.strings"; sourceTree = "<group>"; };
+		C4BBC63B211E702A009B0854 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CountDownViewController.strings"; sourceTree = "<group>"; };
+		C4BBC63D211E7040009B0854 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CountDownViewController.strings; sourceTree = "<group>"; };
+		C4BBC63F211E7119009B0854 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CountdownView.xib; sourceTree = "<group>"; };
+		C4BBC642211E711B009B0854 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CountdownView.strings; sourceTree = "<group>"; };
+		C4BBC644211E711D009B0854 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CountdownView.strings"; sourceTree = "<group>"; };
 		C4E11AB3211297B00060B5B4 /* CountdownView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CountdownView.h; sourceTree = "<group>"; };
 		C4E11AB4211297B00060B5B4 /* CountdownView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CountdownView.m; sourceTree = "<group>"; };
-		C4E11AB6211297C60060B5B4 /* CountdownView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CountdownView.xib; sourceTree = "<group>"; };
 		C4F1A24420E5D3F900052B24 /* SelectPhotoManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectPhotoManager.h; sourceTree = "<group>"; };
 		C4F1A24520E5D3F900052B24 /* SelectPhotoManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SelectPhotoManager.m; sourceTree = "<group>"; };
 		C4F1A24820E5D9EC00052B24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/VerificationCodeViewController.xib; sourceTree = "<group>"; };
@@ -432,7 +436,6 @@
 		CC80906C2047166600265FE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TimeSettingViewController.xib; sourceTree = "<group>"; };
 		CC80906F204716AC00265FE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TimeSettingViewController.strings; sourceTree = "<group>"; };
 		CC80907620471E9900265FE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CountDownViewController.xib; sourceTree = "<group>"; };
-		CC80907920471E9B00265FE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CountDownViewController.strings; sourceTree = "<group>"; };
 		CC80907B2047219700265FE0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TimeListTableViewCell.xib; sourceTree = "<group>"; };
 		CC80907E2047219900265FE0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/TimeListTableViewCell.strings; sourceTree = "<group>"; };
 		CC8154D2201B842300F72BFF /* CountDownViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CountDownViewController.h; sourceTree = "<group>"; };
@@ -518,7 +521,6 @@
 		CCEB9A98207905C400681168 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MeteringViewController.strings"; sourceTree = "<group>"; };
 		CCEB9A9A207905CA00681168 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TimeSelectViewController.strings"; sourceTree = "<group>"; };
 		CCEB9A9C207905CE00681168 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TimeSettingViewController.strings"; sourceTree = "<group>"; };
-		CCEB9AA02079061000681168 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CountDownViewController.strings"; sourceTree = "<group>"; };
 		CCEB9AA22079062100681168 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CustomInputView.strings"; sourceTree = "<group>"; };
 		CCEB9AA42079062500681168 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/TimeListTableViewCell.strings"; sourceTree = "<group>"; };
 		CCEB9AA62079062B00681168 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/UpdateDeviceInfoViewController.strings"; sourceTree = "<group>"; };
@@ -1162,7 +1164,7 @@
 				CC349F3520A890DE00BD6C6A /* DeviceInfoCollectionCell.xib */,
 				C4E11AB3211297B00060B5B4 /* CountdownView.h */,
 				C4E11AB4211297B00060B5B4 /* CountdownView.m */,
-				C4E11AB6211297C60060B5B4 /* CountdownView.xib */,
+				C4BBC640211E7119009B0854 /* CountdownView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1459,7 +1461,7 @@
 				CC2455B61FF7450700616916 /* LaunchScreen.storyboard in Resources */,
 				CC468D72206969D900506970 /* WSDatePickerView.xib in Resources */,
 				CC80906B2047166600265FE0 /* TimeSettingViewController.xib in Resources */,
-				C4E11AB7211297C60060B5B4 /* CountdownView.xib in Resources */,
+				C4BBC63E211E7119009B0854 /* CountdownView.xib in Resources */,
 				CCCBF39120191C1C00A80D90 /* TimeModelCollectionViewCell.xib in Resources */,
 				CC80906120470ED100265FE0 /* MeteringViewController.xib in Resources */,
 				C4F1A24720E5D9EC00052B24 /* VerificationCodeViewController.xib in Resources */,
@@ -1711,6 +1713,16 @@
 			name = ParamsSettingViewController.xib;
 			sourceTree = "<group>";
 		};
+		C4BBC640211E7119009B0854 /* CountdownView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C4BBC63F211E7119009B0854 /* Base */,
+				C4BBC642211E711B009B0854 /* en */,
+				C4BBC644211E711D009B0854 /* zh-Hans */,
+			);
+			name = CountdownView.xib;
+			sourceTree = "<group>";
+		};
 		C4F1A24920E5D9EC00052B24 /* VerificationCodeViewController.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -1871,8 +1883,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				CC80907620471E9900265FE0 /* Base */,
-				CC80907920471E9B00265FE0 /* en */,
-				CCEB9AA02079061000681168 /* zh-Hans */,
+				C4BBC63B211E702A009B0854 /* zh-Hans */,
+				C4BBC63D211E7040009B0854 /* en */,
 			);
 			name = CountDownViewController.xib;
 			sourceTree = "<group>";

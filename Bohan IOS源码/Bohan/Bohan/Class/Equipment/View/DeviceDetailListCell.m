@@ -30,24 +30,19 @@ __weak IBOutlet UISwitch *openSwitch;
 
 @implementation DeviceDetailListCell
 
-- (void)setModel:(DeviceModel *)model
-{
+- (void)setModel:(DeviceModel *)model {
 _model = model;
 [self setNeedsLayout];
 }
+
 - (IBAction)openAction:(UISwitch *)sender {
-
-
 if (sender.isOn) {
-
     openSwitch.backgroundColor = [UIColor getColor:@"54d76a"];
 }else {
-    
     openSwitch.backgroundColor = [UIColor redColor];
 }
 
 if (self.delegate && [self.delegate respondsToSelector:@selector(didSwitchOpen:withIndexPath:)]) {
-    
     [self.delegate didSwitchOpen:sender.on withIndexPath:self.indexPath];
 }
 }

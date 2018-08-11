@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "paramsetting_revise.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "paramsetting_revise.png",
       "scale" : "2x"
     },
     {

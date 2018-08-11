@@ -3,7 +3,7 @@
 "17C-jR-xO5.text" = "Monday Tuesday Wednesday Thursday Firday Saturday Sunday";
 
 /* Class = "UILabel"; text = "关闭"; ObjectID = "JSy-Uc-6R8"; */
-"JSy-Uc-6R8.text" = "shut down";
+"JSy-Uc-6R8.text" = "Power Outages";
 
 /* Class = "UILabel"; text = "00:00"; ObjectID = "VkX-WU-aHZ"; */
 "VkX-WU-aHZ.text" = "00:00";
@@ -12,7 +12,7 @@
 "eni-Xg-Z0v.text" = "Turned on";
 
 /* Class = "UILabel"; text = "开始"; ObjectID = "kkx-mK-JTj"; */
-"kkx-mK-JTj.text" = "Start";
+"kkx-mK-JTj.text" = "Electricity";
 
 /* Class = "UILabel"; text = "12:00"; ObjectID = "tNZ-VQ-2uA"; */
 "tNZ-VQ-2uA.text" = "12:00";

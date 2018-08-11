@@ -1,0 +1,21 @@
+
+/* Class = "UILabel"; text = "分"; ObjectID = "2Z7-Ju-CHC"; */
+"2Z7-Ju-CHC.text" = "分";
+
+/* Class = "UIButton"; normalTitle = "设置"; ObjectID = "5nk-mm-j9c"; */
+"5nk-mm-j9c.normalTitle" = "启动";
+
+/* Class = "UILabel"; text = "月"; ObjectID = "6IK-qR-Lv6"; */
+"6IK-qR-Lv6.text" = "月";
+
+/* Class = "UIButton"; normalTitle = "定时开关"; ObjectID = "GMD-0Q-WtD"; */
+"GMD-0Q-WtD.normalTitle" = "定时开关";
+
+/* Class = "UILabel"; text = "年"; ObjectID = "Y7x-F2-5Rs"; */
+"Y7x-F2-5Rs.text" = "年";
+
+/* Class = "UILabel"; text = "日"; ObjectID = "Yld-Yb-889"; */
+"Yld-Yb-889.text" = "日";
+
+/* Class = "UILabel"; text = "时"; ObjectID = "hws-44-Jxf"; */
+"hws-44-Jxf.text" = "时";

@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "menu_summery.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "menu_summery.png",
       "scale" : "2x"
     },
     {

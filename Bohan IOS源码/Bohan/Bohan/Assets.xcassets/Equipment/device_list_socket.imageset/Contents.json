@@ -2,11 +2,11 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "device_list_socket.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
+      "filename" : "device_list_socket.png",
       "scale" : "2x"
     },
     {

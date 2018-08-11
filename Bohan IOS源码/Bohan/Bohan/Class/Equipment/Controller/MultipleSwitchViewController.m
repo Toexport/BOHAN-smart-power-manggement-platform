@@ -58,7 +58,7 @@
 - (void)SwitchStateStrr {
     Open1But.selected = [[self.SwitchStateStr substringWithRange:NSMakeRange(58, 2)] isEqualToString:@"00"];
     Guan1But.selected = !Open1But.selected;
-    
+
     Open2But.selected = [[self.SwitchStateStr substringWithRange:NSMakeRange(46, 2)] isEqualToString:@"00"];
     Guan2But.selected = !Open2But.selected;
     
@@ -302,10 +302,8 @@
                 [HintView showHint:Localize(@"开关1定时开启已设置")];
             }else {
                 [HintView showHint:error.localizedDescription];// 后台返回的提示
-            }
-        }];
-//    }
-    
+        }
+    }];
 }
 
 // 定时开（2）
@@ -663,7 +661,6 @@
         self.stringg55 = Minutes2TextField.text;
         Minutes2TextField.text = [NSString stringWithString:self.stringg55];
     }];
-    
     datepicker.hideBackgroundYearLabel = YES;
     datepicker.dateLabelColor = kDefualtColor;
     datepicker.doneButtonColor = kDefualtColor;

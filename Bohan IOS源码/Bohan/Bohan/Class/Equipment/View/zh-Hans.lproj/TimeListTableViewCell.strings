@@ -3,7 +3,7 @@
 "17C-jR-xO5.text" = "未设置星期";
 
 /* Class = "UILabel"; text = "关闭"; ObjectID = "JSy-Uc-6R8"; */
-"JSy-Uc-6R8.text" = "关闭";
+"JSy-Uc-6R8.text" = "断电";
 
 /* Class = "UILabel"; text = "00:00"; ObjectID = "VkX-WU-aHZ"; */
 "VkX-WU-aHZ.text" = "00:00";
@@ -12,7 +12,7 @@
 "eni-Xg-Z0v.text" = "已开启";
 
 /* Class = "UILabel"; text = "开始"; ObjectID = "kkx-mK-JTj"; */
-"kkx-mK-JTj.text" = "开始";
+"kkx-mK-JTj.text" = "通电";
 
 /* Class = "UILabel"; text = "12:00"; ObjectID = "tNZ-VQ-2uA"; */
 "tNZ-VQ-2uA.text" = "12:00";

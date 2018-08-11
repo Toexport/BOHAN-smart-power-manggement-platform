@@ -1,18 +1,21 @@
 
+/* Class = "UIButton"; normalTitle = "启动"; ObjectID = "Gt8-M1-Y3K"; */
+"Gt8-M1-Y3K.normalTitle" = "启动";
+
+/* Class = "UIButton"; normalTitle = "延时开关"; ObjectID = "H3Z-nj-mIr"; */
+"H3Z-nj-mIr.normalTitle" = "延时开关";
+
 /* Class = "UILabel"; text = "设备打开/关闭"; ObjectID = "Png-Cg-6GH"; */
 "Png-Cg-6GH.text" = "设备打开/关闭";
 
-/* Class = "UIButton"; normalTitle = "关"; ObjectID = "Q1e-k7-vih"; */
-"Q1e-k7-vih.normalTitle" = "关";
-
-/* Class = "UIButton"; normalTitle = "取消"; ObjectID = "Vtv-H2-U6y"; */
-"Vtv-H2-U6y.normalTitle" = "取消";
-
-/* Class = "UIButton"; normalTitle = "开"; ObjectID = "iU4-gc-MVp"; */
-"iU4-gc-MVp.normalTitle" = "开";
-
 /* Class = "UILabel"; text = "剩余"; ObjectID = "jl3-53-HSc"; */
 "jl3-53-HSc.text" = "剩余";
+
+/* Class = "UIButton"; normalTitle = "关"; ObjectID = "kBK-gE-Gql"; */
+"kBK-gE-Gql.normalTitle" = "关";
+
+/* Class = "UIButton"; normalTitle = "开"; ObjectID = "olg-8L-vEl"; */
+"olg-8L-vEl.normalTitle" = "开";
 
 /* Class = "UILabel"; text = "00:00:00"; ObjectID = "qEZ-Vk-soT"; */
 "qEZ-Vk-soT.text" = "00:00:00";

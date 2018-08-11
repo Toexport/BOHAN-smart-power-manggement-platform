@@ -80,21 +80,17 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
             if (((NSString *)response).length == 120) {
                 
                 NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 96, 92)];
-                
                 NSString *electrictyModel = [content substringFromIndex:content.length - 2];
-                
                 if ([electrictyModel isEqualToString:@"00"] || [electrictyModel isEqualToString:@"01"]) {
                     
                     [self countDownTime];
                 }
             }
             
-        }else{
+        }else {
         }
-        
         ZPLog(@"--------%@",response);
     }];
-    
 }
 
 - (void)countDownTime {
@@ -115,10 +111,9 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
             if ([content hasPrefix:@"00"]) {
                 return ;
             }
-
             [formatter setDateFormat:@"yyMMddHHmmss"];
             startDate = [formatter dateFromString:content];
-
+            
             if (!startDate) {
                 return ;
             }

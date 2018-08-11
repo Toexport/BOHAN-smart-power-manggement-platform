@@ -68,8 +68,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [_timer resumeTimerAfterTimeInterval:0.02];
     [super viewWillAppear:animated];
@@ -77,8 +76,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     [self.table reloadData];
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     [self removeTimer];
 }
 

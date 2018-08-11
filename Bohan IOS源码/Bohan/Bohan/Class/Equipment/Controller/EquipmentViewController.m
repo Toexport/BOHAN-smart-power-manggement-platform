@@ -77,7 +77,6 @@
     
     NSString *url = currentIndex==0?GET_NAME_LIST_URL:GET_POS_NAME_LIST_URL;
     [[NetworkRequest sharedInstance] requestWithUrl:url parameter:nil completion:^(id response, NSError *error) {
-        
         [model.currentTable stopLoading];
         model.isload = YES;
         model.currentTable.noDatadelegate = self;
@@ -121,7 +120,6 @@
             [weakSelf.pageCollection setContentOffset:CGPointMake(currentIndex *ScreenWidth, 0) animated:YES];
         };
     }
-    
     return _sliderView;
 }
 
