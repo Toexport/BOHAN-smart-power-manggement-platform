@@ -71,9 +71,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     [_timer resumeTimerAfterTimeInterval:0.02];
-    [super viewWillAppear:animated];
     [self loadData];
-    [self.table reloadData];
 }
 
 - (void)dealloc {
@@ -94,45 +92,34 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     
     NSString *key = self.isPos?@"PosName":@"LoadName";
     [[NetworkRequest sharedInstance] requestWithUrl:GET_DEVICE_LIST_URL parameter:@{key:self.name} completion:^(id response, NSError *error) {
+        [self.view stopLoading];
         
-        dispatch_async(dispatch_queue_create(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        if (!error) {
+            self.datas = [[NSArray yy_modelArrayWithClass:[DeviceModel class] json:response[@"content"]] mutableCopy];
             
-            
-            dispatch_sync(dispatch_get_main_queue(), ^{
+            for (DeviceModel *model in self.datas) {
                 
-                [self.view stopLoading];
-                
-                ZPLog(@"%@",response);
-                
-                if (!error) {
-                    self.datas = [[NSArray yy_modelArrayWithClass:[DeviceModel class] json:response[@"content"]] mutableCopy];
-                    
-                    for (DeviceModel *model in self.datas) {
-                        
-                        for (NSString *content in _status) {
-                            if ([content hasPrefix:model.id]) {
-                                model.powerinfo = [content substringFromIndex:model.id.length];
-                                model.isOpen = [model.powerinfo isOn];
-                            }
-                        }
+                for (NSString *content in _status) {
+                    if ([content hasPrefix:model.id]) {
+                        model.powerinfo = [content substringFromIndex:model.id.length];
+                        model.isOpen = [model.powerinfo isOn];
                     }
-                    
-                    if (self.datas.count == 0) {
-                        self.table.noDataTitle = Localize(@"暂无数据");
-                        self.table.noDataDetail = Localize(@"过会再来吧");
-                    }
-                }else
-                {
-                    self.table.noDataTitle = error.localizedDescription;
-                    self.table.noDataDetail = Localize(@"请稍后再试吧！");
                 }
-                
-                [self.table changeState];
-                [self.table reloadData];
-                [self.table noDataReload];
-            });
-        });
+            }
+            
+            if (self.datas.count == 0) {
+                self.table.noDataTitle = Localize(@"暂无数据");
+                self.table.noDataDetail = Localize(@"过会再来吧");
+            }
+        }else
+        {
+            self.table.noDataTitle = error.localizedDescription;
+            self.table.noDataDetail = Localize(@"请稍后再试吧！");
+        }
         
+        [self.table changeState];
+        [self.table reloadData];
+        [self.table noDataReload];
     }];
 }
 
@@ -163,7 +150,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
                         ZPLog(@"%@",model.powerinfo);
                         [weakSelf.idArray addObject:model.id];
                         [weakSelf.online addObject:model];
-                        
                     }
                 }
             }

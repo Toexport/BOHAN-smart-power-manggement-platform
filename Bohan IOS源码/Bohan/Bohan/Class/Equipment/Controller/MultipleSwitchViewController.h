@@ -54,46 +54,46 @@
 }
 
 @property (nonatomic, copy) NSString *deviceNo; // 设备编码
-@property (nonatomic, strong) NSString * str1;
-@property (nonatomic, strong) NSString * str2;
-@property (nonatomic, strong) NSString * str3;
-@property (nonatomic, strong) NSString * SwitchStateStr;
+@property (nonatomic, copy) NSString * str1;
+@property (nonatomic, copy) NSString * str2;
+@property (nonatomic, copy) NSString * str3;
+@property (nonatomic, copy) NSString * SwitchStateStr;
 /***************开关1************/
-@property (nonatomic, strong) NSString * string1;
-@property (nonatomic, strong) NSString * string2;
-@property (nonatomic, strong) NSString * string3;
-@property (nonatomic, strong) NSString * string4;
-@property (nonatomic, strong) NSString * string5;
+@property (nonatomic, copy) NSString * string1;
+@property (nonatomic, copy) NSString * string2;
+@property (nonatomic, copy) NSString * string3;
+@property (nonatomic, copy) NSString * string4;
+@property (nonatomic, copy) NSString * string5;
 
-@property (nonatomic, strong) NSString * stringg1;
-@property (nonatomic, strong) NSString * stringg2;
-@property (nonatomic, strong) NSString * stringg3;
-@property (nonatomic, strong) NSString * stringg4;
-@property (nonatomic, strong) NSString * stringg5;
+@property (nonatomic, copy) NSString * stringg1;
+@property (nonatomic, copy) NSString * stringg2;
+@property (nonatomic, copy) NSString * stringg3;
+@property (nonatomic, copy) NSString * stringg4;
+@property (nonatomic, copy) NSString * stringg5;
 /***************开关2************/
-@property (nonatomic, strong) NSString * string11;
-@property (nonatomic, strong) NSString * string22;
-@property (nonatomic, strong) NSString * string33;
-@property (nonatomic, strong) NSString * string44;
-@property (nonatomic, strong) NSString * string55;
+@property (nonatomic, copy) NSString * string11;
+@property (nonatomic, copy) NSString * string22;
+@property (nonatomic, copy) NSString * string33;
+@property (nonatomic, copy) NSString * string44;
+@property (nonatomic, copy) NSString * string55;
 
-@property (nonatomic, strong) NSString * stringg11;
-@property (nonatomic, strong) NSString * stringg22;
-@property (nonatomic, strong) NSString * stringg33;
-@property (nonatomic, strong) NSString * stringg44;
-@property (nonatomic, strong) NSString * stringg55;
+@property (nonatomic, copy) NSString * stringg11;
+@property (nonatomic, copy) NSString * stringg22;
+@property (nonatomic, copy) NSString * stringg33;
+@property (nonatomic, copy) NSString * stringg44;
+@property (nonatomic, copy) NSString * stringg55;
 /***************开关3************/
-@property (nonatomic, strong) NSString * stringg111;
-@property (nonatomic, strong) NSString * stringg222;
-@property (nonatomic, strong) NSString * stringg333;
-@property (nonatomic, strong) NSString * stringg444;
-@property (nonatomic, strong) NSString * stringg555;
+@property (nonatomic, copy) NSString * stringg111;
+@property (nonatomic, copy) NSString * stringg222;
+@property (nonatomic, copy) NSString * stringg333;
+@property (nonatomic, copy) NSString * stringg444;
+@property (nonatomic, copy) NSString * stringg555;
 
-@property (nonatomic, strong) NSString * string111;
-@property (nonatomic, strong) NSString * string222;
-@property (nonatomic, strong) NSString * string333;
-@property (nonatomic, strong) NSString * string444;
-@property (nonatomic, strong) NSString * string555;
+@property (nonatomic, copy) NSString * string111;
+@property (nonatomic, copy) NSString * string222;
+@property (nonatomic, copy) NSString * string333;
+@property (nonatomic, copy) NSString * string444;
+@property (nonatomic, copy) NSString * string555;
 @property (weak, nonatomic) IBOutlet UIButton *TurnOnSwitch1;
 @property (weak, nonatomic) IBOutlet UIButton *TurnOnSwitch2;
 @property (weak, nonatomic) IBOutlet UIButton *TurnOnSwitch3;
