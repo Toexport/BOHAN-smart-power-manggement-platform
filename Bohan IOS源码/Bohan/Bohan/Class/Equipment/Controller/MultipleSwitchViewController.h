@@ -49,13 +49,14 @@
     __weak IBOutlet UIButton *Open3But; // 开
     __weak IBOutlet UIButton *Guan3But; // 关
     __weak IBOutlet UIView *Divider2View; // 分割线
+    __weak IBOutlet NSLayoutConstraint *View4LayoutConstraint;
+    
 }
 
 @property (nonatomic, copy) NSString *deviceNo; // 设备编码
 @property (nonatomic, strong) NSString * str1;
 @property (nonatomic, strong) NSString * str2;
 @property (nonatomic, strong) NSString * str3;
-
 @property (nonatomic, strong) NSString * SwitchStateStr;
 /***************开关1************/
 @property (nonatomic, strong) NSString * string1;

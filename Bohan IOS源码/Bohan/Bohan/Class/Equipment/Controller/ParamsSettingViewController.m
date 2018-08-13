@@ -92,8 +92,8 @@
             NSString *powerStr = [response substringWithRange:NSMakeRange(28, 6)];
             NSString * Time = [response substringWithRange:NSMakeRange(50, 2)];
             NSString * Power = [response substringWithRange:NSMakeRange(52, 2)];
-            [time setText:[NSString stringWithFormat:@"%d分钟",[[Time substringToIndex:2] intValue]]];
-            [power setText:[NSString stringWithFormat:@"%dW",[[Power substringToIndex:2] intValue]]];
+            [time setText:[NSString stringWithFormat:@"%d%@",[[Time substringToIndex:2] intValue],Localize(@"分钟")]];
+            [power setText:[NSString stringWithFormat:@"%d%@",[[Power substringToIndex:2] intValue],Localize(@"W")]];
             ZPLog(@"%@",self.Coedid);
             [price setText:[NSString stringWithFormat:@"%d.%02d",[[priceStr substringToIndex:2] intValue],[[priceStr substringFromIndex:2] intValue]]];
             if ([self.Coedid containsString:@"WFMT"] || [self.Coedid containsString:@"YFMT"] || [self.Coedid containsString:@"CDMT60"] || [self.Coedid containsString:@"GP1P"] || [self.Coedid containsString:@"MC"] || [self.Coedid containsString:@"GP3P"] || [self.Coedid containsString:@"YFGPMT"]) {
@@ -246,30 +246,18 @@
             }
         }
     }else
-//        if ([self.Coedid containsString:@"YC"] ) {
-//            if (limitTF.text == nil || limitTF.text.length <= 1) {
-//                ZPLog(@"没有输入文字");
-//                [HintView showHint:Localize(@"请输入负荷门限")];
-//            }else {
-//                if (limitTF.text.integerValue  > 2500) {
-//                    [HintView showHint:Localize(@"负荷门限不能大于2500")];
-//                }else {
-//                    [self AllDataload];
-//                }
-//            }
-//        }else
-            if ([self.Coedid containsString:@"CDMT60"] ) {
-                if (limitTF.text == nil || limitTF.text.length <= 1) {
-                    ZPLog(@"没有输入文字");
-                    [HintView showHint:Localize(@"请输入负荷门限")];
+        if ([self.Coedid containsString:@"CDMT60"] ) {
+            if (limitTF.text == nil || limitTF.text.length <= 1) {
+                ZPLog(@"没有输入文字");
+                [HintView showHint:Localize(@"请输入负荷门限")];
+            }else {
+                if (limitTF.text.integerValue  > 15000) {
+                    [HintView showHint:Localize(@"负荷门限不能大于15000")];
                 }else {
-                    if (limitTF.text.integerValue  > 15000) {
-                        [HintView showHint:Localize(@"负荷门限不能大于15000")];
-                    }else {
-                        [self AllDataload];
-                    }
+                    [self AllDataload];
                 }
-            }else
+            }
+        }else
             if ([self.Coedid containsString:@"CDMT16"] || [self.Coedid containsString:@"QC16"] || [self.Coedid containsString:@"YC16"] || [self.Coedid containsString:@"YCGP16"]) {
                 if (limitTF.text == nil || limitTF.text.length <= 1) {
                     ZPLog(@"没有输入文字");
@@ -474,7 +462,6 @@
     model.deviceNo = self.dNo;
     model.content = [content substringToIndex:content.length - 2];
     [self.view startLoading];
-    
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
@@ -516,13 +503,14 @@
                 } else {
                     model.open = NO;
                 }
-            } else  if ([str isEqualToString:@"04"]) {
+            } else
+                if ([str isEqualToString:@"04"]) {
                 if (![week  isEqualToString:@"00000000"] && !([start isEqualToString:@"00:00"] && [end isEqualToString:@"00:00"])) {
                     isParentModel = NO;
-                    isValidate = YES;
+                    isValidate = NO;
                     model.open = NO;
                 } else {
-                    model.open = NO;
+                    model.open = YES;
                 }
             }
             [self.datas addObject:model];

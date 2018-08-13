@@ -177,10 +177,7 @@ typedef void(^doneBlock)(NSDate *);
     self.bottomConstraint.constant = -self.height;
     self.backgroundColor = RGBA(0, 0, 0, 0);
     [self layoutIfNeeded];
-    
-    
-    
-    
+
     [[UIApplication sharedApplication].keyWindow bringSubviewToFront:self];
     
     [self.showYearView addSubview:self.datePicker];
@@ -192,7 +189,6 @@ typedef void(^doneBlock)(NSDate *);
     if (!_scrollToDate) {
         _scrollToDate = [NSDate date];
     }
-    
     
     //循环滚动时需要用到
     preRow = (self.scrollToDate.year-MINYEAR)*12+self.scrollToDate.month-1;
@@ -243,7 +239,7 @@ typedef void(^doneBlock)(NSDate *);
         UILabel *label = [[UILabel alloc]initWithFrame:CGRectMake(labelX, self.showYearView.frame.size.height/2-15/2.0, 15, 15)];
         label.text = nameArr[i];
         label.textAlignment = NSTextAlignmentCenter;
-        label.font = [UIFont systemFontOfSize:14];
+        label.font = [UIFont systemFontOfSize:13];
         label.textColor =  _dateLabelColor;
         label.backgroundColor = [UIColor clearColor];
         [self.showYearView addSubview:label];
@@ -280,26 +276,26 @@ typedef void(^doneBlock)(NSDate *);
 {
     switch (self.datePickerStyle) {
         case DateStyleShowYearMonthDayHourMinute:
-            [self addLabelWithName:@[Localize(@"year"),Localize(@"month"),Localize(@"day"),Localize(@"hour"),Localize(@"min")]];
+            [self addLabelWithName:@[Localize(@"y"),Localize(@"M"),Localize(@"d"),Localize(@"H"),Localize(@"m")]];
             
             return 5;
         case DateStyleShowMonthDayHourMinute:
-            [self addLabelWithName:@[Localize(@"month"),Localize(@"day"),Localize(@"hour"),Localize(@"min")]];
+            [self addLabelWithName:@[Localize(@"M"),Localize(@"d"),Localize(@"H"),Localize(@"m")]];
             return 4;
         case DateStyleShowYearMonthDay:
-            [self addLabelWithName:@[Localize(@"year"),Localize(@"month"),Localize(@"day")]];
+            [self addLabelWithName:@[Localize(@"y"),Localize(@"M"),Localize(@"d")]];
             return 3;
         case DateStyleShowYearMonth:
-            [self addLabelWithName:@[Localize(@"year"),Localize(@"month")]];
+            [self addLabelWithName:@[Localize(@"y"),Localize(@"M")]];
             return 2;
         case DateStyleShowMonthDay:
-            [self addLabelWithName:@[Localize(@"month"),Localize(@"day")]];
+            [self addLabelWithName:@[Localize(@"M"),Localize(@"d")]];
             return 2;
         case DateStyleShowHourMinute:
-            [self addLabelWithName:@[Localize(@"hour"),Localize(@"min")]];
+            [self addLabelWithName:@[Localize(@"H"),Localize(@"m")]];
             return 2;
         case DateStyleShowYear:
-            [self addLabelWithName:@[Localize(@"year")]];
+            [self addLabelWithName:@[Localize(@"y")]];
             return 1;
         default:
             return 0;
@@ -361,7 +357,7 @@ typedef void(^doneBlock)(NSDate *);
     if (!customLabel) {
         customLabel = [[UILabel alloc] init];
         customLabel.textAlignment = NSTextAlignmentCenter;
-        [customLabel setFont:[UIFont systemFontOfSize:17]];
+        [customLabel setFont:[UIFont systemFontOfSize:14]];
     }
     NSString *title;
     

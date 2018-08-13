@@ -28,8 +28,9 @@
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O4a-Zz-NYE">
-                            <rect key="frame" x="61" y="387" width="199" height="30"/>
-                            <state key="normal" title="点击刷新设备最新的状态信息">
+                            <rect key="frame" x="76" y="387" width="169" height="27"/>
+                            <fontDescription key="fontDescription" name=".PingFangTC-Regular" family=".PingFang TC" pointSize="15"/>
+                            <state key="normal" title="点击刷新最新的状态信息">
                                 <color key="titleColor" red="0.23921568630000001" green="0.55294117649999996" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
@@ -37,20 +38,20 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备正处于关闭状态" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="edH-YZ-iWD">
-                            <rect key="frame" x="91" y="433" width="138" height="18"/>
+                            <rect key="frame" x="91" y="430" width="138" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.99367624519999997" green="0.35738919470000002" blue="0.33194483320000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="open_close" translatesAutoresizingMaskIntoConstraints="NO" id="53m-8V-QcP">
-                            <rect key="frame" x="140" y="461" width="40" height="11"/>
+                            <rect key="frame" x="140" y="458" width="40" height="11"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="11" id="tYQ-KZ-qod"/>
                                 <constraint firstAttribute="width" constant="40" id="wvX-Gg-fQJ"/>
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rc8-Vd-WgB">
-                            <rect key="frame" x="0.0" y="422" width="320" height="1"/>
+                            <rect key="frame" x="0.0" y="419" width="320" height="1"/>
                             <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="yaS-z5-EbE"/>
@@ -105,6 +106,6 @@
         </view>
     </objects>
     <resources>
-        <image name="open_close" width="80" height="22"/>
+        <image name="open_close" width="40" height="11"/>
     </resources>
 </document>

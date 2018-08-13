@@ -183,11 +183,11 @@
 //"时" = "hour";
 //"分" = "min";
 
-"day" = "";
-"month" = "";
-"year" = "";
-"hour" = "";
-"min" = "";
+"年" = "y";
+"月" = "M";
+"日" = "d";
+"时" = "H";
+"分" = "m";
 
 "至" = "To";
 "所有设备当日每小时用电量（kWh）" = "Daily Electrical consumption per hour (kwh)";

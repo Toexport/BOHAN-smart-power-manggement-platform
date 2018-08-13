@@ -180,6 +180,7 @@
 		00B7C34C415E2EAE93F66FEA /* Pods_Bohan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bohan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		072EF8466690ECA08425C8AE /* Pods-Bohan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bohan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bohan/Pods-Bohan.debug.xcconfig"; sourceTree = "<group>"; };
 		0DCA8A6A9BE1B6D5485DB16A /* Pods-Bohan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bohan.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bohan/Pods-Bohan.release.xcconfig"; sourceTree = "<group>"; };
+		C405171C212157F900A829A1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/WSDatePickerView.strings"; sourceTree = "<group>"; };
 		C405AE4420E7465B00ED77E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ShareView.xib; sourceTree = "<group>"; };
 		C410507220FED0B9009A46F4 /* MultipleSwitchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultipleSwitchViewController.h; sourceTree = "<group>"; };
 		C410507320FED0B9009A46F4 /* MultipleSwitchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultipleSwitchViewController.m; sourceTree = "<group>"; };
@@ -1795,6 +1796,7 @@
 			children = (
 				CC468D73206969DA00506970 /* Base */,
 				CC468D76206969DC00506970 /* en */,
+				C405171C212157F900A829A1 /* zh-Hans */,
 			);
 			name = WSDatePickerView.xib;
 			sourceTree = "<group>";

@@ -6,7 +6,7 @@
 "Arx-pV-T68.normalTitle" = "实时参数";
 
 /* Class = "UIButton"; normalTitle = "点击刷新设备最新的状态信息"; ObjectID = "O4a-Zz-NYE"; */
-"O4a-Zz-NYE.normalTitle" = "点击刷新设备最新的状态信息";
+"O4a-Zz-NYE.normalTitle" = "点击刷新最新的状态信息";
 
 /* Class = "UIButton"; normalTitle = "时段设置"; ObjectID = "SaS-Ag-EZU"; */
 "SaS-Ag-EZU.normalTitle" = "时段设置";

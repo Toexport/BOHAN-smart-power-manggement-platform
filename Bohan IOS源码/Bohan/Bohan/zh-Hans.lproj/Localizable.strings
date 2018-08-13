@@ -13,6 +13,13 @@
 "year" = "年";
 "hour" = "时";
 "min" = "分";
+
+"y" = "年";
+"M" = "月";
+"d" = "日";
+"H" = "时";
+"m" = "分";
+
 "prompt" = "提示";
 "Are you sure you want to log out?" = "确定要注销登录吗？";
 "Change my avatar" = "修改头像";

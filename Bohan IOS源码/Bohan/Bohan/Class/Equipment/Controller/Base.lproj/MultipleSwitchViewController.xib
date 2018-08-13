@@ -39,6 +39,7 @@
                 <outlet property="Switch3view" destination="qOh-Nh-Zsp" id="PBU-GB-4mz"/>
                 <outlet property="View2LayoutConstraint" destination="TDx-B4-A0y" id="J1D-xF-rwa"/>
                 <outlet property="View3LayoutConstraint" destination="D7C-FY-rKJ" id="OzE-Hg-r1x"/>
+                <outlet property="View4LayoutConstraint" destination="Hqr-AF-UnU" id="gBH-Df-LyY"/>
                 <outlet property="Years1TextField" destination="E9p-fl-9Wn" id="JkL-fS-nHa"/>
                 <outlet property="Years2TextField" destination="N3G-oo-KE5" id="8Lr-Eq-k6A"/>
                 <outlet property="Years3TextField" destination="7XD-Zs-hBZ" id="CCr-Hr-e5Q"/>
@@ -784,6 +785,36 @@
                                         <constraint firstAttribute="height" constant="1" id="LGR-SF-TnG"/>
                                     </constraints>
                                 </view>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9JD-pH-0SA">
+                                    <rect key="frame" x="0.0" y="395" width="320" height="45"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v8X-MQ-Fe9">
+                                            <rect key="frame" x="8" y="2" width="304" height="40"/>
+                                            <color key="backgroundColor" red="0.2271994447" green="0.4445286886" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="WOM-E6-8TW"/>
+                                            </constraints>
+                                            <state key="normal" title="设置">
+                                                <color key="titleColor" red="0.1215686275" green="0.12941176469999999" blue="0.14117647059999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="8"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="OneKeySetsAllTheSwitches:" destination="-1" eventType="touchUpInside" id="wgh-Ft-3FW"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstItem="v8X-MQ-Fe9" firstAttribute="leading" secondItem="9JD-pH-0SA" secondAttribute="leading" constant="8" id="Y2N-97-hyU"/>
+                                        <constraint firstAttribute="height" constant="45" id="ig3-W8-Rxo"/>
+                                        <constraint firstItem="v8X-MQ-Fe9" firstAttribute="top" secondItem="9JD-pH-0SA" secondAttribute="top" constant="2.5" id="jnr-h6-B5p"/>
+                                        <constraint firstAttribute="trailing" secondItem="v8X-MQ-Fe9" secondAttribute="trailing" constant="8" id="mqz-mm-cQU"/>
+                                    </constraints>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                             <constraints>
@@ -795,7 +826,9 @@
                                 <constraint firstAttribute="trailing" secondItem="qOh-Nh-Zsp" secondAttribute="trailing" id="Dv6-9z-32u"/>
                                 <constraint firstItem="Wrj-bj-sAO" firstAttribute="leading" secondItem="W7P-Vb-3eJ" secondAttribute="leading" id="FuX-Wz-mhC"/>
                                 <constraint firstItem="Wrj-bj-sAO" firstAttribute="top" secondItem="oEK-9O-TPd" secondAttribute="bottom" constant="1" id="Hnz-qP-dSr"/>
+                                <constraint firstItem="9JD-pH-0SA" firstAttribute="top" secondItem="fro-Ng-aYH" secondAttribute="bottom" constant="15" id="Hqr-AF-UnU"/>
                                 <constraint firstAttribute="trailing" secondItem="Wrj-bj-sAO" secondAttribute="trailing" id="LFy-X9-osy"/>
+                                <constraint firstItem="9JD-pH-0SA" firstAttribute="leading" secondItem="W7P-Vb-3eJ" secondAttribute="leading" id="PgV-l7-4ls"/>
                                 <constraint firstItem="fro-Ng-aYH" firstAttribute="top" secondItem="qOh-Nh-Zsp" secondAttribute="bottom" constant="1" id="Ryd-pm-4U8"/>
                                 <constraint firstItem="oEK-9O-TPd" firstAttribute="top" secondItem="7Wf-Z5-RKx" secondAttribute="bottom" constant="1" id="TDx-B4-A0y"/>
                                 <constraint firstAttribute="trailing" secondItem="oEK-9O-TPd" secondAttribute="trailing" id="Z6Q-pI-e7e"/>
@@ -804,6 +837,7 @@
                                 <constraint firstItem="7Wf-Z5-RKx" firstAttribute="top" secondItem="8YO-u6-RFB" secondAttribute="bottom" id="eVv-tR-I0F"/>
                                 <constraint firstAttribute="trailing" secondItem="fro-Ng-aYH" secondAttribute="trailing" id="hI6-ec-5AM"/>
                                 <constraint firstItem="8YO-u6-RFB" firstAttribute="top" secondItem="W7P-Vb-3eJ" secondAttribute="top" id="iuc-PO-zvS"/>
+                                <constraint firstAttribute="trailing" secondItem="9JD-pH-0SA" secondAttribute="trailing" id="nCE-mJ-55t"/>
                                 <constraint firstAttribute="height" constant="467" id="oEr-zo-f15"/>
                                 <constraint firstItem="7Wf-Z5-RKx" firstAttribute="leading" secondItem="W7P-Vb-3eJ" secondAttribute="leading" id="vVe-b7-QDy"/>
                                 <constraint firstItem="8YO-u6-RFB" firstAttribute="leading" secondItem="W7P-Vb-3eJ" secondAttribute="leading" id="w7c-52-bOj"/>

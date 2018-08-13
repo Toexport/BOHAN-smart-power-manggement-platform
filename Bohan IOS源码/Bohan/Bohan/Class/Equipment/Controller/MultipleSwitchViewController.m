@@ -30,12 +30,110 @@
     self.title = NSLocalizedString(@"定时开关", nil);
     [self TimeDisplay];
     [self yyyyMMddHHmm];
-    [self StateQuery];
     [self rightBarTitle:Localize(@"刷新") color:[UIColor whiteColor] action:@selector(StateQuery)];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [self StateQuery];
+    [self GetsTheLastWriteTime]; // 获取上次写入时间
 }
 
 // 状态查询
 - (void)StateQuery {
+    WebSocket *socket = [WebSocket socketManager];
+    CommandModel *model = [[CommandModel alloc] init];
+    model.command = @"0002";
+    model.deviceNo = self.deviceNo;
+    [self.view startLoading];
+    MyWeakSelf
+    [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
+        [weakSelf.view stopLoading];
+        ZPLog(@"--------%@",response);
+        if (!error) {
+            NSString * str = response;
+            NSString * string = [str substringWithRange:NSMakeRange(24, 2)];
+            if ([string containsString:@"80"]) {
+                Open1But.selected = YES;
+                Open2But.selected = YES;
+                Open3But.selected = YES;
+                
+                Guan1But.selected = NO;
+                Guan2But.selected = NO;
+                Guan3But.selected = NO;
+            }else
+            if ([string containsString:@"81"]) {
+                Guan1But.selected = YES;
+                Open2But.selected = YES;
+                Open3But.selected = YES;
+                
+                Open1But.selected = NO;
+                Guan2But.selected = NO;
+                Guan3But.selected = NO;
+            }else
+            if ([string containsString:@"82"]) {
+                Open1But.selected = YES;
+                Guan2But.selected = YES;
+                Open3But.selected = YES;
+                
+                Guan1But.selected = NO;
+                Open2But.selected = NO;
+                Guan3But.selected = NO;
+            }else
+            if ([string containsString:@"83"]) {
+                Guan1But.selected = YES;
+                Guan2But.selected = YES;
+                Open3But.selected = YES;
+                
+                Open1But.selected = NO;
+                Open2But.selected = NO;
+                Guan3But.selected = NO;
+            }else
+            if ([string containsString:@"84"]) {
+                Open1But.selected = YES;
+                Open2But.selected = YES;
+                Guan3But.selected = YES;
+                
+                Guan1But.selected = NO;
+                Guan2But.selected = NO;
+                Open3But.selected = NO;
+                
+            }else
+            if ([string containsString:@"85"]) {
+                Guan1But.selected = YES;
+                Open2But.selected = YES;
+                Guan3But.selected = YES;
+                
+                Open1But.selected = NO;
+                Guan2But.selected = NO;
+                Open3But.selected = NO;
+            }else
+            if ([string containsString:@"86"]) {
+                Open1But.selected = YES;
+                Guan2But.selected = YES;
+                Guan3But.selected = YES;
+                
+                Guan1But.selected = NO;
+                Open2But.selected = NO;
+                Open3But.selected = NO;
+            }else
+            if ([string containsString:@"87"]) {
+                Guan1But.selected = YES;
+                Guan2But.selected = YES;
+                Guan3But.selected = YES;
+                
+                Open1But.selected = NO;
+                Open1But.selected = NO;
+                Open1But.selected = NO;
+            }
+            ZPLog(@"%@",string);
+        }else {
+            [HintView showHint:error.localizedDescription];// 后台返回的提示
+        }
+    }];
+}
+
+// 获取上次写入时间
+- (void)GetsTheLastWriteTime {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"002D";
@@ -45,25 +143,50 @@
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
         ZPLog(@"--------%@",response);
-        self.SwitchStateStr = response;
-        [self SwitchStateStrr];
         if (!error) {
+            NSString * str = response;
+            NSString * string1 = [str substringWithRange:NSMakeRange(24, 10)];
+            NSString * Years1 = [string1 substringWithRange:NSMakeRange(0, 2)];
+            Years1TextField.text = [NSString stringWithFormat:@"%d%@",20,Years1];
+            NSString * Month1 = [string1 substringWithRange:NSMakeRange(2, 2)];
+            Month1TextField.text = [NSString stringWithFormat:@"%@",Month1];
+            NSString * Day1 = [string1 substringWithRange:NSMakeRange(4, 2)];
+            Day1textField.text = [NSString stringWithFormat:@"%@",Day1];
+            NSString * Hours1 = [string1 substringWithRange:NSMakeRange(6, 2)];
+            Hours1TextField.text = [NSString stringWithFormat:@"%@",Hours1];
+            NSString * Minutes1 = [string1 substringWithRange:NSMakeRange(8, 2)];
+            Minutes1TextField.text = [NSString stringWithFormat:@"%@",Minutes1];
+            ZPLog(@"%@-%@-%@-%@-%@",Years1,Month1,Day1,Hours1,Minutes1);
+//             开关2
+            NSString * string2 = [str substringWithRange:NSMakeRange(36, 10)];
+            NSString * Years2 = [string2 substringWithRange:NSMakeRange(0, 2)];
+            Years1TextField.text = [NSString stringWithFormat:@"%d%@",20,Years2];
+            NSString * Month2 = [string2 substringWithRange:NSMakeRange(2, 2)];
+            Month2TextField.text = [NSString stringWithFormat:@"%@",Month2];
+            NSString * Day2 = [string2 substringWithRange:NSMakeRange(4, 2)];
+            Day2textField.text = [NSString stringWithFormat:@"%@",Day2];
+            NSString * Hours2 = [string2 substringWithRange:NSMakeRange(6, 2)];
+            Hours2TextField.text = [NSString stringWithFormat:@"%@",Hours2];
+            NSString * Minutes2 = [string2 substringWithRange:NSMakeRange(8, 2)];
+            Minutes2TextField.text = [NSString stringWithFormat:@"%@",Minutes2];
+            ZPLog(@"%@-%@-%@-%@-%@",Years2,Month2,Day2,Hours2,Minutes2);
+//            开关3
+            NSString * string3 = [str substringWithRange:NSMakeRange(48, 10)];
+            NSString * Years3 = [string3 substringWithRange:NSMakeRange(0, 2)];
+            Years3TextField.text = [NSString stringWithFormat:@"%d%@",20,Years3];
+            NSString * Month3 = [string3 substringWithRange:NSMakeRange(2, 2)];
+            Month3TextField.text = [NSString stringWithFormat:@"%@",Month3];
+            NSString * Day3 = [string3 substringWithRange:NSMakeRange(4, 2)];
+            Day3textField.text = [NSString stringWithFormat:@"%@",Day3];
+            NSString * Hours3 = [string3 substringWithRange:NSMakeRange(6, 2)];
+            Hours3TextField.text = [NSString stringWithFormat:@"%@",Hours3];
+            NSString * Minutes3 = [string3 substringWithRange:NSMakeRange(8, 2)];
+            Minutes3TextField.text = [NSString stringWithFormat:@"%@",Minutes3];
+            ZPLog(@"%@-%@-%@-%@-%@",Years1,Month1,Day1,Hours1,Minutes1);
         }else {
             [HintView showHint:error.localizedDescription];// 后台返回的提示
         }
     }];
-}
-
-// 监测开关状态
-- (void)SwitchStateStrr {
-    Open1But.selected = [[self.SwitchStateStr substringWithRange:NSMakeRange(58, 2)] isEqualToString:@"00"];
-    Guan1But.selected = !Open1But.selected;
-
-    Open2But.selected = [[self.SwitchStateStr substringWithRange:NSMakeRange(46, 2)] isEqualToString:@"00"];
-    Guan2But.selected = !Open2But.selected;
-    
-    Open3But.selected = [[self.SwitchStateStr substringWithRange:NSMakeRange(34, 2)] isEqualToString:@"00"];
-    Guan3But.selected = !Open3But.selected;
 }
 
 // 是否显示2-3号开关
@@ -72,7 +195,8 @@
         ZPLog(@"%@1个开关",self.deviceNo);
         Label2Text.text = Localize(@"开关1定时");
         Switch1view.hidden = YES;
-        View2LayoutConstraint.constant = -126;
+        View2LayoutConstraint.constant = - 126;
+        View4LayoutConstraint.constant = - 106;
         Switch3view.hidden = YES;
         Switch3view.hidden = YES;
         Divider2View.hidden = YES;
@@ -125,7 +249,7 @@
 // 开关二
 // 开
 - (IBAction)Switch2OpenBut:(UIButton *)sender {
-    NSString * stringg1 = [NSString stringWithFormat:@"%@%@%@%@%@",self.string1,self.string2,self.string3,self.string4,self.string5];
+    NSString * stringg1 = [NSString stringWithFormat:@"%@%@%@%@%@",self.string11,self.string22,self.string33,self.string44,self.string55];
     NSString * stringg2 = [NSString stringWithFormat:@"%@%@%@%@%@",self.stringg11,self.stringg22,self.stringg33,self.stringg44,self.stringg55];
     ZPLog(@"%@--%@",stringg1,stringg2);
     if (sender.selected) {
@@ -157,8 +281,8 @@
 // 开关三
 //开
 - (IBAction)Switch3OpenBut:(UIButton *)sender {
-    NSString * stringg1 = [NSString stringWithFormat:@"%@%@%@%@%@",self.string1,self.string2,self.string3,self.string4,self.string5];
-    NSString * stringg2 = [NSString stringWithFormat:@"%@%@%@%@%@",self.string111,self.string222,self.string333,self.string444,self.string555];
+    NSString * stringg1 = [NSString stringWithFormat:@"%@%@%@%@%@",self.string111,self.string222,self.string333,self.string444,self.string555];
+    NSString * stringg2 = [NSString stringWithFormat:@"%@%@%@%@%@",self.stringg111,self.stringg222,self.stringg333,self.stringg444,self.stringg555];
     ZPLog(@"%@--%@",stringg1,stringg2);
     if (sender.selected) {
         return;
@@ -249,22 +373,22 @@
 
 // 关3
 - (IBAction)Switch3GuanBut:(UIButton *)sender {
-    NSString * stringg1 = [NSString stringWithFormat:@"%@%@%@%@%@",self.string11,self.string22,self.string33,self.string44,self.string55];
-    NSString * stringg2 = [NSString stringWithFormat:@"%@%@%@%@%@",self.string111,self.string222,self.string333,self.string444,self.string555];
-    ZPLog(@"%@--%@",stringg1,stringg2);
+    NSString * string1 = [NSString stringWithFormat:@"%@%@%@%@%@",self.string111,self.string222,self.string333,self.string444,self.string555];
+    NSString * string2 = [NSString stringWithFormat:@"%@%@%@%@%@",self.stringg111,self.stringg222,self.stringg333,self.stringg444,self.stringg555];
+    ZPLog(@"%@--%@",string1,string2);
     if (sender.selected) {
         return;
     }else {
         sender.selected = !sender.selected;
         Open3But.selected = NO;
-        if ([stringg2 isEqualToString:@"(null)(null)(null)(null)(null)"]) {
+        if ([string2 isEqualToString:@"(null)(null)(null)(null)(null)"]) {
             Open3But.selected = YES;
             Guan3But.selected = NO;
             ZPLog(@"请修改当前时间");
             [HintView showHint:Localize(@"设定时间必须大于当前时间")];
             return;
         }else
-            if (stringg1.integerValue > stringg2.integerValue) {
+            if (string1.integerValue > string2.integerValue) {
                 // string1系统时间 大于 string2修改时间
                 Open3But.selected = YES;
                 Guan3But.selected = NO;
@@ -343,8 +467,8 @@
     NSString * sstring1 = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
     _str2 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring1,self.string22,self.string33,self.string44,self.string55];
     
-    NSString * sstring2 = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
-    _str3 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring2,self.string222,self.string333,self.string444,self.string555];
+    NSString * sstring2 = [[NSString stringWithFormat:@"%@",self.stringg111]substringFromIndex:2];
+    _str3 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring2,self.stringg222,self.stringg333,self.stringg444,self.stringg555];
     NSString * stringg = [NSString stringWithFormat:@"%@00%@FF%@FF",self.str3,self.str2,self.str1];
     //这里的12位其中10位是时间，最后两位是开关“01”或者“”00或者FF，文档上写的
     WebSocket *socket = [WebSocket socketManager];
@@ -431,6 +555,7 @@
     
     NSString * sstring2 = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
     _str3 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring2,self.string222,self.string333,self.string444,self.string555];
+    
     NSString * stringg = [NSString stringWithFormat:@"%@FF%@FF%@01",self.str3,self.str2,self.str1];
     //这里的12位其中10位是时间，最后两位是开关“01”或者“”00或者FF，文档上写的
     WebSocket *socket = [WebSocket socketManager];
@@ -488,7 +613,7 @@
     NSString * sstring1 = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
     _str2 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring1,self.string22,self.string33,self.string44,self.string55];
     NSString * sstring2 = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
-    _str3 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring2,self.string222,self.string333,self.string444,self.string555];
+    _str3 = [NSString stringWithFormat:@"%@%@%@%@%@",sstring2,self.stringg222,self.stringg333,self.stringg444,self.stringg555];
     NSString * stringg = [NSString stringWithFormat:@"%@01%@FF%@FF",self.str3,self.str2,self.str1];
     //这里的12位其中10位是时间，最后两位是开关“01”或者“”00或者FF，文档上写的
     WebSocket *socket = [WebSocket socketManager];
@@ -508,7 +633,10 @@
         }
     }];
 }
-
+// 一键设置所有的开关
+- (IBAction)OneKeySetsAllTheSwitches:(UIButton *)sender {
+    
+}
 
 // 获取当前年月日时间
 - (void)yyyyMMddHHmm {
@@ -679,28 +807,28 @@
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatterd dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
         [formatterd setDateFormat:@"yyyy"];// 解决问题
         [Years3TextField setText:[formatterd stringFromDate:selectDate]];
-        self.string111 = Years3TextField.text;
-        Years3TextField.text = [NSString stringWithString:self.string111];
+        self.stringg111 = Years3TextField.text;
+        Years3TextField.text = [NSString stringWithString:self.stringg111];
         
         [formatterd setDateFormat:@"MM"];
         [Month3TextField setText:[formatterd stringFromDate:selectDate]];
-        self.string222 = Month3TextField.text;
-        Month3TextField.text = [NSString stringWithString:self.string222];
+        self.stringg222 = Month3TextField.text;
+        Month3TextField.text = [NSString stringWithString:self.stringg222];
         
         [formatterd setDateFormat:@"dd"];
         [Day3textField setText:[formatterd stringFromDate:selectDate]];
-        self.string333 = Day3textField.text;
-        Day3textField.text = [NSString stringWithString:self.string333];
+        self.stringg333 = Day3textField.text;
+        Day3textField.text = [NSString stringWithString:self.stringg333];
         
         [formatterd setDateFormat:@"HH"];
         [Hours3TextField setText:[formatterd stringFromDate:selectDate]];
-        self.string444 = Hours3TextField.text;
-        Hours3TextField.text = [NSString stringWithString:self.string444];
+        self.stringg444 = Hours3TextField.text;
+        Hours3TextField.text = [NSString stringWithString:self.stringg444];
         
         [formatterd setDateFormat:@"mm"];
         [Minutes3TextField setText:[formatterd stringFromDate:selectDate]];
-        self.string555 = Minutes3TextField.text;
-        Minutes3TextField.text = [NSString stringWithString:self.string555];
+        self.stringg555 = Minutes3TextField.text;
+        Minutes3TextField.text = [NSString stringWithString:self.stringg555];
     }];
     
     datepicker.hideBackgroundYearLabel = YES;

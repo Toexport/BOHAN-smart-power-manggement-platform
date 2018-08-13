@@ -3,7 +3,7 @@
 "0qC-RU-r9C.text" = "Switch 3";
 
 /* Class = "UILabel"; text = "月"; ObjectID = "2p3-yc-L21"; */
-"2p3-yc-L21.text" = "MM";
+"2p3-yc-L21.text" = "M";
 
 /* Class = "UIButton"; normalTitle = "关"; ObjectID = "2pj-Qo-zdE"; */
 "2pj-Qo-zdE.normalTitle" = "Off";
@@ -12,10 +12,10 @@
 "7ZK-3X-88N.normalTitle" = "Off";
 
 /* Class = "UILabel"; text = "分"; ObjectID = "7sy-s5-tTh"; */
-"7sy-s5-tTh.text" = "mm";
+"7sy-s5-tTh.text" = "m";
 
 /* Class = "UILabel"; text = "年"; ObjectID = "85J-h8-fjI"; */
-"85J-h8-fjI.text" = "yyyy";
+"85J-h8-fjI.text" = "y";
 
 /* Class = "UILabel"; text = "开关2定时"; ObjectID = "BPF-aY-UKO"; */
 "BPF-aY-UKO.text" = "Switch 2";
@@ -27,46 +27,46 @@
 "JFy-o7-h5I.normalTitle" = "Open";
 
 /* Class = "UILabel"; text = "分"; ObjectID = "P0G-L7-D9G"; */
-"P0G-L7-D9G.text" = "mm";
+"P0G-L7-D9G.text" = "m";
 
 /* Class = "UILabel"; text = "年"; ObjectID = "RkL-3h-kuP"; */
-"RkL-3h-kuP.text" = "yyyy";
+"RkL-3h-kuP.text" = "y";
 
 /* Class = "UILabel"; text = "年"; ObjectID = "SZu-TI-SwK"; */
-"SZu-TI-SwK.text" = "yyyy";
+"SZu-TI-SwK.text" = "y";
 
 /* Class = "UILabel"; text = "时"; ObjectID = "VQB-pX-hEt"; */
-"VQB-pX-hEt.text" = "HH";
+"VQB-pX-hEt.text" = "H";
 
 /* Class = "UILabel"; text = "日"; ObjectID = "e74-8H-aSh"; */
-"e74-8H-aSh.text" = "dd";
+"e74-8H-aSh.text" = "d";
 
 /* Class = "UILabel"; text = "日"; ObjectID = "ecp-j2-XQb"; */
-"ecp-j2-XQb.text" = "dd";
+"ecp-j2-XQb.text" = "d";
 
 /* Class = "UIButton"; normalTitle = "开"; ObjectID = "gNM-6A-ttE"; */
 "gNM-6A-ttE.normalTitle" = "Open";
 
 /* Class = "UILabel"; text = "月"; ObjectID = "iRU-3m-kgR"; */
-"iRU-3m-kgR.text" = "MM";
+"iRU-3m-kgR.text" = "M";
 
 /* Class = "UIButton"; normalTitle = "关"; ObjectID = "j8r-Lk-DKl"; */
 "j8r-Lk-DKl.normalTitle" = "Off";
 
 /* Class = "UILabel"; text = "日"; ObjectID = "mmn-1X-sL0"; */
-"mmn-1X-sL0.text" = "dd";
+"mmn-1X-sL0.text" = "d";
 
 /* Class = "UILabel"; text = "时"; ObjectID = "oUs-jH-LQu"; */
-"oUs-jH-LQu.text" = "HH";
+"oUs-jH-LQu.text" = "H";
 
 /* Class = "UILabel"; text = "月"; ObjectID = "oYn-Aa-VpK"; */
-"oYn-Aa-VpK.text" = "MM";
+"oYn-Aa-VpK.text" = "M";
 
 /* Class = "UILabel"; text = "时"; ObjectID = "suO-4L-U75"; */
-"suO-4L-U75.text" = "HH";
+"suO-4L-U75.text" = "H";
 
 /* Class = "UILabel"; text = "分"; ObjectID = "ule-M3-TY1"; */
-"ule-M3-TY1.text" = "mm";
+"ule-M3-TY1.text" = "m";
 
 /* Class = "UILabel"; text = "开关1定时"; ObjectID = "zVG-4e-Pzt"; */
 "zVG-4e-Pzt.text" = "Switch 1";
