@@ -87,6 +87,7 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
         NSString *week = [Utils getBinaryByHex:model.week];
         
         if (model.open) {
+            isClose = NO;
             if (![[formatter dateFromString:model.endTime] isLaterThanDate:[formatter dateFromString:model.startTime]] &&
                 !([[formatter dateFromString:model.startTime] isLaterThanDate:[formatter dateFromString:@"11:59"]]&&
                   [model.endTime isEqualToString:@"00:00"])) {
@@ -98,12 +99,6 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
                 return;
             }
         }
-        if (!model.open) {
-            model.startTime = @"00:00";
-            model.endTime = @"00:00";
-        }else {
-            isClose = NO;
-        }
         NSString *item = [model.startTime stringByReplacingOccurrencesOfString:@":" withString:@""];
         item = [item stringByAppendingString:[model.endTime stringByReplacingOccurrencesOfString:@":" withString:@""]];
         if (self.isParentModel) {
@@ -114,7 +109,7 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
         contentStr = [contentStr stringByAppendingString:item];
     }
 
-    if (isClose && !self.isParentModel) {
+    if (isClose) {
         [self cancel];
     }else {
         [self changeModel:contentStr];

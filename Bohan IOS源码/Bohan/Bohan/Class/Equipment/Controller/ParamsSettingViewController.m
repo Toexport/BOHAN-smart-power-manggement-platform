@@ -21,7 +21,7 @@
     NSMutableArray *powerArr;
     NSIndexPath *selectedIndexPath;
     BOOL isParentModel;
-    
+    NSString *_content;
 }
 
 @property (nonatomic, strong)NSMutableArray *datas;
@@ -53,9 +53,8 @@
     [self loadData];
 //    [self DefaultTest]; //  默认关闭所有按钮
 }
-- (void)viewDidAppear:(BOOL)animated {
-    [self loadData];
-}
+
+
 - (void)updateStauts:(NSNotification *)noti {
     NSDictionary *dic = noti.object;
     ParentsModeBut.selected = dic;
@@ -418,18 +417,16 @@
 // 新增
 // 家长模式
 - (IBAction)ParentsModeBut:(UIButton *)sender {
-    sender.selected =! sender.selected;
-    if (sender.selected) {
+    if (!sender.selected) {
         TimeSettingListViewController *list = [[TimeSettingListViewController alloc] init];
         list.datas = self.datas;
         list.deviceNo = self.dNo;
         list.isParentModel = YES;
         [self.navigationController pushViewController:list animated:YES];
-        ZPLog(@"选中");
     }else {
-        //        [self changeModell:parentModel1 isParentCancel:NO];
         [self cancelAction];
         [self perideRunCancel];
+        sender.selected = NO;
         ZPLog(@"取消");
     }
 }
@@ -447,6 +444,7 @@
             if (((NSString *)response).length == 120) {
                 NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 96, 92)];
                 [weakSelf caculateWithString:content];
+                _content = content;
             }
         }else {
             [HintView showHint:Localize(@"加载数据失败")];
@@ -469,7 +467,7 @@
         if (cancel) {
             if (!error) {
                 isParentModel = NO;
-                [self caculateWithString:@"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004"];
+                [self caculateWithString:_content];
                 selectedIndexPath = nil;
             }else {
                 [HintView showHint:error.localizedDescription];
@@ -484,7 +482,7 @@
     if ([str isEqualToString:@"03"] || [str isEqualToString:@"04"]) {
         [self.datas removeAllObjects];
         BOOL isValidate = NO;
-        ParentsModeBut.selected = YES;
+        
         for (NSInteger i = 0; i < 9; i++) {
             NSString *time= [content substringWithRange:NSMakeRange(i*10, 10)];
             TimeSettingModel *model = [[TimeSettingModel alloc] init];
@@ -496,16 +494,18 @@
             model.endTime = end;
             model.week = [time substringFromIndex:time.length - 2];
             NSString *week = [Utils getBinaryByHex:model.week];
-            if ([str isEqualToString:@"03"]) {
-                if (![week  isEqualToString:@"00000000"] && !([start isEqualToString:@"00:00"] && [end isEqualToString:@"00:00"])) {
-                    isParentModel = YES;
-                    isValidate = YES;
-                    model.open = YES;
+            if ([str isEqualToString:@"03"] || [str isEqualToString:@"04"]) {
+                if ((![week isEqualToString:@"00000000"]) && (!([start isEqualToString:@"00:00"] && [end isEqualToString:@"00:00"]))) {
+                    if ([str isEqualToString:@"03"]) {
+                        isParentModel = YES;
+                        isValidate = YES;
+                        model.open = YES;
+                        ParentsModeBut.selected = YES;
+                    }
                 } else {
                     model.open = NO;
                 }
-            } else
-                if ([str isEqualToString:@"04"]) {
+            } else {
                 if (![week  isEqualToString:@"00000000"] && !([start isEqualToString:@"00:00"] && [end isEqualToString:@"00:00"])) {
                     isParentModel = NO;
                     isValidate = NO;
@@ -570,7 +570,7 @@
         if (!error) {
             isParentModel = NO;
             [HintView showHint:Localize(@"取消成功")];
-            [self caculateWithString:@"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004"];
+            [self caculateWithString:_content];
         }else {
             [HintView showHint:error.localizedDescription];
         }
@@ -598,7 +598,7 @@
     }else {
         [CommonOperation cancelDeviceRunModel:self.dNo result:^(id response, NSError *error) {
             if (!error) {
-                [self caculateWithString:@"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004"];
+                [self caculateWithString:_content];
                 [HintView showHint:Localize(@"取消成功")];
                 selectedIndexPath = nil;
             }else {
@@ -621,7 +621,7 @@
         if (cancel) {
             if (!error) {
                 isParentModel = NO;
-                [self caculateWithString:@"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004"];
+                [self caculateWithString:_content];
             }else {
                 [HintView showHint:error.localizedDescription];
             }
