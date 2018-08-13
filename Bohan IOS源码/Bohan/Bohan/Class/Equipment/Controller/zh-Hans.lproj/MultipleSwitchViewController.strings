@@ -1,6 +1,6 @@
 
 /* Class = "UILabel"; text = "开关3定时"; ObjectID = "0qC-RU-r9C"; */
-"0qC-RU-r9C.text" = "开关3定时";
+"0qC-RU-r9C.text" = "开关3历史设置时间";
 
 /* Class = "UILabel"; text = "月"; ObjectID = "2p3-yc-L21"; */
 "2p3-yc-L21.text" = "月";
@@ -18,7 +18,7 @@
 "85J-h8-fjI.text" = "年";
 
 /* Class = "UILabel"; text = "开关2定时"; ObjectID = "BPF-aY-UKO"; */
-"BPF-aY-UKO.text" = "开关2定时";
+"BPF-aY-UKO.text" = "开关2历史设置时间";
 
 /* Class = "UIButton"; normalTitle = "开"; ObjectID = "GFj-tx-jqB"; */
 "GFj-tx-jqB.normalTitle" = "开";
@@ -69,4 +69,4 @@
 "ule-M3-TY1.text" = "分";
 
 /* Class = "UILabel"; text = "开关1定时"; ObjectID = "zVG-4e-Pzt"; */
-"zVG-4e-Pzt.text" = "开关1定时";
+"zVG-4e-Pzt.text" = "开关1历史设置时间";

@@ -53,77 +53,77 @@
             NSString * str = response;
             NSString * string = [str substringWithRange:NSMakeRange(24, 2)];
             if ([string containsString:@"80"]) {
-                Open1But.selected = YES;
-                Open2But.selected = YES;
-                Open3But.selected = YES;
+                self.TurnOnSwitch1.hidden = NO;
+                self.TurnOnSwitch2.hidden = NO;
+                self.TurnOnSwitch3.hidden = NO;
                 
-                Guan1But.selected = NO;
-                Guan2But.selected = NO;
-                Guan3But.selected = NO;
+                self.CloseSwitch1.hidden = YES;
+                self.CloseSwitch2.hidden = YES;
+                self.CloseSwitch3.hidden = YES;
             }else
             if ([string containsString:@"81"]) {
-                Guan1But.selected = YES;
-                Open2But.selected = YES;
-                Open3But.selected = YES;
+                self.CloseSwitch1.hidden = NO;
+                self.TurnOnSwitch2.hidden = NO;
+                self.TurnOnSwitch3.hidden = NO;
                 
-                Open1But.selected = NO;
-                Guan2But.selected = NO;
-                Guan3But.selected = NO;
+                self.TurnOnSwitch1.hidden = YES;
+                self.TurnOnSwitch2.hidden = YES;
+                self.TurnOnSwitch3.hidden = YES;
             }else
             if ([string containsString:@"82"]) {
-                Open1But.selected = YES;
-                Guan2But.selected = YES;
-                Open3But.selected = YES;
+                self.CloseSwitch1.hidden = NO;
+                self.TurnOnSwitch2.hidden = NO;
+                self.TurnOnSwitch3.hidden = NO;
                 
-                Guan1But.selected = NO;
-                Open2But.selected = NO;
-                Guan3But.selected = NO;
+                self.TurnOnSwitch1.hidden = YES;
+                self.CloseSwitch2.hidden = YES;
+                self.TurnOnSwitch3.hidden = YES;
             }else
             if ([string containsString:@"83"]) {
-                Guan1But.selected = YES;
-                Guan2But.selected = YES;
-                Open3But.selected = YES;
+                self.CloseSwitch1.hidden = NO;
+                self.CloseSwitch2.hidden = NO;
+                self.TurnOnSwitch3.hidden = NO;
                 
-                Open1But.selected = NO;
-                Open2But.selected = NO;
-                Guan3But.selected = NO;
+                self.TurnOnSwitch1.hidden = YES;
+                self.TurnOnSwitch2.hidden = YES;
+                self.CloseSwitch3.hidden = YES;
             }else
             if ([string containsString:@"84"]) {
-                Open1But.selected = YES;
-                Open2But.selected = YES;
-                Guan3But.selected = YES;
+                self.CloseSwitch1.hidden = NO;
+                self.CloseSwitch2.hidden = NO;
+                self.CloseSwitch3.hidden = NO;
                 
-                Guan1But.selected = NO;
-                Guan2But.selected = NO;
-                Open3But.selected = NO;
+                self.CloseSwitch1.hidden = YES;
+                self.CloseSwitch2.hidden = YES;
+                self.TurnOnSwitch3.hidden = YES;
                 
             }else
             if ([string containsString:@"85"]) {
-                Guan1But.selected = YES;
-                Open2But.selected = YES;
-                Guan3But.selected = YES;
+                self.CloseSwitch1.hidden = NO;
+                self.TurnOnSwitch2.hidden = NO;
+                self.CloseSwitch3.hidden = NO;
                 
-                Open1But.selected = NO;
-                Guan2But.selected = NO;
-                Open3But.selected = NO;
+                self.TurnOnSwitch1.hidden = YES;
+                self.CloseSwitch2.hidden = YES;
+                self.CloseSwitch3.hidden = YES;
             }else
             if ([string containsString:@"86"]) {
-                Open1But.selected = YES;
-                Guan2But.selected = YES;
-                Guan3But.selected = YES;
+                self.TurnOnSwitch1.hidden = NO;
+                self.CloseSwitch2.hidden = NO;
+                self.CloseSwitch3.hidden = NO;
                 
-                Guan1But.selected = NO;
-                Open2But.selected = NO;
-                Open3But.selected = NO;
+                self.CloseSwitch1.hidden = YES;
+                self.TurnOnSwitch2.hidden = YES;
+                self.TurnOnSwitch3.hidden = YES;
             }else
             if ([string containsString:@"87"]) {
-                Guan1But.selected = YES;
-                Guan2But.selected = YES;
-                Guan3But.selected = YES;
+                self.CloseSwitch1.hidden = NO;
+                self.CloseSwitch2.hidden = NO;
+                self.CloseSwitch3.hidden = NO;
                 
-                Open1But.selected = NO;
-                Open1But.selected = NO;
-                Open1But.selected = NO;
+                self.TurnOnSwitch1.hidden = YES;
+                self.TurnOnSwitch2.hidden = YES;
+                self.TurnOnSwitch3.hidden = YES;
             }
             ZPLog(@"%@",string);
         }else {
@@ -241,7 +241,7 @@
                 [HintView showHint:Localize(@"设定时间必须大于当前时间")];
                 return;
             }else {
-                [self Opendatas1];
+//                [self Opendatas1];
         }
     }
 }
@@ -633,8 +633,33 @@
         }
     }];
 }
+
 // 一键设置所有的开关
 - (IBAction)OneKeySetsAllTheSwitches:(UIButton *)sender {
+    if ([self.deviceNo containsString:@"61"]) {
+        NSString * stringg1 = [NSString stringWithFormat:@"%@%@%@%@%@",self.string1,self.string2,self.string3,self.string4,self.string5];
+        NSString * stringg2 = [NSString stringWithFormat:@"%@%@%@%@%@",self.stringg1,self.stringg2,self.stringg3,self.stringg4,self.stringg5];
+        ZPLog(@"%@--%@",stringg1,stringg2);
+//        sender.selected =!sender.selected;
+        Guan1But.selected = NO;
+        if ([stringg2 isEqualToString:@"(null)(null)(null)(null)(null)"]) {
+            Open1But.selected = NO;
+            Guan1But.selected = YES;
+            ZPLog(@"请修改单前时间");
+            [HintView showHint:Localize(@"设定时间必须大于当前时间")];
+            return;
+        }else
+            if (stringg1.integerValue > stringg2.integerValue) {
+                // string1系统时间 大于 string2修改时间
+                Open1But.selected = NO;
+                Guan1But.selected = YES;
+                ZPLog(@"不能小于当前时间");
+                [HintView showHint:Localize(@"设定时间必须大于当前时间")];
+                return;
+            }else {
+                [self Opendatas1];
+            }
+    }
     
 }
 

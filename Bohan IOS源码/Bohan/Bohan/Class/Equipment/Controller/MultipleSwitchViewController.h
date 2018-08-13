@@ -94,4 +94,13 @@
 @property (nonatomic, strong) NSString * string333;
 @property (nonatomic, strong) NSString * string444;
 @property (nonatomic, strong) NSString * string555;
+@property (weak, nonatomic) IBOutlet UIButton *TurnOnSwitch1;
+@property (weak, nonatomic) IBOutlet UIButton *TurnOnSwitch2;
+@property (weak, nonatomic) IBOutlet UIButton *TurnOnSwitch3;
+
+@property (weak, nonatomic) IBOutlet UIButton *CloseSwitch1;
+@property (weak, nonatomic) IBOutlet UIButton *CloseSwitch2;
+@property (weak, nonatomic) IBOutlet UIButton *CloseSwitch3;
+
+
 @end

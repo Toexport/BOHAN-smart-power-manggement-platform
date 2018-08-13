@@ -1,6 +1,6 @@
 
 /* Class = "UILabel"; text = "开关3定时"; ObjectID = "0qC-RU-r9C"; */
-"0qC-RU-r9C.text" = "Switch 3";
+"0qC-RU-r9C.text" = "Switch3HistorySettingTime";
 
 /* Class = "UILabel"; text = "月"; ObjectID = "2p3-yc-L21"; */
 "2p3-yc-L21.text" = "M";
@@ -18,7 +18,7 @@
 "85J-h8-fjI.text" = "y";
 
 /* Class = "UILabel"; text = "开关2定时"; ObjectID = "BPF-aY-UKO"; */
-"BPF-aY-UKO.text" = "Switch 2";
+"BPF-aY-UKO.text" = "Switch2HistorySettingTime";
 
 /* Class = "UIButton"; normalTitle = "开"; ObjectID = "GFj-tx-jqB"; */
 "GFj-tx-jqB.normalTitle" = "Open";
@@ -69,4 +69,4 @@
 "ule-M3-TY1.text" = "m";
 
 /* Class = "UILabel"; text = "开关1定时"; ObjectID = "zVG-4e-Pzt"; */
-"zVG-4e-Pzt.text" = "Switch 1";
+"zVG-4e-Pzt.text" = "Switch1HistorySettingTime";

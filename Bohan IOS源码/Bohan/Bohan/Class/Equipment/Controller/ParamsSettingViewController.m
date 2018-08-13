@@ -232,9 +232,10 @@
 }
 
 // 负荷门限BUt
+//options+command+ 左右箭头折叠/展开
 - (IBAction)saveAction:(UIButton *)sender {
-    if ([self.Coedid containsString:@"QK01"] || [self.Coedid containsString:@"QK02"]
-        || [self.Coedid containsString:@"QK03"] || [self.Coedid containsString:@"CDMT10"] || [self.Coedid containsString:@"QC10"] || [self.Coedid containsString:@"YC10"] || [self.Coedid containsString:@"YCGP10"]) {
+    if ([self.Coedid containsString:@"YC"] || [self.Coedid containsString:@"K"]
+        || [self.Coedid containsString:@"QC"] || [self.Coedid containsString:@"QK01"] || [self.Coedid containsString:@"QK02"] || [self.Coedid containsString:@"QK03"] || [self.Coedid containsString:@"CDMT10"] || [self.Coedid containsString:@"QC10"] || [self.Coedid containsString:@"YC10"] || [self.Coedid containsString:@"YCGP10"]) {
         if (limitTF.text == nil || limitTF.text.length <= 1) {
             ZPLog(@"没有输入文字");
             [HintView showHint:Localize(@"请输入负荷门限")];
@@ -270,7 +271,7 @@
                     }
                 }
             }else
-                if ([self.Coedid containsString:@"QC13"]) {
+                if ([self.Coedid containsString:@"YC13"] || [self.Coedid containsString:@"QC13"]) {
                     if (limitTF.text == nil || limitTF.text.length <= 1) {
                         ZPLog(@"没有输入文字");
                         [HintView showHint:Localize(@"请输入负荷门限")];
@@ -319,7 +320,7 @@
                                     }
                                 }
                             }else
-                                if ([self.Coedid containsString:@"CG1P"] || [self.Coedid containsString:@"WFMT"] || [self.Coedid containsString:@"MC"] || [self.Coedid containsString:@"GP1P"] || [self.Coedid containsString:@"YFGPMT"]) {
+                                if ([self.Coedid containsString:@"YFMT"] || [self.Coedid containsString:@"GP1P"] || [self.Coedid containsString:@"WFMT"] || [self.Coedid containsString:@"YFGPMT"] || [self.Coedid containsString:@"MC"]) {
                                     if (limitTF.text == nil || limitTF.text.length <= 1) {
                                         ZPLog(@"没有输入文字");
                                         [HintView showHint:Localize(@"请输入负荷门限")];
