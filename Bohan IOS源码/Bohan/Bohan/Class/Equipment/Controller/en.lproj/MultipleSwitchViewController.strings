@@ -1,5 +1,6 @@
 
-/* Class = "UILabel"; text = "开关3定时"; ObjectID = "0qC-RU-r9C"; */
+
+/* Class = "UILabel"; text = "开关3历史设置时间"; ObjectID = "0qC-RU-r9C"; */
 "0qC-RU-r9C.text" = "Switch3HistorySettingTime";
 
 /* Class = "UILabel"; text = "月"; ObjectID = "2p3-yc-L21"; */
@@ -17,14 +18,32 @@
 /* Class = "UILabel"; text = "年"; ObjectID = "85J-h8-fjI"; */
 "85J-h8-fjI.text" = "y";
 
-/* Class = "UILabel"; text = "开关2定时"; ObjectID = "BPF-aY-UKO"; */
+/* Class = "UIButton"; normalTitle = "开启"; ObjectID = "APe-jQ-pYh"; */
+"APe-jQ-pYh.normalTitle" = "Open";
+
+/* Class = "UIButton"; selectedTitle = "关闭"; ObjectID = "APe-jQ-pYh"; */
+"APe-jQ-pYh.selectedTitle" = "Shut";
+
+/* Class = "UIButton"; normalTitle = "开启"; ObjectID = "BGR-7R-toe"; */
+"BGR-7R-toe.normalTitle" = "Open";
+
+/* Class = "UIButton"; selectedTitle = "关闭"; ObjectID = "BGR-7R-toe"; */
+"BGR-7R-toe.selectedTitle" = "Shut";
+
+/* Class = "UILabel"; text = "开关2历史设置时间"; ObjectID = "BPF-aY-UKO"; */
 "BPF-aY-UKO.text" = "Switch2HistorySettingTime";
 
-/* Class = "UIButton"; normalTitle = "开"; ObjectID = "GFj-tx-jqB"; */
-"GFj-tx-jqB.normalTitle" = "Open";
+/* Class = "UILabel"; text = "当前开关状态"; ObjectID = "FrF-DY-TbY"; */
+"FrF-DY-TbY.text" = "Current Switch on-off state";
 
 /* Class = "UIButton"; normalTitle = "开"; ObjectID = "JFy-o7-h5I"; */
 "JFy-o7-h5I.normalTitle" = "Open";
+
+/* Class = "UIButton"; normalTitle = "开启"; ObjectID = "NJA-Jc-gYy"; */
+"NJA-Jc-gYy.normalTitle" = "Shut";
+
+/* Class = "UIButton"; selectedTitle = "关闭"; ObjectID = "NJA-Jc-gYy"; */
+"NJA-Jc-gYy.selectedTitle" = "Shut";
 
 /* Class = "UILabel"; text = "分"; ObjectID = "P0G-L7-D9G"; */
 "P0G-L7-D9G.text" = "m";
@@ -36,13 +55,16 @@
 "SZu-TI-SwK.text" = "y";
 
 /* Class = "UILabel"; text = "时"; ObjectID = "VQB-pX-hEt"; */
-"VQB-pX-hEt.text" = "H";
+"VQB-pX-hEt.text" = "h";
+
+/* Class = "UILabel"; text = "当前开关状态"; ObjectID = "c21-L8-BAm"; */
+"c21-L8-BAm.text" = "Current Switch on-off state";
 
 /* Class = "UILabel"; text = "日"; ObjectID = "e74-8H-aSh"; */
-"e74-8H-aSh.text" = "d";
+"e74-8H-aSh.text" = "D";
 
 /* Class = "UILabel"; text = "日"; ObjectID = "ecp-j2-XQb"; */
-"ecp-j2-XQb.text" = "d";
+"ecp-j2-XQb.text" = "D";
 
 /* Class = "UIButton"; normalTitle = "开"; ObjectID = "gNM-6A-ttE"; */
 "gNM-6A-ttE.normalTitle" = "Open";
@@ -51,10 +73,13 @@
 "iRU-3m-kgR.text" = "M";
 
 /* Class = "UIButton"; normalTitle = "关"; ObjectID = "j8r-Lk-DKl"; */
-"j8r-Lk-DKl.normalTitle" = "Off";
+"j8r-Lk-DKl.normalTitle" = "Shut";
+
+/* Class = "UILabel"; text = "当前开关状态"; ObjectID = "jse-rL-dUp"; */
+"jse-rL-dUp.text" = "Current Switch on-off state"";
 
 /* Class = "UILabel"; text = "日"; ObjectID = "mmn-1X-sL0"; */
-"mmn-1X-sL0.text" = "d";
+"mmn-1X-sL0.text" = "D";
 
 /* Class = "UILabel"; text = "时"; ObjectID = "oUs-jH-LQu"; */
 "oUs-jH-LQu.text" = "H";
@@ -68,5 +93,8 @@
 /* Class = "UILabel"; text = "分"; ObjectID = "ule-M3-TY1"; */
 "ule-M3-TY1.text" = "m";
 
-/* Class = "UILabel"; text = "开关1定时"; ObjectID = "zVG-4e-Pzt"; */
+/* Class = "UIButton"; normalTitle = "设置"; ObjectID = "v8X-MQ-Fe9"; */
+"v8X-MQ-Fe9.normalTitle" = "Setting";
+
+/* Class = "UILabel"; text = "开关1历史设置时间"; ObjectID = "zVG-4e-Pzt"; */
 "zVG-4e-Pzt.text" = "Switch1HistorySettingTime";

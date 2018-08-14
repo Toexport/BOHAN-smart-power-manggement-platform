@@ -185,8 +185,6 @@
 		C410507220FED0B9009A46F4 /* MultipleSwitchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultipleSwitchViewController.h; sourceTree = "<group>"; };
 		C410507320FED0B9009A46F4 /* MultipleSwitchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultipleSwitchViewController.m; sourceTree = "<group>"; };
 		C410507820FF1B1F009A46F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MultipleSwitchViewController.xib; sourceTree = "<group>"; };
-		C410507B20FF1B22009A46F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MultipleSwitchViewController.strings; sourceTree = "<group>"; };
-		C410507D20FF1B23009A46F4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MultipleSwitchViewController.strings"; sourceTree = "<group>"; };
 		C418584B21016889002285F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ShareView.strings; sourceTree = "<group>"; };
 		C418584D21016992002285F4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ShareView.strings"; sourceTree = "<group>"; };
 		C47B4A9920F5CCC100DAD5D3 /* LanguageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LanguageController.h; sourceTree = "<group>"; };
@@ -200,6 +198,8 @@
 		C47B4AB220F5DF9F00DAD5D3 /* UIButton+countDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+countDown.h"; sourceTree = "<group>"; };
 		C47B4AB320F5DF9F00DAD5D3 /* CALayer+UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+UIColor.m"; sourceTree = "<group>"; };
 		C47B4AB420F5DF9F00DAD5D3 /* UIViewController+LLProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LLProgress.m"; sourceTree = "<group>"; };
+		C48B05DB2122FD00008C5B90 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MultipleSwitchViewController.strings"; sourceTree = "<group>"; };
+		C48B05DD2122FD26008C5B90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MultipleSwitchViewController.strings; sourceTree = "<group>"; };
 		C4A044972113F5C300656EC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ParamsSettingViewController.xib; sourceTree = "<group>"; };
 		C4A0449A2113F5C600656EC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ParamsSettingViewController.strings; sourceTree = "<group>"; };
 		C4A0449C2113F5C700656EC2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ParamsSettingViewController.strings"; sourceTree = "<group>"; };
@@ -1698,8 +1698,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				C410507820FF1B1F009A46F4 /* Base */,
-				C410507B20FF1B22009A46F4 /* en */,
-				C410507D20FF1B23009A46F4 /* zh-Hans */,
+				C48B05DB2122FD00008C5B90 /* zh-Hans */,
+				C48B05DD2122FD26008C5B90 /* en */,
 			);
 			name = MultipleSwitchViewController.xib;
 			sourceTree = "<group>";
