@@ -46,7 +46,6 @@
     [self deviceParams];
     [self configNoData];// 打开这个不显示家长模式是否开启
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStauts:) name:CHANGETIMEMODEL object:nil];
-    
 }
 - (void)deviceParams {
     [self GetDatas];
@@ -59,6 +58,7 @@
 - (void)updateStauts:(NSNotification *)noti {
     NSDictionary *dic = noti.object;
     ParentsModeBut.selected = dic;
+    isParentModel = ParentsModeBut.selected;
 }
 
 // 获取数据
@@ -438,8 +438,7 @@
         list.isParentModel = YES;
         [self.navigationController pushViewController:list animated:YES];
     }else {
-        [self cancelAction];
-        [self perideRunCancel];
+        [self changeModel];
         sender.selected = NO;
         ZPLog(@"取消");
     }
@@ -468,24 +467,35 @@
     }];
 }
 
-- (void)changeModel:(NSString *)content isParentCancel:(BOOL)cancel {
+- (void)changeModel {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0009";
     model.deviceNo = self.dNo;
-    model.content = [content substringToIndex:content.length - 2];
+    
+    
+    NSString *contentStr = @"";
+    for (TimeSettingModel *model in self.datas) {
+        NSString *item = [model.startTime stringByReplacingOccurrencesOfString:@":" withString:@""];
+        item = [item stringByAppendingString:[model.endTime stringByReplacingOccurrencesOfString:@":" withString:@""]];
+        
+        NSString *week = [Utils getBinaryByHex:model.week];
+        week = [week stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:@"0"];
+        model.week = [Utils getHexByBinary:week];
+        item = [item stringByAppendingString:model.week];
+        
+        contentStr = [contentStr stringByAppendingString:item];
+    }
+    
+    model.content = contentStr;
     [self.view startLoading];
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
-        if (cancel) {
-            if (!error) {
-                isParentModel = NO;
-                [self caculateWithString:_content];
-                selectedIndexPath = nil;
-            }else {
-                [HintView showHint:error.localizedDescription];
-            }
+        if (!error) {
+            [self cancelAction];
+        }else {
+            [HintView showHint:error.localizedDescription];
         }
     }];
 }
@@ -493,7 +503,7 @@
 // 家长模式
 - (void)caculateWithString:(NSString *)content {
     NSString *str = [content substringFromIndex:content.length - 2];
-    if ([str isEqualToString:@"03"] || [str isEqualToString:@"04"]) {
+    if ([str isEqualToString:@"03"] || [str isEqualToString:@"04"] || [str isEqualToString:@"02"]) {
         [self.datas removeAllObjects];
         BOOL isValidate = NO;
         for (NSInteger i = 0; i < 9; i++) {
@@ -507,27 +517,15 @@
             model.endTime = end;
             model.week = [time substringFromIndex:time.length - 2];
             NSString *week = [Utils getBinaryByHex:model.week];
-            if ([str isEqualToString:@"03"] || [str isEqualToString:@"04"]) {
-                if ((![week isEqualToString:@"00000000"]) && (!([start isEqualToString:@"00:00"] && [end isEqualToString:@"00:00"]))) {
-                    if ([str isEqualToString:@"03"]) {
-                        isParentModel = YES;
-                        isValidate = YES;
-                        model.open = YES;
-                        ParentsModeBut.selected = YES;
-                    }
-                } else {
-                    model.open = NO;
-                }
-            } else {
-                if (![week  isEqualToString:@"00000000"] && !([start isEqualToString:@"00:00"] && [end isEqualToString:@"00:00"])) {
+            if ((![week isEqualToString:@"00000000"]) && (!([start isEqualToString:@"00:00"] && [end isEqualToString:@"00:00"]))) {
+                if ([str isEqualToString:@"03"]) {
                     isParentModel = YES;
                     isValidate = YES;
-                    model.open = NO;
-                    ParentsModeBut.selected = NO;
-                } else {
                     model.open = YES;
+                    ParentsModeBut.selected = YES;
                 }
             }
+            
             [self.datas addObject:model];
         }
         //有效的时段设置模式
@@ -536,11 +534,12 @@
             ParentsModeBut.selected = YES;
             return;
         }
-    }else
-        if([str isEqualToString:@"05"]) {
+    }else if([str isEqualToString:@"05"]) {
         [self configRunModelWithModelStr:content isLoop:YES];
         ParentsModeBut.selected = YES;
         return;
+    } else {
+        
     }
     ParentsModeBut.selected = NO;
     //[self configNoData];
@@ -579,75 +578,15 @@
 }
 
 // 取消家长模式
-// 取消循环通断
 - (void)cancelAction {
     [CommonOperation cancelDeviceRunModel:self.dNo result:^(id response, NSError *error) {
         if (!error) {
-            isParentModel = NO;
-            [self caculateWithString:_content];
+            [self caculateWithString:[[_content substringToIndex:_content.length-2] stringByAppendingString:@"04"]];
+            selectedIndexPath = nil;
+            [HintView showHint:@"取消成功"];
         }else {
             [HintView showHint:error.localizedDescription];
         }
-    }];
-}
-
-// 取消家长模式
-- (void)perideRunCancel {
-    if (isParentModel) {
-        NSString *contentStr = @"";
-        for (TimeSettingModel *model in self.datas) {
-            NSString *item = [model.startTime stringByReplacingOccurrencesOfString:@":" withString:@""];
-            item = [item stringByAppendingString:[model.endTime stringByReplacingOccurrencesOfString:@":" withString:@""]];
-            NSString *week = [Utils getBinaryByHex:model.week];
-            week = [week stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:@"0"];
-            model.week = [Utils getHexByBinary:week];
-            item = [item stringByAppendingString:model.week];
-            
-            contentStr = [contentStr stringByAppendingString:item];
-        }
-        contentStr = [contentStr stringByAppendingString:@"03"];
-        
-        [self changeModel:contentStr isParentCancel:YES];
-    }else {
-        [CommonOperation cancelDeviceRunModel:self.dNo result:^(id response, NSError *error) {
-            if (!error) {
-                [self caculateWithString:_content];
-                [HintView showHint:Localize(@"取消成功")];
-//                [self caculateWithString:@"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004"];
-                selectedIndexPath = nil;
-            }else {
-                [HintView showHint:error.localizedDescription];
-            }
-        }];
-    }
-}
-
-- (void)changeModell:(NSString *)contentt isParentCancel:(BOOL)cancel {
-    WebSocket *socket = [WebSocket socketManager];
-    CommandModel *model = [[CommandModel alloc] init];
-    model.command = @"0009";
-    model.deviceNo = self.dNo;
-    model.content = [contentt substringToIndex:contentt.length - 2];
-    [self.view startLoading];
-    MyWeakSelf
-    [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
-        [weakSelf.view stopLoading];
-        if (cancel) {
-            if (!error) {
-                isParentModel = NO;
-                [self caculateWithString:_content];
-            }else {
-                [HintView showHint:error.localizedDescription];
-            }
-        }else {
-            if (!error) {
-                [weakSelf caculateWithString:contentt];
-                //                [HintView showHint:Localize(@"取消成功")];
-            }else {
-                [HintView showHint:Localize(@"操作失败")];
-            }
-        }
-        
     }];
 }
 
