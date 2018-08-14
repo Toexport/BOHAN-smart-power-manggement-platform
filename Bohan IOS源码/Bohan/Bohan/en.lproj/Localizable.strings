@@ -70,6 +70,10 @@
 "四" = "Thursday";
 "五" = "Friday";
 "六" = "Saturday";
+"开关1历史设置时间" = "Switch1HistorySettingTime";
+"开关2历史设置时间" = "Switch2HistorySettingTime";
+
+
 //"日" = "Sunday";
 //"Sunday" = "日";
 "周" = "";

@@ -80,10 +80,7 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
     
 }
 
-- (void)loadData
-{
-    
-    
+- (void)loadData {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0008";
@@ -144,8 +141,7 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
                 
             }
             
-        }else
-        {
+        }else {
             [HintView showHint:error.localizedDescription];
         }
     }];

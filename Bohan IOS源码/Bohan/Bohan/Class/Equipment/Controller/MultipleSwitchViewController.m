@@ -53,77 +53,46 @@
             NSString * str = response;
             NSString * string = [str substringWithRange:NSMakeRange(24, 2)];
             if ([string containsString:@"80"]) {
-                self.TurnOnSwitch1.hidden = NO;
-                self.TurnOnSwitch2.hidden = NO;
-                self.TurnOnSwitch3.hidden = NO;
-                
-                self.CloseSwitch1.hidden = YES;
-                self.CloseSwitch2.hidden = YES;
-                self.CloseSwitch3.hidden = YES;
+                self.TurnOnSwitch1.selected = NO;
+                self.TurnOnSwitch2.selected = NO;
+                self.TurnOnSwitch3.selected = NO;
             }else
             if ([string containsString:@"81"]) {
-                self.CloseSwitch1.hidden = NO;
-                self.TurnOnSwitch2.hidden = NO;
-                self.TurnOnSwitch3.hidden = NO;
-                
-                self.TurnOnSwitch1.hidden = YES;
-                self.TurnOnSwitch2.hidden = YES;
-                self.TurnOnSwitch3.hidden = YES;
+                self.TurnOnSwitch1.selected = YES;
+                self.TurnOnSwitch2.selected = NO;
+                self.TurnOnSwitch3.selected = NO;
             }else
             if ([string containsString:@"82"]) {
-                self.CloseSwitch1.hidden = NO;
-                self.TurnOnSwitch2.hidden = NO;
-                self.TurnOnSwitch3.hidden = NO;
+                self.TurnOnSwitch1.selected = NO;
+                self.TurnOnSwitch2.selected = YES;
+                self.TurnOnSwitch3.selected = NO;
                 
-                self.TurnOnSwitch1.hidden = YES;
-                self.CloseSwitch2.hidden = YES;
-                self.TurnOnSwitch3.hidden = YES;
+                
             }else
             if ([string containsString:@"83"]) {
-                self.CloseSwitch1.hidden = NO;
-                self.CloseSwitch2.hidden = NO;
-                self.TurnOnSwitch3.hidden = NO;
-                
-                self.TurnOnSwitch1.hidden = YES;
-                self.TurnOnSwitch2.hidden = YES;
-                self.CloseSwitch3.hidden = YES;
+                self.TurnOnSwitch1.selected = NO;
+                self.TurnOnSwitch2.selected = NO;
+                self.TurnOnSwitch3.selected = YES;
             }else
             if ([string containsString:@"84"]) {
-                self.CloseSwitch1.hidden = NO;
-                self.CloseSwitch2.hidden = NO;
-                self.CloseSwitch3.hidden = NO;
-                
-                self.CloseSwitch1.hidden = YES;
-                self.CloseSwitch2.hidden = YES;
-                self.TurnOnSwitch3.hidden = YES;
-                
+                self.TurnOnSwitch1.selected = NO;
+                self.TurnOnSwitch2.selected = NO;
+                self.TurnOnSwitch3.selected = YES;
             }else
             if ([string containsString:@"85"]) {
-                self.CloseSwitch1.hidden = NO;
-                self.TurnOnSwitch2.hidden = NO;
-                self.CloseSwitch3.hidden = NO;
-                
-                self.TurnOnSwitch1.hidden = YES;
-                self.CloseSwitch2.hidden = YES;
-                self.CloseSwitch3.hidden = YES;
+                self.TurnOnSwitch1.selected = YES;
+                self.TurnOnSwitch2.selected = NO;
+                self.TurnOnSwitch3.selected = YES;
             }else
             if ([string containsString:@"86"]) {
-                self.TurnOnSwitch1.hidden = NO;
-                self.CloseSwitch2.hidden = NO;
-                self.CloseSwitch3.hidden = NO;
-                
-                self.CloseSwitch1.hidden = YES;
-                self.TurnOnSwitch2.hidden = YES;
-                self.TurnOnSwitch3.hidden = YES;
+                self.TurnOnSwitch1.selected = NO;
+                self.TurnOnSwitch2.selected = YES;
+                self.TurnOnSwitch3.selected = YES;
             }else
             if ([string containsString:@"87"]) {
-                self.CloseSwitch1.hidden = NO;
-                self.CloseSwitch2.hidden = NO;
-                self.CloseSwitch3.hidden = NO;
-                
-                self.TurnOnSwitch1.hidden = YES;
-                self.TurnOnSwitch2.hidden = YES;
-                self.TurnOnSwitch3.hidden = YES;
+                self.TurnOnSwitch1.selected = YES;
+                self.TurnOnSwitch2.selected = YES;
+                self.TurnOnSwitch3.selected = YES;
             }
             ZPLog(@"%@",string);
         }else {
@@ -193,7 +162,7 @@
 - (void)TimeDisplay {
     if ([self.deviceNo containsString:@"61"]) {
         ZPLog(@"%@1个开关",self.deviceNo);
-        Label2Text.text = Localize(@"开关1定时");
+        Label2Text.text = Localize(@"开关1历史设置时间");
         Switch1view.hidden = YES;
         View2LayoutConstraint.constant = - 126;
         View4LayoutConstraint.constant = - 106;
@@ -202,7 +171,7 @@
         Divider2View.hidden = YES;
     }else
         if ([self.deviceNo containsString:@"62"]) {
-            Label3Text.text = Localize(@"开关2定时");
+            Label3Text.text = Localize(@"开关2历史设置时间");
             Switch2view.hidden = YES;
             View3LayoutConstraint.constant = - 126;
             Divider2View.hidden = YES;
@@ -218,94 +187,160 @@
 // 开关一
 // 开
 - (IBAction)Switch1OpenBut:(UIButton *)sender {
+    sender.selected =!sender.selected;
     if (sender.selected) {
-        return;
-    }else {
         sender.selected = YES;
         Guan1But.selected = NO;
+        ZPLog(@"选中");
+        return;
+    }else {
+        ZPLog(@"取消");
+        return;
+//        sender.selected = YES;
+//        Guan1But.selected = NO;
     }
 }
 
 // 开关二
 // 开
 - (IBAction)Switch2OpenBut:(UIButton *)sender {
+    sender.selected =! sender.selected;
     if (sender.selected) {
-        return;
-    }else {
         sender.selected = YES;
         Guan2But.selected = NO;
+        return;
+    }else {
+        ZPLog(@"取消");
+        return;
     }
 }
 
 // 开关三
 //开
 - (IBAction)Switch3OpenBut:(UIButton *)sender {
+    sender.selected =! sender.selected;
     if (sender.selected) {
-        return;
-    }else {
         sender.selected = YES;
         Guan3But.selected = NO;
+        ZPLog(@"选中");
+        return;
+    }else {
+        ZPLog(@"取消");
+        return;
+//        sender.selected = YES;
+//        Guan3But.selected = NO;
     }
 }
 
 // 关1
 - (IBAction)Switch1GuanBut:(UIButton *)sender {
+    sender.selected =! sender.selected;
     if (sender.selected) {
-        return;
-    }else {
         sender.selected = YES;
         Open1But.selected = NO;
+        ZPLog(@"选中");
+        return;
+    }else {
+        ZPLog(@"取消");
+        return;
+//        sender.selected = YES;
+//        Open1But.selected = NO;
     }
 }
 
 // 关2
 - (IBAction)Switch2GuanBut:(UIButton *)sender {
+    sender.selected =! sender.selected;
     if (sender.selected) {
-        return;
-    }else {
         sender.selected = YES;
         Open2But.selected = NO;
+        ZPLog(@"选中");
+        return;
+    }else {
+        ZPLog(@"取消");
+        return;
+//        sender.selected = YES;
+//        Open2But.selected = NO;
     }
 }
 
 // 关3
 - (IBAction)Switch3GuanBut:(UIButton *)sender {
+    sender.selected =! sender.selected;
     if (sender.selected) {
-        return;
-    }else {
         sender.selected = YES;
         Open3But.selected = NO;
+        ZPLog(@"选中");
+        return;
+    }else {
+        ZPLog(@"取消");
+        return;
+//        sender.selected = YES;
+//        Open3But.selected = NO;
     }
 }
 
 - (NSString *)getContent {
-    
     NSMutableString *content = [NSMutableString string];
+    NSString * string1 = [self.deviceNo substringWithRange:NSMakeRange(0, 2)];
+    ZPLog(@"%@",string1);
+//    第一个按钮
     NSString * ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];
-    [content appendFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
+    if ([string1 containsString:@"61"]) {
+        [content appendFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
+        if (!Open1But.selected && !Guan1But.selected) {
+            [content appendString:@"FF"];
+        } else {
+            [content appendFormat:@"%@",Guan1But.selected?@"01":@"00"];
+        }
+    }else {
+    [content appendFormat:@"%@%@%@%@%@",ssting,self.stringg2,self.stringg3,self.stringg4,self.stringg5];
     if (!Open1But.selected && !Guan1But.selected) {
         [content appendString:@"FF"];
     } else {
         [content appendFormat:@"%@",Guan1But.selected?@"01":@"00"];
     }
+    }
     
-    ssting = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
-    [content appendFormat:@"%@%@%@%@%@",ssting,self.string22,self.string33,self.string44,self.string55];
+//      第二个按钮
+    if ([string1 containsString:@"62"]) {
+        ssting = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
+        [content appendFormat:@"%@%@%@%@%@",ssting,self.string22,self.stringg3,self.stringg4,self.stringg5];
+        if (!Open2But.selected && !Guan2But.selected) {
+            [content appendString:@"FF"];
+        } else {
+            [content appendFormat:@"%@",Guan2But.selected?@"01":@"00"];
+        }
+    }else {
+    ssting = [[NSString stringWithFormat:@"%@",self.stringg11]substringFromIndex:2];
+    [content appendFormat:@"%@%@%@%@%@",ssting,self.stringg22,self.stringg33,self.stringg44,self.stringg55];
     if (!Open2But.selected && !Guan2But.selected) {
         [content appendString:@"FF"];
     } else {
         [content appendFormat:@"%@",Guan2But.selected?@"01":@"00"];
     }
+    }
     
-    ssting = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
-    [content appendFormat:@"%@%@%@%@%@",ssting,self.string222,self.string333,self.string444,self.string555];
+//    第三个开关
+    if ([string1 containsString:@"61"]) {
+        ssting = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
+        [content appendFormat:@"%@%@%@%@%@",ssting,self.string22,self.string333,self.string444,self.string555];
+        if (!Open3But.selected && !Guan3But.selected) {
+            [content appendString:@"FF"];
+        } else {
+            [content appendFormat:@"%@",Guan3But.selected?@"01":@"00"];
+        }
+        return content;
+    }else {
+    ssting = [[NSString stringWithFormat:@"%@",self.stringg111]substringFromIndex:2];
+    [content appendFormat:@"%@%@%@%@%@",ssting,self.stringg222,self.stringg333,self.stringg444,self.stringg555];
     if (!Open3But.selected && !Guan3But.selected) {
         [content appendString:@"FF"];
     } else {
         [content appendFormat:@"%@",Guan3But.selected?@"01":@"00"];
     }
-    
     return content;
+}
 }
 
 // 一键设置所有的开关

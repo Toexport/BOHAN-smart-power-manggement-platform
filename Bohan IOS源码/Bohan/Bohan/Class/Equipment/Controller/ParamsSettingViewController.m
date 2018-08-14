@@ -53,15 +53,15 @@
     [self loadData];
 //    [self DefaultTest]; //  默认关闭所有按钮
 }
-
-
+//- (void)viewWillAppear:(BOOL)animated {
+//    [self deviceParams];
+//}
 - (void)updateStauts:(NSNotification *)noti {
     NSDictionary *dic = noti.object;
     ParentsModeBut.selected = dic;
 }
 
 // 获取数据
-
 - (void)GetDatas {
     self.datas = [NSMutableArray array];
     WebSocket *socket = [WebSocket socketManager];
@@ -75,16 +75,30 @@
         ZPLog(@"%@",response);
         NSString * stringgg = [response substringWithRange:NSMakeRange(2, 2)];
         ZPLog(@"%@",stringgg);
-        if ([stringgg containsString:@"61"] || [stringgg containsString:@"62"] || [stringgg containsString:@"63"]) {
-            [ParentsModeBut setEnabled:NO];
-            ParentsModeBut.alpha = 0.4;
-            [ParentsModeSettingBut setEnabled:NO];
-            ParentsModeSettingBut.alpha = 0.4;
-        }else {
+        if ([self.Coedid containsString:@"YC"] || [self.Coedid containsString:@"YC10"] || [self.Coedid containsString:@"YC16"] || [self.Coedid containsString:@"YCGP10"] || [self.Coedid containsString:@"YCGP16"] || [self.Coedid containsString:@"QC"] || [self.Coedid containsString:@"QC10"] || [self.Coedid containsString:@"QC16"] || [self.Coedid containsString:@"YC13"] || [self.Coedid containsString:@"QC13"] || [self.Coedid containsString:@"YC15"] || [self.Coedid containsString:@"QC15"]) {
             [ParentsModeBut setEnabled:YES];
             ParentsModeBut.alpha = 100;
             [ParentsModeSettingBut setEnabled:YES];
             ParentsModeSettingBut.alpha = 100;
+        }else {
+            [ParentsModeBut setEnabled:NO];
+            ParentsModeBut.alpha = 0.4;
+            [ParentsModeSettingBut setEnabled:NO];
+            ParentsModeSettingBut.alpha = 0.4;
+            [ChargingProtectionBut setEnabled:NO];
+            ChargingProtectionBut.alpha = 0.4;
+            [PhoneChargingProtectionBut setEnabled:NO];
+            PhoneChargingProtectionBut.alpha = 0.4;
+            [DDCChargingProtectionBut setEnabled:NO];
+            DDCChargingProtectionBut.alpha = 0.4;
+            [ZNDDBut setEnabled:NO];
+            ZNDDBut.alpha = 0.4;
+            [SettingBut setEnabled:NO];
+            SettingBut.alpha = 0.4;
+            [timeBut setEnabled:NO];
+            timeBut.alpha = 0.4;
+            [PowerBut setEnabled:NO];
+            PowerBut.alpha = 0.4;
         }
         if (!error) {
             NSString *priceStr = [response substringWithRange:NSMakeRange(24, 4)];
@@ -482,7 +496,6 @@
     if ([str isEqualToString:@"03"] || [str isEqualToString:@"04"]) {
         [self.datas removeAllObjects];
         BOOL isValidate = NO;
-        
         for (NSInteger i = 0; i < 9; i++) {
             NSString *time= [content substringWithRange:NSMakeRange(i*10, 10)];
             TimeSettingModel *model = [[TimeSettingModel alloc] init];
@@ -507,9 +520,10 @@
                 }
             } else {
                 if (![week  isEqualToString:@"00000000"] && !([start isEqualToString:@"00:00"] && [end isEqualToString:@"00:00"])) {
-                    isParentModel = NO;
-                    isValidate = NO;
+                    isParentModel = YES;
+                    isValidate = YES;
                     model.open = NO;
+                    ParentsModeBut.selected = NO;
                 } else {
                     model.open = YES;
                 }
@@ -522,7 +536,8 @@
             ParentsModeBut.selected = YES;
             return;
         }
-    }else if([str isEqualToString:@"05"]) {
+    }else
+        if([str isEqualToString:@"05"]) {
         [self configRunModelWithModelStr:content isLoop:YES];
         ParentsModeBut.selected = YES;
         return;
@@ -569,7 +584,6 @@
     [CommonOperation cancelDeviceRunModel:self.dNo result:^(id response, NSError *error) {
         if (!error) {
             isParentModel = NO;
-            [HintView showHint:Localize(@"取消成功")];
             [self caculateWithString:_content];
         }else {
             [HintView showHint:error.localizedDescription];
@@ -584,7 +598,6 @@
         for (TimeSettingModel *model in self.datas) {
             NSString *item = [model.startTime stringByReplacingOccurrencesOfString:@":" withString:@""];
             item = [item stringByAppendingString:[model.endTime stringByReplacingOccurrencesOfString:@":" withString:@""]];
-            
             NSString *week = [Utils getBinaryByHex:model.week];
             week = [week stringByReplacingCharactersInRange:NSMakeRange(0, 1) withString:@"0"];
             model.week = [Utils getHexByBinary:week];
@@ -600,6 +613,7 @@
             if (!error) {
                 [self caculateWithString:_content];
                 [HintView showHint:Localize(@"取消成功")];
+//                [self caculateWithString:@"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004"];
                 selectedIndexPath = nil;
             }else {
                 [HintView showHint:error.localizedDescription];
@@ -750,7 +764,7 @@
     [ParentsModeBut setEnabled:NO];
     ParentsModeBut.alpha = 0.4;
     [ParentsModeSettingBut setEnabled:NO];
-    ParentsModeSettingBut.alpha;
+    ParentsModeSettingBut.alpha = 0.4;
     [SettingBut setEnabled:NO]; // 交互打开
     SettingBut.alpha = 0.4; // 透明度
     [timeBut setEnabled:NO]; //交互开启

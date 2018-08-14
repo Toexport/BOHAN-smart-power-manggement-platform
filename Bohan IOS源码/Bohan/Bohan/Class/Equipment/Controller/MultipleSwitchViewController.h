@@ -94,13 +94,10 @@
 @property (nonatomic, copy) NSString * string333;
 @property (nonatomic, copy) NSString * string444;
 @property (nonatomic, copy) NSString * string555;
-@property (weak, nonatomic) IBOutlet UIButton *TurnOnSwitch1;
+@property (weak, nonatomic) IBOutlet UIButton *TurnOnSwitch1; // 开
 @property (weak, nonatomic) IBOutlet UIButton *TurnOnSwitch2;
 @property (weak, nonatomic) IBOutlet UIButton *TurnOnSwitch3;
 
-@property (weak, nonatomic) IBOutlet UIButton *CloseSwitch1;
-@property (weak, nonatomic) IBOutlet UIButton *CloseSwitch2;
-@property (weak, nonatomic) IBOutlet UIButton *CloseSwitch3;
 
 
 @end
