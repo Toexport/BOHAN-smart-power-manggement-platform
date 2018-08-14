@@ -286,61 +286,32 @@
     ZPLog(@"%@",string1);
 //    第一个按钮
     NSString * ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];
-    if ([string1 containsString:@"61"]) {
-        [content appendFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
-        if (!Open1But.selected && !Guan1But.selected) {
-            [content appendString:@"FF"];
-        } else {
-            [content appendFormat:@"%@",Guan1But.selected?@"01":@"00"];
-        }
-    }else {
-    [content appendFormat:@"%@%@%@%@%@",ssting,self.stringg2,self.stringg3,self.stringg4,self.stringg5];
+    [content appendFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
     if (!Open1But.selected && !Guan1But.selected) {
         [content appendString:@"FF"];
     } else {
         [content appendFormat:@"%@",Guan1But.selected?@"01":@"00"];
     }
-    }
     
 //      第二个按钮
-    if ([string1 containsString:@"62"]) {
-        ssting = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
-        [content appendFormat:@"%@%@%@%@%@",ssting,self.string22,self.stringg3,self.stringg4,self.stringg5];
-        if (!Open2But.selected && !Guan2But.selected) {
-            [content appendString:@"FF"];
-        } else {
-            [content appendFormat:@"%@",Guan2But.selected?@"01":@"00"];
-        }
-    }else {
-    ssting = [[NSString stringWithFormat:@"%@",self.stringg11]substringFromIndex:2];
-    [content appendFormat:@"%@%@%@%@%@",ssting,self.stringg22,self.stringg33,self.stringg44,self.stringg55];
+    ssting = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
+    [content appendFormat:@"%@%@%@%@%@",ssting,self.string22,self.string33,self.string44,self.string55];
     if (!Open2But.selected && !Guan2But.selected) {
         [content appendString:@"FF"];
     } else {
         [content appendFormat:@"%@",Guan2But.selected?@"01":@"00"];
     }
-    }
     
 //    第三个开关
-    if ([string1 containsString:@"61"]) {
-        ssting = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
-        [content appendFormat:@"%@%@%@%@%@",ssting,self.string22,self.string333,self.string444,self.string555];
-        if (!Open3But.selected && !Guan3But.selected) {
-            [content appendString:@"FF"];
-        } else {
-            [content appendFormat:@"%@",Guan3But.selected?@"01":@"00"];
-        }
-        return content;
-    }else {
-    ssting = [[NSString stringWithFormat:@"%@",self.stringg111]substringFromIndex:2];
-    [content appendFormat:@"%@%@%@%@%@",ssting,self.stringg222,self.stringg333,self.stringg444,self.stringg555];
+    ssting = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
+    [content appendFormat:@"%@%@%@%@%@",ssting,self.string222,self.string333,self.string444,self.string555];
     if (!Open3But.selected && !Guan3But.selected) {
         [content appendString:@"FF"];
     } else {
         [content appendFormat:@"%@",Guan3But.selected?@"01":@"00"];
     }
+    
     return content;
-}
 }
 
 // 一键设置所有的开关
@@ -447,30 +418,27 @@
     }
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatter dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
+        
+        
         [formatter setDateFormat:@"yyyy"];// 解决问题
         [Years1TextField setText:[formatter stringFromDate:selectDate]];
         self.stringg1 = Years1TextField.text;
-        Years1TextField.text = [NSString stringWithString:self.stringg1];
         
         [formatter setDateFormat:@"MM"];
         [Month1TextField setText:[formatter stringFromDate:selectDate]];
-        self.stringg2 = Month1TextField.text;
-        Month1TextField.text = [NSString stringWithString:self.stringg2];
+        self.string2 = Month1TextField.text;
         
         [formatter setDateFormat:@"dd"];
         [Day1textField setText:[formatter stringFromDate:selectDate]];
-        self.stringg3 = Day1textField.text;
-        Day1textField.text = [NSString stringWithString:self.stringg3];
+        self.string3 = Day1textField.text;
         
         [formatter setDateFormat:@"HH"];
         [Hours1TextField setText:[formatter stringFromDate:selectDate]];
-        self.stringg4 = Hours1TextField.text;
-        Hours1TextField.text = [NSString stringWithString:self.stringg4];
+        self.string4 = Hours1TextField.text;
         
         [formatter setDateFormat:@"mm"];
         [Minutes1TextField setText:[formatter stringFromDate:selectDate]];
-        self.stringg5 = Minutes1TextField.text;
-        Minutes1TextField.text = [NSString stringWithString:self.stringg5];
+        self.string5 = Minutes1TextField.text;
     }];
     datepicker.hideBackgroundYearLabel = YES;
     datepicker.dateLabelColor = kDefualtColor;
