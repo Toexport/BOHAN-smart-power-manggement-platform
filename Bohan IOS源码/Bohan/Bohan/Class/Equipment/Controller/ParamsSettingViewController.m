@@ -50,11 +50,8 @@
 - (void)deviceParams {
     [self GetDatas];
     [self loadData];
-//    [self DefaultTest]; //  默认关闭所有按钮
 }
-//- (void)viewWillAppear:(BOOL)animated {
-//    [self deviceParams];
-//}
+
 - (void)updateStauts:(NSNotification *)noti {
     NSDictionary *dic = noti.object;
     ParentsModeBut.selected = dic;
@@ -73,8 +70,6 @@
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
         ZPLog(@"%@",response);
-        NSString * stringgg = [response substringWithRange:NSMakeRange(2, 2)];
-        ZPLog(@"%@",stringgg);
         if ([self.Coedid containsString:@"YC"] || [self.Coedid containsString:@"YC10"] || [self.Coedid containsString:@"YC16"] || [self.Coedid containsString:@"YCGP10"] || [self.Coedid containsString:@"YCGP16"] || [self.Coedid containsString:@"QC"] || [self.Coedid containsString:@"QC10"] || [self.Coedid containsString:@"QC16"] || [self.Coedid containsString:@"YC13"] || [self.Coedid containsString:@"QC13"] || [self.Coedid containsString:@"YC15"] || [self.Coedid containsString:@"QC15"]) {
             [ParentsModeBut setEnabled:YES];
             ParentsModeBut.alpha = 100;

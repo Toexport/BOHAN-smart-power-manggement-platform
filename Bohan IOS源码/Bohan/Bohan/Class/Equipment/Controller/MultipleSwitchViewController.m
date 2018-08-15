@@ -11,14 +11,9 @@
 #import "DebuggingANDPublishing.pch"
 #import "UIViewController+NavigationBar.h"
 @interface MultipleSwitchViewController (){
-    //    BOOL openg;
-    //    NSInteger totalSecend;//总秒数
-    //    NSInteger lastSecend;//剩余秒数点进去
     NSDateFormatter *formatter;
     NSDateFormatter * formatters;
     NSDateFormatter * formatterd;
-    //    NSString *start;
-    //    NSString *end;
 }
 
 @end
@@ -66,8 +61,6 @@
                 self.TurnOnSwitch1.selected = NO;
                 self.TurnOnSwitch2.selected = YES;
                 self.TurnOnSwitch3.selected = NO;
-                
-                
             }else
             if ([string containsString:@"83"]) {
                 self.TurnOnSwitch1.selected = NO;
@@ -160,8 +153,9 @@
 
 // 是否显示2-3号开关
 - (void)TimeDisplay {
-    if ([self.deviceNo containsString:@"61"]) {
-        ZPLog(@"%@1个开关",self.deviceNo);
+    NSString * strID = [self.deviceNo substringWithRange:NSMakeRange(0, 2)];
+    if ([strID containsString:@"61"]) {
+        ZPLog(@"%@1个开关",strID);
         Label2Text.text = Localize(@"开关1历史设置时间");
         Switch1view.hidden = YES;
         View2LayoutConstraint.constant = - 126;
@@ -170,13 +164,13 @@
         Switch3view.hidden = YES;
         Divider2View.hidden = YES;
     }else
-        if ([self.deviceNo containsString:@"62"]) {
+        if ([strID containsString:@"62"]) {
             Label3Text.text = Localize(@"开关2历史设置时间");
             Switch2view.hidden = YES;
             View3LayoutConstraint.constant = - 126;
             Divider2View.hidden = YES;
     }else
-        if ([self.deviceNo containsString:@"63"]) {
+        if ([strID containsString:@"63"]) {
             Switch2view.hidden = NO;
             Switch3view.hidden = NO;
             DividerView.hidden = NO;
@@ -196,8 +190,6 @@
     }else {
         ZPLog(@"取消");
         return;
-//        sender.selected = YES;
-//        Guan1But.selected = NO;
     }
 }
 
@@ -227,8 +219,6 @@
     }else {
         ZPLog(@"取消");
         return;
-//        sender.selected = YES;
-//        Guan3But.selected = NO;
     }
 }
 
@@ -243,8 +233,6 @@
     }else {
         ZPLog(@"取消");
         return;
-//        sender.selected = YES;
-//        Open1But.selected = NO;
     }
 }
 
@@ -259,8 +247,6 @@
     }else {
         ZPLog(@"取消");
         return;
-//        sender.selected = YES;
-//        Open2But.selected = NO;
     }
 }
 
@@ -275,8 +261,6 @@
     }else {
         ZPLog(@"取消");
         return;
-//        sender.selected = YES;
-//        Open3But.selected = NO;
     }
 }
 
@@ -292,7 +276,6 @@
     } else {
         [content appendFormat:@"%@",Guan1But.selected?@"01":@"00"];
     }
-    
 //      第二个按钮
     ssting = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
     [content appendFormat:@"%@%@%@%@%@",ssting,self.string22,self.string33,self.string44,self.string55];
@@ -310,7 +293,6 @@
     } else {
         [content appendFormat:@"%@",Guan3But.selected?@"01":@"00"];
     }
-    
     return content;
 }
 
@@ -416,18 +398,22 @@
         formatter = [[NSDateFormatter alloc] init];
         formatter.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
     }
-    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [formatter setDateFormat:@"yyyyMMddHHmm"];
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatter dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
-        
-        
+        self.str1 = [formatter stringFromDate:selectDate];
+        self.str11 = [NSString stringWithFormat:@"%@%@%@%@%@", self.string1, self.string2, self.string3, self.string4, self.string5];
+        if (self.str1.integerValue < self.str11.integerValue) {
+            ZPLog(@"不行");
+            [HintView showHint:Localize(@"设置时间不能小于当前时间")];
+            return ;
+        }else {
         [formatter setDateFormat:@"yyyy"];// 解决问题
         [Years1TextField setText:[formatter stringFromDate:selectDate]];
-        self.stringg1 = Years1TextField.text;
+        self.string1 = Years1TextField.text;
         
         [formatter setDateFormat:@"MM"];
         [Month1TextField setText:[formatter stringFromDate:selectDate]];
         self.string2 = Month1TextField.text;
-        
         [formatter setDateFormat:@"dd"];
         [Day1textField setText:[formatter stringFromDate:selectDate]];
         self.string3 = Day1textField.text;
@@ -439,6 +425,7 @@
         [formatter setDateFormat:@"mm"];
         [Minutes1TextField setText:[formatter stringFromDate:selectDate]];
         self.string5 = Minutes1TextField.text;
+        }
     }];
     datepicker.hideBackgroundYearLabel = YES;
     datepicker.dateLabelColor = kDefualtColor;
@@ -454,32 +441,35 @@
         formatters = [[NSDateFormatter alloc] init];
         formatters.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
     }
-    [formatters setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [formatters setDateFormat:@"yyyyMMddHHmm"];
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatters dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
+        self.str2 = [formatters stringFromDate:selectDate];
+        self.str22 = [NSString stringWithFormat:@"%@%@%@%@%@", self.string11, self.string22, self.string33, self.string44, self.string55];
+        if (self.str2.integerValue < self.str22.integerValue) {
+            ZPLog(@"不行");
+            [HintView showHint:Localize(@"设置时间不能小于当前时间")];
+            return ;
+        }else {
         [formatters setDateFormat:@"yyyy"];// 解决问题
         [Years2TextField setText:[formatters stringFromDate:selectDate]];
-        self.stringg11 = Years2TextField.text;
-        Years2TextField.text = [NSString stringWithString:self.stringg11];
+        self.string11 = Years2TextField.text;
         
         [formatters setDateFormat:@"MM"];
         [Month2TextField setText:[formatters stringFromDate:selectDate]];
-        self.stringg22 = Month2TextField.text;
-        Month2TextField.text = [NSString stringWithString:self.stringg22];
+        self.string22 = Month2TextField.text;
         
         [formatters setDateFormat:@"dd"];
         [Day2textField setText:[formatters stringFromDate:selectDate]];
-        self.stringg33 = Day2textField.text;
-        Day2textField.text = [NSString stringWithString:self.stringg33];
+        self.string33 = Day2textField.text;
         
         [formatters setDateFormat:@"HH"];
         [Hours2TextField setText:[formatters stringFromDate:selectDate]];
-        self.stringg44 = Hours2TextField.text;
-        Hours2TextField.text = [NSString stringWithString:self.stringg44];
+        self.string44 = Hours2TextField.text;
         
         [formatters setDateFormat:@"mm"];
         [Minutes2TextField setText:[formatters stringFromDate:selectDate]];
-        self.stringg55 = Minutes2TextField.text;
-        Minutes2TextField.text = [NSString stringWithString:self.stringg55];
+        self.string55 = Minutes2TextField.text;
+        }
     }];
     datepicker.hideBackgroundYearLabel = YES;
     datepicker.dateLabelColor = kDefualtColor;
@@ -495,34 +485,36 @@
         formatterd = [[NSDateFormatter alloc] init];
         formatterd.locale = [[NSLocale alloc] initWithLocaleIdentifier:@"zh_CN"];
     }
-    [formatterd setDateFormat:@"yyyy-MM-dd HH:mm"];
+    [formatterd setDateFormat:@"yyyyMMddHHmm"];
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatterd dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
+        self.str3 = [formatterd stringFromDate:selectDate];
+        self.str33 = [NSString stringWithFormat:@"%@%@%@%@%@", self.string111, self.string222, self.string333, self.string444, self.string555];
+        if (self.str1.integerValue < self.str11.integerValue) {
+            ZPLog(@"不行");
+            [HintView showHint:Localize(@"设置时间不能小于当前时间")];
+            return ;
+        }else {
         [formatterd setDateFormat:@"yyyy"];// 解决问题
         [Years3TextField setText:[formatterd stringFromDate:selectDate]];
-        self.stringg111 = Years3TextField.text;
-        Years3TextField.text = [NSString stringWithString:self.stringg111];
+        self.string111 = Years3TextField.text;
         
         [formatterd setDateFormat:@"MM"];
         [Month3TextField setText:[formatterd stringFromDate:selectDate]];
-        self.stringg222 = Month3TextField.text;
-        Month3TextField.text = [NSString stringWithString:self.stringg222];
+        self.string222 = Month3TextField.text;
         
         [formatterd setDateFormat:@"dd"];
         [Day3textField setText:[formatterd stringFromDate:selectDate]];
-        self.stringg333 = Day3textField.text;
-        Day3textField.text = [NSString stringWithString:self.stringg333];
+        self.string333 = Day3textField.text;
         
         [formatterd setDateFormat:@"HH"];
         [Hours3TextField setText:[formatterd stringFromDate:selectDate]];
-        self.stringg444 = Hours3TextField.text;
-        Hours3TextField.text = [NSString stringWithString:self.stringg444];
+        self.string444 = Hours3TextField.text;
         
         [formatterd setDateFormat:@"mm"];
         [Minutes3TextField setText:[formatterd stringFromDate:selectDate]];
-        self.stringg555 = Minutes3TextField.text;
-        Minutes3TextField.text = [NSString stringWithString:self.stringg555];
+        self.string555 = Minutes3TextField.text;
+        }
     }];
-    
     datepicker.hideBackgroundYearLabel = YES;
     datepicker.dateLabelColor = kDefualtColor;
     datepicker.doneButtonColor = kDefualtColor;
