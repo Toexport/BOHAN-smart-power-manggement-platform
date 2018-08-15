@@ -53,8 +53,8 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 }
 
 
-- (void)updateViewConstraints {
-    [super updateViewConstraints];
+//- (void)updateViewConstraints {
+//    [super updateViewConstraints];
 //    if (iPhone4) {
 //        _ViewLayoutHeight.constant += 90;
 //    }
@@ -67,7 +67,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 //    if (iPhone6splus) {
 //        _PatchViewLayoutConstraint.constant = 30;
 //    }
-}
+//}
 
 - (void)loadData {
     WebSocket *socket = [WebSocket socketManager];
@@ -82,11 +82,9 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
                 NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 96, 92)];
                 NSString *electrictyModel = [content substringFromIndex:content.length - 2];
                 if ([electrictyModel isEqualToString:@"00"] || [electrictyModel isEqualToString:@"01"]) {
-                    
                     [self countDownTime];
                 }
             }
-            
         }else {
         }
         ZPLog(@"--------%@",response);
@@ -104,16 +102,14 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
         if (!error) {
-            
             NSString *statusStr = [response substringWithRange:NSMakeRange(((NSString *)response).length - 18, 2)];
-
+            
             NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 16, 12)];
             if ([content hasPrefix:@"00"]) {
                 return ;
             }
             [formatter setDateFormat:@"yyMMddHHmmss"];
             startDate = [formatter dateFromString:content];
-            
             if (!startDate) {
                 return ;
             }
@@ -123,16 +119,14 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
             }else {
                 [status setText:Localize(@"设备打开")];
             }
-            
+
             totalSecend = MAX(0, [startDate timeIntervalSinceDate:[NSDate date]]);
             [weakSelf showConfig];
-
             [self setUpTimer];
         }
         
         ZPLog(@"--------%@",response);
     }];
-    
 }
 
 - (void)getStatus {
@@ -141,11 +135,9 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     model.command = @"0002";
     model.deviceNo = self.deviceNo;
     [self.view startLoading];
-    
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
-        
         if (!error) {
             if (((NSString *)response).length>26) {
                 NSString *status = [response substringWithRange:NSMakeRange(24, 2)];
@@ -181,7 +173,6 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
                     }else {
                         open = YES;
                     }
-
                 }
                 if (!open) {
                     //开启
@@ -189,21 +180,20 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
                     closeBtn.layer.borderWidth = 1;
                     closeBtn.backgroundColor = [UIColor whiteColor];
                     [closeBtn setTitleColor:[UIColor getColor:@"39B3FF"] forState:UIControlStateNormal];
-
+                    
                     openBtn.backgroundColor = [UIColor getColor:@"BBBBBB"];
                     [openBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                     openBtn.layer.borderColor = [UIColor getColor:@"BBBBBB"].CGColor;
-
                 }else {
                     openBtn.layer.borderColor = [UIColor getColor:@"39B3FF"].CGColor;
                     openBtn.layer.borderWidth = 1;
                     openBtn.backgroundColor = [UIColor whiteColor];
                     [openBtn setTitleColor:[UIColor getColor:@"39B3FF"] forState:UIControlStateNormal];
-
+                    
                     closeBtn.backgroundColor = [UIColor getColor:@"BBBBBB"];
                     [closeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                     closeBtn.layer.borderColor = [UIColor getColor:@"BBBBBB"].CGColor;
-
+                    
                 }
 
             }
@@ -222,12 +212,12 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
         openBtn.hidden = YES;
         closeBtn.hidden = YES;
 //        cancelBtn.hidden = NO;
-        
-    }else  {
+    }else {
         _mainTable.hidden = NO;
         openBtn.hidden = NO;
         closeBtn.hidden = NO;
         PatchVIew.hidden = NO;
+        [self getStatus];
 //        cancelBtn.hidden = YES;
     }
 }
@@ -265,6 +255,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 - (IBAction)DelayClosingBut:(UIButton *)sender {
     [self startAction];
 }
+
 // 延时数据
 - (void)startAction {
     NSString *content = [time.text stringByReplacingOccurrencesOfString:@":" withString:@""];
@@ -317,7 +308,6 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 
 - (void)timeAction {
     lastSecend = MAX(0, [startDate timeIntervalSinceDate:[NSDate date]]);
-
     NSComparisonResult result =[startDate compare:[NSDate date]];
     if (lastSecend <=0 || result != NSOrderedDescending) {
         open = !open;
@@ -333,6 +323,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     [progressView setPersentage:0];
     [status setText:Localize(@"设备打开/关闭")];
     startDate = nil;
+    [self getStatus];
     [self showConfig];
     if ([_timer isValid]) {
         [_timer invalidate];
@@ -340,21 +331,18 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     }
 }
 
-
 #pragma mark - UITableView delegate
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.datas.count;
-    
 }
 
 /*设置cell 的宽度 */
--(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 40;
     
 }
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:countCellIdentifier];
-    
     if (!cell) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:countCellIdentifier];
         cell.textLabel.font = Font(13);
@@ -373,8 +361,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     return cell;
 }
 #pragma mark 按钮的点击事件
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.row == 2) {
         [formatter setDateFormat:@"HH:mm"];
         WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowHourMinute scrollToDate:[formatter dateFromString:[time.text substringToIndex:5]] CompleteBlock:^(NSDate *selectDate) {
@@ -395,10 +382,8 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 
     }else {
         if (indexPath.row == 0) {
-            
             [time setText:@"00:05:00"];
-        }else
-        {
+        }else {
             [time setText:@"00:10:00"];
         }
         if (self.selectedItemIndex != indexPath.row) {

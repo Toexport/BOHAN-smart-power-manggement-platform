@@ -77,18 +77,24 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     NSString * str = [string substringWithRange:NSMakeRange(0, 2)];
     ZPLog(@"%@",str);
     if ([str containsString:@"61"] || [str containsString:@"62"] || [str containsString:@"63"]){
-        datas = @[@{@"image" :@"ic_launch", @"name": Localize(@"实时参数")}, @{@"image" :@"ic_l", @"name": Localize(@"增值服务")}, @{@"image" :@"ic_laun", @"name": Localize(@"定时计量")}, @{@"image" :@"menu_summery", @"name": Localize(@"用电统计")}, @{@"image" :@"ic_launch1", @"name": Localize(@"延时/定时开关")},];
+        datas = @[@{@"image" :@"ic_launch", @"name": Localize(@"实时参数")}, @{@"image" :@"ic_l", @"name": Localize(@"增值服务")}, @{@"image" :@"ic_laun", @"name": Localize(@"定时计量")}, @{@"image" :@"menu_summery", @"name": Localize(@"用电统计")}, @{@"image" :@"ic_launch1", @"name": Localize(@"延时/定时开关")}];
     }else {
-        datas = @[@{@"image" :@"ic_launch", @"name": Localize(@"实时参数")}, @{@"image" :@"ic_l", @"name": Localize(@"增值服务")}, @{@"image" :@"ic_laun", @"name": Localize(@"定时计量")}, @{@"image" :@"menu_summery", @"name": Localize(@"用电统计")}, @{@"image" :@"ic_launcher2", @"name": Localize(@"时段设置")}, @{@"image" :@"ic_launch1", @"name": Localize(@"延时/定时开关")},];
-        [self loadData];
+        datas = @[@{@"image" :@"ic_launch", @"name": Localize(@"实时参数")}, @{@"image" :@"ic_l", @"name": Localize(@"增值服务")}, @{@"image" :@"ic_laun", @"name": Localize(@"定时计量")}, @{@"image" :@"menu_summery", @"name": Localize(@"用电统计")}, @{@"image" :@"ic_launcher2", @"name": Localize(@"时段设置")}, @{@"image" :@"ic_launch1", @"name": Localize(@"延时/定时开关")}];
     }
 }
-
 
 - (void)updateStauts:(NSNotification *)noti {
     NSDictionary *dic = noti.object;
     electrictyModel = dic?@"03":@"00";
     [deviceInfoCollection reloadData];
+}
+
+- (void) viewWillAppear:(BOOL)animated {
+    if ([self.sortt containsString:@"YC"] || [self.sortt containsString:@"YC10"] || [self.sortt containsString:@"YC16 "] || [self.sortt containsString:@"YCGP10"] || [self.sortt containsString:@"YCGP16"] || [self.sortt containsString:@"QC"] || [self.sortt containsString:@"QC10"] || [self.sortt containsString:@"QC16"] || [self.sortt containsString:@"YC13"] || [self.sortt containsString:@"QC13"] || [self.sortt containsString:@"YC15"] || [self.sortt containsString:@"QC15"]) {
+        [self loadData];
+    }else {
+        
+    }
 }
 
 - (void)loadData {
@@ -109,8 +115,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
                 
                 if ([electrictyModel isEqualToString:@"00"] || [electrictyModel isEqualToString:@"01"]) {
                     [self countDownTime];
-                }else
-                {
+                }else {
                     [deviceInfoCollection reloadData];
                 }
             }
@@ -118,8 +123,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     }];
 }
 
-- (void)deviceStatus
-{
+- (void)deviceStatus {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0002";
@@ -179,14 +183,11 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
             if (!open) {
                 [statusImg setImage:[UIImage imageNamed:@"open_open"]];
                 [status setText:Localize(@"设备正处于开启状态")];
-            }else
-            {
+            }else {
                 [statusImg setImage:[UIImage imageNamed:@"open_close"]];
                 [status setText:Localize(@"设备正处于关闭状态")];
             }
-            
-        }else
-        {
+        }else {
             isOnline = NO;
             [statusImg setImage:[UIImage imageNamed:@"open_offline"]];
             [status setText:Localize(@"设备正处于离线状态")];
@@ -198,8 +199,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
 }
 
 //倒计时时间
-- (void)countDownTime
-{
+- (void)countDownTime {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0012";
@@ -209,7 +209,6 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         
         if (!error) {
-            
             NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 16, 12)];
             [formatter setDateFormat:@"yyMMddHHmmss"];
             NSDate *startDate = [formatter dateFromString:content];
@@ -219,31 +218,25 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
                 electrictyModel = nil;
                 [status setText:Localize(@"设备已结束倒计时模式")];
             }
-            
         }
         [deviceInfoCollection reloadData];
-        
         ZPLog(@"--------%@",response);
     }];
-    
 }
 
 
 - (IBAction)refreashAction {
-    
     [self deviceStatus];
     
 }
 
 #pragma mark - UICollectionView Delegate
 
-- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
-{
+- (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return datas.count;
 }
 
-- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (__kindof UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     DeviceInfoCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:reuseIdentifier forIndexPath:indexPath];
     NSDictionary *dic = datas[indexPath.row];
     cell.imgV.image = [UIImage imageNamed:dic[@"image"]];

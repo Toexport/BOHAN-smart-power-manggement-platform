@@ -264,10 +264,15 @@
     }
 }
 
+
+/**
+ 按钮集合
+ @return return value description
+ */
 - (NSString *)getContent {
     NSMutableString *content = [NSMutableString string];
-    NSString * string1 = [self.deviceNo substringWithRange:NSMakeRange(0, 2)];
-    ZPLog(@"%@",string1);
+//    NSString * string1 = [self.deviceNo substringWithRange:NSMakeRange(0, 2)];
+//    ZPLog(@"%@",string1);
 //    第一个按钮
     NSString * ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];
     [content appendFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];

@@ -47,6 +47,7 @@
     [self configNoData];// 打开这个不显示家长模式是否开启
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStauts:) name:CHANGETIMEMODEL object:nil];
 }
+
 - (void)deviceParams {
     [self GetDatas];
     [self loadData];
@@ -76,6 +77,12 @@
             [ParentsModeSettingBut setEnabled:YES];
             ParentsModeSettingBut.alpha = 100;
         }else {
+            [ParentsModeBut setEnabled:NO];
+            ParentsModeBut.alpha = 0.4;
+            [ParentsModeSettingBut setEnabled:NO];
+            ParentsModeSettingBut.alpha = 0.4;
+        }
+        if ([self.Coedid containsString:@"QK01"] || [self.Coedid containsString:@"QK02"] || [self.Coedid containsString:@"QK03"]) {
             [ParentsModeBut setEnabled:NO];
             ParentsModeBut.alpha = 0.4;
             [ParentsModeSettingBut setEnabled:NO];
@@ -425,6 +432,10 @@
 
 // 新增
 // 家长模式
+/**
+ 家长模式
+ @param sender 家长模式
+ */
 - (IBAction)ParentsModeBut:(UIButton *)sender {
     if (!sender.selected) {
         TimeSettingListViewController *list = [[TimeSettingListViewController alloc] init];
@@ -467,7 +478,6 @@
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0009";
     model.deviceNo = self.dNo;
-    
     
     NSString *contentStr = @"";
     for (TimeSettingModel *model in self.datas) {
@@ -539,6 +549,7 @@
     ParentsModeBut.selected = NO;
     //[self configNoData];
 }
+
 - (void)configRunModelWithModelStr:(NSString *)modelStr isLoop:(BOOL)isLoop {
     if (isLoop) {
         selectedIndexPath = nil;
