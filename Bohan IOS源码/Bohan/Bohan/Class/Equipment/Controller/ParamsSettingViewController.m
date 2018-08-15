@@ -394,16 +394,15 @@
     }
     model.command = @"0020";
     contents = [limitTF.text componentsSeparatedByString:@"."];
-    content = [NSString stringWithFormat:@"%04d%02d",[[contents firstObject] intValue],contents.count == 1?0:[contents[1] intValue]];
-    NSString * contentStr = [content substringWithRange:NSMakeRange(0, 6)];
-    model.content = contentStr;
+    content = [NSString stringWithFormat:@"%06d",[[contents firstObject] intValue]];
+    model.content = [NSString stringWithFormat:@"%06d",[[contents firstObject] intValue]];
     [self.view startLoading];
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
         if (!error) {
             [HintView showHint:Localize(@"保存成功")];
-            [limit setText:[NSString stringWithFormat:@"%d.%02d",[[content substringToIndex:4] intValue],[[content substringFromIndex:4] intValue]]];
+            [limit setText:content];
         }else {
             [HintView showHint:error.localizedDescription];
         }

@@ -111,6 +111,7 @@
     }
     [formatters setDateFormat:@"yyyy-MM-dd HH:mm"];
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatters dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
+        [self yyyyMMddHHmm];
         [formatters setDateFormat:@"yyyy"];// 解决问题
         [YearTextField setText:[formatters stringFromDate:selectDate]];
         self.string1 = YearTextField.text;

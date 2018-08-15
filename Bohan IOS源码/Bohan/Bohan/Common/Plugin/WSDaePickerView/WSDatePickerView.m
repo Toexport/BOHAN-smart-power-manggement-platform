@@ -656,7 +656,6 @@ typedef void(^doneBlock)(NSDate *);
 - (IBAction)doneAction:(UIButton *)btn {
     
     _startDate = [self.scrollToDate dateWithFormatter:_dateFormatter];
-    
     self.doneBlock(_startDate);
     [self dismiss];
 }

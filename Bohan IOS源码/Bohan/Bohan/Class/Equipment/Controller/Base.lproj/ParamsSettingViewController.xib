@@ -590,7 +590,7 @@
                 <constraint firstItem="aeM-pk-brI" firstAttribute="leading" secondItem="DnA-HN-skS" secondAttribute="leading" id="yGx-uf-aIw"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="i1T-JD-LFT"/>
-            <point key="canvasLocation" x="76.5" y="-111.5"/>
+            <point key="canvasLocation" x="-226" y="-115"/>
         </view>
     </objects>
     <resources>

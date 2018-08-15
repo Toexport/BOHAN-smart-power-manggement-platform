@@ -18,16 +18,16 @@
 "85J-h8-fjI.text" = "年";
 
 /* Class = "UIButton"; normalTitle = "开启"; ObjectID = "APe-jQ-pYh"; */
-"APe-jQ-pYh.normalTitle" = "开启";
+"APe-jQ-pYh.normalTitle" = "关闭";
 
 /* Class = "UIButton"; selectedTitle = "关闭"; ObjectID = "APe-jQ-pYh"; */
-"APe-jQ-pYh.selectedTitle" = "关闭";
+"APe-jQ-pYh.selectedTitle" = "开启";
 
 /* Class = "UIButton"; normalTitle = "开启"; ObjectID = "BGR-7R-toe"; */
-"BGR-7R-toe.normalTitle" = "开启";
+"BGR-7R-toe.normalTitle" = "关闭";
 
 /* Class = "UIButton"; selectedTitle = "关闭"; ObjectID = "BGR-7R-toe"; */
-"BGR-7R-toe.selectedTitle" = "关闭";
+"BGR-7R-toe.selectedTitle" = "开启";
 
 /* Class = "UILabel"; text = "开关2历史设置时间"; ObjectID = "BPF-aY-UKO"; */
 "BPF-aY-UKO.text" = "开关2历史设置时间";
@@ -39,10 +39,10 @@
 "JFy-o7-h5I.normalTitle" = "开";
 
 /* Class = "UIButton"; normalTitle = "开启"; ObjectID = "NJA-Jc-gYy"; */
-"NJA-Jc-gYy.normalTitle" = "开启";
+"NJA-Jc-gYy.normalTitle" = "关闭";
 
 /* Class = "UIButton"; selectedTitle = "关闭"; ObjectID = "NJA-Jc-gYy"; */
-"NJA-Jc-gYy.selectedTitle" = "关闭";
+"NJA-Jc-gYy.selectedTitle" = "开启";
 
 /* Class = "UILabel"; text = "分"; ObjectID = "P0G-L7-D9G"; */
 "P0G-L7-D9G.text" = "分";

@@ -14,6 +14,9 @@
     NSDateFormatter *formatter;
     NSDateFormatter * formatters;
     NSDateFormatter * formatterd;
+    NSDate *selectDate1;
+    NSDate *selectDate2;
+    NSDate *selectDate3;
 }
 
 @end
@@ -63,9 +66,9 @@
                 self.TurnOnSwitch3.selected = NO;
             }else
             if ([string containsString:@"83"]) {
-                self.TurnOnSwitch1.selected = NO;
-                self.TurnOnSwitch2.selected = NO;
-                self.TurnOnSwitch3.selected = YES;
+                self.TurnOnSwitch1.selected = YES;
+                self.TurnOnSwitch2.selected = YES;
+                self.TurnOnSwitch3.selected = NO;
             }else
             if ([string containsString:@"84"]) {
                 self.TurnOnSwitch1.selected = NO;
@@ -271,10 +274,8 @@
  */
 - (NSString *)getContent {
     NSMutableString *content = [NSMutableString string];
-//    NSString * string1 = [self.deviceNo substringWithRange:NSMakeRange(0, 2)];
-//    ZPLog(@"%@",string1);
-//    第一个按钮
-    NSString * ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];
+    //    第一个按钮
+    NSString *ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];
     [content appendFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
     if (!Open1But.selected && !Guan1But.selected) {
         [content appendString:@"FF"];
@@ -290,7 +291,7 @@
         [content appendFormat:@"%@",Guan2But.selected?@"01":@"00"];
     }
     
-//    第三个开关
+    //    第三个开关
     ssting = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
     [content appendFormat:@"%@%@%@%@%@",ssting,self.string222,self.string333,self.string444,self.string555];
     if (!Open3But.selected && !Guan3But.selected) {
@@ -304,6 +305,13 @@
 
 // 一键设置所有的开关
 - (IBAction)OneKeySetsAllTheSwitches:(UIButton *)sender {
+    NSDate *date = [[NSDate date] dateWithFormatter:@"yyyy-MM-dd HH:mm"];
+    if (([date compare:selectDate1]>0 && (Open1But.selected || Guan1But.selected)) || ([date compare:selectDate2]>0 && (Open2But.selected || Guan2But.selected)) || ([date compare:selectDate3]>0 && (Open3But.selected || Guan3But.selected))) {
+        ZPLog(@"不行");
+        [HintView showHint:Localize(@"设置时间不能小于当前时间")];
+        return;
+    }
+    
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *command = [[CommandModel alloc] init];
     command.command = @"002C";
@@ -324,6 +332,9 @@
 // 获取当前年月日时间
 - (void)yyyyMMddHHmm {
     NSDate *currentDate = [NSDate date];
+    selectDate1 = [currentDate dateWithFormatter:@"yyyy-MM-dd HH:mm"];
+    selectDate2 = [currentDate dateWithFormatter:@"yyyy-MM-dd HH:mm"];
+    selectDate3 = [currentDate dateWithFormatter:@"yyyy-MM-dd HH:mm"];
     NSCalendar *currentCalendar = [NSCalendar currentCalendar];
     //IOS 8 之后
     NSUInteger integer = NSCalendarUnitYear | NSCalendarUnitMonth |NSCalendarUnitDay | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
@@ -406,17 +417,18 @@
     }
     [formatter setDateFormat:@"yyyyMMddHHmm"];
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatter dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
-        self.str1 = [formatter stringFromDate:selectDate];
-        self.str11 = [NSString stringWithFormat:@"%@%@%@%@%@", self.string1, self.string2, self.string3, self.string4, self.string5];
-        if (self.str1.integerValue < self.str11.integerValue) {
+        selectDate1 = selectDate;
+        NSDate *date = [[NSDate date] dateWithFormatter:@"yyyy-MM-dd HH:mm"];
+        if ([date compare:selectDate]>0 && (Open1But.selected || Guan1But.selected)) {
             ZPLog(@"不行");
             [HintView showHint:Localize(@"设置时间不能小于当前时间")];
             return ;
-        }else {
+        }
+        self.str1 = [formatter stringFromDate:selectDate];
+        self.str11 = [NSString stringWithFormat:@"%@%@%@%@%@", self.string1, self.string2, self.string3, self.string4, self.string5];
         [formatter setDateFormat:@"yyyy"];// 解决问题
         [Years1TextField setText:[formatter stringFromDate:selectDate]];
         self.string1 = Years1TextField.text;
-        
         [formatter setDateFormat:@"MM"];
         [Month1TextField setText:[formatter stringFromDate:selectDate]];
         self.string2 = Month1TextField.text;
@@ -431,7 +443,6 @@
         [formatter setDateFormat:@"mm"];
         [Minutes1TextField setText:[formatter stringFromDate:selectDate]];
         self.string5 = Minutes1TextField.text;
-        }
     }];
     datepicker.hideBackgroundYearLabel = YES;
     datepicker.dateLabelColor = kDefualtColor;
@@ -449,13 +460,15 @@
     }
     [formatters setDateFormat:@"yyyyMMddHHmm"];
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatters dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
-        self.str2 = [formatters stringFromDate:selectDate];
-        self.str22 = [NSString stringWithFormat:@"%@%@%@%@%@", self.string11, self.string22, self.string33, self.string44, self.string55];
-        if (self.str2.integerValue < self.str22.integerValue) {
+        selectDate2 = selectDate;
+        NSDate *date = [[NSDate date] dateWithFormatter:@"yyyy-MM-dd HH:mm"];
+        if ([date compare:selectDate]>0 && (Open2But.selected || Guan2But.selected)) {
             ZPLog(@"不行");
             [HintView showHint:Localize(@"设置时间不能小于当前时间")];
             return ;
-        }else {
+        }
+        self.str2 = [formatters stringFromDate:selectDate];
+        self.str22 = [NSString stringWithFormat:@"%@%@%@%@%@", self.string11, self.string22, self.string33, self.string44, self.string55];
         [formatters setDateFormat:@"yyyy"];// 解决问题
         [Years2TextField setText:[formatters stringFromDate:selectDate]];
         self.string11 = Years2TextField.text;
@@ -475,7 +488,6 @@
         [formatters setDateFormat:@"mm"];
         [Minutes2TextField setText:[formatters stringFromDate:selectDate]];
         self.string55 = Minutes2TextField.text;
-        }
     }];
     datepicker.hideBackgroundYearLabel = YES;
     datepicker.dateLabelColor = kDefualtColor;
@@ -493,13 +505,15 @@
     }
     [formatterd setDateFormat:@"yyyyMMddHHmm"];
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatterd dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
-        self.str3 = [formatterd stringFromDate:selectDate];
-        self.str33 = [NSString stringWithFormat:@"%@%@%@%@%@", self.string111, self.string222, self.string333, self.string444, self.string555];
-        if (self.str1.integerValue < self.str11.integerValue) {
+        selectDate3 = selectDate;
+        NSDate *date = [[NSDate date] dateWithFormatter:@"yyyy-MM-dd HH:mm"];
+        if ([date compare:selectDate]>0 && (Open3But.selected || Guan3But.selected)) {
             ZPLog(@"不行");
             [HintView showHint:Localize(@"设置时间不能小于当前时间")];
             return ;
-        }else {
+        }
+        self.str3 = [formatterd stringFromDate:selectDate];
+        self.str33 = [NSString stringWithFormat:@"%@%@%@%@%@", self.string111, self.string222, self.string333, self.string444, self.string555];
         [formatterd setDateFormat:@"yyyy"];// 解决问题
         [Years3TextField setText:[formatterd stringFromDate:selectDate]];
         self.string111 = Years3TextField.text;
@@ -507,7 +521,7 @@
         [formatterd setDateFormat:@"MM"];
         [Month3TextField setText:[formatterd stringFromDate:selectDate]];
         self.string222 = Month3TextField.text;
-        
+//        但是他还是能设置啊，她点设置的时候还是能设置成功啊
         [formatterd setDateFormat:@"dd"];
         [Day3textField setText:[formatterd stringFromDate:selectDate]];
         self.string333 = Day3textField.text;
@@ -519,7 +533,6 @@
         [formatterd setDateFormat:@"mm"];
         [Minutes3TextField setText:[formatterd stringFromDate:selectDate]];
         self.string555 = Minutes3TextField.text;
-        }
     }];
     datepicker.hideBackgroundYearLabel = YES;
     datepicker.dateLabelColor = kDefualtColor;

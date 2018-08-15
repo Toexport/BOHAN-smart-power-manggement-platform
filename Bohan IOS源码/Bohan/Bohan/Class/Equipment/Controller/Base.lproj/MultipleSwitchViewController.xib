@@ -253,11 +253,11 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NJA-Jc-gYy">
                                             <rect key="frame" x="102" y="92" width="30" height="16"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <state key="normal" title="开启">
-                                                <color key="titleColor" red="0.2271994447" green="0.4445286886" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <state key="normal" title="关闭">
+                                                <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
-                                            <state key="selected" title="关闭">
-                                                <color key="titleColor" red="1" green="0.12570007659999999" blue="0.14438917779999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <state key="selected" title="开启">
+                                                <color key="titleColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                         </button>
                                     </subviews>
@@ -520,11 +520,11 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APe-jQ-pYh">
                                             <rect key="frame" x="102" y="91" width="30" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <state key="normal" title="开启">
-                                                <color key="titleColor" red="0.2271994447" green="0.4445286886" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <state key="normal" title="关闭">
+                                                <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
-                                            <state key="selected" title="关闭">
-                                                <color key="titleColor" red="1" green="0.12570007659999999" blue="0.14438917779999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <state key="selected" title="开启">
+                                                <color key="titleColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                         </button>
                                     </subviews>
@@ -787,11 +787,11 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGR-7R-toe">
                                             <rect key="frame" x="102" y="91" width="30" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                            <state key="normal" title="开启">
-                                                <color key="titleColor" red="0.2271994447" green="0.4445286886" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <state key="normal" title="关闭">
+                                                <color key="titleColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
-                                            <state key="selected" title="关闭">
-                                                <color key="titleColor" red="1" green="0.12570007659999999" blue="0.14438917779999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                            <state key="selected" title="开启">
+                                                <color key="titleColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </state>
                                         </button>
                                     </subviews>
