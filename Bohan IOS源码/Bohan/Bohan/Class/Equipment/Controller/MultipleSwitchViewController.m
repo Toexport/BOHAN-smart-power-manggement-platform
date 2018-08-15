@@ -297,6 +297,7 @@
         [content appendString:@"FF"];
     } else {
         [content appendFormat:@"%@",Guan3But.selected?@"01":@"00"];
+        
     }
     return content;
 }

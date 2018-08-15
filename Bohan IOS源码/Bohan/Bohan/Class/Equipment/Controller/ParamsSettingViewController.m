@@ -33,7 +33,7 @@
     [super viewDidLoad];
     self.title = Localize(@"增值服务");
     [self rightBarTitle:Localize(@"刷新") color:[UIColor whiteColor] action:@selector(deviceParams)];
-    
+    [self GetDatas];
     muniteArr = [NSMutableArray array];
     powerArr = [NSMutableArray array];
     for (int i = 0; i<60; i++) {

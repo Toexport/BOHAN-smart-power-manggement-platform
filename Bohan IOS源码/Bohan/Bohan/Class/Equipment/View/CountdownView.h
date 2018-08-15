@@ -9,9 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CountdownView : UIView
-
 {
-    
     __weak IBOutlet UIButton *SettingBut; // 设置按钮
     __weak IBOutlet UITextField *YearTextField; // 年
     __weak IBOutlet UITextField *MonthTextField; // 月
