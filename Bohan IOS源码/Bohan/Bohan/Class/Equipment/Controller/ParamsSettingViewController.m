@@ -74,7 +74,7 @@
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
         ZPLog(@"%@",response);
-        if ([self.Coedid containsString:@"YC"] || [self.Coedid containsString:@"YC10"] || [self.Coedid containsString:@"YC16"] || [self.Coedid containsString:@"YCGP10"] || [self.Coedid containsString:@"YCGP16"] || [self.Coedid containsString:@"QC"] || [self.Coedid containsString:@"QC10"] || [self.Coedid containsString:@"QC16"] || [self.Coedid containsString:@"YC13"] || [self.Coedid containsString:@"QC13"] || [self.Coedid containsString:@"YC15"] || [self.Coedid containsString:@"QC15"]) {
+        if ([self.Coedid isEqualToString:@"YC"] || [self.Coedid isEqualToString:@"YC10"] || [self.Coedid isEqualToString:@"YC16"] || [self.Coedid isEqualToString:@"YCGP10"] || [self.Coedid isEqualToString:@"YCGP16"] || [self.Coedid isEqualToString:@"QC"] || [self.Coedid isEqualToString:@"QC10"] || [self.Coedid isEqualToString:@"QC16"] || [self.Coedid isEqualToString:@"YC13"] || [self.Coedid isEqualToString:@"QC13"] || [self.Coedid isEqualToString:@"YC15"] || [self.Coedid isEqualToString:@"QC15"]) {
             [ParentsModeBut setEnabled:YES];
             ParentsModeBut.alpha = 100;
             [ParentsModeSettingBut setEnabled:YES];
@@ -85,7 +85,7 @@
             [ParentsModeSettingBut setEnabled:NO];
             ParentsModeSettingBut.alpha = 0.4;
         }
-        if ([self.Coedid containsString:@"QK01"] || [self.Coedid containsString:@"QK02"] || [self.Coedid containsString:@"QK03"]) {
+        if ([self.Coedid isEqualToString:@"QK01"] || [self.Coedid isEqualToString:@"QK02"] || [self.Coedid isEqualToString:@"QK03"]) {
             [ParentsModeBut setEnabled:NO];
             ParentsModeBut.alpha = 0.4;
             [ParentsModeSettingBut setEnabled:NO];
@@ -113,7 +113,7 @@
             [power setText:[NSString stringWithFormat:@"%d%@",[[Power substringToIndex:2] intValue],Localize(@"W")]];
             ZPLog(@"%@",self.Coedid);
             [price setText:[NSString stringWithFormat:@"%d.%02d",[[priceStr substringToIndex:2] intValue],[[priceStr substringFromIndex:2] intValue]]];
-            if ([self.Coedid containsString:@"WFMT"] || [self.Coedid containsString:@"YFMT"] || [self.Coedid containsString:@"CDMT60"] || [self.Coedid containsString:@"GP1P"] || [self.Coedid containsString:@"MC"] || [self.Coedid containsString:@"GP3P"] || [self.Coedid containsString:@"YFGPMT"]) {
+            if ([self.Coedid isEqualToString:@"WFMT"] || [self.Coedid isEqualToString:@"YFMT"] || [self.Coedid isEqualToString:@"CDMT60"] || [self.Coedid isEqualToString:@"GP1P"] || [self.Coedid isEqualToString:@"MC"] || [self.Coedid isEqualToString:@"GP3P"] || [self.Coedid isEqualToString:@"YFGPMT"]) {
                 ZPLog(@"%@",self.Coedid);
                 NSString *powerStr1 = [response substringWithRange:NSMakeRange(28, 8)];
 //                [limit setText:[NSString stringWithFormat:@"%d.%02d",[[powerStr1 substringToIndex:5] intValue],[[powerStr1 substringFromIndex:5] intValue]]];
@@ -124,9 +124,9 @@
             }
             NSString * protectStr = [response substringWithRange:NSMakeRange(48, 2)];
             NSString * powerTest = [response substringWithRange:NSMakeRange(52, 2)];
-            if ([protectStr  isEqual: @"01"]) {
+            if ([protectStr  containsString: @"01"]) {
                 ZPLog(@"%@",protectStr);
-                if ([powerTest isEqual:@"02"]) {
+                if ([Time isEqual:@"03"] && [powerTest isEqual:@"02"]) {
                     ChargingProtectionBut.selected = YES;
                     PhoneChargingProtectionBut.selected = YES;
                     DDCChargingProtectionBut.selected = NO;
@@ -137,7 +137,7 @@
                     [PowerBut setEnabled:NO];
                     PowerBut.alpha = 0.4;
                 }else
-                    if ([powerTest isEqual:@"05"]) {
+                    if ([Time isEqual:@"03"] && [powerTest isEqual:@"05"]) {
                         ChargingProtectionBut.selected = YES;
                         DDCChargingProtectionBut.selected = YES;
                         PhoneChargingProtectionBut.selected = NO;
@@ -148,7 +148,7 @@
                         [PowerBut setEnabled:NO];
                         PowerBut.alpha = 0.4;
                 }else
-                    if ([powerTest isEqual:@"06"] || [powerTest isEqual:@"07"] || [powerTest isEqual:@"08"] || [powerTest isEqual:@"09"]) {
+//                    if ([powerTest isEqual:@"06"] || [powerTest isEqual:@"07"] || [powerTest isEqual:@"08"] || [powerTest isEqual:@"09"]) {
                         ZNDDBut.selected = YES;
                         [SettingBut setEnabled:YES]; // 交互关闭
                         SettingBut.alpha = 100; // 透明度
@@ -160,7 +160,7 @@
                         PhoneChargingProtectionBut.alpha = 0.4;
                         [DDCChargingProtectionBut setEnabled:NO];
                         DDCChargingProtectionBut.alpha = 0.4;
-                    }
+//                    }
                 ZPLog(@"%@",powerTest);
             }else
                 if ([protectStr isEqual:@"00"]) {
@@ -202,7 +202,6 @@
         }
     }];
 }
-
 
 - (void)changeTime {
     WebSocket *socket = [WebSocket socketManager];
@@ -254,8 +253,10 @@
 // 负荷门限BUt
 //options+command+ 左右箭头折叠/展开
 - (IBAction)saveAction:(UIButton *)sender {
-    if ([self.Coedid containsString:@"YC"] || [self.Coedid containsString:@"K"]
-        || [self.Coedid containsString:@"QC"] || [self.Coedid containsString:@"QK01"] || [self.Coedid containsString:@"QK02"] || [self.Coedid containsString:@"QK03"] || [self.Coedid containsString:@"CDMT10"] || [self.Coedid containsString:@"QC10"] || [self.Coedid containsString:@"YC10"] || [self.Coedid containsString:@"YCGP10"]) {
+//    NSString * string = [self.Coedid substringWithRange:NSMakeRange(0, 6)];
+//    ZPLog(@"%@",string);
+    if ([self.Coedid isEqualToString:@"YC"] || [self.Coedid isEqualToString:@"K"]
+        || [self.Coedid isEqualToString:@"QC"] || [self.Coedid isEqualToString:@"QK01"] || [self.Coedid isEqualToString:@"QK02"] || [self.Coedid isEqualToString:@"QK03"] || [self.Coedid isEqualToString:@"CDMT10"] || [self.Coedid isEqualToString:@"QC10"] || [self.Coedid isEqualToString:@"YC10"] || [self.Coedid containsString:@"YCGP10"]) {
         if (limitTF.text == nil || limitTF.text.length <= 1) {
             ZPLog(@"没有输入文字");
             [HintView showHint:Localize(@"请输入负荷门限")];
@@ -267,7 +268,7 @@
             }
         }
     }else
-        if ([self.Coedid containsString:@"CDMT60"] ) {
+        if ([self.Coedid isEqualToString:@"CDMT60"] ) {
             if (limitTF.text == nil || limitTF.text.length <= 1) {
                 ZPLog(@"没有输入文字");
                 [HintView showHint:Localize(@"请输入负荷门限")];
@@ -279,7 +280,7 @@
                 }
             }
         }else
-            if ([self.Coedid containsString:@"CDMT16"] || [self.Coedid containsString:@"QC16"] || [self.Coedid containsString:@"YC16"] || [self.Coedid containsString:@"YCGP16"]) {
+            if ([self.Coedid isEqualToString:@"CDMT16"] || [self.Coedid isEqualToString:@"QC16"] || [self.Coedid isEqualToString:@"YC16"] || [self.Coedid isEqualToString:@"YCGP16"]) {
                 if (limitTF.text == nil || limitTF.text.length <= 1) {
                     ZPLog(@"没有输入文字");
                     [HintView showHint:Localize(@"请输入负荷门限")];
@@ -291,7 +292,7 @@
                     }
                 }
             }else
-                if ([self.Coedid containsString:@"YC13"] || [self.Coedid containsString:@"QC13"]) {
+                if ([self.Coedid isEqualToString:@"YC13"] || [self.Coedid containsString:@"QC13"]) {
                     if (limitTF.text == nil || limitTF.text.length <= 1) {
                         ZPLog(@"没有输入文字");
                         [HintView showHint:Localize(@"请输入负荷门限")];
@@ -304,7 +305,7 @@
                         }
                     }
                 }else
-                    if ([self.Coedid containsString:@"QC15"] || [self.Coedid containsString:@"YC15"]) {
+                    if ([self.Coedid isEqualToString:@"QC15"] || [self.Coedid isEqualToString:@"YC15"]) {
                         if (limitTF.text == nil || limitTF.text.length <= 1) {
                             ZPLog(@"没有输入文字");
                             [HintView showHint:Localize(@"请输入负荷门限")];
@@ -316,7 +317,7 @@
                             }
                         }
                     }else
-                        if ([self.Coedid containsString:@"MC"]) {
+                        if ([self.Coedid isEqualToString:@"MC"]) {
                             if (limitTF.text == nil || limitTF.text.length <= 1) {
                                 ZPLog(@"没有输入文字");
                                 [HintView showHint:Localize(@"请输入负荷门限")];
@@ -328,7 +329,7 @@
                                 }
                             }
                         }else
-                            if ([self.Coedid containsString:@"GP3P"]) {
+                            if ([self.Coedid isEqualToString:@"GP3P"]) {
                                 if (limitTF.text == nil || limitTF.text.length <= 1) {
                                     ZPLog(@"没有输入文字");
                                     [HintView showHint:Localize(@"请输入负荷门限")];
@@ -340,7 +341,7 @@
                                     }
                                 }
                             }else
-                                if ([self.Coedid containsString:@"YFMT"] || [self.Coedid containsString:@"GP1P"] || [self.Coedid containsString:@"WFMT"] || [self.Coedid containsString:@"YFGPMT"] || [self.Coedid containsString:@"MC"]) {
+                                if ([self.Coedid isEqualToString:@"YFMT"] || [self.Coedid isEqualToString:@"GP1P"] || [self.Coedid isEqualToString:@"WFMT"] || [self.Coedid isEqualToString:@"YFGPMT"] || [self.Coedid isEqualToString:@"MC"]) {
                                     if (limitTF.text == nil || limitTF.text.length <= 1) {
                                         ZPLog(@"没有输入文字");
                                         [HintView showHint:Localize(@"请输入负荷门限")];
@@ -431,6 +432,7 @@
 
 // 设置按钮
 - (IBAction)SettingBut:(UIButton *)sender {
+    [self checkClose:ZNDDBut.selected];
     [self changeTime];
     [self changePower];
 }
@@ -619,10 +621,10 @@
 - (IBAction)ChargingProtectionBut:(UIButton *)sender {
     sender.selected =! sender.selected;
     if (sender.selected) {
-        if (sender == ChargingProtectionBut) {
-            ChargingProtectionBut.selected = YES;
-            [self checkClose:ChargingProtectionBut.selected];
-        }
+//        if (sender == ChargingProtectionBut) {
+//            ChargingProtectionBut.selected = YES;
+//            [self checkClose:ChargingProtectionBut.selected];
+//        }
         ZNDDBut.selected = NO;
         [DDCChargingProtectionBut setEnabled:YES]; //交互开启
         DDCChargingProtectionBut.alpha=100;//透明度
@@ -662,9 +664,10 @@
     }else {
         sender.selected =! sender.selected;
         DDCChargingProtectionBut.selected = NO;
+        [self checkClose:ChargingProtectionBut.selected];
         [time setText:[NSString stringWithFormat:@"%d%@",3, Localize(@"分钟")]];
         [self changeTime];
-        [power setText:[NSString stringWithFormat:@"%dW",2]];
+        [power setText:[NSString stringWithFormat:@"%d%@",2,Localize(@"W")]];
         [self changePower];
     }
 }
@@ -676,9 +679,10 @@
     }else {
         sender.selected =! sender.selected;
         PhoneChargingProtectionBut.selected = NO;
+        [self checkClose:ChargingProtectionBut.selected];
         [time setText:[NSString stringWithFormat:@"%d%@",3, Localize(@"分钟")]];
         [self changeTime];
-        [power setText:[NSString stringWithFormat:@"%dW",5]];
+        [power setText:[NSString stringWithFormat:@"%d%@",5,Localize(@"W")]];
         [self changePower];
     }
 }
@@ -689,7 +693,7 @@
     if (sender.selected) {
         if (sender == ZNDDBut) {
             ZNDDBut.selected = YES;
-            [self checkClose:ZNDDBut.selected];
+//            [self checkClose:ZNDDBut.selected];
         }
         ChargingProtectionBut.selected = NO;
         [DDCChargingProtectionBut setEnabled:NO]; //交互关闭
