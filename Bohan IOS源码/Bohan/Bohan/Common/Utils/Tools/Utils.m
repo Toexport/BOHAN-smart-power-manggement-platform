@@ -687,6 +687,18 @@ CGSize getTextSizeWithAttributesDic(NSString *text, CGFloat maxWidth, NSStringDr
     return hex;
 }
 
+// 16进制转10进制
++ (NSNumber *)numberHexString:(NSString *)aHexString {
+    if (nil == aHexString){
+        return nil;
+    }
+    NSScanner * scanner = [NSScanner scannerWithString:aHexString];
+    unsigned long long longlongValue;
+    [scanner scanHexLongLong:&longlongValue];
+    NSNumber * hexNumber = [NSNumber numberWithLongLong:longlongValue];
+    return hexNumber;
+}
+
 + (NSString *)getBinaryByHex:(NSString *)hex {
     NSMutableDictionary *hexDic = [[NSMutableDictionary alloc] initWithCapacity:16];
 //    以上是未设置成功

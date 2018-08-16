@@ -175,6 +175,9 @@ CGSize getTextSizeWithAttributes(UIFont *font,NSString *text, CGFloat maxWidth, 
  */
 + (NSString *)getHexByDecimal:(NSInteger)decimal;
 
+// 16进制转10进制
++ (NSNumber *)numberHexString:(NSString *)aHexString;
+
 /**
  十六进制转换为二进制
  

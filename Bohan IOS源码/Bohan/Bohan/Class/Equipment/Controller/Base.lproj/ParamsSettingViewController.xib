@@ -16,7 +16,7 @@
                 <outlet property="DDCChargingProtectionBut" destination="iRI-jn-WBE" id="oDW-W9-ZkQ"/>
                 <outlet property="ParentsModeBut" destination="s0b-80-yNl" id="iWt-aP-pa6"/>
                 <outlet property="ParentsModeSettingBut" destination="jPC-et-lTr" id="jC8-gm-dlX"/>
-                <outlet property="PhoneChargingProtectionBut" destination="PD4-ks-sL5" id="K57-4R-nOZ"/>
+                <outlet property="PhoneChargingProtectionBut" destination="PD4-ks-sL5" id="FFB-b0-0Ni"/>
                 <outlet property="PowerBut" destination="qZt-fS-8zH" id="0Fp-58-Vpq"/>
                 <outlet property="PriceBut" destination="RY6-Ea-dgw" id="BJI-hE-yXL"/>
                 <outlet property="SaveBut" destination="kiP-CR-853" id="AzM-4H-DgK"/>
