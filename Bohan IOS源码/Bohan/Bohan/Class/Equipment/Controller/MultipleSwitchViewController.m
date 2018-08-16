@@ -46,7 +46,7 @@
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
-        ZPLog(@"--------%@",response);
+//        ZPLog(@"--------%@",response);
         if (!error) {
             NSString * str = response;
             NSString * string = [str substringWithRange:NSMakeRange(24, 2)];
@@ -90,7 +90,7 @@
                 self.TurnOnSwitch2.selected = YES;
                 self.TurnOnSwitch3.selected = YES;
             }
-            ZPLog(@"%@",string);
+//            ZPLog(@"%@",string);
         }else {
             [HintView showHint:error.localizedDescription];// 后台返回的提示
         }
@@ -107,7 +107,7 @@
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
-        ZPLog(@"--------%@",response);
+//        ZPLog(@"--------%@",response);
         if (!error) {
             NSString * str = response;
             NSString * string1 = [str substringWithRange:NSMakeRange(24, 10)];
@@ -121,7 +121,7 @@
             Hours1TextField.text = [NSString stringWithFormat:@"%@",Hours1];
             NSString * Minutes1 = [string1 substringWithRange:NSMakeRange(8, 2)];
             Minutes1TextField.text = [NSString stringWithFormat:@"%@",Minutes1];
-            ZPLog(@"%@-%@-%@-%@-%@",Years1,Month1,Day1,Hours1,Minutes1);
+//            ZPLog(@"%@-%@-%@-%@-%@",Years1,Month1,Day1,Hours1,Minutes1);
 //             开关2
             NSString * string2 = [str substringWithRange:NSMakeRange(36, 10)];
             NSString * Years2 = [string2 substringWithRange:NSMakeRange(0, 2)];
@@ -134,7 +134,7 @@
             Hours2TextField.text = [NSString stringWithFormat:@"%@",Hours2];
             NSString * Minutes2 = [string2 substringWithRange:NSMakeRange(8, 2)];
             Minutes2TextField.text = [NSString stringWithFormat:@"%@",Minutes2];
-            ZPLog(@"%@-%@-%@-%@-%@",Years2,Month2,Day2,Hours2,Minutes2);
+//            ZPLog(@"%@-%@-%@-%@-%@",Years2,Month2,Day2,Hours2,Minutes2);
 //            开关3
             NSString * string3 = [str substringWithRange:NSMakeRange(48, 10)];
             NSString * Years3 = [string3 substringWithRange:NSMakeRange(0, 2)];
@@ -147,7 +147,7 @@
             Hours3TextField.text = [NSString stringWithFormat:@"%@",Hours3];
             NSString * Minutes3 = [string3 substringWithRange:NSMakeRange(8, 2)];
             Minutes3TextField.text = [NSString stringWithFormat:@"%@",Minutes3];
-            ZPLog(@"%@-%@-%@-%@-%@",Years1,Month1,Day1,Hours1,Minutes1);
+//            ZPLog(@"%@-%@-%@-%@-%@",Years1,Month1,Day1,Hours1,Minutes1);
         }else {
             [HintView showHint:error.localizedDescription];// 后台返回的提示
         }
@@ -267,7 +267,6 @@
     }
 }
 
-
 /**
  按钮集合
  @return return value description
@@ -275,12 +274,12 @@
 - (NSString *)getContent {
     NSMutableString *content = [NSMutableString string];
     //    第一个按钮
-    NSString *ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];
-    [content appendFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
+    NSString *ssting = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
+    [content appendFormat:@"%@%@%@%@%@",ssting,self.string222,self.string333,self.string444,self.string555];
     if (!Open1But.selected && !Guan1But.selected) {
         [content appendString:@"FF"];
     } else {
-        [content appendFormat:@"%@",Guan1But.selected?@"01":@"00"];
+        [content appendFormat:@"%@",Guan1But.selected?@"00":@"01"];
     }
 //      第二个按钮
     ssting = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
@@ -288,17 +287,15 @@
     if (!Open2But.selected && !Guan2But.selected) {
         [content appendString:@"FF"];
     } else {
-        [content appendFormat:@"%@",Guan2But.selected?@"01":@"00"];
+        [content appendFormat:@"%@",Guan2But.selected?@"00":@"01"];
     }
-    
     //    第三个开关
-    ssting = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
-    [content appendFormat:@"%@%@%@%@%@",ssting,self.string222,self.string333,self.string444,self.string555];
+    ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];
+    [content appendFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
     if (!Open3But.selected && !Guan3But.selected) {
         [content appendString:@"FF"];
     } else {
-        [content appendFormat:@"%@",Guan3But.selected?@"01":@"00"];
-        
+        [content appendFormat:@"%@",Guan3But.selected?@"00":@"01"];
     }
     return content;
 }
@@ -311,7 +308,6 @@
         [HintView showHint:Localize(@"设置时间不能小于当前时间")];
         return;
     }
-    
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *command = [[CommandModel alloc] init];
     command.command = @"002C";
@@ -521,7 +517,6 @@
         [formatterd setDateFormat:@"MM"];
         [Month3TextField setText:[formatterd stringFromDate:selectDate]];
         self.string222 = Month3TextField.text;
-//        但是他还是能设置啊，她点设置的时候还是能设置成功啊
         [formatterd setDateFormat:@"dd"];
         [Day3textField setText:[formatterd stringFromDate:selectDate]];
         self.string333 = Day3textField.text;

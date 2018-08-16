@@ -27,11 +27,11 @@
     //    __weak IBOutlet UILabel *status;
     
     __weak IBOutlet UILabel *power;
-    __weak IBOutlet UISwitch *openSwitch1;
+
     __weak IBOutlet UILabel *name1;
-    __weak IBOutlet UISwitch *openSwitch2;
+
     __weak IBOutlet UILabel *name2;
-    __weak IBOutlet UISwitch *openSwitch3;
+
     __weak IBOutlet UILabel *name3;
     NSArray *switchs;
     
@@ -46,31 +46,26 @@
     switchs = @[openSwitch1, openSwitch2, openSwitch3];
 }
 
+
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
-    
     if(self) {
         switchs = @[openSwitch1, openSwitch2, openSwitch3];
     }
-    
     return self;
 }
 
 - (void)setModel:(DeviceModel *)model {
-    
     _model = model;
     [self setNeedsLayout];
 }
 
 - (IBAction)openAction:(UISwitch *)sender {
-    
-    
     if (sender.isOn) {
         sender.backgroundColor = [UIColor getColor:@"54d76a"];
     }else {
         sender.backgroundColor = [UIColor redColor];
     }
-    
     if (self.delegate && [self.delegate respondsToSelector:@selector(didSwitchOpen:switchCode:withIndexPath:)]) {
         NSString *code = [NSString stringWithFormat:@"10000%@%@%@",openSwitch3.on?@"0":@"1", openSwitch2.on?@"0":@"1", openSwitch1.on?@"0":@"1"];
         [self.delegate didSwitchOpen:sender.on switchCode:[Utils getHexByBinary:code] withIndexPath:self.indexPath];
@@ -119,7 +114,6 @@
             Label3.text = strarray[2];
         });
     }
-//    [name setText:self.model.name];
     if ([self.model.id hasPrefix:@"61"]) {
         [name setText:Localize(@"一位开关")];
     }else
@@ -169,8 +163,7 @@
             }
         }
         //         一二三位开关位置
-        NSString * string =  self.model.id;
-        NSString * stringg = string;
+        NSString * stringg = [self.model.id substringWithRange:NSMakeRange(0, 2)];
         if ([stringg hasPrefix:@"61"] || [stringg hasPrefix:@"63"]) {
             [power setText:[self.model.powerinfo poweer]];
         }else
@@ -205,5 +198,4 @@
         [power setText:@"0.00W"];
     }
 }
-
 @end

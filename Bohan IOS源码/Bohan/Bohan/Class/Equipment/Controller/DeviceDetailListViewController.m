@@ -89,7 +89,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
 
 
 - (void)loadData {
-    
     NSString *key = self.isPos?@"PosName":@"LoadName";
     [[NetworkRequest sharedInstance] requestWithUrl:GET_DEVICE_LIST_URL parameter:@{key:self.name} completion:^(id response, NSError *error) {
         [self.view stopLoading];
@@ -111,8 +110,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
                 self.table.noDataTitle = Localize(@"暂无数据");
                 self.table.noDataDetail = Localize(@"过会再来吧");
             }
-        }else
-        {
+        }else {
             self.table.noDataTitle = error.localizedDescription;
             self.table.noDataDetail = Localize(@"请稍后再试吧！");
         }
@@ -210,8 +208,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     if (indexPath.section == 0) {
         //        在线数据
         DeviceModel *model = self.online[indexPath.row];
-        if([model.id hasPrefix:@"61"] || [model.id hasPrefix:@"62"] || [model.id hasPrefix:@"63"])
-        {
+        if([model.id hasPrefix:@"61"] || [model.id hasPrefix:@"62"] || [model.id hasPrefix:@"63"]) {
             DeviceDetailMutableListCell * cell = (DeviceDetailMutableListCell*)[tableView dequeueReusableCellWithIdentifier:deviceDetailMutableCellIdentifier];
             cell.delegate = self;
             cell.indexPath = indexPath;
@@ -249,7 +246,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
 }
 
 #pragma mark 按钮的点击事件
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (indexPath.section == 0) {
         DeviceInfoViewController * info = [[DeviceInfoViewController alloc] init];
@@ -260,7 +257,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
         [self.navigationController pushViewController:info animated:YES]; // 设备离线不跳转
         return;
     }else {
-        
         [HintView showHint:Localize(@"当前设备离线不可控制")];
     }
 }
@@ -279,7 +275,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     }
     return NO;
 }
-
 
 #pragma mark - DeviceDetailListCellDelegate
 - (void)didSwitchOpen:(BOOL)isOpen withIndexPath:(NSIndexPath *)indexPath {
@@ -308,7 +303,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
             }
             model.isOpen = isOpen;
             [weakSelf.table reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-            
         }else {
             shouldNotUpdate = NO;
             [HintView showHint:error.localizedDescription];
@@ -317,7 +311,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
             [weakSelf.table reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         }
     }];
-    
 }
 
 - (void)didSwitchOpen:(BOOL)isOpen switchCode:(NSString *)code withIndexPath:(NSIndexPath *)indexPath {
@@ -331,14 +324,12 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     MyWeakSelf
     [socket sendSingleDataWithModel:command resultBlock:^(id response, NSError *error) {
         ZPLog(@"--------%@",response);
-        
         if (!error) {
             //******注意：开启成功后，需要重新取实时数据*******
             [HintView showHint:isOpen?Localize(@"已开启"):Localize(@"已关闭")];
             if (model.powerinfo.length>0) {
                 model.powerinfo = [NSString stringWithFormat:@"%@%@",code,[model.powerinfo substringFromIndex:2]];
             }
-            
             //            model.isOpen = isOpen;
             [weakSelf.table reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
             
@@ -349,7 +340,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
             [weakSelf.table reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         }
     }];
-    
 }
 
 @end

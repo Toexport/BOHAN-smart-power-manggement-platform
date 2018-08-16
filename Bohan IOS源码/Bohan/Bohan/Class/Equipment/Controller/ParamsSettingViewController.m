@@ -26,7 +26,6 @@
 
 @property (nonatomic, strong)NSMutableArray *datas;
 @end
-
 @implementation ParamsSettingViewController
 
 - (void)viewDidLoad {
@@ -50,6 +49,10 @@
 
 - (void)deviceParams {
     [self GetDatas];
+    [self loadData];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
     [self loadData];
 }
 
@@ -104,7 +107,6 @@
         }
         if (!error) {
             NSString *priceStr = [response substringWithRange:NSMakeRange(24, 4)];
-            NSString *powerStr = [response substringWithRange:NSMakeRange(28, 6)];
             NSString * Time = [response substringWithRange:NSMakeRange(50, 2)];
             NSString * Power = [response substringWithRange:NSMakeRange(52, 2)];
             [time setText:[NSString stringWithFormat:@"%d%@",[[Time substringToIndex:2] intValue],Localize(@"分钟")]];
@@ -113,8 +115,11 @@
             [price setText:[NSString stringWithFormat:@"%d.%02d",[[priceStr substringToIndex:2] intValue],[[priceStr substringFromIndex:2] intValue]]];
             if ([self.Coedid containsString:@"WFMT"] || [self.Coedid containsString:@"YFMT"] || [self.Coedid containsString:@"CDMT60"] || [self.Coedid containsString:@"GP1P"] || [self.Coedid containsString:@"MC"] || [self.Coedid containsString:@"GP3P"] || [self.Coedid containsString:@"YFGPMT"]) {
                 ZPLog(@"%@",self.Coedid);
-                [limit setText:[NSString stringWithFormat:@"%d.%02d",[[powerStr substringToIndex:6] intValue],[[powerStr substringFromIndex:6] intValue]]];
+                NSString *powerStr1 = [response substringWithRange:NSMakeRange(28, 8)];
+//                [limit setText:[NSString stringWithFormat:@"%d.%02d",[[powerStr1 substringToIndex:5] intValue],[[powerStr1 substringFromIndex:5] intValue]]];
+                [limit setText:[NSString stringWithFormat:@"%d.%02d",[[powerStr1 substringToIndex:6] intValue],[[powerStr1 substringFromIndex:6] intValue]]];
             } else {
+            NSString *powerStr = [response substringWithRange:NSMakeRange(28, 6)];
             [limit setText:[NSString stringWithFormat:@"%d.%02d",[[powerStr substringToIndex:4] intValue],[[powerStr substringFromIndex:4] intValue]]];
             }
             NSString * protectStr = [response substringWithRange:NSMakeRange(48, 2)];
@@ -392,17 +397,32 @@
         [HintView showHint:Localize(@"请输入负荷门限")];
         return;
     }
+    if ([self.Coedid containsString:@"WFMT"] || [self.Coedid containsString:@"YFMT"] || [self.Coedid containsString:@"CDMT60"] || [self.Coedid containsString:@"GP1P"] || [self.Coedid containsString:@"MC"] || [self.Coedid containsString:@"GP3P"] || [self.Coedid containsString:@"YFGPMT"]) {
+        model.command = @"0020";
+        contents = [limitTF.text componentsSeparatedByString:@"."];
+        content = [NSString stringWithFormat:@"%06d%02d",[[contents firstObject] intValue],contents.count == 1?0:[contents[1] intValue]];
+        model.content = [NSString stringWithFormat:@"%06d",[[contents firstObject] intValue]];
+    }else {
     model.command = @"0020";
     contents = [limitTF.text componentsSeparatedByString:@"."];
-    content = [NSString stringWithFormat:@"%06d",[[contents firstObject] intValue]];
-    model.content = [NSString stringWithFormat:@"%06d",[[contents firstObject] intValue]];
+    content = [NSString stringWithFormat:@"%04d%02d",[[contents firstObject] intValue],contents.count == 1?0:[contents[1] intValue]];
+    NSString * contentStr = [content substringWithRange:NSMakeRange(0, 6)];
+    model.content = contentStr;
+        
+    }
     [self.view startLoading];
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
         if (!error) {
             [HintView showHint:Localize(@"保存成功")];
-            [limit setText:content];
+            if ([self.Coedid containsString:@"WFMT"] || [self.Coedid containsString:@"YFMT"] || [self.Coedid containsString:@"CDMT60"] || [self.Coedid containsString:@"GP1P"] || [self.Coedid containsString:@"MC"] || [self.Coedid containsString:@"GP3P"] || [self.Coedid containsString:@"YFGPMT"]) {
+                [limit setText:[NSString stringWithFormat:@"%d.%02d",[[content substringToIndex:6] intValue],[[content substringFromIndex:6] intValue]]];
+            }else {
+                [limit setText:[NSString stringWithFormat:@"%d.%02d",[[content substringToIndex:4] intValue],[[content substringFromIndex:4] intValue]]];
+//            [limit setText:content];
+            
+            }
         }else {
             [HintView showHint:error.localizedDescription];
         }
