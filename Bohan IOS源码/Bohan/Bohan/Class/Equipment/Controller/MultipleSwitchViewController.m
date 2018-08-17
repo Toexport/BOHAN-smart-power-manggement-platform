@@ -276,10 +276,16 @@
     //    第一个按钮
     NSString *ssting = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
     [content appendFormat:@"%@%@%@%@%@",ssting,self.string222,self.string333,self.string444,self.string555];
+    NSString * stringID = [self.deviceNo substringWithRange:NSMakeRange(0, 2)];
     if (!Open1But.selected && !Guan1But.selected) {
         [content appendString:@"FF"];
     } else {
-        [content appendFormat:@"%@",Guan1But.selected?@"00":@"01"];
+                 if ([stringID containsString:@"62"]) {
+             [content appendFormat:@"%@",Guan1But.selected?@"00":@"01"];
+        }else {
+             [content appendFormat:@"%@",Open1But.selected?@"01":@"00"];
+        }
+    
     }
 //      第二个按钮
     ssting = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
@@ -287,7 +293,11 @@
     if (!Open2But.selected && !Guan2But.selected) {
         [content appendString:@"FF"];
     } else {
-        [content appendFormat:@"%@",Guan2But.selected?@"00":@"01"];
+        if ([stringID containsString:@"62"]) {
+            [content appendFormat:@"%@",Guan2But.selected?@"00":@"01"];
+        }else {
+            [content appendFormat:@"%@",Open2But.selected?@"00":@"01"];
+        }
     }
     //    第三个开关
     ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];
@@ -295,7 +305,11 @@
     if (!Open3But.selected && !Guan3But.selected) {
         [content appendString:@"FF"];
     } else {
-        [content appendFormat:@"%@",Guan3But.selected?@"00":@"01"];
+        if ([stringID containsString:@"62"]) {
+            [content appendFormat:@"%@",Guan3But.selected?@"00":@"01"];
+        }else {
+            [content appendFormat:@"%@",Open3But.selected?@"01":@"00"];
+        }
     }
     return content;
 }

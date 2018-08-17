@@ -48,7 +48,7 @@
 
 - (void)deviceParams {
     [self GetDatas];
-    [self loadData];
+//    [self loadData];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -447,7 +447,6 @@
             [SettingBut setEnabled:YES];
             SettingBut.alpha = 1;
         }
-        
         [timeBut setEnabled:YES];
         timeBut.alpha = 1;
         [PowerBut setEnabled:YES];
@@ -626,11 +625,10 @@
 - (IBAction)ChargingProtectionBut:(UIButton *)sender {
     if (!sender.selected) {
         if (!ZNDDBut.selected) {
-            [self checkClose:YES resultBlock:^(id response, NSError *error) {
-                //            [self updateCustom];
-            }];
+//            [self checkClose:YES resultBlock:^(id response, NSError *error) {
+//                //            [self updateCustom];
+//            }];
         }
-        
         sender.selected = YES;
         ZNDDBut.selected = NO;
         [DDCChargingProtectionBut setEnabled:YES]; //交互开启
@@ -720,10 +718,9 @@
 - (IBAction)ZNDDBut:(UIButton *)sender {
     if (!sender.selected) {
         if (!ChargingProtectionBut.selected) {
-            [self checkClose:YES resultBlock:^(id response, NSError *error) {
-            }];
+//            [self checkClose:YES resultBlock:^(id response, NSError *error) {
+//            }];
         }
-        
         sender.selected = YES;
         ChargingProtectionBut.selected = NO;
         [DDCChargingProtectionBut setEnabled:NO]; //交互关闭
@@ -741,7 +738,6 @@
         [self checkClose:NO resultBlock:^(id response, NSError *error) {
             [self updateCustom];
         }];
-        
         [DDCChargingProtectionBut setEnabled:NO]; //交互关闭
         DDCChargingProtectionBut.alpha = 0.4;//透明度
         [PhoneChargingProtectionBut setEnabled:NO]; //交互关闭
@@ -756,21 +752,21 @@
 }
 
 // 进来默认关闭所有按钮
-- (void)DefaultTest {
-    [ParentsModeBut setEnabled:NO];
-    ParentsModeBut.alpha = 0.4;
-    [ParentsModeSettingBut setEnabled:NO];
-    ParentsModeSettingBut.alpha = 0.4;
-    [SettingBut setEnabled:NO]; // 交互打开
-    SettingBut.alpha = 0.4; // 透明度
-    [timeBut setEnabled:NO]; //交互开启
-    timeBut.alpha = 0.4; //透明度
-    [PowerBut setEnabled:NO]; // 交互开启
-    PowerBut.alpha = 0.4;
-    [DDCChargingProtectionBut setEnabled:NO]; //交互关闭
-    DDCChargingProtectionBut.alpha=0.4;//透明度
-    [PhoneChargingProtectionBut setEnabled:NO]; //交互关闭
-    PhoneChargingProtectionBut.alpha=0.4;//透明度
-}
+//- (void)DefaultTest {
+//    [ParentsModeBut setEnabled:NO];
+//    ParentsModeBut.alpha = 0.4;
+//    [ParentsModeSettingBut setEnabled:NO];
+//    ParentsModeSettingBut.alpha = 0.4;
+//    [SettingBut setEnabled:NO]; // 交互打开
+//    SettingBut.alpha = 0.4; // 透明度
+//    [timeBut setEnabled:NO]; //交互开启
+//    timeBut.alpha = 0.4; //透明度
+//    [PowerBut setEnabled:NO]; // 交互开启
+//    PowerBut.alpha = 0.4;
+//    [DDCChargingProtectionBut setEnabled:NO]; //交互关闭
+//    DDCChargingProtectionBut.alpha=0.4;//透明度
+//    [PhoneChargingProtectionBut setEnabled:NO]; //交互关闭
+//    PhoneChargingProtectionBut.alpha=0.4;//透明度
+//}
 
 @end
