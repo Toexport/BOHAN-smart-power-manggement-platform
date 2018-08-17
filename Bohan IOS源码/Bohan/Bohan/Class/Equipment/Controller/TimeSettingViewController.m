@@ -309,7 +309,6 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
             model.week = [time substringFromIndex:time.length - 2];
             
             NSString *week = [Utils getBinaryByHex:model.week];
-            
             if ([[week substringToIndex:1] isEqualToString:@"1"]) {
                 parent = YES;
             }

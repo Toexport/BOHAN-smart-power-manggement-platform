@@ -78,6 +78,7 @@
             deviceTF.text = result;
         }
     }];
+    
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         NSLog(@"设备具备相机");
         [self presentViewController:scan animated:YES completion:nil];

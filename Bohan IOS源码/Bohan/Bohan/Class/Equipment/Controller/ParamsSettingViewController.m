@@ -5,7 +5,6 @@
 //  Created by Yang Lin on 2018/1/20.
 //  Copyright © 2018年 Bohan. All rights reserved.
 //
-
 #import "ParamsSettingViewController.h"
 #import "UIViewController+NavigationBar.h"
 #import "SGActionView.h"
@@ -32,6 +31,7 @@
     [super viewDidLoad];
     self.title = Localize(@"增值服务");
     [self rightBarTitle:Localize(@"刷新") color:[UIColor whiteColor] action:@selector(deviceParams)];
+//    [self GetDatas];
     muniteArr = [NSMutableArray array];
     powerArr = [NSMutableArray array];
     for (int i = 0; i<60; i++) {
@@ -42,7 +42,7 @@
     }
     [deviceId setText:[NSString stringWithFormat:@"ID:%@",self.dNo]];
     [self deviceParams];
-//    [self configNoData];// 打开这个不显示家长模式是否开启
+    [self configNoData];// 打开这个不显示家长模式是否开启
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStauts:) name:CHANGETIMEMODEL object:nil];
 }
 
@@ -73,7 +73,7 @@
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
         ZPLog(@"%@",response);
-        if ([self.Coedid isEqualToString:@"YC"] || [self.Coedid isEqualToString:@"YC10"] || [self.Coedid isEqualToString:@"YC16"] || [self.Coedid isEqualToString:@"YCGP10"] || [self.Coedid isEqualToString:@"YCGP16"] || [self.Coedid isEqualToString:@"QC"] || [self.Coedid isEqualToString:@"QC10"] || [self.Coedid isEqualToString:@"QC16"] || [self.Coedid isEqualToString:@"YC13"] || [self.Coedid isEqualToString:@"QC13"] || [self.Coedid isEqualToString:@"YC15"] || [self.Coedid isEqualToString:@"QC15"]) {
+        if ([self.Coedid containsString:@"YC"] || [self.Coedid containsString:@"YC10"] || [self.Coedid containsString:@"YC16"] || [self.Coedid containsString:@"YCGP10"] || [self.Coedid containsString:@"YCGP16"] || [self.Coedid containsString:@"QC"] || [self.Coedid containsString:@"QC10"] || [self.Coedid containsString:@"QC16"] || [self.Coedid containsString:@"YC13"] || [self.Coedid containsString:@"QC13"] || [self.Coedid containsString:@"YC15"] || [self.Coedid containsString:@"QC15"]) {
             [ParentsModeBut setEnabled:YES];
             ParentsModeBut.alpha = 100;
             [ParentsModeSettingBut setEnabled:YES];
@@ -84,7 +84,7 @@
             [ParentsModeSettingBut setEnabled:NO];
             ParentsModeSettingBut.alpha = 0.4;
         }
-        if ([self.Coedid isEqualToString:@"QK01"] || [self.Coedid isEqualToString:@"QK02"] || [self.Coedid isEqualToString:@"QK03"]) {
+        if ([self.Coedid containsString:@"QK01"] || [self.Coedid containsString:@"QK02"] || [self.Coedid containsString:@"QK03"]) {
             [ParentsModeBut setEnabled:NO];
             ParentsModeBut.alpha = 0.4;
             [ParentsModeSettingBut setEnabled:NO];
@@ -108,41 +108,75 @@
             NSString *priceStr = [response substringWithRange:NSMakeRange(24, 4)];
             NSString * Time = [response substringWithRange:NSMakeRange(50, 2)];
             NSString * Power = [response substringWithRange:NSMakeRange(52, 2)];
-            [time setText:[NSString stringWithFormat:@"%@%@",[Utils numberHexString:Time],Localize(@"分钟")]];
-            [power setText:[NSString stringWithFormat:@"%@%@",[Utils numberHexString:Power],Localize(@"W")]];
+            [time setText:[NSString stringWithFormat:@"%d%@",[[Time substringToIndex:2] intValue],Localize(@"分钟")]];
+            [power setText:[NSString stringWithFormat:@"%d%@",[[Power substringToIndex:2] intValue],Localize(@"W")]];
             ZPLog(@"%@",self.Coedid);
             [price setText:[NSString stringWithFormat:@"%d.%02d",[[priceStr substringToIndex:2] intValue],[[priceStr substringFromIndex:2] intValue]]];
-            if ([self.Coedid isEqualToString:@"WFMT"] || [self.Coedid isEqualToString:@"YFMT"] || [self.Coedid isEqualToString:@"CDMT60"] || [self.Coedid isEqualToString:@"GP1P"] || [self.Coedid isEqualToString:@"MC"] || [self.Coedid isEqualToString:@"GP3P"] || [self.Coedid isEqualToString:@"YFGPMT"]) {
+            if ([self.Coedid containsString:@"WFMT"] || [self.Coedid containsString:@"YFMT"] || [self.Coedid containsString:@"CDMT60"] || [self.Coedid containsString:@"GP1P"] || [self.Coedid containsString:@"MC"] || [self.Coedid containsString:@"GP3P"] || [self.Coedid containsString:@"YFGPMT"]) {
                 ZPLog(@"%@",self.Coedid);
                 NSString *powerStr1 = [response substringWithRange:NSMakeRange(28, 8)];
+                //                [limit setText:[NSString stringWithFormat:@"%d.%02d",[[powerStr1 substringToIndex:5] intValue],[[powerStr1 substringFromIndex:5] intValue]]];
                 [limit setText:[NSString stringWithFormat:@"%d.%02d",[[powerStr1 substringToIndex:6] intValue],[[powerStr1 substringFromIndex:6] intValue]]];
             } else {
-            NSString *powerStr = [response substringWithRange:NSMakeRange(28, 6)];
-            [limit setText:[NSString stringWithFormat:@"%d.%02d",[[powerStr substringToIndex:4] intValue],[[powerStr substringFromIndex:4] intValue]]];
+                NSString *powerStr = [response substringWithRange:NSMakeRange(28, 6)];
+                [limit setText:[NSString stringWithFormat:@"%d.%02d",[[powerStr substringToIndex:4] intValue],[[powerStr substringFromIndex:4] intValue]]];
             }
             NSString * protectStr = [response substringWithRange:NSMakeRange(48, 2)];
             NSString * powerTest = [response substringWithRange:NSMakeRange(52, 2)];
-            if ([protectStr  containsString: @"01"]) {
-                if ([time.text isEqualToString:@"3分钟"] && ([power.text isEqualToString:@"2W"] || [power.text isEqualToString:@"5W"])) {
+            if ([protectStr  isEqual: @"01"]) {
+                ZPLog(@"%@",protectStr);
+                if ([Time isEqual:@"03"] && [powerTest isEqual:@"02"]) {
                     ChargingProtectionBut.selected = YES;
-                } else {
-                    ZNDDBut.selected = YES;
+                    PhoneChargingProtectionBut.selected = YES;
+                    DDCChargingProtectionBut.selected = NO;
+                    [SettingBut setEnabled:NO]; // 交互关闭
+                    SettingBut.alpha = 0.4; // 透明度
+                    [timeBut setEnabled:NO];
+                    timeBut.alpha = 0.4;
+                    [PowerBut setEnabled:NO];
+                    PowerBut.alpha = 0.4;
+                }else
+                    if ([Time isEqual:@"03"] && [powerTest isEqual:@"05"]) {
+                        ChargingProtectionBut.selected = YES;
+                        DDCChargingProtectionBut.selected = YES;
+                        PhoneChargingProtectionBut.selected = NO;
+                        [SettingBut setEnabled:NO]; // 交互关闭
+                        SettingBut.alpha = 0.4; // 透明度
+                        [timeBut setEnabled:NO];
+                        timeBut.alpha = 0.4;
+                        [PowerBut setEnabled:NO];
+                        PowerBut.alpha = 0.4;
+                    }else {
+                        //                    if ([powerTest isEqual:@"00"] || [powerTest isEqual:@"01"] || [powerTest isEqual:@"03"] || [powerTest isEqual:@"04"] ||  [powerTest isEqual:@"06"] || [powerTest isEqual:@"07"] || [powerTest isEqual:@"08"] || [powerTest isEqual:@"09"] || [powerTest isEqual:@"10"] || [powerTest isEqual:@"11"] || [powerTest isEqual:@"12"] || [powerTest isEqual:@"13"] || [powerTest isEqual:@"14"] || [powerTest isEqual:@"15"] || [powerTest isEqual:@"16"] || [powerTest isEqual:@"17"] || [powerTest isEqual:@"18"] || [powerTest isEqual:@"19"] || [powerTest isEqual:@"20"] || [powerTest isEqual:@"21"] || [powerTest isEqual:@"22"] || [powerTest isEqual:@"23"] || [powerTest isEqual:@"24"] || [powerTest isEqual:@"25"] || [powerTest isEqual:@"26"] || [powerTest isEqual:@"27"] || [powerTest isEqual:@"28"] || [powerTest isEqual:@"29"] || [powerTest isEqual:@"30"] || [powerTest isEqual:@"31"] || [powerTest isEqual:@"32"] || [powerTest isEqual:@"33"] || [powerTest isEqual:@"34"] || [powerTest isEqual:@"35"] || [powerTest isEqual:@"36"] || [powerTest isEqual:@"37"] || [powerTest isEqual:@"38"] || [powerTest isEqual:@"39"] || [powerTest isEqual:@"40"] || [powerTest isEqual:@"41"] || [powerTest isEqual:@"42"] || [powerTest isEqual:@"43"] || [powerTest isEqual:@"44"] || [powerTest isEqual:@"45"] || [powerTest isEqual:@"46"] || [powerTest isEqual:@"47"] || [powerTest isEqual:@"48"] || [powerTest isEqual:@"49"] || [powerTest isEqual:@"50"] || [powerTest isEqual:@"51"] || [powerTest isEqual:@"52"] || [powerTest isEqual:@"53"] || [powerTest isEqual:@"54"] || [powerTest isEqual:@"55"] || [powerTest isEqual:@"56"] || [powerTest isEqual:@"57"] || [powerTest isEqual:@"58"] || [powerTest isEqual:@"59"] || [powerTest isEqual:@"60"] || [powerTest isEqual:@"61"] || [powerTest isEqual:@"62"] || [powerTest isEqual:@"63"] || [powerTest isEqual:@"64"] || [powerTest isEqual:@"65"] || [powerTest isEqual:@"66"] || [powerTest isEqual:@"67"] || [powerTest isEqual:@"68"] || [powerTest isEqual:@"69"] || [powerTest isEqual:@"70"] || [powerTest isEqual:@"71"] || [powerTest isEqual:@"72"] || [powerTest isEqual:@"73"] || [powerTest isEqual:@"74"] || [powerTest isEqual:@"75"] || [powerTest isEqual:@"76"] || [powerTest isEqual:@"77"] || [powerTest isEqual:@"78"] || [powerTest isEqual:@"79"] || [powerTest isEqual:@"80"] || [powerTest isEqual:@"81"] || [powerTest isEqual:@"82"] || [powerTest isEqual:@"83"] || [powerTest isEqual:@"84"] || [powerTest isEqual:@"85"] || [powerTest isEqual:@"86"] || [powerTest isEqual:@"87"] || [powerTest isEqual:@"88"] || [powerTest isEqual:@"89"] || [powerTest isEqual:@"90"] || [powerTest isEqual:@"91"] || [powerTest isEqual:@"92"] || [powerTest isEqual:@"93"] || [powerTest isEqual:@"94"] || [powerTest isEqual:@"95"] || [powerTest isEqual:@"96"] || [powerTest isEqual:@"97"] || [powerTest isEqual:@"98"] || [powerTest isEqual:@"99"]) {
+                        ZNDDBut.selected = YES;
+                        [SettingBut setEnabled:YES]; // 交互关闭
+                        SettingBut.alpha = 100; // 透明度
+                        [timeBut setEnabled:YES];
+                        timeBut.alpha = 100;
+                        [PowerBut setEnabled:YES];
+                        PowerBut.alpha = 100;
+                        [PhoneChargingProtectionBut setEnabled:NO];// 交互关闭
+                        PhoneChargingProtectionBut.alpha = 0.4;
+                        [DDCChargingProtectionBut setEnabled:NO];
+                        DDCChargingProtectionBut.alpha = 0.4;
+                    }
+                ZPLog(@"%@",powerTest);
+            }else
+                if ([protectStr isEqual:@"00"]) {
+                    ChargingProtectionBut.selected = NO;
+                    ZNDDBut.selected = NO;
+                    [SettingBut setEnabled:NO]; // 交互关闭
+                    SettingBut.alpha = 0.4; // 透明度
+                    [timeBut setEnabled:NO];
+                    timeBut.alpha = 0.4;
+                    [PowerBut setEnabled:NO];
+                    PowerBut.alpha = 0.4;
+                    [PhoneChargingProtectionBut setEnabled:NO];// 交互关闭
+                    PhoneChargingProtectionBut.alpha = 0.4;
+                    [DDCChargingProtectionBut setEnabled:NO];
+                    DDCChargingProtectionBut.alpha = 0.4;
+                    ZPLog(@"%@",protectStr);
                 }
-                [self updateCustom];
-            }else {
-                PhoneChargingProtectionBut.selected = NO;
-                PhoneChargingProtectionBut.alpha = 0.4;
-                PhoneChargingProtectionBut.enabled = NO;
-                DDCChargingProtectionBut.selected = NO;
-                DDCChargingProtectionBut.alpha = 0.4;
-                DDCChargingProtectionBut.enabled = NO;
-                [SettingBut setEnabled:NO]; // 交互关闭
-                SettingBut.alpha = 0.4; // 透明度
-                [timeBut setEnabled:NO];
-                timeBut.alpha = 0.4;
-                [PowerBut setEnabled:NO];
-                PowerBut.alpha = 0.4;
-            }
             ZPLog(@"%@",protectStr);
         }else {
             [HintView showHint:error.localizedDescription];
@@ -151,7 +185,7 @@
     }];
 }
 
-- (void)checkClose:(BOOL)close resultBlock:(CompletionBlock)block{
+- (void)checkClose:(BOOL)close {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0015";
@@ -164,10 +198,6 @@
         if (!error) {
         }else {
             [HintView showHint:error.localizedDescription];
-        }
-        
-        if (block) {
-            block(response,error);
         }
     }];
 }
@@ -183,6 +213,7 @@
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
         if (!error) {
+            //            [HintView showHint:Localize(@"设置成功")];
         }else {
             [HintView showHint:error.localizedDescription];
         }
@@ -221,10 +252,8 @@
 // 负荷门限BUt
 //options+command+ 左右箭头折叠/展开
 - (IBAction)saveAction:(UIButton *)sender {
-//    NSString * string = [self.Coedid substringWithRange:NSMakeRange(0, 6)];
-//    ZPLog(@"%@",string);
-    if ([self.Coedid isEqualToString:@"YC"] || [self.Coedid isEqualToString:@"K"]
-        || [self.Coedid isEqualToString:@"QC"] || [self.Coedid isEqualToString:@"QK01"] || [self.Coedid isEqualToString:@"QK02"] || [self.Coedid isEqualToString:@"QK03"] || [self.Coedid isEqualToString:@"CDMT10"] || [self.Coedid isEqualToString:@"QC10"] || [self.Coedid isEqualToString:@"YC10"] || [self.Coedid containsString:@"YCGP10"]) {
+    if ([self.Coedid containsString:@"YC"] || [self.Coedid containsString:@"K"]
+        || [self.Coedid containsString:@"QC"] || [self.Coedid containsString:@"QK01"] || [self.Coedid containsString:@"QK02"] || [self.Coedid containsString:@"QK03"] || [self.Coedid containsString:@"CDMT10"] || [self.Coedid containsString:@"QC10"] || [self.Coedid containsString:@"YC10"] || [self.Coedid containsString:@"YCGP10"]) {
         if (limitTF.text == nil || limitTF.text.length <= 1) {
             ZPLog(@"没有输入文字");
             [HintView showHint:Localize(@"请输入负荷门限")];
@@ -236,7 +265,7 @@
             }
         }
     }else
-        if ([self.Coedid isEqualToString:@"CDMT60"] ) {
+        if ([self.Coedid containsString:@"CDMT60"] ) {
             if (limitTF.text == nil || limitTF.text.length <= 1) {
                 ZPLog(@"没有输入文字");
                 [HintView showHint:Localize(@"请输入负荷门限")];
@@ -248,7 +277,7 @@
                 }
             }
         }else
-            if ([self.Coedid isEqualToString:@"CDMT16"] || [self.Coedid isEqualToString:@"QC16"] || [self.Coedid isEqualToString:@"YC16"] || [self.Coedid isEqualToString:@"YCGP16"]) {
+            if ([self.Coedid containsString:@"CDMT16"] || [self.Coedid containsString:@"QC16"] || [self.Coedid containsString:@"YC16"] || [self.Coedid containsString:@"YCGP16"]) {
                 if (limitTF.text == nil || limitTF.text.length <= 1) {
                     ZPLog(@"没有输入文字");
                     [HintView showHint:Localize(@"请输入负荷门限")];
@@ -260,7 +289,7 @@
                     }
                 }
             }else
-                if ([self.Coedid isEqualToString:@"YC13"] || [self.Coedid containsString:@"QC13"]) {
+                if ([self.Coedid containsString:@"YC13"] || [self.Coedid containsString:@"QC13"]) {
                     if (limitTF.text == nil || limitTF.text.length <= 1) {
                         ZPLog(@"没有输入文字");
                         [HintView showHint:Localize(@"请输入负荷门限")];
@@ -273,7 +302,7 @@
                         }
                     }
                 }else
-                    if ([self.Coedid isEqualToString:@"QC15"] || [self.Coedid isEqualToString:@"YC15"]) {
+                    if ([self.Coedid containsString:@"QC15"] || [self.Coedid containsString:@"YC15"]) {
                         if (limitTF.text == nil || limitTF.text.length <= 1) {
                             ZPLog(@"没有输入文字");
                             [HintView showHint:Localize(@"请输入负荷门限")];
@@ -285,7 +314,7 @@
                             }
                         }
                     }else
-                        if ([self.Coedid isEqualToString:@"MC"]) {
+                        if ([self.Coedid containsString:@"MC"]) {
                             if (limitTF.text == nil || limitTF.text.length <= 1) {
                                 ZPLog(@"没有输入文字");
                                 [HintView showHint:Localize(@"请输入负荷门限")];
@@ -297,7 +326,7 @@
                                 }
                             }
                         }else
-                            if ([self.Coedid isEqualToString:@"GP3P"]) {
+                            if ([self.Coedid containsString:@"GP3P"]) {
                                 if (limitTF.text == nil || limitTF.text.length <= 1) {
                                     ZPLog(@"没有输入文字");
                                     [HintView showHint:Localize(@"请输入负荷门限")];
@@ -309,7 +338,7 @@
                                     }
                                 }
                             }else
-                                if ([self.Coedid isEqualToString:@"YFMT"] || [self.Coedid isEqualToString:@"GP1P"] || [self.Coedid isEqualToString:@"WFMT"] || [self.Coedid isEqualToString:@"YFGPMT"] || [self.Coedid isEqualToString:@"MC"]) {
+                                if ([self.Coedid containsString:@"YFMT"] || [self.Coedid containsString:@"GP1P"] || [self.Coedid containsString:@"WFMT"] || [self.Coedid containsString:@"YFGPMT"] || [self.Coedid containsString:@"MC"]) {
                                     if (limitTF.text == nil || limitTF.text.length <= 1) {
                                         ZPLog(@"没有输入文字");
                                         [HintView showHint:Localize(@"请输入负荷门限")];
@@ -322,7 +351,7 @@
                                     }
                                 }
 }
-//在上面
+
 //  单价数据
 - (void)AllDtaPrice {
     WebSocket *socket = [WebSocket socketManager];
@@ -372,12 +401,11 @@
         content = [NSString stringWithFormat:@"%06d%02d",[[contents firstObject] intValue],contents.count == 1?0:[contents[1] intValue]];
         model.content = [NSString stringWithFormat:@"%06d",[[contents firstObject] intValue]];
     }else {
-    model.command = @"0020";
-    contents = [limitTF.text componentsSeparatedByString:@"."];
-    content = [NSString stringWithFormat:@"%04d%02d",[[contents firstObject] intValue],contents.count == 1?0:[contents[1] intValue]];
-    NSString * contentStr = [content substringWithRange:NSMakeRange(0, 6)];
-    model.content = contentStr;
-        
+        model.command = @"0020";
+        contents = [limitTF.text componentsSeparatedByString:@"."];
+        content = [NSString stringWithFormat:@"%04d%02d",[[contents firstObject] intValue],contents.count == 1?0:[contents[1] intValue]];
+        NSString * contentStr = [content substringWithRange:NSMakeRange(0, 6)];
+        model.content = contentStr;
     }
     [self.view startLoading];
     MyWeakSelf
@@ -389,8 +417,7 @@
                 [limit setText:[NSString stringWithFormat:@"%d.%02d",[[content substringToIndex:6] intValue],[[content substringFromIndex:6] intValue]]];
             }else {
                 [limit setText:[NSString stringWithFormat:@"%d.%02d",[[content substringToIndex:4] intValue],[[content substringFromIndex:4] intValue]]];
-//            [limit setText:content];
-            
+                //            [limit setText:content];
             }
         }else {
             [HintView showHint:error.localizedDescription];
@@ -400,6 +427,7 @@
 
 // 设置按钮
 - (IBAction)SettingBut:(UIButton *)sender {
+    [self checkClose:ZNDDBut.selected];
     [self changeTime];
     [self changePower];
 }
@@ -408,7 +436,6 @@
 - (IBAction)timeEditAction {
     [SGActionView showSheetWithTitle:nil itemTitles:muniteArr itemSubTitles:nil selectedIndex:[[time.text substringToIndex:time.text.length - Localize(@"分钟").length] integerValue] selectedHandle:^(NSInteger index) {
         [time setText:[NSString stringWithFormat:@"%ld%@",(long)index, Localize(@"分钟")]];
-        [self updateCustom];
     }];
 }
 
@@ -416,43 +443,7 @@
 - (IBAction)powerEditAction {
     [SGActionView showSheetWithTitle:nil itemTitles:powerArr itemSubTitles:nil selectedIndex:[[power.text substringToIndex:power.text.length - 1] integerValue] selectedHandle:^(NSInteger index) {
         [power setText:[NSString stringWithFormat:@"%ldW",(long)index]];
-        [self updateCustom];
     }];
-}
-
-- (void)updateCustom {
-    if (ChargingProtectionBut.selected) {
-        DDCChargingProtectionBut.selected = ![power.text isEqualToString:@"2W"];
-        PhoneChargingProtectionBut.selected = [power.text isEqualToString:@"2W"];
-        [SettingBut setEnabled:NO]; // 交互关闭
-        SettingBut.alpha = 0.4; // 透明度
-        [timeBut setEnabled:NO];
-        timeBut.alpha = 0.4;
-        [PowerBut setEnabled:NO];
-        PowerBut.alpha = 0.4;
-        
-    } else {
-        PhoneChargingProtectionBut.selected = NO;
-        PhoneChargingProtectionBut.alpha = 0.4;
-        PhoneChargingProtectionBut.enabled = NO;
-        DDCChargingProtectionBut.selected = NO;
-        DDCChargingProtectionBut.alpha = 0.4;
-        DDCChargingProtectionBut.enabled = NO;
-        ChargingProtectionBut.selected = NO;
-        
-        if ([time.text isEqualToString:@"3分钟"] && ([power.text isEqualToString:@"2W"] || [power.text isEqualToString:@"5W"])) {
-            [SettingBut setEnabled:NO];
-            SettingBut.alpha = 0.4;
-        } else {
-            [SettingBut setEnabled:YES];
-            SettingBut.alpha = 1;
-        }
-        [timeBut setEnabled:YES];
-        timeBut.alpha = 1;
-        [PowerBut setEnabled:YES];
-        PowerBut.alpha = 1;
-        ZNDDBut.selected = YES;
-    }
 }
 
 // 新增
@@ -623,13 +614,12 @@
 
 // 充电保护设置
 - (IBAction)ChargingProtectionBut:(UIButton *)sender {
-    if (!sender.selected) {
-        if (!ZNDDBut.selected) {
-//            [self checkClose:YES resultBlock:^(id response, NSError *error) {
-//                //            [self updateCustom];
-//            }];
+    sender.selected =! sender.selected;
+    if (sender.selected) {
+        if (sender == ChargingProtectionBut) {
+            ChargingProtectionBut.selected = YES;
+            //            [self checkClose:ChargingProtectionBut.selected];
         }
-        sender.selected = YES;
         ZNDDBut.selected = NO;
         [DDCChargingProtectionBut setEnabled:YES]; //交互开启
         DDCChargingProtectionBut.alpha=100;//透明度
@@ -641,26 +631,24 @@
         timeBut.alpha = 0.4; //透明度
         [PowerBut setEnabled:NO]; // 交互开启
         PowerBut.alpha = 0.4;
+        return;
     }else {
-        sender.selected = NO;
-        ZNDDBut.selected = NO;
-        sender.alpha = 0.4;
-        sender.enabled = NO;
-        [self checkClose:NO resultBlock:^(id response, NSError *error) {
-            [self updateCustom];
-        }];
-        
-//        [DDCChargingProtectionBut setEnabled:NO]; //交互关闭
-//        DDCChargingProtectionBut.alpha=0.4;//透明度
-//        [PhoneChargingProtectionBut setEnabled:NO]; //交互关闭
-//        PhoneChargingProtectionBut.alpha=0.4;//透明度
-//        /*****************************/
-//        [SettingBut setEnabled:NO]; // 交互打开
-//        SettingBut.alpha = 0.4; // 透明度
-//        [timeBut setEnabled:NO]; //交互关闭
-//        timeBut.alpha = 0.4; //透明度
-//        [PowerBut setEnabled:NO]; // 交互关闭
-//        PowerBut.alpha = 0.4;
+        if (sender == ChargingProtectionBut) {
+            ChargingProtectionBut.selected = NO;
+            ZNDDBut.selected = NO;
+            [self checkClose:ChargingProtectionBut.selected];
+        }
+        [DDCChargingProtectionBut setEnabled:NO]; //交互关闭
+        DDCChargingProtectionBut.alpha=0.4;//透明度
+        [PhoneChargingProtectionBut setEnabled:NO]; //交互关闭
+        PhoneChargingProtectionBut.alpha=0.4;//透明度
+        /*****************************/
+        [SettingBut setEnabled:NO]; // 交互打开
+        SettingBut.alpha = 0.4; // 透明度
+        [timeBut setEnabled:NO]; //交互关闭
+        timeBut.alpha = 0.4; //透明度
+        [PowerBut setEnabled:NO]; // 交互关闭
+        PowerBut.alpha = 0.4;
     }
 }
 
@@ -671,21 +659,11 @@
     }else {
         sender.selected =! sender.selected;
         DDCChargingProtectionBut.selected = NO;
-        if (ChargingProtectionBut.selected) {
-            [time setText:[NSString stringWithFormat:@"%d%@",3, Localize(@"分钟")]];
-            [self changeTime];
-            [power setText:[NSString stringWithFormat:@"%d%@",2,Localize(@"W")]];
-            [self changePower];
-            [self updateCustom];
-        } else {
-            [self checkClose:YES resultBlock:^(id response, NSError *error) {
-                [time setText:[NSString stringWithFormat:@"%d%@",3, Localize(@"分钟")]];
-                [self changeTime];
-                [power setText:[NSString stringWithFormat:@"%d%@",2,Localize(@"W")]];
-                [self changePower];
-                [self updateCustom];
-            }];
-        }
+        [self checkClose:PhoneChargingProtectionBut.selected];
+        [time setText:[NSString stringWithFormat:@"%d%@",3, Localize(@"分钟")]];
+        [self changeTime];
+        [power setText:[NSString stringWithFormat:@"%dW",2]];
+        [self changePower];
     }
 }
 
@@ -696,52 +674,45 @@
     }else {
         sender.selected =! sender.selected;
         PhoneChargingProtectionBut.selected = NO;
-        if (ChargingProtectionBut.selected) {
-            [time setText:[NSString stringWithFormat:@"%d%@",3, Localize(@"分钟")]];
-            [self changeTime];
-            [power setText:[NSString stringWithFormat:@"%d%@",5,Localize(@"W")]];
-            [self changePower];
-            [self updateCustom];
-        } else {
-            [self checkClose:YES resultBlock:^(id response, NSError *error) {
-                [time setText:[NSString stringWithFormat:@"%d%@",3, Localize(@"分钟")]];
-                [self changeTime];
-                [power setText:[NSString stringWithFormat:@"%d%@",5,Localize(@"W")]];
-                [self changePower];
-                [self updateCustom];
-            }];
-        }
+        [self checkClose:DDCChargingProtectionBut.selected];
+        [time setText:[NSString stringWithFormat:@"%d%@",3, Localize(@"分钟")]];
+        [self changeTime];
+        [power setText:[NSString stringWithFormat:@"%dW",5]];
+        [self changePower];
     }
 }
 
 // 智能断电控制
 - (IBAction)ZNDDBut:(UIButton *)sender {
-    if (!sender.selected) {
-        if (!ChargingProtectionBut.selected) {
-//            [self checkClose:YES resultBlock:^(id response, NSError *error) {
-//            }];
+    sender.selected =! sender.selected;
+    if (sender.selected) {
+        if (sender == ZNDDBut) {
+            ZNDDBut.selected = YES;
+            //            [self checkClose:ZNDDBut.selected];
         }
-        sender.selected = YES;
         ChargingProtectionBut.selected = NO;
         [DDCChargingProtectionBut setEnabled:NO]; //交互关闭
         DDCChargingProtectionBut.alpha = 0.4;//透明度
         [PhoneChargingProtectionBut setEnabled:NO]; //交互关闭
         PhoneChargingProtectionBut.alpha = 0.4;//透明度
-        PhoneChargingProtectionBut.selected = NO;
-        DDCChargingProtectionBut.selected = NO;
+        [SettingBut setEnabled:YES]; // 交互打开
+        SettingBut.alpha = 100; // 透明度
         [timeBut setEnabled:YES]; //交互开启
         timeBut.alpha = 100; //透明度
         [PowerBut setEnabled:YES]; // 交互开启
         PowerBut.alpha = 100;
-        [self updateCustom];
+        return;
     }else {
-        [self checkClose:NO resultBlock:^(id response, NSError *error) {
-            [self updateCustom];
-        }];
+        if (sender == ZNDDBut) {
+            ZNDDBut.selected = NO;
+            ChargingProtectionBut.selected = NO;
+            [self checkClose:ZNDDBut.selected];
+        }
         [DDCChargingProtectionBut setEnabled:NO]; //交互关闭
         DDCChargingProtectionBut.alpha = 0.4;//透明度
         [PhoneChargingProtectionBut setEnabled:NO]; //交互关闭
         PhoneChargingProtectionBut.alpha = 0.4;//透明度
+        /*****************************/
         [SettingBut setEnabled:NO]; // 交互打开
         SettingBut.alpha = 0.4; // 透明度
         [timeBut setEnabled:NO]; //交互关闭
@@ -752,21 +723,21 @@
 }
 
 // 进来默认关闭所有按钮
-//- (void)DefaultTest {
-//    [ParentsModeBut setEnabled:NO];
-//    ParentsModeBut.alpha = 0.4;
-//    [ParentsModeSettingBut setEnabled:NO];
-//    ParentsModeSettingBut.alpha = 0.4;
-//    [SettingBut setEnabled:NO]; // 交互打开
-//    SettingBut.alpha = 0.4; // 透明度
-//    [timeBut setEnabled:NO]; //交互开启
-//    timeBut.alpha = 0.4; //透明度
-//    [PowerBut setEnabled:NO]; // 交互开启
-//    PowerBut.alpha = 0.4;
-//    [DDCChargingProtectionBut setEnabled:NO]; //交互关闭
-//    DDCChargingProtectionBut.alpha=0.4;//透明度
-//    [PhoneChargingProtectionBut setEnabled:NO]; //交互关闭
-//    PhoneChargingProtectionBut.alpha=0.4;//透明度
-//}
+- (void)DefaultTest {
+    [ParentsModeBut setEnabled:NO];
+    ParentsModeBut.alpha = 0.4;
+    [ParentsModeSettingBut setEnabled:NO];
+    ParentsModeSettingBut.alpha = 0.4;
+    [SettingBut setEnabled:NO]; // 交互打开
+    SettingBut.alpha = 0.4; // 透明度
+    [timeBut setEnabled:NO]; //交互开启
+    timeBut.alpha = 0.4; //透明度
+    [PowerBut setEnabled:NO]; // 交互开启
+    PowerBut.alpha = 0.4;
+    [DDCChargingProtectionBut setEnabled:NO]; //交互关闭
+    DDCChargingProtectionBut.alpha=0.4;//透明度
+    [PhoneChargingProtectionBut setEnabled:NO]; //交互关闭
+    PhoneChargingProtectionBut.alpha=0.4;//透明度
+}
 
 @end

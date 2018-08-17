@@ -26,6 +26,7 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
 @implementation TimeSettingListViewController
 
 - (void)viewDidLoad {
+    
     [super viewDidLoad];
     self.title = Localize(@"时段设置");
     [self rightBarTitle:Localize(@"确定") color:[UIColor whiteColor] action:@selector(openAction)];
