@@ -48,8 +48,13 @@
 
 - (void)deviceParams {
     [self GetDatas];
-//    [self loadData];
 }
+
+//- (void)viewWillDisappear:(BOOL)animated {
+//    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
+//
+//    }
+//}
 
 - (void)viewWillAppear:(BOOL)animated {
     [self loadData];
