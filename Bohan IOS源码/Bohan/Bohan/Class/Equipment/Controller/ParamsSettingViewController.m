@@ -475,6 +475,15 @@
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
+        NSString * ParentsModeStr = [response substringWithRange:NSMakeRange(32, 2)];
+        NSString * ParentsModeWeek = [Utils getBinaryByHex:ParentsModeStr];
+        NSString * WEEK = [ParentsModeWeek substringWithRange:NSMakeRange(0, 2)];
+        ZPLog(@"%@",WEEK);
+        if ([WEEK containsString:@"01"]) {
+            ParentsModeBut.selected = NO;
+        }else {
+            ParentsModeBut.selected = YES;
+        }
         if (!error) {
             if (((NSString *)response).length == 120) {
                 NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 96, 92)];
@@ -542,17 +551,22 @@
                 if ([str isEqualToString:@"03"]) {
                     isParentModel = YES;
                     isValidate = YES;
+                    NSString * stringgggg = [week substringWithRange:NSMakeRange(0, 2)];
+                    if ([stringgggg isEqualToString:@"01"]) {
+                        model.open = NO;
+                        ParentsModeBut.selected = NO;
+                    }else{
                     model.open = YES;
                     ParentsModeBut.selected = YES;
+                    }
                 }
             }
-            
             [self.datas addObject:model];
         }
         //有效的时段设置模式
         if (isValidate) {
             [self configRunModelWithModelStr:content isLoop:NO];
-            ParentsModeBut.selected = YES;
+//            ParentsModeBut.selected = YES;
             return;
         }
     }else if([str isEqualToString:@"05"]) {
