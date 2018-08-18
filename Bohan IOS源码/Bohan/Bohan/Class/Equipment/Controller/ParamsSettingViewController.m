@@ -480,15 +480,15 @@
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
-        NSString * ParentsModeStr = [response substringWithRange:NSMakeRange(32, 2)];
-        NSString * ParentsModeWeek = [Utils getBinaryByHex:ParentsModeStr];
-        NSString * WEEK = [ParentsModeWeek substringWithRange:NSMakeRange(0, 2)];
-        ZPLog(@"%@",WEEK);
-        if ([WEEK containsString:@"01"]) {
-            ParentsModeBut.selected = NO;
-        }else {
-            ParentsModeBut.selected = YES;
-        }
+//        NSString * ParentsModeStr = [response substringWithRange:NSMakeRange(32, 2)];
+//        NSString * ParentsModeWeek = [Utils getBinaryByHex:ParentsModeStr];
+//        NSString * WEEK = [ParentsModeWeek substringWithRange:NSMakeRange(0, 2)];
+//        ZPLog(@"%@",WEEK);
+//        if ([WEEK containsString:@"01"]) {
+//            ParentsModeBut.selected = NO;
+//        }else {
+//            ParentsModeBut.selected = YES;
+//        }
         if (!error) {
             if (((NSString *)response).length == 120) {
                 NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 96, 92)];

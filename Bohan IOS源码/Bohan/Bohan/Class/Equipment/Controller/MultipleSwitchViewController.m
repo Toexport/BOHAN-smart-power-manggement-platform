@@ -267,25 +267,17 @@
     }
 }
 
-/**
- 按钮集合
- @return return value description
- */
+
+// 按钮集合
 - (NSString *)getContent {
     NSMutableString *content = [NSMutableString string];
     //    第一个按钮
     NSString *ssting = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
     [content appendFormat:@"%@%@%@%@%@",ssting,self.string222,self.string333,self.string444,self.string555];
-    NSString * stringID = [self.deviceNo substringWithRange:NSMakeRange(0, 2)];
-    if (!Open1But.selected && !Guan1But.selected) {
+    if (!Open3But.selected && !Guan3But.selected) {
         [content appendString:@"FF"];
     } else {
-                 if ([stringID containsString:@"62"]) {
-             [content appendFormat:@"%@",Guan1But.selected?@"00":@"01"];
-        }else {
-             [content appendFormat:@"%@",Open1But.selected?@"01":@"00"];
-        }
-    
+        [content appendFormat:@"%@",Guan3But.selected?@"01":@"00"];
     }
 //      第二个按钮
     ssting = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
@@ -293,23 +285,17 @@
     if (!Open2But.selected && !Guan2But.selected) {
         [content appendString:@"FF"];
     } else {
-        if ([stringID containsString:@"62"]) {
-            [content appendFormat:@"%@",Guan2But.selected?@"00":@"01"];
-        }else {
-            [content appendFormat:@"%@",Open2But.selected?@"00":@"01"];
-        }
+        [content appendFormat:@"%@",Guan2But.selected?@"01":@"00"];
     }
+    
     //    第三个开关
     ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];
     [content appendFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
-    if (!Open3But.selected && !Guan3But.selected) {
+    //    NSString * stringID = [self.deviceNo substringWithRange:NSMakeRange(0, 2)];
+    if (!Open1But.selected && !Guan1But.selected) {
         [content appendString:@"FF"];
     } else {
-        if ([stringID containsString:@"62"]) {
-            [content appendFormat:@"%@",Guan3But.selected?@"00":@"01"];
-        }else {
-            [content appendFormat:@"%@",Open3But.selected?@"01":@"00"];
-        }
+        [content appendFormat:@"%@",Guan1But.selected?@"01":@"00"];
     }
     return content;
 }
@@ -445,11 +431,9 @@
         [formatter setDateFormat:@"dd"];
         [Day1textField setText:[formatter stringFromDate:selectDate]];
         self.string3 = Day1textField.text;
-        
         [formatter setDateFormat:@"HH"];
         [Hours1TextField setText:[formatter stringFromDate:selectDate]];
         self.string4 = Hours1TextField.text;
-        
         [formatter setDateFormat:@"mm"];
         [Minutes1TextField setText:[formatter stringFromDate:selectDate]];
         self.string5 = Minutes1TextField.text;

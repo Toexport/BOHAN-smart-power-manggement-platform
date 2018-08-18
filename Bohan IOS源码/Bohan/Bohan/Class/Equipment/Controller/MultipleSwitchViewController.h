@@ -84,6 +84,10 @@
 @property (weak, nonatomic) IBOutlet UIButton *TurnOnSwitch2;
 @property (weak, nonatomic) IBOutlet UIButton *TurnOnSwitch3;
 
+@property (weak, nonatomic) IBOutlet UIButton *Title1But;
+@property (weak, nonatomic) IBOutlet UIButton *Title2But;
+@property (weak, nonatomic) IBOutlet UIButton *Title3But;
+
 
 
 @end
