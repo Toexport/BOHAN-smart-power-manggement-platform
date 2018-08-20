@@ -21,6 +21,9 @@
     NSIndexPath *selectedIndexPath;
     BOOL isParentModel;
     NSString *_content;
+    NSString * TimeId;
+    NSString * PowerId;
+    NSString * protectId;
 }
 
 @property (nonatomic, strong)NSMutableArray *datas;
@@ -49,12 +52,6 @@
 - (void)deviceParams {
     [self GetDatas];
 }
-
-//- (void)viewWillDisappear:(BOOL)animated {
-//    if ([self.navigationController.viewControllers indexOfObject:self]==NSNotFound) {
-//
-//    }
-//}
 
 - (void)viewWillAppear:(BOOL)animated {
     [self loadData];
@@ -110,27 +107,44 @@
             PowerBut.alpha = 0.4;
         }
         if (!error) {
-            NSString *priceStr = [response substringWithRange:NSMakeRange(24, 4)];
-            NSString * Time = [response substringWithRange:NSMakeRange(50, 2)];
-            NSString * Power = [response substringWithRange:NSMakeRange(52, 2)];
-            [time setText:[NSString stringWithFormat:@"%d%@",[[Time substringToIndex:2] intValue],Localize(@"分钟")]];
-            [power setText:[NSString stringWithFormat:@"%d%@",[[Power substringToIndex:2] intValue],Localize(@"W")]];
+            if ([self.Coedid containsString:@"WFMT"] || [self.Coedid containsString:@"YFMT"] || [self.Coedid containsString:@"CDMT60"] || [self.Coedid containsString:@"GP1P"] || [self.Coedid containsString:@"MC"] || [self.Coedid containsString:@"GP3P"] || [self.Coedid containsString:@"YFGPMT"]) {
+                NSString * protectStr = [response substringWithRange:NSMakeRange(50, 2)];
+                protectId = protectStr;
+                NSString * Time = [response substringWithRange:NSMakeRange(52, 2)];
+                TimeId = Time;
+                NSString * Power = [response substringWithRange:NSMakeRange(54, 2)];
+                PowerId = Power;
+            }else {
+                NSString * protectStr = [response substringWithRange:NSMakeRange(48, 2)];
+                protectId = protectStr;
+                NSString * Time = [response substringWithRange:NSMakeRange(50, 2)];
+                TimeId = Time;
+                NSString * Power = [response substringWithRange:NSMakeRange(52, 2)];
+                PowerId = Power;
+            }
+//            NSString * protectStr = [response substringWithRange:NSMakeRange(48, 2)];
+//            NSString * Time = [response substringWithRange:NSMakeRange(50, 2)];
+//            NSString * Power = [response substringWithRange:NSMakeRange(52, 2)];
+            [time setText:[NSString stringWithFormat:@"%d%@",[[TimeId substringToIndex:2] intValue],Localize(@"分钟")]];
+            [power setText:[NSString stringWithFormat:@"%d%@",[[PowerId substringToIndex:2] intValue],Localize(@"W")]];
             ZPLog(@"%@",self.Coedid);
+            
+            
+            NSString *priceStr = [response substringWithRange:NSMakeRange(24, 4)];
             [price setText:[NSString stringWithFormat:@"%d.%02d",[[priceStr substringToIndex:2] intValue],[[priceStr substringFromIndex:2] intValue]]];
             if ([self.Coedid containsString:@"WFMT"] || [self.Coedid containsString:@"YFMT"] || [self.Coedid containsString:@"CDMT60"] || [self.Coedid containsString:@"GP1P"] || [self.Coedid containsString:@"MC"] || [self.Coedid containsString:@"GP3P"] || [self.Coedid containsString:@"YFGPMT"]) {
                 ZPLog(@"%@",self.Coedid);
                 NSString *powerStr1 = [response substringWithRange:NSMakeRange(28, 8)];
-                //                [limit setText:[NSString stringWithFormat:@"%d.%02d",[[powerStr1 substringToIndex:5] intValue],[[powerStr1 substringFromIndex:5] intValue]]];
                 [limit setText:[NSString stringWithFormat:@"%d.%02d",[[powerStr1 substringToIndex:6] intValue],[[powerStr1 substringFromIndex:6] intValue]]];
             } else {
                 NSString *powerStr = [response substringWithRange:NSMakeRange(28, 6)];
                 [limit setText:[NSString stringWithFormat:@"%d.%02d",[[powerStr substringToIndex:4] intValue],[[powerStr substringFromIndex:4] intValue]]];
             }
-            NSString * protectStr = [response substringWithRange:NSMakeRange(48, 2)];
-            NSString * powerTest = [response substringWithRange:NSMakeRange(52, 2)];
-            if ([protectStr  isEqual: @"01"]) {
-                ZPLog(@"%@",protectStr);
-                if ([Time isEqual:@"03"] && [powerTest isEqual:@"02"]) {
+           
+//            NSString * powerTest = [response substringWithRange:NSMakeRange(52, 2)];
+            if ([protectId  isEqual: @"01"]) {
+                ZPLog(@"%@",protectId);
+                if ([TimeId isEqual:@"03"] && [PowerId isEqual:@"02"]) {
                     ChargingProtectionBut.selected = YES;
                     PhoneChargingProtectionBut.selected = YES;
                     DDCChargingProtectionBut.selected = NO;
@@ -141,7 +155,7 @@
                     [PowerBut setEnabled:NO];
                     PowerBut.alpha = 0.4;
                 }else
-                    if ([Time isEqual:@"03"] && [powerTest isEqual:@"05"]) {
+                    if ([TimeId isEqual:@"03"] && [PowerId isEqual:@"05"]) {
                         ChargingProtectionBut.selected = YES;
                         DDCChargingProtectionBut.selected = YES;
                         PhoneChargingProtectionBut.selected = NO;
@@ -152,7 +166,6 @@
                         [PowerBut setEnabled:NO];
                         PowerBut.alpha = 0.4;
                     }else {
-                        //                    if ([powerTest isEqual:@"00"] || [powerTest isEqual:@"01"] || [powerTest isEqual:@"03"] || [powerTest isEqual:@"04"] ||  [powerTest isEqual:@"06"] || [powerTest isEqual:@"07"] || [powerTest isEqual:@"08"] || [powerTest isEqual:@"09"] || [powerTest isEqual:@"10"] || [powerTest isEqual:@"11"] || [powerTest isEqual:@"12"] || [powerTest isEqual:@"13"] || [powerTest isEqual:@"14"] || [powerTest isEqual:@"15"] || [powerTest isEqual:@"16"] || [powerTest isEqual:@"17"] || [powerTest isEqual:@"18"] || [powerTest isEqual:@"19"] || [powerTest isEqual:@"20"] || [powerTest isEqual:@"21"] || [powerTest isEqual:@"22"] || [powerTest isEqual:@"23"] || [powerTest isEqual:@"24"] || [powerTest isEqual:@"25"] || [powerTest isEqual:@"26"] || [powerTest isEqual:@"27"] || [powerTest isEqual:@"28"] || [powerTest isEqual:@"29"] || [powerTest isEqual:@"30"] || [powerTest isEqual:@"31"] || [powerTest isEqual:@"32"] || [powerTest isEqual:@"33"] || [powerTest isEqual:@"34"] || [powerTest isEqual:@"35"] || [powerTest isEqual:@"36"] || [powerTest isEqual:@"37"] || [powerTest isEqual:@"38"] || [powerTest isEqual:@"39"] || [powerTest isEqual:@"40"] || [powerTest isEqual:@"41"] || [powerTest isEqual:@"42"] || [powerTest isEqual:@"43"] || [powerTest isEqual:@"44"] || [powerTest isEqual:@"45"] || [powerTest isEqual:@"46"] || [powerTest isEqual:@"47"] || [powerTest isEqual:@"48"] || [powerTest isEqual:@"49"] || [powerTest isEqual:@"50"] || [powerTest isEqual:@"51"] || [powerTest isEqual:@"52"] || [powerTest isEqual:@"53"] || [powerTest isEqual:@"54"] || [powerTest isEqual:@"55"] || [powerTest isEqual:@"56"] || [powerTest isEqual:@"57"] || [powerTest isEqual:@"58"] || [powerTest isEqual:@"59"] || [powerTest isEqual:@"60"] || [powerTest isEqual:@"61"] || [powerTest isEqual:@"62"] || [powerTest isEqual:@"63"] || [powerTest isEqual:@"64"] || [powerTest isEqual:@"65"] || [powerTest isEqual:@"66"] || [powerTest isEqual:@"67"] || [powerTest isEqual:@"68"] || [powerTest isEqual:@"69"] || [powerTest isEqual:@"70"] || [powerTest isEqual:@"71"] || [powerTest isEqual:@"72"] || [powerTest isEqual:@"73"] || [powerTest isEqual:@"74"] || [powerTest isEqual:@"75"] || [powerTest isEqual:@"76"] || [powerTest isEqual:@"77"] || [powerTest isEqual:@"78"] || [powerTest isEqual:@"79"] || [powerTest isEqual:@"80"] || [powerTest isEqual:@"81"] || [powerTest isEqual:@"82"] || [powerTest isEqual:@"83"] || [powerTest isEqual:@"84"] || [powerTest isEqual:@"85"] || [powerTest isEqual:@"86"] || [powerTest isEqual:@"87"] || [powerTest isEqual:@"88"] || [powerTest isEqual:@"89"] || [powerTest isEqual:@"90"] || [powerTest isEqual:@"91"] || [powerTest isEqual:@"92"] || [powerTest isEqual:@"93"] || [powerTest isEqual:@"94"] || [powerTest isEqual:@"95"] || [powerTest isEqual:@"96"] || [powerTest isEqual:@"97"] || [powerTest isEqual:@"98"] || [powerTest isEqual:@"99"]) {
                         ZNDDBut.selected = YES;
                         [SettingBut setEnabled:YES]; // 交互关闭
                         SettingBut.alpha = 100; // 透明度
@@ -165,9 +178,9 @@
                         [DDCChargingProtectionBut setEnabled:NO];
                         DDCChargingProtectionBut.alpha = 0.4;
                     }
-                ZPLog(@"%@",powerTest);
+                ZPLog(@"%@",PowerId);
             }else
-                if ([protectStr isEqual:@"00"]) {
+                if ([protectId isEqual:@"00"]) {
                     ChargingProtectionBut.selected = NO;
                     ZNDDBut.selected = NO;
                     [SettingBut setEnabled:NO]; // 交互关闭
@@ -180,9 +193,9 @@
                     PhoneChargingProtectionBut.alpha = 0.4;
                     [DDCChargingProtectionBut setEnabled:NO];
                     DDCChargingProtectionBut.alpha = 0.4;
-                    ZPLog(@"%@",protectStr);
+                    ZPLog(@"%@",protectId);
                 }
-            ZPLog(@"%@",protectStr);
+            ZPLog(@"%@",protectId);
         }else {
             [HintView showHint:error.localizedDescription];
         }
@@ -217,8 +230,9 @@
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
+        ZPLog(@"%@",time);
         if (!error) {
-            //            [HintView showHint:Localize(@"设置成功")];
+//        [HintView showHint:Localize(@"设置成功")];
         }else {
             [HintView showHint:error.localizedDescription];
         }
@@ -480,15 +494,6 @@
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
-//        NSString * ParentsModeStr = [response substringWithRange:NSMakeRange(32, 2)];
-//        NSString * ParentsModeWeek = [Utils getBinaryByHex:ParentsModeStr];
-//        NSString * WEEK = [ParentsModeWeek substringWithRange:NSMakeRange(0, 2)];
-//        ZPLog(@"%@",WEEK);
-//        if ([WEEK containsString:@"01"]) {
-//            ParentsModeBut.selected = NO;
-//        }else {
-//            ParentsModeBut.selected = YES;
-//        }
         if (!error) {
             if (((NSString *)response).length == 120) {
                 NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 96, 92)];

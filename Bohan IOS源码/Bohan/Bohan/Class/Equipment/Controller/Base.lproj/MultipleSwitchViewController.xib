@@ -39,7 +39,7 @@
                 <outlet property="Switch3view" destination="qOh-Nh-Zsp" id="PBU-GB-4mz"/>
                 <outlet property="Title1But" destination="aCL-qP-h2O" id="74O-cf-jb5"/>
                 <outlet property="Title2But" destination="ca9-hY-csO" id="ix3-RX-49f"/>
-                <outlet property="Title3But" destination="BKC-4m-8Ay" id="L3E-5V-31P"/>
+                <outlet property="Title3But" destination="Z16-Yl-s3h" id="7KR-gh-c7f"/>
                 <outlet property="TurnOnSwitch1" destination="NJA-Jc-gYy" id="Cfi-BD-rXQ"/>
                 <outlet property="TurnOnSwitch2" destination="APe-jQ-pYh" id="kqC-Hv-Ufi"/>
                 <outlet property="TurnOnSwitch3" destination="BGR-7R-toe" id="Jzh-Yq-FiB"/>
@@ -263,14 +263,17 @@
                                                 <color key="titleColor" red="0.95523184539999995" green="0.24616583659999999" blue="0.12853652700000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </state>
                                         </button>
-                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aCL-qP-h2O">
-                                            <rect key="frame" x="25" y="106" width="129" height="16"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aCL-qP-h2O">
+                                            <rect key="frame" x="25" y="105" width="129" height="16"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="16" id="tqg-64-Lhg"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <state key="normal" title="开关1正在执行定时开启"/>
-                                            <state key="selected" title="开关3正在执行定时关闭">
+                                            <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <state key="normal" title="开关1正在执行定时开启">
+                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
+                                            <state key="selected" title="开关1正在执行定时关闭">
                                                 <color key="titleColor" red="0.95523184539999995" green="0.24616583659999999" blue="0.12853652700000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </state>
                                         </button>
@@ -282,7 +285,7 @@
                                         <constraint firstItem="Tuu-48-knY" firstAttribute="leading" secondItem="E9p-fl-9Wn" secondAttribute="leading" id="1Fl-ac-CTT"/>
                                         <constraint firstItem="a6E-JX-2pM" firstAttribute="trailing" secondItem="DYI-l0-DrP" secondAttribute="trailing" id="1tP-MT-ZCA"/>
                                         <constraint firstItem="UB6-uu-evH" firstAttribute="leading" secondItem="2ZJ-k0-SJU" secondAttribute="leading" id="1zH-bP-7Km"/>
-                                        <constraint firstItem="aCL-qP-h2O" firstAttribute="top" secondItem="jse-rL-dUp" secondAttribute="bottom" constant="8" id="2Fl-dN-qvf"/>
+                                        <constraint firstItem="aCL-qP-h2O" firstAttribute="top" secondItem="jse-rL-dUp" secondAttribute="bottom" constant="7" id="2Fl-dN-qvf"/>
                                         <constraint firstItem="mmn-1X-sL0" firstAttribute="top" secondItem="GID-zL-q1f" secondAttribute="top" id="2fv-2m-O6c"/>
                                         <constraint firstItem="Tuu-48-knY" firstAttribute="trailing" secondItem="E9p-fl-9Wn" secondAttribute="trailing" id="2u3-h9-Wjt"/>
                                         <constraint firstItem="ule-M3-TY1" firstAttribute="top" secondItem="2ZJ-k0-SJU" secondAttribute="top" id="6GO-sE-8Nh"/>
@@ -543,13 +546,15 @@
                                                 <color key="titleColor" red="0.95523184539999995" green="0.24616583659999999" blue="0.12853652700000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </state>
                                         </button>
-                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ca9-hY-csO">
-                                            <rect key="frame" x="25" y="110" width="130" height="15"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ca9-hY-csO">
+                                            <rect key="frame" x="25" y="109" width="130" height="15"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="15" id="N5u-pe-jCw"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <state key="normal" title="开关2正在执行定时开启"/>
+                                            <state key="normal" title="开关2正在执行定时开启">
+                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
                                             <state key="selected" title="开关2正在执行定时关闭">
                                                 <color key="titleColor" red="0.95523184539999995" green="0.24616583659999999" blue="0.12853652700000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </state>
@@ -575,7 +580,7 @@
                                         <constraint firstItem="1CB-Rn-wLV" firstAttribute="top" secondItem="VQB-pX-hEt" secondAttribute="top" id="EFg-kc-YDs"/>
                                         <constraint firstAttribute="height" constant="125" id="F2T-BH-g4Z"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="BPF-aY-UKO" secondAttribute="trailing" constant="20" symbolic="YES" id="GPl-72-NsU"/>
-                                        <constraint firstItem="ca9-hY-csO" firstAttribute="top" secondItem="c21-L8-BAm" secondAttribute="bottom" constant="8" id="Ho1-CZ-c9X"/>
+                                        <constraint firstItem="ca9-hY-csO" firstAttribute="top" secondItem="c21-L8-BAm" secondAttribute="bottom" constant="7" id="Ho1-CZ-c9X"/>
                                         <constraint firstItem="SZu-TI-SwK" firstAttribute="leading" secondItem="N3G-oo-KE5" secondAttribute="trailing" constant="3" id="IXu-gg-12Y"/>
                                         <constraint firstItem="F7V-SH-Lz5" firstAttribute="trailing" secondItem="8lK-9s-NGU" secondAttribute="trailing" id="IuC-7c-8MJ"/>
                                         <constraint firstItem="mX7-jx-Ms3" firstAttribute="top" secondItem="BPF-aY-UKO" secondAttribute="bottom" constant="11" id="Mf9-YK-eGj"/>
@@ -823,13 +828,15 @@
                                                 <color key="titleColor" red="0.95523184539999995" green="0.24616583659999999" blue="0.12853652700000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </state>
                                         </button>
-                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BKC-4m-8Ay">
-                                            <rect key="frame" x="25" y="110" width="131" height="16"/>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z16-Yl-s3h">
+                                            <rect key="frame" x="25" y="109" width="131" height="16"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="16" id="tBr-wa-Mkr"/>
+                                                <constraint firstAttribute="height" constant="16" id="lJ5-0t-qFw"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                            <state key="normal" title="开关3正在执行定时开启"/>
+                                            <state key="normal" title="开关3正在执行定时开启">
+                                                <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            </state>
                                             <state key="selected" title="开关3正在执行定时关闭">
                                                 <color key="titleColor" red="0.95523184539999995" green="0.24616583659999999" blue="0.12853652700000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             </state>
@@ -843,7 +850,6 @@
                                         <constraint firstItem="9Et-8G-HJU" firstAttribute="top" secondItem="jk2-MU-aH5" secondAttribute="bottom" id="6wD-3x-QVI"/>
                                         <constraint firstItem="mtR-cb-cmJ" firstAttribute="leading" secondItem="2p3-yc-L21" secondAttribute="trailing" constant="3" id="7Kv-b6-bWa"/>
                                         <constraint firstItem="9Et-8G-HJU" firstAttribute="trailing" secondItem="jk2-MU-aH5" secondAttribute="trailing" id="8cn-3v-LQT"/>
-                                        <constraint firstItem="BKC-4m-8Ay" firstAttribute="leading" secondItem="qOh-Nh-Zsp" secondAttribute="leading" constant="25" id="8ek-Xv-LWo"/>
                                         <constraint firstItem="2p3-yc-L21" firstAttribute="top" secondItem="jk2-MU-aH5" secondAttribute="top" id="9De-f9-YP4"/>
                                         <constraint firstItem="uL9-Sb-hmT" firstAttribute="leading" secondItem="qOh-Nh-Zsp" secondAttribute="leading" constant="15" id="9eO-sz-k8X"/>
                                         <constraint firstItem="1zM-Ha-Hyi" firstAttribute="trailing" secondItem="mtR-cb-cmJ" secondAttribute="trailing" id="Cux-W8-XHw"/>
@@ -866,9 +872,9 @@
                                         <constraint firstItem="BGR-7R-toe" firstAttribute="leading" secondItem="FrF-DY-TbY" secondAttribute="trailing" constant="10" id="URa-Af-cVD"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="0qC-RU-r9C" secondAttribute="trailing" constant="20" symbolic="YES" id="UhM-QN-T6e"/>
                                         <constraint firstItem="P0G-L7-D9G" firstAttribute="top" secondItem="HE9-EX-xDh" secondAttribute="top" id="Wyj-cC-OOq"/>
-                                        <constraint firstItem="BKC-4m-8Ay" firstAttribute="top" secondItem="FrF-DY-TbY" secondAttribute="bottom" constant="8" id="XrN-aS-jpd"/>
                                         <constraint firstAttribute="height" constant="125" id="YWc-to-D5o"/>
                                         <constraint firstItem="ADG-LJ-S5j" firstAttribute="top" secondItem="ecp-j2-XQb" secondAttribute="top" id="ZCS-HT-g1E"/>
+                                        <constraint firstItem="Z16-Yl-s3h" firstAttribute="leading" secondItem="qOh-Nh-Zsp" secondAttribute="leading" constant="25" id="aef-zK-JrL"/>
                                         <constraint firstItem="0qC-RU-r9C" firstAttribute="top" secondItem="qOh-Nh-Zsp" secondAttribute="top" constant="8" id="boh-7H-R41"/>
                                         <constraint firstItem="R0d-W6-bAt" firstAttribute="top" secondItem="HE9-EX-xDh" secondAttribute="bottom" id="brG-XX-N9J"/>
                                         <constraint firstAttribute="trailing" secondItem="uL9-Sb-hmT" secondAttribute="trailing" constant="15" id="dUD-DC-Cza"/>
@@ -889,6 +895,7 @@
                                         <constraint firstItem="mtR-cb-cmJ" firstAttribute="top" secondItem="2p3-yc-L21" secondAttribute="top" id="tt8-aB-AXV"/>
                                         <constraint firstItem="0qC-RU-r9C" firstAttribute="leading" secondItem="qOh-Nh-Zsp" secondAttribute="leading" constant="12" id="uSc-df-8f7"/>
                                         <constraint firstItem="xeA-9L-t04" firstAttribute="leading" secondItem="7XD-Zs-hBZ" secondAttribute="leading" id="ueh-Re-Hwe"/>
+                                        <constraint firstItem="Z16-Yl-s3h" firstAttribute="top" secondItem="FrF-DY-TbY" secondAttribute="bottom" constant="7" id="uwG-le-Xw3"/>
                                         <constraint firstItem="ecp-j2-XQb" firstAttribute="top" secondItem="mtR-cb-cmJ" secondAttribute="top" id="vLd-aq-2rD"/>
                                         <constraint firstItem="suO-4L-U75" firstAttribute="top" secondItem="ADG-LJ-S5j" secondAttribute="top" id="wuR-ik-96H"/>
                                         <constraint firstItem="jk2-MU-aH5" firstAttribute="top" secondItem="85J-h8-fjI" secondAttribute="top" id="zN9-kL-cHl"/>
