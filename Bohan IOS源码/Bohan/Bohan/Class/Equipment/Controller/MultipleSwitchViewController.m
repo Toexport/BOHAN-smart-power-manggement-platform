@@ -120,6 +120,8 @@
     [self.view startLoading];
     MyWeakSelf
     //不一样就显示，一样就隐藏
+    //问题是手动或者App内点击关闭按钮，定时界面不会显示设置在执行开启的提示，但是我手动或者App内点击开启设备，定时界面会显示设置正在执行关闭
+    //要求就是手动或者App内点击开启关闭，都不显示提示文字.只有点击定时开启或者关闭才显示，如果在定时中按到了开关，定时界面提示不再显示
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
         ZPLog(@"--------%@",response);

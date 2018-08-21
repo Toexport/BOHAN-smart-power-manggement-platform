@@ -23,6 +23,8 @@
 @property (nonatomic, strong) NSMutableArray * online; // 在线设备
 @property (nonatomic, strong) NSMutableArray * offline; // 不在线设备数组
 @property (nonatomic, strong) NSMutableArray * idArray; // 不在线设备数组
+@property (nonatomic, strong) NSMutableArray * lastArray; // 不在线设备数组
+@property (nonatomic, strong) NSString * sort;
 
 @property (nonatomic, strong) NSArray *status;
 @property (nonatomic, weak) NSTimer *timer;
@@ -195,6 +197,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+
     if (section == 0) {
         //   在线数据;
         return self.online.count;
@@ -206,6 +209,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
+        
         //        在线数据
         DeviceModel *model = self.online[indexPath.row];
         if([model.id hasPrefix:@"61"] || [model.id hasPrefix:@"62"] || [model.id hasPrefix:@"63"]) {
@@ -213,6 +217,15 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
             cell.delegate = self;
             cell.indexPath = indexPath;
             [cell setModel:model];
+            
+            if (!_lastArray) {
+                _sort = model.sort;
+                [self GetsTheLastWriteTime];
+            } else {
+                if (![_sort isEqualToString:model.sort]) {
+                    [self resetDevice];
+                }
+            }
             return cell;
         }else {
             DeviceDetailListCell * cell = (DeviceDetailListCell*)[tableView dequeueReusableCellWithIdentifier:deviceDetailCellIdentifier];
@@ -311,6 +324,8 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
             [weakSelf.table reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         }
     }];
+    
+    [self resetDevice];
 }
 
 - (void)didSwitchOpen:(BOOL)isOpen switchCode:(NSString *)code withIndexPath:(NSIndexPath *)indexPath {
@@ -338,6 +353,63 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
             [HintView showHint:error.localizedDescription];
             //            model.isOpen = !isOpen;
             [weakSelf.table reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+        }
+    }];
+    
+    [self resetDevice];
+}
+
+- (void)resetDevice {
+    DeviceModel *model = self.datas.firstObject;
+    if (model) {
+        WebSocket *socket = [WebSocket socketManager];
+        CommandModel *command = [[CommandModel alloc] init];
+        command.command = @"002C";
+        command.deviceNo = model.id;
+        NSMutableString *str = [NSMutableString string];
+        for (int i=0; i<_lastArray.count; i++) {
+            NSString *s = _lastArray[i];
+            [str appendFormat:@"%@FF",s];
+        }
+        command.content = str;
+        [self.view startLoading];
+        MyWeakSelf
+        [socket sendSingleDataWithModel:command resultBlock:^(id response, NSError *error) {
+            [weakSelf.view stopLoading];
+            if (!error) {
+            }else {
+                [HintView showHint:error.localizedDescription];// 后台返回的提示
+            }
+        }];
+    }
+}
+
+// 获取上次写入时间
+- (void)GetsTheLastWriteTime {
+    DeviceModel *model1 = self.datas.firstObject;
+    WebSocket *socket = [WebSocket socketManager];
+    CommandModel *model = [[CommandModel alloc] init];
+    model.command = @"002D";
+    model.deviceNo = model1.id;
+    [self.view startLoading];
+    _lastArray = [NSMutableArray array];
+    MyWeakSelf
+    //不一样就显示，一样就隐藏
+    //问题是手动或者App内点击关闭按钮，定时界面不会显示设置在执行开启的提示，但是我手动或者App内点击开启设备，定时界面会显示设置正在执行关闭
+    //要求就是手动或者App内点击开启关闭，都不显示提示文字.只有点击定时开启或者关闭才显示，如果在定时中按到了开关，定时界面提示不再显示
+    [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
+        [weakSelf.view stopLoading];
+        ZPLog(@"--------%@",response);
+        if (!error) {
+            
+            NSString * SituationStr = [response substringWithRange:NSMakeRange(24, 10)];
+            NSString * SituationStr2 = [response substringWithRange:NSMakeRange(36, 10)];
+            NSString * SituationStr3 = [response substringWithRange:NSMakeRange(48, 10)];
+            [_lastArray addObject:SituationStr];
+            [_lastArray addObject:SituationStr2];
+            [_lastArray addObject:SituationStr3];
+        }else {
+            [HintView showHint:error.localizedDescription];// 后台返回的提示
         }
     }];
 }
