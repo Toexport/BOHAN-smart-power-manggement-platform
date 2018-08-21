@@ -76,9 +76,10 @@
         UINavigationController *equipmentNav = [[UINavigationController alloc] initWithRootViewController:equipment];
         UINavigationController *managementNav = [[UINavigationController alloc] initWithRootViewController:management];
         UINavigationController *electricityNav = [[UINavigationController alloc] initWithRootViewController:electricity];
-        UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:center];
+//        UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:center];
+        UINavigationController *PrepaidNav = [[UINavigationController alloc] initWithRootViewController:center];
         UITabBarController *tabBar = [[UITabBarController alloc] init];
-        tabBar.viewControllers = @[equipmentNav, managementNav,electricityNav,centerNav];
+        tabBar.viewControllers = @[equipmentNav, managementNav,electricityNav,PrepaidNav];
         
         NSArray *titles = @[Localize(@"设备列表"), Localize(@"设备管理"),Localize(@"所有用电"),Localize(@"个人中心")];
         NSArray *selectedImages = @[@"mainpage_main", @"mainpage_bang", @"mainpage_data",@"mainpage_me"];

@@ -332,9 +332,9 @@
 "请选择设备名称" = "Please select the device namel";
 "请选择品牌" = "Please select the brand";
 "分享设备" = "Share the setting";
-"验证码发送成功，请留意手机号" = "Verification code sent successfully, please check on your mobile number";
+"验证码发送成功" = "Verification code sent successfully";
 "的短信消息" = "received message";
-"网络错误，发送验证码失败" = "Network failure, verification code sent error";
+"发送验证码失败" = "verification code sent error";
 "重设密码" = "reset the passwork";
 "用户名不能为空" = "Client name cannot be blank";
 "密码不能为空" = "passwork cannot be blank";

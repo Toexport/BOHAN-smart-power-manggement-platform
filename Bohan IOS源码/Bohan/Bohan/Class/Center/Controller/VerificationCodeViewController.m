@@ -54,7 +54,7 @@
         //请求成功
         if (!error) {
             
-            [HintView showHint:Localize(@"验证码发送成功，请留意手机号")];
+            [HintView showHint:Localize(@"验证码发送成功")];
             [sendBtn startTime];
             
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -80,7 +80,7 @@
 - (IBAction)nextAction {
     
     if (![Utils isMobileNumber:accountTF.text]) {
-        [HintView showHint:Localize(@"手机格式有误哦，请输入正确手机号")];
+        [HintView showHint:Localize(@"请输入正确手机号")];
     }else{
         
         ResetPwdViewController *reset = [[ResetPwdViewController alloc] init];
@@ -93,7 +93,7 @@
 - (IBAction)getCodeAction {
     
     if (![Utils isMobileNumber:accountTF.text]) {
-        [HintView showHint:Localize(@"手机格式有误哦，请输入正确手机号")];
+        [HintView showHint:Localize(@"请输入正确手机号")];
     }else{
         
         [self getData];

@@ -57,8 +57,6 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     lay.minimumInteritemSpacing = 1;
     lay.itemSize = CGSizeMake(ItemWidth, 120);
     [deviceInfoCollection setCollectionViewLayout:lay];
-    //    lay.sectionInset = UIEdgeInsetsMake(20, 10, 20, 10);
-    //    _collection = [[UICollectionView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - 65) collectionViewLayout:lay];
     [deviceInfoCollection registerNib:[UINib nibWithNibName:@"DeviceInfoCollectionCell" bundle:nil] forCellWithReuseIdentifier:reuseIdentifier];
     [deviceInfoCollection setBackgroundColor:kBackBackroundColor];
     [deviceInfoCollection mas_makeConstraints:^(MASConstraintMaker *make) {
@@ -108,7 +106,6 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
         if (!error) {
             
             if (((NSString *)response).length == 120) {
-                
                 NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 96, 92)];
                 
                 electrictyModel = [content substringFromIndex:content.length - 2];

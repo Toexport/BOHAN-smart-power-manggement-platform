@@ -104,8 +104,7 @@
     return _tableView;
 }
 
-- (UIButton *)footerBtn
-{
+- (UIButton *)footerBtn {
     if (!_footerBtn) {
         _footerBtn = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, ScreenWidth, 45)];
         [_footerBtn setBackgroundColor:[UIColor getColor:@"c0b9ca"]];
@@ -119,8 +118,7 @@
     return _footerBtn;
 }
 
--(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
     return self.data.count;
 }
 
@@ -243,14 +241,12 @@
         help.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:help animated:YES];
     }else
-        if (indexPath.row == 2)
-    {
+        if (indexPath.row == 2) {
         FeedbackViewController *feedback = [[FeedbackViewController alloc] init];
         feedback.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:feedback animated:YES];
     }else
         if (indexPath.row == 4) {
-        
         NSString * ph1 = @"lte";
         ph1 = [ph1 stringByAppendingString:self.detailTextLabel.text];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:ph1]];
@@ -271,7 +267,6 @@
         [actionSheetController addAction:chinessAction];
         [actionSheetController addAction:englishAction];
         [actionSheetController addAction:cancelAction];
-        
         [self presentViewController:actionSheetController animated:YES completion:nil];
     }
 }

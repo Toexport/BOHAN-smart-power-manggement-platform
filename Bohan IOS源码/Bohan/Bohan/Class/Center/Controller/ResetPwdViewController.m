@@ -23,16 +23,9 @@
     [super viewDidLoad];
     self.title = Localize(@"注册账号");
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChanged:) name:UITextFieldTextDidChangeNotification object:nil];
-    
     [okBtn disable];
-
-
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
 - (void)submit
