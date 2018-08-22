@@ -325,7 +325,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
         }
     }];
     
-    [self resetDevice];
+//    [self resetDevice];
 }
 
 - (void)didSwitchOpen:(BOOL)isOpen switchCode:(NSString *)code withIndexPath:(NSIndexPath *)indexPath {
@@ -347,16 +347,15 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
             }
             //            model.isOpen = isOpen;
             [weakSelf.table reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-            
+//            [self resetDevice];
         }else {
+            [self resetDevice];
             shouldNotUpdate = NO;
             [HintView showHint:error.localizedDescription];
             //            model.isOpen = !isOpen;
             [weakSelf.table reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
         }
     }];
-    
-    [self resetDevice];
 }
 
 - (void)resetDevice {
@@ -376,10 +375,10 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
         MyWeakSelf
         [socket sendSingleDataWithModel:command resultBlock:^(id response, NSError *error) {
             [weakSelf.view stopLoading];
-            if (!error) {
-            }else {
-                [HintView showHint:error.localizedDescription];// 后台返回的提示
-            }
+//            if (!error) {
+//            }else {
+//                [HintView showHint:error.localizedDescription];// 后台返回的提示
+//            }
         }];
     }
 }
@@ -408,8 +407,8 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
             [_lastArray addObject:SituationStr];
             [_lastArray addObject:SituationStr2];
             [_lastArray addObject:SituationStr3];
-        }else {
-            [HintView showHint:error.localizedDescription];// 后台返回的提示
+//        }else {
+//            [HintView showHint:error.localizedDescription];// 后台返回的提示
         }
     }];
 }
