@@ -239,8 +239,7 @@
             }else {
                 if (stringText3.integerValue > stringText33.integerValue) {
                     self.Title3But.hidden = YES;
-                }else {
-                    
+                }else { 
                 [self.Title3But setTitle:Localize(@"开关3正在执行定时开启") forState:UIControlStateNormal];
                 [self.Title3But setTitle:Localize(@"开关3正在执行定时关闭") forState:UIControlStateSelected];
                 }
