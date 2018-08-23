@@ -12,8 +12,10 @@
 #import "DebuggingANDPublishing.pch"
 @interface TimeSelectViewController ()
 {
-NSDateFormatter *formatter;
-
+    NSDateFormatter *formatter;
+    NSString * string1;
+    NSString * string11;
+    NSString * strin;
 }
 @end
 
@@ -25,8 +27,6 @@ self.title = Localize(@"时间选择");
 formatter = [[NSDateFormatter alloc] init];
 [formatter setDateFormat:@"HH:mm"];
 [self configView];
-
-
 }
 
 - (void)configView {
@@ -44,14 +44,13 @@ if (self.model) {
         UIButton *btn = [self.view viewWithTag:700+i];
         btn.selected = [value boolValue];
     }
-    
 }
 }
 
 
 - (IBAction)startTimeAction {
-
-WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowHourMinute scrollToDate:[formatter dateFromString:startTime.text] CompleteBlock:^(NSDate *selectDate) {
+//     获取当前时间
+WSDatePickerView * datepicker = [[WSDatePickerView alloc]initWithDateStyle:DateStyleShowHourMinute CompleteBlock:^(NSDate * selectDate) {
     [startTime setText:[formatter stringFromDate:selectDate]];
 
 }];
@@ -59,32 +58,26 @@ datepicker.hideBackgroundYearLabel = YES;
 datepicker.dateLabelColor = kDefualtColor;
 datepicker.doneButtonColor = kDefualtColor;
 [datepicker show];
-
 }
 
 - (IBAction)endTimeAction {
-WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowHourMinute scrollToDate:[formatter dateFromString:endTime.text] CompleteBlock:^(NSDate *selectDate) {
-    [endTime setText:[formatter stringFromDate:selectDate]];
-
-}];
+//     获取当前时间
+WSDatePickerView * datepicker = [[WSDatePickerView alloc]initWithDateStyle:DateStyleShowHourMinute CompleteBlock:^(NSDate * selectDate) {
+        [endTime setText:[formatter stringFromDate:selectDate]];
+        
+    }];
 datepicker.hideBackgroundYearLabel = YES;
 datepicker.dateLabelColor = kDefualtColor;
 datepicker.doneButtonColor = kDefualtColor;
 [datepicker show];
-
-
 }
 
 - (IBAction)checkAction:(UIButton *)sender {
-
 sender.selected = !sender.selected;
-
 }
 
 - (IBAction)resetAction {
-
 [self configView];
-
 }
 
 - (IBAction)cancelAction {

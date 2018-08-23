@@ -41,6 +41,8 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = Localize(@"设备信息");
+//    self.PayView.hidden = YES;
+//    self.StateViewLayoutConstraint.constant = - 80;
     [self initUI];
     
     
@@ -77,7 +79,8 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     if ([str containsString:@"61"] || [str containsString:@"62"] || [str containsString:@"63"]){
         datas = @[@{@"image" :@"ic_launch", @"name": Localize(@"实时参数")}, @{@"image" :@"ic_l", @"name": Localize(@"增值服务")}, @{@"image" :@"ic_laun", @"name": Localize(@"定时计量")}, @{@"image" :@"menu_summery", @"name": Localize(@"用电统计")}, @{@"image" :@"ic_launch1", @"name": Localize(@"延时/定时开关")}];
     }else {
-        datas = @[@{@"image" :@"ic_launch", @"name": Localize(@"实时参数")}, @{@"image" :@"ic_l", @"name": Localize(@"增值服务")}, @{@"image" :@"ic_laun", @"name": Localize(@"定时计量")}, @{@"image" :@"menu_summery", @"name": Localize(@"用电统计")}, @{@"image" :@"ic_launcher2", @"name": Localize(@"时段设置")}, @{@"image" :@"ic_launch1", @"name": Localize(@"延时/定时开关")}];
+        datas = @[@{@"image" :@"ic_launch", @"name": Localize(@"实时参数")}, @{@"image" :@"ic_l", @"name": Localize(@"增值服务")}, @{@"image" :@"ic_laun", @"name": Localize(@"定时计量")}, @{@"image" :@"menu_summery", @"name": Localize(@"用电统计")}, @{@"image" :@"ic_launcher2", @"name": Localize(@"时段设置")}, @{@"image" :@"ic_launch1", @"name": Localize(@"延时/定时开关")},
+            @{@"image" :@"ic_launch1", @"name": Localize(@"充值")}];
     }
 }
 

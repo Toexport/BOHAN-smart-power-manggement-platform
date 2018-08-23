@@ -88,6 +88,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *Title2But;
 @property (weak, nonatomic) IBOutlet UIButton *Title3But;
 
+@property (weak, nonatomic) IBOutlet UIButton *SettingBut;
 
 
 @end

@@ -12,6 +12,7 @@
 #import "ElectricityViewController.h"
 #import "CenterViewController.h"
 #import "LoginViewController.h"
+#import "PrepaidViewController.h"
 #import "IQKeyboardManager.h"
 #import "WebSocket.h"
 #import "DebuggingANDPublishing.pch"
@@ -50,8 +51,7 @@
 
 }
 
-- (void)initSocket
-{
+- (void)initSocket {
     WebSocket *socketConnect = [WebSocket socketManager];
     [socketConnect.serverSockt webSocketOpen];
 }
@@ -71,19 +71,24 @@
 //        [management.view setBackgroundColor:kBackBackroundColor];
         
         ElectricityViewController *electricity = [[ElectricityViewController alloc] init];
+        PrepaidViewController * Prepaid = [[PrepaidViewController alloc]init];
         //        [electricity.view setBackgroundColor:kBackBackroundColor];
         CenterViewController *center = [[CenterViewController alloc] init];
         UINavigationController *equipmentNav = [[UINavigationController alloc] initWithRootViewController:equipment];
-        UINavigationController *managementNav = [[UINavigationController alloc] initWithRootViewController:management];
-        UINavigationController *electricityNav = [[UINavigationController alloc] initWithRootViewController:electricity];
-//        UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:center];
-        UINavigationController *PrepaidNav = [[UINavigationController alloc] initWithRootViewController:center];
-        UITabBarController *tabBar = [[UITabBarController alloc] init];
-        tabBar.viewControllers = @[equipmentNav, managementNav,electricityNav,PrepaidNav];
         
-        NSArray *titles = @[Localize(@"设备列表"), Localize(@"设备管理"),Localize(@"所有用电"),Localize(@"个人中心")];
-        NSArray *selectedImages = @[@"mainpage_main", @"mainpage_bang", @"mainpage_data",@"mainpage_me"];
-        NSArray *images = @[@"mainpage_main_off", @"mainpage_bang_off", @"mainpage_data_off",@"mainpage_me_off"];
+        UINavigationController *managementNav = [[UINavigationController alloc] initWithRootViewController:management];
+        
+        UINavigationController *electricityNav = [[UINavigationController alloc] initWithRootViewController:electricity];
+        
+        UINavigationController *PrepaidNav = [[UINavigationController alloc] initWithRootViewController:Prepaid];
+        
+        UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:center];
+        UITabBarController *tabBar = [[UITabBarController alloc] init];
+        tabBar.viewControllers = @[equipmentNav, managementNav,electricityNav,PrepaidNav,centerNav];
+        
+        NSArray *titles = @[Localize(@"设备列表"), Localize(@"设备管理"),Localize(@"所有用电"),Localize(@"付费充电"),Localize(@"个人中心")];
+        NSArray *selectedImages = @[@"mainpage_main", @"mainpage_bang", @"mainpage_data",@"",@"mainpage_me"];
+        NSArray *images = @[@"mainpage_main_off", @"mainpage_bang_off", @"mainpage_data_off",@"",@"mainpage_me_off"];
         
         for (int i = 0; i<[tabBar.viewControllers count]; i++) {
             ((UINavigationController *)tabBar.viewControllers[i]).tabBarItem = [[UITabBarItem alloc] initWithTitle:titles[i] image:[[UIImage imageNamed:images[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[UIImage imageNamed:selectedImages[i]]];

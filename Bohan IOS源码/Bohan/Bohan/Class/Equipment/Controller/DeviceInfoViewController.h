@@ -10,7 +10,11 @@
 @class DeviceModel;
 @interface DeviceInfoViewController : BaseViewController
 
+
 @property (nonatomic, strong) DeviceModel *model;
 @property (nonatomic, assign) NSString * type; // ID
 @property (nonatomic, strong) NSString * sortt;
+
+@property (weak, nonatomic) IBOutlet UIView *PayView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *StateViewLayoutConstraint; // 状态
 @end

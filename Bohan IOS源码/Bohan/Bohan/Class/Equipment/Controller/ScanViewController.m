@@ -52,15 +52,12 @@
     
     [self setupCamera];
     
-    
 }
--(void)cancelClick
-{
+-(void)cancelClick {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
--(void)animation1
-{
+-(void)animation1 {
     if (upOrdown == NO) {
         num ++;
 //        _line.frame = CGRectMake(_line.frame.origin.x, imageView.frame.origin.y+10+2*num, 220, 2);
@@ -83,8 +80,7 @@
 //    [self setupCamera];
 //
 //}
-- (void)setupCamera
-{
+- (void)setupCamera {
     // Device
     _device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
     
@@ -103,13 +99,11 @@
     // Session
     _session = [[AVCaptureSession alloc]init];
     [_session setSessionPreset:AVCaptureSessionPresetHigh];
-    if ([_session canAddInput:self.input])
-    {
+    if ([_session canAddInput:self.input]) {
         [_session addInput:self.input];
     }
     
-    if ([_session canAddOutput:self.output])
-    {
+    if ([_session canAddOutput:self.output]) {
         [_session addOutput:self.output];
     }
     
@@ -122,8 +116,6 @@
     _preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
     _preview.frame =CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
     [self.view.layer insertSublayer:self.preview atIndex:0];
-    
-
     
     // Start
     [_session startRunning];

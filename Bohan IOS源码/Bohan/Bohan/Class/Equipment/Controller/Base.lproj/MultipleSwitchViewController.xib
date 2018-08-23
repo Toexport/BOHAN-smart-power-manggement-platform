@@ -34,6 +34,7 @@
                 <outlet property="Open1But" destination="GFj-tx-jqB" id="XEa-T0-ItZ"/>
                 <outlet property="Open2But" destination="JFy-o7-h5I" id="onz-oG-hGM"/>
                 <outlet property="Open3But" destination="gNM-6A-ttE" id="M4A-MZ-lw4"/>
+                <outlet property="SettingBut" destination="v8X-MQ-Fe9" id="Qft-vh-Q70"/>
                 <outlet property="Switch1view" destination="8YO-u6-RFB" id="7UA-p2-cDP"/>
                 <outlet property="Switch2view" destination="oEK-9O-TPd" id="Yci-qP-ZBi"/>
                 <outlet property="Switch3view" destination="qOh-Nh-Zsp" id="PBU-GB-4mz"/>
