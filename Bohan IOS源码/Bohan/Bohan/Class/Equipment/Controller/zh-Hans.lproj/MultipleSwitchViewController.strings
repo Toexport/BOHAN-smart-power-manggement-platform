@@ -56,8 +56,26 @@
 /* Class = "UILabel"; text = "时"; ObjectID = "VQB-pX-hEt"; */
 "VQB-pX-hEt.text" = "时";
 
+/* Class = "UIButton"; normalTitle = "开关3正在执行定时开启"; ObjectID = "Z16-Yl-s3h"; */
+"Z16-Yl-s3h.normalTitle" = "开关3正在执行定时开启";
+
+/* Class = "UIButton"; selectedTitle = "开关3正在执行定时关闭"; ObjectID = "Z16-Yl-s3h"; */
+"Z16-Yl-s3h.selectedTitle" = "开关3正在执行定时关闭";
+
+/* Class = "UIButton"; normalTitle = "开关1正在执行定时开启"; ObjectID = "aCL-qP-h2O"; */
+"aCL-qP-h2O.normalTitle" = "开关1正在执行定时开启";
+
+/* Class = "UIButton"; selectedTitle = "开关1正在执行定时关闭"; ObjectID = "aCL-qP-h2O"; */
+"aCL-qP-h2O.selectedTitle" = "开关1正在执行定时关闭";
+
 /* Class = "UILabel"; text = "当前开关状态"; ObjectID = "c21-L8-BAm"; */
 "c21-L8-BAm.text" = "当前开关状态";
+
+/* Class = "UIButton"; normalTitle = "开关2正在执行定时开启"; ObjectID = "ca9-hY-csO"; */
+"ca9-hY-csO.normalTitle" = "开关2正在执行定时开启";
+
+/* Class = "UIButton"; selectedTitle = "开关2正在执行定时关闭"; ObjectID = "ca9-hY-csO"; */
+"ca9-hY-csO.selectedTitle" = "开关2正在执行定时关闭";
 
 /* Class = "UILabel"; text = "日"; ObjectID = "e74-8H-aSh"; */
 "e74-8H-aSh.text" = "日";

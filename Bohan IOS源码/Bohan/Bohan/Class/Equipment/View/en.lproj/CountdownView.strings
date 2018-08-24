@@ -1,12 +1,12 @@
 
 /* Class = "UILabel"; text = "分"; ObjectID = "2Z7-Ju-CHC"; */
-"2Z7-Ju-CHC.text" = "MM";
+"2Z7-Ju-CHC.text" = "mm";
 
 /* Class = "UIButton"; normalTitle = "设置"; ObjectID = "5nk-mm-j9c"; */
 "5nk-mm-j9c.normalTitle" = "Start the";
 
 /* Class = "UILabel"; text = "月"; ObjectID = "6IK-qR-Lv6"; */
-"6IK-qR-Lv6.text" = "MM";
+"6IK-qR-Lv6.text" = "mm";
 
 /* Class = "UIButton"; normalTitle = "定时开关"; ObjectID = "GMD-0Q-WtD"; */
 "GMD-0Q-WtD.normalTitle" = "Time Switch";

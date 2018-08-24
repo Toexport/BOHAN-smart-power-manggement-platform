@@ -76,35 +76,49 @@
         [weakSelf.view stopLoading];
         ZPLog(@"%@",response);
         if ([self.Coedid isEqualToString:@"YC"] || [self.Coedid isEqualToString:@"YC10"] || [self.Coedid isEqualToString:@"YC16"] || [self.Coedid isEqualToString:@"YCGP10"] || [self.Coedid isEqualToString:@"YCGP16"] || [self.Coedid isEqualToString:@"QC"] || [self.Coedid isEqualToString:@"QC10"] || [self.Coedid isEqualToString:@"QC16"] || [self.Coedid isEqualToString:@"YC13"] || [self.Coedid isEqualToString:@"QC13"] || [self.Coedid isEqualToString:@"YC15"] || [self.Coedid isEqualToString:@"QC15"]) {
+            BackgroundView.hidden = YES;
             [ParentsModeBut setEnabled:YES];
             ParentsModeBut.alpha = 100;
             [ParentsModeSettingBut setEnabled:YES];
             ParentsModeSettingBut.alpha = 100;
         }else {
-            [ParentsModeBut setEnabled:NO];
-            ParentsModeBut.alpha = 0.4;
-            [ParentsModeSettingBut setEnabled:NO];
-            ParentsModeSettingBut.alpha = 0.4;
+            BackgroundView.hidden = YES;
+            ParentsModeSettingBut.hidden = YES;
+            ParentsModeBut.hidden = YES;
+//            [ParentsModeBut setEnabled:NO];
+//            ParentsModeBut.alpha = 0.4;
+//            [ParentsModeSettingBut setEnabled:NO];
+//            ParentsModeSettingBut.alpha = 0.4;
         }
         if ([self.Coedid isEqualToString:@"QK01"] || [self.Coedid isEqualToString:@"QK02"] || [self.Coedid isEqualToString:@"QK03"]) {
-            [ParentsModeBut setEnabled:NO];
-            ParentsModeBut.alpha = 0.4;
-            [ParentsModeSettingBut setEnabled:NO];
-            ParentsModeSettingBut.alpha = 0.4;
-            [ChargingProtectionBut setEnabled:NO];
-            ChargingProtectionBut.alpha = 0.4;
-            [PhoneChargingProtectionBut setEnabled:NO];
-            PhoneChargingProtectionBut.alpha = 0.4;
-            [DDCChargingProtectionBut setEnabled:NO];
-            DDCChargingProtectionBut.alpha = 0.4;
-            [ZNDDBut setEnabled:NO];
-            ZNDDBut.alpha = 0.4;
-            [SettingBut setEnabled:NO];
-            SettingBut.alpha = 0.4;
-            [timeBut setEnabled:NO];
-            timeBut.alpha = 0.4;
-            [PowerBut setEnabled:NO];
-            PowerBut.alpha = 0.4;
+            BackgroundView.hidden = NO;
+//            [ParentsModeBut setEnabled:NO];
+//            ParentsModeBut.alpha = 0.4;
+            
+//            [ParentsModeSettingBut setEnabled:NO];
+//            ParentsModeSettingBut.alpha = 0.4;
+            
+//            [ChargingProtectionBut setEnabled:NO];
+//            ChargingProtectionBut.alpha = 0.4;
+            
+//            [PhoneChargingProtectionBut setEnabled:NO];
+//            PhoneChargingProtectionBut.alpha = 0.4;
+            
+//            [DDCChargingProtectionBut setEnabled:NO];
+//            DDCChargingProtectionBut.alpha = 0.4;
+            
+//            [ZNDDBut setEnabled:NO];
+//            ZNDDBut.alpha = 0.4;
+
+//            [SettingBut setEnabled:NO];
+//            SettingBut.alpha = 0.4;
+
+//            [timeBut setEnabled:NO];
+//            timeBut.alpha = 0.4;
+
+//            [PowerBut setEnabled:NO];
+//            PowerBut.alpha = 0.4;
+
         }
         if (!error) {
             if ([self.Coedid isEqualToString:@"WFMT"] || [self.Coedid isEqualToString:@"YFMT"] || [self.Coedid isEqualToString:@"CDMT60"] || [self.Coedid isEqualToString:@"GP1P"] || [self.Coedid isEqualToString:@"MC"] || [self.Coedid isEqualToString:@"GP3P"] || [self.Coedid isEqualToString:@"YFGPMT"]) {
@@ -128,7 +142,6 @@
             [time setText:[NSString stringWithFormat:@"%d%@",[[TimeId substringToIndex:2] intValue],Localize(@"分钟")]];
             [power setText:[NSString stringWithFormat:@"%d%@",[[PowerId substringToIndex:2] intValue],Localize(@"W")]];
             ZPLog(@"%@",self.Coedid);
-            
             
             NSString *priceStr = [response substringWithRange:NSMakeRange(24, 4)];
             [price setText:[NSString stringWithFormat:@"%d.%02d",[[priceStr substringToIndex:2] intValue],[[priceStr substringFromIndex:2] intValue]]];
@@ -273,7 +286,7 @@
 - (IBAction)saveAction:(UIButton *)sender {
     if ([self.Coedid isEqualToString:@"YC"] || [self.Coedid isEqualToString:@"K"]
         || [self.Coedid isEqualToString:@"QC"] || [self.Coedid isEqualToString:@"QK01"] || [self.Coedid isEqualToString:@"QK02"] || [self.Coedid isEqualToString:@"QK03"] || [self.Coedid isEqualToString:@"CDMT10"] || [self.Coedid isEqualToString:@"QC10"] || [self.Coedid isEqualToString:@"YC10"] || [self.Coedid isEqualToString:@"YCGP10"]) {
-        if (limitTF.text == nil || limitTF.text.length <= 1) {
+        if (limitTF.text == nil || limitTF.text.length <= 0) {
             ZPLog(@"没有输入文字");
             [HintView showHint:Localize(@"请输入负荷门限")];
         }else {
@@ -285,7 +298,7 @@
         }
     }else
         if ([self.Coedid isEqualToString:@"CDMT60"] ) {
-            if (limitTF.text == nil || limitTF.text.length <= 1) {
+            if (limitTF.text == nil || limitTF.text.length <= 0) {
                 ZPLog(@"没有输入文字");
                 [HintView showHint:Localize(@"请输入负荷门限")];
             }else {
@@ -297,7 +310,7 @@
             }
         }else
             if ([self.Coedid isEqualToString:@"CDMT16"] || [self.Coedid isEqualToString:@"QC16"] || [self.Coedid isEqualToString:@"YC16"] || [self.Coedid isEqualToString:@"YCGP16"]) {
-                if (limitTF.text == nil || limitTF.text.length <= 1) {
+                if (limitTF.text == nil || limitTF.text.length <= 0) {
                     ZPLog(@"没有输入文字");
                     [HintView showHint:Localize(@"请输入负荷门限")];
                 }else {
@@ -309,7 +322,7 @@
                 }
             }else
                 if ([self.Coedid isEqualToString:@"YC13"] || [self.Coedid containsString:@"QC13"]) {
-                    if (limitTF.text == nil || limitTF.text.length <= 1) {
+                    if (limitTF.text == nil || limitTF.text.length <= 0) {
                         ZPLog(@"没有输入文字");
                         [HintView showHint:Localize(@"请输入负荷门限")];
                     }else {
@@ -322,7 +335,7 @@
                     }
                 }else
                     if ([self.Coedid isEqualToString:@"QC15"] || [self.Coedid isEqualToString:@"YC15"]) {
-                        if (limitTF.text == nil || limitTF.text.length <= 1) {
+                        if (limitTF.text == nil || limitTF.text.length <= 0) {
                             ZPLog(@"没有输入文字");
                             [HintView showHint:Localize(@"请输入负荷门限")];
                         }else {
@@ -334,7 +347,7 @@
                         }
                     }else
                         if ([self.Coedid isEqualToString:@"MC"]) {
-                            if (limitTF.text == nil || limitTF.text.length <= 1) {
+                            if (limitTF.text == nil || limitTF.text.length <= 0) {
                                 ZPLog(@"没有输入文字");
                                 [HintView showHint:Localize(@"请输入负荷门限")];
                             }else {
@@ -346,7 +359,7 @@
                             }
                         }else
                             if ([self.Coedid isEqualToString:@"GP3P"]) {
-                                if (limitTF.text == nil || limitTF.text.length <= 1) {
+                                if (limitTF.text == nil || limitTF.text.length <= 0) {
                                     ZPLog(@"没有输入文字");
                                     [HintView showHint:Localize(@"请输入负荷门限")];
                                 }else {
@@ -358,7 +371,7 @@
                                 }
                             }else
                                 if ([self.Coedid isEqualToString:@"YFMT"] || [self.Coedid isEqualToString:@"GP1P"] || [self.Coedid isEqualToString:@"WFMT"] || [self.Coedid isEqualToString:@"YFGPMT"] || [self.Coedid isEqualToString:@"MC"]) {
-                                    if (limitTF.text == nil || limitTF.text.length <= 1) {
+                                    if (limitTF.text == nil || limitTF.text.length <= 0) {
                                         ZPLog(@"没有输入文字");
                                         [HintView showHint:Localize(@"请输入负荷门限")];
                                     }else {
@@ -378,7 +391,7 @@
     model.deviceNo = self.dNo;
     NSArray *contents;
     NSString *content;
-    if (price.text.length == 0) {
+    if (priceTF.text.length == 0) {
         [HintView showHint:Localize(@"请输入单价")];
         return;
     }
@@ -410,10 +423,10 @@
     model.deviceNo = self.dNo;
     NSArray *contents;
     NSString *content;
-    if (power.text.length == 0) {
-        [HintView showHint:Localize(@"请输入负荷门限")];
-        return;
-    }
+//    if (power.text.length == 0) {
+//        [HintView showHint:Localize(@"请输入负荷门限")];
+//        return;
+//    }
     if ([self.Coedid isEqualToString:@"WFMT"] || [self.Coedid isEqualToString:@"YFMT"] || [self.Coedid isEqualToString:@"CDMT60"] || [self.Coedid isEqualToString:@"GP1P"] || [self.Coedid isEqualToString:@"MC"] || [self.Coedid isEqualToString:@"GP3P"] || [self.Coedid isEqualToString:@"YFGPMT"]) {
         model.command = @"0020";
         contents = [limitTF.text componentsSeparatedByString:@"."];
@@ -558,7 +571,7 @@
                     isParentModel = YES;
                     isValidate = YES;
                     NSString * stringgggg = [week substringWithRange:NSMakeRange(0, 2)];
-                    if ([stringgggg isEqualToString:@"01"]) {
+                    if ([stringgggg containsString:@"01"]) {
                         model.open = NO;
                         ParentsModeBut.selected = NO;
                     }else{
@@ -625,7 +638,7 @@
         if (!error) {
             [self caculateWithString:[[_content substringToIndex:_content.length-2] stringByAppendingString:@"04"]];
             selectedIndexPath = nil;
-            [HintView showHint:@"取消成功"];
+            [HintView showHint: Localize(@"取消成功")];
         }else {
             [HintView showHint:error.localizedDescription];
         }

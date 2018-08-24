@@ -19,7 +19,8 @@ static NSString * const fishModel = @"000001007F020003007F040005007F060007007F08
 static NSString * const lightModel = @"000006007F220023597F000000007F000000007F000000007F000000007F000000007F000000007F000000007F03";
 static NSString * const mosquitoModel = @"200023597F000006007F000000007F000000007F000000007F000000007F000000007F000000007F000000007F03";
 static NSString * const apparatusModel = @"180023597F000006007F000000007F000000007F000000007F000000007F000000007F000000007F000000007F03";
-//static NSString * const parentModel = @"17002000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF037";
+
+//static NSString * const parentModel = @"17002000820000000000000000000000000000000000000000000000000000000000000000000000000000000003";
 
 #import "TimeSettingViewController.h"
 #import "TimeSettingListViewController.h"
@@ -100,8 +101,7 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
                 
             }
             
-        }else
-        {
+        }else {
             [HintView showHint:Localize(@"加载数据失败")];
             [weakSelf.navigationController popViewControllerAnimated:YES];
         }
@@ -111,8 +111,7 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
     
 }
 
-- (void)loopOpenCloseTime
-{
+- (void)loopOpenCloseTime {
     
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
@@ -135,10 +134,8 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
                 
                 NSMutableString *closeTime = [NSMutableString stringWithString:[content substringFromIndex:4]];
                 [closeTime insertString:@":" atIndex:2];
-
                 [openBtn setTitle:openTime forState:UIControlStateNormal];
                 [closeBtn setTitle:closeTime forState:UIControlStateNormal];
-                
             }
             
         }else {
@@ -148,8 +145,7 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
     
 }
 
-- (void)openLoopModel
-{
+- (void)openLoopModel {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0027";
@@ -163,10 +159,10 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
         [weakSelf.view stopLoading];
         
         if (!error) {
-            
             [HintView showHint:Localize(@"已开启循环通断模式")];
             
-            [self configRunModelWithModelStr:@"00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF0005" isLoop:YES];
+//            [self configRunModelWithModelStr:@"00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF0005" isLoop:YES];
+            [self configRunModelWithModelStr:@"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005" isLoop:YES];
 
         }else
         {
@@ -196,8 +192,8 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
             
             if (!error) {
                 isParentModel = NO;
-                [self caculateWithString:@"00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF0004"];
-                
+//                [self caculateWithString:@"00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF0004"];
+                [self caculateWithString:@"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004"];
                 selectedIndexPath = nil;
                 
                 UIButton *customHeader = [modelCollectionView viewWithTag:200];
@@ -232,12 +228,9 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
 }
 
 
-- (void)configRunModelWithModelStr:(NSString *)modelStr isLoop:(BOOL)isLoop
-{
+- (void)configRunModelWithModelStr:(NSString *)modelStr isLoop:(BOOL)isLoop {
     //        [status setText:@"设备正在执行时段运行模式，请点击查看(长按查看默认时段)"];
-    
     if (isLoop) {
-        
         selectedIndexPath = nil;
         settingBtn.hidden = YES;
         [status setText:Localize(@"设备正在执行循环通断模式")];
@@ -245,8 +238,7 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
             make.top.equalTo(status.mas_bottom).offset(30);
         }];
 
-    }else
-    {
+    }else {
         settingBtn.hidden = NO;
         
         [loopView mas_remakeConstraints:^(MASConstraintMaker *make) {
@@ -406,8 +398,22 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
 }
 
 - (IBAction)openAction {
-    
+    if ([openBtn.titleLabel.text isEqualToString:@"00:00"]) {
+        [HintView showHint:Localize(@"开始时间不能小于00:00")];
+        return;
+    }else
+        if ([closeBtn.titleLabel.text isEqualToString:@"00:00"]) {
+             [HintView showHint:Localize(@"结束时间不能小于00:00")];
+            return;
+        }
     [self openLoopModel];
+//    if (![[formatter dateFromString:closeBtn.titleLabel.text] isLaterThanDate:[formatter dateFromString:openBtn.titleLabel.text]] &&
+//        !([[formatter dateFromString:closeBtn.titleLabel.text] isLaterThanDate:[formatter dateFromString:@"11:59"]]&&
+//          [openBtn.titleLabel.text isEqualToString:@"00:01"])) {
+//            [HintView showHint:Localize(@"结束时间必须大于开始时间")];
+//            return;
+//        }
+    
 }
 
 - (IBAction)cancelAction {
@@ -419,7 +425,8 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
             [openBtn setTitle:@"00:00" forState:UIControlStateNormal];
             [closeBtn setTitle:@"00:00" forState:UIControlStateNormal];
             
-            [self caculateWithString:@"00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF0004"];
+//            [self caculateWithString:@"00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF0004"];
+            [self caculateWithString:@"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004"];
             
         }else
         {
@@ -466,7 +473,8 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
         [CommonOperation cancelDeviceRunModel:self.deviceNo result:^(id response, NSError *error) {
             if (!error) {
                 
-                [self caculateWithString:@"00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF0004"];
+//                [self caculateWithString:@"00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF0004"];
+                [self caculateWithString:@"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000004"];
                 
                 [HintView showHint:Localize(@"取消成功")];
                 

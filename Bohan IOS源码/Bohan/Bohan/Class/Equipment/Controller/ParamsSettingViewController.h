@@ -20,6 +20,9 @@
     __weak IBOutlet UILabel *time;
     __weak IBOutlet UILabel *power;
     
+    __weak IBOutlet UIView *DividerView; // 分割线
+    __weak IBOutlet UIView *BackgroundView; //背景View
+    
 //     新增
     __weak IBOutlet UIButton *ParentsModeBut; // 家长模式
     __weak IBOutlet UIButton *ParentsModeSettingBut; //家长模式设置

@@ -41,8 +41,8 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = Localize(@"设备信息");
-//    self.PayView.hidden = YES;
-//    self.StateViewLayoutConstraint.constant = - 80;
+    self.PayView.hidden = YES;
+    self.StateViewLayoutConstraint.constant = - 80;
     [self initUI];
     
     

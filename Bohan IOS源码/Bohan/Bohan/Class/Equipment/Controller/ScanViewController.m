@@ -53,6 +53,7 @@
     [self setupCamera];
     
 }
+// 取消
 -(void)cancelClick {
     [self dismissViewControllerAnimated:YES completion:nil];
 }

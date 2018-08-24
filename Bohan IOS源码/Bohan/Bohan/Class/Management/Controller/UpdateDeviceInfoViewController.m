@@ -180,7 +180,6 @@
 }
 
 - (void)loadBrandList {
-    
     [[NetworkRequest sharedInstance] requestWithUrl:GET_BRAND_LIST_URL parameter:nil completion:^(id response, NSError *error) {
         //        dispatch_group_leave(group);
         loadtBrand = YES;

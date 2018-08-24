@@ -184,6 +184,9 @@
 		0DCA8A6A9BE1B6D5485DB16A /* Pods-Bohan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bohan.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bohan/Pods-Bohan.release.xcconfig"; sourceTree = "<group>"; };
 		C405171C212157F900A829A1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/WSDatePickerView.strings"; sourceTree = "<group>"; };
 		C405AE4420E7465B00ED77E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ShareView.xib; sourceTree = "<group>"; };
+		C40CDEBD212FE4B3001B9BC0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MultipleSwitchViewController.strings"; sourceTree = "<group>"; };
+		C40CDEBF212FE4CA001B9BC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MultipleSwitchViewController.strings; sourceTree = "<group>"; };
+		C40CDEC321300BB0001B9BC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ParamsSettingViewController.strings; sourceTree = "<group>"; };
 		C410507220FED0B9009A46F4 /* MultipleSwitchViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultipleSwitchViewController.h; sourceTree = "<group>"; };
 		C410507320FED0B9009A46F4 /* MultipleSwitchViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MultipleSwitchViewController.m; sourceTree = "<group>"; };
 		C410507820FF1B1F009A46F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MultipleSwitchViewController.xib; sourceTree = "<group>"; };
@@ -203,10 +206,7 @@
 		C47B4AB220F5DF9F00DAD5D3 /* UIButton+countDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+countDown.h"; sourceTree = "<group>"; };
 		C47B4AB320F5DF9F00DAD5D3 /* CALayer+UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+UIColor.m"; sourceTree = "<group>"; };
 		C47B4AB420F5DF9F00DAD5D3 /* UIViewController+LLProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LLProgress.m"; sourceTree = "<group>"; };
-		C48B05DB2122FD00008C5B90 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MultipleSwitchViewController.strings"; sourceTree = "<group>"; };
-		C48B05DD2122FD26008C5B90 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MultipleSwitchViewController.strings; sourceTree = "<group>"; };
 		C4A044972113F5C300656EC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ParamsSettingViewController.xib; sourceTree = "<group>"; };
-		C4A0449A2113F5C600656EC2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ParamsSettingViewController.strings; sourceTree = "<group>"; };
 		C4A0449C2113F5C700656EC2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ParamsSettingViewController.strings"; sourceTree = "<group>"; };
 		C4BBC63B211E702A009B0854 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CountDownViewController.strings"; sourceTree = "<group>"; };
 		C4BBC63D211E7040009B0854 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CountDownViewController.strings; sourceTree = "<group>"; };
@@ -1740,8 +1740,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				C410507820FF1B1F009A46F4 /* Base */,
-				C48B05DB2122FD00008C5B90 /* zh-Hans */,
-				C48B05DD2122FD26008C5B90 /* en */,
+				C40CDEBD212FE4B3001B9BC0 /* zh-Hans */,
+				C40CDEBF212FE4CA001B9BC0 /* en */,
 			);
 			name = MultipleSwitchViewController.xib;
 			sourceTree = "<group>";
@@ -1750,8 +1750,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				C4A044972113F5C300656EC2 /* Base */,
-				C4A0449A2113F5C600656EC2 /* en */,
 				C4A0449C2113F5C700656EC2 /* zh-Hans */,
+				C40CDEC321300BB0001B9BC0 /* en */,
 			);
 			name = ParamsSettingViewController.xib;
 			sourceTree = "<group>";
@@ -1996,7 +1996,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2047,7 +2047,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

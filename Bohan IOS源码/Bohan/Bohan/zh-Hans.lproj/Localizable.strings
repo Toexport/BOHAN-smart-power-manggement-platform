@@ -40,6 +40,28 @@
 "Have to Share" = "已分享";
 "Switch1HistorySettingTime" = "开关1历史设置时间";
 "Switch2HistorySettingTime" = "开关2历史设置时间";
+"Switch 3 is being executed to open periodically" = "开关3正在执行定时开启";
+"Switch 2 is being executed to open periodically" = "开关2正在执行定时开启";
+"Switch 1 is being executed to open periodically" = "开关1正在执行定时开启";
+"Switch 3 is executing timed shutdown" = "开关3正在执行定时关闭";
+"Switch 2 is executing timed shutdown" = "开关2正在执行定时关闭";
+"Switch 1 is executing timed shutdown" = "开关1正在执行定时关闭";
+"Please select time to turn on or off the device" = "请选择定时开启或定时关闭设备";
+"The setting time cannot be less than the current time" = "设置时间不能小于当前时间";
+"Please enter the load threshold" = "请输入负荷门限";
+"The load threshold must not be greater than 2500" = "负荷门限不能大于2500";
+"The load threshold must not be greater than 15000" = "负荷门限不能大于15000";
+"The load threshold must not be greater than 4000" = "负荷门限不能大于4000";
+"The load threshold must not be greater than 3000" = "负荷门限不能大于3000";
+"The load threshold must not be greater than 3300" = "负荷门限不能大于3300";
+"The load threshold must not be greater than 23000" = "负荷门限不能大于23000";
+"The load threshold must not be greater than 45000" = "负荷门限不能大于45000";
+"The load threshold must not be greater than 25000" = "负荷门限不能大于25000";
+"Save success" = "保存成功";
+"The start time cannot be less than 00:00" = "开始时间不能小于00:00";
+"The end time cannot be less than 00:00" = "结束时间不能小于00:00";
+
+
 //"" = "";
 //"设备管理" = "设备管理";
 //"所有用电" = "所有用电";

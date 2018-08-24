@@ -144,18 +144,24 @@
             NSString * stringText1 = [NSString stringWithFormat:@"%@%@%@%@%@",self.string1,self.string2,self.string3,self.string4,self.string5]; //获取系统时间
             NSString * stringSystem = [response substringWithRange:NSMakeRange(48, 10)]; // 获取当前定时时间
             NSString * stringText11 = [NSString stringWithFormat:@"20%@",stringSystem];
-            if (stringText1.integerValue > stringText11.integerValue && stringText1.integerValue == stringText11.integerValue) {
+            if (stringText1.integerValue > stringText11.integerValue || stringText1.integerValue == stringText11.integerValue) {
+//             if (stringText1.integerValue >= stringText11.integerValue) {
                 self.Title1But.hidden = YES;
-            }else {
-                self.Title1But.hidden = NO;
             }
+//            else {
+//                self.Title1But.hidden = NO;
+//            }
             ZPLog(@"%@",StateID);
             if (![SituationStr isEqualToString:@"FF"]) {
                 if (self.TurnOnSwitch1.selected == SituationStr.boolValue) {
                     self.Title1But.hidden = YES;
+//                    self.Title3But.hidden = YES;
+//                    self.Title2But.hidden = YES;
                 }
             } else {
                 self.Title1But.hidden = YES;
+//                self.Title2But.hidden = YES;
+//                self.Title3But.hidden = YES;
             }
 //             开关2
             NSString * string2 = [str substringWithRange:NSMakeRange(36, 10)];
@@ -175,7 +181,8 @@
             NSString * stringText22 = [NSString stringWithFormat:@"20%@",stringSystem2];
             
             if ([strID isEqualToString:@"61"]) {
-                if (stringText2.integerValue > stringText22.integerValue && stringText2.integerValue == stringText22.integerValue) {
+                if (stringText2.integerValue > stringText22.integerValue || stringText2.integerValue == stringText22.integerValue) {
+//                if (stringText2.integerValue >= stringText22.integerValue) {
                     self.Title2But.hidden = YES;
                 }else {
                     [self.Title2But setTitle:Localize(@"开关1正在执行定时开启") forState:UIControlStateNormal];
@@ -183,25 +190,36 @@
                 }
                 if (![SituationStr2 isEqualToString:@"FF"]) {
                     if (self.TurnOnSwitch2.selected == SituationStr2.boolValue) {
+//                        self.Title1But.hidden = YES;
                         self.Title2But.hidden = YES;
+//                        self.Title3But.hidden = YES;
                     }
                 } else {
+//                    self.Title1But.hidden = YES;
                     self.Title2But.hidden = YES;
+//                    self.Title3But.hidden = YES;
                 }
             }else {
-                if (stringText2.integerValue > stringText22.integerValue && stringText2.integerValue == stringText22.integerValue) {
+                if (stringText2.integerValue > stringText22.integerValue || stringText2.integerValue == stringText22.integerValue) {
+//                 if (stringText2.integerValue >= stringText22.integerValue) {
                     self.Title2But.hidden = YES;
-                }else {
-                    self.Title2But.hidden = NO;
                 }
+//                else {
+//                    self.Title2But.hidden = NO;
+//                }
                 if (![SituationStr2 isEqualToString:@"FF"]) {
                     if (self.TurnOnSwitch2.selected == SituationStr2.boolValue) {
+//                        self.Title1But.hidden = YES;
                         self.Title2But.hidden = YES;
+//                        self.Title3But.hidden = YES;
                     }
                 } else {
+//                    self.Title1But.hidden = YES;
                     self.Title2But.hidden = YES;
+//                    self.Title3But.hidden = YES;
                 }
             }
+            
 //            开关3
             NSString * string3 = [str substringWithRange:NSMakeRange(48, 10)];
             NSString * Years3 = [string3 substringWithRange:NSMakeRange(0, 2)];
@@ -220,7 +238,8 @@
             NSString * stringSystem3 = [response substringWithRange:NSMakeRange(24, 10)]; // 获取当前定时时间
             NSString * stringText33 = [NSString stringWithFormat:@"20%@",stringSystem3];
             if ([strID isEqualToString:@"62"]) {
-                if (stringText3.integerValue > stringText33.integerValue && stringText3.integerValue == stringText33.integerValue) {
+                if (stringText3.integerValue > stringText33.integerValue || stringText3.integerValue == stringText33.integerValue) {
+//                 if (stringText3.integerValue >= stringText33.integerValue) {
                      self.Title3But.hidden = YES;
                 }else {
                     [self.Title3But setTitle:Localize(@"开关2正在执行定时开启") forState:UIControlStateNormal];
@@ -235,18 +254,22 @@
                 }
                 
             }else {
-                if (stringText3.integerValue > stringText33.integerValue && stringText3.integerValue == stringText33.integerValue) {
+                if (stringText3.integerValue > stringText33.integerValue || stringText3.integerValue == stringText33.integerValue) {
+//                 if (stringText3.integerValue >= stringText33.integerValue) {
                     self.Title3But.hidden = YES;
                 }else {
                     [self.Title3But setTitle:Localize(@"开关3正在执行定时开启") forState:UIControlStateNormal];
                     [self.Title3But setTitle:Localize(@"开关3正在执行定时关闭") forState:UIControlStateSelected];
                 }
-                
                 if (![SituationStr3 isEqualToString:@"FF"]) {
                     if (self.TurnOnSwitch3.selected == SituationStr3.boolValue) {
+//                        self.Title1But.hidden = YES;
+//                        self.Title2But.hidden = YES;
                         self.Title3But.hidden = YES;
                     }
                 } else {
+//                    self.Title1But.hidden = YES;
+//                    self.Title2But.hidden = YES;
                     self.Title3But.hidden = YES;
                 }
             }
@@ -677,6 +700,5 @@
     datepicker.doneButtonColor = kDefualtColor;
     [datepicker show];
 }
-
 
 @end
