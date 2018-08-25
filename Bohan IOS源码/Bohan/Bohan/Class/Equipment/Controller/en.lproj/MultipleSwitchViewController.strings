@@ -87,7 +87,7 @@
 "gNM-6A-ttE.normalTitle" = "Open";
 
 /* Class = "UILabel"; text = "月"; ObjectID = "iRU-3m-kgR"; */
-"iRU-3m-kgR.text" = "M";
+"iRU-3m-kgR.text" = "m";
 
 /* Class = "UIButton"; normalTitle = "关"; ObjectID = "j8r-Lk-DKl"; */
 "j8r-Lk-DKl.normalTitle" = "ShutDown";
@@ -96,7 +96,7 @@
 "jse-rL-dUp.text" = "Switch state";
 
 /* Class = "UILabel"; text = "日"; ObjectID = "mmn-1X-sL0"; */
-"mmn-1X-sL0.text" = "D";
+"mmn-1X-sL0.text" = "d";
 
 /* Class = "UILabel"; text = "时"; ObjectID = "oUs-jH-LQu"; */
 "oUs-jH-LQu.text" = "H";

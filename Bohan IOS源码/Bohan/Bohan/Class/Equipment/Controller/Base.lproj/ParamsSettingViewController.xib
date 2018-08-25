@@ -543,7 +543,7 @@
                         <action selector="powerEditAction" destination="-1" eventType="touchUpInside" id="kN7-HI-nbm"/>
                     </connections>
                 </button>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rU-CL-POL">
+                <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8rU-CL-POL">
                     <rect key="frame" x="0.0" y="301" width="375" height="366"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>

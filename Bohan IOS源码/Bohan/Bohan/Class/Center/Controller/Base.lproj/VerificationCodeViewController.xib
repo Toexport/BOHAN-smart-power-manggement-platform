@@ -52,7 +52,7 @@
                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入你的注册手机号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cUr-iK-pGj">
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cUr-iK-pGj">
                             <rect key="frame" x="81" y="0.0" width="273.66666666666669" height="45"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="lzd-FL-Tcn"/>

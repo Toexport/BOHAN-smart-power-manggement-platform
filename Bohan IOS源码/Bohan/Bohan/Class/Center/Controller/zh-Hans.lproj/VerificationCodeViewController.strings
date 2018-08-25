@@ -12,7 +12,7 @@
 "afm-Qu-1GR.text" = "用户名";
 
 /* Class = "UITextField"; placeholder = "请输入你的注册手机号"; ObjectID = "cUr-iK-pGj"; */
-"cUr-iK-pGj.placeholder" = "请输入你的注册手机号";
+"cUr-iK-pGj.placeholder" = "请输入手机号";
 
 /* Class = "UITextField"; placeholder = "验证码"; ObjectID = "sRD-Se-4dY"; */
 "sRD-Se-4dY.placeholder" = "验证码";

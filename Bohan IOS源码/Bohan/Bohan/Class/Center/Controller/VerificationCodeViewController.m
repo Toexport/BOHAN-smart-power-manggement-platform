@@ -25,7 +25,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.title = self.isRegist?Localize(@"注册账号"):Localize(@"忘记密码");
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChanged:) name:UITextFieldTextDidChangeNotification object:nil];
 
@@ -33,96 +32,101 @@
     
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-
-- (void)getData
-{
+- (void)getData {
+    NSUserDefaults *df = [NSUserDefaults standardUserDefaults];
+    NSString *language = [df objectForKey:@"App_Language_Switch_Key"];
+    NSString *localeLanguageCode = [NSLocale preferredLanguages][0];
+    localeLanguageCode = [[localeLanguageCode componentsSeparatedByString:@"-"] firstObject];
     [self.view.window startLoading];
-    
     NSDictionary *dic = @{@"mobileNum":accountTF.text, @"flag":(self.isRegist?@"0":@"1")};
-    MyWeakSelf
-    
-    [[NetworkRequest sharedInstance] requestWithUrl:GET_REGISTER_CODE_URL parameter:dic completion:^(id response, NSError *error) {
-        
-        MyStrongSelf
-        [strongSelf.view.window stopLoading];
-        
-        //请求成功
-        if (!error) {
-            
-            [HintView showHint:Localize(@"验证码发送成功")];
-            [sendBtn startTime];
-            
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                
-                [codeTF becomeFirstResponder];
-            });
-            
-        }else
-        {
-            DBLog(@"%@",error);
-            [HintView showHint:error.localizedDescription];
-        }
-        
-    }];
-    
+    if ((language && [language isEqualToString:@"zh-Hans"]) || (!language && [localeLanguageCode isEqualToString:@"zh"])) {
+        MyWeakSelf
+        [[NetworkRequest sharedInstance] requestWithUrl:GET_REGISTER_CODE_URL parameter:dic completion:^(id response, NSError *error) {
+            MyStrongSelf
+            [strongSelf.view.window stopLoading];
+            //请求成功
+            if (!error) {
+                [HintView showHint:Localize(@"验证码发送成功")];
+                [sendBtn startTime];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [codeTF becomeFirstResponder];
+                });
+            }else {
+                DBLog(@"%@",error);
+                [HintView showHint:error.localizedDescription];
+            }
+        }];
+    }else {
+        ZPLog(@"英文");
+    }
 }
-
-
-
 
 #pragma mark - action
-
 - (IBAction)nextAction {
-    
-    if (![Utils isMobileNumber:accountTF.text]) {
-        [HintView showHint:Localize(@"请输入正确手机号")];
-    }else{
+    NSUserDefaults *df = [NSUserDefaults standardUserDefaults];
+    NSString *language = [df objectForKey:@"App_Language_Switch_Key"];
+    NSString *localeLanguageCode = [NSLocale preferredLanguages][0];
+    localeLanguageCode = [[localeLanguageCode componentsSeparatedByString:@"-"] firstObject];
+    if ((language && [language isEqualToString:@"zh-Hans"]) || (!language && [localeLanguageCode isEqualToString:@"zh"])) {
         
-        ResetPwdViewController *reset = [[ResetPwdViewController alloc] init];
-        reset.isRegist = self.isRegist;
-        reset.username = accountTF.text;
-        reset.code = codeTF.text;
-        [self.navigationController pushViewController:reset animated:YES];
+        if (![Utils isMobileNumber:accountTF.text]) {
+            [HintView showHint:Localize(@"请输入正确手机号")];
+        }else{
+            ResetPwdViewController *reset = [[ResetPwdViewController alloc] init];
+            reset.isRegist = self.isRegist;
+            reset.username = accountTF.text;
+            reset.code = codeTF.text;
+            [self.navigationController pushViewController:reset animated:YES];
+        }
+    }else {
+        if (![Utils validateEmail:accountTF.text]) {
+            [HintView showHint:Localize(@"请输入正确的邮箱")];
+        }else{
+            ResetPwdViewController *reset = [[ResetPwdViewController alloc] init];
+            reset.isRegist = self.isRegist;
+            reset.username = accountTF.text;
+            reset.code = codeTF.text;
+            [self.navigationController pushViewController:reset animated:YES];
+        }
+        ZPLog(@"英文");
     }
 }
+
+
 - (IBAction)getCodeAction {
     
-    if (![Utils isMobileNumber:accountTF.text]) {
-        [HintView showHint:Localize(@"请输入正确手机号")];
-    }else{
-        
-        [self getData];
+    NSUserDefaults *df = [NSUserDefaults standardUserDefaults];
+    NSString *language = [df objectForKey:@"App_Language_Switch_Key"];
+    NSString *localeLanguageCode = [NSLocale preferredLanguages][0];
+    localeLanguageCode = [[localeLanguageCode componentsSeparatedByString:@"-"] firstObject];
+    if ((language && [language isEqualToString:@"zh-Hans"]) || (!language && [localeLanguageCode isEqualToString:@"zh"])) {
+        if (![Utils isMobileNumber:accountTF.text]) {
+            [HintView showHint:Localize(@"请输入正确手机号")];
+        }else {
+            [self getData];
+        }
+    }else {
+        if (![Utils validateEmail:accountTF.text]) {
+            [HintView showHint:Localize(@"请输入正确的邮箱")];
+            ZPLog(@"请输入正确的邮箱");
+        }else {
+           [self getData];
+        }
     }
+    
 }
 
 
 #pragma mark - UITextFildDelegate
 
-- (void)textDidChanged:(NSNotification *)notify
-{
+- (void)textDidChanged:(NSNotification *)notify {
     
-    if (accountTF.text.length > 0 && codeTF.text.length > 0)
-    {
+    if (accountTF.text.length > 0 && codeTF.text.length > 0) {
         [nextBtn enable];
     }else{
         [nextBtn disable];
     }
-    
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

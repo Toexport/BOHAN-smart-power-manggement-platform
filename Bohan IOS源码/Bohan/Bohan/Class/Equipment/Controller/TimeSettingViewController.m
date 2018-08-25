@@ -405,7 +405,11 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
         if ([closeBtn.titleLabel.text isEqualToString:@"00:00"]) {
              [HintView showHint:Localize(@"结束时间不能小于00:00")];
             return;
-        }
+        }else
+            if (openBtn.titleLabel.text == closeBtn.titleLabel.text) {
+                ZPLog(@"111");
+                return;
+            }
     [self openLoopModel];
 //    if (![[formatter dateFromString:closeBtn.titleLabel.text] isLaterThanDate:[formatter dateFromString:openBtn.titleLabel.text]] &&
 //        !([[formatter dateFromString:closeBtn.titleLabel.text] isLaterThanDate:[formatter dateFromString:@"11:59"]]&&

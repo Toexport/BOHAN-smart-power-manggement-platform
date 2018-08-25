@@ -9,10 +9,10 @@
 "JLQ-dT-zi1.normalTitle" = "Next";
 
 /* Class = "UILabel"; text = "用户名"; ObjectID = "afm-Qu-1GR"; */
-"afm-Qu-1GR.text" = "Name";
+"afm-Qu-1GR.text" = "Email";
 
 /* Class = "UITextField"; placeholder = "请输入你的注册手机号"; ObjectID = "cUr-iK-pGj"; */
-"cUr-iK-pGj.placeholder" = "Please enter your registered mobile phone number";
+"cUr-iK-pGj.placeholder" = "Please enter email address";
 
 /* Class = "UITextField"; placeholder = "验证码"; ObjectID = "sRD-Se-4dY"; */
 "sRD-Se-4dY.placeholder" = "Verification Code";
