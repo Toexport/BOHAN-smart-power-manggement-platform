@@ -49,12 +49,13 @@
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
-        //        ZPLog(@"--------%@",response);
+        ZPLog(@"--------%@",response);
         if (!error) {
             NSString * str = response;
             NSString * String = [str substringWithRange:NSMakeRange(24, 2)];
             StateID = String;
-            //            NSString * StrBase = [Utils getBinaryByHex:String];
+            NSString * StrBase = [Utils getBinaryByHex:String];
+            ZPLog(@"%@",StrBase);
             if ([String containsString:@"80"]) {
                 self.TurnOnSwitch1.selected = NO;
                 self.TurnOnSwitch2.selected = NO;

@@ -1,9 +1,9 @@
 
 /* Class = "UILabel"; text = "验证码"; ObjectID = "1lv-7I-Csx"; */
-"1lv-7I-Csx.text" = "Verification code";
+"1lv-7I-Csx.text" = "Code";
 
 /* Class = "UIButton"; normalTitle = "获取验证码"; ObjectID = "50s-fl-pXy"; */
-"50s-fl-pXy.normalTitle" = "Get verification code";
+"50s-fl-pXy.normalTitle" = "Get Code";
 
 /* Class = "UIButton"; normalTitle = "下一步"; ObjectID = "JLQ-dT-zi1"; */
 "JLQ-dT-zi1.normalTitle" = "Next";
@@ -15,4 +15,4 @@
 "cUr-iK-pGj.placeholder" = "Please enter email address";
 
 /* Class = "UITextField"; placeholder = "验证码"; ObjectID = "sRD-Se-4dY"; */
-"sRD-Se-4dY.placeholder" = "Verification Code";
+"sRD-Se-4dY.placeholder" = "Code ID";

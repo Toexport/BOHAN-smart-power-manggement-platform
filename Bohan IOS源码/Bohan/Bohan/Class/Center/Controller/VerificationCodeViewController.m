@@ -23,6 +23,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+     accountTF.clearButtonMode = UITextFieldViewModeWhileEditing;  // 一键删除文字
+    codeTF.clearButtonMode = UITextFieldViewModeWhileEditing;  // 一键删除文字
     self.title = self.isRegist?Localize(@"注册账号"):Localize(@"忘记密码");
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChanged:) name:UITextFieldTextDidChangeNotification object:nil];
     [nextBtn disable];

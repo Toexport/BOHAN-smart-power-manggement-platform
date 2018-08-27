@@ -22,6 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = Localize(@"注册账号");
+    pwdTF.keyboardType = UIKeyboardTypeASCIICapable;
+    pwdTF.clearButtonMode = UITextFieldViewModeWhileEditing;  // 一键删除文字
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChanged:) name:UITextFieldTextDidChangeNotification object:nil];
     [okBtn disable];
 }

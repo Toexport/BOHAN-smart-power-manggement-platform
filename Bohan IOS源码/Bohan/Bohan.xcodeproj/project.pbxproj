@@ -12,6 +12,7 @@
 		C408370F2133A4F50057C6E0 /* UIButton+countDown.m in Sources */ = {isa = PBXBuildFile; fileRef = C40837092133A4F50057C6E0 /* UIButton+countDown.m */; };
 		C40837102133A4F50057C6E0 /* CALayer+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C408370D2133A4F50057C6E0 /* CALayer+UIColor.m */; };
 		C40837112133A4F50057C6E0 /* UIViewController+LLProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = C408370E2133A4F50057C6E0 /* UIViewController+LLProgress.m */; };
+		C40837122133F0580057C6E0 /* ResetPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40837142133F0580057C6E0 /* ResetPwdViewController.xib */; };
 		C410507520FED0B9009A46F4 /* MultipleSwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C410507320FED0B9009A46F4 /* MultipleSwitchViewController.m */; };
 		C410507720FF1B1F009A46F4 /* MultipleSwitchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C410507920FF1B1F009A46F4 /* MultipleSwitchViewController.xib */; };
 		C42AE0BF212E35EC006A6F84 /* PrepaidViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C42AE0BD212E35EC006A6F84 /* PrepaidViewController.m */; };
@@ -90,7 +91,6 @@
 		CC2456871FF745DB00616916 /* CenterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC24563C1FF745DB00616916 /* CenterViewController.m */; };
 		CC2456881FF745DB00616916 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC24563E1FF745DB00616916 /* LoginViewController.m */; };
 		CC24568A1FF745DB00616916 /* ResetPwdViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2456411FF745DB00616916 /* ResetPwdViewController.m */; };
-		CC24568B1FF745DB00616916 /* ResetPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CC2456421FF745DB00616916 /* ResetPwdViewController.xib */; };
 		CC24568C1FF745DB00616916 /* VerificationCodeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2456441FF745DB00616916 /* VerificationCodeViewController.m */; };
 		CC24568E1FF745DB00616916 /* ElectricityViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC24564B1FF745DB00616916 /* ElectricityViewController.m */; };
 		CC24568F1FF745DB00616916 /* EquipmentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC2456511FF745DB00616916 /* EquipmentViewController.m */; };
@@ -193,6 +193,9 @@
 		C408370C2133A4F50057C6E0 /* UIButton+countDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+countDown.h"; sourceTree = "<group>"; };
 		C408370D2133A4F50057C6E0 /* CALayer+UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+UIColor.m"; sourceTree = "<group>"; };
 		C408370E2133A4F50057C6E0 /* UIViewController+LLProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LLProgress.m"; sourceTree = "<group>"; };
+		C40837132133F0580057C6E0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ResetPwdViewController.xib; sourceTree = "<group>"; };
+		C40837162133F05A0057C6E0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ResetPwdViewController.strings; sourceTree = "<group>"; };
+		C40837182133F05B0057C6E0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ResetPwdViewController.strings"; sourceTree = "<group>"; };
 		C40CDEBD212FE4B3001B9BC0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MultipleSwitchViewController.strings"; sourceTree = "<group>"; };
 		C40CDEBF212FE4CA001B9BC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MultipleSwitchViewController.strings; sourceTree = "<group>"; };
 		C40CDEC321300BB0001B9BC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ParamsSettingViewController.strings; sourceTree = "<group>"; };
@@ -358,7 +361,6 @@
 		CC24563E1FF745DB00616916 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		CC2456401FF745DB00616916 /* ResetPwdViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResetPwdViewController.h; sourceTree = "<group>"; };
 		CC2456411FF745DB00616916 /* ResetPwdViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResetPwdViewController.m; sourceTree = "<group>"; };
-		CC2456421FF745DB00616916 /* ResetPwdViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ResetPwdViewController.xib; sourceTree = "<group>"; };
 		CC2456431FF745DB00616916 /* VerificationCodeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VerificationCodeViewController.h; sourceTree = "<group>"; };
 		CC2456441FF745DB00616916 /* VerificationCodeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VerificationCodeViewController.m; sourceTree = "<group>"; };
 		CC24564A1FF745DB00616916 /* ElectricityViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ElectricityViewController.h; sourceTree = "<group>"; };
@@ -1062,7 +1064,7 @@
 				CC80904D204700A300265FE0 /* LoginViewController.xib */,
 				CC2456401FF745DB00616916 /* ResetPwdViewController.h */,
 				CC2456411FF745DB00616916 /* ResetPwdViewController.m */,
-				CC2456421FF745DB00616916 /* ResetPwdViewController.xib */,
+				C40837142133F0580057C6E0 /* ResetPwdViewController.xib */,
 				CC2456431FF745DB00616916 /* VerificationCodeViewController.h */,
 				CC2456441FF745DB00616916 /* VerificationCodeViewController.m */,
 				C4F1A24920E5D9EC00052B24 /* VerificationCodeViewController.xib */,
@@ -1549,7 +1551,7 @@
 				CC2455B11FF7450700616916 /* Main.storyboard in Resources */,
 				C405AE4320E7465B00ED77E4 /* ShareView.xib in Resources */,
 				C47B4A9D20F5CCC100DAD5D3 /* LanguageController.xib in Resources */,
-				CC24568B1FF745DB00616916 /* ResetPwdViewController.xib in Resources */,
+				C40837122133F0580057C6E0 /* ResetPwdViewController.xib in Resources */,
 				CC2456AB1FF94D7300616916 /* DeviceTableViewCell.xib in Resources */,
 				CC1EFF31204BF061002811CB /* WifiView.xib in Resources */,
 				C410507720FF1B1F009A46F4 /* MultipleSwitchViewController.xib in Resources */,
@@ -1760,6 +1762,16 @@
 				C418584D21016992002285F4 /* zh-Hans */,
 			);
 			name = ShareView.xib;
+			sourceTree = "<group>";
+		};
+		C40837142133F0580057C6E0 /* ResetPwdViewController.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C40837132133F0580057C6E0 /* Base */,
+				C40837162133F05A0057C6E0 /* en */,
+				C40837182133F05B0057C6E0 /* zh-Hans */,
+			);
+			name = ResetPwdViewController.xib;
 			sourceTree = "<group>";
 		};
 		C410507920FF1B1F009A46F4 /* MultipleSwitchViewController.xib */ = {
@@ -2022,7 +2034,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -2073,7 +2085,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
@@ -2091,7 +2103,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AS4DPL2SAW;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2153,7 +2165,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = AS4DPL2SAW;
+				DEVELOPMENT_TEAM = "";
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",

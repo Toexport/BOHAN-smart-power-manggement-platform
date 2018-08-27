@@ -53,7 +53,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cUr-iK-pGj">
-                            <rect key="frame" x="81" y="0.0" width="273.66666666666669" height="45"/>
+                            <rect key="frame" x="86" y="0.0" width="268.66666666666669" height="45"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="45" id="lzd-FL-Tcn"/>
                             </constraints>
@@ -70,7 +70,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="验证码" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sRD-Se-4dY">
-                            <rect key="frame" x="80.999999999999986" y="44" width="143.66666666666663" height="45"/>
+                            <rect key="frame" x="85.999999999999986" y="44" width="138.66666666666663" height="45"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             <connections>
@@ -111,7 +111,7 @@
                         <constraint firstItem="DkO-qG-x1c" firstAttribute="bottom" secondItem="cUr-iK-pGj" secondAttribute="bottom" id="5gs-P9-4Oh"/>
                         <constraint firstItem="sRD-Se-4dY" firstAttribute="top" secondItem="DkO-qG-x1c" secondAttribute="top" id="FUe-yL-2xd"/>
                         <constraint firstItem="50s-fl-pXy" firstAttribute="centerY" secondItem="sRD-Se-4dY" secondAttribute="centerY" id="J83-Fh-XWw"/>
-                        <constraint firstItem="cUr-iK-pGj" firstAttribute="leading" secondItem="afm-Qu-1GR" secondAttribute="trailing" constant="15" id="K5k-kf-0TW"/>
+                        <constraint firstItem="cUr-iK-pGj" firstAttribute="leading" secondItem="afm-Qu-1GR" secondAttribute="trailing" constant="20" id="K5k-kf-0TW"/>
                         <constraint firstAttribute="trailing" secondItem="50s-fl-pXy" secondAttribute="trailing" constant="15" id="NCb-bX-je9"/>
                         <constraint firstAttribute="trailing" secondItem="cUr-iK-pGj" secondAttribute="trailing" constant="20" id="OJK-6l-SoK"/>
                         <constraint firstItem="Ave-lN-RWD" firstAttribute="leading" secondItem="DkO-qG-x1c" secondAttribute="leading" id="PUJ-Ue-SBi"/>

@@ -35,7 +35,11 @@
     {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-
+    accountTF.keyboardType = UIKeyboardTypeASCIICapable;
+    accountTF.clearButtonMode = UITextFieldViewModeWhileEditing;  // 一键删除文字
+    passwordTF.keyboardType = UIKeyboardTypeASCIICapable;
+    passwordTF.clearButtonMode = UITextFieldViewModeWhileEditing;  // 一键删除文字
+    
     accountTF.leftViewSpacing = 8;
     accountTF.textSpacing = 8;
     accountTF.editSpacing = 8;
@@ -67,14 +71,11 @@
     moreInfoBtn.titleLabel.attributedText = attr;
 //    [moreInfoBtn.titleLabel setFont:Font(15)];
     moreInfoBtn.titleLabel.numberOfLines = 2;
-
-
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
-
 }
 
 #pragma mark - action
@@ -113,6 +114,7 @@
     sender.selected = !sender.selected;
 
 }
+
 - (IBAction)forgotPwdAction {
     VerificationCodeViewController *code = [[VerificationCodeViewController alloc] init];
     

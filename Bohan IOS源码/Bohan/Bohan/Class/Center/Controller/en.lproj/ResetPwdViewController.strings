@@ -1,0 +1,9 @@
+
+/* Class = "UILabel"; text = "设置密码"; ObjectID = "Jqx-57-lqh"; */
+"Jqx-57-lqh.text" = "Set password";
+
+/* Class = "UITextField"; placeholder = "请输入英文或数字(6到12位)"; ObjectID = "M87-TW-zVu"; */
+"M87-TW-zVu.placeholder" = "Please enter 6-12 password";
+
+/* Class = "UIButton"; normalTitle = "确认"; ObjectID = "qdB-T0-itG"; */
+"qdB-T0-itG.normalTitle" = "OK";
