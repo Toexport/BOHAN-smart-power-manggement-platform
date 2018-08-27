@@ -68,9 +68,7 @@
 }
 
 - (void)loadData {
-    
     TablePageModel *model = dataArray[currentIndex];
-    
     if (model.isload == NO) {
         [model.currentTable startLoading];
     }
@@ -93,7 +91,6 @@
             model.currentTable.noDataTitle = error.localizedDescription;
             model.currentTable.noDataDetail = Localize(@"请稍后再试吧！");
         }
-        
         [self.pageCollection setDatas:dataArray];
         [model.currentTable changeState];
         [model.currentTable noDataReload];
@@ -101,7 +98,6 @@
 }
 
 - (void)languageChange {
-    
     self.title = Localize(@"设备列表");
     [_sliderView setDatas:@[Localize(@"名称"), Localize(@"位置")]];
     [self.pageCollection reloadData];

@@ -26,16 +26,12 @@
     [okBtn disable];
 }
 
-
-
-- (void)submit
-{
+- (void)submit {
     
     [self.view.window startLoading];
     
     NSDictionary *parameter = @{@"userName":self.username, @"password":pwdTF.text, @"checkCode":self.code, @"flag":(self.isRegist?@"0":@"1")};
     [[NetworkRequest sharedInstance] requestWithUrl:REGISTER_URL parameter:parameter completion:^(id response, NSError *error) {
-        
         
         [self.view.window stopLoading];
         
@@ -44,8 +40,7 @@
             [HintView showHint:self.isRegist?Localize(@"注册成功"):Localize(@"重置密码成功")];
             [self.navigationController popToRootViewControllerAnimated:YES];
             
-        }else
-        {
+        }else {
             [HintView showHint:error.localizedDescription];
         }
     }];
@@ -61,16 +56,10 @@
     {
         [HintView showHint:Localize(@"请输入英文或数字(6到12位)")];
     }
-    
 }
 
-
-
-
 #pragma mark - UITextFildDelegate
-
-- (void)textDidChanged:(NSNotification *)notify
-{
+- (void)textDidChanged:(NSNotification *)notify {
     
     if (pwdTF.text.length >0)
     {
@@ -78,17 +67,6 @@
     }else{
         [okBtn disable];
     }
-    
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

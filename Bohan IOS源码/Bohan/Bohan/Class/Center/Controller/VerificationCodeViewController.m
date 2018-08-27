@@ -11,12 +11,10 @@
 #import "CountDownButton.h"
 #import "UIButton+Disable.h"
 #import "DebuggingANDPublishing.pch"
-@interface VerificationCodeViewController ()<UITextFieldDelegate>
-{
+@interface VerificationCodeViewController ()<UITextFieldDelegate> {
     __weak IBOutlet UITextField *accountTF;
     __weak IBOutlet UITextField *codeTF;
     __weak IBOutlet CountDownButton *sendBtn;
-    
     __weak IBOutlet UIButton *nextBtn;
 }
 @end
@@ -27,9 +25,7 @@
     [super viewDidLoad];
     self.title = self.isRegist?Localize(@"注册账号"):Localize(@"忘记密码");
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(textDidChanged:) name:UITextFieldTextDidChangeNotification object:nil];
-
     [nextBtn disable];
-    
 }
 
 
@@ -39,8 +35,8 @@
     NSString *localeLanguageCode = [NSLocale preferredLanguages][0];
     localeLanguageCode = [[localeLanguageCode componentsSeparatedByString:@"-"] firstObject];
     [self.view.window startLoading];
-    NSDictionary *dic = @{@"mobileNum":accountTF.text, @"flag":(self.isRegist?@"0":@"1")};
     if ((language && [language isEqualToString:@"zh-Hans"]) || (!language && [localeLanguageCode isEqualToString:@"zh"])) {
+        NSDictionary *dic = @{@"mobileNum":accountTF.text, @"flag":(self.isRegist?@"0":@"1")};
         MyWeakSelf
         [[NetworkRequest sharedInstance] requestWithUrl:GET_REGISTER_CODE_URL parameter:dic completion:^(id response, NSError *error) {
             MyStrongSelf
@@ -58,7 +54,24 @@
             }
         }];
     }else {
+        NSDictionary *dic = @{@"reciver":accountTF.text, @"flag":(self.isRegist?@"0":@"1")};
         ZPLog(@"英文");
+        MyWeakSelf
+        [[NetworkRequest sharedInstance] requestWithUrl:GET_REGISTER_CODE_BY_MAIL_URL parameter:dic completion:^(id response, NSError *error) {
+            MyStrongSelf
+            [strongSelf.view.window stopLoading];
+            //请求成功
+            if (!error) {
+                [HintView showHint:Localize(@"验证码发送成功")];
+                [sendBtn startTime];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [codeTF becomeFirstResponder];
+                });
+            }else {
+                ZPLog(@"%@",error);
+                [HintView showHint:error.localizedDescription];
+            }
+        }];
     }
 }
 
@@ -95,7 +108,6 @@
 
 
 - (IBAction)getCodeAction {
-    
     NSUserDefaults *df = [NSUserDefaults standardUserDefaults];
     NSString *language = [df objectForKey:@"App_Language_Switch_Key"];
     NSString *localeLanguageCode = [NSLocale preferredLanguages][0];

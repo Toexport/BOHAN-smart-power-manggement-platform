@@ -71,51 +71,49 @@
 
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.navigationController setNavigationBarHidden:YES animated:YES];
 
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-
-
 #pragma mark - action
 
 - (IBAction)loginAction {
-    
-//    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ISLOGIN"];
-    
-    if ([Utils isMobileNumber:accountTF.text]) {
-        
-        if ([Utils vertifyThePassword:passwordTF.text]) {
-            
-            [self loginRequest];
-            
-        }else
-        {
-            [HintView showHint:Localize(@"请输入英文或数字(6到12位)")];
+    //    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ISLOGIN"];
+    if ([accountTF.text rangeOfString:@"@"].location !=NSNotFound) {
+        ZPLog(@"包含");
+        if ([Utils validateEmail:accountTF.text]) {
+            if ([Utils vertifyThePassword:passwordTF.text]) {
+                [self loginRequest];
+            }else {
+                [HintView showHint:Localize(@"请输入英文或数字(6到12位)")];
+            }
+        }else {
+            [HintView showHint:Localize(@"请输入正确邮箱地址")];
         }
-    }else
-    {
-        [HintView showHint:Localize(@"手机格式有误哦，请输入正确手机号")];
+        
+    }else {
+        ZPLog(@"不包含");
+        if ([Utils isMobileNumber:accountTF.text]) {
+            if ([Utils vertifyThePassword:passwordTF.text]) {
+                [self loginRequest];
+            }else {
+                [HintView showHint:Localize(@"请输入英文或数字(6到12位)")];
+            }
+        }else {
+            [HintView showHint:Localize(@"请输入正确手机号")];
+        }
     }
-
-    
 }
+
+
 - (IBAction)showAction:(UIButton *)sender {
-    
     passwordTF.secureTextEntry = sender.selected;
     sender.selected = !sender.selected;
 
 }
 - (IBAction)forgotPwdAction {
-    
     VerificationCodeViewController *code = [[VerificationCodeViewController alloc] init];
     
     [self.navigationController pushViewController:code animated:YES];
@@ -123,6 +121,7 @@
     
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
 }
+
 - (IBAction)registAction {
     
     VerificationCodeViewController *code = [[VerificationCodeViewController alloc] init];
@@ -144,9 +143,7 @@
 
 
 #pragma mark - Request
-
-- (void)loginRequest
-{
+- (void)loginRequest {
     [self.view.window startLoading];
     NSDictionary *dic = @{@"userName":accountTF.text, @"password":passwordTF.text};
     [[NetworkRequest sharedInstance] requestWithUrl:LOGIN_URL parameter:dic completion:^(id response, NSError *error) {
@@ -154,7 +151,6 @@
         [self.view.window stopLoading];
         //请求成功
         if (!error) {
-            
             [[WebSocket socketManager].serverSockt webSocketClose];
             [[WebSocket socketManager].serverSockt webSocketOpen];
             [UserInfoManager saveToken:response[@"content"]];
@@ -163,31 +159,17 @@
             [UserInfoManager updateLoginState:YES];
             [(AppDelegate *)[[UIApplication sharedApplication] delegate] createTabBar];
 
-        }else
-        {
+        }else {
             [HintView showHint:error.localizedDescription];
         }
         
     }];
-    
 }
 
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self.view endEditing:YES];
     [self loginRequest];
     return YES;
 }
-
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 @end

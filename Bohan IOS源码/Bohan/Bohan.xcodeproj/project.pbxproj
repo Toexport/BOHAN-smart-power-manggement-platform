@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		05472D5687BB542915B46B7D /* Pods_Bohan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B7C34C415E2EAE93F66FEA /* Pods_Bohan.framework */; };
 		C405AE4320E7465B00ED77E4 /* ShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C405AE4520E7465B00ED77E4 /* ShareView.xib */; };
+		C408370F2133A4F50057C6E0 /* UIButton+countDown.m in Sources */ = {isa = PBXBuildFile; fileRef = C40837092133A4F50057C6E0 /* UIButton+countDown.m */; };
+		C40837102133A4F50057C6E0 /* CALayer+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C408370D2133A4F50057C6E0 /* CALayer+UIColor.m */; };
+		C40837112133A4F50057C6E0 /* UIViewController+LLProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = C408370E2133A4F50057C6E0 /* UIViewController+LLProgress.m */; };
 		C410507520FED0B9009A46F4 /* MultipleSwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C410507320FED0B9009A46F4 /* MultipleSwitchViewController.m */; };
 		C410507720FF1B1F009A46F4 /* MultipleSwitchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C410507920FF1B1F009A46F4 /* MultipleSwitchViewController.xib */; };
 		C42AE0BF212E35EC006A6F84 /* PrepaidViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C42AE0BD212E35EC006A6F84 /* PrepaidViewController.m */; };
@@ -184,6 +187,12 @@
 		0DCA8A6A9BE1B6D5485DB16A /* Pods-Bohan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bohan.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bohan/Pods-Bohan.release.xcconfig"; sourceTree = "<group>"; };
 		C405171C212157F900A829A1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/WSDatePickerView.strings"; sourceTree = "<group>"; };
 		C405AE4420E7465B00ED77E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ShareView.xib; sourceTree = "<group>"; };
+		C40837092133A4F50057C6E0 /* UIButton+countDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+countDown.m"; sourceTree = "<group>"; };
+		C408370A2133A4F50057C6E0 /* CALayer+UIColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+UIColor.h"; sourceTree = "<group>"; };
+		C408370B2133A4F50057C6E0 /* UIViewController+LLProgress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+LLProgress.h"; sourceTree = "<group>"; };
+		C408370C2133A4F50057C6E0 /* UIButton+countDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+countDown.h"; sourceTree = "<group>"; };
+		C408370D2133A4F50057C6E0 /* CALayer+UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+UIColor.m"; sourceTree = "<group>"; };
+		C408370E2133A4F50057C6E0 /* UIViewController+LLProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LLProgress.m"; sourceTree = "<group>"; };
 		C40CDEBD212FE4B3001B9BC0 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MultipleSwitchViewController.strings"; sourceTree = "<group>"; };
 		C40CDEBF212FE4CA001B9BC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MultipleSwitchViewController.strings; sourceTree = "<group>"; };
 		C40CDEC321300BB0001B9BC0 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ParamsSettingViewController.strings; sourceTree = "<group>"; };
@@ -552,6 +561,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C40837082133A4F50057C6E0 /* ZP_registrationTimerBut */ = {
+			isa = PBXGroup;
+			children = (
+				C40837092133A4F50057C6E0 /* UIButton+countDown.m */,
+				C408370A2133A4F50057C6E0 /* CALayer+UIColor.h */,
+				C408370B2133A4F50057C6E0 /* UIViewController+LLProgress.h */,
+				C408370C2133A4F50057C6E0 /* UIButton+countDown.h */,
+				C408370D2133A4F50057C6E0 /* CALayer+UIColor.m */,
+				C408370E2133A4F50057C6E0 /* UIViewController+LLProgress.m */,
+			);
+			path = ZP_registrationTimerBut;
+			sourceTree = "<group>";
+		};
 		C42AE0B8212E3512006A6F84 /*  Prepaid */ = {
 			isa = PBXGroup;
 			children = (
@@ -700,6 +722,7 @@
 		CC2455C51FF745DB00616916 /* Macro */ = {
 			isa = PBXGroup;
 			children = (
+				C40837082133A4F50057C6E0 /* ZP_registrationTimerBut */,
 				CC2455C61FF745DB00616916 /* AdapationMacro.h */,
 				CC2455C71FF745DB00616916 /* ColorMacro.h */,
 				CC2455C81FF745DB00616916 /* FontMacro.h */,
@@ -1606,6 +1629,7 @@
 				CC1FD94C1FFEC76C006DF1DD /* SoapManager.m in Sources */,
 				CC2456681FF745DB00616916 /* NSString+Reverse.m in Sources */,
 				CC2456731FF745DB00616916 /* UITextView+HTML.m in Sources */,
+				C40837112133A4F50057C6E0 /* UIViewController+LLProgress.m in Sources */,
 				CC24568F1FF745DB00616916 /* EquipmentViewController.m in Sources */,
 				CC0F483D200D41F400E184F8 /* RealTimeParamViewController.m in Sources */,
 				CCE9E5A0200644FD008439F3 /* ESP_WifiUtil.m in Sources */,
@@ -1643,7 +1667,9 @@
 				CC3C6004202219F600C479C9 /* test.swift in Sources */,
 				CC2456691FF745DB00616916 /* NSTimer+Action.m in Sources */,
 				CC8154D9201B846200F72BFF /* StatisticsViewController.m in Sources */,
+				C40837102133A4F50057C6E0 /* CALayer+UIColor.m in Sources */,
 				CC5567032025E34100A8589B /* NSDate+Extension.m in Sources */,
+				C408370F2133A4F50057C6E0 /* UIButton+countDown.m in Sources */,
 				C410507520FED0B9009A46F4 /* MultipleSwitchViewController.m in Sources */,
 				CC24567B1FF745DB00616916 /* EdgetTextField.m in Sources */,
 				CCCBF39020191C1C00A80D90 /* TimeModelCollectionViewCell.m in Sources */,

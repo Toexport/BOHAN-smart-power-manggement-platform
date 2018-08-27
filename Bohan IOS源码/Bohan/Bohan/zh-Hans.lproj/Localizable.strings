@@ -58,6 +58,7 @@
 "The load threshold must not be greater than 45000" = "负荷门限不能大于45000";
 "The load threshold must not be greater than 25000" = "负荷门限不能大于25000";
 "Save success" = "保存成功";
+"Reload" = "重新加载";
 "The start time cannot be less than 00:00" = "开始时间不能小于00:00";
 "The end time cannot be less than 00:00" = "结束时间不能小于00:00";
 

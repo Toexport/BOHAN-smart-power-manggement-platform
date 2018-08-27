@@ -232,9 +232,7 @@
 //        NSString *localeLanguageCode = [[NSLocale currentLocale] objectForKey:NSLocaleLanguageCode];
         NSString *localeLanguageCode = [NSLocale preferredLanguages][0];
         localeLanguageCode = [[localeLanguageCode componentsSeparatedByString:@"-"] firstObject];
-
         NSString *urlStr = @"http://www.bohanserver.top:8088/APPHelp_en.html";
-
         if ((language && [language isEqualToString:@"zh-Hans"]) || (!language && [localeLanguageCode isEqualToString:@"zh"])) {
             urlStr = @"http://www.bohanserver.top:8088/APPHelp.html";        }
         WebViewController *help = [[WebViewController alloc] initWithTitle:Localize(@"操作指南") urlStr:urlStr];
@@ -256,7 +254,7 @@
 //                LanguageController * Laguage = [[LanguageController alloc]init];
 //                [self.navigationController pushViewController:Laguage animated:YES];
         UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:Localize(@"语言选择") message:nil preferredStyle:UIAlertControllerStyleAlert];
-        
+
         UIAlertAction *chinessAction = [UIAlertAction actionWithTitle:Localize(@"中文") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [NSBundle setCusLanguage:@"zh-Hans"];
         }];
