@@ -78,11 +78,9 @@
         [model.currentTable stopLoading];
         model.isload = YES;
         model.currentTable.noDatadelegate = self;
-
         ZPLog(@"%@",response);
         if (!error) {
             model.datas = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
-            
             if (model.datas.count == 0) {
                 model.currentTable.noDataTitle = Localize(@"暂无数据");
                 model.currentTable.noDataDetail = Localize(@"过会再来吧");
@@ -101,11 +99,9 @@
     self.title = Localize(@"设备列表");
     [_sliderView setDatas:@[Localize(@"名称"), Localize(@"位置")]];
     [self.pageCollection reloadData];
-
 }
 
 - (SliderView *)sliderView {
-
     if (!_sliderView) {
         _sliderView = [[SliderView alloc] initWithFrame:CGRectMake(0, kTopHeight, ScreenWidth, 45) datas:@[Localize(@"名称"), Localize(@"位置")]];
         [_sliderView setBackgroundColor:kBackBackroundColor];
@@ -125,19 +121,15 @@
         _pageCollection.actionDelegate = self;
         MyWeakSelf
         _pageCollection.loadBlock = ^(){
-            
         MyStrongSelf
             [strongSelf loadData];
         };
-        
         _pageCollection.indexBlock = ^(NSUInteger index) {
-            
             currentIndex = index;
             [weakSelf loadData];
             [weakSelf.sliderView selectedWithIndex:index];
         };
         _pageCollection.didSelectedBlock = ^(id object) {
-            
             DeviceDetailListViewController *detail = [[DeviceDetailListViewController alloc] init];
             detail.name = (NSString *)object;
             detail.isPos = (currentIndex ==0?NO:YES);

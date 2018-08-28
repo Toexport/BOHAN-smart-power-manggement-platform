@@ -19,8 +19,7 @@
     NSDate *selectDate3;
     NSString * StateID;
 }
-//#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
-//#define IS_PAD (UI_USER_INTERFACE_IDIOM()== UIUserInterfaceIdiomPad)
+
 @end
 
 @implementation MultipleSwitchViewController
@@ -54,8 +53,29 @@
             NSString * str = response;
             NSString * String = [str substringWithRange:NSMakeRange(24, 2)];
             StateID = String;
-            NSString * StrBase = [Utils getBinaryByHex:String];
-            ZPLog(@"%@",StrBase);
+            NSString * StrBase = [str substringWithRange:NSMakeRange(26, 2)];
+            NSString * BaseStr = [Utils getBinaryByHex:StrBase];
+            NSString * But1Str = [BaseStr substringWithRange:NSMakeRange(5, 1)];
+            NSString * But2Str = [BaseStr substringWithRange:NSMakeRange(6, 1)];
+            NSString * But3Str = [BaseStr substringWithRange:NSMakeRange(7, 1)];
+            //            string = BaseStr;
+            //            ZPLog(@"%@",StrBase);
+            if ([But1Str containsString:@"0"]) {
+                self.Title1But.hidden = YES;
+            }else {
+                self.Title1But.hidden = NO;
+            }
+            if ([But2Str containsString:@"0"]) {
+                self.Title2But.hidden = YES;
+            }else {
+                self.Title2But.hidden = NO;
+            }
+            if ([But3Str containsString:@"0"]) {
+                self.Title3But.hidden = YES;
+            }else {
+                self.Title3But.hidden = NO;
+            }
+            
             if ([String containsString:@"80"]) {
                 self.TurnOnSwitch1.selected = NO;
                 self.TurnOnSwitch2.selected = NO;
@@ -122,9 +142,6 @@
     model.deviceNo = self.deviceNo;
     [self.view startLoading];
     MyWeakSelf
-    //不一样就显示，一样就隐藏
-    //问题是手动或者App内点击关闭按钮，定时界面不会显示设置在执行开启的提示，但是我手动或者App内点击开启设备，定时界面会显示设置正在执行关闭
-    //要求就是手动或者App内点击开启关闭，都不显示提示文字.只有点击定时开启或者关闭才显示，如果在定时中按到了开关，定时界面提示不再显示
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
         ZPLog(@"--------%@",response);
@@ -144,45 +161,18 @@
             Minutes3TextField.text = [NSString stringWithFormat:@"%@",Minutes1];
             NSString * SituationStr = [response substringWithRange:NSMakeRange(58, 2)];// 获取当前状态
             NSString * stringText1 = [NSString stringWithFormat:@"%@%@%@%@%@",self.string1,self.string2,self.string3,self.string4,self.string5]; //获取系统时间
-            NSString * stringSystem = [response substringWithRange:NSMakeRange(48, 10)]; // 获取当前定时时间
-            NSString * stringText11 = [NSString stringWithFormat:@"20%@",stringSystem];
-            NSString* phoneVersion = [[UIDevice currentDevice] systemVersion];
-            ZPLog(@"%@",phoneVersion);
-//            if ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)) {
-//                NSLog(@"pad");
-//            }else
-//            {
-//                NSLog(@"ipone");
-//            }
-            
-            if ([phoneVersion hasPrefix:@"11"]) {
-                if (stringText1.integerValue >= stringText11.integerValue) {
+            NSString * stringSystem = [response substringWithRange:NSMakeRange(48, 10)]; // 获取设定定时时间
+            NSString * stringText11 = [NSString stringWithFormat:@"20%@",stringSystem]; // 设定时间
+            //                ZPLog(@"%@",StateID);
+            if (![SituationStr isEqualToString:@"FF"]) {
+                if (self.TurnOnSwitch1.selected == SituationStr.boolValue) {
                     self.Title1But.hidden = YES;
                 }
-                ZPLog(@"%@",StateID);
-                if (![SituationStr isEqualToString:@"FF"]) {
-                    if (self.TurnOnSwitch1.selected == SituationStr.boolValue) {
-                        self.Title1But.hidden = YES;
-                    }
-                } else {
-                    self.Title1But.hidden = YES;
-                }
-                ZPLog(@"%@",phoneVersion);
-            }else {
-                 if (stringText1.integerValue < stringText11.integerValue && stringText1.integerValue == stringText11.integerValue) {
-                    self.Title1But.hidden = YES;
-                 }else {
-                     self.Title1But.hidden = NO;
-                 }
-                ZPLog(@"%@",StateID);
-                if (![SituationStr isEqualToString:@"FF"]) {
-                    if (self.TurnOnSwitch1.selected == SituationStr.boolValue) {
-                        self.Title1But.hidden = YES;
-                    }
-                } else {
-                    self.Title1But.hidden = YES;
-                ZPLog(@"%@",phoneVersion);
+            } else {
+                self.Title1But.hidden = YES;
             }
+            if (stringText1.longLongValue >= stringText11.longLongValue) {
+                self.Title1But.hidden = YES;
             }
             
             //             开关2
@@ -202,42 +192,29 @@
             NSString * stringSystem2 = [response substringWithRange:NSMakeRange(36, 10)]; // 获取当前定时时间
             NSString * stringText22 = [NSString stringWithFormat:@"20%@",stringSystem2];
             if ([strID isEqualToString:@"61"]) {
-                if (stringText2.integerValue > stringText22.integerValue || stringText2.integerValue == stringText22.integerValue) {
-                    //                if (stringText2.integerValue >= stringText22.integerValue) {
+                if (![SituationStr2 isEqualToString:@"FF"]) {
+                    if (self.TurnOnSwitch2.selected == SituationStr2.boolValue) {
+                        self.Title2But.hidden = YES;
+                    }
+                } else {
+                    self.Title2But.hidden = YES;
+                }
+                if (stringText2.longLongValue >= stringText22.longLongValue) {
                     self.Title2But.hidden = YES;
                 }else {
                     [self.Title2But setTitle:Localize(@"开关1正在执行定时开启") forState:UIControlStateNormal];
                     [self.Title2But setTitle:Localize(@"开关1正在执行定时关闭") forState:UIControlStateSelected];
                 }
-                if (![SituationStr2 isEqualToString:@"FF"]) {
-                    if (self.TurnOnSwitch2.selected == SituationStr2.boolValue) {
-                        //                        self.Title1But.hidden = YES;
-                        self.Title2But.hidden = YES;
-                        //                        self.Title3But.hidden = YES;
-                    }
-                } else {
-                    //                    self.Title1But.hidden = YES;
-                    self.Title2But.hidden = YES;
-                    //                    self.Title3But.hidden = YES;
-                }
             }else {
-                if (stringText2.integerValue > stringText22.integerValue || stringText2.integerValue == stringText22.integerValue) {
-                    //                 if (stringText2.integerValue >= stringText22.integerValue) {
-                    self.Title2But.hidden = YES;
-                }
-                //                else {
-                //                    self.Title2But.hidden = NO;
-                //                }
                 if (![SituationStr2 isEqualToString:@"FF"]) {
                     if (self.TurnOnSwitch2.selected == SituationStr2.boolValue) {
-                        //                        self.Title1But.hidden = YES;
                         self.Title2But.hidden = YES;
-                        //                        self.Title3But.hidden = YES;
                     }
                 } else {
-                    //                    self.Title1But.hidden = YES;
                     self.Title2But.hidden = YES;
-                    //                    self.Title3But.hidden = YES;
+                }
+                if (stringText2.longLongValue >= stringText22.longLongValue) {
+                    self.Title2But.hidden = YES;
                 }
             }
             
@@ -259,13 +236,21 @@
             NSString * stringSystem3 = [response substringWithRange:NSMakeRange(24, 10)]; // 获取当前定时时间
             NSString * stringText33 = [NSString stringWithFormat:@"20%@",stringSystem3];
             if ([strID isEqualToString:@"62"]) {
-                if (stringText3.integerValue > stringText33.integerValue || stringText3.integerValue == stringText33.integerValue) {
-                    //                 if (stringText3.integerValue >= stringText33.integerValue) {
+                if (![SituationStr3 isEqualToString:@"FF"]) {
+                    if (self.TurnOnSwitch3.selected == SituationStr3.boolValue) {
+                        self.Title3But.hidden = YES;
+                    }
+                } else {
+                    self.Title3But.hidden = YES;
+                }
+                if (stringText3.longLongValue >= stringText33.longLongValue) { // longLongValue 此方法才是判断字符串
                     self.Title3But.hidden = YES;
                 }else {
                     [self.Title3But setTitle:Localize(@"开关2正在执行定时开启") forState:UIControlStateNormal];
                     [self.Title3But setTitle:Localize(@"开关2正在执行定时关闭") forState:UIControlStateSelected];
                 }
+                
+            }else {
                 if (![SituationStr3 isEqualToString:@"FF"]) {
                     if (self.TurnOnSwitch3.selected == SituationStr3.boolValue) {
                         self.Title3But.hidden = YES;
@@ -274,24 +259,11 @@
                     self.Title3But.hidden = YES;
                 }
                 
-            }else {
-                if (stringText3.integerValue > stringText33.integerValue || stringText3.integerValue == stringText33.integerValue) {
-                    //                 if (stringText3.integerValue >= stringText33.integerValue) {
+                if (stringText3.longLongValue >= stringText33.longLongValue) {
                     self.Title3But.hidden = YES;
                 }else {
                     [self.Title3But setTitle:Localize(@"开关3正在执行定时开启") forState:UIControlStateNormal];
                     [self.Title3But setTitle:Localize(@"开关3正在执行定时关闭") forState:UIControlStateSelected];
-                }
-                if (![SituationStr3 isEqualToString:@"FF"]) {
-                    if (self.TurnOnSwitch3.selected == SituationStr3.boolValue) {
-                        //                        self.Title1But.hidden = YES;
-                        //                        self.Title2But.hidden = YES;
-                        self.Title3But.hidden = YES;
-                    }
-                } else {
-                    //                    self.Title1But.hidden = YES;
-                    //                    self.Title2But.hidden = YES;
-                    self.Title3But.hidden = YES;
                 }
             }
         }else {
@@ -475,44 +447,6 @@
     }];
 }
 
-
-//+ (NSInteger)compareDate:(NSString*)aDate
-//{
-//    //
-//    NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
-//    [formatter setDateFormat:@"yyyy-MM-dd HH:mm"];
-//    NSString *dateTime=[formatter stringFromDate:[NSDate date]];
-//    NSDate *date = [formatter dateFromString:dateTime];
-//
-//
-//    NSInteger aa=0;
-//    NSDateFormatter *dateformater = [[NSDateFormatter alloc] init];
-//    [dateformater setDateFormat:@"yyyy-MM-dd HH:mm"];
-//    NSDate *dta = [[NSDate alloc] init];
-//
-//    dta = [dateformater dateFromString:aDate];
-//    NSComparisonResult result = [date compare:dta];
-//    if (result==NSOrderedSame)
-//    {
-//        //        相等
-//        aa=0;
-//    }else if (result==NSOrderedAscending)
-//    {
-//        //aDate比date大
-//        aa=1;
-//    }else if (result==NSOrderedDescending)
-//    {
-//        //aDate比date小
-//        aa=-1;
-//
-//    }
-//
-//    return aa;
-//}
-
-
-
-
 // 获取当前年月日时间
 - (void)yyyyMMddHHmm {
     NSDate *currentDate = [NSDate date];
@@ -589,7 +523,6 @@
     Minutes1TextField.text = [NSString stringWithString:self.string5];
     Minutes2TextField.text = [NSString stringWithString:self.string55];
     Minutes3TextField.text = [NSString stringWithString:self.string555];
-    
 }
 
 // 按钮1
