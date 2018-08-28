@@ -20,7 +20,6 @@
 #import "DebuggingANDPublishing.pch"
 @interface PrepaidViewController () <NoDataViewDelegate,EquipmentTableViewCellDelegate>
 {
-    
     NSMutableArray *dataArray;
     NSUInteger currentIndex;
 }

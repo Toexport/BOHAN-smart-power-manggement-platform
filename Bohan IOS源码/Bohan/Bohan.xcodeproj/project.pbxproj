@@ -16,7 +16,6 @@
 		C410507520FED0B9009A46F4 /* MultipleSwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C410507320FED0B9009A46F4 /* MultipleSwitchViewController.m */; };
 		C410507720FF1B1F009A46F4 /* MultipleSwitchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C410507920FF1B1F009A46F4 /* MultipleSwitchViewController.xib */; };
 		C42AE0BF212E35EC006A6F84 /* PrepaidViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C42AE0BD212E35EC006A6F84 /* PrepaidViewController.m */; };
-		C42AE0C0212E35EC006A6F84 /* PrepaidViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C42AE0BE212E35EC006A6F84 /* PrepaidViewController.xib */; };
 		C47B4A9C20F5CCC100DAD5D3 /* LanguageController.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4A9A20F5CCC100DAD5D3 /* LanguageController.m */; };
 		C47B4A9D20F5CCC100DAD5D3 /* LanguageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C47B4A9B20F5CCC100DAD5D3 /* LanguageController.xib */; };
 		C47B4AAD20F5D3D500DAD5D3 /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4AAC20F5D3D500DAD5D3 /* NSBundle+Language.m */; };
@@ -206,7 +205,6 @@
 		C418584D21016992002285F4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ShareView.strings"; sourceTree = "<group>"; };
 		C42AE0BC212E35EC006A6F84 /* PrepaidViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrepaidViewController.h; sourceTree = "<group>"; };
 		C42AE0BD212E35EC006A6F84 /* PrepaidViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrepaidViewController.m; sourceTree = "<group>"; };
-		C42AE0BE212E35EC006A6F84 /* PrepaidViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrepaidViewController.xib; sourceTree = "<group>"; };
 		C47B4A9920F5CCC100DAD5D3 /* LanguageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LanguageController.h; sourceTree = "<group>"; };
 		C47B4A9A20F5CCC100DAD5D3 /* LanguageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LanguageController.m; sourceTree = "<group>"; };
 		C47B4A9B20F5CCC100DAD5D3 /* LanguageController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageController.xib; sourceTree = "<group>"; };
@@ -605,7 +603,6 @@
 			children = (
 				C42AE0BC212E35EC006A6F84 /* PrepaidViewController.h */,
 				C42AE0BD212E35EC006A6F84 /* PrepaidViewController.m */,
-				C42AE0BE212E35EC006A6F84 /* PrepaidViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1523,7 +1520,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C42AE0C0212E35EC006A6F84 /* PrepaidViewController.xib in Resources */,
 				CC80904B204700A300265FE0 /* LoginViewController.xib in Resources */,
 				CC2455B61FF7450700616916 /* LaunchScreen.storyboard in Resources */,
 				CC468D72206969D900506970 /* WSDatePickerView.xib in Resources */,
@@ -2165,7 +2161,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Bohan/Bohan.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AS4DPL2SAW;
 				FRAMEWORK_SEARCH_PATHS = "$(inherited)";

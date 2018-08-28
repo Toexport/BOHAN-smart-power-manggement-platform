@@ -34,7 +34,6 @@
     
     NSDictionary *parameter = @{@"userName":self.username, @"password":pwdTF.text, @"checkCode":self.code, @"flag":(self.isRegist?@"0":@"1")};
     [[NetworkRequest sharedInstance] requestWithUrl:REGISTER_URL parameter:parameter completion:^(id response, NSError *error) {
-        
         [self.view.window stopLoading];
         
         //请求成功
@@ -52,7 +51,6 @@
 - (IBAction)okAction {
     
     if ([Utils vertifyThePassword:pwdTF.text]) {
-        
         [self submit];
     }else
     {

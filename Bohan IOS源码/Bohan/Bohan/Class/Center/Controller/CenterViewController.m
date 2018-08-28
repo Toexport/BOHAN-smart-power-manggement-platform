@@ -16,7 +16,6 @@
 #import "DebuggingANDPublishing.pch"
 @interface CenterViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
-
     NSString *userImg;
     UIImageView *headerImg;
 }

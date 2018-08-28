@@ -82,7 +82,7 @@
 
 - (IBAction)loginAction {
     //    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ISLOGIN"];
-    if ([accountTF.text rangeOfString:@"@"].location !=NSNotFound) {
+    if ([accountTF.text rangeOfString:@"@"].location != NSNotFound) {
         ZPLog(@"包含");
         if ([Utils validateEmail:accountTF.text]) {
             if ([Utils vertifyThePassword:passwordTF.text]) {
@@ -108,16 +108,13 @@
     }
 }
 
-
 - (IBAction)showAction:(UIButton *)sender {
     passwordTF.secureTextEntry = sender.selected;
     sender.selected = !sender.selected;
-
 }
 
 - (IBAction)forgotPwdAction {
     VerificationCodeViewController *code = [[VerificationCodeViewController alloc] init];
-    
     [self.navigationController pushViewController:code animated:YES];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     
@@ -125,7 +122,6 @@
 }
 
 - (IBAction)registAction {
-    
     VerificationCodeViewController *code = [[VerificationCodeViewController alloc] init];
     code.isRegist = YES;
     [self.navigationController pushViewController:code animated:YES];
@@ -140,9 +136,7 @@
     [self.navigationController pushViewController:help animated:YES];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
-
 }
-
 
 #pragma mark - Request
 - (void)loginRequest {

@@ -290,13 +290,13 @@
             Switch2view.hidden = YES;
             View3LayoutConstraint.constant = - 126;
             Divider2View.hidden = YES;
-        }else
-            if ([strID containsString:@"63"]) {
-                Switch2view.hidden = NO;
-                Switch3view.hidden = NO;
-                DividerView.hidden = NO;
-                Divider2View.hidden = NO;
-            }
+    }else
+        if ([strID containsString:@"63"]) {
+            Switch2view.hidden = NO;
+            Switch3view.hidden = NO;
+            DividerView.hidden = NO;
+            Divider2View.hidden = NO;
+    }
 }
 
 // 开关一
@@ -385,11 +385,10 @@
     }
 }
 
-
 // 按钮集合
 - (NSString *)getContent {
     NSMutableString *content = [NSMutableString string];
-    //    第一个按钮
+//    第一个按钮
     NSString *ssting = [[NSString stringWithFormat:@"%@",self.string111]substringFromIndex:2];
     [content appendFormat:@"%@%@%@%@%@",ssting,self.string222,self.string333,self.string444,self.string555];
     if (!Open3But.selected && !Guan3But.selected) {
@@ -397,7 +396,7 @@
     } else {
         [content appendFormat:@"%@",Guan3But.selected?@"01":@"00"];
     }
-    //      第二个按钮
+//      第二个按钮
     ssting = [[NSString stringWithFormat:@"%@",self.string11]substringFromIndex:2];
     [content appendFormat:@"%@%@%@%@%@",ssting,self.string22,self.string33,self.string44,self.string55];
     if (!Open2But.selected && !Guan2But.selected) {
@@ -406,7 +405,7 @@
         [content appendFormat:@"%@",Guan2But.selected?@"01":@"00"];
     }
     
-    //    第三个开关
+//    第三个开关
     ssting = [[NSString stringWithFormat:@"%@",self.string1]substringFromIndex:2];
     [content appendFormat:@"%@%@%@%@%@",ssting,self.string2,self.string3,self.string4,self.string5];
     if (!Open1But.selected && !Guan1But.selected) {
