@@ -60,13 +60,13 @@
 "d55-cR-YZL.text" = "0";
 
 /* Class = "UILabel"; text = "元"; ObjectID = "d6n-rt-J5F"; */
-"d6n-rt-J5F.text" = "元";
+"d6n-rt-J5F.text" = "￥";
 
 /* Class = "UILabel"; text = "电动车充电保护"; ObjectID = "dmX-an-dyC"; */
 "dmX-an-dyC.text" = "电动车充电保护";
 
 /* Class = "UILabel"; text = "元"; ObjectID = "e21-AC-zD1"; */
-"e21-AC-zD1.text" = "元";
+"e21-AC-zD1.text" = "￥";
 
 /* Class = "UIButton"; normalTitle = "Button"; ObjectID = "iRI-jn-WBE"; */
 "iRI-jn-WBE.normalTitle" = "Button";

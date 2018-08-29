@@ -5,8 +5,8 @@
   Created by Yang Lin on 2018/2/5.
   Copyright © 2018年 Bohan. All rights reserved.
 */
-"设备列表" = "Device Parameter";
-"设备管理" = "Device Manag";
+"设备列表" = "Device List";
+"设备管理" = "Device Manager";
 "所有用电" = "Power Consumption";
 "个人中心" = "Personal Data";
 
@@ -19,9 +19,9 @@
 "当前版本" = "Current Version";
 
 "时段设置" = "Time Setting";
-"延时/定时开关" = "Countdown function";
-"用电统计" = "Electrical statistics";
-"实时参数" = "Real time parameters";
+"延时/定时开关" = "Countdown Function";
+"用电统计" = "Electrical Statistics";
+"实时参数" = "Real-time Parameters";
 
 
 "伯瀚" = "Bohan Smartec Solution";
@@ -127,62 +127,62 @@
 "保存" = "Save";
 "若电表时间有误，你可点击“校时”按钮校时" = "If the meter time is wrong, click on the 'Actual time' button";
 "请输入单价" = "Please enter the unit cost";
-"请输入负荷门限" = "Please enter the load threshold";
-"增值服务" = "Value-added service";
-"重置密码" = "Reset password";
+"请输入负荷门限" = "Please Enter The Load Threshold";
+"增值服务" = "Value-added Services";
+"重置密码" = "Reset Password";
 "电压" = "Voltage";
 "电流" = "Current";
 "功率" = "Power";
-"用电量" = "Electricity consumption";
+"用电量" = "Electricity Consumption";
 "功率因素" = "Power Factor";
-"累计用电量" = "Cumulative electrical consumption";
-"累计排碳量" = "Cumulative carbon emission";
-"用电参数" = "Electrical parameters";
-"用电总金额" = "Total Electrical usage";
+"累计用电量" = "Cumulative Electrical Consumption";
+"累计排碳量" = "Cumulative Carbon Emission";
+"用电参数" = "Electrical Parameters";
+"用电总金额" = "Total Electrical Usage";
 "元" = "Dollar";
-"确认密码" = "Confirm password";
-"请输入英文或数字(6到12位)" = "Please enter in English character or number (6 to 12 letters)";
-"请再次输入密码" = "Please enter password again";
-"请输入10个字以上的反馈意见" = "Please enter 10 words or more feedback and opinion";
-"请选择分类" = "Please choose the classification";
-"提交成功" = "submit succeed";
+"确认密码" = "Confirm Password";
+"请输入英文或数字(6到12位)" = "Please Enter in English Character or Number (6 to 12 letters)";
+"请再次输入密码" = "Please Enter Password Again";
+"请输入10个字以上的反馈意见" = "Please Enter 10 Words or More Feedback And Opinion";
+"请选择分类" = "Please Choose the Classification";
+"提交成功" = "Submit Succeed";
 "刷新" = "Refresh";
 "开" = "Open";
 "关" = "Close";
-"暂无数据" = "No data";
-"过会再来吧" = "Come back later";
-"请稍后再试吧！" = "Please try again later";
-"请填完整设备信息" = "Please fill in the complete equipment information";
-"如需设置倒计时\n请选择“开”或“关”以及时间\n最后点击“启动”" = "To set the countdown time, please select 'On' or 'Off'. Select 'Start' to begin.";
+"暂无数据" = "No Data";
+"过会再来吧" = "Come Back Later";
+"请稍后再试吧！" = "Please Try Again Later";
+"请填完整设备信息" = "Please Fill in The Complete Equipment Information";
+"如需设置倒计时\n请选择“开”或“关”以及时间\n最后点击“启动”" = "To Set the Countdown Time, Please Select 'On' or 'Off'. Select 'Start' to Begin.";
 
-"已开启循环通断模式" = "open cycle break mode";
-"模式已切换" = "mode has switched";
-"模式切换失败" = "mode switching failure";
-"设备正在执行时段运行模式，请点击查看" = "the device is running mode in the execution period, please click view.";
-"设备未设置时段数据，请点击设置" = "Please click settings if the device does not set time data.";
-"取消成功" = "cancel success";
-"保存成功" = "Save success";
+"已开启循环通断模式" = "Open Cycle Break Mode";
+"模式已切换" = "Mode Has Switched";
+"模式切换失败" = "Mode Switching Failure";
+"设备正在执行时段运行模式，请点击查看" = "The Device is Running Mode in The Execution Period, Please Click View.";
+"设备未设置时段数据，请点击设置" = "Please Click settings if The device Does Not set Time Model.";
+"取消成功" = "Cancel Success";
+"保存成功" = "Save Success";
 
 "热水器" = "Water Heater";
 "鱼缸" = "Fishbowl";
-"小夜灯" = "Light";
+"小夜灯" = "Night Lamp";
 "蚊香" = "Mosquito";
 "取暖器" = "Warmer";
 "家长模式" = "Parent Mode";
-"自定义" = "Custom";
+"自定义" = "Custom Setting";
 
-"上次的倒计时已结束\n你可再设置新的倒计时" = "You can set a new countdown when the previous countdown had completed";
-"设备打开/关闭" = "Device turn on/off";
-"5分钟后" = "5 minutes later";
-"10分钟后" = "10 minutes later";
-"自定义时间" = "Customed time";
-"开始时间" = "Start time";
+"上次的倒计时已结束\n你可再设置新的倒计时" = "You can set a new Countdown When the Previous Countdown had Completed";
+"设备打开/关闭" = "Device Turn on/off";
+"5分钟后" = "5 Minutes Later";
+"10分钟后" = "10 Minutes Later";
+"自定义时间" = "Custom Setting";
+"开始时间" = "Start Time";
 "完成" = "Complete";
 "(备注:1:00~2:00 简写为 1~2)" = "(Note: 1: 00 ~ 2: 00 abbreviated as 1 ~ 2)";
-"选择开始时间" = "Select the start time";
-"点击设置开始时间" = "Click to start the time";
-"点击设置结束时间" = "Click to stop the time";
-"选择结束时间" = "Select the end time";
+"选择开始时间" = "Select the start Time";
+"点击设置开始时间" = "Click to set start Time";
+"点击设置结束时间" = "Click to set end Time";
+"选择结束时间" = "Select the end Time";
 "选择时间" = "Select time";
 
 "结束时间" = "End Time";
@@ -213,9 +213,9 @@
 "分" = "m";
 
 "至" = "To";
-"所有设备当日每小时用电量（kWh）" = "Daily Electrical consumption per hour (kwh)";
-"所有设备当月每日用电量（kWh）" = "Monthly Electrical consumption per day (kwh)";
-"所有设备当年每月用电量（kWh）" = "Yearly Electrical consumption per month (kwh)";
+"所有设备当日每小时用电量（kWh）" = "Daily Electrical Consumption per hour (kwh)";
+"所有设备当月每日用电量（kWh）" = "Monthly Electrical Consumption per day (kwh)";
+"所有设备当年每月用电量（kWh）" = "Yearly Electrical Consumption per month (kwh)";
 //"(时)
 "时" = "Time";
 "(日)" = "Day";
@@ -234,19 +234,22 @@
 
 
 "名称" = "Name";
-"位置" = "Designation";
-"类型" = "Gender";
-"类别" = "category";
+"位置" = "Location";
+"类型" = "Type";
+//"类别" = "category";
 "名称" = "Name";
 "插座" = "Socket";
-"移动插座" = "Change socket";
-"墙壁插座" = "Wall socket";
-"开关" = "Turn on";
-"开关1" = "Turn on 1";
-"开关2" = "Turn on 2";
-"开关3" = "Turn on 3";
-"已分享" = "Have to Share";
-"墙壁开关" = "Wall Turn on";
+"移动插座" = "Portabre Socket";
+"墙壁插座" = "Fixed Socket";
+"开关" = "Switch";
+"设备名称1" = "Name1";
+"设备名称2" = "Name2";
+"设备名称3" = "Name3";
+//"开关1" = "Switch 1";
+//"开关2" = "Switch 2";
+//"开关3" = "Switch 3";
+"已分享" = "Have Shared";
+"墙壁开关" = "Fixed Switch";
 "添加设备" = "Add Device";
 "请输入正确的设备ID" = "Please enter the correct device ID";
 "开关1" = "Switch1";
@@ -264,19 +267,19 @@
 
 "名称 :" = "Name :";
 "ID :" = "ID :";
-"类型 :" = "Gender :";
+"类型 :" = "Type:";
 "位置 :" = "Designation :";
 "品牌 :" = "Brand :";
 "设备" = "Device";
 "正在加载..." = "loading…";
 "正在刷新..." = "Updating…";
 "设备信息" = "Device Information";
-"实时数据" = "Real-time data";
-"定时计量" = "Time management";
-"时段设置" = "Time setting";
+"实时数据" = "Real-time Data";
+"定时计量" = "Timing Measurement";
+"时段设置" = "Timer Setting";
 "倒计时" = "Countdown Timer";
 "用电数据" = "Electrical Data";
-"查询设备信息" = "Query device information";
+"查询设备信息" = "Query Information";
 "进行智能连接" = "Smart Connecting";
 "正在进行智能连接, 需要等待大概15秒，稍候..." = "Smart Connecting, please wait for 1 seconds…";
 "连接失败" = "Connection error";
@@ -343,8 +346,8 @@
 "请输入正确的设备ID号" = "Please enter the correct setting ID";
 "绑定失败" = "Pairing failed";
 
-"设备位置" = "Device location";
-"设备名称" = "Device name";
+"设备位置" = "Location";
+"设备名称" = "Model";
 "电器品牌" = "Brand";
 
 "请选择设备位置" = "Please select the device location";
@@ -463,8 +466,8 @@
 "设备马上断电" = "Device is powered off immediately";
 "正在用电(智能断电关)" = "Powered (standby for uninterrupted)";
 "设备未使用" = "Device is not used";
-"设备已断电" = "Device has been disconnected";
-"超负荷断电" = "overload power off";
+"设备已断电" = "Device is Power Off";
+"超负荷断电" = "overload power Off";
 "设备已断电(超负荷断电)" = "Device has been disconnected (overload power off)";
 "设备已断电(智能断电开)" = "Device disconnected (standby for power off)";
 "请等待上个设置设置完毕" = "Please wait for the last setting to finish";
@@ -504,13 +507,13 @@
 "下载更新" = "Download the update";
 "暂不下载" = "Not to download";
 "等待添加中......" = "Waiting to be added";
-"设备号：" = "Device No:";
+"设备号：" = "ID:";
 "开始" = "Start";
 "关闭" = "shut down";
 "周一二三四五六日" = "Monday Tuesday Wednesday Thursday Firday Saturday Sunday";
 "未设置星期" = "The week has not been set up";
 "请设置星期" = "Please set up the week";
-"全开" = "Fully open";
+"全开" = "All on";
 "全关" = "All off";
 "信息可填写或选择" = "Select or fill in the Information";
 "你还未绑定任何设备哦!" = "No Pairing of device detected!";
@@ -535,6 +538,7 @@
 "稍后更新" = "Later update";
 
 "提示" = "prompt";
+"请输入正确的邮箱地址" = "Please enter the correct email address";
 "确定要注销登录吗?" = "Are you sure you want to log out?";
 "修改头像" = "Change my avatar";
 "相机" = "Camera";

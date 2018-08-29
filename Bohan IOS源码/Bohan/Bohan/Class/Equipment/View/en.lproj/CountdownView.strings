@@ -3,13 +3,13 @@
 "2Z7-Ju-CHC.text" = "mm";
 
 /* Class = "UIButton"; normalTitle = "设置"; ObjectID = "5nk-mm-j9c"; */
-"5nk-mm-j9c.normalTitle" = "Start the";
+"5nk-mm-j9c.normalTitle" = "Start";
 
 /* Class = "UILabel"; text = "月"; ObjectID = "6IK-qR-Lv6"; */
 "6IK-qR-Lv6.text" = "mm";
 
 /* Class = "UIButton"; normalTitle = "定时开关"; ObjectID = "GMD-0Q-WtD"; */
-"GMD-0Q-WtD.normalTitle" = "Time Switch";
+"GMD-0Q-WtD.normalTitle" = "Timer";
 
 /* Class = "UILabel"; text = "年"; ObjectID = "Y7x-F2-5Rs"; */
 "Y7x-F2-5Rs.text" = "yyyy";

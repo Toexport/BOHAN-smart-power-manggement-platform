@@ -46,7 +46,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = Localize(@"修改信息");
-    [nameTF setText:self.model.name];
+    [nameTF setText:self.model.type];
     [deviceId setText:self.model.id];
     lookBtn.titleLabel.numberOfLines = 2;
     connectBtn.titleLabel.numberOfLines = 2;

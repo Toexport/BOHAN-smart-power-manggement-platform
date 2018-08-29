@@ -9,10 +9,10 @@
 "6Gx-Rv-GLy.text" = "0.00";
 
 /* Class = "UILabel"; text = "kWh"; ObjectID = "BNW-la-i9N"; */
-"BNW-la-i9N.text" = "kWh";
+"BNW-la-i9N.text" = "KWh";
 
 /* Class = "UILabel"; text = "设备温度"; ObjectID = "FGd-G2-0hP"; */
-"FGd-G2-0hP.text" = "Device temperature";
+"FGd-G2-0hP.text" = "Device Temperature";
 
 /* Class = "UILabel"; text = "电压"; ObjectID = "GuA-Dh-H1P"; */
 "GuA-Dh-H1P.text" = "Voltage";
@@ -21,7 +21,7 @@
 "HyF-nH-938.text" = "Power Factor";
 
 /* Class = "UILabel"; text = "用电总金额"; ObjectID = "JyF-Ci-uby"; */
-"JyF-Ci-uby.text" = "Total Electrical usage";
+"JyF-Ci-uby.text" = "Total Electrical Usage";
 
 /* Class = "UILabel"; text = "V"; ObjectID = "Lzt-WV-ryt"; */
 "Lzt-WV-ryt.text" = "V";
@@ -39,7 +39,7 @@
 "XV7-cr-5Mg.text" = "0.00";
 
 /* Class = "UILabel"; text = "累计排碳量"; ObjectID = "Z3y-jm-0XH"; */
-"Z3y-jm-0XH.text" = "Cumulative carbon emission";
+"Z3y-jm-0XH.text" = "Cumulative Carbon Emission";
 
 /* Class = "UILabel"; text = "0.00"; ObjectID = "ZM9-ZL-Abc"; */
 "ZM9-ZL-Abc.text" = "0.00";
@@ -54,7 +54,7 @@
 "doM-sQ-mpW.text" = "Current";
 
 /* Class = "UILabel"; text = "元"; ObjectID = "eLG-hd-ZfD"; */
-"eLG-hd-ZfD.text" = "Dollar";
+"eLG-hd-ZfD.text" = "￥";
 
 /* Class = "UILabel"; text = "A"; ObjectID = "fLD-hO-fgV"; */
 "fLD-hO-fgV.text" = "A";
@@ -66,10 +66,10 @@
 "laq-8q-3z3.text" = "0.00";
 
 /* Class = "UILabel"; text = "累计用电量"; ObjectID = "p64-iM-1T7"; */
-"p64-iM-1T7.text" = "Cumulative electrical consumption";
+"p64-iM-1T7.text" = "Cumulative Electrical Consumption";
 
 /* Class = "UILabel"; text = "kg"; ObjectID = "tLb-KU-5dx"; */
-"tLb-KU-5dx.text" = "kg";
+"tLb-KU-5dx.text" = "KG";
 
 /* Class = "UILabel"; text = "W"; ObjectID = "xwE-xq-0p1"; */
 "xwE-xq-0p1.text" = "W";

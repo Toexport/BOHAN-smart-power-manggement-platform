@@ -1,18 +1,18 @@
 
 /* Class = "UIButton"; normalTitle = "启动"; ObjectID = "Gt8-M1-Y3K"; */
-"Gt8-M1-Y3K.normalTitle" = "Start the";
+"Gt8-M1-Y3K.normalTitle" = "Start";
 
 /* Class = "UIButton"; normalTitle = "延时开关"; ObjectID = "H3Z-nj-mIr"; */
-"H3Z-nj-mIr.normalTitle" = "Time delay switch";
+"H3Z-nj-mIr.normalTitle" = "Time Delay";
 
 /* Class = "UILabel"; text = "设备打开/关闭"; ObjectID = "Png-Cg-6GH"; */
-"Png-Cg-6GH.text" = "Open/close device";
+"Png-Cg-6GH.text" = "Open/close Device";
 
 /* Class = "UILabel"; text = "剩余"; ObjectID = "jl3-53-HSc"; */
 "jl3-53-HSc.text" = "Remaining";
 
 /* Class = "UIButton"; normalTitle = "关"; ObjectID = "kBK-gE-Gql"; */
-"kBK-gE-Gql.normalTitle" = "Shut down";
+"kBK-gE-Gql.normalTitle" = "Cancle";
 
 /* Class = "UIButton"; normalTitle = "开"; ObjectID = "olg-8L-vEl"; */
 "olg-8L-vEl.normalTitle" = "Open";

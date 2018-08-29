@@ -6,7 +6,7 @@
 "HVx-TU-7XN.normalTitle" = "Learn more about Bohan:http://www.bohan-smartec.com/";
 
 /* Class = "UIButton"; normalTitle = "注册账号"; ObjectID = "Kdr-xi-mvv"; */
-"Kdr-xi-mvv.normalTitle" = "Registration account";
+"Kdr-xi-mvv.normalTitle" = "Registered";
 
 /* Class = "UITextField"; placeholder = "伯瀚账号"; ObjectID = "aCt-og-cik"; */
 "aCt-og-cik.placeholder" = "Bohan Account";

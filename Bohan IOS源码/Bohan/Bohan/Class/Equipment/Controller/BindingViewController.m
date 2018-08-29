@@ -96,13 +96,14 @@
         [HintView showHint:Localize(@"请填完整设备信息")];
         return;
     }else
-        if ([deviceTF.text containsString:@"62"]) {
+        
+        if ([deviceTF.text hasPrefix:@"62"]) {
             if (deviceTF.text.length == 0 || typeInput2.contentTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
                 [HintView showHint:Localize(@"请填完整设备信息")];
                 return;
             }
         }else
-            if ([deviceTF.text containsString:@"63"]) {
+            if ([deviceTF.text hasPrefix:@"63"]) {
                 if (deviceTF.text.length == 0 || typeInput2.contentTF.text.length == 0 || typeInput3.contentTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
                     [HintView showHint:Localize(@"请填完整设备信息")];
                     return;
@@ -278,10 +279,11 @@
 //    }
     if (textField.text.length > 8) {
         ZPLog(@"输入有误");
-        [HintView showHint:Localize(@"请输入正确的设备ID")];
+        [HintView showHint:Localize(@"文字不能超过4位中文或者6位英文")];
         return;
     }
 }
+
 // 这两个方法实时监控text输入框ID
 -(void)textFieldDidChange:(UITextField *)textField {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"changeValue" object:textField];

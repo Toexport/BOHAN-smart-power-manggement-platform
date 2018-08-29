@@ -9,7 +9,7 @@
 "OyO-Bs-GgG.normalTitle" = "Save";
 
 /* Class = "UIButton"; normalTitle = "查询设备信息"; ObjectID = "SHd-OX-o0R"; */
-"SHd-OX-o0R.normalTitle" = "Query device information";
+"SHd-OX-o0R.normalTitle" = "Query Information";
 
 /* Class = "UILabel"; text = "名称："; ObjectID = "ieF-Ws-hch"; */
-"ieF-Ws-hch.text" = "type:";
+"ieF-Ws-hch.text" = "Type:";

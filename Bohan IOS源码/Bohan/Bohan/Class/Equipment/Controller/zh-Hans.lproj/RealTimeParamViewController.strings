@@ -54,7 +54,7 @@
 "doM-sQ-mpW.text" = "电流";
 
 /* Class = "UILabel"; text = "元"; ObjectID = "eLG-hd-ZfD"; */
-"eLG-hd-ZfD.text" = "元";
+"eLG-hd-ZfD.text" = "￥";
 
 /* Class = "UILabel"; text = "A"; ObjectID = "fLD-hO-fgV"; */
 "fLD-hO-fgV.text" = "A";

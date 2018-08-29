@@ -96,7 +96,7 @@
         }
     }else {
         if (![Utils validateEmail:accountTF.text]) {
-            [HintView showHint:Localize(@"请输入正确的邮箱")];
+            [HintView showHint:Localize(@"请输入正确的邮箱地址")];
         }else{
             ResetPwdViewController *reset = [[ResetPwdViewController alloc] init];
             reset.isRegist = self.isRegist;
@@ -122,7 +122,7 @@
         }
     }else {
         if (![Utils validateEmail:accountTF.text]) {
-            [HintView showHint:Localize(@"请输入正确的邮箱")];
+            [HintView showHint:Localize(@"请输入正确的邮箱地址")];
             ZPLog(@"请输入正确的邮箱");
         }else {
            [self getData];
