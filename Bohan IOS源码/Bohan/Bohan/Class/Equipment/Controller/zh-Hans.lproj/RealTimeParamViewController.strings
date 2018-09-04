@@ -69,7 +69,7 @@
 "p64-iM-1T7.text" = "累计用电量";
 
 /* Class = "UILabel"; text = "kg"; ObjectID = "tLb-KU-5dx"; */
-"tLb-KU-5dx.text" = "kg";
+"tLb-KU-5dx.text" = "Kg";
 
 /* Class = "UILabel"; text = "W"; ObjectID = "xwE-xq-0p1"; */
 "xwE-xq-0p1.text" = "W";

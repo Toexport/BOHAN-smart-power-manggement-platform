@@ -90,7 +90,7 @@
 "负荷门限不能大于25000" = "The load threshold must not be greater than 25000";
 "开始时间不能小于00:00" = "The start time cannot be less than 00:00";
 "结束时间不能小于00:00" = "The end time cannot be less than 00:00";
-
+"单价不能大于100" = "The unit price must not be more than 100";
 
 //"日" = "Sunday";
 //"Sunday" = "日";
@@ -363,10 +363,10 @@
 "请输入目标用户的用户名" = "Please enter the targeted user name";
 "请输入共享用户用户名" = "Please enter a shared user username";
 "已经在手机后台启动下载,下载完毕后会提示安装" = "Downloading, will prompt to install";
-"正在设置" = "Setting up";
-"设置失败" = "Setting up failed";
-"设置成功" = "Setting up passed";
-"设备已离线" = "Setting up timeout";
+"正在设置" = "Setting...";
+"设置失败" = "Setting Failed";
+"设置成功" = "Setting SuccessFully";
+"设备已离线" = "The Device is Offline";
 "正在查询9组定时数据" = "Querying 9 sets of scheduled data";
 "刷新成功" = "Refresh success";
 "数值超出" = "Value exceeded";

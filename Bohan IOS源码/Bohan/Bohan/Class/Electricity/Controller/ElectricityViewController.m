@@ -134,6 +134,8 @@
 
     UILabel *title = [_headerView viewWithTag:800];
     [title setText:Localize(@"历史数据")];
+    
+    ZPLog(@"---%@",self.titles);
     [_barView setTitle:self.titles[currentIndex]];
 
 }

@@ -65,6 +65,7 @@
 "Name2" = "设备名称2";
 "Name3" = "设备名称3";
 "Please enter the correct email address" = "请输入正确的邮箱地址";
+"The unit price must not be more than 100" = "单价不能大于100";
 
 //"" = "";
 //"设备管理" = "设备管理";

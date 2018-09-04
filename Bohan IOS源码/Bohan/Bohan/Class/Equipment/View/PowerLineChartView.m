@@ -82,6 +82,7 @@
     //    chartView.xAxis.gridColor = [UIColor getColor:@"f2f2f2"];
     //X轴设置
     ChartXAxis *xAxis = chartView.xAxis;
+ 
     //X轴文字设置
     //    xAxis.labelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.f];
     xAxis.labelFont = EFont(9);

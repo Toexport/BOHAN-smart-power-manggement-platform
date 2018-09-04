@@ -40,7 +40,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.title = Localize(@"用电统计");
     urls = @[GET_DAY_DETAIL_POWER, GET_MONTH_DETAIL_POWER, GET_YERA_DETAIL_POWER];
     formatters = @[@"yyyyMMdd", @"yyyyMM", @"yyyy"];
@@ -72,8 +71,7 @@
     [self loadData];
 }
 
-- (void)loadData
-{
+- (void)loadData {
     [self.view startLoading];
     
     NSString *url = urls[currentIndex];
@@ -81,10 +79,9 @@
     NSDictionary *dic = @{@"deviceCode":self.model.id,keys[currentIndex]:[formatter stringFromDate:selectedDate]};
     
     [[NetworkRequest sharedInstance] requestWithUrl:url parameter:dic completion:^(id response, NSError *error) {
-        
+
         [self.view stopLoading];
-        
-        DBLog(@"%@",response);
+        ZPLog(@"%@",response);
         if (!error) {
             dataArray = [NSArray yy_modelArrayWithClass:[PowerModel class] json:response[@"content"]];
             
@@ -93,6 +90,9 @@
             [HintView showHint:error.localizedDescription];
             dataArray = nil;
         }
+        [dataArray enumerateObjectsUsingBlock:^(PowerModel *model, NSUInteger idx, BOOL * _Nonnull stop) {
+            ZPLog(@"%@-%@-%@",model.avgPowerData,model.powerData,model.date);
+        }];
         [self.barView setDatas:dataArray];
         [self.lineView setDatas:dataArray];
         
@@ -127,8 +127,7 @@
     
 }
 
-- (void)changeViewAction:(UIButton *)btn
-{
+- (void)changeViewAction:(UIButton *)btn {
     if (btn.selected) {
         return;
     }
@@ -137,34 +136,24 @@
         ((UIButton *)[self.selectView viewWithTag:301]).selected = NO;
         self.barView.hidden = NO;
         self.lineView.hidden = YES;
-    }else
-    {
+    }else {
         ((UIButton *)[self.selectView viewWithTag:300]).selected = NO;
         self.barView.hidden = YES;
         self.lineView.hidden = NO;
     }
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (NSArray *)titles
-{
+- (NSArray *)titles {
     return @[Localize(@"本设备当日每小时用电量（kWh）"), Localize(@"本设备当月每日用电量（kWh）"), Localize(@"本设备当年每月用电量（kWh）")];
 }
 
-- (NSArray *)titles2
-{
+- (NSArray *)titles2 {
     return @[Localize(@"本设备当日每小时用电功率（W）"), Localize(@"本设备当月每日用电功率（W）"), Localize(@"本设备当年每月用电功率（W）")];
 }
 
-- (UIView *)infoView
-{
+- (UIView *)infoView {
     if (!_infoView) {
         _infoView = [[UIView alloc] initWithFrame:CGRectMake(0, kTopHeight, ScreenWidth, 30)];
-        
         NSArray *contens = @[[NSString stringWithFormat:@"%@:%@",Localize(@"名称"),self.model.name], [NSString stringWithFormat:@"%@:%@",Localize(@"位置"),self.model.position], [NSString stringWithFormat:@"ID:%@",self.model.id]];
         for (int i = 0; i<3; i++) {
             
@@ -174,26 +163,19 @@
             [lab setFont:Font(12)];
             [lab setTextAlignment:NSTextAlignmentCenter];
             [_infoView addSubview:lab];
-
         }
-        
     }
-    
     return _infoView;
 }
 
-- (SliderView *)sliderView
-{
-    
+- (SliderView *)sliderView {
     if (!_sliderView) {
         _sliderView = [[SliderView alloc] initWithFrame:CGRectMake(0, self.infoView.frame.origin.y + self.infoView.frame.size.height, ScreenWidth, 45) datas:@[Localize(@"日数据"), Localize(@"月数据"), Localize(@"年数据")]];
         [_sliderView setBackgroundColor:kBackBackroundColor];
         MyWeakSelf
-        
-        
         __weak typeof(NSDateFormatter *) weakFormatter = formatter;
         __weak typeof(NSArray *) weakFormatters = formatters;
-        //        __weak typeof(NSUInteger) weakIndex = currentIndex;
+//        __weak typeof(NSUInteger) weakIndex = currentIndex;
         
         _sliderView.block = ^(NSUInteger index) {
             
@@ -215,8 +197,7 @@
                 }];
 
                 
-            }else
-            {
+            }else {
                 weakSelf.selectView.hidden = NO;
                 
                 ((UIButton *)[weakSelf.selectView viewWithTag:300]).selected = !weakSelf.barView.hidden;
@@ -243,8 +224,8 @@
 
             [weakSelf loadData];
             
-            //            [weakSelf loadData];
-            //            [weakSelf.pageCollection setContentOffset:CGPointMake(currentIndex *ScreenWidth, 0) animated:YES];
+//                        [weakSelf loadData];
+//                        [weakSelf.pageCollection setContentOffset:CGPointMake(currentIndex *ScreenWidth, 0) animated:YES];
         };
     }
     
@@ -273,7 +254,6 @@
         [selectBtn setBackgroundColor:[UIColor clearColor]];
         [selectBtn addTarget:self action:@selector(selectAction) forControlEvents:UIControlEventTouchUpInside];
         [_headerView addSubview:selectBtn];
-        
     }
     [_dateLable setText:[formatter stringFromDate:selectedDate]];
     
@@ -310,13 +290,13 @@
     
     return  _selectView;
 }
-- (PowerHorizontalBarView *)barView
-{
+
+- (PowerHorizontalBarView *)barView {
     if (!_barView) {
-        _barView = [[PowerHorizontalBarView alloc] init];
+        _barView = [[PowerHorizontalBarView alloc] init]; // 这个是底部View的View
         [_barView setTitle:self.titles[0]];
+//        [_barView setTitle:@"0"];
     }
-    
     return _barView;
 }
 

@@ -19,19 +19,14 @@ static CGFloat SELF_WIDTH;
 @property (strong, nonatomic) CAShapeLayer *colorMaskLayer; // 渐变色遮罩
 @property (strong, nonatomic) CAShapeLayer *colorLayer; // 渐变色
 @property (strong, nonatomic) CAShapeLayer *blueMaskLayer; // 蓝色背景遮罩
-
 @end
 
 @implementation STLoopProgressView
 
 - (void)awakeFromNib {
-    
     [super awakeFromNib];
     SELF_WIDTH = ScreenWidth - 120;
-
-    
     [self setFrame:CGRectChangeSize(self.frame, SELF_WIDTH, SELF_WIDTH)];
-
     self.backgroundColor = [UIColor whiteColor];
     self.layer.cornerRadius = SELF_WIDTH/2;
     self.layer.borderColor = [STLoopProgressView backgroundColor].CGColor;
@@ -45,7 +40,6 @@ static CGFloat SELF_WIDTH;
  *  设置整个蓝色view的遮罩
  */
 - (void)setupBlueMaskLayer {
-    
     CAShapeLayer *layer = [self generateMaskLayer];
     self.layer.mask = layer;
     self.blueMaskLayer = layer;
@@ -55,7 +49,6 @@ static CGFloat SELF_WIDTH;
  *  设置渐变色，渐变色由左右两个部分组成，左边部分由黄到绿，右边部分由黄到红
  */
 - (void)setupColorLayer {
-    
     self.colorLayer = [CAShapeLayer layer];
     self.colorLayer.frame = self.bounds;
     [self.layer addSublayer:self.colorLayer];
@@ -73,17 +66,14 @@ static CGFloat SELF_WIDTH;
     rightLayer.frame = CGRectMake(SELF_WIDTH / 2, 0, SELF_WIDTH / 2, SELF_WIDTH);
     rightLayer.locations = @[@0.3, @0.9, @1];
     rightLayer.colors = @[(id)[STLoopProgressView startColor].CGColor, (id)[STLoopProgressView endColor].CGColor];
-
 //    [self.colorLayer addSublayer:rightLayer];
     [self.colorLayer insertSublayer:rightLayer atIndex:1];
-
 }
 
 /**
  *  设置渐变色的遮罩
  */
 - (void)setupColorMaskLayer {
-    
     CAShapeLayer *layer = [self generateMaskLayer];
     layer.lineWidth = [STLoopProgressView lineWidth]; // 渐变遮罩线宽较大，防止蓝色遮罩有边露出来
     self.colorLayer.mask = layer;

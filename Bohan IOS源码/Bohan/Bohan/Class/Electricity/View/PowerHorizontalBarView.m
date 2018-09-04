@@ -26,8 +26,7 @@
 }
 */
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         
@@ -37,8 +36,7 @@
     return self;
 }
 
-- (void)setUp
-{
+- (void)setUp {
     
     [self addSubview:self.chartBarView];
     
@@ -60,12 +58,9 @@
 //        make.bottom.equalTo(weakSelf).offset(-10);
 //        make.edges.equalTo(weakSelf).insets(UIEdgeInsetsMake(40, 10, 20, 10));
     }];
-
 }
 
-
-- (void)setupBarLineChartView:(HorizontalBarChartView *)chartView
-{
+- (void)setupBarLineChartView:(HorizontalBarChartView *)chartView {
     
     chartView.chartDescription.enabled = YES;//显示x轴描述
     chartView.maxVisibleCount = 31;
@@ -102,7 +97,6 @@
     //X轴设置
     ChartXAxis *xAxis = chartView.xAxis;
 //    xAxis.granularity = 0.000001;
-//    xAxis.
 
     //X轴文字设置
     //    xAxis.labelFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:12.f];
@@ -122,15 +116,17 @@
     
     
     //Y上半轴设置
-    
+//     异常问题View
     chartView.leftAxis.enabled = NO;//Y上半轴左边刻度线不显示，设置为YES则显示Y轴
     chartView.leftAxis.axisMinimum = 0.00;
+//    chartView
 
     chartView.rightAxis.enabled = YES;//Y上半轴右边刻度线不显示，设置为YES则显示Y轴
     chartView.rightAxis.labelFont = EFont(9);
+    
 //    chartView.rightAxis.spaceTop = 0.98;//Y上半轴最大值占百分比
     chartView.rightAxis.spaceBottom = 0.01;//Y上半轴最小值占百分比
-//    chartView.rightAxis.axisMinimum = 0.0001;
+    chartView.rightAxis.axisMinimum = 0.00; // 不知道是不是对的，反正现在暂时没问题
     chartView.rightAxis.drawGridLinesEnabled = NO;
 //    chartView.rightAxis.descrip
     
@@ -138,21 +134,16 @@
     formatter.numberStyle = NSNumberFormatterDecimalStyle;
     formatter.maximumFractionDigits = 2;
     formatter.minimumFractionDigits = 0;
-
     
     chartView.rightAxis.valueFormatter = [[ChartDefaultAxisValueFormatter alloc] initWithFormatter:formatter];//X轴数据值
-    //        _chartBarView.rightAxis.axisRange = self.datas.count -1;//x轴刻度范围
-    
+//            _chartBarView.rightAxis.axisRange = self.datas.count -1;//x轴刻度范围
 //    chartView.rightAxis.labelCount = 6;//x轴刻度个数
     chartView.rightAxis.spaceMin = 0.01;
 //    chartView.rightAxis.axisRange = 0.1;
     
-    
-    
     //不显示底部图表说明
     ChartLegend *legend = _chartBarView.legend;
     [legend setEnabled:NO];
-    
     
     BarChartDataSet *dataSets = [[BarChartDataSet alloc] initWithValues:@[] label:@""];
     NSArray<id <IChartDataSet>> *barDataSets = @[dataSets];
@@ -163,22 +154,17 @@
     [data setValueFormatter:[[ChartDefaultValueFormatter alloc] initWithFormatter:formatter]];
     
     _chartBarView.data = data;
-
 }
 
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
-    
     
     NSMutableArray *yVals = [NSMutableArray array];
     NSMutableArray *xVals = [NSMutableArray array];
-    
     for (int i = 0; i< self.datas.count; i++) {
-        
+    
         PowerModel *model = self.datas[i];
-        
         BarChartDataEntry *entry = [[BarChartDataEntry alloc] initWithX:i+1 y:[model.powerData floatValue] icon: [UIImage imageNamed:@""]];
         
         [xVals addObject:model.powerData];
@@ -186,12 +172,11 @@
     }
     
     _chartBarView.xAxis.labelCount = self.datas.count;
-    //        _chartBarView.xAxis.axisRange = self.datas.count;
+//            _chartBarView.xAxis.axisRange = self.datas.count;
 //    _chartBarView.xAxis.labelCount = self.datas.count/2;//x轴刻度个数
 
     BarChartDataSet *barDataSet = nil;
-    if (_chartBarView.data.dataSetCount > 0)
-    {
+    if (_chartBarView.data.dataSetCount > 0) {
         barDataSet = (BarChartDataSet *)_chartBarView.data.dataSets[0];
         barDataSet.values = yVals;//y轴数据值
         
@@ -200,56 +185,45 @@
         
     }
     if (self.datas.count>0) {
-        
         if (_chartBarView.frame.size.height < self.datas.count *15 + 20) {
 //            [_chartBarView setVisibleXRangeMinimum:self.datas.count/2];
-//            [_chartBarView setVisibleXRangeMaximum:self.datas.count/2];
 
 //            _chartBarView.xAxis.labelCount = self.datas.count *_chartBarView.frame.size.height/(self.datas.count *(15 + _chartBarView.xAxis.spaceMin) + 30);//x轴刻度个数
             [_chartBarView setVisibleXRangeMinimum:self.datas.count /ceilf((self.datas.count *15)/(1.0*_chartBarView.frame.size.height -20))];
+            NSLog(@"----%f",self.datas.count /ceilf((self.datas.count *15)/(1.0*_chartBarView.frame.size.height -20)));
+                                                
+                                                
             [_chartBarView setVisibleXRangeMaximum:self.datas.count /ceilf((self.datas.count *15)/(1.0*_chartBarView.frame.size.height -20))];
+            
+            NSLog(@"---%f",self.datas.count /ceilf((self.datas.count *15)/(1.0*_chartBarView.frame.size.height -20)));
+            
 //            [_chartBarView setVisibleXRangeMinimum:self.datas.count *_chartBarView.frame.size.height/(1.0 * self.datas.count *(15 + _chartBarView.xAxis.spaceMin) + 30)];
 
-        }else
-        {
+        }else {
 //            [_chartBarView setVisibleXRangeMaximum:self.datas.count+1];
-            [_chartBarView setVisibleXRangeMinimum:self.datas.count+1];
-
+            [_chartBarView setVisibleXRangeMinimum:2];
+            ZPLog(@"g=%f",ceilf((self.datas.count *15)/(1.0*_chartBarView.frame.size.height -20)));
 //            _chartBarView.xAxis.labelCount = self.datas.count;//x轴刻度个数
 //            [_chartBarView setVisibleXRangeMaximum:self.datas.count];
-//            [_chartBarView setVisibleXRangeMinimum:self.datas.count];
-
         }
-        
-        
     }
-
-    
     //x方向动画
     [_chartBarView animateWithYAxisDuration:2 easingOption:ChartEasingOptionEaseInQuad];
 
 }
 
 #pragma mark - getter and setter
-
-- (HorizontalBarChartView *)chartBarView
-{
+- (HorizontalBarChartView *)chartBarView {
     if (!_chartBarView) {
         _chartBarView = [[HorizontalBarChartView alloc] init];
 //        _chartBarView.userInteractionEnabled = NO;
         
         [self setupBarLineChartView:_chartBarView];
-        
     }
-    
     return _chartBarView;
 }
 
-
-
-
-- (void)setDatas:(NSArray *)datas
-{
+- (void)setDatas:(NSArray *)datas {
     if (_datas != datas) {
         _datas = [datas copy];
         
@@ -258,8 +232,7 @@
     }
 }
 
-- (void)setTitle:(NSString *)title
-{
+- (void)setTitle:(NSString *)title {
     [self.name setText:title];
 }
 

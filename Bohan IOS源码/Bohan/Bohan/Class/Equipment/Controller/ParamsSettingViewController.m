@@ -44,9 +44,11 @@
         [powerArr addObject:[NSString stringWithFormat:@"%d",i]];
     }
     [deviceId setText:[NSString stringWithFormat:@"ID:%@",self.dNo]];
+    priceTF.keyboardType = UIKeyboardTypeNumberPad;
     [self deviceParams];
     [self configNoData];// 打开这个不显示家长模式是否开启
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStauts:) name:CHANGETIMEMODEL object:nil];
+    [self TextFileTest];
 }
 
 - (void)deviceParams {
@@ -54,7 +56,12 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self loadData];
+    NSString * StringId = [self.dNo substringWithRange:NSMakeRange(0, 2)];
+    if ([StringId containsString:@"61"] || [StringId containsString:@"62"] || [StringId containsString:@"63"]) {
+        return;
+    }else {
+        [self loadData];
+    }
 }
 
 - (void)updateStauts:(NSNotification *)noti {
@@ -276,11 +283,31 @@
     if (priceTF.text == nil || priceTF.text.length <= 0) {
         ZPLog(@"没有输入文字");
         [HintView showHint:Localize(@"请输入单价")];
-    }else {
+    }else{
+            
         [self AllDtaPrice];
     }
 }
 
+- (void) TextFileTest {
+    [priceTF addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(changeValue:)   name:@"changeValue"  object:nil];
+}
+
+-(void)textFieldDidChange:(UITextField *)textField {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeValue" object:textField];
+}
+
+- (void)changeValue:(NSNotification *)notification {
+    UITextField * textField = notification.object;
+    //要实现的监听方法操作
+    ZPLog(@"%@",textField.text);
+    if (textField.text.length > 2) {
+        ZPLog(@"输入有误");
+        [HintView showHint:Localize(@"单价不能大于100")];
+        return;
+    }
+}
 // 负荷门限BUt
 //options+command+ 左右箭头折叠/展开
 - (IBAction)saveAction:(UIButton *)sender {
