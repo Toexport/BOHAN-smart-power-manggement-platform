@@ -603,11 +603,11 @@
                     
                     isParentModel = YES;
                     isValidate = YES;
-                    NSString * stringgggg = [week substringWithRange:NSMakeRange(0, 2)];
+//                    NSString * stringgggg = [week substringWithRange:NSMakeRange(0, 2)];
                     
-                    if ([stringgggg containsString:@"01"]) {
+                    if ([week hasSuffix:@"01"]) {
                         model.open = NO;
-                        ParentsModeBut.selected = YES;
+                        ParentsModeBut.selected = NO;
                     }else {
                     model.open = YES;
                     ParentsModeBut.selected = YES;

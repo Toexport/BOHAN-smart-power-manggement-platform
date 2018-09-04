@@ -17,6 +17,7 @@
 #import "DeviceInfoCollectionCell.h"
 #import "DebuggingANDPublishing.pch"
 #import "MultipleSwitchViewController.h"
+#import "DetailsViewController.h"
 
 #define ItemWidth  (ScreenWidth -1)/2.0
 static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
@@ -41,9 +42,10 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = Localize(@"设备信息");
-    self.PayView.hidden = YES;
-    self.StateViewLayoutConstraint.constant = - 80;
+//    self.PayView.hidden = YES;
+//    self.StateViewLayoutConstraint.constant = - 80;
     [self initUI];
+//    [self PayViews];
     
     
 //    if ([strin containsString:@"68"] || [strin containsString:@"66"]) {
@@ -81,7 +83,10 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     }else {
         datas = @[@{@"image" :@"ic_launch", @"name": Localize(@"实时参数")}, @{@"image" :@"ic_l", @"name": Localize(@"增值服务")}, @{@"image" :@"ic_laun", @"name": Localize(@"定时计量")}, @{@"image" :@"menu_summery", @"name": Localize(@"用电统计")}, @{@"image" :@"ic_launcher2", @"name": Localize(@"时段设置")}, @{@"image" :@"ic_launch1", @"name": Localize(@"延时/定时开关")},
             @{@"image" :@"ic_launch1", @"name": Localize(@"充值")}];
+        UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
+        [self.PayView addGestureRecognizer:tapGesturRecognizer];
     }
+    
 }
 
 - (void)updateStauts:(NSNotification *)noti {
@@ -312,13 +317,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
                 MultipleSwitchViewController * MultipleSwitch = [[MultipleSwitchViewController alloc]init];
                 MultipleSwitch.deviceNo = self.model.id;
                 [self.navigationController pushViewController:MultipleSwitch animated:YES];
-            }else
-                //            if ([EquipmentID containsString:@"68"] || [EquipmentID containsString:@"66"] || [EquipmentID containsString:@"65"]) {
-                //                TimeSettingViewController * time = [[TimeSettingViewController alloc] init];
-                //                time.deviceNo = self.model.id;
-                //                [self.navigationController pushViewController:time animated:YES];
-                //            }else
-            {
+            }else {
                 TimeSettingViewController * time = [[TimeSettingViewController alloc] init];
                 time.deviceNo = self.model.id;
                 [self.navigationController pushViewController:time animated:YES];
@@ -337,4 +336,11 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     }
 }
 
+- (void)tapAction:(UIButton *)sender {
+    DetailsViewController * Details = [[DetailsViewController alloc]init];
+    [self.navigationController pushViewController:Details animated:YES];
+    Details.deviceNo = self.model.id;
+    ZPLog(@"1111");
+
+}
 @end

@@ -11,7 +11,7 @@
 #import "SliderView.h"
 #import "PageCollectionView.h"
 #import "TablePageModel.h"
-#import "BindingViewController.h"
+//#import "BindingViewController.h"
 #import "XMLUtil.h"
 #import "DeviceModel.h"
 #import "DeviceDetailListViewController.h"
@@ -31,8 +31,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = Localize(@"设备列表");
-    [self rightBarImage:@"qrcode_scan" action:@selector(bindDevice)];
+    self.title = Localize(@"付费充电");
+//    [self rightBarImage:@"qrcode_scan" action:@selector(bindDevice)];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(languageChange) name:AppLanguageDidChangeNotification object:nil];
     dataArray = [NSMutableArray array];
     if (@available(iOS 11.0, *)){
@@ -49,12 +49,6 @@
     [self.view addSubview:self.pageCollection];
     [self.pageCollection setDatas:dataArray];
     
-}
-
-- (void)bindDevice {
-    BindingViewController *bind = [[BindingViewController alloc] init];
-    bind.hidesBottomBarWhenPushed = YES;
-    [self.navigationController pushViewController:bind animated:YES];
 }
 
 //  生命周期
