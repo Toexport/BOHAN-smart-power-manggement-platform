@@ -128,7 +128,6 @@
     chartView.rightAxis.spaceBottom = 0.01;//Y上半轴最小值占百分比
     chartView.rightAxis.axisMinimum = 0.00; // 不知道是不是对的，反正现在暂时没问题
     chartView.rightAxis.drawGridLinesEnabled = NO;
-//    chartView.rightAxis.descrip
     
     NSNumberFormatter *formatter = [[NSNumberFormatter alloc] init];
     formatter.numberStyle = NSNumberFormatterDecimalStyle;

@@ -44,11 +44,11 @@
         [powerArr addObject:[NSString stringWithFormat:@"%d",i]];
     }
     [deviceId setText:[NSString stringWithFormat:@"ID:%@",self.dNo]];
-    priceTF.keyboardType = UIKeyboardTypeNumberPad;
+//    priceTF.keyboardType = UIKeyboardTypeNumberPad;
     [self deviceParams];
     [self configNoData];// 打开这个不显示家长模式是否开启
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStauts:) name:CHANGETIMEMODEL object:nil];
-    [self TextFileTest];
+//    [self TextFileTest];
 }
 
 - (void)deviceParams {
@@ -283,31 +283,34 @@
     if (priceTF.text == nil || priceTF.text.length <= 0) {
         ZPLog(@"没有输入文字");
         [HintView showHint:Localize(@"请输入单价")];
-    }else{
-            
-        [self AllDtaPrice];
+    }else {
+        if (priceTF.text.integerValue > 100) {
+            [HintView showHint:Localize(@"单价不能大于100")];
+        }else {
+           [self AllDtaPrice];
+        } 
     }
 }
 
-- (void) TextFileTest {
-    [priceTF addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(changeValue:)   name:@"changeValue"  object:nil];
-}
-
--(void)textFieldDidChange:(UITextField *)textField {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeValue" object:textField];
-}
-
-- (void)changeValue:(NSNotification *)notification {
-    UITextField * textField = notification.object;
-    //要实现的监听方法操作
-    ZPLog(@"%@",textField.text);
-    if (textField.text.length > 2) {
-        ZPLog(@"输入有误");
-        [HintView showHint:Localize(@"单价不能大于100")];
-        return;
-    }
-}
+//- (void) TextFileTest {
+//    [priceTF addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+//    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(changeValue:)   name:@"changeValue"  object:nil];
+//}
+//
+//-(void)textFieldDidChange:(UITextField *)textField {
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeValue" object:textField];
+//}
+//
+//- (void)changeValue:(NSNotification *)notification {
+//    UITextField * textField = notification.object;
+//    //要实现的监听方法操作
+//    ZPLog(@"%@",textField.text);
+//    if (textField.text.length > 2) {
+//        ZPLog(@"输入有误");
+//        [HintView showHint:Localize(@"单价不能大于100")];
+//        return;
+//    }
+//}
 // 负荷门限BUt
 //options+command+ 左右箭头折叠/展开
 - (IBAction)saveAction:(UIButton *)sender {
@@ -439,6 +442,7 @@
             [price setText:[NSString stringWithFormat:@"%d.%02d",[[content substringToIndex:2] intValue],[[content substringFromIndex:2] intValue]]];
         }else {
             [HintView showHint:error.localizedDescription];
+//            [HintView showHint:Localize(@"设置失败")];
         }
     }];
 }
@@ -594,16 +598,20 @@
             model.week = [time substringFromIndex:time.length - 2];
             NSString *week = [Utils getBinaryByHex:model.week];
             if ((![week isEqualToString:@"00000000"]) && (!([start isEqualToString:@"00:00"] && [end isEqualToString:@"00:00"]))) {
+                
                 if ([str isEqualToString:@"03"]) {
+                    
                     isParentModel = YES;
                     isValidate = YES;
                     NSString * stringgggg = [week substringWithRange:NSMakeRange(0, 2)];
+                    
                     if ([stringgggg containsString:@"01"]) {
                         model.open = NO;
-                        ParentsModeBut.selected = NO;
-                    }else{
+                        ParentsModeBut.selected = YES;
+                    }else {
                     model.open = YES;
                     ParentsModeBut.selected = YES;
+                        
                     }
                 }
             }
@@ -615,12 +623,11 @@
 //            ParentsModeBut.selected = YES;
             return;
         }
-    }else if([str isEqualToString:@"05"]) {
+    }else
+        if([str isEqualToString:@"05"]) {
         [self configRunModelWithModelStr:content isLoop:YES];
         ParentsModeBut.selected = YES;
         return;
-    } else {
-        
     }
     ParentsModeBut.selected = NO;
     //[self configNoData];
