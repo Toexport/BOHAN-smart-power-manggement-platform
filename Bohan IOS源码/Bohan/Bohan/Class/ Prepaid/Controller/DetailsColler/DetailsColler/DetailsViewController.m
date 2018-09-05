@@ -46,6 +46,7 @@
 - (IBAction)MyBUt:(UIButton *)sender {
     MyAccountViewController * MyAccount = [[MyAccountViewController alloc]init];
     [self.navigationController pushViewController:MyAccount animated:YES];
+    MyAccount.deviceId = self.deviceNo;
 }
 
 @end

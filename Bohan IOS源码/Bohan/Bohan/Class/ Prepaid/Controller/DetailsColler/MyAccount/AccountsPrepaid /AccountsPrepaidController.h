@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface AccountsPrepaidController : UIViewController
+@property (weak, nonatomic) IBOutlet UITableView *Tableview;
+
 
 @end

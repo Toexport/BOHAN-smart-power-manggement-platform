@@ -8,7 +8,7 @@
 
 #import "RechargeRecordController.h"
 #import "RechargeRecordCell.h"
-@interface RechargeRecordController () <UITableViewDelegate,UITableViewDataSource>
+@interface RechargeRecordController () <UITableViewDelegate, UITableViewDataSource>
 
 @end
 
@@ -23,26 +23,27 @@
 
 //3.设置cell之间headerview的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 0.001;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 5;
-}
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 5;
+    return 2.0f;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 5;
+}
+
+
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    RechargeRecordCell * cell = cell = [tableView dequeueReusableCellWithIdentifier:@"RechargeRecordCell" forIndexPath:indexPath];
+    RechargeRecordCell * cell = [tableView dequeueReusableCellWithIdentifier:@"RechargeRecordCell" forIndexPath:indexPath];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 55;
 }
+
 @end
