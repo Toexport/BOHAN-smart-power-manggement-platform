@@ -29,7 +29,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IQButtonBarArrowRight" translatesAutoresizingMaskIntoConstraints="NO" id="oky-uH-9fF">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_Forward" translatesAutoresizingMaskIntoConstraints="NO" id="oky-uH-9fF">
                         <rect key="frame" x="290" y="17.5" width="14" height="20"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="14" id="jDG-EY-xvv"/>
@@ -50,6 +50,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="IQButtonBarArrowRight" width="16" height="16"/>
+        <image name="ic_Forward" width="7" height="12"/>
     </resources>
 </document>

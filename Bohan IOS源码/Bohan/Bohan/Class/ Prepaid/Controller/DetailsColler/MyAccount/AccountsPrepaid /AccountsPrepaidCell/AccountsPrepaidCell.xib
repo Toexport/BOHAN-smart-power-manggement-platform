@@ -1,21 +1,335 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13142" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12042"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="AccountsPrepaidCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="383" id="KGk-i7-Jjw" customClass="AccountsPrepaidCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="450"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="449.5"/>
                 <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择充值金额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JYU-lO-D0P">
+                        <rect key="frame" x="16" y="11" width="121.5" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="BWD-ll-I0n"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="93y-Pu-i39">
+                        <rect key="frame" x="16" y="37" width="288" height="130"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XR5-XZ-rTw">
+                                <rect key="frame" x="17" y="9" width="75" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="6sS-SX-NvR"/>
+                                    <constraint firstAttribute="height" constant="45" id="YnP-EB-frY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="5元">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="PayBut1:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qnR-et-Vf9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k8X-wq-9Pi">
+                                <rect key="frame" x="106.5" y="9" width="75" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="hyd-5o-o17"/>
+                                    <constraint firstAttribute="height" constant="45" id="tLi-L2-Nfr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="10元">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="PayBut2:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="4Pz-pz-EVQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0UB-sS-GTv">
+                                <rect key="frame" x="196" y="9" width="75" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="KB0-OX-SvL"/>
+                                    <constraint firstAttribute="height" constant="45" id="nk3-ge-k0B"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="30元">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="PayBut3:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="sl2-5e-bjK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jdK-mL-yb2">
+                                <rect key="frame" x="17" y="74" width="75" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Psn-xQ-WAa"/>
+                                    <constraint firstAttribute="width" constant="75" id="gHe-ze-VLf"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="50元">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="PayBut4:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="yE0-fG-CNS"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TQI-Ks-3A8">
+                                <rect key="frame" x="106.5" y="74" width="75" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="YDw-ny-0FJ"/>
+                                    <constraint firstAttribute="width" constant="75" id="fUj-fF-sak"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="100元">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="PayBut5:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="o0B-n4-cnt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Miy-4D-Hr2">
+                                <rect key="frame" x="196" y="74" width="75" height="45"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="3qd-5t-fm1"/>
+                                    <constraint firstAttribute="width" constant="75" id="hSv-yw-imD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="tintColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <state key="normal" title="200元">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <state key="selected">
+                                    <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                                        <real key="value" value="0.5"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColorFromUIColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="PayBut6:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="eOc-w1-bf3"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="TQI-Ks-3A8" firstAttribute="centerX" secondItem="93y-Pu-i39" secondAttribute="centerX" id="50s-eP-l6g"/>
+                            <constraint firstItem="TQI-Ks-3A8" firstAttribute="top" secondItem="jdK-mL-yb2" secondAttribute="top" id="CIo-Hc-1S7"/>
+                            <constraint firstAttribute="trailing" secondItem="Miy-4D-Hr2" secondAttribute="trailing" constant="17" id="Dxb-rk-r3Y"/>
+                            <constraint firstItem="k8X-wq-9Pi" firstAttribute="centerX" secondItem="93y-Pu-i39" secondAttribute="centerX" id="HBP-8Y-u0e"/>
+                            <constraint firstItem="XR5-XZ-rTw" firstAttribute="leading" secondItem="93y-Pu-i39" secondAttribute="leading" constant="17" id="KFW-EJ-c6E"/>
+                            <constraint firstItem="jdK-mL-yb2" firstAttribute="top" secondItem="XR5-XZ-rTw" secondAttribute="bottom" constant="20" id="Lgs-4o-cdB"/>
+                            <constraint firstItem="0UB-sS-GTv" firstAttribute="top" secondItem="k8X-wq-9Pi" secondAttribute="top" id="Mvl-sD-ZP6"/>
+                            <constraint firstItem="k8X-wq-9Pi" firstAttribute="top" secondItem="XR5-XZ-rTw" secondAttribute="top" id="T2E-vu-1nM"/>
+                            <constraint firstAttribute="height" constant="130" id="ZJc-Ly-HiF"/>
+                            <constraint firstAttribute="trailing" secondItem="0UB-sS-GTv" secondAttribute="trailing" constant="17" id="cgI-rG-z9Y"/>
+                            <constraint firstItem="Miy-4D-Hr2" firstAttribute="top" secondItem="TQI-Ks-3A8" secondAttribute="top" id="gzM-1z-lAZ"/>
+                            <constraint firstItem="jdK-mL-yb2" firstAttribute="leading" secondItem="XR5-XZ-rTw" secondAttribute="leading" id="nQG-30-cNz"/>
+                            <constraint firstItem="XR5-XZ-rTw" firstAttribute="top" secondItem="93y-Pu-i39" secondAttribute="top" constant="9" id="pKM-tu-gQf"/>
+                        </constraints>
+                    </view>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请选择支付方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VgZ-Dn-DbQ">
+                        <rect key="frame" x="16" y="172" width="122" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ZHIFUBAO" translatesAutoresizingMaskIntoConstraints="NO" id="Kut-yc-hxl">
+                        <rect key="frame" x="16" y="198" width="180" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="180" id="7Ik-M1-xTm"/>
+                            <constraint firstAttribute="height" constant="40" id="k2l-kF-HIf"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="WechatPay" translatesAutoresizingMaskIntoConstraints="NO" id="BAd-U1-dak">
+                        <rect key="frame" x="16" y="243" width="180" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="Ioo-Mf-pmb"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="40" id="N4A-3v-xZr"/>
+                            <constraint firstAttribute="width" constant="180" id="l2p-TF-8IK"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WND-r6-U8d">
+                        <rect key="frame" x="258" y="198" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="40" id="grC-KQ-fbm"/>
+                            <constraint firstAttribute="height" constant="40" id="nY0-ER-L3P"/>
+                        </constraints>
+                        <state key="normal" image="ic_Shopping_Choice_normal"/>
+                        <state key="selected" image="ic_Shopping_Choice_pressed"/>
+                        <connections>
+                            <action selector="AlipayPayBut:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Z1H-RW-thm"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XBa-Ak-mDS">
+                        <rect key="frame" x="258" y="243" width="40" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="40" id="8Rt-F4-Wst"/>
+                            <constraint firstAttribute="width" constant="40" id="MzK-kV-5ja"/>
+                        </constraints>
+                        <state key="normal" image="ic_Shopping_Choice_normal"/>
+                        <state key="selected" image="ic_Shopping_Choice_pressed"/>
+                        <connections>
+                            <action selector="WechatPayBut:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Bu2-5M-672"/>
+                        </connections>
+                    </button>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mUZ-O0-ufu">
+                        <rect key="frame" x="41" y="343" width="238" height="45"/>
+                        <color key="backgroundColor" red="0.31764705882352939" green="0.66274509803921566" blue="0.2196078431372549" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="45" id="kHJ-El-RZV"/>
+                        </constraints>
+                        <state key="normal" title="确定">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </state>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                        <connections>
+                            <action selector="DetermineBut:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="IXs-5I-suM"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                <constraints>
+                    <constraint firstItem="93y-Pu-i39" firstAttribute="top" secondItem="JYU-lO-D0P" secondAttribute="bottom" constant="5" id="2Ki-i0-hFF"/>
+                    <constraint firstItem="JYU-lO-D0P" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="6Jc-mX-emu"/>
+                    <constraint firstItem="BAd-U1-dak" firstAttribute="leading" secondItem="Kut-yc-hxl" secondAttribute="leading" id="8y5-Yj-vnL"/>
+                    <constraint firstItem="mUZ-O0-ufu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="25" id="AjC-sQ-mO5"/>
+                    <constraint firstItem="Kut-yc-hxl" firstAttribute="top" secondItem="VgZ-Dn-DbQ" secondAttribute="bottom" constant="5" id="Cwv-8S-NMf"/>
+                    <constraint firstItem="mUZ-O0-ufu" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="NOG-YW-8yK"/>
+                    <constraint firstItem="JYU-lO-D0P" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="RyH-L1-f3F"/>
+                    <constraint firstItem="WND-r6-U8d" firstAttribute="centerY" secondItem="Kut-yc-hxl" secondAttribute="centerY" id="bmY-YU-eK7"/>
+                    <constraint firstItem="BAd-U1-dak" firstAttribute="top" secondItem="Kut-yc-hxl" secondAttribute="bottom" constant="5" id="ekA-T3-0kL"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="XBa-Ak-mDS" secondAttribute="trailing" constant="6" id="evn-Kk-Rgz"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="WND-r6-U8d" secondAttribute="trailing" constant="6" id="iEf-GC-Erm"/>
+                    <constraint firstItem="XBa-Ak-mDS" firstAttribute="centerY" secondItem="BAd-U1-dak" secondAttribute="centerY" id="ko5-Xe-nUI"/>
+                    <constraint firstItem="Kut-yc-hxl" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="lDg-ii-PhA"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="mUZ-O0-ufu" secondAttribute="trailing" constant="25" id="pbe-M9-lM5"/>
+                    <constraint firstItem="93y-Pu-i39" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="sNP-CI-cQW"/>
+                    <constraint firstItem="VgZ-Dn-DbQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="tRZ-jM-tg4"/>
+                    <constraint firstItem="VgZ-Dn-DbQ" firstAttribute="top" secondItem="93y-Pu-i39" secondAttribute="bottom" constant="5" id="trr-pl-GiJ"/>
+                    <constraint firstItem="93y-Pu-i39" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" id="xDq-u4-aGM"/>
+                    <constraint firstItem="mUZ-O0-ufu" firstAttribute="top" secondItem="BAd-U1-dak" secondAttribute="bottom" constant="60" id="yUP-cZ-q4J"/>
+                </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="AlipayPayBut" destination="WND-r6-U8d" id="rP1-Af-U0o"/>
+                <outlet property="DetermineBut" destination="mUZ-O0-ufu" id="WZo-RQ-XcT"/>
+                <outlet property="PayBut1" destination="XR5-XZ-rTw" id="DwW-BB-BOt"/>
+                <outlet property="PayBut2" destination="k8X-wq-9Pi" id="ER1-C9-NsV"/>
+                <outlet property="PayBut3" destination="0UB-sS-GTv" id="dNq-RX-lB5"/>
+                <outlet property="PayBut4" destination="jdK-mL-yb2" id="o1N-eF-UDZ"/>
+                <outlet property="PayBut5" destination="TQI-Ks-3A8" id="BbO-us-5DE"/>
+                <outlet property="PayBut6" destination="Miy-4D-Hr2" id="G42-OP-tMF"/>
+                <outlet property="WechatPayBut" destination="XBa-Ak-mDS" id="sQ0-GJ-DPr"/>
+            </connections>
+            <point key="canvasLocation" x="73" y="223"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="WechatPay" width="403" height="159"/>
+        <image name="ZHIFUBAO" width="299" height="117"/>
+        <image name="ic_Shopping_Choice_normal" width="18" height="18"/>
+        <image name="ic_Shopping_Choice_pressed" width="18" height="18"/>
+    </resources>
 </document>

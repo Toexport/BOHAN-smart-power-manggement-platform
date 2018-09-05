@@ -20,8 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = Localize(@"账户充值");
-//    [self.Tableview registerNib:[UINib nibWithNibName:@"AccountsPrepaidCell" bundle:nil] forCellReuseIdentifier:@"AccountsPrepaidCell"];
-//    self.Tableview.separatorStyle = UITableViewCellSeparatorStyleNone;  //隐藏tableview多余的线条
+    [self.Tableview registerNib:[UINib nibWithNibName:@"AccountsPrepaidCell" bundle:nil] forCellReuseIdentifier:@"AccountsPrepaidCell"];
+    self.Tableview.separatorStyle = UITableViewCellSeparatorStyleNone;  //隐藏tableview多余的线条
 }
 
 

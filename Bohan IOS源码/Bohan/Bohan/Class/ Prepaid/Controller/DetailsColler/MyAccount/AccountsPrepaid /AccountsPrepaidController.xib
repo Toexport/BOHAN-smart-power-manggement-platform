@@ -1,34 +1,42 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AccountsPrepaidController"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AccountsPrepaidController">
+            <connections>
+                <outlet property="Tableview" destination="MSK-FL-88g" id="NU0-WW-JS6"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qCB-qd-SEO">
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="MSK-FL-88g">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <color key="separatorColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="sU0-pI-zoh"/>
+                        <outlet property="delegate" destination="-1" id="GDX-0P-xr1"/>
+                    </connections>
                 </tableView>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
-                <constraint firstItem="qCB-qd-SEO" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="4Jf-gO-OgW"/>
-                <constraint firstItem="qCB-qd-SEO" firstAttribute="bottom" secondItem="i5M-Pr-FkT" secondAttribute="bottom" id="6kh-Y0-CVX"/>
-                <constraint firstItem="qCB-qd-SEO" firstAttribute="trailing" secondItem="i5M-Pr-FkT" secondAttribute="trailing" id="Bdp-1Q-Dbc"/>
-                <constraint firstItem="qCB-qd-SEO" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="M1a-iw-JJI"/>
+                <constraint firstItem="MSK-FL-88g" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="ENx-Xa-ru9"/>
+                <constraint firstAttribute="trailing" secondItem="MSK-FL-88g" secondAttribute="trailing" id="Uad-8F-h3M"/>
+                <constraint firstAttribute="bottom" secondItem="MSK-FL-88g" secondAttribute="bottom" id="V8e-cO-osy"/>
+                <constraint firstItem="MSK-FL-88g" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kf5-A8-yCr"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="7vL-Fp-dfg"/>
             <point key="canvasLocation" x="95.5" y="53.5"/>
         </view>
     </objects>
