@@ -41,12 +41,12 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
 }
 
 
-- (WKWebView *)wkwebView
-{
+
+- (WKWebView *)wkwebView {
     if (!_wkwebView) {
         
         _wkwebView = [WKWebView initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];

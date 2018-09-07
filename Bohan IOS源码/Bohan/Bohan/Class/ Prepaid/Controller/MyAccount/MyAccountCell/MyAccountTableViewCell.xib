@@ -62,6 +62,9 @@
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="MoneyLabel" destination="VcP-Tz-08n" id="bvd-KD-5aV"/>
+            </connections>
             <point key="canvasLocation" x="115" y="70"/>
         </tableViewCell>
     </objects>

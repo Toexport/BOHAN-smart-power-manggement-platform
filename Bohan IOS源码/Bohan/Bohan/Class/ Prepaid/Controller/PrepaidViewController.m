@@ -162,10 +162,8 @@
             [HintView showHint:isOpen?Localize(@"已开启"):Localize(@"已关闭")];
         }else {
             [HintView showHint:error.localizedDescription];// 后台返回的提示
-            
         }
     }];
-    
 }
 
 @end

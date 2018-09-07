@@ -27,4 +27,5 @@ typedef void(^ QRScanSuccess) (NSString *result);
 @property (nonatomic, retain) UIImageView * line;
 @property (nonatomic, assign) BOOL hideBtn;
 -(void)getResultStr:(QRScanSuccess)resultBlock;
+@property (nonatomic, assign) NSInteger type; // 识别号
 @end

@@ -14,6 +14,8 @@
 #import "MyAccountTableViewCell.h"
 #import "AccountsPrepaidTableViewCell.h"
 #import "PrepaidRecordsTableViewCell.h"
+#import "RechargeRecordTableViewCell.h"
+#import "PrepaidRecordsController.h"
 @interface MyAccountViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @end
@@ -32,6 +34,7 @@
     [self.Tableview registerNib:[UINib nibWithNibName:@"MyAccountTableViewCell" bundle:nil] forCellReuseIdentifier:@"MyAccountTableViewCell"];
     [self.Tableview registerNib:[UINib nibWithNibName:@"AccountsPrepaidTableViewCell" bundle:nil] forCellReuseIdentifier:@"AccountsPrepaidTableViewCell"];
     [self.Tableview registerNib:[UINib nibWithNibName:@"PrepaidRecordsTableViewCell" bundle:nil] forCellReuseIdentifier:@"PrepaidRecordsTableViewCell"];
+    [self.Tableview registerNib:[UINib nibWithNibName:@"RechargeRecordTableViewCell" bundle:nil] forCellReuseIdentifier:@"RechargeRecordTableViewCell"];
     self.Tableview.separatorStyle = UITableViewCellSeparatorStyleNone;  //隐藏tableview多余的线条
 }
 
@@ -42,7 +45,7 @@
 }
 // Cell的个数
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -55,11 +58,16 @@
             AccountsPrepaidTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"AccountsPrepaidTableViewCell"];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
             return cell;
-        }else {
+        }else
+            if (indexPath.section == 2) {
             PrepaidRecordsTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"PrepaidRecordsTableViewCell"];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
             return cell;
-        }
+            }else {
+                RechargeRecordTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"RechargeRecordTableViewCell"];
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
+                return cell;
+            }
 }
 // cell的大小
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -68,7 +76,12 @@
     }else
         if (indexPath.section == 1) {
             return 55;
-        }else {
+        }else
+            if (indexPath.section == 2) {
+                
+                return 55;
+            }else {
+                
             return 55;
         }
 }
@@ -84,7 +97,11 @@
     }else
         if (section == 1) {
             return 2.0f;
-        }else {
+        }else
+            if (section == 2) {
+                return 2.0f;
+            }else {
+                
             return 2.0f;
         }
 }
@@ -97,9 +114,13 @@
         if (indexPath.section == 1) {
             AccountsPrepaidController * AccountsPrepaid = [[AccountsPrepaidController alloc]init];
             [self.navigationController pushViewController:AccountsPrepaid animated:YES];
-        }else {
-            RechargeRecordController * RechargeRecord = [[RechargeRecordController alloc]init];
+        }else
+             if (indexPath.section == 2) {
+            PrepaidRecordsController * RechargeRecord = [[PrepaidRecordsController alloc]init];
             [self.navigationController pushViewController:RechargeRecord animated:YES];
-        }
+             }else {
+                 RechargeRecordController * RechargeRecord = [[RechargeRecordController alloc]init];
+                 [self.navigationController pushViewController:RechargeRecord animated:YES];
+             }
 }
 @end

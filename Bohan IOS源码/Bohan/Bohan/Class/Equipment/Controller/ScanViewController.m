@@ -8,6 +8,7 @@
 //
 
 #import "ScanViewController.h"
+#import "DetailsPayController.h"
 #import "DebuggingANDPublishing.pch"
 @interface ScanViewController ()
 
@@ -15,17 +16,14 @@
 
 @implementation ScanViewController
 @synthesize hideBtn;
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
     }
     return self;
 }
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     self.title = Localize(@"条形码");
     self.view.backgroundColor = [UIColor lightGrayColor];
@@ -124,29 +122,36 @@
 
 #pragma mark AVCaptureMetadataOutputObjectsDelegate
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
-
     NSString *stringValue;
-    
-    if ([metadataObjects count] >0) {
-        AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex:0];
-        stringValue = metadataObject.stringValue;
+    if (self.type == 1) {
+        if ([metadataObjects count] >0) {
+            AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex:0];
+            stringValue = metadataObject.stringValue;
+        }
+        [_session stopRunning];
+        [timer invalidate];
+        scanBlock(stringValue);
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }else
+        if (self.type == 2) {
+            if ([metadataObjects count] >0) {
+                AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex:0];
+                stringValue = metadataObject.stringValue;
+            }
+            [_session stopRunning];
+            [timer invalidate];
+            ZPLog(@"扫描到");
+            ZPLog(@"%@",stringValue);
+            DetailsPayController * DetailsPay = [[DetailsPayController alloc]init];
+            [self.navigationController pushViewController:DetailsPay animated:YES];
+            DetailsPay.DataId = stringValue;
+        }
+
     }
-    
-    [_session stopRunning];
-    
-    [timer invalidate];
-    scanBlock(stringValue);
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-}
+
+
 -(void)getResultStr:(QRScanSuccess)resultBlock {
     scanBlock = resultBlock;
-}
-
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 @end

@@ -6,9 +6,9 @@
 //  Copyright © 2018年 Bohan. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
 
-@interface RechargeRecordController : UIViewController
+#import "BaseViewController.h"
+@interface RechargeRecordController : BaseViewController
 @property (weak, nonatomic) IBOutlet UITableView *Tableview;
 
 @end

@@ -33,8 +33,9 @@
     
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         NSLog(@"设备具备相机");
-        [self presentViewController:scan animated:YES completion:nil];
-        //        [self.navigationController pushViewController:scan animated:YES];
+//        [self presentViewController:scan animated:YES completion:nil];
+        scan.type = 2;
+        [self.navigationController pushViewController:scan animated:YES];
     }else {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"提示", nil) message:NSLocalizedString(@"您的设备暂时不支持扫码", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"确定", nil) otherButtonTitles:nil, nil];
         [alert show];

@@ -12,8 +12,7 @@
 #import "PowerModel.h"
 #import "NSBundle+AppLanguageSwitch.h"
 #import "DebuggingANDPublishing.pch"
-@interface ElectricityViewController ()
-{
+@interface ElectricityViewController () {
     NSArray *dataArray;
     NSUInteger currentIndex;
     NSDateFormatter *formatter;
@@ -33,8 +32,7 @@
 
 @implementation ElectricityViewController
 
-- (instancetype)init
-{
+- (instancetype)init {
     self = [super init];
     if (self) {
         
@@ -49,8 +47,7 @@
     
     if (@available(iOS 11.0, *)){
 //        [self.tableView setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
-    }else
-    {
+    }else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(languageChange) name:AppLanguageDidChangeNotification object:nil];
@@ -158,14 +155,11 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSArray *)titles
-{
+- (NSArray *)titles {
     return @[Localize(@"所有设备当日每小时用电量（kWh）"), Localize(@"所有设备当月每日用电量（kWh）"), Localize(@"所有设备当年每月用电量（kWh）")];
 }
 
-- (SliderView *)sliderView
-{
-    
+- (SliderView *)sliderView {
     if (!_sliderView) {
         _sliderView = [[SliderView alloc] initWithFrame:CGRectMake(0, kTopHeight, ScreenWidth, 45) datas:@[Localize(@"日数据"), Localize(@"月数据"), Localize(@"年数据")]];
         [_sliderView setBackgroundColor:kBackBackroundColor];
@@ -192,8 +186,7 @@
     return _sliderView;
 }
 
-- (UIView *)headerView
-{
+- (UIView *)headerView {
     if (!_headerView) {
         _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.sliderView.frame.origin.y + self.sliderView.frame.size.height, self.sliderView.frame.size.width, 45)];
         
@@ -222,8 +215,7 @@
     return _headerView;
 }
 
-- (PowerHorizontalBarView *)barView
-{
+- (PowerHorizontalBarView *)barView {
     if (!_barView) {
         _barView = [[PowerHorizontalBarView alloc] init];
         [_barView setTitle:self.titles[0]];
@@ -231,14 +223,5 @@
     
     return _barView;
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

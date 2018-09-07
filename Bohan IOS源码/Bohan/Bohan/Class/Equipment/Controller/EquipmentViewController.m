@@ -168,14 +168,11 @@
     
     [socket sendMultiDataWithModel:command resultBlock:^(id response, NSError *error) {
         ZPLog(@"--------%@",response);
-
         if (!error) {
             [HintView showHint:isOpen?Localize(@"已开启"):Localize(@"已关闭")];
         }else {
             [HintView showHint: error.localizedDescription];// 后台返回的提示
-            
         }
     }];
-    
 }
 @end

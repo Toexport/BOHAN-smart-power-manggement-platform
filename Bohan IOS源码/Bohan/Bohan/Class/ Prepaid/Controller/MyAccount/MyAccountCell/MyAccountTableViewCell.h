@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MyAccountTableViewCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *MoneyLabel; // 价格
 
 @end

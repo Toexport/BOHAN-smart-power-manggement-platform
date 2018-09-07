@@ -15,6 +15,16 @@
 		C40837122133F0580057C6E0 /* ResetPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40837142133F0580057C6E0 /* ResetPwdViewController.xib */; };
 		C410507520FED0B9009A46F4 /* MultipleSwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C410507320FED0B9009A46F4 /* MultipleSwitchViewController.m */; };
 		C410507720FF1B1F009A46F4 /* MultipleSwitchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C410507920FF1B1F009A46F4 /* MultipleSwitchViewController.xib */; };
+		C429412E21421B8F00E10921 /* RechargeRecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C429412C21421B8F00E10921 /* RechargeRecordTableViewCell.m */; };
+		C429412F21421B8F00E10921 /* RechargeRecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C429412D21421B8F00E10921 /* RechargeRecordTableViewCell.xib */; };
+		C429413421421DE100E10921 /* PrepaidRecordsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C429413221421DE100E10921 /* PrepaidRecordsController.m */; };
+		C429413521421DE100E10921 /* PrepaidRecordsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C429413321421DE100E10921 /* PrepaidRecordsController.xib */; };
+		C429413A21421DFF00E10921 /* PrepaidRecordsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C429413821421DFF00E10921 /* PrepaidRecordsCell.m */; };
+		C429413B21421DFF00E10921 /* PrepaidRecordsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C429413921421DFF00E10921 /* PrepaidRecordsCell.xib */; };
+		C429414021428DB200E10921 /* DetailsPayController.m in Sources */ = {isa = PBXBuildFile; fileRef = C429413E21428DB200E10921 /* DetailsPayController.m */; };
+		C429414121428DB200E10921 /* DetailsPayController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C429413F21428DB200E10921 /* DetailsPayController.xib */; };
+		C4294146214294BE00E10921 /* DetailsPayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4294144214294BE00E10921 /* DetailsPayCell.m */; };
+		C4294147214294BE00E10921 /* DetailsPayCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4294145214294BE00E10921 /* DetailsPayCell.xib */; };
 		C47B4A9C20F5CCC100DAD5D3 /* LanguageController.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4A9A20F5CCC100DAD5D3 /* LanguageController.m */; };
 		C47B4A9D20F5CCC100DAD5D3 /* LanguageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C47B4A9B20F5CCC100DAD5D3 /* LanguageController.xib */; };
 		C47B4AAD20F5D3D500DAD5D3 /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4AAC20F5D3D500DAD5D3 /* NSBundle+Language.m */; };
@@ -221,6 +231,21 @@
 		C410507820FF1B1F009A46F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MultipleSwitchViewController.xib; sourceTree = "<group>"; };
 		C418584B21016889002285F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ShareView.strings; sourceTree = "<group>"; };
 		C418584D21016992002285F4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ShareView.strings"; sourceTree = "<group>"; };
+		C429412B21421B8F00E10921 /* RechargeRecordTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RechargeRecordTableViewCell.h; sourceTree = "<group>"; };
+		C429412C21421B8F00E10921 /* RechargeRecordTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RechargeRecordTableViewCell.m; sourceTree = "<group>"; };
+		C429412D21421B8F00E10921 /* RechargeRecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RechargeRecordTableViewCell.xib; sourceTree = "<group>"; };
+		C429413121421DE100E10921 /* PrepaidRecordsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrepaidRecordsController.h; sourceTree = "<group>"; };
+		C429413221421DE100E10921 /* PrepaidRecordsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrepaidRecordsController.m; sourceTree = "<group>"; };
+		C429413321421DE100E10921 /* PrepaidRecordsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrepaidRecordsController.xib; sourceTree = "<group>"; };
+		C429413721421DFF00E10921 /* PrepaidRecordsCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrepaidRecordsCell.h; sourceTree = "<group>"; };
+		C429413821421DFF00E10921 /* PrepaidRecordsCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrepaidRecordsCell.m; sourceTree = "<group>"; };
+		C429413921421DFF00E10921 /* PrepaidRecordsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrepaidRecordsCell.xib; sourceTree = "<group>"; };
+		C429413D21428DB200E10921 /* DetailsPayController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsPayController.h; sourceTree = "<group>"; };
+		C429413E21428DB200E10921 /* DetailsPayController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsPayController.m; sourceTree = "<group>"; };
+		C429413F21428DB200E10921 /* DetailsPayController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsPayController.xib; sourceTree = "<group>"; };
+		C4294143214294BE00E10921 /* DetailsPayCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DetailsPayCell.h; sourceTree = "<group>"; };
+		C4294144214294BE00E10921 /* DetailsPayCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DetailsPayCell.m; sourceTree = "<group>"; };
+		C4294145214294BE00E10921 /* DetailsPayCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsPayCell.xib; sourceTree = "<group>"; };
 		C47B4A9920F5CCC100DAD5D3 /* LanguageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LanguageController.h; sourceTree = "<group>"; };
 		C47B4A9A20F5CCC100DAD5D3 /* LanguageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LanguageController.m; sourceTree = "<group>"; };
 		C47B4A9B20F5CCC100DAD5D3 /* LanguageController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageController.xib; sourceTree = "<group>"; };
@@ -619,6 +644,48 @@
 			path = ZP_registrationTimerBut;
 			sourceTree = "<group>";
 		};
+		C429413021421DB700E10921 /* PrepaidRecords */ = {
+			isa = PBXGroup;
+			children = (
+				C429413121421DE100E10921 /* PrepaidRecordsController.h */,
+				C429413221421DE100E10921 /* PrepaidRecordsController.m */,
+				C429413321421DE100E10921 /* PrepaidRecordsController.xib */,
+				C429413621421DEC00E10921 /* PrepaidRecordsCell */,
+			);
+			path = PrepaidRecords;
+			sourceTree = "<group>";
+		};
+		C429413621421DEC00E10921 /* PrepaidRecordsCell */ = {
+			isa = PBXGroup;
+			children = (
+				C429413721421DFF00E10921 /* PrepaidRecordsCell.h */,
+				C429413821421DFF00E10921 /* PrepaidRecordsCell.m */,
+				C429413921421DFF00E10921 /* PrepaidRecordsCell.xib */,
+			);
+			path = PrepaidRecordsCell;
+			sourceTree = "<group>";
+		};
+		C429413C21428D9200E10921 /* DetailsPay */ = {
+			isa = PBXGroup;
+			children = (
+				C429413D21428DB200E10921 /* DetailsPayController.h */,
+				C429413E21428DB200E10921 /* DetailsPayController.m */,
+				C429413F21428DB200E10921 /* DetailsPayController.xib */,
+				C4294142214294AC00E10921 /* DetailsPayCell */,
+			);
+			path = DetailsPay;
+			sourceTree = "<group>";
+		};
+		C4294142214294AC00E10921 /* DetailsPayCell */ = {
+			isa = PBXGroup;
+			children = (
+				C4294143214294BE00E10921 /* DetailsPayCell.h */,
+				C4294144214294BE00E10921 /* DetailsPayCell.m */,
+				C4294145214294BE00E10921 /* DetailsPayCell.xib */,
+			);
+			path = DetailsPayCell;
+			sourceTree = "<group>";
+		};
 		C42AE0B8212E3512006A6F84 /*  Prepaid */ = {
 			isa = PBXGroup;
 			children = (
@@ -678,6 +745,9 @@
 				C4D188CA213FA94A0030464E /* PrepaidRecordsTableViewCell.h */,
 				C4D188CB213FA94A0030464E /* PrepaidRecordsTableViewCell.m */,
 				C4D188CC213FA94A0030464E /* PrepaidRecordsTableViewCell.xib */,
+				C429412B21421B8F00E10921 /* RechargeRecordTableViewCell.h */,
+				C429412C21421B8F00E10921 /* RechargeRecordTableViewCell.m */,
+				C429412D21421B8F00E10921 /* RechargeRecordTableViewCell.xib */,
 			);
 			path = MyAccountCell;
 			sourceTree = "<group>";
@@ -688,6 +758,7 @@
 				C4E164AC213E82F600445E57 /* DetailsViewController.h */,
 				C4E164AD213E82F600445E57 /* DetailsViewController.m */,
 				C4E164AE213E82F600445E57 /* DetailsViewController.xib */,
+				C429413C21428D9200E10921 /* DetailsPay */,
 			);
 			path = DetailsColler;
 			sourceTree = "<group>";
@@ -717,6 +788,7 @@
 				C4E164B6213E857100445E57 /* MyAccount */,
 				C4E164B5213E851700445E57 /* AccountsPrepaid  */,
 				C4E164C9213E92E400445E57 /* RechargeRecord */,
+				C429413021421DB700E10921 /* PrepaidRecords */,
 			);
 			path = MyAccount;
 			sourceTree = "<group>";
@@ -1666,6 +1738,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC80904B204700A300265FE0 /* LoginViewController.xib in Resources */,
+				C429413B21421DFF00E10921 /* PrepaidRecordsCell.xib in Resources */,
 				CC2455B61FF7450700616916 /* LaunchScreen.storyboard in Resources */,
 				CC468D72206969D900506970 /* WSDatePickerView.xib in Resources */,
 				C4E164BE213E85DE00445E57 /* MyAccountViewController.xib in Resources */,
@@ -1691,6 +1764,8 @@
 				C4D188C4213FA4330030464E /* MyAccountTableViewCell.xib in Resources */,
 				CC8090522047058A00265FE0 /* BindingViewController.xib in Resources */,
 				CC2455B31FF7450700616916 /* Assets.xcassets in Resources */,
+				C4294147214294BE00E10921 /* DetailsPayCell.xib in Resources */,
+				C429412F21421B8F00E10921 /* RechargeRecordTableViewCell.xib in Resources */,
 				CC2845D9202894A800D79935 /* Localizable.strings in Resources */,
 				C4D188F0213FD5420030464E /* AccountsPrepaidCell.xib in Resources */,
 				CC8090572047096500265FE0 /* DeviceInfoViewController.xib in Resources */,
@@ -1700,7 +1775,9 @@
 				C4A044962113F5C300656EC2 /* ParamsSettingViewController.xib in Resources */,
 				CC2455B11FF7450700616916 /* Main.storyboard in Resources */,
 				C405AE4320E7465B00ED77E4 /* ShareView.xib in Resources */,
+				C429413521421DE100E10921 /* PrepaidRecordsController.xib in Resources */,
 				C47B4A9D20F5CCC100DAD5D3 /* LanguageController.xib in Resources */,
+				C429414121428DB200E10921 /* DetailsPayController.xib in Resources */,
 				C40837122133F0580057C6E0 /* ResetPwdViewController.xib in Resources */,
 				CC2456AB1FF94D7300616916 /* DeviceTableViewCell.xib in Resources */,
 				CC1EFF31204BF061002811CB /* WifiView.xib in Resources */,
@@ -1766,12 +1843,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC24568E1FF745DB00616916 /* ElectricityViewController.m in Sources */,
+				C4294146214294BE00E10921 /* DetailsPayCell.m in Sources */,
 				CC24566F1FF745DB00616916 /* UILabel+Convenience.m in Sources */,
 				CC3B2F91201E26D700ADC116 /* UpdateDeviceInfoViewController.m in Sources */,
 				CCCDDE0F2003CC8000DF468C /* ContentTableView.m in Sources */,
 				CC2456961FF78ECA00616916 /* UIButton+Disable.m in Sources */,
 				CC0FE9B72024AB490031BDFC /* PowerModel.m in Sources */,
 				CC5567042025E34100A8589B /* UIView+Extension.m in Sources */,
+				C429412E21421B8F00E10921 /* RechargeRecordTableViewCell.m in Sources */,
 				CC24566B1FF745DB00616916 /* UIButton+EdgeInsets.m in Sources */,
 				CCCDDE0C2003CBA400DF468C /* UITextField+NoCopyPaste.m in Sources */,
 				C4D188C3213FA4330030464E /* MyAccountTableViewCell.m in Sources */,
@@ -1818,6 +1897,7 @@
 				CC176DB6201A3A8000C744C6 /* YLSheetView.m in Sources */,
 				CCE9E598200644FD008439F3 /* ESPTouchResult.m in Sources */,
 				CC2456701FF745DB00616916 /* UILabel+HTML.m in Sources */,
+				C429413A21421DFF00E10921 /* PrepaidRecordsCell.m in Sources */,
 				CC2456811FF745DB00616916 /* CountDownButton.m in Sources */,
 				CCB59D8A201260FE00439799 /* ParamsSettingViewController.m in Sources */,
 				CC3C6004202219F600C479C9 /* test.swift in Sources */,
@@ -1850,6 +1930,7 @@
 				CC64E20E2015163000653D2B /* SGBaseMenu.m in Sources */,
 				CC12DDB1202A1A6300A0F599 /* DescModel.m in Sources */,
 				CCE9E59B200644FD008439F3 /* ESPUDPSocketClient.m in Sources */,
+				C429414021428DB200E10921 /* DetailsPayController.m in Sources */,
 				CCD5CDBF200F7C84004A2917 /* TimeSettingListViewController.m in Sources */,
 				CC24565D1FF745DB00616916 /* BaseTableView.m in Sources */,
 				C47B4AB520F5DF9F00DAD5D3 /* UIButton+countDown.m in Sources */,
@@ -1892,6 +1973,7 @@
 				CC2456831FF745DB00616916 /* HintView.m in Sources */,
 				CC2456601FF745DB00616916 /* NetworkRequest.m in Sources */,
 				CC24566D1FF745DB00616916 /* UIFont+Adaptation.m in Sources */,
+				C429413421421DE100E10921 /* PrepaidRecordsController.m in Sources */,
 				CC2456711FF745DB00616916 /* UIScrollView+Refresh.m in Sources */,
 				CC0F482B200D2CC600E184F8 /* DeviceInfoViewController.m in Sources */,
 				CC2455B91FF7450700616916 /* main.m in Sources */,
