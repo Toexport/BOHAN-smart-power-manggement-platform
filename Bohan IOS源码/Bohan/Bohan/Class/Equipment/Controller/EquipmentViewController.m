@@ -19,7 +19,6 @@
 #import "NSBundle+AppLanguageSwitch.h"
 #import "DebuggingANDPublishing.pch"
 @interface EquipmentViewController ()<NoDataViewDelegate,EquipmentTableViewCellDelegate> {
-    
     NSMutableArray *dataArray;
     NSUInteger currentIndex;
 }
@@ -73,11 +72,12 @@
         [model.currentTable startLoading];
     }
     
-    NSString *url = currentIndex==0?GET_NAME_LIST_URL:GET_POS_NAME_LIST_URL;
+    NSString *url =currentIndex==0?GET_NAME_LIST_URL:GET_POS_NAME_LIST_URL;
     [[NetworkRequest sharedInstance] requestWithUrl:url parameter:nil completion:^(id response, NSError *error) {
         [model.currentTable stopLoading];
         model.isload = YES;
         model.currentTable.noDatadelegate = self;
+        
         ZPLog(@"%@",response);
         if (!error) {
             model.datas = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
@@ -165,13 +165,14 @@
         part = @"PosName";
     }
     command.content = [NSString stringWithFormat:@"%@;%@;%@;%@",USERNAME,part,name,open];
+    
     [socket sendMultiDataWithModel:command resultBlock:^(id response, NSError *error) {
         ZPLog(@"--------%@",response);
 
         if (!error) {
             [HintView showHint:isOpen?Localize(@"已开启"):Localize(@"已关闭")];
         }else {
-            [HintView showHint:error.localizedDescription];// 后台返回的提示
+            [HintView showHint: error.localizedDescription];// 后台返回的提示
             
         }
     }];

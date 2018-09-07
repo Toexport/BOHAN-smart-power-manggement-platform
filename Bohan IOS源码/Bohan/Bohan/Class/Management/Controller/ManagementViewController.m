@@ -115,6 +115,7 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
 - (void)ShareSender {
     ZPLog(@"已分享");
 }
+
 //  生命周期
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
@@ -123,8 +124,7 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
 
 // 获取当前所有
 - (void)loadData {
-    
-    [[NetworkRequest sharedInstance] requestWithUrl:GET_DEVICE_LIST_URL parameter:nil completion:^(id response, NSError *error) {
+    [[NetworkRequest sharedInstance] requestWithUrl: GET_DEVICE_LIST_URL parameter:nil completion:^(id response, NSError *error) {
         
         [self.view stopLoading];
         
@@ -149,7 +149,6 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
 
 // 分享设备
 - (void)shareDeviceWithTel:(NSString *)tel pwd:(NSString *)pwd {
-    
     NSMutableArray *devices = [NSMutableArray array];
     for (NSIndexPath *indexPath in _deviceTable.indexPathsForSelectedRows) {
         

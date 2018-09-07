@@ -42,8 +42,6 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = Localize(@"设备信息");
-//    self.PayView.hidden = YES;
-//    self.StateViewLayoutConstraint.constant = - 80;
     [self initUI];
 //    [self PayViews];
     
@@ -75,16 +73,24 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
 
 // UI
 - (void)initUI {
-    NSString * string = self.model.id;
-    NSString * str = [string substringWithRange:NSMakeRange(0, 2)];
-    ZPLog(@"%@",str);
-    if ([str containsString:@"61"] || [str containsString:@"62"] || [str containsString:@"63"]){
+//    NSString * string = self.model.id;
+//    NSString * str = [string substringWithRange:NSMakeRange(0, 2)];
+//    ZPLog(@"%@",str);
+    if ([self.sortt isEqualToString:@"QK01"] || [self.sortt isEqualToString:@"QK02"] || [self.sortt isEqualToString:@"QK03"]){
         datas = @[@{@"image" :@"ic_launch", @"name": Localize(@"实时参数")}, @{@"image" :@"ic_l", @"name": Localize(@"增值服务")}, @{@"image" :@"ic_laun", @"name": Localize(@"定时计量")}, @{@"image" :@"menu_summery", @"name": Localize(@"用电统计")}, @{@"image" :@"ic_launch1", @"name": Localize(@"延时/定时开关")}];
-    }else {
-        datas = @[@{@"image" :@"ic_launch", @"name": Localize(@"实时参数")}, @{@"image" :@"ic_l", @"name": Localize(@"增值服务")}, @{@"image" :@"ic_laun", @"name": Localize(@"定时计量")}, @{@"image" :@"menu_summery", @"name": Localize(@"用电统计")}, @{@"image" :@"ic_launcher2", @"name": Localize(@"时段设置")}, @{@"image" :@"ic_launch1", @"name": Localize(@"延时/定时开关")},
-            @{@"image" :@"ic_launch1", @"name": Localize(@"充值")}];
-        UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
-        [self.PayView addGestureRecognizer:tapGesturRecognizer];
+        self.PayView.hidden = YES;
+        self.StateViewLayoutConstraint.constant = - 80;
+    }else
+        if ([self.sortt isEqualToString:@"YFMT"] ||[self.sortt isEqualToString:@"YFGPMT"]) {
+            datas = @[@{@"image" :@"ic_launch", @"name": Localize(@"实时参数")}, @{@"image" :@"ic_l", @"name": Localize(@"增值服务")}, @{@"image" :@"ic_laun", @"name": Localize(@"定时计量")}, @{@"image" :@"menu_summery", @"name": Localize(@"用电统计")}, @{@"image" :@"ic_launcher2", @"name": Localize(@"时段设置")}, @{@"image" :@"ic_launch1", @"name": Localize(@"延时/定时开关")},
+                      @{@"image" :@"ic_launch1", @"name": Localize(@"充值")}];
+            UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(TopUpBut:)];
+            [self.PayView addGestureRecognizer:tapGesturRecognizer];
+        }else {
+        datas = @[@{@"image" :@"ic_launch", @"name": Localize(@"实时参数")}, @{@"image" :@"ic_l", @"name": Localize(@"增值服务")}, @{@"image" :@"ic_laun", @"name": Localize(@"定时计量")}, @{@"image" :@"menu_summery", @"name": Localize(@"用电统计")}, @{@"image" :@"ic_launcher2", @"name": Localize(@"时段设置")}, @{@"image" :@"ic_launch1", @"name": Localize(@"延时/定时开关")}];
+            self.PayView.hidden = YES;
+            self.StateViewLayoutConstraint.constant = - 80;
+
     }
     
 }
@@ -95,8 +101,8 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     [deviceInfoCollection reloadData];
 }
 
-- (void) viewWillAppear:(BOOL)animated {
-    if ([self.sortt containsString:@"YC"] || [self.sortt containsString:@"YC10"] || [self.sortt containsString:@"YC16 "] || [self.sortt containsString:@"YCGP10"] || [self.sortt containsString:@"YCGP16"] || [self.sortt containsString:@"QC"] || [self.sortt containsString:@"QC10"] || [self.sortt containsString:@"QC16"] || [self.sortt containsString:@"YC13"] || [self.sortt containsString:@"QC13"] || [self.sortt containsString:@"YC15"] || [self.sortt containsString:@"QC15"]) {
+- (void)viewWillAppear:(BOOL)animated {
+    if ([self.sortt isEqualToString:@"YC"] || [self.sortt isEqualToString:@"YC10"] || [self.sortt isEqualToString:@"YC16 "] || [self.sortt isEqualToString:@"YCGP10"] || [self.sortt isEqualToString:@"YCGP16"] || [self.sortt isEqualToString:@"QC"] || [self.sortt isEqualToString:@"QC10"] || [self.sortt isEqualToString:@"QC16"] || [self.sortt isEqualToString:@"YC13"] || [self.sortt isEqualToString:@"QC13"] || [self.sortt isEqualToString:@"YC15"] || [self.sortt isEqualToString:@"QC15"]) {
         [self loadData];
     }else {
         
@@ -336,7 +342,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     }
 }
 
-- (void)tapAction:(UIButton *)sender {
+- (void)TopUpBut:(UIButton *)sender {
     DetailsViewController * Details = [[DetailsViewController alloc]init];
     [self.navigationController pushViewController:Details animated:YES];
     Details.deviceNo = self.model.id;

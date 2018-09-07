@@ -125,9 +125,7 @@
 }
 
 - (IBAction)selectAction {
-    
     [SGActionView showSheetWithTitle:nil itemTitles:datas itemSubTitles:nil selectedIndex:[datas indexOfObject:self.typeLab.text] selectedHandle:^(NSInteger index) {
-        
         self.typeLab.text = datas[index];
         
     }];

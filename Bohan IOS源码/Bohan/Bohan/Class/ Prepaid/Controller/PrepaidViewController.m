@@ -32,14 +32,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = Localize(@"付费充电");
-//    [self rightBarImage:@"qrcode_scan" action:@selector(bindDevice)];
+    //    [self rightBarImage:@"qrcode_scan" action:@selector(bindDevice)];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(languageChange) name:AppLanguageDidChangeNotification object:nil];
     dataArray = [NSMutableArray array];
     if (@available(iOS 11.0, *)){
     }else {
         self.automaticallyAdjustsScrollViewInsets = NO;
-    }    for (int i = 0; i<2; i++) {
-        
+    }
+    for (int i = 0; i<2; i++) {
         TablePageModel * model= [[TablePageModel alloc] init];
         model.datas = [NSMutableArray array];
         model.isload = NO;
@@ -89,7 +89,6 @@
     self.title = Localize(@"付费充电");
     [_sliderView setDatas:@[Localize(@"名称"), Localize(@"位置")]];
     [self.pageCollection reloadData];
-    
 }
 
 - (SliderView *)sliderView {
