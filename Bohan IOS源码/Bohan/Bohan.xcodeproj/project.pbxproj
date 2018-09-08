@@ -32,6 +32,8 @@
 		C47B4AB620F5DF9F00DAD5D3 /* CALayer+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4AB320F5DF9F00DAD5D3 /* CALayer+UIColor.m */; };
 		C47B4AB720F5DF9F00DAD5D3 /* UIViewController+LLProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4AB420F5DF9F00DAD5D3 /* UIViewController+LLProgress.m */; };
 		C4A044962113F5C300656EC2 /* ParamsSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4A044982113F5C300656EC2 /* ParamsSettingViewController.xib */; };
+		C4AD806C2143C29400CE8C66 /* ZJBLStoreShopTypeAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD80692143C29300CE8C66 /* ZJBLStoreShopTypeAlert.m */; };
+		C4AD806D2143C29400CE8C66 /* UIColor+JGHexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD806B2143C29400CE8C66 /* UIColor+JGHexColor.m */; };
 		C4BBC63E211E7119009B0854 /* CountdownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4BBC640211E7119009B0854 /* CountdownView.xib */; };
 		C4D188C3213FA4330030464E /* MyAccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4D188C1213FA4330030464E /* MyAccountTableViewCell.m */; };
 		C4D188C4213FA4330030464E /* MyAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4D188C2213FA4330030464E /* MyAccountTableViewCell.xib */; };
@@ -259,6 +261,10 @@
 		C47B4AB420F5DF9F00DAD5D3 /* UIViewController+LLProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LLProgress.m"; sourceTree = "<group>"; };
 		C4A044972113F5C300656EC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ParamsSettingViewController.xib; sourceTree = "<group>"; };
 		C4A0449C2113F5C700656EC2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ParamsSettingViewController.strings"; sourceTree = "<group>"; };
+		C4AD80682143C29300CE8C66 /* ZJBLStoreShopTypeAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJBLStoreShopTypeAlert.h; sourceTree = "<group>"; };
+		C4AD80692143C29300CE8C66 /* ZJBLStoreShopTypeAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJBLStoreShopTypeAlert.m; sourceTree = "<group>"; };
+		C4AD806A2143C29400CE8C66 /* UIColor+JGHexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+JGHexColor.h"; sourceTree = "<group>"; };
+		C4AD806B2143C29400CE8C66 /* UIColor+JGHexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JGHexColor.m"; sourceTree = "<group>"; };
 		C4BBC63B211E702A009B0854 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/CountDownViewController.strings"; sourceTree = "<group>"; };
 		C4BBC63D211E7040009B0854 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/CountDownViewController.strings; sourceTree = "<group>"; };
 		C4BBC63F211E7119009B0854 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CountdownView.xib; sourceTree = "<group>"; };
@@ -672,6 +678,7 @@
 				C429413E21428DB200E10921 /* DetailsPayController.m */,
 				C429413F21428DB200E10921 /* DetailsPayController.xib */,
 				C4294142214294AC00E10921 /* DetailsPayCell */,
+				C4AD80672143C26900CE8C66 /* Pop-upView */,
 			);
 			path = DetailsPay;
 			sourceTree = "<group>";
@@ -731,6 +738,17 @@
 				C47B4AB420F5DF9F00DAD5D3 /* UIViewController+LLProgress.m */,
 			);
 			path = ZP_registrationTimerBut;
+			sourceTree = "<group>";
+		};
+		C4AD80672143C26900CE8C66 /* Pop-upView */ = {
+			isa = PBXGroup;
+			children = (
+				C4AD806A2143C29400CE8C66 /* UIColor+JGHexColor.h */,
+				C4AD806B2143C29400CE8C66 /* UIColor+JGHexColor.m */,
+				C4AD80682143C29300CE8C66 /* ZJBLStoreShopTypeAlert.h */,
+				C4AD80692143C29300CE8C66 /* ZJBLStoreShopTypeAlert.m */,
+			);
+			path = "Pop-upView";
 			sourceTree = "<group>";
 		};
 		C4D188BE213FA3DF0030464E /* MyAccountCell */ = {
@@ -1871,11 +1889,13 @@
 				CC2456751FF745DB00616916 /* UIView+loading.m in Sources */,
 				CCD5CDCD200F874A004A2917 /* TimeSelectViewController.m in Sources */,
 				CC1FD95B1FFFD669006DF1DD /* WebViewController.m in Sources */,
+				C4AD806D2143C29400CE8C66 /* UIColor+JGHexColor.m in Sources */,
 				CC65AB902007BB75005FB5AE /* WebSocket.m in Sources */,
 				CCFCAE8720A6C7AE0031709F /* DeviceDetailMutableListCell.m in Sources */,
 				CC24569C1FF8F30200616916 /* ScanViewController.m in Sources */,
 				CC42E89C2020EF0B00A64160 /* NSArray+Safe.m in Sources */,
 				C4E164B9213E857100445E57 /* PrepaidViewController.m in Sources */,
+				C4AD806C2143C29400CE8C66 /* ZJBLStoreShopTypeAlert.m in Sources */,
 				CC1C6CCB2027292A00980693 /* PowerLineChartView.m in Sources */,
 				CC24567F1FF745DB00616916 /* TablePageModel.m in Sources */,
 				CC2456621FF745DB00616916 /* AppDelegate+Configure.m in Sources */,

@@ -9,74 +9,94 @@
 #import "DetailsPayCell.h"
 #import "PrefixHeader.pch"
 #import "DebuggingANDPublishing.pch"
+
 @implementation DetailsPayCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
+    [self.BalanceView addGestureRecognizer:tapGesturRecognizer];
 }
+
+// View点击事件
+-(void)tapAction:(id)tap {
+    self.balanceViewBlock (nil);
+}
+
 // 余额
-- (IBAction)BalanceBut:(UIButton *)sender {
-    if (sender.selected) {
-        sender.selected =! sender.selected;
-    }else {
-        self.PayWay = @"余额";
-        self.AlapyPayBut.selected = NO;
-        self.WechatPayBut.selected = NO;
-        self.UnionpayBut.selected = NO;
-        [self.ConfirmBut setEnabled:YES]; //交互关闭
-        self.ConfirmBut.alpha= 100;//透明度
-    }
-    
-}
+//- (IBAction)BalanceBut:(UIButton *)sender {
+//    if (sender.selected) {
+//        return;
+//    }else {
+//        sender.selected =! sender.selected;
+//        self.PayWay = @"余额";
+//        self.AlapyPayBut.selected = NO;
+//        self.WechatPayBut.selected = NO;
+//        self.UnionpayBut.selected = NO;
+//
+//        [self.ConfirmBut setEnabled:YES]; //交互关闭
+//        self.ConfirmBut.alpha= 100;//透明度
+////        return;
+//    }
+//
+//}
 // 支付宝
-- (IBAction)AlapyPayBut:(UIButton *)sender {
-    if (sender.selected) {
-        sender.selected =! sender.selected;
-    }else {
-        self.PayWay = @"支付宝";
-        self.BalanceBut.selected = NO;
-        self.WechatPayBut.selected = NO;
-        self.UnionpayBut.selected = NO;
-        [self.ConfirmBut setEnabled:YES]; //交互关闭
-        self.ConfirmBut.alpha= 100;//透明度
-    }
-}
+//- (IBAction)AlapyPayBut:(UIButton *)sender {
+//    if (sender.selected) {
+//        return;
+//    }else {
+//        sender.selected =! sender.selected;
+//        self.PayWay = @"支付宝";
+//        self.BalanceBut.selected = NO;
+//        self.WechatPayBut.selected = NO;
+//        self.UnionpayBut.selected = NO;
+//
+//        [self.ConfirmBut setEnabled:YES]; //交互关闭
+//        self.ConfirmBut.alpha= 100;//透明度
+////        return;
+//    }
+//}
 // 微信
-- (IBAction)WechatPayBut:(UIButton *)sender {
-    if (sender.selected) {
-        sender.selected =! sender.selected;
-    }else {
-        self.PayWay = @"微信";
-        self.BalanceBut.selected = NO;
-        self.AlapyPayBut.selected = NO;
-        self.UnionpayBut.selected = NO;
-        [self.ConfirmBut setEnabled:YES]; //交互关闭
-        self.ConfirmBut.alpha= 100;//透明度
-    }
-}
-// 银联卡
-- (IBAction)UnionpayBut:(UIButton *)sender {
-    if (sender.selected) {
-        sender.selected =! sender.selected;
-    }else {
-        self.PayWay = @"银联卡";
-        self.BalanceBut.selected = NO;
-        self.AlapyPayBut.selected = NO;
-        self.WechatPayBut.selected = NO;
-        [self.ConfirmBut setEnabled:YES]; //交互关闭
-        self.ConfirmBut.alpha= 100;//透明度
-    }
-}
+//- (IBAction)WechatPayBut:(UIButton *)sender {
+//    if (sender.selected) {
+//        return;
+//    }else {
+//        sender.selected =! sender.selected;
+//        self.PayWay = @"微信";
+//        self.BalanceBut.selected = NO;
+//        self.AlapyPayBut.selected = NO;
+//        self.UnionpayBut.selected = NO;
+//
+//        [self.ConfirmBut setEnabled:YES]; //交互关闭
+//        self.ConfirmBut.alpha= 100;//透明度
+//        //        return;
+//    }
+//}
+//// 银联卡
+//- (IBAction)UnionpayBut:(UIButton *)sender {
+//    if (sender.selected) {
+//        return;
+//    }else {
+//        sender.selected =! sender.selected;
+//        self.PayWay = @"银联";
+//        self.BalanceBut.selected = NO;
+//        self.AlapyPayBut.selected = NO;
+//        self.WechatPayBut.selected = NO;
+//
+//        [self.ConfirmBut setEnabled:YES]; //交互关闭
+//        self.ConfirmBut.alpha= 100;//透明度
+////        return;
+//    }
+//}
 
 // 付款
 - (IBAction)ConfirmBut:(UIButton *)sender {
-    if (self.PayWay == nil) {
-        ZPLog(@"失败");
-    }else {
-        ZPLog(@"成功");
-        ZPLog(@"%@付款",self.PayWay);
-    }
+//    if (self.PayWay == nil || self.PriceLabel.text || self.DeviceId) {
+//        ZPLog(@"失败");
+//    }else {
+        self.payBlockBlock(self.PriceLabel.text, self.PayWay, self.DeviceId.text);
+//        ZPLog(@"成功");
+//    }
 }
-
 
 @end

@@ -8,7 +8,15 @@
 
 #import "DetailsPayController.h"
 #import "DetailsPayCell.h"
-@interface DetailsPayController ()<UITableViewDelegate,UITableViewDataSource>
+#import "PrefixHeader.pch"
+#import "DebuggingANDPublishing.pch"
+#import "ZJBLStoreShopTypeAlert.h"
+
+
+@interface DetailsPayController ()<UITableViewDelegate,UITableViewDataSource> {
+     NSArray *titles;
+    NSString * images;
+}
 
 @end
 
@@ -19,6 +27,9 @@
     self.title = self.DataId;
     [self.Tableview registerNib:[UINib nibWithNibName:@"DetailsPayCell" bundle:nil] forCellReuseIdentifier:@"DetailsPayCell"];
     self.Tableview.separatorStyle = UITableViewCellSeparatorStyleNone;  //隐藏tableview多余的线条
+//    images = @{@"yuePay",@"AlpayPay",@"WechatPay",@"YhkPay"};
+//    images = @{@"",}
+    titles = @[@"余额",@"支付宝",@"微信",@"银联卡"];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -32,11 +43,28 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     DetailsPayCell * cell = [tableView dequeueReusableCellWithIdentifier:@"DetailsPayCell" forIndexPath:indexPath];
     cell.DeviceId.text = self.DataId;
+    [cell setBalanceViewBlock:^(id response) {
+        [ZJBLStoreShopTypeAlert showWithTitle:@"请选择支付方式" images:images titles:titles selectIndex:^(NSInteger selectIndex) {
+            
+        } selectValue:^(NSString *selectValue) {
+            
+        } showCloseButton:YES];
+//        [ZJBLStoreShopTypeAlert showWithTitle:@"请选择支付方式" titles:titles selectIndex:^(NSInteger selectIndex) {
+//        } selectValue:^(NSString *selectValue) {
+//        } showCloseButton:YES];
+        ZPLog(@"111");
+    }];
+    
+    [cell setPayBlockBlock:^(id DeviceId, id PayWay, id PriceLabel) {
+        ZPLog(@"222");
+        
+    }];
+
     cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 225;
+    return 360;
 }
 @end
