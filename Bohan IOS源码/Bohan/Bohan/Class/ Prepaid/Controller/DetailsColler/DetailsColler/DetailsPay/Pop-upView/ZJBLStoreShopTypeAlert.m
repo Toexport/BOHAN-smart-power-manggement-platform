@@ -59,11 +59,12 @@
 @implementation ZJBLStoreShopTypeAlert
 
 + (ZJBLStoreShopTypeAlert *)showWithTitle:(NSString *)title
-                        images:(NSString *)images titles:(NSArray *)titles
-                   selectIndex:(SelectIndex)selectIndex
+                        images:(NSArray *)images titles:(NSArray *)titles
+                   selectIndex:(SelectIndex)selectIndex selectValuee:(SelectValue)selectValuee
                    selectValue:(SelectValue)selectValue
                showCloseButton:(BOOL)showCloseButton {
-    ZJBLStoreShopTypeAlert *alert = [[ZJBLStoreShopTypeAlert alloc] initWithTitle:title images:images titles:titles selectIndex:selectIndex selectValue:selectValue showCloseButton:showCloseButton];
+//    ZJBLStoreShopTypeAlert *alert = [[ZJBLStoreShopTypeAlert alloc] initWithTitle:title images:images titles:titles selectIndex:selectIndex selectValue:selectValue showCloseButton:showCloseButton];
+    ZJBLStoreShopTypeAlert * alert = [[ZJBLStoreShopTypeAlert alloc]initWithTitle:title images:images titles:titles selectIndex:selectIndex selectValue:selectValue selectValuee:selectValuee showCloseButton:showCloseButton];
     return alert;
 }
 
@@ -109,7 +110,7 @@
     return _selectTableView;
 }
 
-- (instancetype)initWithTitle:(NSString *)title images:(NSArray *)images titles:(NSArray *)titles selectIndex:(SelectIndex)selectIndex selectValue:(SelectValue)selectValue showCloseButton:(BOOL)showCloseButton {
+- (instancetype)initWithTitle:(NSString *)title images:(NSArray *)images titles:(NSArray *)titles selectIndex:(SelectIndex)selectIndex selectValue:(SelectValue)selectValue selectValuee:(SelectValue)selectValuee showCloseButton:(BOOL)showCloseButton {
     if (self = [super init]) {
         self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.4];
         alertHeight = 250;

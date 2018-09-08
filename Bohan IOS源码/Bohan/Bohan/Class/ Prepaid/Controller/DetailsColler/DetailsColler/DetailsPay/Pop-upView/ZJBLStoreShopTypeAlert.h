@@ -15,7 +15,7 @@ typedef void (^SelectValue)(NSString *selectValue);//数值
 @interface ZJBLStoreShopTypeAlert : UIView <UITableViewDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) NSArray *titles;//string数组
-@property (nonatomic, strong) NSString * images;
+@property (nonatomic, strong) NSArray * images;
 
 @property (nonatomic, strong) UILabel *titleLabel;//标题label
 @property (nonatomic, strong) UIButton *closeButton;//关闭按钮
@@ -32,9 +32,9 @@ typedef void (^SelectValue)(NSString *selectValue);//数值
  * @param showCloseButton 显示关闭按钮则关闭点击列表外remove弹窗的功能
  *
  */
-+ (ZJBLStoreShopTypeAlert *)showWithTitle:(NSString *)title images:(NSString *)images 
-                                   titles:(NSArray *)titles
-                              selectIndex:(SelectIndex)selectIndex
++ (ZJBLStoreShopTypeAlert *)showWithTitle:(NSString *)title
+                                   images:(NSArray *)images titles:(NSArray *)titles
+                              selectIndex:(SelectIndex)selectIndex selectValuee:(SelectValue)selectValuee
                               selectValue:(SelectValue)selectValue
                           showCloseButton:(BOOL)showCloseButton;
 
