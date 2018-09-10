@@ -89,6 +89,13 @@
 //    }
 //}
 
+- (void)updateBalanceView:(NSInteger)type {
+    NSArray *imageArray = @[@"yuePay",@"AlpayPay",@"WechatPay",@"YhkPay"];
+    NSArray *titleArray = @[@"余额",@"支付宝",@"微信",@"银联卡"];
+    _MainImage.image = [UIImage imageNamed:imageArray[type]];
+    _TitleLabel.text = titleArray[type];
+}
+
 // 付款
 - (IBAction)ConfirmBut:(UIButton *)sender {
 //    if (self.PayWay == nil || self.PriceLabel.text || self.DeviceId) {

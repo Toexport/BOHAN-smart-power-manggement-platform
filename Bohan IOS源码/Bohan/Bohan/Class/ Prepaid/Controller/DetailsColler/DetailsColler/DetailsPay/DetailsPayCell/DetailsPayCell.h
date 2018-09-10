@@ -28,4 +28,5 @@ typedef void (^BalanceViewBlock)(id response);
 typedef void (^PayBlock)(id DeviceId ,id PayWay ,id PriceLabel);
 @property (nonatomic , copy) PayBlock payBlockBlock;
 
+- (void)updateBalanceView:(NSInteger)type;
 @end

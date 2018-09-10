@@ -105,9 +105,10 @@
 
 - (UITableView *)selectTableView {
     if (!_selectTableView) {
-        _selectTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+        _selectTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
         _selectTableView.delegate = self;
         _selectTableView.dataSource = self;
+//        _selectTableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     }
     return _selectTableView;
 }
@@ -196,7 +197,9 @@
         cell = [[SelectAlertCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"selectcell"];
     }
     cell.titleLabel.text = _titles[indexPath.row];
-//    cell.imageViews = _images[indexPath.row];
+    UIImage *image = [UIImage imageNamed:_images[indexPath.row]];
+    cell.imageView.image = image;
+    cell.imageView.contentMode = UIViewContentModeCenter;
     
     return cell;
 }
@@ -212,6 +215,7 @@
     if (self.selectValue) {
         self.selectValue(_titles[indexPath.row]);
     }
+    
     [self closeAction];
 }
 
