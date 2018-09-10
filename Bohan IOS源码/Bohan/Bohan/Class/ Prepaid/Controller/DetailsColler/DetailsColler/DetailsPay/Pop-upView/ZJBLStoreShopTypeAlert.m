@@ -8,11 +8,13 @@
 
 #import "ZJBLStoreShopTypeAlert.h"
 #import "UIColor+JGHexColor.h"
-
+#import "PrefixHeader.pch"
+#import "DebuggingANDPublishing.pch"
 
 @interface SelectAlertCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UIImageView * imageViews;
 
 @end
 
@@ -21,6 +23,7 @@
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
         [self addSubview:self.titleLabel];
+        [self addSubview:self.imageViews];
     }
     return self;
 }
@@ -29,17 +32,24 @@
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textColor = [UIColor colorWithHexCode:@"#333333"];
-        _titleLabel.font = [UIFont systemFontOfSize:16];
+        _titleLabel.font = [UIFont systemFontOfSize:15];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
     }
     return _titleLabel;
 }
 
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    _titleLabel.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+- (UIImageView *)imageViewS {
+    if (!_imageViews) {
+        _imageViews = [[UIImageView alloc]init];
+    }
+    return _imageViews;
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+//    _imageViews.frame = CGRectMake(0, 0, 40, 40);
+    _titleLabel.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
+}
 @end
 
 
@@ -58,16 +68,11 @@
 
 @implementation ZJBLStoreShopTypeAlert
 
-+ (ZJBLStoreShopTypeAlert *)showWithTitle:(NSString *)title
-                        images:(NSArray *)images titles:(NSArray *)titles
-                   selectIndex:(SelectIndex)selectIndex selectValuee:(SelectValue)selectValuee
-                   selectValue:(SelectValue)selectValue
-               showCloseButton:(BOOL)showCloseButton {
++ (ZJBLStoreShopTypeAlert *)showWithTitle:(NSString *)title images:(NSArray *)images titles:(NSArray *)titles selectIndex:(SelectIndex)selectIndex selectValuee:(SelectValuee)selectValuee selectValue:(SelectValue)selectValue showCloseButton:(BOOL)showCloseButton {
 //    ZJBLStoreShopTypeAlert *alert = [[ZJBLStoreShopTypeAlert alloc] initWithTitle:title images:images titles:titles selectIndex:selectIndex selectValue:selectValue showCloseButton:showCloseButton];
-    ZJBLStoreShopTypeAlert * alert = [[ZJBLStoreShopTypeAlert alloc]initWithTitle:title images:images titles:titles selectIndex:selectIndex selectValue:selectValue selectValuee:selectValuee showCloseButton:showCloseButton];
+    ZJBLStoreShopTypeAlert * alert = [[ZJBLStoreShopTypeAlert alloc]initWithTitle:title images:images titles:titles selectIndex:selectIndex selectValuee:selectValuee selectValue:selectValue showCloseButton:showCloseButton];
     return alert;
 }
-
 - (UILabel *)titleLabel {
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
@@ -92,10 +97,7 @@
 - (UIButton *)closeButton {
     if (!_closeButton) {
         _closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        _closeButton.backgroundColor = [UIColor colorWithRed:235/255.0 green:235/255.0 blue:235/255.0 alpha:1];
-        [_closeButton setTitle:@"关闭" forState:UIControlStateNormal];
-        [_closeButton setTitleColor:[UIColor colorWithRed:0 green:127/255.0 blue:1 alpha:1] forState:UIControlStateNormal];
-        _closeButton.titleLabel.font = [UIFont systemFontOfSize:17];
+        [_closeButton setImage:[UIImage imageNamed:@"ic_details_cancel"] forState:UIControlStateNormal];
         [_closeButton addTarget:self action:@selector(closeAction) forControlEvents:UIControlEventTouchUpInside];
     }
     return _closeButton;
@@ -110,16 +112,17 @@
     return _selectTableView;
 }
 
-- (instancetype)initWithTitle:(NSString *)title images:(NSArray *)images titles:(NSArray *)titles selectIndex:(SelectIndex)selectIndex selectValue:(SelectValue)selectValue selectValuee:(SelectValue)selectValuee showCloseButton:(BOOL)showCloseButton {
+- (instancetype)initWithTitle:(NSString *)title images:(NSArray *)images titles:(NSArray *)titles selectIndex:(SelectIndex)selectIndex selectValuee:(SelectValuee)selectValuee selectValue:(SelectValue)selectValue showCloseButton:(BOOL)showCloseButton {
     if (self = [super init]) {
         self.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.4];
-        alertHeight = 250;
+        alertHeight = 220;
         buttonHeight = 40;
         
         self.titleLabel.text = title;
         _titles = titles;
         _images = images;
         _selectIndex = [selectIndex copy];
+        _selectValuee = [selectValuee copy];
         _selectValue = [selectValue copy];
         _showCloseButton = showCloseButton;
         [self addSubview:self.alertView];
@@ -149,11 +152,13 @@
     self.alertView.frame = CGRectMake(50, ([UIScreen mainScreen].bounds.size.height-alertHeight)/2.0, [UIScreen mainScreen].bounds.size.width-100, alertHeight);
     self.titleLabel.frame = CGRectMake(0, 0, _alertView.frame.size.width, buttonHeight);
     float reduceHeight = buttonHeight;
+    
     if (_showCloseButton) {
-        self.closeButton.frame = CGRectMake(0, _alertView.frame.size.height-buttonHeight, _alertView.frame.size.width, buttonHeight);
+        self.closeButton.frame = CGRectMake(_alertView.frame.size.width-buttonHeight, 0,buttonHeight, buttonHeight);
         reduceHeight = buttonHeight*2;
     }
-    self.selectTableView.frame = CGRectMake(0, buttonHeight, _alertView.frame.size.width, _alertView.frame.size.height-reduceHeight);
+//    self.selectTableView.frame = CGRectMake(0, buttonHeight, _alertView.frame.size.width, _alertView.frame.size.height-reduceHeight);
+    self.selectTableView.frame = CGRectMake(0, buttonHeight, _alertView.frame.size.width, _alertView.frame.size.height);
 }
 
 
@@ -191,17 +196,22 @@
         cell = [[SelectAlertCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"selectcell"];
     }
     cell.titleLabel.text = _titles[indexPath.row];
+//    cell.imageViews = _images[indexPath.row];
+    
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     if (self.selectIndex) {
         self.selectIndex(indexPath.row);
+    }
+    if (self.selectValuee) {
+        self.selectValuee(_images[indexPath.row]);
     }
     if (self.selectValue) {
         self.selectValue(_titles[indexPath.row]);
     }
-    
     [self closeAction];
 }
 

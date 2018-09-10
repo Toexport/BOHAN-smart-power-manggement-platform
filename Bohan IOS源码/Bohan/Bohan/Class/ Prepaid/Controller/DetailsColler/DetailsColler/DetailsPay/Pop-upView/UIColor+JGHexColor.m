@@ -17,8 +17,7 @@
  *
  *  @return UIColor instance
  */
-+ (UIColor *)colorWithHexCode:(NSString *)hexCode
-{
++ (UIColor *)colorWithHexCode:(NSString *)hexCode {
     NSString *cleanString = [hexCode stringByReplacingOccurrencesOfString:@"#" withString:@""];
     if([cleanString length] == 3) {
         cleanString = [NSString stringWithFormat:@"%@%@%@%@%@%@",
@@ -27,20 +26,15 @@
                        [cleanString substringWithRange:NSMakeRange(2, 1)],[cleanString substringWithRange:NSMakeRange(2, 1)]];
     }
     
-    
     unsigned int baseValue;
     [[NSScanner scannerWithString:cleanString] scanHexInt:&baseValue];
-    
     float red = ((baseValue >> 16) & 0xFF)/255.0f;
     float green = ((baseValue >> 8) & 0xFF)/255.0f;
     float blue = ((baseValue >> 0) & 0xFF)/255.0f;
-    
-    
     return [UIColor colorWithRed:red green:green blue:blue alpha:1];
 }
 
-+ (UIColor *)colorWithHexCode:(NSString *)hexCode alpha:(CGFloat)alpha
-{
++ (UIColor *)colorWithHexCode:(NSString *)hexCode alpha:(CGFloat)alpha {
     return [[self colorWithHexCode:hexCode] colorWithAlphaComponent:alpha];
 }
 

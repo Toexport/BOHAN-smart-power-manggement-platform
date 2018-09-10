@@ -31,6 +31,16 @@
 		C47B4AB520F5DF9F00DAD5D3 /* UIButton+countDown.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4AAF20F5DF9F00DAD5D3 /* UIButton+countDown.m */; };
 		C47B4AB620F5DF9F00DAD5D3 /* CALayer+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4AB320F5DF9F00DAD5D3 /* CALayer+UIColor.m */; };
 		C47B4AB720F5DF9F00DAD5D3 /* UIViewController+LLProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4AB420F5DF9F00DAD5D3 /* UIViewController+LLProgress.m */; };
+		C490417121464362005652C9 /* LYSecurityField.m in Sources */ = {isa = PBXBuildFile; fileRef = C490415C21464362005652C9 /* LYSecurityField.m */; };
+		C490417221464362005652C9 /* LYPaymentAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = C490415E21464362005652C9 /* LYPaymentAlertController.m */; };
+		C490417321464362005652C9 /* LYPaymentAlertTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = C490415F21464362005652C9 /* LYPaymentAlertTheme.m */; };
+		C490417421464362005652C9 /* LYPaymentAlertTransitioning.m in Sources */ = {isa = PBXBuildFile; fileRef = C490416121464362005652C9 /* LYPaymentAlertTransitioning.m */; };
+		C490417521464362005652C9 /* ScrollViewFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = C490416521464362005652C9 /* ScrollViewFrame.m */; };
+		C490417621464362005652C9 /* ViewFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = C490416621464362005652C9 /* ViewFrame.m */; };
+		C490417721464362005652C9 /* payment_close@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C490416A21464362005652C9 /* payment_close@3x.png */; };
+		C490417821464362005652C9 /* payment_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C490416B21464362005652C9 /* payment_close@2x.png */; };
+		C490417921464362005652C9 /* LYPaymentBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C490416F21464362005652C9 /* LYPaymentBaseViewController.m */; };
+		C490418521464657005652C9 /* BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = C490418421464657005652C9 /* BaseController.m */; };
 		C4A044962113F5C300656EC2 /* ParamsSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4A044982113F5C300656EC2 /* ParamsSettingViewController.xib */; };
 		C4AD806C2143C29400CE8C66 /* ZJBLStoreShopTypeAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD80692143C29300CE8C66 /* ZJBLStoreShopTypeAlert.m */; };
 		C4AD806D2143C29400CE8C66 /* UIColor+JGHexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD806B2143C29400CE8C66 /* UIColor+JGHexColor.m */; };
@@ -259,6 +269,26 @@
 		C47B4AB220F5DF9F00DAD5D3 /* UIButton+countDown.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+countDown.h"; sourceTree = "<group>"; };
 		C47B4AB320F5DF9F00DAD5D3 /* CALayer+UIColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+UIColor.m"; sourceTree = "<group>"; };
 		C47B4AB420F5DF9F00DAD5D3 /* UIViewController+LLProgress.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+LLProgress.m"; sourceTree = "<group>"; };
+		C490415B21464362005652C9 /* LYSecurityField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSecurityField.h; sourceTree = "<group>"; };
+		C490415C21464362005652C9 /* LYSecurityField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSecurityField.m; sourceTree = "<group>"; };
+		C490415E21464362005652C9 /* LYPaymentAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYPaymentAlertController.m; sourceTree = "<group>"; };
+		C490415F21464362005652C9 /* LYPaymentAlertTheme.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYPaymentAlertTheme.m; sourceTree = "<group>"; };
+		C490416021464362005652C9 /* LYPaymentAlertTransitioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYPaymentAlertTransitioning.h; sourceTree = "<group>"; };
+		C490416121464362005652C9 /* LYPaymentAlertTransitioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYPaymentAlertTransitioning.m; sourceTree = "<group>"; };
+		C490416221464362005652C9 /* LYPaymentAlertTheme.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYPaymentAlertTheme.h; sourceTree = "<group>"; };
+		C490416321464362005652C9 /* LYPaymentAlertController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYPaymentAlertController.h; sourceTree = "<group>"; };
+		C490416521464362005652C9 /* ScrollViewFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollViewFrame.m; sourceTree = "<group>"; };
+		C490416621464362005652C9 /* ViewFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewFrame.m; sourceTree = "<group>"; };
+		C490416721464362005652C9 /* ScrollViewFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollViewFrame.h; sourceTree = "<group>"; };
+		C490416821464362005652C9 /* ViewFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewFrame.h; sourceTree = "<group>"; };
+		C490416A21464362005652C9 /* payment_close@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "payment_close@3x.png"; sourceTree = "<group>"; };
+		C490416B21464362005652C9 /* payment_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "payment_close@2x.png"; sourceTree = "<group>"; };
+		C490416E21464362005652C9 /* LYPaymentBaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYPaymentBaseViewController.h; sourceTree = "<group>"; };
+		C490416F21464362005652C9 /* LYPaymentBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYPaymentBaseViewController.m; sourceTree = "<group>"; };
+		C490417021464362005652C9 /* LYPaymentSecurityField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYPaymentSecurityField.h; sourceTree = "<group>"; };
+		C490418121464549005652C9 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		C490418321464657005652C9 /* BaseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseController.h; sourceTree = "<group>"; };
+		C490418421464657005652C9 /* BaseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseController.m; sourceTree = "<group>"; };
 		C4A044972113F5C300656EC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ParamsSettingViewController.xib; sourceTree = "<group>"; };
 		C4A0449C2113F5C700656EC2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ParamsSettingViewController.strings"; sourceTree = "<group>"; };
 		C4AD80682143C29300CE8C66 /* ZJBLStoreShopTypeAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJBLStoreShopTypeAlert.h; sourceTree = "<group>"; };
@@ -740,6 +770,89 @@
 			path = ZP_registrationTimerBut;
 			sourceTree = "<group>";
 		};
+		C490415821464362005652C9 /* PaymentField */ = {
+			isa = PBXGroup;
+			children = (
+				C490415921464362005652C9 /* ActionSheet */,
+				C490415A21464362005652C9 /* Core */,
+				C490415D21464362005652C9 /* AlertController */,
+				C490416421464362005652C9 /* Category */,
+				C490416921464362005652C9 /* Resources */,
+				C490416C21464362005652C9 /* Common */,
+			);
+			path = PaymentField;
+			sourceTree = "<group>";
+		};
+		C490415921464362005652C9 /* ActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				C490418121464549005652C9 /* Header.h */,
+				C490417021464362005652C9 /* LYPaymentSecurityField.h */,
+				C490418321464657005652C9 /* BaseController.h */,
+				C490418421464657005652C9 /* BaseController.m */,
+			);
+			path = ActionSheet;
+			sourceTree = "<group>";
+		};
+		C490415A21464362005652C9 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				C490415B21464362005652C9 /* LYSecurityField.h */,
+				C490415C21464362005652C9 /* LYSecurityField.m */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		C490415D21464362005652C9 /* AlertController */ = {
+			isa = PBXGroup;
+			children = (
+				C490416321464362005652C9 /* LYPaymentAlertController.h */,
+				C490415E21464362005652C9 /* LYPaymentAlertController.m */,
+				C490416221464362005652C9 /* LYPaymentAlertTheme.h */,
+				C490415F21464362005652C9 /* LYPaymentAlertTheme.m */,
+				C490416021464362005652C9 /* LYPaymentAlertTransitioning.h */,
+				C490416121464362005652C9 /* LYPaymentAlertTransitioning.m */,
+			);
+			path = AlertController;
+			sourceTree = "<group>";
+		};
+		C490416421464362005652C9 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				C490416521464362005652C9 /* ScrollViewFrame.m */,
+				C490416621464362005652C9 /* ViewFrame.m */,
+				C490416721464362005652C9 /* ScrollViewFrame.h */,
+				C490416821464362005652C9 /* ViewFrame.h */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		C490416921464362005652C9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C490416A21464362005652C9 /* payment_close@3x.png */,
+				C490416B21464362005652C9 /* payment_close@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C490416C21464362005652C9 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				C490416D21464362005652C9 /* Base */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C490416D21464362005652C9 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				C490416E21464362005652C9 /* LYPaymentBaseViewController.h */,
+				C490416F21464362005652C9 /* LYPaymentBaseViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
 		C4AD80672143C26900CE8C66 /* Pop-upView */ = {
 			isa = PBXGroup;
 			children = (
@@ -932,6 +1045,7 @@
 		CC2455BF1FF745DB00616916 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C490415821464362005652C9 /* PaymentField */,
 				CC2455C01FF745DB00616916 /* Base */,
 				CC2455C51FF745DB00616916 /* Macro */,
 				CC2455CB1FF745DB00616916 /* Plugin */,
@@ -1760,6 +1874,7 @@
 				CC2455B61FF7450700616916 /* LaunchScreen.storyboard in Resources */,
 				CC468D72206969D900506970 /* WSDatePickerView.xib in Resources */,
 				C4E164BE213E85DE00445E57 /* MyAccountViewController.xib in Resources */,
+				C490417821464362005652C9 /* payment_close@2x.png in Resources */,
 				CC80906B2047166600265FE0 /* TimeSettingViewController.xib in Resources */,
 				C4BBC63E211E7119009B0854 /* CountdownView.xib in Resources */,
 				CCCBF39120191C1C00A80D90 /* TimeModelCollectionViewCell.xib in Resources */,
@@ -1776,6 +1891,7 @@
 				CC8090402046F2FD00265FE0 /* EquipmentTableViewCell.xib in Resources */,
 				CCFCAE8820A6C7AE0031709F /* DeviceDetailMutableListCell.xib in Resources */,
 				C4E164D4213E9D4C00445E57 /* RechargeRecordCell.xib in Resources */,
+				C490417721464362005652C9 /* payment_close@3x.png in Resources */,
 				CC80907A2047219700265FE0 /* TimeListTableViewCell.xib in Resources */,
 				CC0F4839200D407300E184F8 /* RealTimeParamTableViewCell.xib in Resources */,
 				CCCDDE222003F45400DF468C /* DeviceDetailListCell.xib in Resources */,
@@ -1860,6 +1976,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C490417421464362005652C9 /* LYPaymentAlertTransitioning.m in Sources */,
 				CC24568E1FF745DB00616916 /* ElectricityViewController.m in Sources */,
 				C4294146214294BE00E10921 /* DetailsPayCell.m in Sources */,
 				CC24566F1FF745DB00616916 /* UILabel+Convenience.m in Sources */,
@@ -1891,14 +2008,17 @@
 				CC1FD95B1FFFD669006DF1DD /* WebViewController.m in Sources */,
 				C4AD806D2143C29400CE8C66 /* UIColor+JGHexColor.m in Sources */,
 				CC65AB902007BB75005FB5AE /* WebSocket.m in Sources */,
+				C490417621464362005652C9 /* ViewFrame.m in Sources */,
 				CCFCAE8720A6C7AE0031709F /* DeviceDetailMutableListCell.m in Sources */,
 				CC24569C1FF8F30200616916 /* ScanViewController.m in Sources */,
 				CC42E89C2020EF0B00A64160 /* NSArray+Safe.m in Sources */,
 				C4E164B9213E857100445E57 /* PrepaidViewController.m in Sources */,
 				C4AD806C2143C29400CE8C66 /* ZJBLStoreShopTypeAlert.m in Sources */,
+				C490417521464362005652C9 /* ScrollViewFrame.m in Sources */,
 				CC1C6CCB2027292A00980693 /* PowerLineChartView.m in Sources */,
 				CC24567F1FF745DB00616916 /* TablePageModel.m in Sources */,
 				CC2456621FF745DB00616916 /* AppDelegate+Configure.m in Sources */,
+				C490418521464657005652C9 /* BaseController.m in Sources */,
 				CC5567052025E34100A8589B /* WSDatePickerView.m in Sources */,
 				CC24566A1FF745DB00616916 /* UIButton+CountDown.m in Sources */,
 				CCE9E59F200644FD008439F3 /* ESP_NetUtil.m in Sources */,
@@ -1962,9 +2082,11 @@
 				CC65AB962007C8CA005FB5AE /* CommandModel.m in Sources */,
 				C4E164AF213E82F600445E57 /* DetailsViewController.m in Sources */,
 				CCCDDE152003D44A00DF468C /* PageCollectionView.m in Sources */,
+				C490417921464362005652C9 /* LYPaymentBaseViewController.m in Sources */,
 				CC42E89D2020EF0B00A64160 /* NSDictionary+Safe.m in Sources */,
 				C47B4AB620F5DF9F00DAD5D3 /* CALayer+UIColor.m in Sources */,
 				CC0F4838200D407300E184F8 /* RealTimeParamTableViewCell.m in Sources */,
+				C490417121464362005652C9 /* LYSecurityField.m in Sources */,
 				CCE9E59D200644FD008439F3 /* ESP_ByteUtil.m in Sources */,
 				C4F1A24620E5D3F900052B24 /* SelectPhotoManager.m in Sources */,
 				CCCDDE212003F45400DF468C /* DeviceDetailListCell.m in Sources */,
@@ -1986,12 +2108,14 @@
 				CC2455AE1FF7450700616916 /* ViewController.m in Sources */,
 				CC65AB932007C1E6005FB5AE /* WebSocket+Utils.m in Sources */,
 				CC2456921FF745DB00616916 /* ManagementViewController.m in Sources */,
+				C490417221464362005652C9 /* LYPaymentAlertController.m in Sources */,
 				CC2845D4202892F600D79935 /* NSBundle+AppLanguageSwitch.m in Sources */,
 				CCE9E594200644FD008439F3 /* ESPDataCode.m in Sources */,
 				CCCDDE182003D6B500DF468C /* DeviceDetailListViewController.m in Sources */,
 				C47B4A9C20F5CCC100DAD5D3 /* LanguageController.m in Sources */,
 				CC2456831FF745DB00616916 /* HintView.m in Sources */,
 				CC2456601FF745DB00616916 /* NetworkRequest.m in Sources */,
+				C490417321464362005652C9 /* LYPaymentAlertTheme.m in Sources */,
 				CC24566D1FF745DB00616916 /* UIFont+Adaptation.m in Sources */,
 				C429413421421DE100E10921 /* PrepaidRecordsController.m in Sources */,
 				CC2456711FF745DB00616916 /* UIScrollView+Refresh.m in Sources */,

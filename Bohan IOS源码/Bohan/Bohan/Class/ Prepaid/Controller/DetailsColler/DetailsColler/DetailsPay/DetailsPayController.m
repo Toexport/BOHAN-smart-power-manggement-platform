@@ -11,7 +11,8 @@
 #import "PrefixHeader.pch"
 #import "DebuggingANDPublishing.pch"
 #import "ZJBLStoreShopTypeAlert.h"
-
+#import "ViewFrame.h"
+#import "LYPaymentAlertController.h"
 
 @interface DetailsPayController ()<UITableViewDelegate,UITableViewDataSource> {
      NSArray *titles;
@@ -27,10 +28,29 @@
     self.title = self.DataId;
     [self.Tableview registerNib:[UINib nibWithNibName:@"DetailsPayCell" bundle:nil] forCellReuseIdentifier:@"DetailsPayCell"];
     self.Tableview.separatorStyle = UITableViewCellSeparatorStyleNone;  //隐藏tableview多余的线条
-    images = @[@"yuePay",@"AlpayPay",@"WechatPay",@"YhkPay"];
-//    images = @{@"",}
+    images = @[@"yuePay.png",@"AlpayPay.png",@"WechatPay.png",@"YhkPay.png"];
     titles = @[@"余额",@"支付宝",@"微信",@"银联卡"];
 }
+
+//- (void)viewWillDisappear:(BOOL)animated {
+//    UIViewController *viewCtl = self.navigationController.viewControllers[3];
+//    [self.navigationController popToViewController:viewCtl animated:YES];
+
+//    if (self.navigationController.viewControllers.count >=2) {
+//
+//        UIViewController *listViewController =self.navigationController.viewControllers[3];
+//        [self.navigationController popToViewController:listViewController animated:YES];
+//    }
+//    NSInteger index = (NSInteger)[[self.navigationController viewControllers] indexOfObject:self];
+//    if (index > 2) {
+//        [self.navigationController popToViewController:[self.navigationController.viewControllers objectAtIndex:(index-2)] animated:YES];
+//    }else{
+//        [self.navigationController popToRootViewControllerAnimated:YES];
+//    }
+//    ZPLog(@"111");
+//}
+
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
@@ -46,19 +66,23 @@
     [cell setBalanceViewBlock:^(id response) {
         [ZJBLStoreShopTypeAlert showWithTitle:Localize(@"请选择支付方式") images:images titles:titles selectIndex:^(NSInteger selectIndex) {
             
-        } selectValuee:^(NSString *selectValue) {
+        } selectValuee:^(NSString *selectValuee) {
             
         } selectValue:^(NSString *selectValue) {
             
         } showCloseButton:YES];
         ZPLog(@"111");
     }];
-    
-    [cell setPayBlockBlock:^(id DeviceId, id PayWay, id PriceLabel) {
-        ZPLog(@"222");
+    [cell setPayBlockBlock:^(NSString *  DeviceId, NSString *  PayWay, NSString *  PriceLabel) {
+        ZPLog(@"222");// 此处选中的是余额需要输入密码，不是余额直接跳过去
+        LYPaymentAlertController *paymentAlert = [LYPaymentAlertController alertControllerWithTitle:@"请输入支付密码" numberOfCharacters:6 amount:PriceLabel remarks:DeviceId];
+        
+        paymentAlert.contentOffset = CGSizeMake(0, 50);
+        paymentAlert.presentingStyle = AlertPresentStyleTopToCenterSpring;
+        paymentAlert.dismissStyle = AlertPresentStyleCenterSpring;
+        [self presentViewController:paymentAlert animated:YES completion:nil];
         
     }];
-
     cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果
     return cell;
 }

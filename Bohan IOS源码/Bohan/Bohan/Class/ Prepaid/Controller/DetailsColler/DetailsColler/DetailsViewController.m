@@ -11,6 +11,7 @@
 #import "ScanViewController.h"
 #import "DebuggingANDPublishing.pch"
 #import "PrefixHeader.pch"
+#import "DetailsPayController.h"
 @interface DetailsViewController ()
 
 @end
@@ -24,23 +25,19 @@
 
 // 扫描
 - (IBAction)ScanningBUt:(UIButton *)sender {
-    ScanViewController *scan = [[ScanViewController alloc] init];
-//    [scan getResultStr:^(NSString *result) {
-//        if (result && result.length>0) {
-//            deviceTF.text = result;
-//        }
-//    }];
-    
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        NSLog(@"设备具备相机");
-//        [self presentViewController:scan animated:YES completion:nil];
-        scan.type = 2;
-        [self.navigationController pushViewController:scan animated:YES];
-    }else {
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"提示", nil) message:NSLocalizedString(@"您的设备暂时不支持扫码", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"确定", nil) otherButtonTitles:nil, nil];
-        [alert show];
-        ZPLog(@"没有摄像");
-    }
+    DetailsPayController * deta = [[DetailsPayController alloc]init];
+    [self.navigationController pushViewController:deta animated:YES];
+//    ScanViewController *scan = [[ScanViewController alloc] init];
+//    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+//        NSLog(@"设备具备相机");
+//        scan.type = 2;
+//        [self.navigationController pushViewController:scan animated:YES];
+//        
+//    }else {
+//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"提示", nil) message:NSLocalizedString(@"您的设备暂时不支持扫码", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"确定", nil) otherButtonTitles:nil, nil];
+//        [alert show];
+//        ZPLog(@"没有摄像");
+//    }
 }
 
 // 我的

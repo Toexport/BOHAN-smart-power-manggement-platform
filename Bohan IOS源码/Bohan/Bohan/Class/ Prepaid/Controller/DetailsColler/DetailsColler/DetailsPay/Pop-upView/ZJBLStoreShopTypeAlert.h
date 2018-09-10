@@ -10,6 +10,7 @@
 
 typedef void (^SelectIndex)(NSInteger selectIndex);//编码
 typedef void (^SelectValue)(NSString *selectValue);//数值
+typedef void (^SelectValuee)(NSString *selectValuee);//数值
 
 
 @interface ZJBLStoreShopTypeAlert : UIView <UITableViewDelegate,UITableViewDataSource>
@@ -21,6 +22,7 @@ typedef void (^SelectValue)(NSString *selectValue);//数值
 @property (nonatomic, strong) UIButton *closeButton;//关闭按钮
 @property (nonatomic, copy) SelectIndex selectIndex;
 @property (nonatomic, copy) SelectValue selectValue;
+@property (nonatomic, copy) SelectValue selectValuee;
 
 /*!
  * @abstract 创建弹窗下拉列表类方法
@@ -34,7 +36,7 @@ typedef void (^SelectValue)(NSString *selectValue);//数值
  */
 + (ZJBLStoreShopTypeAlert *)showWithTitle:(NSString *)title
                                    images:(NSArray *)images titles:(NSArray *)titles
-                              selectIndex:(SelectIndex)selectIndex selectValuee:(SelectValue)selectValuee
+                              selectIndex:(SelectIndex)selectIndex selectValuee:(SelectValuee)selectValuee
                               selectValue:(SelectValue)selectValue
                           showCloseButton:(BOOL)showCloseButton;
 
