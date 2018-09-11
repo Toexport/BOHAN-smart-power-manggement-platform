@@ -2,8 +2,8 @@
 //  LYPaymentAlertController.m
 //  PaymentSecurityField
 //
-//  Created by 刘宇 on 2017/9/24.
-//  Copyright © 2017年 刘宇. All rights reserved.
+//  Created by Summer on 2017/9/24.
+//  Copyright © 2017年 Summer. All rights reserved.
 //
 
 #import "LYPaymentAlertController.h"
@@ -25,9 +25,10 @@ static LYPaymentAlertTheme *__theme = nil;
 @property (strong, nonatomic) LYPaymentAlertTransitioning *transitioning;
 
 - (instancetype)initWithTitle:(nullable NSString *)title numberOfCharacters:(NSInteger)numberOfCharacters;
+
 - (instancetype)initWithTitle:(nullable NSString *)title numberOfCharacters:(NSInteger)numberOfCharacters amount:(NSString *)amount remarks:(NSString *)remarks;
 - (void)updateTheme;
-- (void)dismiss:(UIButton *)sender;
+//- (void)dismiss:(UIButton *)sender;
 
 @end
 
@@ -44,7 +45,6 @@ static LYPaymentAlertTheme *__theme = nil;
 }
 
 - (instancetype)initWithTitle:(NSString *)title numberOfCharacters:(NSInteger)numberOfCharacters {
-    
     self = [super init];
     if (self) {
         self.title = title;
@@ -98,9 +98,7 @@ static LYPaymentAlertTheme *__theme = nil;
     
     // dismiss按钮
     UIButton *leftButtonItem = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, titleLabel.height, titleLabel.height)];
-    [leftButtonItem setTitle:@"关闭" forState:UIControlStateNormal];
-    [leftButtonItem setTitleColor:UIColor.grayColor forState:UIControlStateNormal];
-    leftButtonItem.titleLabel.font = [UIFont systemFontOfSize:14];
+    [leftButtonItem setImage:[UIImage imageNamed:@"ic_details_cancel"] forState:UIControlStateNormal];
     [leftButtonItem addTarget:self action:@selector(dismiss:) forControlEvents:UIControlEventTouchUpInside];
     [self.containerView addSubview:leftButtonItem];
     _leftButtonItem = leftButtonItem;
@@ -137,43 +135,29 @@ static LYPaymentAlertTheme *__theme = nil;
     paymentField.delegate = self;
     [self.containerView addSubview:paymentField];
     _paymentField = paymentField;
-    [paymentField addTarget:self action:@selector(textField:) forControlEvents:UIControlEventEditingChanged];
-    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(changeValue:)name:UITextFieldTextDidChangeNotification  object:_paymentField.text];
     
     // footerView
     if (!self.footerView) {
-        self.footerView = [[UIView alloc] initWithFrame:CGRectMake(0, paymentField.bottom, self.containerView.width, 20)];
+//        次處沒能實現所有的適配
+//        if (iPhone4 || iPad || iPadNew) {
+            self.footerView = [[UIView alloc] initWithFrame:CGRectMake(0, paymentField.bottom, self.containerView.width, 50)];
+//        }else {
+//            self.footerView = [[UIView alloc] initWithFrame:CGRectMake(0, paymentField.bottom, self.containerView.width, 20)];
+//        }
     }
     self.footerView.frame = CGRectMake(0, paymentField.bottom, self.containerView.width, self.footerView.height);
     self.footerView.backgroundColor = UIColor.clearColor;
     [self.containerView addSubview:self.footerView];
 }
 
-// 这两个方法实时监控text输入框ID
--(void)textField:(UITextField *)textField {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeValue" object:textField];
-}
-
-- (void)changeValue:(NSNotification *)notification {
-    UITextField * textField = notification.object;
-    //要实现的监听方法操作
-    ZPLog(@"%@",textField.text);
-    if (textField.text.length == 6) {
-        ZPLog(@"输入完成，调用接口，做比对");
-//        [HintView showHint:Localize(@"请输入正确的设备ID")];
-        return;
-    }
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self updateTheme];
     [self.paymentField sendActionsForControlEvents:UIControlEventTouchUpInside];
+
 }
 
-- (void)dealloc {
-    NSLog(@"__dealloc");
-}
 
 - (CGSize)preferredContentSize {
     CGFloat preferredWidth = CGRectGetWidth(UIScreen.mainScreen.bounds) * 0.8;
@@ -192,8 +176,8 @@ static LYPaymentAlertTheme *__theme = nil;
     });
     return CGSizeMake(preferredWidth, preferredHeigth);
 }
-#pragma mark - UIViewControllerTransitioningDelegate
 
+#pragma mark - UIViewControllerTransitioningDelegate
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
     return self.transitioning;
 }
@@ -202,8 +186,8 @@ static LYPaymentAlertTheme *__theme = nil;
     return self.transitioning;
 }
 
-#pragma mark - Private Method
 
+#pragma mark - Private Method
 - (void)updateTheme {
     LYPaymentAlertTheme *theme = self.theme ?: __theme ?: [[LYPaymentAlertTheme alloc] init];
     self.titleLabel.backgroundColor = theme.titleBackgroundColor;
@@ -228,8 +212,8 @@ static LYPaymentAlertTheme *__theme = nil;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
-#pragma mark - Public Method
 
+#pragma mark - Public Method
 - (void)setContentOffset:(CGSize)contentOffset {
     self.transitioning.contentOffset = contentOffset;
 }
@@ -254,15 +238,13 @@ static LYPaymentAlertTheme *__theme = nil;
     }
 }
 
-- (void)lYPaymentFieldDidBeginEditing:(LYSecurityField *)paymentField
-{
+- (void)lYPaymentFieldDidBeginEditing:(LYSecurityField *)paymentField {
     if (@protocol(LYPaymentAlertControllerDelegate) && [self.delegate respondsToSelector:@selector(lYPaymentController:didEditingSecurityText:)]) {
         [self.delegate lYPaymentController:self didEditingSecurityText:paymentField.text];
     }
 }
 
-- (void)lYPaymentFieldDidClear:(LYSecurityField *)paymentField
-{
+- (void)lYPaymentFieldDidClear:(LYSecurityField *)paymentField {
     if (@protocol(LYPaymentAlertControllerDelegate) && [self.delegate respondsToSelector:@selector(lYPaymentControllerDidClear:)]) {
         [self.delegate lYPaymentControllerDidClear:self];
     }

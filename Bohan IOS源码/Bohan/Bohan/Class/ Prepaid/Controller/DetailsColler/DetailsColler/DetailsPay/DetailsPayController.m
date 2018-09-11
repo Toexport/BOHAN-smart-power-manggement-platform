@@ -18,6 +18,7 @@
      NSArray *titles;
     NSArray * images;
     NSInteger _selectIndex;
+    NSString * priceString;
 }
 
 @end
@@ -42,13 +43,9 @@
             return;
         }
     }
-    
     [self.navigationController popViewControllerAnimated:YES];
 }
-//  输入完成打印的结果，缺少余额
-- (void)lYPaymentController:(LYPaymentAlertController *)paymentController securityTextOfCompeletion:(NSString *)securityText {
-    NSLog(@"现在使用的是：%@支付==密码是：%@",titles[_selectIndex],securityText);
-}
+
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
@@ -73,7 +70,9 @@
         } showCloseButton:YES];
         ZPLog(@"111");
     }];
+    
     [cell setPayBlockBlock:^(NSString *  DeviceId, NSString *  PayWay, NSString *  PriceLabel) {
+        priceString = [NSString stringWithFormat:@"%@",PriceLabel];
         ZPLog(@"222");// 此处选中的是余额需要输入密码，不是余额直接跳过去
         LYPaymentAlertController *paymentAlert = [LYPaymentAlertController alertControllerWithTitle:@"请输入支付密码" numberOfCharacters:6 amount:PriceLabel remarks:DeviceId];
         paymentAlert.delegate = weakSelf;
@@ -81,7 +80,6 @@
         paymentAlert.presentingStyle = AlertPresentStyleTopToCenterSpring;
         paymentAlert.dismissStyle = AlertPresentStyleCenterSpring;
         [self presentViewController:paymentAlert animated:YES completion:nil];
-        
     }];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果
     return cell;
@@ -90,4 +88,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 360;
 }
+
+//  输入完成打印的结果，缺少余额
+- (void)lYPaymentController:(LYPaymentAlertController *)paymentController securityTextOfCompeletion:(NSString *)securityText {
+    ZPLog(@"现在使用的是：%@支付%@==密码是：%@",titles[_selectIndex],priceString,securityText);
+}
+
 @end
