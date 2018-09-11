@@ -15,6 +15,8 @@
 		C40837122133F0580057C6E0 /* ResetPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40837142133F0580057C6E0 /* ResetPwdViewController.xib */; };
 		C410507520FED0B9009A46F4 /* MultipleSwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C410507320FED0B9009A46F4 /* MultipleSwitchViewController.m */; };
 		C410507720FF1B1F009A46F4 /* MultipleSwitchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C410507920FF1B1F009A46F4 /* MultipleSwitchViewController.xib */; };
+		C420F38321478B4B003B6AC0 /* gesturesPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = C420F38221478B4B003B6AC0 /* gesturesPasswordController.m */; };
+		C420F38D2147B045003B6AC0 /* GesturesPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = C420F38C2147B045003B6AC0 /* GesturesPasswordView.m */; };
 		C429412E21421B8F00E10921 /* RechargeRecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C429412C21421B8F00E10921 /* RechargeRecordTableViewCell.m */; };
 		C429412F21421B8F00E10921 /* RechargeRecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C429412D21421B8F00E10921 /* RechargeRecordTableViewCell.xib */; };
 		C429413421421DE100E10921 /* PrepaidRecordsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C429413221421DE100E10921 /* PrepaidRecordsController.m */; };
@@ -243,6 +245,10 @@
 		C410507820FF1B1F009A46F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MultipleSwitchViewController.xib; sourceTree = "<group>"; };
 		C418584B21016889002285F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ShareView.strings; sourceTree = "<group>"; };
 		C418584D21016992002285F4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ShareView.strings"; sourceTree = "<group>"; };
+		C420F38121478B4B003B6AC0 /* gesturesPasswordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gesturesPasswordController.h; sourceTree = "<group>"; };
+		C420F38221478B4B003B6AC0 /* gesturesPasswordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gesturesPasswordController.m; sourceTree = "<group>"; };
+		C420F38B2147B045003B6AC0 /* GesturesPasswordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GesturesPasswordView.h; sourceTree = "<group>"; };
+		C420F38C2147B045003B6AC0 /* GesturesPasswordView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GesturesPasswordView.m; sourceTree = "<group>"; };
 		C429412B21421B8F00E10921 /* RechargeRecordTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RechargeRecordTableViewCell.h; sourceTree = "<group>"; };
 		C429412C21421B8F00E10921 /* RechargeRecordTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RechargeRecordTableViewCell.m; sourceTree = "<group>"; };
 		C429412D21421B8F00E10921 /* RechargeRecordTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RechargeRecordTableViewCell.xib; sourceTree = "<group>"; };
@@ -680,6 +686,33 @@
 			path = ZP_registrationTimerBut;
 			sourceTree = "<group>";
 		};
+		C420F37721476B17003B6AC0 /* GesturesPassword */ = {
+			isa = PBXGroup;
+			children = (
+				C420F37921476B71003B6AC0 /* GesturesPasswordController */,
+				C420F384214792FD003B6AC0 /* GesturesPasswordView */,
+			);
+			path = GesturesPassword;
+			sourceTree = "<group>";
+		};
+		C420F37921476B71003B6AC0 /* GesturesPasswordController */ = {
+			isa = PBXGroup;
+			children = (
+				C420F38121478B4B003B6AC0 /* gesturesPasswordController.h */,
+				C420F38221478B4B003B6AC0 /* gesturesPasswordController.m */,
+			);
+			path = GesturesPasswordController;
+			sourceTree = "<group>";
+		};
+		C420F384214792FD003B6AC0 /* GesturesPasswordView */ = {
+			isa = PBXGroup;
+			children = (
+				C420F38B2147B045003B6AC0 /* GesturesPasswordView.h */,
+				C420F38C2147B045003B6AC0 /* GesturesPasswordView.m */,
+			);
+			path = GesturesPasswordView;
+			sourceTree = "<group>";
+		};
 		C429413021421DB700E10921 /* PrepaidRecords */ = {
 			isa = PBXGroup;
 			children = (
@@ -773,6 +806,7 @@
 		C490415821464362005652C9 /* PaymentField */ = {
 			isa = PBXGroup;
 			children = (
+				C420F37721476B17003B6AC0 /* GesturesPassword */,
 				C490415921464362005652C9 /* ActionSheet */,
 				C490415A21464362005652C9 /* Core */,
 				C490415D21464362005652C9 /* AlertController */,
@@ -2018,12 +2052,14 @@
 				CC1C6CCB2027292A00980693 /* PowerLineChartView.m in Sources */,
 				CC24567F1FF745DB00616916 /* TablePageModel.m in Sources */,
 				CC2456621FF745DB00616916 /* AppDelegate+Configure.m in Sources */,
+				C420F38321478B4B003B6AC0 /* gesturesPasswordController.m in Sources */,
 				C490418521464657005652C9 /* BaseController.m in Sources */,
 				CC5567052025E34100A8589B /* WSDatePickerView.m in Sources */,
 				CC24566A1FF745DB00616916 /* UIButton+CountDown.m in Sources */,
 				CCE9E59F200644FD008439F3 /* ESP_NetUtil.m in Sources */,
 				CC64E20D2015163000653D2B /* SGActionView.m in Sources */,
 				CC2456721FF745DB00616916 /* UISearchBar+Color.m in Sources */,
+				C420F38D2147B045003B6AC0 /* GesturesPasswordView.m in Sources */,
 				CC24565F1FF745DB00616916 /* NetworkRequest+Utils.m in Sources */,
 				CC2456A01FF8F6FA00616916 /* BindingViewController.m in Sources */,
 				CC2456781FF745DB00616916 /* UIViewController+Utils.m in Sources */,

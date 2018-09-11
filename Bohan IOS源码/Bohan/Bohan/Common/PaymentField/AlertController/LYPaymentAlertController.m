@@ -177,6 +177,7 @@ static LYPaymentAlertTheme *__theme = nil;
     return CGSizeMake(preferredWidth, preferredHeigth);
 }
 
+
 #pragma mark - UIViewControllerTransitioningDelegate
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForPresentedController:(UIViewController *)presented presentingController:(UIViewController *)presenting sourceController:(UIViewController *)source {
     return self.transitioning;
@@ -185,7 +186,6 @@ static LYPaymentAlertTheme *__theme = nil;
 - (id<UIViewControllerAnimatedTransitioning>)animationControllerForDismissedController:(UIViewController *)dismissed {
     return self.transitioning;
 }
-
 
 #pragma mark - Private Method
 - (void)updateTheme {

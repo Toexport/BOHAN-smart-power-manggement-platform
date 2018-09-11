@@ -16,6 +16,7 @@
 #import "PrepaidRecordsTableViewCell.h"
 #import "RechargeRecordTableViewCell.h"
 #import "PrepaidRecordsController.h"
+#import "gesturesPasswordController.h"
 @interface MyAccountViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @end
@@ -27,7 +28,10 @@
     self.title = Localize(@"我的账户");
     [self Registered];
 }
-
+//- (void) gesturesPassword {
+//    gesturesPasswordController * gesturesPassword = [[gesturesPasswordController alloc]init];
+//    
+//}
 // 注册Cell
 - (void)Registered {
     self.TitleLabel.text = USERNAME;
@@ -121,6 +125,6 @@
              }else {
                  RechargeRecordController * RechargeRecord = [[RechargeRecordController alloc]init];
                  [self.navigationController pushViewController:RechargeRecord animated:YES];
-             }
+    }
 }
 @end

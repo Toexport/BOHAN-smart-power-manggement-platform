@@ -12,6 +12,7 @@
 #import "DebuggingANDPublishing.pch"
 #import "PrefixHeader.pch"
 #import "DetailsPayController.h"
+#import "MyAccountViewController.h"
 @interface DetailsViewController ()
 
 @end
@@ -42,8 +43,10 @@
 // 我的
 - (IBAction)MyBUt:(UIButton *)sender {
     MyAccountViewController * MyAccount = [[MyAccountViewController alloc]init];
-    [self.navigationController pushViewController:MyAccount animated:YES];
-    MyAccount.deviceId = self.deviceNo;
+    //        gestures.modalPresentationStyle = UIModalPresentationOverCurrentContext;
+    //        gestures.view.backgroundColor = [UIColor colorWithRed:5/255.0 green:20/255.0 blue:36/255.0 alpha:0.9];
+    [self.navigationController pushViewController: MyAccount animated:YES];
+    
 }
 
 @end
