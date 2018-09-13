@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -149,9 +150,8 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eTN-1O-NyT">
                                 <rect key="frame" x="0.0" y="167" width="304" height="141"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AKc-nP-uxF">
-                                        <rect key="frame" x="0.0" y="0.0" width="86" height="140"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AKc-nP-uxF">
+                                        <rect key="frame" x="0.0" y="0.0" width="100.5" height="140"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="收入(￥)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gDB-U4-L7a">
                                                 <rect key="frame" x="30" y="5" width="46" height="18"/>
@@ -184,20 +184,30 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wdM-96-9rW">
-                                        <rect key="frame" x="94" y="0.0" width="97" height="140"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wdM-96-9rW">
+                                        <rect key="frame" x="101.5" y="0.0" width="101" height="140"/>
                                         <color key="backgroundColor" red="0.4039215686" green="0.63921568630000003" blue="0.92941176469999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hSg-fC-XoE">
-                                        <rect key="frame" x="193" y="0.0" width="111" height="140"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hSg-fC-XoE">
+                                        <rect key="frame" x="203.5" y="0.0" width="100.5" height="140"/>
                                         <color key="backgroundColor" red="0.31764705879999999" green="0.66274509800000003" blue="0.21960784310000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" red="1" green="0.090471856296062469" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="141" id="1JE-FM-zUe"/>
+                                    <constraint firstItem="wdM-96-9rW" firstAttribute="top" secondItem="eTN-1O-NyT" secondAttribute="top" id="HkW-ux-D9E"/>
+                                    <constraint firstAttribute="bottom" secondItem="hSg-fC-XoE" secondAttribute="bottom" constant="1" id="IGR-sV-hiC"/>
+                                    <constraint firstAttribute="trailing" secondItem="hSg-fC-XoE" secondAttribute="trailing" id="If9-29-8LG"/>
+                                    <constraint firstItem="AKc-nP-uxF" firstAttribute="top" secondItem="eTN-1O-NyT" secondAttribute="top" id="RHg-je-Av8"/>
+                                    <constraint firstItem="AKc-nP-uxF" firstAttribute="leading" secondItem="eTN-1O-NyT" secondAttribute="leading" id="Xey-uv-r8u"/>
+                                    <constraint firstItem="hSg-fC-XoE" firstAttribute="leading" secondItem="wdM-96-9rW" secondAttribute="trailing" constant="1" id="Xio-XV-UJv"/>
+                                    <constraint firstItem="wdM-96-9rW" firstAttribute="centerX" secondItem="eTN-1O-NyT" secondAttribute="centerX" id="aHv-zW-QHC"/>
+                                    <constraint firstAttribute="bottom" secondItem="AKc-nP-uxF" secondAttribute="bottom" constant="1" id="chd-gI-Jjs"/>
+                                    <constraint firstItem="wdM-96-9rW" firstAttribute="width" secondItem="eTN-1O-NyT" secondAttribute="width" multiplier="0.333" id="frH-fv-C54"/>
+                                    <constraint firstAttribute="bottom" secondItem="wdM-96-9rW" secondAttribute="bottom" constant="1" id="u2n-Wu-Qhq"/>
+                                    <constraint firstItem="wdM-96-9rW" firstAttribute="leading" secondItem="AKc-nP-uxF" secondAttribute="trailing" constant="1" id="udc-1n-RAp"/>
+                                    <constraint firstItem="hSg-fC-XoE" firstAttribute="top" secondItem="eTN-1O-NyT" secondAttribute="top" id="yKH-4l-Hwv"/>
                                 </constraints>
                             </view>
                         </subviews>
