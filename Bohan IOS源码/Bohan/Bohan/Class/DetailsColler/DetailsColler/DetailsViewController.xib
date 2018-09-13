@@ -36,7 +36,7 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gy5-2v-eZx">
-                    <rect key="frame" x="275" y="577" width="40" height="40"/>
+                    <rect key="frame" x="275" y="547" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="4iq-yU-dGh"/>
                         <constraint firstAttribute="width" constant="40" id="qet-oh-StM"/>
@@ -52,7 +52,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88S-4v-Td5">
-                    <rect key="frame" x="60" y="577" width="40" height="40"/>
+                    <rect key="frame" x="60" y="547" width="40" height="40"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="40" id="GmP-AO-w9v"/>
                         <constraint firstAttribute="width" constant="40" id="WHt-OQ-RJx"/>
@@ -76,7 +76,7 @@
                 <constraint firstItem="8Ih-I0-O8K" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="TI7-rv-h96"/>
                 <constraint firstAttribute="trailing" secondItem="gy5-2v-eZx" secondAttribute="trailing" constant="60" id="UJm-y4-Dmb"/>
                 <constraint firstItem="rtX-7N-YPj" firstAttribute="top" secondItem="8Ih-I0-O8K" secondAttribute="bottom" constant="25" id="bbV-mh-Wjn"/>
-                <constraint firstAttribute="bottom" secondItem="88S-4v-Td5" secondAttribute="bottom" constant="50" id="nul-65-tiO"/>
+                <constraint firstAttribute="bottom" secondItem="88S-4v-Td5" secondAttribute="bottom" constant="80" id="nul-65-tiO"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>

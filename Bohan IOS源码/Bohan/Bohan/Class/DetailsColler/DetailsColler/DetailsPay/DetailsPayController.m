@@ -34,6 +34,11 @@
     titles = @[@"余额",@"支付宝",@"微信",@"银联卡"];
 }
 
+- (void)viewWillDisappear:(BOOL)animated {
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+
+
 //重写好返回按钮后执行这个方法
 - (void)backAction {
     NSArray *array =self.navigationController.viewControllers;

@@ -56,7 +56,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Mp-Qw-5UJ">
                                         <rect key="frame" x="0.0" y="37" width="288" height="40"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Currency_symbol" translatesAutoresizingMaskIntoConstraints="NO" id="tym-sj-9Qp">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Currency symbol" translatesAutoresizingMaskIntoConstraints="NO" id="tym-sj-9Qp">
                                                 <rect key="frame" x="8" y="10" width="20" height="20"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="Lse-Re-PgE"/>
@@ -218,8 +218,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Currency_symbol" width="313" height="313"/>
+        <image name="Currency symbol" width="60" height="60"/>
         <image name="ic_Forward" width="7" height="12"/>
-        <image name="yuePay" width="67" height="67"/>
+        <image name="yuePay" width="45" height="45"/>
     </resources>
 </document>

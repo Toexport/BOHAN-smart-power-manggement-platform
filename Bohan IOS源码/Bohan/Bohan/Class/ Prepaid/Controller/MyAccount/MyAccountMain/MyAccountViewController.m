@@ -17,6 +17,7 @@
 #import "RechargeRecordTableViewCell.h"
 #import "PrepaidRecordsController.h"
 #import "gesturesPasswordController.h"
+#import "AccountCenterController.h"
 @interface MyAccountViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @end
@@ -26,6 +27,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = Localize(@"我的账户");
+    self.TitleLabel.text = USERNAME;
     [self Registered];
 }
 //- (void) gesturesPassword {
@@ -34,11 +36,14 @@
 //}
 // 注册Cell
 - (void)Registered {
-    self.TitleLabel.text = USERNAME;
-    [self.Tableview registerNib:[UINib nibWithNibName:@"MyAccountTableViewCell" bundle:nil] forCellReuseIdentifier:@"MyAccountTableViewCell"];
-    [self.Tableview registerNib:[UINib nibWithNibName:@"AccountsPrepaidTableViewCell" bundle:nil] forCellReuseIdentifier:@"AccountsPrepaidTableViewCell"];
-    [self.Tableview registerNib:[UINib nibWithNibName:@"PrepaidRecordsTableViewCell" bundle:nil] forCellReuseIdentifier:@"PrepaidRecordsTableViewCell"];
-    [self.Tableview registerNib:[UINib nibWithNibName:@"RechargeRecordTableViewCell" bundle:nil] forCellReuseIdentifier:@"RechargeRecordTableViewCell"];
+    static NSString * MyAccount = @"MyAccountTableViewCell";
+    static NSString * AccountsPrepaid = @"AccountsPrepaidTableViewCell";
+    static NSString * PrepaidRecords = @"PrepaidRecordsTableViewCell";
+    static NSString * RechargeRecord = @"RechargeRecordTableViewCell";
+    [self.Tableview registerNib:[UINib nibWithNibName:MyAccount bundle:nil] forCellReuseIdentifier:MyAccount];
+    [self.Tableview registerNib:[UINib nibWithNibName:AccountsPrepaid bundle:nil] forCellReuseIdentifier:AccountsPrepaid];
+    [self.Tableview registerNib:[UINib nibWithNibName:PrepaidRecords bundle:nil] forCellReuseIdentifier:PrepaidRecords];
+    [self.Tableview registerNib:[UINib nibWithNibName:RechargeRecord bundle:nil] forCellReuseIdentifier:RechargeRecord];
     self.Tableview.separatorStyle = UITableViewCellSeparatorStyleNone;  //隐藏tableview多余的线条
 }
 
@@ -53,22 +58,26 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString * MyAccount = @"MyAccountTableViewCell";
+    static NSString * AccountsPrepaid = @"AccountsPrepaidTableViewCell";
+    static NSString * PrepaidRecords = @"PrepaidRecordsTableViewCell";
+    static NSString * RechargeRecord = @"RechargeRecordTableViewCell";
     if (indexPath.section == 0) {
-        MyAccountTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"MyAccountTableViewCell"];
+        MyAccountTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:MyAccount];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
         return cell;
     }else
         if (indexPath.section == 1) {
-            AccountsPrepaidTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"AccountsPrepaidTableViewCell"];
+            AccountsPrepaidTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:AccountsPrepaid];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
             return cell;
         }else
             if (indexPath.section == 2) {
-            PrepaidRecordsTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"PrepaidRecordsTableViewCell"];
+            PrepaidRecordsTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:PrepaidRecords];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
             return cell;
             }else {
-                RechargeRecordTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"RechargeRecordTableViewCell"];
+                RechargeRecordTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:RechargeRecord];
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
                 return cell;
             }
@@ -113,7 +122,9 @@
 // cell的点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return;
+        AccountCenterController * AccountCenter = [[AccountCenterController alloc]init];
+        [self.navigationController pushViewController:AccountCenter animated:YES];
+//        return;
     }else
         if (indexPath.section == 1) {
             AccountsPrepaidController * AccountsPrepaid = [[AccountsPrepaidController alloc]init];

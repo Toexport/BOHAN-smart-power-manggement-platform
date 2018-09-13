@@ -12,7 +12,7 @@
 #import "ElectricityViewController.h"
 #import "CenterViewController.h"
 #import "LoginViewController.h"
-#import "PrepaidViewController.h"
+#import "DetailsViewController.h"
 #import "IQKeyboardManager.h"
 #import "WebSocket.h"
 #import "DebuggingANDPublishing.pch"
@@ -59,35 +59,33 @@
 - (void)createTabBar
 {
     if (ISLOGIN) {
-        
-//        [self SRWebSocketOpen];//打开soket
-        
-//        NSString *data = [NSString stringWithFormat:@"3A10000002%@0D",@"18229877048"];
-//        NSString *data = @"E768160905065800080000F20D";
-//
-//        [[SocketRocketUtility instance] sendData:data];//打开soket
         EquipmentViewController *equipment = [[EquipmentViewController alloc] init];
+        
         ManagementViewController *management = [[ManagementViewController alloc] init];
-//        [management.view setBackgroundColor:kBackBackroundColor];
         
         ElectricityViewController *electricity = [[ElectricityViewController alloc] init];
-        PrepaidViewController * Prepaid = [[PrepaidViewController alloc]init];
-        //        [electricity.view setBackgroundColor:kBackBackroundColor];
+        
+        DetailsViewController * Details = [[DetailsViewController alloc]init];
+        
         CenterViewController *center = [[CenterViewController alloc] init];
+        
         UINavigationController *equipmentNav = [[UINavigationController alloc] initWithRootViewController:equipment];
         
         UINavigationController *managementNav = [[UINavigationController alloc] initWithRootViewController:management];
         
         UINavigationController *electricityNav = [[UINavigationController alloc] initWithRootViewController:electricity];
         
-        UINavigationController *PrepaidNav = [[UINavigationController alloc] initWithRootViewController:Prepaid];
+        UINavigationController *PrepaidNav = [[UINavigationController alloc] initWithRootViewController:Details];
         
         UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:center];
         UITabBarController *tabBar = [[UITabBarController alloc] init];
+        
         tabBar.viewControllers = @[equipmentNav, managementNav,electricityNav,PrepaidNav,centerNav];
         
         NSArray *titles = @[Localize(@"设备列表"), Localize(@"设备管理"),Localize(@"所有用电"),Localize(@"付费充电"),Localize(@"个人中心")];
+        
         NSArray *selectedImages = @[@"mainpage_main", @"mainpage_bang", @"mainpage_data",@"Pay_pay_me",@"mainpage_me"];
+        
         NSArray *images = @[@"mainpage_main_off", @"mainpage_bang_off", @"mainpage_data_off",@"Pay_pay_off",@"mainpage_me_off"];
         
         for (int i = 0; i<[tabBar.viewControllers count]; i++) {
@@ -96,7 +94,7 @@
         
         self.window.rootViewController = tabBar;
 
-    }else{
+    }else {
         LoginViewController *login = [[LoginViewController alloc] init];
         UINavigationController *loginNav = [[UINavigationController alloc] initWithRootViewController:login];
         
@@ -111,6 +109,9 @@
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[UIColor whiteColor], nil] forKeys:[NSArray arrayWithObjects:NSForegroundColorAttributeName, nil]]];
     [[UITabBar appearance] setTintColor:kDefualtColor];
+//    viewController.hidesBottomBarWhenPushed = YES;
+//    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
+//    [viewController setBackButton];
 }
 
 
@@ -186,6 +187,20 @@
     
 }
 
+//- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+//    if (self.childViewControllers.count > 0) {//非根控制器
+//        viewController.hidesBottomBarWhenPushed = YES;
+//        [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
+//        [viewController setBackButton];
+//    }
+//
+//    [super pushViewController:viewController animated:animated];
+//
+//    //根据栈顶控制器 设置导航条title
+//    //拿到tabbar控制器
+//    //    UITabBarController *tabbarVC = (UITabBarController *)self.tabBarController;
+//    //    viewController.navigationItem.title = tabbarVC.selectedViewController.tabBarItem.title;
+//}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
