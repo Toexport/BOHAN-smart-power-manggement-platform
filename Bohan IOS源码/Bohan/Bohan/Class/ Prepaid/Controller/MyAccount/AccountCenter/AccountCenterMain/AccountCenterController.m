@@ -80,9 +80,9 @@
             return 50;
         }else
             if (indexPath.section == 2) {
-                return 324;
+                return 325;
             }else {
-                return 350;
+                return 430;
             }
 }
 
@@ -91,9 +91,9 @@
 }
 
 // cell之间的距离
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    return 10;
-}
+//- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+//    return 10;
+//}
 
 // cell的点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

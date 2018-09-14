@@ -23,15 +23,16 @@
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7bZ-PY-mkJ">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="separatorColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="RT1-Gr-C9N"/>
                         <outlet property="delegate" destination="-1" id="ZyV-jJ-1Ra"/>
                     </connections>
                 </tableView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
                 <constraint firstItem="7bZ-PY-mkJ" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="3Gn-M3-FLX"/>
                 <constraint firstItem="7bZ-PY-mkJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="4c4-Qn-2sc"/>
