@@ -90,8 +90,8 @@
 //}
 
 - (void)updateBalanceView:(NSInteger)type {
-    NSArray *imageArray = @[@"yuePay",@"AlpayPay",@"WechatPay",@"YhkPay"];
-    NSArray *titleArray = @[@"余额",@"支付宝",@"微信",@"银联卡"];
+    NSArray *imageArray = @[@"yuePay",@"AlpayPay",@"WechatPay",@"ApplePay"];
+    NSArray *titleArray = @[@"余额",@"支付宝",@"微信",@"ApplePay"];
     _MainImage.image = [UIImage imageNamed:imageArray[type]];
     _TitleLabel.text = titleArray[type];
 }
@@ -105,7 +105,8 @@
 
     NSString *string = [NSString stringWithFormat:@"￥%@",self.PriceLabel.text];
     NSString * stringg = [NSString stringWithFormat:@"设备ID:%@",self.DeviceId.text];
-    self.payBlockBlock(stringg, self.PayWay, string);
+    NSString * stringgg = [NSString stringWithFormat:@"%@",self.PayWay];
+    self.payBlockBlock(stringg, stringgg, string);
 //        ZPLog(@"成功");
 //    }
 }

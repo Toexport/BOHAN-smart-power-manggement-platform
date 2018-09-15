@@ -10,6 +10,7 @@
 
 @interface AccountsPrepaidController : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *Tableview;
-
+@property (nonatomic, strong) NSString * PriceStr;
+@property (nonatomic, strong) NSString * PayWayStr;
 
 @end

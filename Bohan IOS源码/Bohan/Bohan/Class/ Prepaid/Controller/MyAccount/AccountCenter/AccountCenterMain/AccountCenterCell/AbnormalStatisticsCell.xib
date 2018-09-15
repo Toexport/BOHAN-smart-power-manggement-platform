@@ -287,7 +287,7 @@
                                     <constraint firstAttribute="width" constant="40" id="i6b-RK-ARg"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="The charging line is drawn to alarm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odl-fk-GVt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="充电桩被拔报警" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Odl-fk-GVt">
                                 <rect key="frame" x="56" y="37" width="195" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="ooE-k2-mvI"/>
@@ -319,7 +319,7 @@
                                     <constraint firstAttribute="width" constant="40" id="iRu-sa-pCG"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The charging line is drawn to alarm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ffj-zW-fWB">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="桩点故障" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ffj-zW-fWB">
                                 <rect key="frame" x="56" y="88" width="195" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="TVH-cP-iEI"/>
@@ -351,7 +351,7 @@
                                     <constraint firstAttribute="width" constant="40" id="Q8Z-N0-nZA"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The charging line is drawn to alarm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkN-RA-TKr">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充电桩故障" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vkN-RA-TKr">
                                 <rect key="frame" x="56" y="139" width="195" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="j12-iO-45l"/>
@@ -383,7 +383,7 @@
                                     <constraint firstAttribute="width" constant="40" id="jGn-RV-frP"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The charging line is drawn to alarm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toG-LE-lzJ">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="设备离线异常" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="toG-LE-lzJ">
                                 <rect key="frame" x="56" y="190" width="195" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="BFr-aA-nBO"/>
@@ -415,7 +415,7 @@
                                     <constraint firstAttribute="height" constant="40" id="Yes-G6-twJ"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The charging line is drawn to alarm" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIt-VA-qbq">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="充电故障" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fIt-VA-qbq">
                                 <rect key="frame" x="56" y="241" width="195" height="37"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="zkz-g6-ihA"/>

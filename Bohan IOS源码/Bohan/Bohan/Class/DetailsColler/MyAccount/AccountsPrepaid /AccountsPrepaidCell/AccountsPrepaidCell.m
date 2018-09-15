@@ -112,27 +112,6 @@
     }
 }
 
-// 微信
-- (IBAction)WechatPayBut:(UIButton *)sender {
-    if (!_PayBut1.selected && !_PayBut2.selected && !_PayBut3.selected && !_PayBut4.selected && !_PayBut5.selected && !_PayBut6.selected) {
-        ZPLog(@"没有选中金额");
-        [HintView showHint:Localize(@"请选择充值金额")];
-    }else {
-        if (sender.selected) {
-            return;
-        }else {
-            sender.selected =! sender.selected;
-            self.PayWay = @"微信";
-            self.AlipayPayBut.selected = NO;
-            [self.DetermineBut setEnabled:YES]; //交互关闭
-            self.DetermineBut.alpha= 100;//透明度
-            ZPLog(@"选中");
-            ZPLog(@"%@",self.AmountPay);
-        }
-    }
-    
-}
-
 // 支付宝
 - (IBAction)AlipayPayBut:(UIButton *)sender {
     if (!_PayBut1.selected && !_PayBut2.selected && !_PayBut3.selected && !_PayBut4.selected && !_PayBut5.selected && !_PayBut6.selected) {
@@ -143,25 +122,71 @@
             return;
         }else {
             sender.selected =! sender.selected;
-            self.PayWay = @"支付宝";
+            self.PayWay = @"Alipay";
             self.WechatPayBut.selected = NO;
+            self.ApplePayBut.selected = NO;
             [self.DetermineBut setEnabled:YES]; //交互关闭
             self.DetermineBut.alpha= 100;//透明度
-            ZPLog(@"选中");
-            ZPLog(@"%@",self.AmountPay);
+//            ZPLog(@"选中");
+//            ZPLog(@"%@",self.AmountPay);
         }
     }
 }
 
+// 微信
+- (IBAction)WechatPayBut:(UIButton *)sender {
+    if (!_PayBut1.selected && !_PayBut2.selected && !_PayBut3.selected && !_PayBut4.selected && !_PayBut5.selected && !_PayBut6.selected) {
+        ZPLog(@"没有选中金额");
+        [HintView showHint:Localize(@"请选择充值金额")];
+    }else {
+        if (sender.selected) {
+            return;
+        }else {
+            sender.selected =! sender.selected;
+            self.PayWay = @"WeChat";
+            self.AlipayPayBut.selected = NO;
+            self.ApplePayBut.selected = NO;
+            [self.DetermineBut setEnabled:YES]; //交互关闭
+            self.DetermineBut.alpha= 100;//透明度
+//            ZPLog(@"选中");
+//            ZPLog(@"%@",self.AmountPay);
+        }
+    }
+    
+}
+
+// Pay
+- (IBAction)ApplePayBut:(UIButton *)sender {
+    if (!_PayBut1.selected && !_PayBut2.selected && !_PayBut3.selected && !_PayBut4.selected && !_PayBut5.selected && !_PayBut6.selected) {
+//        ZPLog(@"没有选中金额");
+        [HintView showHint:Localize(@"请选择充值金额")];
+    }else {
+        if (sender.selected) {
+            return;
+        }else {
+            sender.selected =! sender.selected;
+            self.PayWay = @"ApplePay";
+            self.WechatPayBut.selected = NO;
+            self.AlipayPayBut.selected = NO;
+            [self.DetermineBut setEnabled:YES]; //交互关闭
+            self.DetermineBut.alpha= 100;//透明度
+//            ZPLog(@"选中");
+//            ZPLog(@"%@",self.AmountPay);
+        }
+    }
+}
+
+
 //确定按钮
 - (IBAction)DetermineBut:(UIButton *)sender {
-    if (self.AmountPay == nil || self.PayWay == nil) {
-        ZPLog(@"失败");
-        return;
-    }else {
-        ZPLog(@"成功");
-        ZPLog(@"%@充值%@元",self.PayWay,self.AmountPay);
-    }
+//    if (self.AmountPay == nil || self.PayWay == nil) {
+//        ZPLog(@"失败");
+//        return;
+//    }else {
+//        ZPLog(@"成功");
+    self.payBlockBlock(self.AmountPay, self.PayWay);
+//        ZPLog(@"%@充值%@元",self.PayWay,self.AmountPay);
+//    }
 }
 
 

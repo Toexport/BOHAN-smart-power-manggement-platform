@@ -26,6 +26,7 @@
 //#import <YYModel.h>
 //#import <YYModel.h>
 //#import <NSObject+YYModel.h>
+
 #import "YYModel.h"
 #import "UserInfoManager.h"
 #import "UIView+NoData.h"
@@ -36,4 +37,7 @@
 #import "WSDatePickerView.h"
 #import "NSArray+Safe.h"
 #import "NSDictionary+Safe.h"
+// PAy
+#import <PassKit/PassKit.h>                                 //用户绑定的银行卡信息
+#import <PassKit/PKPaymentAuthorizationViewController.h>    //Apple pay的展示控件
 #endif /* PrefixHeader_pch */

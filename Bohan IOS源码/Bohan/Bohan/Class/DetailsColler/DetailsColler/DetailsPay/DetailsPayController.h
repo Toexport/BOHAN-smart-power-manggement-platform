@@ -12,4 +12,6 @@
 //@property (nonatomic, assign) NSInteger type; // 识别号
 @property (weak, nonatomic) IBOutlet UITableView *Tableview;
 @property (nonatomic, strong) NSString * DataId;
+@property (nonatomic, strong) NSString * PriceStr;
+@property (nonatomic, strong) NSString * PayWayStr;
 @end

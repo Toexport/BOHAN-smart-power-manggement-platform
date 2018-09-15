@@ -120,6 +120,11 @@
                             <constraint firstItem="EW1-kQ-bXK" firstAttribute="top" secondItem="fyV-D2-tdo" secondAttribute="bottom" constant="8" id="veO-Pc-Rrh"/>
                             <constraint firstItem="SYE-xY-CdN" firstAttribute="centerX" secondItem="Vgu-VD-JMe" secondAttribute="centerX" id="wka-Zu-byH"/>
                         </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                <integer key="value" value="8"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </view>
                 </subviews>
                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>

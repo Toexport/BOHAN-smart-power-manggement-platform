@@ -876,10 +876,10 @@
 		C490416421464362005652C9 /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				C490416521464362005652C9 /* ScrollViewFrame.m */,
-				C490416621464362005652C9 /* ViewFrame.m */,
 				C490416721464362005652C9 /* ScrollViewFrame.h */,
+				C490416521464362005652C9 /* ScrollViewFrame.m */,
 				C490416821464362005652C9 /* ViewFrame.h */,
+				C490416621464362005652C9 /* ViewFrame.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1944,7 +1944,7 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.ApplePay = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.HomeKit = {
 								enabled = 0;

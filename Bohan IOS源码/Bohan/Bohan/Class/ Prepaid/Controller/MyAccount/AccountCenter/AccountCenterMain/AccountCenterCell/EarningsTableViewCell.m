@@ -50,13 +50,25 @@
     self.CalendarBut.hidden = NO;
     self.EarningsLabel.text = Localize(@"昨日收益 (09月10日)");
     self.TotalAmountLabel.text = Localize(@"￥ 99.50");
+    self.IncomeLabel.text = @"13,50";
+    self.NoSettlementLabel.text = @"13.50";
+    self.ElectricityPricesLabel.text = @"2.5";
+    self.NumberLabel.text = @"9";
+    self.ElectricityConsumptionLabel.text = @"10";
+    self.AbnormalLabel.text = @"3";
 }
 
-// 收益UI
+// 总收益UI
 - (void)AllProceedsUI {
     self.CalendarBut.hidden = YES;
     self.EarningsLabel.text = Localize(@"总收益");
     self.TotalAmountLabel.text = Localize(@"￥ 1000.00");
+    self.IncomeLabel.text = @"1000";
+    self.NoSettlementLabel.text = @"1000";
+    self.ElectricityPricesLabel.text = @"2.5";
+    self.NumberLabel.text = @"400";
+    self.ElectricityConsumptionLabel.text = @"100";
+    self.AbnormalLabel.text = @"20";
 }
 
 // 获取当前年月日时间

@@ -21,8 +21,8 @@ static NSString *const defaultSoap1Message = @"<?xml version=\"1.0\" encoding=\"
 
 //soap 1.2请求方式
 static NSString *const defaultSoap12Message = @"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap12:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://www.w3.org/2003/05/soap-envelope\">%@<soap12:Body>%@</soap12:Body></soap12:Envelope>";
-@implementation SoapManager
 
+@implementation SoapManager
 
 + (instancetype)manager {
     static SoapManager *instance = nil;
@@ -32,7 +32,6 @@ static NSString *const defaultSoap12Message = @"<?xml version=\"1.0\" encoding=\
         instance = [[SoapManager alloc] init];
         instance.soapType = SoapType_soap;
     });
-    
     return instance;
 }
 

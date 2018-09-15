@@ -27,36 +27,36 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="通知:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Dti-eb-Xfo">
-                        <rect key="frame" x="51" y="16.5" width="35" height="18"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                        <rect key="frame" x="51" y="17.5" width="30.5" height="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一小时内温度-99度以上报告超过10次" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ynp-Hx-BNk">
-                        <rect key="frame" x="91" y="5" width="187" height="35"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="一小时内温度-99度以上报告超过10次" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ynp-Hx-BNk">
+                        <rect key="frame" x="81.5" y="5" width="192.5" height="35"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="35" id="Fdq-Kl-qXP"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="13"/>
+                        <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="11"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_Forward" translatesAutoresizingMaskIntoConstraints="NO" id="bG2-7f-3ud">
-                        <rect key="frame" x="298" y="15" width="14" height="20"/>
+                        <rect key="frame" x="294" y="18" width="10" height="14"/>
                         <constraints>
-                            <constraint firstAttribute="width" constant="14" id="p56-CP-vZg"/>
-                            <constraint firstAttribute="height" constant="20" id="xru-J5-czs"/>
+                            <constraint firstAttribute="width" constant="10" id="p56-CP-vZg"/>
+                            <constraint firstAttribute="height" constant="14" id="xru-J5-czs"/>
                         </constraints>
                     </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="0Ql-ET-KUi" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="FBH-1Y-o6b"/>
-                    <constraint firstItem="Ynp-Hx-BNk" firstAttribute="leading" secondItem="Dti-eb-Xfo" secondAttribute="trailing" constant="5" id="IWD-sg-Gaf"/>
+                    <constraint firstItem="Ynp-Hx-BNk" firstAttribute="leading" secondItem="Dti-eb-Xfo" secondAttribute="trailing" id="IWD-sg-Gaf"/>
                     <constraint firstItem="Dti-eb-Xfo" firstAttribute="centerY" secondItem="0Ql-ET-KUi" secondAttribute="centerY" id="QbI-RS-t3p"/>
                     <constraint firstItem="bG2-7f-3ud" firstAttribute="centerY" secondItem="0Ql-ET-KUi" secondAttribute="centerY" id="UTX-PD-shN"/>
                     <constraint firstItem="bG2-7f-3ud" firstAttribute="leading" secondItem="Ynp-Hx-BNk" secondAttribute="trailing" constant="20" id="YHy-dq-Mat"/>
                     <constraint firstItem="0Ql-ET-KUi" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="kC4-R7-w9R"/>
-                    <constraint firstAttribute="trailing" secondItem="bG2-7f-3ud" secondAttribute="trailing" constant="8" id="uL6-FI-EbC"/>
+                    <constraint firstAttribute="trailing" secondItem="bG2-7f-3ud" secondAttribute="trailing" constant="16" id="uL6-FI-EbC"/>
                     <constraint firstItem="Dti-eb-Xfo" firstAttribute="leading" secondItem="0Ql-ET-KUi" secondAttribute="trailing" constant="3" id="uTG-zJ-ZlD"/>
                     <constraint firstItem="Ynp-Hx-BNk" firstAttribute="top" secondItem="0Ql-ET-KUi" secondAttribute="top" id="xR0-WR-ZsL"/>
                 </constraints>

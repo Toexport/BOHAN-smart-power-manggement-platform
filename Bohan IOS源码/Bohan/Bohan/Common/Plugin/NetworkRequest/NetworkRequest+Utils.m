@@ -44,12 +44,12 @@ static NSString *const soapNameSpace = @"http://bohansever.top:/";
         if ((language && [language isEqualToString:@"zh-Hans"]) || (!language && [localeLanguageCode isEqualToString:@"zh"])) {
             headers = @{@"token":TOKEN, @"language":@"simple-chinese"};
         }else {
-            headers = @{@"token":TOKEN, @"language":@"English"};
+            headers = @{@"token":TOKEN, @"language":@"english"};
         }
-        //        headers = @{@"token":TOKEN, @"language":@"English"};
-        //        if ((language && [language isEqualToString:@"zh-Hans"]) || (!language && [localeLanguageCode isEqualToString:@"zh"])) {
-        //            headers = @{@"token":TOKEN, @"language":@"simple-chinese"};
-        //        }
+//                headers = @{@"token":TOKEN, @"language":@"english"};
+//                if ((language && [language isEqualToString:@"zh-Hans"]) || (!language && [localeLanguageCode isEqualToString:@"zh"])) {
+//                    headers = @{@"token":TOKEN, @"language":@"simple-chinese"};
+//                }
     }
     [manager soapWithMethodName:method soapHeader:@"Certificate" headers:headers parameters:parameters];
     [self allHTTPHeaderFields];
