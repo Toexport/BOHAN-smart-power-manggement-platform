@@ -12,13 +12,21 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    UITapGestureRecognizer * TapGestureRecognizer1 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(StoredValuealickList)];
+    self.StoredValueView.userInteractionEnabled=YES;
+    [self.StoredValueView addGestureRecognizer:TapGestureRecognizer1];
+    
+    UITapGestureRecognizer * TapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(alickList)];
+    self.ExtractView.userInteractionEnabled=YES;
+    [self.ExtractView addGestureRecognizer:TapGestureRecognizer];
+    
+}
+- (void)StoredValuealickList {
+    self.StoredValueBlockBlock(self.StoredValueView);
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)alickList{
+    self.ExtractBlockBlock(self.ExtractView);
 }
 
 @end

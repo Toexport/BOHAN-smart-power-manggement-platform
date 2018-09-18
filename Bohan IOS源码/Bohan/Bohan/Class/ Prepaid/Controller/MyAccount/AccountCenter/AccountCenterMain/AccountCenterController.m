@@ -11,6 +11,8 @@
 #import "RemindTableViewCell.h"
 #import "EarningsTableViewCell.h"
 #import "AbnormalStatisticsCell.h"
+#import "PrefixHeader.pch"
+#import "AccountsPrepaidController.h"
 @interface AccountCenterController () <UITableViewDelegate, UITableViewDataSource>
 
 @end
@@ -51,6 +53,14 @@
         static NSString *AccountCenter = @"AccountCenterCell";
         AccountCenterCell * cell = [tableView dequeueReusableCellWithIdentifier:AccountCenter];
         cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
+        cell.StoredValueBlockBlock = ^(id StoredValueView) {
+            ZPLog(@"储值");
+            AccountsPrepaidController * AccountsPrepaid = [[AccountsPrepaidController alloc]init];
+            [self.navigationController pushViewController:AccountsPrepaid animated:YES];
+        };
+        cell.ExtractBlockBlock = ^(id ExtractView) {
+            NSLog(@"提款");
+        };
         return cell;
     }else
        if (indexPath.section == 1) {
@@ -74,7 +84,7 @@
 // cell的大小
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        return 180;
+        return 175;
     }else
         if (indexPath.section == 1) {
             return 50;
@@ -97,6 +107,7 @@
 
 // cell的点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    
 //    if (indexPath.section == 0) {
 //        AccountCenterController * AccountCenter = [[AccountCenterController alloc]init];
 //        [self.navigationController pushViewController:AccountCenter animated:YES];

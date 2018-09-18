@@ -23,6 +23,7 @@
 #import "AppDelegate.h"
 #import "NetworkRequest.h"
 #import "HintView.h"
+#import "DebuggingANDPublishing.pch"
 //#import <YYModel.h>
 //#import <YYModel.h>
 //#import <NSObject+YYModel.h>

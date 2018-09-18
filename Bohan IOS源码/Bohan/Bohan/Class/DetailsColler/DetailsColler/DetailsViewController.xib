@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DetailsViewController">
             <connections>
+                <outlet property="tableview" destination="JCu-XU-dm4" id="gZ3-UD-TC5"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,71 +20,74 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请扫描设备上的二维码" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Ih-I0-O8K">
-                    <rect key="frame" x="100.5" y="100" width="174" height="21"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="nqC-oz-51d"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlpayPay" translatesAutoresizingMaskIntoConstraints="NO" id="rtX-7N-YPj">
-                    <rect key="frame" x="67.5" y="146" width="240" height="175"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="240" id="R2c-An-jAi"/>
-                        <constraint firstAttribute="height" constant="175" id="eNf-Hf-xwg"/>
-                    </constraints>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gy5-2v-eZx">
-                    <rect key="frame" x="275" y="547" width="40" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="4iq-yU-dGh"/>
-                        <constraint firstAttribute="width" constant="40" id="qet-oh-StM"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <inset key="titleEdgeInsets" minX="-30" minY="10" maxX="0.0" maxY="-40"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="-10" maxY="0.0"/>
-                    <state key="normal" title="我的" image="mainpage_me">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JCu-XU-dm4">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="558"/>
+                    <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
-                        <action selector="MyBUt:" destination="-1" eventType="touchUpInside" id="CfN-HZ-b8y"/>
+                        <outlet property="dataSource" destination="-1" id="RRy-Le-JFE"/>
+                        <outlet property="delegate" destination="-1" id="0dp-sJ-wlw"/>
                     </connections>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88S-4v-Td5">
-                    <rect key="frame" x="60" y="547" width="40" height="40"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="erb-p1-jpq">
+                    <rect key="frame" x="0.0" y="558" width="375" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88S-4v-Td5">
+                            <rect key="frame" x="67.5" y="2.5" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="Fuu-HQ-rZk"/>
+                                <constraint firstAttribute="width" constant="40" id="uiW-VE-mOt"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <inset key="titleEdgeInsets" minX="-42" minY="10" maxX="0.0" maxY="-40"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
+                            <state key="normal" title="扫码" image="sao_sao">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="ScanningBUt:" destination="-1" eventType="touchUpInside" id="Fcv-K8-Zvc"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gy5-2v-eZx">
+                            <rect key="frame" x="267.5" y="2.5" width="40" height="40"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="40" id="ARw-SR-Qi0"/>
+                                <constraint firstAttribute="width" constant="40" id="rUq-Vm-dqF"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <inset key="titleEdgeInsets" minX="-30" minY="10" maxX="0.0" maxY="-40"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="-10" maxY="0.0"/>
+                            <state key="normal" title="我的" image="mainpage_me">
+                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </state>
+                            <connections>
+                                <action selector="MyBUt:" destination="-1" eventType="touchUpInside" id="CfN-HZ-b8y"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="GmP-AO-w9v"/>
-                        <constraint firstAttribute="width" constant="40" id="WHt-OQ-RJx"/>
+                        <constraint firstItem="88S-4v-Td5" firstAttribute="leading" secondItem="erb-p1-jpq" secondAttribute="leading" constant="67" id="Ada-SN-F2I"/>
+                        <constraint firstItem="88S-4v-Td5" firstAttribute="top" secondItem="erb-p1-jpq" secondAttribute="top" constant="2.5" id="FxA-KI-CcO"/>
+                        <constraint firstItem="gy5-2v-eZx" firstAttribute="top" secondItem="88S-4v-Td5" secondAttribute="top" id="GTL-Kg-TMw"/>
+                        <constraint firstAttribute="height" constant="60" id="ZGQ-3g-wvA"/>
+                        <constraint firstAttribute="trailing" secondItem="gy5-2v-eZx" secondAttribute="trailing" constant="67" id="diC-eX-iMc"/>
                     </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                    <inset key="titleEdgeInsets" minX="-42" minY="10" maxX="0.0" maxY="-40"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
-                    <state key="normal" title="扫码" image="sao_sao">
-                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    </state>
-                    <connections>
-                        <action selector="ScanningBUt:" destination="-1" eventType="touchUpInside" id="Fcv-K8-Zvc"/>
-                    </connections>
-                </button>
+                </view>
             </subviews>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <constraints>
-                <constraint firstItem="88S-4v-Td5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="60" id="4tn-rw-IAZ"/>
-                <constraint firstItem="rtX-7N-YPj" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="89w-cA-XD5"/>
-                <constraint firstItem="8Ih-I0-O8K" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="100" id="F4X-AD-NQo"/>
-                <constraint firstItem="gy5-2v-eZx" firstAttribute="top" secondItem="88S-4v-Td5" secondAttribute="top" id="KRK-42-o4S"/>
-                <constraint firstItem="8Ih-I0-O8K" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="TI7-rv-h96"/>
-                <constraint firstAttribute="trailing" secondItem="gy5-2v-eZx" secondAttribute="trailing" constant="60" id="UJm-y4-Dmb"/>
-                <constraint firstItem="rtX-7N-YPj" firstAttribute="top" secondItem="8Ih-I0-O8K" secondAttribute="bottom" constant="25" id="bbV-mh-Wjn"/>
-                <constraint firstAttribute="bottom" secondItem="88S-4v-Td5" secondAttribute="bottom" constant="80" id="nul-65-tiO"/>
+                <constraint firstItem="JCu-XU-dm4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7p4-U9-T0c"/>
+                <constraint firstItem="erb-p1-jpq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="I64-RJ-ndd"/>
+                <constraint firstItem="JCu-XU-dm4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eIp-Mf-ri5"/>
+                <constraint firstAttribute="bottom" secondItem="erb-p1-jpq" secondAttribute="bottom" constant="49" id="hCV-QF-JgQ"/>
+                <constraint firstAttribute="trailing" secondItem="JCu-XU-dm4" secondAttribute="trailing" id="kD1-PW-cly"/>
+                <constraint firstAttribute="trailing" secondItem="erb-p1-jpq" secondAttribute="trailing" id="ukn-Rm-sHF"/>
+                <constraint firstItem="erb-p1-jpq" firstAttribute="top" secondItem="JCu-XU-dm4" secondAttribute="bottom" id="z7d-33-9FX"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>
     <resources>
-        <image name="AlpayPay" width="42" height="42"/>
         <image name="mainpage_me" width="23" height="20"/>
         <image name="sao_sao" width="45" height="45"/>
     </resources>

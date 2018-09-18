@@ -14,7 +14,10 @@
 #import "DetailsPayController.h"
 #import "MyAccountViewController.h"
 #import "ChargingStatusController.h"
-@interface DetailsViewController ()
+#import "DetailsTableViewCell.h"
+#import "EquipmentCell.h"
+#import "CostIntroducedCell.h"
+@interface DetailsViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @end
 
@@ -25,24 +28,76 @@
     self.title = Localize(@"付费充电");
 //    ChargingStatusController * ChargingStatus = [[ChargingStatusController alloc]init];
 //    [self presentViewController:ChargingStatus animated:YES completion:nil];
+    [self.tableview registerNib:[UINib nibWithNibName:@"DetailsTableViewCell" bundle:nil] forCellReuseIdentifier:@"DetailsTableViewCell"];
+    [self.tableview registerNib:[UINib nibWithNibName:@"EquipmentCell" bundle:nil] forCellReuseIdentifier:@"EquipmentCell"];
+    [self.tableview registerNib:[UINib nibWithNibName:@"CostIntroducedCell" bundle:nil] forCellReuseIdentifier:@"CostIntroducedCell"];
+    self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;  //隐藏tableview多余的线条
+    
+}
+
+//3.设置cell之间headerview的高度
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    if (section == 1) {
+        return 5;
+    }else {
+        return 0;
+    }
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 3;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        DetailsTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"DetailsTableViewCell"];
+        cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
+        return cell;
+    }else
+        if (indexPath.section == 1) {
+            EquipmentCell * cell = [tableView dequeueReusableCellWithIdentifier:@"EquipmentCell"];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
+            return cell;
+        }else {
+            CostIntroducedCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CostIntroducedCell"];
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
+            return cell;
+        
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        return 125;
+    }else
+        if (indexPath.section == 1) {
+            return 400;
+        }else {
+            
+        return 280;
+    }
 }
 
 // 扫描
 - (IBAction)ScanningBUt:(UIButton *)sender {
-//    DetailsPayController *  DetailsPay = [[DetailsPayController alloc]init];
-//    DetailsPay.hidesBottomBarWhenPushed = YES;
-//    [self.navigationController pushViewController: DetailsPay animated:YES];
-    ScanViewController *ScanView = [[ScanViewController alloc] init];
-    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-        NSLog(@"设备具备相机");
-        ScanView.type = 2;
-    ScanView.hidesBottomBarWhenPushed = YES;
-        [self.navigationController pushViewController:ScanView animated:YES];
-    }else {
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"提示", nil) message:NSLocalizedString(@"您的设备暂时不支持扫码", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"确定", nil) otherButtonTitles:nil, nil];
-        [alert show];
-        ZPLog(@"没有摄像");
-    }
+    DetailsPayController *  DetailsPay = [[DetailsPayController alloc]init];
+    DetailsPay.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController: DetailsPay animated:YES];
+//    ScanViewController *ScanView = [[ScanViewController alloc] init];
+//    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+//        NSLog(@"设备具备相机");
+//        ScanView.type = 2;
+//    ScanView.hidesBottomBarWhenPushed = YES;
+//        [self.navigationController pushViewController:ScanView animated:YES];
+//    }else {
+//        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:Localize(@"提示") message:Localize(@"您的设备暂时不支持扫码") delegate:nil cancelButtonTitle:Localize(@"确定") otherButtonTitles:nil, nil];
+//        [alert show];
+//        ZPLog(@"没有摄像");
+//    }
 }
 
 // 我的

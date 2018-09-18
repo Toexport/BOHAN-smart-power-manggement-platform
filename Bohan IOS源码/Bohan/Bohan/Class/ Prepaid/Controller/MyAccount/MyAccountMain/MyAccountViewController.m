@@ -18,6 +18,7 @@
 #import "PrepaidRecordsController.h"
 #import "gesturesPasswordController.h"
 #import "AccountCenterController.h"
+#import "WithdrawalsController.h"
 @interface MyAccountViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @end

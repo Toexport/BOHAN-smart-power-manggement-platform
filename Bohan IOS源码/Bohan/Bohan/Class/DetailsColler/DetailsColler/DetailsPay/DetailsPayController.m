@@ -21,6 +21,7 @@
     NSString * priceString;
     NSMutableArray *summaryItems;
     NSMutableArray *shippingMethods;
+    NSString * Pay;
 }
 
 @end
@@ -69,24 +70,20 @@
     [cell setBalanceViewBlock:^(id response) {
         [ZJBLStoreShopTypeAlert showWithTitle:Localize(@"请选择支付方式") images:images titles:titles selectIndex:^(NSInteger selectIndex) {
             _selectIndex = selectIndex;
+            Pay = [NSString stringWithFormat:@"%ld",(long)selectIndex];
             [cell updateBalanceView:selectIndex];
         } selectValuee:^(NSString *selectValuee) {
-            
         } selectValue:^(NSString *selectValue) {
-            
         } showCloseButton:YES];
-        ZPLog(@"111");
     }];
-    
-    [cell setPayBlockBlock:^(NSString *  DeviceId, NSString *  PayWay, NSString *  PriceLabel) {
+    [cell setPayBlockBlock:^(NSString *  DeviceId, NSString *  PriceLabel) {
         priceString = [NSString stringWithFormat:@"%@",PriceLabel];
-        self.PayWayStr = [NSString stringWithFormat:@"%@",PayWay];
+//        self.PayWayStr = [NSString stringWithFormat:@"%@",PayWay];
         self.PriceStr = PriceLabel;
-        ZPLog(@"222");// 此处选中的是余额需要输入密码，不是余额直接跳过去
-        if ([PayWay isEqualToString:@"ApplePay"]) {
+        ZPLog(@"%@",Pay);// 此处选中的是余额需要输入密码，不是余额直接跳过去
+        if ([Pay isEqualToString:@"3"]) {
             [self ApplePay];
         }
-        
         LYPaymentAlertController *paymentAlert = [LYPaymentAlertController alertControllerWithTitle:@"请输入支付密码" numberOfCharacters:6 amount:PriceLabel remarks:DeviceId];
         paymentAlert.delegate = weakSelf;
         paymentAlert.contentOffset = CGSizeMake(0, 50);
@@ -104,7 +101,7 @@
 
 // PAy
 - (void)ApplePay {
-//    ZPLog(@"%@%@",self.PayWayStr,self.PriceStr);
+    ZPLog(@"%@%@",self.PayWayStr,self.PriceStr);
     if (![PKPaymentAuthorizationViewController class]) {
         //PKPaymentAuthorizationViewController需iOS8.0以上支持
         NSLog(@"操作系统不支持ApplePay，请升级至9.0以上版本，且iPhone6以上设备才支持");
@@ -184,8 +181,6 @@
 - (void)paymentAuthorizationViewControllerDidFinish:(PKPaymentAuthorizationViewController *)controller{
     [controller dismissViewControllerAnimated:YES completion:nil];
 }
-
-
 
 
 //  输入完成打印的结果

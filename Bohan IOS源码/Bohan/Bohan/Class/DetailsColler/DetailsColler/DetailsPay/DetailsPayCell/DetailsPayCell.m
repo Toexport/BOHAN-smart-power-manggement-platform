@@ -94,6 +94,7 @@
     NSArray *titleArray = @[@"余额",@"支付宝",@"微信",@"ApplePay"];
     _MainImage.image = [UIImage imageNamed:imageArray[type]];
     _TitleLabel.text = titleArray[type];
+    self.PayWay = [NSString stringWithFormat:@"%@",self.TitleLabel];
 }
 
 // 付款
@@ -103,10 +104,9 @@
 //    }else {
 //        self.payBlockBlock(self.PriceLabel.text, self.PayWay, self.DeviceId.text);
 
-    NSString *string = [NSString stringWithFormat:@"￥%@",self.PriceLabel.text];
+    NSString *string = [NSString stringWithFormat:@"%@",self.PriceLabel.text];
     NSString * stringg = [NSString stringWithFormat:@"设备ID:%@",self.DeviceId.text];
-    NSString * stringgg = [NSString stringWithFormat:@"%@",self.PayWay];
-    self.payBlockBlock(stringg, stringgg, string);
+    self.payBlockBlock(stringg, string);
 //        ZPLog(@"成功");
 //    }
 }
