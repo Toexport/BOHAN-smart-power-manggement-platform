@@ -534,6 +534,7 @@
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
+        ZPLog(@"%@",response);
         if (!error) {
             if (((NSString *)response).length == 120) {
                 NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 96, 92)];
@@ -544,7 +545,7 @@
             [HintView showHint:Localize(@"加载数据失败")];
             [weakSelf.navigationController popViewControllerAnimated:YES];
         }
-        ZPLog(@"--------%@",response);
+//        ZPLog(@"--------%@",response);
     }];
 }
 
@@ -553,7 +554,6 @@
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0009";
     model.deviceNo = self.dNo;
-    
     NSString *contentStr = @"";
     for (TimeSettingModel *model in self.datas) {
         NSString *item = [model.startTime stringByReplacingOccurrencesOfString:@":" withString:@""];

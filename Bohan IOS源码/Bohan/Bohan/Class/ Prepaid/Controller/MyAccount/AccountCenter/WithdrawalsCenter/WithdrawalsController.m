@@ -8,6 +8,7 @@
 
 #import "WithdrawalsController.h"
 #import "WithdrawalsTableViewCell.h"
+#import "WithdrawalsView.h"
 @interface WithdrawalsController () <UITableViewDelegate,UITableViewDataSource>
 
 @end
@@ -31,16 +32,48 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WithdrawalsTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"WithdrawalsTableViewCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
+    
+    cell.chooseViewBlock = ^(id ChooseView) {
+        [self initUIView];
+    };
+    
+    cell.extractButBlock = ^(id ExtractBut) {
+        ZPLog(@"点击了提款按钮");
+    };
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 100;
+    return 280;
 }
+
+- (void)initUIView {
+    ZPLog(@"111");
+    WithdrawalsView *datepicker = [[WithdrawalsView alloc]initWithDateStyle:nil BlankBlock:^(NSDate *date) {
+        ZPLog(@"111");
+    }];
+//    datepicker.hideBackgroundYearLabel = YES;
+//    datepicker.dateLabelColor = kDefualtColor;
+//    datepicker.doneButtonColor = kDefualtColor;
+    [datepicker show];
+}
+
+//// 这两个方法实时监控text输入框ID
+//-(void)textFieldDidChange:(UITextField *)textField {
+//    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeValue" object:textField];
+//}
+
+//- (void)changeValue:(NSNotification *)notification {
+//    UITextField * textField = notification.object;
+//    //要实现的监听方法操作
+//    ZPLog(@"%@",textField.text);
+//    if (textField.text.length > 8) {
+//        return;
+//    }
+//}
+
+
 
 @end

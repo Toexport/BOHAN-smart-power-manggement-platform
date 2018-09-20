@@ -13,6 +13,7 @@
 #import "AbnormalStatisticsCell.h"
 #import "PrefixHeader.pch"
 #import "AccountsPrepaidController.h"
+#import "WithdrawalsController.h"
 @interface AccountCenterController () <UITableViewDelegate, UITableViewDataSource>
 
 @end
@@ -60,6 +61,8 @@
         };
         cell.ExtractBlockBlock = ^(id ExtractView) {
             NSLog(@"提款");
+            WithdrawalsController * Withdrawals = [[WithdrawalsController alloc]init];
+            [self.navigationController pushViewController:Withdrawals animated:YES];
         };
         return cell;
     }else

@@ -16,9 +16,9 @@
     self.StoredValueView.userInteractionEnabled=YES;
     [self.StoredValueView addGestureRecognizer:TapGestureRecognizer1];
     
-    UITapGestureRecognizer * TapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(alickList)];
+    UITapGestureRecognizer * TapGestureRecognizer2 = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(alickList)];
     self.ExtractView.userInteractionEnabled=YES;
-    [self.ExtractView addGestureRecognizer:TapGestureRecognizer];
+    [self.ExtractView addGestureRecognizer:TapGestureRecognizer2];
     
 }
 - (void)StoredValuealickList {

@@ -123,7 +123,6 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
                 NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 96, 92)];
                 
                 electrictyModel = [content substringFromIndex:content.length - 2];
-                
                 if ([electrictyModel isEqualToString:@"00"] || [electrictyModel isEqualToString:@"01"]) {
                     [self countDownTime];
                 }else {

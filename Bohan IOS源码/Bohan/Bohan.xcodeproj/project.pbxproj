@@ -29,6 +29,8 @@
 		C44DE77A21489DFC007325FD /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = C44DE77921489DFB007325FD /* UIView+Frame.m */; };
 		C44DE77F2148BE7D007325FD /* ChargingStatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = C44DE77D2148BE7D007325FD /* ChargingStatusController.m */; };
 		C44DE7802148BE7D007325FD /* ChargingStatusController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C44DE77E2148BE7D007325FD /* ChargingStatusController.xib */; };
+		C477148721536C1A007457B9 /* WithdrawalsView.m in Sources */ = {isa = PBXBuildFile; fileRef = C477148521536C1A007457B9 /* WithdrawalsView.m */; };
+		C477148821536C1A007457B9 /* WithdrawalsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C477148621536C1A007457B9 /* WithdrawalsView.xib */; };
 		C47B4A9C20F5CCC100DAD5D3 /* LanguageController.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4A9A20F5CCC100DAD5D3 /* LanguageController.m */; };
 		C47B4A9D20F5CCC100DAD5D3 /* LanguageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C47B4A9B20F5CCC100DAD5D3 /* LanguageController.xib */; };
 		C47B4AAD20F5D3D500DAD5D3 /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4AAC20F5D3D500DAD5D3 /* NSBundle+Language.m */; };
@@ -291,6 +293,9 @@
 		C44DE77C2148BE7D007325FD /* ChargingStatusController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChargingStatusController.h; sourceTree = "<group>"; };
 		C44DE77D2148BE7D007325FD /* ChargingStatusController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChargingStatusController.m; sourceTree = "<group>"; };
 		C44DE77E2148BE7D007325FD /* ChargingStatusController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChargingStatusController.xib; sourceTree = "<group>"; };
+		C477148421536C1A007457B9 /* WithdrawalsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WithdrawalsView.h; sourceTree = "<group>"; };
+		C477148521536C1A007457B9 /* WithdrawalsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawalsView.m; sourceTree = "<group>"; };
+		C477148621536C1A007457B9 /* WithdrawalsView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawalsView.xib; sourceTree = "<group>"; };
 		C47B4A9920F5CCC100DAD5D3 /* LanguageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LanguageController.h; sourceTree = "<group>"; };
 		C47B4A9A20F5CCC100DAD5D3 /* LanguageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LanguageController.m; sourceTree = "<group>"; };
 		C47B4A9B20F5CCC100DAD5D3 /* LanguageController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageController.xib; sourceTree = "<group>"; };
@@ -838,6 +843,16 @@
 			path = ChargingStatus;
 			sourceTree = "<group>";
 		};
+		C477148321536C00007457B9 /* WithdrawalsView */ = {
+			isa = PBXGroup;
+			children = (
+				C477148421536C1A007457B9 /* WithdrawalsView.h */,
+				C477148521536C1A007457B9 /* WithdrawalsView.m */,
+				C477148621536C1A007457B9 /* WithdrawalsView.xib */,
+			);
+			path = WithdrawalsView;
+			sourceTree = "<group>";
+		};
 		C47B4AAE20F5DF9F00DAD5D3 /* ZP_registrationTimerBut */ = {
 			isa = PBXGroup;
 			children = (
@@ -874,6 +889,7 @@
 				C48450DE2150976E00196704 /* WithdrawalsController.m */,
 				C48450DF2150976E00196704 /* WithdrawalsController.xib */,
 				C48450E22150977F00196704 /* WithdrawalsCell */,
+				C477148321536C00007457B9 /* WithdrawalsView */,
 			);
 			path = WithdrawalsCenter;
 			sourceTree = "<group>";
@@ -2063,6 +2079,7 @@
 				CC1EFF36204C4A5F002811CB /* CustomInputView.xib in Resources */,
 				C4AF059F214A014500176F29 /* MyAccountViewController.xib in Resources */,
 				CC2E75CF20472CC700CC6E6E /* UpdateDeviceInfoViewController.xib in Resources */,
+				C477148821536C1A007457B9 /* WithdrawalsView.xib in Resources */,
 				C44DE7802148BE7D007325FD /* ChargingStatusController.xib in Resources */,
 				C4D188E9213FD4920030464E /* AccountsPrepaidController.xib in Resources */,
 				CC8090402046F2FD00265FE0 /* EquipmentTableViewCell.xib in Resources */,
@@ -2211,6 +2228,7 @@
 				CC5567052025E34100A8589B /* WSDatePickerView.m in Sources */,
 				CC24566A1FF745DB00616916 /* UIButton+CountDown.m in Sources */,
 				CCE9E59F200644FD008439F3 /* ESP_NetUtil.m in Sources */,
+				C477148721536C1A007457B9 /* WithdrawalsView.m in Sources */,
 				CC64E20D2015163000653D2B /* SGActionView.m in Sources */,
 				CC2456721FF745DB00616916 /* UISearchBar+Color.m in Sources */,
 				C420F38D2147B045003B6AC0 /* GesturesPasswordView.m in Sources */,

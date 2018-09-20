@@ -12,13 +12,31 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
+    [self initUI];
+    UITapGestureRecognizer * TapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(ChooseViews)];
+    self.ChooseView.userInteractionEnabled = YES;
+    [self.ChooseView addGestureRecognizer:TapGestureRecognizer];
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+- (void)ChooseViews {
+    self.chooseViewBlock(self.ChooseView);
 }
+
+- (void)initUI {
+    self.TextLabel1.hidden = YES;
+    self.TextLabel2.hidden = YES;
+}
+
+// 全部提取
+- (IBAction)AllBut:(UIButton *)sender {
+    ZPLog(@"%@",self.AmountLabel.text);
+    self.InputBoxTextField.text = self.AmountLabel.text;
+}
+
+// 提款
+- (IBAction)ExtractBut:(UIButton *)sender {
+    self.extractButBlock(self.AllBut);
+}
+
 
 @end

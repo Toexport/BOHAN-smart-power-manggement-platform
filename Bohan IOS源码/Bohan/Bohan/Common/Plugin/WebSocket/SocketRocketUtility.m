@@ -82,7 +82,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
         
         reConnectTime = 0;
         if (self.socket.readyState == SR_CLOSED) {
-            [self reConnect];
+//            [self reConnect];
         }
         
         dispatch_semaphore_wait(sendSemaphore, DISPATCH_TIME_FOREVER);

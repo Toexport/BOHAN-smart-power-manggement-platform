@@ -63,6 +63,7 @@ typedef void(^doneBlock)(NSDate *);
 @end
 
 @implementation WSDatePickerView
+
 /**
  默认滚动到当前时间
  */
@@ -631,7 +632,6 @@ typedef void(^doneBlock)(NSDate *);
 
 #pragma mark - Action
 -(void)show {
-    
     [[UIApplication sharedApplication].keyWindow addSubview:self];
     [UIView animateWithDuration:.3 animations:^{
         self.bottomConstraint.constant = bottom_height;
