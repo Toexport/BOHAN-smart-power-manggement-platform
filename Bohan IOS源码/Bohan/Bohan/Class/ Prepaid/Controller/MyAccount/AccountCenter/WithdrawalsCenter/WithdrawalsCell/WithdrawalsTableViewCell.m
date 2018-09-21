@@ -13,6 +13,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self initUI];
+    [self.ExtractBut setEnabled:NO];
+    self.ExtractBut.alpha = 0.4;
     UITapGestureRecognizer * TapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(ChooseViews)];
     self.ChooseView.userInteractionEnabled = YES;
     [self.ChooseView addGestureRecognizer:TapGestureRecognizer];
@@ -27,10 +29,32 @@
 
 - (void)changeValue:(NSNotification *)notification {
     UITextField * textField = notification.object;
+    if (textField.text.length > 0) {
+        self.TextLabel2.hidden = NO;
+        self.TextLabel.hidden = YES;
+        self.AmountLabel.hidden = YES;
+        self.AllBut.hidden = YES;
+        [self.ExtractBut setEnabled:YES];
+        self.ExtractBut.alpha = 100;
+    }else {
+        self.TextLabel2.hidden = YES;
+        self.TextLabel.hidden = NO;
+        self.AmountLabel.hidden = NO;
+        self.AllBut.hidden = NO;
+        [self.ExtractBut setEnabled:NO];
+        self.ExtractBut.alpha = 0.4;
+    }
+    if (self.InputBoxTextField.text > self.AmountLabel.text) {
+        self.TextLabel1.hidden = NO;
+        self.TextLabel2.hidden = YES;
+        ZPLog(@"111");
+    }else {
+      self.TextLabel1.hidden = YES;
+    }
+    
     //要实现的监听方法操作
-    ZPLog(@"%@",textField.text);
+    ZPLog(@"%lu",textField.text.length);
     if (textField.text.length > 5) {
-        
         ZPLog(@"输入有误");
         return;
     }
@@ -49,12 +73,19 @@
 - (IBAction)AllBut:(UIButton *)sender {
     ZPLog(@"%@",self.AmountLabel.text);
     self.InputBoxTextField.text = self.AmountLabel.text;
+    if (self.InputBoxTextField.text.length > 0) {
+        self.TextLabel2.hidden = NO;
+        self.TextLabel.hidden = YES;
+        self.AmountLabel.hidden = YES;
+        self.AllBut.hidden = YES;
+        [self.ExtractBut setEnabled:YES];
+        self.ExtractBut.alpha = 100;
+    }
 }
 
 // 提款
 - (IBAction)ExtractBut:(UIButton *)sender {
     self.extractButBlock(self.AllBut);
 }
-
 
 @end

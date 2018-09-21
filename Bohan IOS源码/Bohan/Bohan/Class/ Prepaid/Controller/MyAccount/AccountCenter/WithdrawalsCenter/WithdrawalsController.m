@@ -36,13 +36,11 @@
     cell.chooseViewBlock = ^(id ChooseView) {
         [self initUIView];
     };
-    
     cell.extractButBlock = ^(id ExtractBut) {
         ZPLog(@"点击了提款按钮");
     };
     return cell;
 }
-
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     

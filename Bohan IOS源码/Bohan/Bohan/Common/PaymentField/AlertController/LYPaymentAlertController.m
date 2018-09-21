@@ -209,7 +209,6 @@ static LYPaymentAlertTheme *__theme = nil;
 }
 
 - (void)dismiss:(UIButton *)sender {
-    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
