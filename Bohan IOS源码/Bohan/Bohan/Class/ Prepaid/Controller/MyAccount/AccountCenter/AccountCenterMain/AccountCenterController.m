@@ -58,11 +58,13 @@
             ZPLog(@"储值");
             AccountsPrepaidController * AccountsPrepaid = [[AccountsPrepaidController alloc]init];
             [self.navigationController pushViewController:AccountsPrepaid animated:YES];
+            self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
         };
         cell.ExtractBlockBlock = ^(id ExtractView) {
             NSLog(@"提款");
             WithdrawalsController * Withdrawals = [[WithdrawalsController alloc]init];
             [self.navigationController pushViewController:Withdrawals animated:YES];
+            self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
         };
         return cell;
     }else

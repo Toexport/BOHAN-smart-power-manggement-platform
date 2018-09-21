@@ -17,6 +17,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = Localize(@"提款");
     [self.Tableview registerNib:[UINib nibWithNibName:@"WithdrawalsTableViewCell" bundle:nil] forCellReuseIdentifier:@"WithdrawalsTableViewCell"];
     self.Tableview.separatorStyle = UITableViewCellSeparatorStyleNone;  //隐藏tableview多余的线条
 }
@@ -32,7 +33,6 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WithdrawalsTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"WithdrawalsTableViewCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
-    
     cell.chooseViewBlock = ^(id ChooseView) {
         [self initUIView];
     };
@@ -51,13 +51,13 @@
 
 - (void)initUIView {
     ZPLog(@"111");
-    WithdrawalsView *datepicker = [[WithdrawalsView alloc]initWithDateStyle:nil BlankBlock:^(NSDate *date) {
-        ZPLog(@"111");
-    }];
+//    WithdrawalsView *datepicker = [[WithdrawalsView alloc]initWithDateStyle:nil BlankBlock:^(NSDate *date) {
+//        ZPLog(@"111");
+//    }];
 //    datepicker.hideBackgroundYearLabel = YES;
 //    datepicker.dateLabelColor = kDefualtColor;
 //    datepicker.doneButtonColor = kDefualtColor;
-    [datepicker show];
+//    [datepicker show];
 }
 
 //// 这两个方法实时监控text输入框ID

@@ -394,6 +394,7 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
     list.deviceNo = self.deviceNo;
     list.isParentModel = isParentModel;
     [self.navigationController pushViewController:list animated:YES];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
 
 }
 
@@ -525,6 +526,7 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
 
     list.deviceNo = self.deviceNo;
     [self.navigationController pushViewController:list animated:YES];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
 
 }
 

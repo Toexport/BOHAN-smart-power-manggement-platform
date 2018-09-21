@@ -237,11 +237,14 @@
         WebViewController *help = [[WebViewController alloc] initWithTitle:Localize(@"操作指南") urlStr:urlStr];
         help.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:help animated:YES];
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
+        
     }else
         if (indexPath.row == 2) {
         FeedbackViewController *feedback = [[FeedbackViewController alloc] init];
         feedback.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:feedback animated:YES];
+            self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
     }else
         if (indexPath.row == 4) {
         NSString * ph1 = @"lte";

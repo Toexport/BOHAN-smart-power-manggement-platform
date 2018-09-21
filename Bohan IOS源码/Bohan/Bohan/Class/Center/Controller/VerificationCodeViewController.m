@@ -93,6 +93,7 @@
             reset.username = accountTF.text;
             reset.code = codeTF.text;
             [self.navigationController pushViewController:reset animated:YES];
+            self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
         }
     }else {
         if (![Utils validateEmail:accountTF.text]) {
@@ -103,6 +104,7 @@
             reset.username = accountTF.text;
             reset.code = codeTF.text;
             [self.navigationController pushViewController:reset animated:YES];
+            self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
         }
         ZPLog(@"英文");
     }

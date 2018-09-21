@@ -58,6 +58,7 @@
     BindingViewController *bind = [[BindingViewController alloc] init];
     bind.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController:bind animated:YES];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
 }
 
 //  生命周期
@@ -135,6 +136,7 @@
             detail.isPos = (currentIndex ==0?NO:YES);
             detail.hidesBottomBarWhenPushed = YES;
             [weakSelf.navigationController pushViewController:detail animated:YES];
+            self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
         };
     }
     return _pageCollection;

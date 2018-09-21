@@ -188,6 +188,7 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
         [tableView reloadData];
     };
     [self.navigationController pushViewController:select animated:YES];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
     
 }
 

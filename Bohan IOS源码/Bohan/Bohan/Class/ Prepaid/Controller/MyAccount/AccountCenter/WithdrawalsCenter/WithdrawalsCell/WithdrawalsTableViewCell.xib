@@ -99,6 +99,7 @@
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EXl-gg-Vpj">
                                 <rect key="frame" x="58" y="34" width="221" height="45"/>
+                                <accessibility key="accessibilityConfiguration" hint="6"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
@@ -110,8 +111,8 @@
                                     <constraint firstAttribute="height" constant="1" id="RLh-95-NK6"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="余额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6i-Xe-wUl">
-                                <rect key="frame" x="30" y="95" width="27" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="余额￥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B6i-Xe-wUl">
+                                <rect key="frame" x="30" y="95" width="40" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="nwk-Sn-tfO"/>
                                 </constraints>
@@ -119,40 +120,13 @@
                                 <color key="textColor" red="0.43921568630000002" green="0.43529411759999997" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rpf-zk-cFl">
-                                <rect key="frame" x="58" y="95" width="15.5" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="iqJ-fM-yrE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" red="0.43921568630000002" green="0.43529411759999997" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rG-S3-rvr">
-                                <rect key="frame" x="74.5" y="95" width="47" height="15"/>
+                                <rect key="frame" x="72" y="95" width="49.5" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="Ndk-pr-WEP"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="0.43921568630000002" green="0.43529411759999997" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="额外扣除￥0.10手续费（费率0.1%）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXO-Ma-D3q">
-                                <rect key="frame" x="30" y="95" width="212" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="fxu-Mb-1Ll"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="输入金额超过余额数字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwg-4r-DO4">
-                                <rect key="frame" x="30" y="95" width="133" height="15"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="15" id="yak-Tx-eea"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                <color key="textColor" red="0.9806855320930481" green="0.11876741796731949" blue="0.029299594461917877" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dv1-ia-kyY">
@@ -192,31 +166,47 @@
                                     <action selector="ExtractBut:" destination="WxM-k1-uLU" eventType="touchUpInside" id="eVx-5u-q4n"/>
                                 </connections>
                             </button>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="输入金额超过余额数字" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pwg-4r-DO4">
+                                <rect key="frame" x="30" y="95" width="133" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="FpP-Fv-Jip"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.9806855320930481" green="0.11876741796731949" blue="0.029299594461917877" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="额外扣除￥0.10手续费（费率0.1%）" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXO-Ma-D3q">
+                                <rect key="frame" x="30" y="95" width="212" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="6vV-oi-X7g"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.50980392156862742" green="0.50980392156862742" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="dXO-Ma-D3q" firstAttribute="leading" secondItem="B6i-Xe-wUl" secondAttribute="leading" id="2bO-Az-4J6"/>
                             <constraint firstItem="bWu-rP-oSe" firstAttribute="leading" secondItem="dWe-aV-ebY" secondAttribute="leading" id="4O6-It-htv"/>
                             <constraint firstItem="EXl-gg-Vpj" firstAttribute="top" secondItem="ziz-3I-TzN" secondAttribute="bottom" constant="8" id="6fU-6G-5qh"/>
                             <constraint firstItem="B6i-Xe-wUl" firstAttribute="leading" secondItem="bWu-rP-oSe" secondAttribute="leading" id="7IK-DB-HbC"/>
                             <constraint firstItem="dv1-ia-kyY" firstAttribute="leading" secondItem="8rG-S3-rvr" secondAttribute="trailing" constant="5" id="9Qi-ED-yfh"/>
-                            <constraint firstItem="dXO-Ma-D3q" firstAttribute="top" secondItem="B6i-Xe-wUl" secondAttribute="top" id="DW6-3I-Tuv"/>
                             <constraint firstItem="8rG-S3-rvr" firstAttribute="top" secondItem="B6i-Xe-wUl" secondAttribute="top" id="Frn-wv-WVN"/>
+                            <constraint firstItem="8rG-S3-rvr" firstAttribute="leading" secondItem="B6i-Xe-wUl" secondAttribute="trailing" constant="2" id="GLj-3s-Zdj"/>
                             <constraint firstItem="A6Q-29-Wd9" firstAttribute="leading" secondItem="B6i-Xe-wUl" secondAttribute="leading" id="Jqa-e4-RW5"/>
                             <constraint firstItem="dWe-aV-ebY" firstAttribute="top" secondItem="ziz-3I-TzN" secondAttribute="bottom" constant="18" id="Qoo-q1-Tdh"/>
                             <constraint firstAttribute="height" constant="190" id="TAv-ol-sj6"/>
-                            <constraint firstItem="pwg-4r-DO4" firstAttribute="top" secondItem="dXO-Ma-D3q" secondAttribute="top" id="UTf-J7-7H3"/>
                             <constraint firstItem="bWu-rP-oSe" firstAttribute="trailing" secondItem="EXl-gg-Vpj" secondAttribute="trailing" id="WJL-al-mK4"/>
                             <constraint firstItem="EXl-gg-Vpj" firstAttribute="bottom" secondItem="dWe-aV-ebY" secondAttribute="bottom" constant="15" id="Xov-lX-5iy"/>
                             <constraint firstItem="bWu-rP-oSe" firstAttribute="top" secondItem="EXl-gg-Vpj" secondAttribute="bottom" id="bBG-fb-c9a"/>
-                            <constraint firstItem="Rpf-zk-cFl" firstAttribute="leading" secondItem="B6i-Xe-wUl" secondAttribute="trailing" constant="1" id="bYn-9H-gkW"/>
-                            <constraint firstItem="Rpf-zk-cFl" firstAttribute="top" secondItem="B6i-Xe-wUl" secondAttribute="top" id="bep-OF-goE"/>
+                            <constraint firstItem="dXO-Ma-D3q" firstAttribute="leading" secondItem="pwg-4r-DO4" secondAttribute="leading" id="eDw-T8-D9r"/>
                             <constraint firstItem="EXl-gg-Vpj" firstAttribute="leading" secondItem="dWe-aV-ebY" secondAttribute="trailing" constant="8" id="j48-qT-gDh"/>
                             <constraint firstItem="ziz-3I-TzN" firstAttribute="top" secondItem="IZA-Qd-fIc" secondAttribute="top" constant="8" id="jrb-nA-fey"/>
                             <constraint firstItem="dv1-ia-kyY" firstAttribute="top" secondItem="8rG-S3-rvr" secondAttribute="top" id="n3l-ni-00E"/>
-                            <constraint firstItem="pwg-4r-DO4" firstAttribute="leading" secondItem="dXO-Ma-D3q" secondAttribute="leading" id="pIi-ps-sC7"/>
-                            <constraint firstItem="8rG-S3-rvr" firstAttribute="leading" secondItem="Rpf-zk-cFl" secondAttribute="trailing" constant="1" id="ssa-bQ-AoX"/>
+                            <constraint firstItem="pwg-4r-DO4" firstAttribute="top" secondItem="B6i-Xe-wUl" secondAttribute="top" id="qHy-pL-Zm9"/>
+                            <constraint firstItem="pwg-4r-DO4" firstAttribute="leading" secondItem="B6i-Xe-wUl" secondAttribute="leading" id="sUo-gs-76T"/>
                             <constraint firstItem="B6i-Xe-wUl" firstAttribute="top" secondItem="bWu-rP-oSe" secondAttribute="bottom" constant="15" id="uzB-Dr-m7S"/>
+                            <constraint firstItem="dXO-Ma-D3q" firstAttribute="top" secondItem="pwg-4r-DO4" secondAttribute="top" id="vcH-4p-Wsm"/>
                             <constraint firstItem="A6Q-29-Wd9" firstAttribute="top" secondItem="B6i-Xe-wUl" secondAttribute="bottom" constant="20" id="zJw-PJ-CDm"/>
                             <constraint firstItem="dWe-aV-ebY" firstAttribute="leading" secondItem="ziz-3I-TzN" secondAttribute="leading" id="zNf-mE-ocX"/>
                         </constraints>
@@ -240,7 +230,6 @@
                 <outlet property="AllBut" destination="dv1-ia-kyY" id="1SE-md-bf6"/>
                 <outlet property="AmountLabel" destination="8rG-S3-rvr" id="9Rg-Lv-fTs"/>
                 <outlet property="ChooseView" destination="FpL-dl-qld" id="wKz-9e-BmM"/>
-                <outlet property="CurrencySymbolLabel" destination="Rpf-zk-cFl" id="3A7-Zh-bUv"/>
                 <outlet property="ExtractBut" destination="A6Q-29-Wd9" id="8sn-DW-gkp"/>
                 <outlet property="InputBoxTextField" destination="EXl-gg-Vpj" id="F5v-iQ-NSo"/>
                 <outlet property="TextLabel" destination="B6i-Xe-wUl" id="U06-Tj-4tS"/>

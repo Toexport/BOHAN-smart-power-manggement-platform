@@ -230,6 +230,7 @@
             WifiConnectViewController * connect = [[WifiConnectViewController alloc] init];
             connect.deviceNo = deviceTF.text;
             [self.navigationController pushViewController:connect animated:YES];
+            self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
         }
         ZPLog(@"%@",dict);
         ZPLog(@"%@",error);

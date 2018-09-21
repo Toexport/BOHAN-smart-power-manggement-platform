@@ -518,6 +518,7 @@
         list.deviceNo = self.dNo;
         list.isParentModel = YES;
         [self.navigationController pushViewController:list animated:YES];
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
     }else {
         [self changeModel];
         sender.selected = NO;
@@ -664,6 +665,7 @@
     list.deviceNo = self.dNo;
     list.isParentModel = YES;
     [self.navigationController pushViewController:list animated:YES];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
 }
 
 // 取消家长模式

@@ -144,6 +144,7 @@
             ZPLog(@"%@",stringValue);
             DetailsPayController * DetailsPay = [[DetailsPayController alloc]init];
             [self.navigationController pushViewController:DetailsPay animated:YES];
+            self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
             DetailsPay.DataId = stringValue;
         }
 

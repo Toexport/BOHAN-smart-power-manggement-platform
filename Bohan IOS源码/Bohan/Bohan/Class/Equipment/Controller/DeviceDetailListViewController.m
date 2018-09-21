@@ -268,6 +268,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
         info.sortt = model.sort;
         info.type = model.id;
         [self.navigationController pushViewController:info animated:YES]; // 设备离线不跳转
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
         return;
     }else {
         [HintView showHint:Localize(@"当前设备离线不可控制")];

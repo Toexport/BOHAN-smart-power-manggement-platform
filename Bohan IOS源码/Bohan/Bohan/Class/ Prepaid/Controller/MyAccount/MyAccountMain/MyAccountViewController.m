@@ -125,18 +125,22 @@
     if (indexPath.section == 0) {
         AccountCenterController * AccountCenter = [[AccountCenterController alloc]init];
         [self.navigationController pushViewController:AccountCenter animated:YES];
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
 //        return;
     }else
         if (indexPath.section == 1) {
             AccountsPrepaidController * AccountsPrepaid = [[AccountsPrepaidController alloc]init];
             [self.navigationController pushViewController:AccountsPrepaid animated:YES];
+            self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
         }else
              if (indexPath.section == 2) {
             PrepaidRecordsController * RechargeRecord = [[PrepaidRecordsController alloc]init];
             [self.navigationController pushViewController:RechargeRecord animated:YES];
+            self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
              }else {
                  RechargeRecordController * RechargeRecord = [[RechargeRecordController alloc]init];
                  [self.navigationController pushViewController:RechargeRecord animated:YES];
+                 self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
     }
 }
 @end

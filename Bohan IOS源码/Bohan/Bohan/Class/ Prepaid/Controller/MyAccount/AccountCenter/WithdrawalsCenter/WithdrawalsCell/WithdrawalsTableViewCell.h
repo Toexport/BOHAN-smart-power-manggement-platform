@@ -15,7 +15,6 @@
  当输入框输入文字大于当前文字时需要隐藏
  */
 @property (weak, nonatomic) IBOutlet UILabel *TextLabel; // 文字label
-@property (weak, nonatomic) IBOutlet UILabel *CurrencySymbolLabel; // 货币符号
 @property (weak, nonatomic) IBOutlet UILabel *TextLabel1; // 提示label
 @property (weak, nonatomic) IBOutlet UILabel *TextLabel2; // 提示label2
 

@@ -288,12 +288,14 @@
     DeviceInfoViewController *info = [[DeviceInfoViewController alloc] init];
     info.model = self.model;
     [self.navigationController pushViewController:info animated:YES];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
 }
 
 - (IBAction)connectAction {
     WifiConnectViewController *connect = [[WifiConnectViewController alloc] init];
     connect.deviceNo = self.model.id;
     [self.navigationController pushViewController:connect animated:YES];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
     
 }
 @end

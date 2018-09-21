@@ -87,6 +87,7 @@
     DetailsPayController *  DetailsPay = [[DetailsPayController alloc]init];
     DetailsPay.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController: DetailsPay animated:YES];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
 //    ScanViewController *ScanView = [[ScanViewController alloc] init];
 //    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
 //        NSLog(@"设备具备相机");
@@ -107,6 +108,7 @@
     //        gestures.view.backgroundColor = [UIColor colorWithRed:5/255.0 green:20/255.0 blue:36/255.0 alpha:0.9];
     MyAccount.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController: MyAccount animated:YES];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
     
 }
 

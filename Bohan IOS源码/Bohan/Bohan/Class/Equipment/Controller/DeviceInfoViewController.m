@@ -285,6 +285,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
             params.dNo = self.model.id;
             params.CoedID = self.model.sort;
             [self.navigationController pushViewController:params animated:YES];
+            self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
         }
             break;
         case 1:
@@ -294,6 +295,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
             params.Coedid = self.model.sort;
             ZPLog(@"%@",self.model.sort);
             [self.navigationController pushViewController:params animated:YES];
+            self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
         }
             break;
         case 2:
@@ -301,6 +303,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
             MeteringViewController *params = [[MeteringViewController alloc] init];
             params.deviceNo = self.model.id;
             [self.navigationController pushViewController:params animated:YES];
+            self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
         }
             break;
         case 3:
@@ -308,6 +311,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
             StatisticsViewController * statistic = [[StatisticsViewController alloc] init];
             statistic.model = self.model;
             [self.navigationController pushViewController:statistic animated:YES];
+            self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
         }
             break;
         case 4:
@@ -322,10 +326,12 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
                 MultipleSwitchViewController * MultipleSwitch = [[MultipleSwitchViewController alloc]init];
                 MultipleSwitch.deviceNo = self.model.id;
                 [self.navigationController pushViewController:MultipleSwitch animated:YES];
+                self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
             }else {
                 TimeSettingViewController * time = [[TimeSettingViewController alloc] init];
                 time.deviceNo = self.model.id;
                 [self.navigationController pushViewController:time animated:YES];
+                self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
             }
         }
             break;
@@ -333,6 +339,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
         {
             CountDownViewController * count = [[CountDownViewController alloc] initWithNibName:@"CountDownViewController" bundle:nil];
             [self.navigationController pushViewController:count animated:YES];
+            self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
             count.deviceNo = self.model.id;
         }
             break;
@@ -344,6 +351,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
 - (void)TopUpBut:(UIButton *)sender {
     DetailsViewController * Details = [[DetailsViewController alloc]init];
     [self.navigationController pushViewController:Details animated:YES];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
     Details.deviceNo = self.model.id;
     ZPLog(@"1111");
 

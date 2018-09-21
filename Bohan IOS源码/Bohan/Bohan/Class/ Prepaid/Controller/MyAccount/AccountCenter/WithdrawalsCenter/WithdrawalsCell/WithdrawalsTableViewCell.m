@@ -16,15 +16,33 @@
     UITapGestureRecognizer * TapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(ChooseViews)];
     self.ChooseView.userInteractionEnabled = YES;
     [self.ChooseView addGestureRecognizer:TapGestureRecognizer];
+    [self.InputBoxTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
+    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(changeValue:)   name:@"changeValue"  object:nil];
+}
+
+// 这两个方法实时监控text输入框ID
+-(void)textFieldDidChange:(UITextField *)textField {
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeValue" object:textField];
+}
+
+- (void)changeValue:(NSNotification *)notification {
+    UITextField * textField = notification.object;
+    //要实现的监听方法操作
+    ZPLog(@"%@",textField.text);
+    if (textField.text.length > 5) {
+        
+        ZPLog(@"输入有误");
+        return;
+    }
+}
+
+- (void)initUI {
+//    self.TextLabel1.hidden = YES;
+//    self.TextLabel2.hidden = YES;
 }
 
 - (void)ChooseViews {
     self.chooseViewBlock(self.ChooseView);
-}
-
-- (void)initUI {
-    self.TextLabel1.hidden = YES;
-    self.TextLabel2.hidden = YES;
 }
 
 // 全部提取

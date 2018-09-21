@@ -113,6 +113,7 @@
 //    [self.navigationController popViewControllerAnimated:YES];
     MyAccountViewController * MyAccount = [[MyAccountViewController alloc]init];
     [self.navigationController pushViewController:MyAccount animated:YES];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
 ////    MyAccount.deviceId = self.deviceNo;
     
 }

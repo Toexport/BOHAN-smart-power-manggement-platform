@@ -22,7 +22,6 @@
 
 @implementation AppDelegate
 
-
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
@@ -109,11 +108,37 @@
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[UIColor whiteColor], nil] forKeys:[NSArray arrayWithObjects:NSForegroundColorAttributeName, nil]]];
     [[UITabBar appearance] setTintColor:kDefualtColor];
-//    viewController.hidesBottomBarWhenPushed = YES;
-//    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
+//    UIViewController.hidesBottomBarWhenPushed = YES;
+//    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0,0) forBarMetrics:UIBarMetricsDefault];
+//    [[UIBarButtonItem appearance]setBackButtonBackgroundImage:[UIImage imageNamed:@"whiteBack"] forState:UIControlStateNormal barMetrics:UIBarMetricsCompact];
+//    [[UIBarButtonItem appearance]setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -64) forBarMetrics:UIBarMetricsDefault];
 //    [viewController setBackButton];
 }
 
+//- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
+//    if (self.childViewControllers.count > 0) {//非根控制器
+//        viewController.hidesBottomBarWhenPushed = YES;
+//        [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
+//        [viewController setBackButton];
+//    }
+//
+//    [super pushViewController:viewController animated:animated];
+//
+//    //根据栈顶控制器 设置导航条title
+//    //拿到tabbar控制器
+//    //    UITabBarController *tabbarVC = (UITabBarController *)self.tabBarController;
+//    //    viewController.navigationItem.title = tabbarVC.selectedViewController.tabBarItem.title;
+//}
+//
+//#pragma mark - 手势代理
+////手势是否应该被识别
+//- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+//    if (self.childViewControllers.count > 1) {
+//        return YES;
+//    }else{
+//        return NO;
+//    }
+//}
 
 /**
  *  @brief  检测版本更新
