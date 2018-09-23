@@ -14,7 +14,7 @@ pod 'SpinKit'
 pod 'IQKeyboardManager'
 pod 'YYModel'
 pod 'SocketRocket'
-pod 'Charts', '3.0.3'
+pod 'Charts'
 pod 'SAMKeychain'
 
 

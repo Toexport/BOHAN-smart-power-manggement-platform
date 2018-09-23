@@ -27,7 +27,7 @@ PODS:
 
 DEPENDENCIES:
   - AFNetworking
-  - Charts (= 3.0.3)
+  - Charts
   - IQKeyboardManager
   - Masonry (= 1.0.2)
   - MJRefresh
@@ -35,6 +35,18 @@ DEPENDENCIES:
   - SocketRocket
   - SpinKit
   - YYModel
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AFNetworking
+    - Charts
+    - IQKeyboardManager
+    - Masonry
+    - MJRefresh
+    - SAMKeychain
+    - SocketRocket
+    - SpinKit
+    - YYModel
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -47,6 +59,6 @@ SPEC CHECKSUMS:
   SpinKit: 65906a8b534a4e14cbfd3f8b0b6c329131faef4a
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
 
-PODFILE CHECKSUM: d3945dbeda802f4509723043211d13863c1cc7c4
+PODFILE CHECKSUM: 835dd72ec6e83a49113084456324846bf8267f5d
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.5.3

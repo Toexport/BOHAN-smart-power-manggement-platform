@@ -39,8 +39,8 @@ typedef void(^doneBlock)(NSDate *data);
 //    }
 //    return self;
 //}
-
-
+//
+//
 //-(void)setupUI {
 //    self.buttomView.layer.cornerRadius = 10;
 //    self.buttomView.layer.masksToBounds = YES;
@@ -60,7 +60,7 @@ typedef void(^doneBlock)(NSDate *data);
 //
 //}
 
-#pragma mark - Action
+//#pragma mark - Action
 //-(void)show {
 //    [[UIApplication sharedApplication].keyWindow addSubview:self];
 //    [UIView animateWithDuration:.3 animations:^{
@@ -78,11 +78,11 @@ typedef void(^doneBlock)(NSDate *data);
 //        [self removeFromSuperview];
 //    }];
 //}
-
-- (IBAction)bun:(UIButton *)sender {
-    self.doneBlock(_startDate);
-//    [self dismiss];
-}
+//
+//- (IBAction)bun:(UIButton *)sender {
+//    self.doneBlock(_startDate);
+////    [self dismiss];
+//}
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 2;
@@ -91,6 +91,7 @@ typedef void(^doneBlock)(NSDate *data);
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
 }
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     return 80;
