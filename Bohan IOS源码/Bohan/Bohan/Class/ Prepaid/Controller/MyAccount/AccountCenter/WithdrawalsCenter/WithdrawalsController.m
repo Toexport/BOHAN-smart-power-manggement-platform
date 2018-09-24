@@ -49,13 +49,11 @@
 
 - (void)initUIView {
     ZPLog(@"111");
-//    WithdrawalsView *datepicker = [[WithdrawalsView alloc]initWithDateStyle:nil BlankBlock:^(NSDate *date) {
-//        ZPLog(@"111");
-//    }];
-//    datepicker.hideBackgroundYearLabel = YES;
-//    datepicker.dateLabelColor = kDefualtColor;
-//    datepicker.doneButtonColor = kDefualtColor;
-//    [datepicker show];
+    WithdrawalsView *view = [[WithdrawalsView alloc] initWithDateStyle:0 BlankBlock:^(NSDate *date) {
+        
+    }];
+    
+    [view show];
 }
 
 //// 这两个方法实时监控text输入框ID
