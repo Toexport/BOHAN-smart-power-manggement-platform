@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		05472D5687BB542915B46B7D /* Pods_Bohan.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00B7C34C415E2EAE93F66FEA /* Pods_Bohan.framework */; };
+		4DE78DA12158D01E00F3B2D2 /* WithdrawalsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4DE78D9F2158D01E00F3B2D2 /* WithdrawalsView.m */; };
+		4DE78DA22158D01E00F3B2D2 /* WithdrawalsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4DE78DA02158D01E00F3B2D2 /* WithdrawalsView.xib */; };
 		C405AE4320E7465B00ED77E4 /* ShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C405AE4520E7465B00ED77E4 /* ShareView.xib */; };
 		C408370F2133A4F50057C6E0 /* UIButton+countDown.m in Sources */ = {isa = PBXBuildFile; fileRef = C40837092133A4F50057C6E0 /* UIButton+countDown.m */; };
 		C40837102133A4F50057C6E0 /* CALayer+UIColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C408370D2133A4F50057C6E0 /* CALayer+UIColor.m */; };
@@ -249,6 +251,9 @@
 		00B7C34C415E2EAE93F66FEA /* Pods_Bohan.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bohan.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		072EF8466690ECA08425C8AE /* Pods-Bohan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bohan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bohan/Pods-Bohan.debug.xcconfig"; sourceTree = "<group>"; };
 		0DCA8A6A9BE1B6D5485DB16A /* Pods-Bohan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bohan.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bohan/Pods-Bohan.release.xcconfig"; sourceTree = "<group>"; };
+		4DE78D9E2158D01E00F3B2D2 /* WithdrawalsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WithdrawalsView.h; sourceTree = "<group>"; };
+		4DE78D9F2158D01E00F3B2D2 /* WithdrawalsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WithdrawalsView.m; sourceTree = "<group>"; };
+		4DE78DA02158D01E00F3B2D2 /* WithdrawalsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WithdrawalsView.xib; sourceTree = "<group>"; };
 		C405171C212157F900A829A1 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/WSDatePickerView.strings"; sourceTree = "<group>"; };
 		C405AE4420E7465B00ED77E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ShareView.xib; sourceTree = "<group>"; };
 		C40837092133A4F50057C6E0 /* UIButton+countDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+countDown.m"; sourceTree = "<group>"; };
@@ -841,6 +846,9 @@
 		C477148321536C00007457B9 /* WithdrawalsView */ = {
 			isa = PBXGroup;
 			children = (
+				4DE78D9E2158D01E00F3B2D2 /* WithdrawalsView.h */,
+				4DE78D9F2158D01E00F3B2D2 /* WithdrawalsView.m */,
+				4DE78DA02158D01E00F3B2D2 /* WithdrawalsView.xib */,
 			);
 			path = WithdrawalsView;
 			sourceTree = "<group>";
@@ -2070,6 +2078,7 @@
 				CC1EFF36204C4A5F002811CB /* CustomInputView.xib in Resources */,
 				C4AF059F214A014500176F29 /* MyAccountViewController.xib in Resources */,
 				CC2E75CF20472CC700CC6E6E /* UpdateDeviceInfoViewController.xib in Resources */,
+				4DE78DA22158D01E00F3B2D2 /* WithdrawalsView.xib in Resources */,
 				C44DE7802148BE7D007325FD /* ChargingStatusController.xib in Resources */,
 				C4D188E9213FD4920030464E /* AccountsPrepaidController.xib in Resources */,
 				CC8090402046F2FD00265FE0 /* EquipmentTableViewCell.xib in Resources */,
@@ -2225,6 +2234,7 @@
 				CC5567052025E34100A8589B /* WSDatePickerView.m in Sources */,
 				CC24566A1FF745DB00616916 /* UIButton+CountDown.m in Sources */,
 				CCE9E59F200644FD008439F3 /* ESP_NetUtil.m in Sources */,
+				4DE78DA12158D01E00F3B2D2 /* WithdrawalsView.m in Sources */,
 				CC64E20D2015163000653D2B /* SGActionView.m in Sources */,
 				CC2456721FF745DB00616916 /* UISearchBar+Color.m in Sources */,
 				C420F38D2147B045003B6AC0 /* GesturesPasswordView.m in Sources */,
