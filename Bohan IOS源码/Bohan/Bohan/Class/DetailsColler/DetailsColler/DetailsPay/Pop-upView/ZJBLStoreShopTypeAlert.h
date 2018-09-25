@@ -12,10 +12,9 @@ typedef void (^SelectIndex)(NSInteger selectIndex);//编码
 typedef void (^SelectValue)(NSString *selectValue);//数值
 typedef void (^SelectValuee)(NSString *selectValuee);//数值
 
-
 @interface ZJBLStoreShopTypeAlert : UIView <UITableViewDelegate,UITableViewDataSource>
 
-@property (nonatomic, strong) NSArray *titles;//string数组
+@property (nonatomic, strong) NSArray *titles; //string数组
 @property (nonatomic, strong) NSArray * images;
 
 @property (nonatomic, strong) UILabel *titleLabel;//标题label

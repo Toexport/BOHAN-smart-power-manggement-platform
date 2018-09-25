@@ -12,7 +12,6 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [self initUI];
     [self.ExtractBut setEnabled:NO];
     self.ExtractBut.alpha = 0.4;
     UITapGestureRecognizer * TapGestureRecognizer = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(ChooseViews)];
@@ -44,7 +43,8 @@
         [self.ExtractBut setEnabled:NO];
         self.ExtractBut.alpha = 0.4;
     }
-    if (self.InputBoxTextField.text > self.AmountLabel.text) {
+    
+    if (self.InputBoxTextField.text.longLongValue > self.AmountLabel.text.longLongValue) {
         self.TextLabel1.hidden = NO;
         self.TextLabel2.hidden = YES;
         ZPLog(@"111");
@@ -54,16 +54,33 @@
     
     //要实现的监听方法操作
     ZPLog(@"%lu",textField.text.length);
-    if (textField.text.length > 5) {
-        ZPLog(@"输入有误");
-        return;
+    if (textField.text.length >= 5) {
+        NSMutableString * mutStr = [NSMutableString stringWithString:textField.text];
+        NSString * str = [mutStr substringToIndex:5];
+        textField.text = str;
+//        ZPLog(@"输入有误");
+//        return;
     }
 }
 
-- (void)initUI {
-//    self.TextLabel1.hidden = YES;
-//    self.TextLabel2.hidden = YES;
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.ChooseView endEditing:YES];
+    
 }
+
+
+//- (BOOL)canPerformAction:(SEL)action withSender:(id)sender
+//{
+//    if (action == @selector(paste:))//禁止粘贴
+//        return NO;
+//    if (action == @selector(select:))// 禁止选择
+//        return NO;
+//    if (action == @selector(selectAll:))// 禁止全选
+//        return NO;
+//    return [super canPerformAction:action withSender:sender];
+//}
+
+
 
 - (void)ChooseViews {
     self.chooseViewBlock(self.ChooseView);

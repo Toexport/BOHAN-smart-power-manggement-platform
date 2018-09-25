@@ -43,33 +43,17 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     return 280;
 }
 
 - (void)initUIView {
-    ZPLog(@"111");
     WithdrawalsView *view = [[WithdrawalsView alloc] initWithDateStyle:0 BlankBlock:^(NSDate *date) {
+//        view.ClickBut = ^(NSString *ClickBut) {
+//            [self.navigationController pushViewController:ClickBut animated:YES];
+//        };
         
     }];
-    
     [view show];
 }
-
-//// 这两个方法实时监控text输入框ID
-//-(void)textFieldDidChange:(UITextField *)textField {
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeValue" object:textField];
-//}
-
-//- (void)changeValue:(NSNotification *)notification {
-//    UITextField * textField = notification.object;
-//    //要实现的监听方法操作
-//    ZPLog(@"%@",textField.text);
-//    if (textField.text.length > 8) {
-//        return;
-//    }
-//}
-
-
 
 @end

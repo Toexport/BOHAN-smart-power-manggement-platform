@@ -31,6 +31,10 @@
 		C44DE77A21489DFC007325FD /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = C44DE77921489DFB007325FD /* UIView+Frame.m */; };
 		C44DE77F2148BE7D007325FD /* ChargingStatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = C44DE77D2148BE7D007325FD /* ChargingStatusController.m */; };
 		C44DE7802148BE7D007325FD /* ChargingStatusController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C44DE77E2148BE7D007325FD /* ChargingStatusController.xib */; };
+		C46A43B0215A30F7002E8FFE /* NewFinancialCARDSController.m in Sources */ = {isa = PBXBuildFile; fileRef = C46A43AE215A30F7002E8FFE /* NewFinancialCARDSController.m */; };
+		C46A43B1215A30F7002E8FFE /* NewFinancialCARDSController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C46A43AF215A30F7002E8FFE /* NewFinancialCARDSController.xib */; };
+		C46A43B7215A3135002E8FFE /* NewFinancialCARDSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C46A43B5215A3135002E8FFE /* NewFinancialCARDSCell.m */; };
+		C46A43B8215A3135002E8FFE /* NewFinancialCARDSCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C46A43B6215A3135002E8FFE /* NewFinancialCARDSCell.xib */; };
 		C47B4A9C20F5CCC100DAD5D3 /* LanguageController.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4A9A20F5CCC100DAD5D3 /* LanguageController.m */; };
 		C47B4A9D20F5CCC100DAD5D3 /* LanguageController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C47B4A9B20F5CCC100DAD5D3 /* LanguageController.xib */; };
 		C47B4AAD20F5D3D500DAD5D3 /* NSBundle+Language.m in Sources */ = {isa = PBXBuildFile; fileRef = C47B4AAC20F5D3D500DAD5D3 /* NSBundle+Language.m */; };
@@ -296,6 +300,12 @@
 		C44DE77C2148BE7D007325FD /* ChargingStatusController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChargingStatusController.h; sourceTree = "<group>"; };
 		C44DE77D2148BE7D007325FD /* ChargingStatusController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChargingStatusController.m; sourceTree = "<group>"; };
 		C44DE77E2148BE7D007325FD /* ChargingStatusController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChargingStatusController.xib; sourceTree = "<group>"; };
+		C46A43AD215A30F7002E8FFE /* NewFinancialCARDSController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewFinancialCARDSController.h; sourceTree = "<group>"; };
+		C46A43AE215A30F7002E8FFE /* NewFinancialCARDSController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewFinancialCARDSController.m; sourceTree = "<group>"; };
+		C46A43AF215A30F7002E8FFE /* NewFinancialCARDSController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewFinancialCARDSController.xib; sourceTree = "<group>"; };
+		C46A43B4215A3135002E8FFE /* NewFinancialCARDSCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewFinancialCARDSCell.h; sourceTree = "<group>"; };
+		C46A43B5215A3135002E8FFE /* NewFinancialCARDSCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewFinancialCARDSCell.m; sourceTree = "<group>"; };
+		C46A43B6215A3135002E8FFE /* NewFinancialCARDSCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewFinancialCARDSCell.xib; sourceTree = "<group>"; };
 		C47B4A9920F5CCC100DAD5D3 /* LanguageController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LanguageController.h; sourceTree = "<group>"; };
 		C47B4A9A20F5CCC100DAD5D3 /* LanguageController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LanguageController.m; sourceTree = "<group>"; };
 		C47B4A9B20F5CCC100DAD5D3 /* LanguageController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LanguageController.xib; sourceTree = "<group>"; };
@@ -843,6 +853,35 @@
 			path = ChargingStatus;
 			sourceTree = "<group>";
 		};
+		C46A43AC215A30D8002E8FFE /* NewFinancialCARDS */ = {
+			isa = PBXGroup;
+			children = (
+				C46A43B2215A3105002E8FFE /* NewFinancialCARDSController */,
+				C46A43B3215A3117002E8FFE /* NewFinancialCARDSCell */,
+			);
+			path = NewFinancialCARDS;
+			sourceTree = "<group>";
+		};
+		C46A43B2215A3105002E8FFE /* NewFinancialCARDSController */ = {
+			isa = PBXGroup;
+			children = (
+				C46A43AD215A30F7002E8FFE /* NewFinancialCARDSController.h */,
+				C46A43AE215A30F7002E8FFE /* NewFinancialCARDSController.m */,
+				C46A43AF215A30F7002E8FFE /* NewFinancialCARDSController.xib */,
+			);
+			path = NewFinancialCARDSController;
+			sourceTree = "<group>";
+		};
+		C46A43B3215A3117002E8FFE /* NewFinancialCARDSCell */ = {
+			isa = PBXGroup;
+			children = (
+				C46A43B4215A3135002E8FFE /* NewFinancialCARDSCell.h */,
+				C46A43B5215A3135002E8FFE /* NewFinancialCARDSCell.m */,
+				C46A43B6215A3135002E8FFE /* NewFinancialCARDSCell.xib */,
+			);
+			path = NewFinancialCARDSCell;
+			sourceTree = "<group>";
+		};
 		C477148321536C00007457B9 /* WithdrawalsView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1034,6 +1073,7 @@
 			children = (
 				C4AF05AA214A01CE00176F29 /* AccountCenterMain */,
 				C48450DC2150974300196704 /* WithdrawalsCenter */,
+				C46A43AC215A30D8002E8FFE /* NewFinancialCARDS */,
 			);
 			path = AccountCenter;
 			sourceTree = "<group>";
@@ -2061,6 +2101,7 @@
 			files = (
 				CC80904B204700A300265FE0 /* LoginViewController.xib in Resources */,
 				C429413B21421DFF00E10921 /* PrepaidRecordsCell.xib in Resources */,
+				C46A43B1215A30F7002E8FFE /* NewFinancialCARDSController.xib in Resources */,
 				C4AF05A3214A014500176F29 /* AccountsPrepaidTableViewCell.xib in Resources */,
 				CC2455B61FF7450700616916 /* LaunchScreen.storyboard in Resources */,
 				C4AF05BB214A47B100176F29 /* RemindTableViewCell.xib in Resources */,
@@ -2068,6 +2109,7 @@
 				C47E61A4214F5419008FA596 /* EquipmentCell.xib in Resources */,
 				C490417821464362005652C9 /* payment_close@2x.png in Resources */,
 				CC80906B2047166600265FE0 /* TimeSettingViewController.xib in Resources */,
+				C46A43B8215A3135002E8FFE /* NewFinancialCARDSCell.xib in Resources */,
 				C4BBC63E211E7119009B0854 /* CountdownView.xib in Resources */,
 				CCCBF39120191C1C00A80D90 /* TimeModelCollectionViewCell.xib in Resources */,
 				CC80906120470ED100265FE0 /* MeteringViewController.xib in Resources */,
@@ -2230,6 +2272,7 @@
 				CC2456621FF745DB00616916 /* AppDelegate+Configure.m in Sources */,
 				C420F38321478B4B003B6AC0 /* gesturesPasswordController.m in Sources */,
 				C490418521464657005652C9 /* BaseController.m in Sources */,
+				C46A43B0215A30F7002E8FFE /* NewFinancialCARDSController.m in Sources */,
 				C4AF05BA214A47B100176F29 /* RemindTableViewCell.m in Sources */,
 				CC5567052025E34100A8589B /* WSDatePickerView.m in Sources */,
 				CC24566A1FF745DB00616916 /* UIButton+CountDown.m in Sources */,
@@ -2246,6 +2289,7 @@
 				CCE9E59A200644FD008439F3 /* ESPTouchTaskParameter.m in Sources */,
 				CC2456901FF745DB00616916 /* EquipmentTableViewCell.m in Sources */,
 				CCB59D852012371F00439799 /* TimeSettingViewController.m in Sources */,
+				C46A43B7215A3135002E8FFE /* NewFinancialCARDSCell.m in Sources */,
 				CCE9E597200644FD008439F3 /* ESPTouchGenerator.m in Sources */,
 				CC2456861FF745DB00616916 /* XMLUtil.m in Sources */,
 				C4AF05A1214A014500176F29 /* PrepaidRecordsTableViewCell.m in Sources */,
