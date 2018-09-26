@@ -8,12 +8,11 @@
 
 #import "RealTimeParamTableViewCell.h"
 #import "DebuggingANDPublishing.pch"
-@interface RealTimeParamTableViewCell ()
-{
+@interface RealTimeParamTableViewCell () {
+    
     __weak IBOutlet UILabel *name;
     __weak IBOutlet UILabel *content;
     __weak IBOutlet UILabel *unit;
-    
 }
 
 @end
@@ -25,10 +24,5 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
-}
 
 @end

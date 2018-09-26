@@ -43,7 +43,13 @@ if (sender.isOn) {
 }
 
 if (self.delegate && [self.delegate respondsToSelector:@selector(didSwitchOpen:withIndexPath:)]) {
+    if (sender.on == NO) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self.delegate didSwitchOpen:sender.on withIndexPath:self.indexPath];
+        });
+    }else {
     [self.delegate didSwitchOpen:sender.on withIndexPath:self.indexPath];
+    }
 }
 }
 
@@ -189,7 +195,20 @@ if (self.model.powerinfo && self.model.powerinfo.length>0) {
     [status setText:Localize(@"设备已离线")];
     [power setText:@"0.00W"];
 }
-
 }
+//
+//- (void)setEditing:(BOOL)editing animated:(BOOL)animated {
+//    if (self.editing == editing) {
+//        return;
+//    }
+//    [super setEditing:editing animated:animated];
+//    CGFloat moveSpace = 38;
+//    if (editing) {
+//        [name setFrame:CGRectMake(name.frame.origin.x - moveSpace, name.frame.origin.y, name.frame.size.width, name.frame.size.height)];
+//        [deviceId setFrame:CGRectMake(deviceId.frame.origin.x - moveSpace, deviceId.frame.origin.y, deviceId.frame.size.width, deviceId.frame.size.height)];
+//        [typeImg setFrame:CGRectMake(typeImg.frame.origin.x - moveSpace, typeImg.frame.origin.y, typeImg.frame.size.width, typeImg.frame.size.height)];
+//
+//    }
+//}
 
 @end

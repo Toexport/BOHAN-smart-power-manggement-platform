@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -44,8 +44,8 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wE3-Cq-FwW">
-                                        <rect key="frame" x="55.5" y="28" width="1" height="15"/>
-                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                        <rect key="frame" x="55.5" y="27.5" width="1" height="15"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="itC-nU-bPX"/>
                                             <constraint firstAttribute="width" constant="1" id="pqx-Vd-IFL"/>
@@ -78,6 +78,15 @@
                                         <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-09-18" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcC-Od-c28">
+                                        <rect key="frame" x="193.5" y="46" width="58" height="15"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="15" id="uph-0Y-2nt"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10:18:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H5L-Yb-mUS">
                                         <rect key="frame" x="254.5" y="46" width="41.5" height="15"/>
                                         <constraints>
@@ -88,21 +97,12 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ToL-cd-A6J">
-                                        <rect key="frame" x="0.0" y="67" width="304" height="3"/>
+                                        <rect key="frame" x="0.0" y="67.5" width="304" height="2.5"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="2.5" id="d5J-fO-ygu"/>
                                         </constraints>
                                     </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2018-09-18" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XcC-Od-c28">
-                                        <rect key="frame" x="193.5" y="46" width="58" height="15"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="15" id="uph-0Y-2nt"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                        <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -140,6 +140,9 @@
                                                 <state key="normal" title="导航" image="navigation">
                                                     <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="NavigationBut:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Dh8-ud-Mzb"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -159,6 +162,9 @@
                                                 <state key="normal" title="纠错" image="icon_address_edit_normal">
                                                     <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="CorrectionBut:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xko-xp-4De"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -178,6 +184,9 @@
                                                 <state key="normal" title="分享" image="manage_device_share">
                                                     <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="ShareBut:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="WXA-rK-iQQ"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -197,6 +206,9 @@
                                                 <state key="normal" title="联系" image="phone">
                                                     <color key="titleColor" red="0.1215686277" green="0.1294117719" blue="0.1411764771" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
+                                                <connections>
+                                                    <action selector="ContactBut:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="q9V-wq-8tr"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -249,6 +261,18 @@
             </tableViewCellContentView>
             <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="ContactBut" destination="B93-bN-fSb" id="sJ3-ct-1rV"/>
+                <outlet property="CorrectionBut" destination="tVE-Cw-yvO" id="77V-Vs-CEf"/>
+                <outlet property="DistanceLabelS" destination="gDk-Li-enD" id="ta1-jf-BI5"/>
+                <outlet property="IdLabelS" destination="oba-Tr-ujQ" id="euK-6g-SRN"/>
+                <outlet property="NavigationBut" destination="mhA-4v-E3w" id="qOJ-3C-un7"/>
+                <outlet property="ShareBut" destination="Ej8-Qf-OVX" id="Mbb-4h-WPZ"/>
+                <outlet property="SiteLocationLabelS" destination="C5b-vn-RtU" id="I5w-it-QAw"/>
+                <outlet property="TimeLabelS" destination="H5L-Yb-mUS" id="amH-V1-gE3"/>
+                <outlet property="TitleLabelS" destination="C8I-aG-pBv" id="YCT-le-ILD"/>
+                <outlet property="YMDLabelS" destination="XcC-Od-c28" id="YDw-pC-zZY"/>
+            </connections>
             <point key="canvasLocation" x="54" y="87.5"/>
         </tableViewCell>
     </objects>

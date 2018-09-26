@@ -23,8 +23,7 @@
 static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
 
 
-@interface DeviceInfoViewController ()
-{
+@interface DeviceInfoViewController () {
     __weak IBOutlet UILabel *status;
     __weak IBOutlet UIImageView *statusImg;
     BOOL isOnline;

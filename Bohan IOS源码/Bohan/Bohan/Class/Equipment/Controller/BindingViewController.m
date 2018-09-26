@@ -21,6 +21,8 @@
     __weak IBOutlet CustomInputView *typeInput3;  //文字输入3
     __weak IBOutlet CustomInputView *posInput;  // 设备位置
     __weak IBOutlet CustomInputView *brandInput; // 电器品牌
+    __weak IBOutlet CustomInputView *InfraredText;  // 红外设备
+    
     __weak IBOutlet NSLayoutConstraint *TypeInput2LayoutConstraint; // 输入框2的高度
     __weak IBOutlet NSLayoutConstraint *TypeInput3LayoutConstraint; // 输入框3的高度
     __weak IBOutlet NSLayoutConstraint *bdffLayoutConstraint; // View的高度
@@ -40,6 +42,7 @@
     typeInput.name.text = Localize(@"设备名称");
     posInput.name.text = Localize(@"设备位置");
     brandInput.name.text = Localize(@"电器品牌");
+    InfraredText.name.text = Localize(@"红外设备");
     deviceTF.clearButtonMode = UITextFieldViewModeWhileEditing;  // 一键删除文字
     scrollView.keyboardDismissMode = UIScrollViewKeyboardDismissModeOnDrag; // 滚动时键盘隐藏
 

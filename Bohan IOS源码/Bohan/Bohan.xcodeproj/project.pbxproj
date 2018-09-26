@@ -19,6 +19,11 @@
 		C410507720FF1B1F009A46F4 /* MultipleSwitchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C410507920FF1B1F009A46F4 /* MultipleSwitchViewController.xib */; };
 		C420F38321478B4B003B6AC0 /* gesturesPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = C420F38221478B4B003B6AC0 /* gesturesPasswordController.m */; };
 		C420F38D2147B045003B6AC0 /* GesturesPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = C420F38C2147B045003B6AC0 /* GesturesPasswordView.m */; };
+		C4278397215B0B310088869E /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4278395215B0B310088869E /* CustomTableViewCell.m */; };
+		C4278398215B0B310088869E /* CustomTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4278396215B0B310088869E /* CustomTableViewCell.xib */; };
+		C427839C215B0B7B0088869E /* NormalCustomCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C427839A215B0B7B0088869E /* NormalCustomCell.m */; };
+		C427839D215B0B7B0088869E /* NormalCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C427839B215B0B7B0088869E /* NormalCustomCell.xib */; };
+		C42783A1215B79720088869E /* AppLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = C42783A0215B79720088869E /* AppLocationManager.m */; };
 		C429413421421DE100E10921 /* PrepaidRecordsController.m in Sources */ = {isa = PBXBuildFile; fileRef = C429413221421DE100E10921 /* PrepaidRecordsController.m */; };
 		C429413521421DE100E10921 /* PrepaidRecordsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C429413321421DE100E10921 /* PrepaidRecordsController.xib */; };
 		C429413A21421DFF00E10921 /* PrepaidRecordsCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C429413821421DFF00E10921 /* PrepaidRecordsCell.m */; };
@@ -281,6 +286,14 @@
 		C420F38221478B4B003B6AC0 /* gesturesPasswordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gesturesPasswordController.m; sourceTree = "<group>"; };
 		C420F38B2147B045003B6AC0 /* GesturesPasswordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GesturesPasswordView.h; sourceTree = "<group>"; };
 		C420F38C2147B045003B6AC0 /* GesturesPasswordView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GesturesPasswordView.m; sourceTree = "<group>"; };
+		C4278394215B0B310088869E /* CustomTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CustomTableViewCell.h; sourceTree = "<group>"; };
+		C4278395215B0B310088869E /* CustomTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CustomTableViewCell.m; sourceTree = "<group>"; };
+		C4278396215B0B310088869E /* CustomTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTableViewCell.xib; sourceTree = "<group>"; };
+		C4278399215B0B7B0088869E /* NormalCustomCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NormalCustomCell.h; sourceTree = "<group>"; };
+		C427839A215B0B7B0088869E /* NormalCustomCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NormalCustomCell.m; sourceTree = "<group>"; };
+		C427839B215B0B7B0088869E /* NormalCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NormalCustomCell.xib; sourceTree = "<group>"; };
+		C427839F215B796B0088869E /* AppLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppLocationManager.h; sourceTree = "<group>"; };
+		C42783A0215B79720088869E /* AppLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppLocationManager.m; sourceTree = "<group>"; };
 		C429413121421DE100E10921 /* PrepaidRecordsController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrepaidRecordsController.h; sourceTree = "<group>"; };
 		C429413221421DE100E10921 /* PrepaidRecordsController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PrepaidRecordsController.m; sourceTree = "<group>"; };
 		C429413321421DE100E10921 /* PrepaidRecordsController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PrepaidRecordsController.xib; sourceTree = "<group>"; };
@@ -786,6 +799,38 @@
 			path = GesturesPasswordView;
 			sourceTree = "<group>";
 		};
+		C4278392215B0B030088869E /* customCell */ = {
+			isa = PBXGroup;
+			children = (
+				C4278399215B0B7B0088869E /* NormalCustomCell.h */,
+				C427839A215B0B7B0088869E /* NormalCustomCell.m */,
+				C427839B215B0B7B0088869E /* NormalCustomCell.xib */,
+				C4278394215B0B310088869E /* CustomTableViewCell.h */,
+				C4278395215B0B310088869E /* CustomTableViewCell.m */,
+				C4278396215B0B310088869E /* CustomTableViewCell.xib */,
+			);
+			path = customCell;
+			sourceTree = "<group>";
+		};
+		C4278393215B0B110088869E /* WithdrawalsView */ = {
+			isa = PBXGroup;
+			children = (
+				4DE78D9E2158D01E00F3B2D2 /* WithdrawalsView.h */,
+				4DE78D9F2158D01E00F3B2D2 /* WithdrawalsView.m */,
+				4DE78DA02158D01E00F3B2D2 /* WithdrawalsView.xib */,
+			);
+			path = WithdrawalsView;
+			sourceTree = "<group>";
+		};
+		C427839E215B795D0088869E /* MapS */ = {
+			isa = PBXGroup;
+			children = (
+				C427839F215B796B0088869E /* AppLocationManager.h */,
+				C42783A0215B79720088869E /* AppLocationManager.m */,
+			);
+			path = MapS;
+			sourceTree = "<group>";
+		};
 		C429413021421DB700E10921 /* PrepaidRecords */ = {
 			isa = PBXGroup;
 			children = (
@@ -885,9 +930,8 @@
 		C477148321536C00007457B9 /* WithdrawalsView */ = {
 			isa = PBXGroup;
 			children = (
-				4DE78D9E2158D01E00F3B2D2 /* WithdrawalsView.h */,
-				4DE78D9F2158D01E00F3B2D2 /* WithdrawalsView.m */,
-				4DE78DA02158D01E00F3B2D2 /* WithdrawalsView.xib */,
+				C4278393215B0B110088869E /* WithdrawalsView */,
+				C4278392215B0B030088869E /* customCell */,
 			);
 			path = WithdrawalsView;
 			sourceTree = "<group>";
@@ -1272,6 +1316,7 @@
 		CC2455BF1FF745DB00616916 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C427839E215B795D0088869E /* MapS */,
 				C490415821464362005652C9 /* PaymentField */,
 				CC2455C01FF745DB00616916 /* Base */,
 				CC2455C51FF745DB00616916 /* Macro */,
@@ -1724,13 +1769,13 @@
 		CC24564F1FF745DB00616916 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				CC24569B1FF8F30100616916 /* ScanViewController.h */,
-				CC24569A1FF8F30100616916 /* ScanViewController.m */,
 				CC2456501FF745DB00616916 /* EquipmentViewController.h */,
 				CC2456511FF745DB00616916 /* EquipmentViewController.m */,
 				CC24569D1FF8F6FA00616916 /* BindingViewController.h */,
 				CC24569E1FF8F6FA00616916 /* BindingViewController.m */,
 				CC8090542047058A00265FE0 /* BindingViewController.xib */,
+				CC24569B1FF8F30100616916 /* ScanViewController.h */,
+				CC24569A1FF8F30100616916 /* ScanViewController.m */,
 				CCCDDE162003D6B500DF468C /* DeviceDetailListViewController.h */,
 				CCCDDE172003D6B500DF468C /* DeviceDetailListViewController.m */,
 				CC0F4828200D2CC600E184F8 /* DeviceInfoViewController.h */,
@@ -2105,6 +2150,7 @@
 				C4AF05A3214A014500176F29 /* AccountsPrepaidTableViewCell.xib in Resources */,
 				CC2455B61FF7450700616916 /* LaunchScreen.storyboard in Resources */,
 				C4AF05BB214A47B100176F29 /* RemindTableViewCell.xib in Resources */,
+				C4278398215B0B310088869E /* CustomTableViewCell.xib in Resources */,
 				CC468D72206969D900506970 /* WSDatePickerView.xib in Resources */,
 				C47E61A4214F5419008FA596 /* EquipmentCell.xib in Resources */,
 				C490417821464362005652C9 /* payment_close@2x.png in Resources */,
@@ -2145,6 +2191,7 @@
 				CC8090662047109400265FE0 /* TimeSelectViewController.xib in Resources */,
 				CC349F3720A890DE00BD6C6A /* DeviceInfoCollectionCell.xib in Resources */,
 				C4E164B0213E82F600445E57 /* DetailsViewController.xib in Resources */,
+				C427839D215B0B7B0088869E /* NormalCustomCell.xib in Resources */,
 				C4AF05A2214A014500176F29 /* PrepaidRecordsTableViewCell.xib in Resources */,
 				C4AF05C5214A79AE00176F29 /* AbnormalStatisticsCell.xib in Resources */,
 				C4AF05A6214A014500176F29 /* RechargeRecordTableViewCell.xib in Resources */,
@@ -2235,6 +2282,7 @@
 				CC3B2F91201E26D700ADC116 /* UpdateDeviceInfoViewController.m in Sources */,
 				CCCDDE0F2003CC8000DF468C /* ContentTableView.m in Sources */,
 				C4AF05BF214A541B00176F29 /* EarningsTableViewCell.m in Sources */,
+				C4278397215B0B310088869E /* CustomTableViewCell.m in Sources */,
 				CC2456961FF78ECA00616916 /* UIButton+Disable.m in Sources */,
 				CC0FE9B72024AB490031BDFC /* PowerModel.m in Sources */,
 				CC5567042025E34100A8589B /* UIView+Extension.m in Sources */,
@@ -2274,6 +2322,7 @@
 				C490418521464657005652C9 /* BaseController.m in Sources */,
 				C46A43B0215A30F7002E8FFE /* NewFinancialCARDSController.m in Sources */,
 				C4AF05BA214A47B100176F29 /* RemindTableViewCell.m in Sources */,
+				C42783A1215B79720088869E /* AppLocationManager.m in Sources */,
 				CC5567052025E34100A8589B /* WSDatePickerView.m in Sources */,
 				CC24566A1FF745DB00616916 /* UIButton+CountDown.m in Sources */,
 				CCE9E59F200644FD008439F3 /* ESP_NetUtil.m in Sources */,
@@ -2291,6 +2340,7 @@
 				CCB59D852012371F00439799 /* TimeSettingViewController.m in Sources */,
 				C46A43B7215A3135002E8FFE /* NewFinancialCARDSCell.m in Sources */,
 				CCE9E597200644FD008439F3 /* ESPTouchGenerator.m in Sources */,
+				C427839C215B0B7B0088869E /* NormalCustomCell.m in Sources */,
 				CC2456861FF745DB00616916 /* XMLUtil.m in Sources */,
 				C4AF05A1214A014500176F29 /* PrepaidRecordsTableViewCell.m in Sources */,
 				CC176DB6201A3A8000C744C6 /* YLSheetView.m in Sources */,

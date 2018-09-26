@@ -15,10 +15,23 @@
     // Initialization code
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
-
-    // Configure the view for the selected state
+// 导航
+- (IBAction)NavigationBut:(UIButton *)sender {
+    self.NavigationButBlock(self.NavigationBut);
 }
+
+// 纠错
+- (IBAction)CorrectionBut:(UIButton *)sender {
+    self.CorrectionButBlock(self.ContactBut);
+}
+
+// 分享
+- (IBAction)ShareBut:(UIButton *)sender {
+}
+
+// 联系
+- (IBAction)ContactBut:(UIButton *)sender {
+}
+
 
 @end

@@ -108,7 +108,6 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
 }
 
 - (void)shareAction {
-    
     [[YLSheetView sharedInstace] showFromCenter:self.shareView];
 }
 

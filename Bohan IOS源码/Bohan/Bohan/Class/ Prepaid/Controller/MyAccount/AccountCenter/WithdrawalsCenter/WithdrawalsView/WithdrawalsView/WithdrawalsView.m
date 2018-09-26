@@ -9,7 +9,8 @@
 #import "WithdrawalsView.h"
 #import "UIColor+JGHexColor.h"
 #import "NewFinancialCARDSController.h"
-
+#import "NormalCustomCell.h"
+#import "CustomTableViewCell.h"
 @interface  listofselectedCell : UITableViewCell
 
 @property (nonatomic, strong) UILabel *titleLabel;
@@ -67,22 +68,21 @@ typedef void(^doneBlock)(NSDate *data);
 /**
  空白VIEW
  */
-- (instancetype)initWithDateStyle:(NSInteger)datePickerStyle BlankBlock:(void(^)(NSDate *))completeBlock {
+-(instancetype)initWithDateStyle:(NSInteger)datePickerStyle BlankBlock:(SelectValue)completeBlock {
     self = [super init];
     if (self) {
         self = [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass([self class]) owner:self options:nil] lastObject];
         [self setupUI];
-        if (completeBlock) {
-            self.doneBlock = ^(NSDate *selectDate) {
-                completeBlock(selectDate);
-            };
-        }
+        self.selectValue = completeBlock;
     }
     return self;
 }
 
 -(void)setupUI {
 //    self.Ttableview.separatorStyle = UITableViewCellSeparatorStyleNone;  //隐藏tableview多余的线条
+    
+    _images = @[@"AlpayPay",@"WechatPay"];
+    _titles = @[@"支付宝",@"微信"];
     self.buttomView.layer.cornerRadius = 10;
     self.buttomView.layer.masksToBounds = YES;
     self.frame=CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
@@ -119,7 +119,7 @@ typedef void(^doneBlock)(NSDate *data);
 }
 
 - (IBAction)bun:(UIButton *)sender {
-    self.doneBlock(_startDate);
+//    self.doneBlock(_startDate);
     [self dismiss];
 }
 
@@ -165,19 +165,12 @@ typedef void(^doneBlock)(NSDate *data);
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
-        if (self.selectIndex) {
-            self.selectIndex(indexPath.row);
-        }
-        if (self.selectValuee) {
-            self.selectValuee(_images[indexPath.row]);
-        }
         if (self.selectValue) {
-            self.selectValue(_titles[indexPath.row]);
+            self.selectValue(indexPath.row);
         }
         [self dismiss];
     }else {
         
     }
-    
 }
 @end

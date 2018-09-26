@@ -12,5 +12,7 @@
 @property (nonatomic, copy) NSString * deviceNo;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
 
+- (BOOL)canOpenURL:(NSURL *)url NS_AVAILABLE_IOS(3_0);
+
 
 @end

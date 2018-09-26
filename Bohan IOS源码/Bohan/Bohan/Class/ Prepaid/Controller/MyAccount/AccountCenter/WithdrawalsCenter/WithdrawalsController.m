@@ -9,7 +9,11 @@
 #import "WithdrawalsController.h"
 #import "WithdrawalsTableViewCell.h"
 #import "WithdrawalsView.h"
-@interface WithdrawalsController () <UITableViewDelegate,UITableViewDataSource>
+@interface WithdrawalsController () <UITableViewDelegate,UITableViewDataSource> {
+    NSArray * images;
+    NSArray * titles;
+    NSInteger _selectIndex;
+}
 
 @end
 
@@ -20,6 +24,8 @@
     self.title = Localize(@"提款");
     [self.Tableview registerNib:[UINib nibWithNibName:@"WithdrawalsTableViewCell" bundle:nil] forCellReuseIdentifier:@"WithdrawalsTableViewCell"];
     self.Tableview.separatorStyle = UITableViewCellSeparatorStyleNone;  //隐藏tableview多余的线条
+    images = @[@"AlpayPay",@"WechatPay"];
+    titles = @[@"支付宝",@"微信"];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -33,6 +39,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WithdrawalsTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"WithdrawalsTableViewCell"];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
+    cell.TitleImages.image = [UIImage imageNamed:images[_selectIndex]];
+    cell.TitleLabel.text = titles[_selectIndex];
     cell.chooseViewBlock = ^(id ChooseView) {
         [self initUIView];
     };
@@ -47,11 +55,9 @@
 }
 
 - (void)initUIView {
-    WithdrawalsView *view = [[WithdrawalsView alloc] initWithDateStyle:0 BlankBlock:^(NSDate *date) {
-//        view.ClickBut = ^(NSString *ClickBut) {
-//            [self.navigationController pushViewController:ClickBut animated:YES];
-//        };
-        
+    WithdrawalsView *view = [[WithdrawalsView alloc] initWithDateStyle:0 BlankBlock:^(NSInteger selectIndex) {
+        _selectIndex = selectIndex;
+        [self.Tableview reloadData];
     }];
     [view show];
 }
