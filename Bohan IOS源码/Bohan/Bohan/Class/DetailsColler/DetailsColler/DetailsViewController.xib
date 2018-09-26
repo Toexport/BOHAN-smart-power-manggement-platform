@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -21,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="JCu-XU-dm4">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="558"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="597"/>
                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="RRy-Le-JFE"/>
@@ -29,48 +29,81 @@
                     </connections>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="erb-p1-jpq">
-                    <rect key="frame" x="0.0" y="558" width="375" height="60"/>
+                    <rect key="frame" x="0.0" y="602" width="375" height="65"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88S-4v-Td5">
-                            <rect key="frame" x="67.5" y="2.5" width="40" height="40"/>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mQv-vw-c4z">
+                            <rect key="frame" x="8" y="5" width="175.5" height="55"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="88S-4v-Td5">
+                                    <rect key="frame" x="8" y="5" width="160" height="45"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="45" id="eeY-gU-ms4"/>
+                                        <constraint firstAttribute="width" constant="160" id="fpg-2R-zcc"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <inset key="titleEdgeInsets" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="扫码" image="sao_sao">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="ScanningBUt:" destination="-1" eventType="touchUpInside" id="Fcv-K8-Zvc"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.40392156862745099" green="0.63921568627450975" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="Fuu-HQ-rZk"/>
-                                <constraint firstAttribute="width" constant="40" id="uiW-VE-mOt"/>
+                                <constraint firstItem="88S-4v-Td5" firstAttribute="centerX" secondItem="mQv-vw-c4z" secondAttribute="centerX" id="C0B-Ne-KQF"/>
+                                <constraint firstAttribute="height" constant="55" id="g0U-xv-KQ8"/>
+                                <constraint firstItem="88S-4v-Td5" firstAttribute="centerY" secondItem="mQv-vw-c4z" secondAttribute="centerY" id="rbq-xE-Kuc"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <inset key="titleEdgeInsets" minX="-42" minY="10" maxX="0.0" maxY="-40"/>
-                            <inset key="imageEdgeInsets" minX="0.0" minY="1" maxX="0.0" maxY="0.0"/>
-                            <state key="normal" title="扫码" image="sao_sao">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="ScanningBUt:" destination="-1" eventType="touchUpInside" id="Fcv-K8-Zvc"/>
-                            </connections>
-                        </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gy5-2v-eZx">
-                            <rect key="frame" x="267.5" y="2.5" width="40" height="40"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HLa-L0-6Lu">
+                            <rect key="frame" x="191.5" y="5" width="175.5" height="55"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gy5-2v-eZx">
+                                    <rect key="frame" x="8" y="5" width="160" height="45"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="45" id="H19-ER-FKf"/>
+                                        <constraint firstAttribute="width" constant="160" id="OlP-Fj-saW"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                    <inset key="titleEdgeInsets" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="我的" image="account">
+                                        <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="MyBUt:" destination="-1" eventType="touchUpInside" id="CfN-HZ-b8y"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="0.40392156862745099" green="0.63921568627450975" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="ARw-SR-Qi0"/>
-                                <constraint firstAttribute="width" constant="40" id="rUq-Vm-dqF"/>
+                                <constraint firstItem="gy5-2v-eZx" firstAttribute="centerY" secondItem="HLa-L0-6Lu" secondAttribute="centerY" id="RJ0-0q-d3v"/>
+                                <constraint firstAttribute="height" constant="55" id="VvC-Yx-ho1"/>
+                                <constraint firstItem="gy5-2v-eZx" firstAttribute="centerX" secondItem="HLa-L0-6Lu" secondAttribute="centerX" id="Yig-H4-edL"/>
                             </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                            <inset key="titleEdgeInsets" minX="-30" minY="10" maxX="0.0" maxY="-40"/>
-                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="-10" maxY="0.0"/>
-                            <state key="normal" title="我的" image="mainpage_me">
-                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </state>
-                            <connections>
-                                <action selector="MyBUt:" destination="-1" eventType="touchUpInside" id="CfN-HZ-b8y"/>
-                            </connections>
-                        </button>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                    <integer key="value" value="8"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
                     </subviews>
-                    <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
-                        <constraint firstItem="88S-4v-Td5" firstAttribute="leading" secondItem="erb-p1-jpq" secondAttribute="leading" constant="67" id="Ada-SN-F2I"/>
-                        <constraint firstItem="88S-4v-Td5" firstAttribute="top" secondItem="erb-p1-jpq" secondAttribute="top" constant="2.5" id="FxA-KI-CcO"/>
-                        <constraint firstItem="gy5-2v-eZx" firstAttribute="top" secondItem="88S-4v-Td5" secondAttribute="top" id="GTL-Kg-TMw"/>
-                        <constraint firstAttribute="height" constant="60" id="ZGQ-3g-wvA"/>
-                        <constraint firstAttribute="trailing" secondItem="gy5-2v-eZx" secondAttribute="trailing" constant="67" id="diC-eX-iMc"/>
+                        <constraint firstItem="mQv-vw-c4z" firstAttribute="centerY" secondItem="erb-p1-jpq" secondAttribute="centerY" id="4xR-0h-aKe"/>
+                        <constraint firstItem="HLa-L0-6Lu" firstAttribute="top" secondItem="mQv-vw-c4z" secondAttribute="top" id="9O5-O6-6g4"/>
+                        <constraint firstItem="mQv-vw-c4z" firstAttribute="leading" secondItem="erb-p1-jpq" secondAttribute="leading" constant="8" id="L0k-iM-d9L"/>
+                        <constraint firstAttribute="trailing" secondItem="HLa-L0-6Lu" secondAttribute="trailing" constant="8" id="Oaq-Ao-Cog"/>
+                        <constraint firstItem="mQv-vw-c4z" firstAttribute="top" secondItem="erb-p1-jpq" secondAttribute="top" constant="5" id="P2J-wK-GIr"/>
+                        <constraint firstAttribute="height" constant="65" id="ZGQ-3g-wvA"/>
+                        <constraint firstItem="HLa-L0-6Lu" firstAttribute="leading" secondItem="mQv-vw-c4z" secondAttribute="trailing" constant="8" id="lYa-As-Hfx"/>
+                        <constraint firstItem="HLa-L0-6Lu" firstAttribute="width" secondItem="mQv-vw-c4z" secondAttribute="width" id="pp0-9Z-HKS"/>
                     </constraints>
                 </view>
             </subviews>
@@ -79,16 +112,16 @@
                 <constraint firstItem="JCu-XU-dm4" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7p4-U9-T0c"/>
                 <constraint firstItem="erb-p1-jpq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="I64-RJ-ndd"/>
                 <constraint firstItem="JCu-XU-dm4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="eIp-Mf-ri5"/>
-                <constraint firstAttribute="bottom" secondItem="erb-p1-jpq" secondAttribute="bottom" constant="49" id="hCV-QF-JgQ"/>
+                <constraint firstAttribute="bottom" secondItem="erb-p1-jpq" secondAttribute="bottom" id="hCV-QF-JgQ"/>
                 <constraint firstAttribute="trailing" secondItem="JCu-XU-dm4" secondAttribute="trailing" id="kD1-PW-cly"/>
                 <constraint firstAttribute="trailing" secondItem="erb-p1-jpq" secondAttribute="trailing" id="ukn-Rm-sHF"/>
-                <constraint firstItem="erb-p1-jpq" firstAttribute="top" secondItem="JCu-XU-dm4" secondAttribute="bottom" id="z7d-33-9FX"/>
+                <constraint firstItem="erb-p1-jpq" firstAttribute="top" secondItem="JCu-XU-dm4" secondAttribute="bottom" constant="5" id="z7d-33-9FX"/>
             </constraints>
-            <point key="canvasLocation" x="33.5" y="53.5"/>
+            <point key="canvasLocation" x="32.799999999999997" y="52.623688155922046"/>
         </view>
     </objects>
     <resources>
-        <image name="mainpage_me" width="23" height="20"/>
+        <image name="account" width="33" height="33"/>
         <image name="sao_sao" width="45" height="45"/>
     </resources>
 </document>

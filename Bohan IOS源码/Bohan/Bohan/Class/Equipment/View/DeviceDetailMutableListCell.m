@@ -85,7 +85,6 @@
         Label2.text = self.model.name;
         Label1.hidden = YES;
         Label3.hidden = YES;
-        
     }else
         if ([self.model.id hasPrefix:@"62"]) {
         openSwitch1.hidden = NO;
@@ -98,8 +97,6 @@
             Label1.text = strarray[0];
             Label3.text = strarray[1];
         });
-            
-        
     }else
         if ([self.model.id hasPrefix:@"63"]) {
         openSwitch1.hidden = NO;
@@ -127,7 +124,7 @@
     [type  setText:self.model.type];
     [pos  setText:self.model.position];
     
-    //     判断设备是否在线
+//     判断设备是否在线
     if (self.model.powerinfo && self.model.powerinfo.length>0) { // powerinfo 是用电
         [online setText:Localize(@"在线")];
         if ([self.model.sort containsString:@"QK01"] || [self.model.sort containsString:@"QK02"] || [self.model.sort containsString:@"QK03"] || [self.model.sort containsString:@"K"]) {

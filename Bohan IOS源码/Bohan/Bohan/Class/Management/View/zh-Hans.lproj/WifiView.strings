@@ -9,7 +9,7 @@
 "j07-hf-AZt.placeholder" = "请输入WiFi";
 
 /* Class = "UIButton"; normalTitle = "Add"; ObjectID = "oX3-SS-xbX"; */
-"oX3-SS-xbX.normalTitle" = "Add";
+"oX3-SS-xbX.normalTitle" = "确定";
 
 /* Class = "UITextField"; placeholder = "请输入密码"; ObjectID = "pfP-gd-Xms"; */
 "pfP-gd-Xms.placeholder" = "请输入密码";
