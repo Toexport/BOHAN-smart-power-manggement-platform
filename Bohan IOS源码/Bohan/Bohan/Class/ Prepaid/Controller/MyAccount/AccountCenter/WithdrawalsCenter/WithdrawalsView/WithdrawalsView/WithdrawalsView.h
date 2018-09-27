@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "NormalCustomCell.h"
 
 @interface WithdrawalsView : UIView
 @property (weak, nonatomic) IBOutlet UIView *buttomView;
@@ -19,7 +20,6 @@ typedef void (^SelectValue)(NSInteger selectIndex);//数值
 typedef void (^ClickBlock)(NSString *ClickBut);//点击事件
 @property (nonatomic, copy) SelectValue selectValue;
 @property (nonatomic, copy) ClickBlock ClickBut;
-
 
 /**
   *空白VIEW

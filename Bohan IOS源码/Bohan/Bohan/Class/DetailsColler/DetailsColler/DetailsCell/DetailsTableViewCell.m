@@ -27,6 +27,7 @@
 
 // 分享
 - (IBAction)ShareBut:(UIButton *)sender {
+    self.ShareButBlock(self.ShareBut);
 }
 
 // 联系

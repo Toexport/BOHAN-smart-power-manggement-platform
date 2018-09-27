@@ -92,6 +92,9 @@
 "结束时间不能小于00:00" = "The end time cannot be less than 00:00";
 "单价不能大于100" = "The unit price must not be more than 99";
 
+"支付宝" = "Alipay";
+"微信" = "WeChat";
+
 //"日" = "Sunday";
 //"Sunday" = "日";
 "周" = "";

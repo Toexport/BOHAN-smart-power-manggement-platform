@@ -17,14 +17,11 @@
 #import "DetailsTableViewCell.h"
 #import "EquipmentCell.h"
 #import "CostIntroducedCell.h"
-@interface DetailsViewController ()<UITableViewDelegate, UITableViewDataSource>
-
-//baidumap //百度地图
-//iosamap //高德地图
-//comgooglemaps //谷歌地图
-//qqmap //腾讯地图
-
-
+#import "AppLocationManager.h"
+@interface DetailsViewController ()<UITableViewDelegate, UITableViewDataSource> {
+    NSString * latStr;
+    NSString * linStr;
+}
 
 @end
 
@@ -40,6 +37,8 @@
     [self.tableview registerNib:[UINib nibWithNibName:@"CostIntroducedCell" bundle:nil] forCellReuseIdentifier:@"CostIntroducedCell"];
     self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;  //隐藏tableview多余的线条
     self.edgesForExtendedLayout = UIRectEdgeNone; // 设置tabbar底部高度
+    latStr = @"113.896598";
+    linStr = @"22.954302";
     
 }
 
@@ -66,9 +65,14 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
         cell.NavigationButBlock = ^(id NavigationBut) {
             ZPLog(@"点击了导航按钮");
+//            113.896598,22.954302
+            [AppLocationManager jumpToMapWithLat:latStr lng:linStr title:@"伯瀚" content:@"Bohan" VC:self];
         };
         cell.CorrectionButBlock = ^(id CorrectionBut) {
             ZPLog(@"点击了纠错按钮");
+        };
+        cell.ShareButBlock = ^(id ShareBut) {
+            ZPLog(@"点击了分享");
         };
         return cell;
     }else
@@ -80,7 +84,6 @@
             CostIntroducedCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CostIntroducedCell"];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
             return cell;
-        
     }
 }
 
@@ -91,7 +94,6 @@
         if (indexPath.section == 1) {
             return 400;
         }else {
-            
         return 280;
     }
 }

@@ -11,47 +11,6 @@
 #import "NewFinancialCARDSController.h"
 #import "NormalCustomCell.h"
 #import "CustomTableViewCell.h"
-@interface  listofselectedCell : UITableViewCell
-
-@property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UIImageView * imageViews;
-
-@end
-
-@implementation listofselectedCell
-
-- (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-    if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
-        [self addSubview:self.titleLabel];
-        [self addSubview:self.imageViews];
-    }
-    return self;
-}
-
-- (UILabel *)titleLabel {
-    if (!_titleLabel) {
-        _titleLabel = [[UILabel alloc] init];
-        _titleLabel.textColor = [UIColor colorWithHexCode:@"#333333"];
-        _titleLabel.font = [UIFont systemFontOfSize:15];
-        _titleLabel.textAlignment = NSTextAlignmentCenter;
-    }
-    return _titleLabel;
-}
-
-- (UIImageView *)imageViewS {
-    if (!_imageViews) {
-        _imageViews = [[UIImageView alloc]init];
-    }
-    return _imageViews;
-}
-
-- (void)layoutSubviews {
-    [super layoutSubviews];
-    _titleLabel.frame = CGRectMake(0, 0, self.frame.size.width, self.frame.size.height);
-}
-
-@end
-
 
 @interface WithdrawalsView ()<UITableViewDelegate,UITableViewDataSource,UIGestureRecognizerDelegate> {
     NSDate *_startDate;
@@ -79,13 +38,15 @@ typedef void(^doneBlock)(NSDate *data);
 }
 
 -(void)setupUI {
-//    self.Ttableview.separatorStyle = UITableViewCellSeparatorStyleNone;  //隐藏tableview多余的线条
-    
+    self.Ttableview.separatorStyle = UITableViewCellSeparatorStyleNone;  //隐藏tableview多余的线条
     _images = @[@"AlpayPay",@"WechatPay"];
     _titles = @[@"支付宝",@"微信"];
     self.buttomView.layer.cornerRadius = 10;
     self.buttomView.layer.masksToBounds = YES;
     self.frame=CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height);
+                
+    [self.Ttableview registerNib:[UINib nibWithNibName:@"NormalCustomCell" bundle:nil] forCellReuseIdentifier:@"NormalCustomCell"];
+    [self.Ttableview registerNib:[UINib nibWithNibName:@"CustomTableViewCell" bundle:nil] forCellReuseIdentifier:@"CustomTableViewCell"];
 
     //点击背景是否影藏
 //    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismiss)];
@@ -103,7 +64,7 @@ typedef void(^doneBlock)(NSDate *data);
     [UIView animateWithDuration:.3 animations:^{
         self.alpha = 1;
         self.buttomView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height-319, [UIScreen mainScreen].bounds.size.width, 319);
-        [self layoutIfNeeded];
+//        [self layoutIfNeeded];
     }];
 }
 
@@ -119,7 +80,6 @@ typedef void(^doneBlock)(NSDate *data);
 }
 
 - (IBAction)bun:(UIButton *)sender {
-//    self.doneBlock(_startDate);
     [self dismiss];
 }
 
@@ -136,29 +96,17 @@ typedef void(^doneBlock)(NSDate *data);
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        return 45;
-    }else {
-        return 50;
-    }
+    return 60.5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    listofselectedCell *cell = [tableView dequeueReusableCellWithIdentifier:@"listofselectedCell"];
-    if (!cell) {
-        cell = [[listofselectedCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"listofselectedCell"];
-    }
     if (indexPath.section == 0) {
-        cell.titleLabel.text = _titles[indexPath.row];
-        UIImage *image = [UIImage imageNamed:_images[indexPath.row]];
-        cell.imageView.image = image;
-        cell.imageView.contentMode = UIViewContentModeCenter;
-        return cell;
+    NormalCustomCell * cell = [tableView dequeueReusableCellWithIdentifier:@"NormalCustomCell"];
+    cell.TitleLabelS.text = _titles[indexPath.row];
+    cell.imageS.image = [UIImage imageNamed:_images[indexPath.row]];
+    return cell;
     }else {
-        cell.textLabel.text = Localize(@"新增提款账号");
-        cell.imageView.image = [UIImage imageNamed:@"ic_Forward"];
-        cell.imageView.contentMode = UIViewContentModeCenter;
-        cell.imageView.contentMode = UIControlContentHorizontalAlignmentLeft;
+        CustomTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CustomTableViewCell"];
         return cell;
     }
 }
@@ -170,7 +118,8 @@ typedef void(^doneBlock)(NSDate *data);
         }
         [self dismiss];
     }else {
-        
+        ZPLog(@"111");
     }
 }
+
 @end

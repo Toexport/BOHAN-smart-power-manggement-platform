@@ -40,15 +40,15 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlpayPay" translatesAutoresizingMaskIntoConstraints="NO" id="dtA-ci-m9X">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timg" translatesAutoresizingMaskIntoConstraints="NO" id="dtA-ci-m9X">
                                 <rect key="frame" x="107" y="20" width="20" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="fos-QQ-LFZ"/>
                                     <constraint firstAttribute="width" constant="20" id="vZm-KD-d7n"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="支付宝 (1624)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APp-Fj-ulC">
-                                <rect key="frame" x="135" y="20" width="95" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="添加账号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="APp-Fj-ulC">
+                                <rect key="frame" x="135" y="20" width="61.5" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="nHM-3V-Cd8"/>
                                 </constraints>
@@ -242,8 +242,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="AlpayPay" width="42" height="42"/>
         <image name="Currency symbol" width="20" height="20"/>
         <image name="ic_Forward" width="10" height="19"/>
+        <image name="timg" width="500" height="500"/>
     </resources>
 </document>

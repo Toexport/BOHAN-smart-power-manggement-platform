@@ -18,6 +18,9 @@ typedef void (^CorrectionButBlock)(id CorrectionBut);
 @property (nonatomic , copy) CorrectionButBlock CorrectionButBlock;
 
 @property (weak, nonatomic) IBOutlet UIButton *ShareBut; // 分享
+typedef void (^ShareButBlock)(id ShareBut);
+@property (nonatomic , copy) ShareButBlock ShareButBlock;
+
 @property (weak, nonatomic) IBOutlet UIButton *ContactBut; // 联系
 @property (weak, nonatomic) IBOutlet UILabel *TitleLabelS;  // 名字
 @property (weak, nonatomic) IBOutlet UILabel *DistanceLabelS; // 距离

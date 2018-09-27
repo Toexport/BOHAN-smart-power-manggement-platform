@@ -28,6 +28,14 @@
 
 - (void)changeValue:(NSNotification *)notification {
     UITextField * textField = notification.object;
+    //要实现的监听方法操作
+    ZPLog(@"%lu",textField.text.length);
+    if (textField.text.length >= 5) {
+        NSMutableString * mutStr = [NSMutableString stringWithString:textField.text];
+        NSString * str = [mutStr substringToIndex:5];
+        textField.text = str;
+    }
+    
     if (textField.text.length > 0) {
         self.TextLabel2.hidden = NO;
         self.TextLabel.hidden = YES;
@@ -43,23 +51,12 @@
         [self.ExtractBut setEnabled:NO];
         self.ExtractBut.alpha = 0.4;
     }
-    
     if (self.InputBoxTextField.text.longLongValue > self.AmountLabel.text.longLongValue) {
         self.TextLabel1.hidden = NO;
         self.TextLabel2.hidden = YES;
         ZPLog(@"111");
     }else {
       self.TextLabel1.hidden = YES;
-    }
-    
-    //要实现的监听方法操作
-    ZPLog(@"%lu",textField.text.length);
-    if (textField.text.length >= 5) {
-        NSMutableString * mutStr = [NSMutableString stringWithString:textField.text];
-        NSString * str = [mutStr substringToIndex:5];
-        textField.text = str;
-//        ZPLog(@"输入有误");
-//        return;
     }
 }
 

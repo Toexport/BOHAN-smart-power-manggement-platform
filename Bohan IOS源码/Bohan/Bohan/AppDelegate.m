@@ -15,6 +15,7 @@
 #import "DetailsViewController.h"
 #import "IQKeyboardManager.h"
 #import "WebSocket.h"
+#import "WXApi.h"
 #import "DebuggingANDPublishing.pch"
 @interface AppDelegate ()
 
@@ -24,19 +25,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    
-    
+
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-
-//    [UserInfoManager deletAccount];
-
     [self initSocket];
     [self keyBoardManage];
     [self createTabBar];
     [self onCheckVersion];
 
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutNotification:) name:LOGOUTNOTIFICATION object:nil];
-    
+    [WXApi registerApp:@"wx76320274b0800e51"];
     return YES;
 }
 

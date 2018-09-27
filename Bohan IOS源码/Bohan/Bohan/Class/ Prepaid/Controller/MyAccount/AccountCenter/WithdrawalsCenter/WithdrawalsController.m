@@ -9,6 +9,7 @@
 #import "WithdrawalsController.h"
 #import "WithdrawalsTableViewCell.h"
 #import "WithdrawalsView.h"
+#import "AppLocationManager.h"
 @interface WithdrawalsController () <UITableViewDelegate,UITableViewDataSource> {
     NSArray * images;
     NSArray * titles;

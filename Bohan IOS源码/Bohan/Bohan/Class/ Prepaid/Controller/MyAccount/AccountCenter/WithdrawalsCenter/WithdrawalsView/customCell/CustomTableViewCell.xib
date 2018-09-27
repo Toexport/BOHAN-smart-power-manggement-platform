@@ -13,16 +13,30 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="51" id="KGk-i7-Jjw" customClass="CustomTableViewCell">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="60.5"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新增提款账号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYr-CL-ibu">
-                        <rect key="frame" x="61" y="16" width="92" height="18"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lgW-dt-F8k">
+                        <rect key="frame" x="0.0" y="59" width="320" height="1"/>
+                        <color key="backgroundColor" red="0.94509803920000002" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="height" constant="18" id="qYq-lO-yzb"/>
+                            <constraint firstAttribute="height" constant="1" id="Dmv-RE-gAi"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="timg" translatesAutoresizingMaskIntoConstraints="NO" id="D2Y-2Z-EPc">
+                        <rect key="frame" x="8" y="8" width="43" height="43"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="43" id="acN-yL-JrC"/>
+                            <constraint firstAttribute="height" constant="43" id="gbh-PY-v28"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="新增提款账号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jYr-CL-ibu">
+                        <rect key="frame" x="61" y="20.5" width="92" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="go5-1E-KuG"/>
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <nil key="textColor"/>
@@ -30,12 +44,23 @@
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="jYr-CL-ibu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="61" id="KbA-LV-22C"/>
-                    <constraint firstItem="jYr-CL-ibu" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="XXW-hM-IDJ"/>
+                    <constraint firstAttribute="trailing" secondItem="lgW-dt-F8k" secondAttribute="trailing" id="2zq-aX-0GB"/>
+                    <constraint firstItem="D2Y-2Z-EPc" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="GGn-Xb-kl0"/>
+                    <constraint firstItem="D2Y-2Z-EPc" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="Gzk-jJ-KqA"/>
+                    <constraint firstItem="jYr-CL-ibu" firstAttribute="leading" secondItem="D2Y-2Z-EPc" secondAttribute="trailing" constant="10" id="L7V-os-BpJ"/>
+                    <constraint firstItem="lgW-dt-F8k" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="MG8-xl-NHI"/>
+                    <constraint firstItem="jYr-CL-ibu" firstAttribute="centerY" secondItem="D2Y-2Z-EPc" secondAttribute="centerY" id="adY-qT-fG0"/>
+                    <constraint firstAttribute="bottom" secondItem="lgW-dt-F8k" secondAttribute="bottom" id="pmQ-Rz-fFH"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="TitleLabels" destination="jYr-CL-ibu" id="J9L-7g-Ite"/>
+            </connections>
             <point key="canvasLocation" x="137.59999999999999" y="134.93253373313345"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="timg" width="512" height="512"/>
+    </resources>
 </document>

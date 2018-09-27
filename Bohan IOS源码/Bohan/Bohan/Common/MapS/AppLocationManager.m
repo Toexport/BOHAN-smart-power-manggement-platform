@@ -277,15 +277,15 @@
 // 苹果地图
 + (void)navAppleMapWithDict:(NSDictionary *)dict
 {
-//    MKMapItem *currentLoc = [MKMapItem mapItemForCurrentLocation];
-//    MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake([dict[@"lat"] doubleValue], [dict[@"lng"] doubleValue]) addressDictionary:nil]];
-//    NSArray *items = @[currentLoc,toLocation];
-//    NSDictionary *dic = @{
-//                          MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving,
-//                          MKLaunchOptionsMapTypeKey : @(MKMapTypeStandard),
-//                          MKLaunchOptionsShowsTrafficKey : @(YES)
-//                          };
-//    [MKMapItem openMapsWithItems:items launchOptions:dic];
+    MKMapItem *currentLoc = [MKMapItem mapItemForCurrentLocation];
+    MKMapItem *toLocation = [[MKMapItem alloc] initWithPlacemark:[[MKPlacemark alloc] initWithCoordinate:CLLocationCoordinate2DMake([dict[@"lat"] doubleValue], [dict[@"lng"] doubleValue]) addressDictionary:nil]];
+    NSArray *items = @[currentLoc,toLocation];
+    NSDictionary *dic = @{
+                          MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving,
+                          MKLaunchOptionsMapTypeKey : @(MKMapTypeStandard),
+                          MKLaunchOptionsShowsTrafficKey : @(YES)
+                          };
+    [MKMapItem openMapsWithItems:items launchOptions:dic];
 }
 
 @end
