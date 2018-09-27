@@ -48,12 +48,12 @@ typedef void(^doneBlock)(NSDate *data);
     [self.Ttableview registerNib:[UINib nibWithNibName:@"NormalCustomCell" bundle:nil] forCellReuseIdentifier:@"NormalCustomCell"];
     [self.Ttableview registerNib:[UINib nibWithNibName:@"CustomTableViewCell" bundle:nil] forCellReuseIdentifier:@"CustomTableViewCell"];
 
-    //点击背景是否影藏
+//    //点击背景是否影藏
 //    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(dismiss)];
 //    tap.delegate = self;
 //    [self addGestureRecognizer:tap];
-//    [self layoutIfNeeded];
-//    [[UIApplication sharedApplication].keyWindow bringSubviewToFront:self];
+    [self layoutIfNeeded];
+    [[UIApplication sharedApplication].keyWindow bringSubviewToFront:self];
 }
 
 #pragma mark - Action
@@ -64,7 +64,7 @@ typedef void(^doneBlock)(NSDate *data);
     [UIView animateWithDuration:.3 animations:^{
         self.alpha = 1;
         self.buttomView.frame = CGRectMake(0, [UIScreen mainScreen].bounds.size.height-319, [UIScreen mainScreen].bounds.size.width, 319);
-//        [self layoutIfNeeded];
+        [self layoutIfNeeded];
     }];
 }
 

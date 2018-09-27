@@ -18,9 +18,14 @@
 #import "EquipmentCell.h"
 #import "CostIntroducedCell.h"
 #import "AppLocationManager.h"
+#import "shareView.h"
+#import "WXApi.h"
+#import "WXApiObject.h"
 @interface DetailsViewController ()<UITableViewDelegate, UITableViewDataSource> {
     NSString * latStr;
     NSString * linStr;
+    NSInteger _selectIndex;
+    
 }
 
 @end
@@ -73,6 +78,8 @@
         };
         cell.ShareButBlock = ^(id ShareBut) {
             ZPLog(@"点击了分享");
+//            [self sendUrl:@"https://www.baidu.com" To:WXSceneTimeline];
+            [self initUIView];
         };
         return cell;
     }else
@@ -127,5 +134,30 @@
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
     
 }
+
+// 网页分享
+-(void)sendUrl:(NSString*)url To:(enum WXScene)scene{
+    SendMessageToWXReq *req = [[SendMessageToWXReq alloc]init];
+    req.bText = NO;
+    req.scene = WXSceneTimeline;// 分享到o朋友圈
+    WXMediaMessage *medMessage = [WXMediaMessage message];
+    medMessage.title = @"伯瀚智能用电管理平台"; // 标题
+    medMessage.description = @"伯瀚智能APP——一款智能、安全用电管理APP";// 描述
+    WXWebpageObject *webPageObj = [WXWebpageObject object];
+    [medMessage setThumbImage:[UIImage imageNamed:@"logo"]];// 缩略图
+    webPageObj.webpageUrl = @"https://itunes.apple.com/cn/app/id1384571471?mt=8";
+    medMessage.mediaObject = webPageObj;
+    req.message = medMessage;
+    [WXApi sendReq:req];
+}
+
+- (void)initUIView {
+    shareView *view = [[shareView alloc] initWithDateStyle:0 BlankBlock:^(NSInteger selectIndex) {
+        _selectIndex = selectIndex;
+    }];
+    
+    [view show];
+}
+
 
 @end

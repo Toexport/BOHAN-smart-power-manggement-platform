@@ -36,6 +36,13 @@
 		C44DE77A21489DFC007325FD /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = C44DE77921489DFB007325FD /* UIView+Frame.m */; };
 		C44DE77F2148BE7D007325FD /* ChargingStatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = C44DE77D2148BE7D007325FD /* ChargingStatusController.m */; };
 		C44DE7802148BE7D007325FD /* ChargingStatusController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C44DE77E2148BE7D007325FD /* ChargingStatusController.xib */; };
+		C46174C9215C840400DB55D1 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = C46174C6215C840400DB55D1 /* README.txt */; };
+		C46174CA215C840400DB55D1 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C46174C8215C840400DB55D1 /* libWeChatSDK.a */; };
+		C46174CC215C845F00DB55D1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C46174CB215C845F00DB55D1 /* SystemConfiguration.framework */; };
+		C46174CE215C846700DB55D1 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C46174CD215C846700DB55D1 /* CoreTelephony.framework */; };
+		C46174D0215C84AF00DB55D1 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C46174CF215C84AF00DB55D1 /* libsqlite3.0.tbd */; };
+		C46174D2215C84BB00DB55D1 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C46174D1215C84BB00DB55D1 /* libz.1.2.8.tbd */; };
+		C46174D4215C84C700DB55D1 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C46174D3215C84C700DB55D1 /* libc++.tbd */; };
 		C46A43B0215A30F7002E8FFE /* NewFinancialCARDSController.m in Sources */ = {isa = PBXBuildFile; fileRef = C46A43AE215A30F7002E8FFE /* NewFinancialCARDSController.m */; };
 		C46A43B1215A30F7002E8FFE /* NewFinancialCARDSController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C46A43AF215A30F7002E8FFE /* NewFinancialCARDSController.xib */; };
 		C46A43B7215A3135002E8FFE /* NewFinancialCARDSCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C46A43B5215A3135002E8FFE /* NewFinancialCARDSCell.m */; };
@@ -56,6 +63,8 @@
 		C48450E12150976E00196704 /* WithdrawalsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C48450DF2150976E00196704 /* WithdrawalsController.xib */; };
 		C48450E6215097B700196704 /* WithdrawalsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C48450E4215097B700196704 /* WithdrawalsTableViewCell.m */; };
 		C48450E7215097B700196704 /* WithdrawalsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C48450E5215097B700196704 /* WithdrawalsTableViewCell.xib */; };
+		C4854FED215CC79200A292A6 /* shareView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4854FEB215CC79200A292A6 /* shareView.m */; };
+		C4854FEE215CC79200A292A6 /* shareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4854FEC215CC79200A292A6 /* shareView.xib */; };
 		C490417121464362005652C9 /* LYSecurityField.m in Sources */ = {isa = PBXBuildFile; fileRef = C490415C21464362005652C9 /* LYSecurityField.m */; };
 		C490417221464362005652C9 /* LYPaymentAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = C490415E21464362005652C9 /* LYPaymentAlertController.m */; };
 		C490417321464362005652C9 /* LYPaymentAlertTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = C490415F21464362005652C9 /* LYPaymentAlertTheme.m */; };
@@ -313,6 +322,16 @@
 		C44DE77C2148BE7D007325FD /* ChargingStatusController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChargingStatusController.h; sourceTree = "<group>"; };
 		C44DE77D2148BE7D007325FD /* ChargingStatusController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChargingStatusController.m; sourceTree = "<group>"; };
 		C44DE77E2148BE7D007325FD /* ChargingStatusController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChargingStatusController.xib; sourceTree = "<group>"; };
+		C46174C4215C840400DB55D1 /* WXApi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApi.h; sourceTree = "<group>"; };
+		C46174C5215C840400DB55D1 /* WXApiObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXApiObject.h; sourceTree = "<group>"; };
+		C46174C6215C840400DB55D1 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		C46174C7215C840400DB55D1 /* WechatAuthSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WechatAuthSDK.h; sourceTree = "<group>"; };
+		C46174C8215C840400DB55D1 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		C46174CB215C845F00DB55D1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C46174CD215C846700DB55D1 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		C46174CF215C84AF00DB55D1 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		C46174D1215C84BB00DB55D1 /* libz.1.2.8.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.8.tbd; path = usr/lib/libz.1.2.8.tbd; sourceTree = SDKROOT; };
+		C46174D3215C84C700DB55D1 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		C46A43AD215A30F7002E8FFE /* NewFinancialCARDSController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewFinancialCARDSController.h; sourceTree = "<group>"; };
 		C46A43AE215A30F7002E8FFE /* NewFinancialCARDSController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NewFinancialCARDSController.m; sourceTree = "<group>"; };
 		C46A43AF215A30F7002E8FFE /* NewFinancialCARDSController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewFinancialCARDSController.xib; sourceTree = "<group>"; };
@@ -345,6 +364,9 @@
 		C48450E3215097B700196704 /* WithdrawalsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WithdrawalsTableViewCell.h; sourceTree = "<group>"; };
 		C48450E4215097B700196704 /* WithdrawalsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawalsTableViewCell.m; sourceTree = "<group>"; };
 		C48450E5215097B700196704 /* WithdrawalsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawalsTableViewCell.xib; sourceTree = "<group>"; };
+		C4854FEA215CC79200A292A6 /* shareView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = shareView.h; sourceTree = "<group>"; };
+		C4854FEB215CC79200A292A6 /* shareView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = shareView.m; sourceTree = "<group>"; };
+		C4854FEC215CC79200A292A6 /* shareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = shareView.xib; sourceTree = "<group>"; };
 		C490415B21464362005652C9 /* LYSecurityField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSecurityField.h; sourceTree = "<group>"; };
 		C490415C21464362005652C9 /* LYSecurityField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSecurityField.m; sourceTree = "<group>"; };
 		C490415E21464362005652C9 /* LYPaymentAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYPaymentAlertController.m; sourceTree = "<group>"; };
@@ -748,10 +770,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC3C6001202218BA00C479C9 /* Foundation.framework in Frameworks */,
-				CC3C5FFF2022179C00C479C9 /* Security.framework in Frameworks */,
-				CCE9E5A92006A0DA008439F3 /* AVFoundation.framework in Frameworks */,
+				C46174D4215C84C700DB55D1 /* libc++.tbd in Frameworks */,
+				C46174D2215C84BB00DB55D1 /* libz.1.2.8.tbd in Frameworks */,
+				C46174D0215C84AF00DB55D1 /* libsqlite3.0.tbd in Frameworks */,
 				CC97ABD01FFBF4EB00B4A58C /* CFNetwork.framework in Frameworks */,
+				CC3C5FFF2022179C00C479C9 /* Security.framework in Frameworks */,
+				C46174CE215C846700DB55D1 /* CoreTelephony.framework in Frameworks */,
+				C46174CC215C845F00DB55D1 /* SystemConfiguration.framework in Frameworks */,
+				CC3C6001202218BA00C479C9 /* Foundation.framework in Frameworks */,
+				C46174CA215C840400DB55D1 /* libWeChatSDK.a in Frameworks */,
+				CCE9E5A92006A0DA008439F3 /* AVFoundation.framework in Frameworks */,
 				05472D5687BB542915B46B7D /* Pods_Bohan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -898,6 +926,26 @@
 			path = ChargingStatus;
 			sourceTree = "<group>";
 		};
+		C46174C2215C840400DB55D1 /* WeChat */ = {
+			isa = PBXGroup;
+			children = (
+				C46174C3215C840400DB55D1 /* OpenSDK1.8.3 */,
+			);
+			path = WeChat;
+			sourceTree = "<group>";
+		};
+		C46174C3215C840400DB55D1 /* OpenSDK1.8.3 */ = {
+			isa = PBXGroup;
+			children = (
+				C46174C4215C840400DB55D1 /* WXApi.h */,
+				C46174C5215C840400DB55D1 /* WXApiObject.h */,
+				C46174C6215C840400DB55D1 /* README.txt */,
+				C46174C7215C840400DB55D1 /* WechatAuthSDK.h */,
+				C46174C8215C840400DB55D1 /* libWeChatSDK.a */,
+			);
+			path = OpenSDK1.8.3;
+			sourceTree = "<group>";
+		};
 		C46A43AC215A30D8002E8FFE /* NewFinancialCARDS */ = {
 			isa = PBXGroup;
 			children = (
@@ -985,6 +1033,23 @@
 				C48450E5215097B700196704 /* WithdrawalsTableViewCell.xib */,
 			);
 			path = WithdrawalsCell;
+			sourceTree = "<group>";
+		};
+		C4854B8D215CB36F00A292A6 /* QQ */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = QQ;
+			sourceTree = "<group>";
+		};
+		C4854FE9215CC77C00A292A6 /* shareView */ = {
+			isa = PBXGroup;
+			children = (
+				C4854FEA215CC79200A292A6 /* shareView.h */,
+				C4854FEB215CC79200A292A6 /* shareView.m */,
+				C4854FEC215CC79200A292A6 /* shareView.xib */,
+			);
+			path = shareView;
 			sourceTree = "<group>";
 		};
 		C490415821464362005652C9 /* PaymentField */ = {
@@ -1159,8 +1224,7 @@
 				C4E164AD213E82F600445E57 /* DetailsViewController.m */,
 				C4E164AE213E82F600445E57 /* DetailsViewController.xib */,
 				C47E619A214F3D97008FA596 /* DetailsCell */,
-				C429413C21428D9200E10921 /* DetailsPay */,
-				C44DE77B2148BE5E007325FD /* ChargingStatus */,
+				C4854FE9215CC77C00A292A6 /* shareView */,
 			);
 			path = DetailsColler;
 			sourceTree = "<group>";
@@ -1179,6 +1243,8 @@
 			isa = PBXGroup;
 			children = (
 				C4D188BF213FA40F0030464E /* DetailsColler */,
+				C429413C21428D9200E10921 /* DetailsPay */,
+				C44DE77B2148BE5E007325FD /* ChargingStatus */,
 				C4E164B1213E849B00445E57 /* MyAccount */,
 				C42AE0BA212E3553006A6F84 /* View */,
 				C42AE0B9212E354B006A6F84 /* Model */,
@@ -1242,6 +1308,11 @@
 		C7BFA176DDE33FCA740149C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C46174D3215C84C700DB55D1 /* libc++.tbd */,
+				C46174D1215C84BB00DB55D1 /* libz.1.2.8.tbd */,
+				C46174CF215C84AF00DB55D1 /* libsqlite3.0.tbd */,
+				C46174CD215C846700DB55D1 /* CoreTelephony.framework */,
+				C46174CB215C845F00DB55D1 /* SystemConfiguration.framework */,
 				CC3C6000202218BA00C479C9 /* Foundation.framework */,
 				CCE9E5A82006A0DA008439F3 /* AVFoundation.framework */,
 				CC97ABD31FFBFC8E00B4A58C /* UIKit.framework */,
@@ -1316,6 +1387,8 @@
 		CC2455BF1FF745DB00616916 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C4854B8D215CB36F00A292A6 /* QQ */,
+				C46174C2215C840400DB55D1 /* WeChat */,
 				C427839E215B795D0088869E /* MapS */,
 				C490415821464362005652C9 /* PaymentField */,
 				CC2455C01FF745DB00616916 /* Base */,
@@ -2128,6 +2201,7 @@
 				en,
 				Base,
 				"zh-Hans",
+				ja,
 			);
 			mainGroup = CC24559D1FF7450700616916;
 			productRefGroup = CC2455A71FF7450700616916 /* Products */;
@@ -2157,6 +2231,7 @@
 				CC80906B2047166600265FE0 /* TimeSettingViewController.xib in Resources */,
 				C46A43B8215A3135002E8FFE /* NewFinancialCARDSCell.xib in Resources */,
 				C4BBC63E211E7119009B0854 /* CountdownView.xib in Resources */,
+				C4854FEE215CC79200A292A6 /* shareView.xib in Resources */,
 				CCCBF39120191C1C00A80D90 /* TimeModelCollectionViewCell.xib in Resources */,
 				CC80906120470ED100265FE0 /* MeteringViewController.xib in Resources */,
 				C4F1A24720E5D9EC00052B24 /* VerificationCodeViewController.xib in Resources */,
@@ -2190,6 +2265,7 @@
 				CC8090572047096500265FE0 /* DeviceInfoViewController.xib in Resources */,
 				CC8090662047109400265FE0 /* TimeSelectViewController.xib in Resources */,
 				CC349F3720A890DE00BD6C6A /* DeviceInfoCollectionCell.xib in Resources */,
+				C46174C9215C840400DB55D1 /* README.txt in Resources */,
 				C4E164B0213E82F600445E57 /* DetailsViewController.xib in Resources */,
 				C427839D215B0B7B0088869E /* NormalCustomCell.xib in Resources */,
 				C4AF05A2214A014500176F29 /* PrepaidRecordsTableViewCell.xib in Resources */,
@@ -2276,6 +2352,7 @@
 			files = (
 				C490417421464362005652C9 /* LYPaymentAlertTransitioning.m in Sources */,
 				CC24568E1FF745DB00616916 /* ElectricityViewController.m in Sources */,
+				C4854FED215CC79200A292A6 /* shareView.m in Sources */,
 				C47E61A3214F5419008FA596 /* EquipmentCell.m in Sources */,
 				C4294146214294BE00E10921 /* DetailsPayCell.m in Sources */,
 				CC24566F1FF745DB00616916 /* UILabel+Convenience.m in Sources */,
@@ -2809,7 +2886,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AS4DPL2SAW;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Bohan/Common/QQ/open_sdk_for_lite_V3.3.3.0_svn35045_#34_201805231028/sdkDemo/sdkDemo/libs",
+					"$(PROJECT_DIR)/Bohan/Common/QQ",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -2829,6 +2910,7 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/MJRefresh\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/Masonry\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/YYModel\"",
+					"$(PROJECT_DIR)/Bohan/Common/WeChat/OpenSDK1.8.3",
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
@@ -2847,6 +2929,29 @@
 					"-isystem",
 					"\"${PODS_ROOT}/Headers/Public/YYModel\"",
 					"-I/usr/include/libxml2",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"Charts\"",
+					"-framework",
+					"\"IQKeyboardManager\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"SAMKeychain\"",
+					"-framework",
+					"\"SocketRocket\"",
+					"-framework",
+					"\"SpinKit\"",
+					"-framework",
+					"\"YYModel\"",
+					"-Objc",
+					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bohan-smartec.bohan";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -2871,7 +2976,11 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AS4DPL2SAW;
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Bohan/Common/QQ/open_sdk_for_lite_V3.3.3.0_svn35045_#34_201805231028/sdkDemo/sdkDemo/libs",
+					"$(PROJECT_DIR)/Bohan/Common/QQ",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"${PODS_ROOT}/Headers/Public\"",
@@ -2891,6 +3000,7 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/MJRefresh\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/Masonry\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/YYModel\"",
+					"$(PROJECT_DIR)/Bohan/Common/WeChat/OpenSDK1.8.3",
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
@@ -2909,6 +3019,29 @@
 					"-isystem",
 					"\"${PODS_ROOT}/Headers/Public/YYModel\"",
 					"-I/usr/include/libxml2",
+				);
+				OTHER_LDFLAGS = (
+					"$(inherited)",
+					"-framework",
+					"\"AFNetworking\"",
+					"-framework",
+					"\"Charts\"",
+					"-framework",
+					"\"IQKeyboardManager\"",
+					"-framework",
+					"\"MJRefresh\"",
+					"-framework",
+					"\"Masonry\"",
+					"-framework",
+					"\"SAMKeychain\"",
+					"-framework",
+					"\"SocketRocket\"",
+					"-framework",
+					"\"SpinKit\"",
+					"-framework",
+					"\"YYModel\"",
+					"-Objc",
+					"-all_load",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bohan-smartec.bohan";
 				PRODUCT_NAME = "$(TARGET_NAME)";

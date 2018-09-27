@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "NormalCustomCell.h"
 
 @interface WithdrawalsView : UIView
 @property (weak, nonatomic) IBOutlet UIView *buttomView;

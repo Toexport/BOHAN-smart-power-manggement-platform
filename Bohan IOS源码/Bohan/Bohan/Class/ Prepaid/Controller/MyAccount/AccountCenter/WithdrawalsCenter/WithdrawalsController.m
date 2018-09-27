@@ -47,6 +47,7 @@
     };
     cell.extractButBlock = ^(id ExtractBut) {
         ZPLog(@"点击了提款按钮");
+        
     };
     return cell;
 }

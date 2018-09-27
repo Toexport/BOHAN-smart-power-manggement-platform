@@ -224,6 +224,20 @@
 //    //    viewController.navigationItem.title = tabbarVC.selectedViewController.tabBarItem.title;
 //}
 
+// 处理其他app调起的情况
+-(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    // 交给微信处理，如果它能处理 会回调delegate的相关方法如onResp:
+    return [WXApi handleOpenURL:url delegate:self];
+}
+
+#pragma mark WXApiDelegate
+-(void) onResp:(BaseResp*)resp{
+    NSString *str = [NSString stringWithFormat:@"%d",resp.errCode];
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"微信返回结果" message:str delegate:self cancelButtonTitle:@"好的" otherButtonTitles:nil, nil];
+    [alertview show];
+}
+
+
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

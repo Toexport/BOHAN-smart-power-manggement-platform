@@ -84,6 +84,7 @@
 
 // 提款
 - (IBAction)ExtractBut:(UIButton *)sender {
+    ZPLog(@"%@-%@",self.TitleLabel,self.InputBoxTextField);
     self.extractButBlock(self.AllBut);
 }
 
