@@ -18,7 +18,6 @@
 #import "EquipmentCell.h"
 #import "CostIntroducedCell.h"
 #import "AppLocationManager.h"
-#import "shareView.h"
 #import "WXApi.h"
 #import "WXApiObject.h"
 @interface DetailsViewController ()<UITableViewDelegate, UITableViewDataSource> {
@@ -42,9 +41,10 @@
     [self.tableview registerNib:[UINib nibWithNibName:@"CostIntroducedCell" bundle:nil] forCellReuseIdentifier:@"CostIntroducedCell"];
     self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;  //隐藏tableview多余的线条
     self.edgesForExtendedLayout = UIRectEdgeNone; // 设置tabbar底部高度
-    latStr = @"113.896598";
-    linStr = @"22.954302";
-    
+    latStr = @"22.948010";
+    linStr = @"113.890100";
+//    22.948066, 113.890191
+//    [AppLocationManager shareAppLocationManager];
 }
 
 //3.设置cell之间headerview的高度
@@ -78,8 +78,7 @@
         };
         cell.ShareButBlock = ^(id ShareBut) {
             ZPLog(@"点击了分享");
-//            [self sendUrl:@"https://www.baidu.com" To:WXSceneTimeline];
-            [self initUIView];
+            [self sendUrl:@"https://www.baidu.com" To:WXSceneTimeline];
         };
         return cell;
     }else
@@ -149,14 +148,6 @@
     medMessage.mediaObject = webPageObj;
     req.message = medMessage;
     [WXApi sendReq:req];
-}
-
-- (void)initUIView {
-    shareView *view = [[shareView alloc] initWithDateStyle:0 BlankBlock:^(NSInteger selectIndex) {
-        _selectIndex = selectIndex;
-    }];
-    
-    [view show];
 }
 
 

@@ -8,7 +8,8 @@
 
 #import "AppLocationManager.h"
 #import <CoreLocation/CoreLocation.h>
-
+#define CHATVIEWBACKGROUNDCOLOR [UIColor colorWithRed:0.936 green:0.932 blue:0.907 alpha:1]
+#define OpenUrl(x) [[UIApplication sharedApplication] openURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",x]]]
 @interface AppLocationManager ()<CLLocationManagerDelegate>
 @property (nonatomic, strong)CLLocationManager* manager;
 
@@ -186,7 +187,8 @@
         for (NSDictionary *dic in array) {
             [alert addAction:[UIAlertAction actionWithTitle:dic[@"title"] style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                 if ([dic[@"title"] isEqualToString:@"百度地图"] || [dic[@"title"] isEqualToString:@"高德地图"] || [dic[@"title"] isEqualToString:@"腾讯地图"] || [dic[@"title"] isEqualToString:@"谷歌地图"]) {
-//                    OpenUrl(dic[@"url"]);
+                    OpenUrl(dic[@"url"]);
+//                    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:dic[@"url"]]];
                 }  else {
                     [self navAppleMapWithDict:dic];
                 }
@@ -251,17 +253,8 @@
         NSString *urlString = [[NSString stringWithFormat:@"iosamap://navi?sourceApplication=%@&backScheme=%@&lat=%f&lon=%f&dev=0&style=2",appName,backScheme,gg_lat,gg_lon] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         gaodeMapDic[@"url"] = urlString;
         [maps addObject:gaodeMapDic];
+        
     }
-    
-//    //谷歌地图
-//    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"comgooglemaps://"]]) {
-//        NSMutableDictionary *googleMapDic = [NSMutableDictionary dictionary];
-//        googleMapDic[@"title"] = @"谷歌地图";
-//        NSString *urlString = [[NSString stringWithFormat:@"comgooglemaps://?x-source=%@&x-success=%@&saddr=&daddr=%f,%f&directionsmode=driving",appName,backScheme,gg_lat, gg_lon] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-//        googleMapDic[@"url"] = urlString;
-//        [maps addObject:googleMapDic];
-//    }
-    
     //腾讯地图
     if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"qqmap://"]]) {
         NSMutableDictionary *qqMapDic = [NSMutableDictionary dictionary];
@@ -269,8 +262,8 @@
         NSString *urlString = [[NSString stringWithFormat:@"qqmap://map/routeplan?from=我的位置&type=drive&tocoord=%f,%f&to=终点&coord_type=1&policy=0",gg_lat, gg_lon] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
         qqMapDic[@"url"] = urlString;
         [maps addObject:qqMapDic];
+        
     }
-    
     return maps;
 }
 

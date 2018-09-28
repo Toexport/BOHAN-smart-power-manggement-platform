@@ -63,8 +63,7 @@
 		C48450E12150976E00196704 /* WithdrawalsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C48450DF2150976E00196704 /* WithdrawalsController.xib */; };
 		C48450E6215097B700196704 /* WithdrawalsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C48450E4215097B700196704 /* WithdrawalsTableViewCell.m */; };
 		C48450E7215097B700196704 /* WithdrawalsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C48450E5215097B700196704 /* WithdrawalsTableViewCell.xib */; };
-		C4854FED215CC79200A292A6 /* shareView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4854FEB215CC79200A292A6 /* shareView.m */; };
-		C4854FEE215CC79200A292A6 /* shareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4854FEC215CC79200A292A6 /* shareView.xib */; };
+		C4854FF1215DAC3100A292A6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4854FF0215DAC3100A292A6 /* MapKit.framework */; };
 		C490417121464362005652C9 /* LYSecurityField.m in Sources */ = {isa = PBXBuildFile; fileRef = C490415C21464362005652C9 /* LYSecurityField.m */; };
 		C490417221464362005652C9 /* LYPaymentAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = C490415E21464362005652C9 /* LYPaymentAlertController.m */; };
 		C490417321464362005652C9 /* LYPaymentAlertTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = C490415F21464362005652C9 /* LYPaymentAlertTheme.m */; };
@@ -364,9 +363,7 @@
 		C48450E3215097B700196704 /* WithdrawalsTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WithdrawalsTableViewCell.h; sourceTree = "<group>"; };
 		C48450E4215097B700196704 /* WithdrawalsTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawalsTableViewCell.m; sourceTree = "<group>"; };
 		C48450E5215097B700196704 /* WithdrawalsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawalsTableViewCell.xib; sourceTree = "<group>"; };
-		C4854FEA215CC79200A292A6 /* shareView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = shareView.h; sourceTree = "<group>"; };
-		C4854FEB215CC79200A292A6 /* shareView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = shareView.m; sourceTree = "<group>"; };
-		C4854FEC215CC79200A292A6 /* shareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = shareView.xib; sourceTree = "<group>"; };
+		C4854FF0215DAC3100A292A6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		C490415B21464362005652C9 /* LYSecurityField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSecurityField.h; sourceTree = "<group>"; };
 		C490415C21464362005652C9 /* LYSecurityField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSecurityField.m; sourceTree = "<group>"; };
 		C490415E21464362005652C9 /* LYPaymentAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYPaymentAlertController.m; sourceTree = "<group>"; };
@@ -780,6 +777,7 @@
 				CC3C6001202218BA00C479C9 /* Foundation.framework in Frameworks */,
 				C46174CA215C840400DB55D1 /* libWeChatSDK.a in Frameworks */,
 				CCE9E5A92006A0DA008439F3 /* AVFoundation.framework in Frameworks */,
+				C4854FF1215DAC3100A292A6 /* MapKit.framework in Frameworks */,
 				05472D5687BB542915B46B7D /* Pods_Bohan.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1042,14 +1040,11 @@
 			path = QQ;
 			sourceTree = "<group>";
 		};
-		C4854FE9215CC77C00A292A6 /* shareView */ = {
+		C4854FEF215D150100A292A6 /* UMShare */ = {
 			isa = PBXGroup;
 			children = (
-				C4854FEA215CC79200A292A6 /* shareView.h */,
-				C4854FEB215CC79200A292A6 /* shareView.m */,
-				C4854FEC215CC79200A292A6 /* shareView.xib */,
 			);
-			path = shareView;
+			path = UMShare;
 			sourceTree = "<group>";
 		};
 		C490415821464362005652C9 /* PaymentField */ = {
@@ -1224,7 +1219,6 @@
 				C4E164AD213E82F600445E57 /* DetailsViewController.m */,
 				C4E164AE213E82F600445E57 /* DetailsViewController.xib */,
 				C47E619A214F3D97008FA596 /* DetailsCell */,
-				C4854FE9215CC77C00A292A6 /* shareView */,
 			);
 			path = DetailsColler;
 			sourceTree = "<group>";
@@ -1308,6 +1302,7 @@
 		C7BFA176DDE33FCA740149C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C4854FF0215DAC3100A292A6 /* MapKit.framework */,
 				C46174D3215C84C700DB55D1 /* libc++.tbd */,
 				C46174D1215C84BB00DB55D1 /* libz.1.2.8.tbd */,
 				C46174CF215C84AF00DB55D1 /* libsqlite3.0.tbd */,
@@ -1350,6 +1345,7 @@
 				C7BFA176DDE33FCA740149C6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		CC2455A71FF7450700616916 /* Products */ = {
 			isa = PBXGroup;
@@ -1387,6 +1383,7 @@
 		CC2455BF1FF745DB00616916 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C4854FEF215D150100A292A6 /* UMShare */,
 				C4854B8D215CB36F00A292A6 /* QQ */,
 				C46174C2215C840400DB55D1 /* WeChat */,
 				C427839E215B795D0088869E /* MapS */,
@@ -2183,10 +2180,16 @@
 							com.apple.ApplePay = {
 								enabled = 1;
 							};
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
 							com.apple.HomeKit = {
 								enabled = 0;
 							};
 							com.apple.Keychain = {
+								enabled = 1;
+							};
+							com.apple.Maps.iOS = {
 								enabled = 1;
 							};
 						};
@@ -2231,7 +2234,6 @@
 				CC80906B2047166600265FE0 /* TimeSettingViewController.xib in Resources */,
 				C46A43B8215A3135002E8FFE /* NewFinancialCARDSCell.xib in Resources */,
 				C4BBC63E211E7119009B0854 /* CountdownView.xib in Resources */,
-				C4854FEE215CC79200A292A6 /* shareView.xib in Resources */,
 				CCCBF39120191C1C00A80D90 /* TimeModelCollectionViewCell.xib in Resources */,
 				CC80906120470ED100265FE0 /* MeteringViewController.xib in Resources */,
 				C4F1A24720E5D9EC00052B24 /* VerificationCodeViewController.xib in Resources */,
@@ -2352,7 +2354,6 @@
 			files = (
 				C490417421464362005652C9 /* LYPaymentAlertTransitioning.m in Sources */,
 				CC24568E1FF745DB00616916 /* ElectricityViewController.m in Sources */,
-				C4854FED215CC79200A292A6 /* shareView.m in Sources */,
 				C47E61A3214F5419008FA596 /* EquipmentCell.m in Sources */,
 				C4294146214294BE00E10921 /* DetailsPayCell.m in Sources */,
 				CC24566F1FF745DB00616916 /* UILabel+Convenience.m in Sources */,
