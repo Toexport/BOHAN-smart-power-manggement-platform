@@ -33,8 +33,12 @@
     [cancel.titleLabel setFont:[UIFont systemFontOfSize:15.0f]];
     [cancel setTitle:Localize(@"取消") forState:UIControlStateNormal];
     [cancel addTarget:self action:@selector(cancelClick) forControlEvents:UIControlEventTouchUpInside];
+    if (self.type == 555) {
+//        [cancel setTitle:Localize(@"") forState:UIControlStateNormal];
+        cancel.hidden = YES;
+    }else {
     [self.view addSubview:cancel];
-
+    }
     
     imageView = [[UIImageView alloc]initWithFrame:CGRectMake(40, (ScreenWidth + 80 - 64)/2, ScreenWidth-80, ScreenWidth -80)] ;
     imageView.image = [UIImage imageNamed:@"pick_bg"];
@@ -52,7 +56,7 @@
     
 }
 // 取消
--(void)cancelClick {
+- (void)cancelClick {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

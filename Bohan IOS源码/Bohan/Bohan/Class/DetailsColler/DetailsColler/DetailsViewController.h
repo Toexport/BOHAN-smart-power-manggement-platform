@@ -11,7 +11,6 @@
 @interface DetailsViewController : UIViewController
 @property (nonatomic, copy) NSString * deviceNo;
 @property (weak, nonatomic) IBOutlet UITableView *tableview;
-
-
+@property (nonatomic, strong) NSString * type;
 
 @end

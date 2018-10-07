@@ -115,6 +115,7 @@
         NSLog(@"设备具备相机");
         ScanView.type = 2;
     ScanView.hidesBottomBarWhenPushed = YES;
+        ScanView.type = 555;
         [self.navigationController pushViewController:ScanView animated:YES];
     }else {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:Localize(@"提示") message:Localize(@"您的设备暂时不支持扫码") delegate:nil cancelButtonTitle:Localize(@"确定") otherButtonTitles:nil, nil];
