@@ -38,8 +38,6 @@
 		C44DE7802148BE7D007325FD /* ChargingStatusController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C44DE77E2148BE7D007325FD /* ChargingStatusController.xib */; };
 		C46174C9215C840400DB55D1 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = C46174C6215C840400DB55D1 /* README.txt */; };
 		C46174CA215C840400DB55D1 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C46174C8215C840400DB55D1 /* libWeChatSDK.a */; };
-		C46174CC215C845F00DB55D1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C46174CB215C845F00DB55D1 /* SystemConfiguration.framework */; };
-		C46174CE215C846700DB55D1 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C46174CD215C846700DB55D1 /* CoreTelephony.framework */; };
 		C46174D0215C84AF00DB55D1 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C46174CF215C84AF00DB55D1 /* libsqlite3.0.tbd */; };
 		C46174D2215C84BB00DB55D1 /* libz.1.2.8.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C46174D1215C84BB00DB55D1 /* libz.1.2.8.tbd */; };
 		C46174D4215C84C700DB55D1 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C46174D3215C84C700DB55D1 /* libc++.tbd */; };
@@ -376,6 +374,9 @@
 		C48551602169D5A800A292A6 /* SecurityEnvSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SecurityEnvSDK.framework; sourceTree = "<group>"; };
 		C48551632169D5A800A292A6 /* UMPush.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMPush.framework; sourceTree = "<group>"; };
 		C48551672169D5A800A292A6 /* UMCommon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMCommon.framework; sourceTree = "<group>"; };
+		C48551CD2169E2F600A292A6 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		C48551CF2169E30F00A292A6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		C48551D12169E3E000A292A6 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		C490415B21464362005652C9 /* LYSecurityField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSecurityField.h; sourceTree = "<group>"; };
 		C490415C21464362005652C9 /* LYSecurityField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSecurityField.m; sourceTree = "<group>"; };
 		C490415E21464362005652C9 /* LYPaymentAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYPaymentAlertController.m; sourceTree = "<group>"; };
@@ -786,8 +787,6 @@
 				CC3C5FFF2022179C00C479C9 /* Security.framework in Frameworks */,
 				C485516D2169D5A800A292A6 /* UMCommon.framework in Frameworks */,
 				C485516A2169D5A800A292A6 /* UTDID.framework in Frameworks */,
-				C46174CE215C846700DB55D1 /* CoreTelephony.framework in Frameworks */,
-				C46174CC215C845F00DB55D1 /* SystemConfiguration.framework in Frameworks */,
 				CC3C6001202218BA00C479C9 /* Foundation.framework in Frameworks */,
 				C46174CA215C840400DB55D1 /* libWeChatSDK.a in Frameworks */,
 				CCE9E5A92006A0DA008439F3 /* AVFoundation.framework in Frameworks */,
@@ -1048,13 +1047,6 @@
 				C48450E5215097B700196704 /* WithdrawalsTableViewCell.xib */,
 			);
 			path = WithdrawalsCell;
-			sourceTree = "<group>";
-		};
-		C4854B8D215CB36F00A292A6 /* QQ */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = QQ;
 			sourceTree = "<group>";
 		};
 		C4854FEF215D150100A292A6 /* UMShare */ = {
@@ -1412,6 +1404,9 @@
 		C7BFA176DDE33FCA740149C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C48551D12169E3E000A292A6 /* libz.tbd */,
+				C48551CF2169E30F00A292A6 /* CoreGraphics.framework */,
+				C48551CD2169E2F600A292A6 /* libsqlite3.tbd */,
 				C4854FF0215DAC3100A292A6 /* MapKit.framework */,
 				C46174D3215C84C700DB55D1 /* libc++.tbd */,
 				C46174D1215C84BB00DB55D1 /* libz.1.2.8.tbd */,
@@ -1495,7 +1490,6 @@
 			children = (
 				C48551412169D4FB00A292A6 /* U-Push */,
 				C4854FEF215D150100A292A6 /* UMShare */,
-				C4854B8D215CB36F00A292A6 /* QQ */,
 				C46174C2215C840400DB55D1 /* WeChat */,
 				C427839E215B795D0088869E /* MapS */,
 				C490415821464362005652C9 /* PaymentField */,
@@ -3007,6 +3001,14 @@
 					"$(PROJECT_DIR)/Bohan/Common/U-Push/iOS/thirdparties/thirdparties_ios_1.0.5",
 					"$(PROJECT_DIR)/Bohan/Common/U-Push/iOS/push/push_ios_3.2.3",
 					"$(PROJECT_DIR)/Bohan/Common/U-Push/iOS/common/common_ios_1.5.2/normal",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/umcommonlog/umcommonlog_ios_1.0.0",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/thirdparties/thirdparties_ios_1.0.5",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/common/common_ios_1.5.2/normal",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/UMSocialUI",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Twitter",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Facebook",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/QQ/QQSDK",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3028,6 +3030,15 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/Masonry\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/YYModel\"",
 					"$(PROJECT_DIR)/Bohan/Common/WeChat/OpenSDK1.8.3",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Twitter",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/SMS",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/WeChat",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/WeChat/WechatSDK",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Facebook",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Sina",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Sina/SinaSDK",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Email",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/QQ",
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
@@ -3101,6 +3112,14 @@
 					"$(PROJECT_DIR)/Bohan/Common/U-Push/iOS/thirdparties/thirdparties_ios_1.0.5",
 					"$(PROJECT_DIR)/Bohan/Common/U-Push/iOS/push/push_ios_3.2.3",
 					"$(PROJECT_DIR)/Bohan/Common/U-Push/iOS/common/common_ios_1.5.2/normal",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/umcommonlog/umcommonlog_ios_1.0.0",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/thirdparties/thirdparties_ios_1.0.5",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/common/common_ios_1.5.2/normal",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/UMSocialUI",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Twitter",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Facebook",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/QQ/QQSDK",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3122,6 +3141,15 @@
 					"\"$PODS_CONFIGURATION_BUILD_DIR/Masonry\"",
 					"\"$PODS_CONFIGURATION_BUILD_DIR/YYModel\"",
 					"$(PROJECT_DIR)/Bohan/Common/WeChat/OpenSDK1.8.3",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Twitter",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/SMS",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/WeChat",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/WeChat/WechatSDK",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Facebook",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Sina",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Sina/SinaSDK",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Email",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/QQ",
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",

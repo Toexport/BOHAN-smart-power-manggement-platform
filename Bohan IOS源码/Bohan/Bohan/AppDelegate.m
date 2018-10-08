@@ -118,8 +118,7 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
     entity.types = UMessageAuthorizationOptionBadge|UMessageAuthorizationOptionSound;
     [UMessage registerForRemoteNotificationsWithLaunchOptions:launchOptions Entity:entity completionHandler:^(BOOL granted, NSError * _Nullable error) {
         if (granted) {
-            ZPLog(@"推送注册成功");
-//            push_umessage_debug5
+            NSLog(@"推送注册成功");
             
         } else {
             NSLog(@"推送注册失败");
@@ -127,11 +126,7 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
     }];
 }
 
-
-
-
-- (void)createTabBar
-{
+- (void)createTabBar {
     if (ISLOGIN) {
         EquipmentViewController *equipment = [[EquipmentViewController alloc] init];
         
@@ -316,8 +311,7 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    
-    ZPLog(@"%@",[[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""]
+    NSLog(@"%@",[[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""]
                   stringByReplacingOccurrencesOfString: @">" withString: @""]
                  stringByReplacingOccurrencesOfString: @" " withString: @""]);
 }
@@ -347,9 +341,9 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
         [UMessage didReceiveRemoteNotification:userInfo];
     }else{
         //应用处于后台时的本地推送接受
-        
     }
 }
+
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     [UMessage didReceiveRemoteNotification:userInfo];
