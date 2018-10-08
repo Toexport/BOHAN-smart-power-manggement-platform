@@ -19,12 +19,16 @@
 
 @property (weak, nonatomic) IBOutlet UIView *AlipayPayView;
 @property (weak, nonatomic) IBOutlet UIButton *AlipayPayBut;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *AlipayLayoutConstraint;
 
 @property (weak, nonatomic) IBOutlet UIView *WechatPayView;
 @property (weak, nonatomic) IBOutlet UIButton *WechatPayBut;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *WeChatLayoutConstraint;
 
 @property (weak, nonatomic) IBOutlet UIView *ApplePayView;
 @property (weak, nonatomic) IBOutlet UIButton *ApplePayBut;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *ApplePayLayoutConstraint;
+
 
 @property (weak, nonatomic) IBOutlet UIButton *DetermineBut;
 

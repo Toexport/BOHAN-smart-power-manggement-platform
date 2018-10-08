@@ -232,6 +232,12 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TjU-H5-6k4">
                         <rect key="frame" x="0.0" y="198" width="320" height="170"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂时无支付方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYp-vK-kxl">
+                                <rect key="frame" x="99.5" y="74.5" width="121.5" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ASU-Rs-nP8">
                                 <rect key="frame" x="0.0" y="1" width="320" height="55"/>
                                 <subviews>
@@ -360,6 +366,7 @@
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="vYp-vK-kxl" firstAttribute="centerY" secondItem="TjU-H5-6k4" secondAttribute="centerY" id="3i3-qc-LhK"/>
                             <constraint firstItem="ASU-Rs-nP8" firstAttribute="top" secondItem="TjU-H5-6k4" secondAttribute="top" constant="1" id="7Tl-0C-TOG"/>
                             <constraint firstItem="ASU-Rs-nP8" firstAttribute="leading" secondItem="TjU-H5-6k4" secondAttribute="leading" id="7kI-4U-ah1"/>
                             <constraint firstAttribute="trailing" secondItem="ASU-Rs-nP8" secondAttribute="trailing" id="C38-hX-jcX"/>
@@ -371,6 +378,7 @@
                             <constraint firstAttribute="height" constant="170" id="YCc-xg-cJE"/>
                             <constraint firstItem="h2v-rA-Nc0" firstAttribute="trailing" secondItem="XBa-Ak-mDS" secondAttribute="trailing" id="Yox-Fu-OzY"/>
                             <constraint firstItem="BAd-U1-dak" firstAttribute="leading" secondItem="Kut-yc-hxl" secondAttribute="leading" id="bVv-Ol-VIr"/>
+                            <constraint firstItem="vYp-vK-kxl" firstAttribute="centerX" secondItem="TjU-H5-6k4" secondAttribute="centerX" id="fSX-65-FkT"/>
                             <constraint firstAttribute="trailing" secondItem="Z1q-oH-hpo" secondAttribute="trailing" id="nM9-pr-7Se"/>
                             <constraint firstItem="XBa-Ak-mDS" firstAttribute="trailing" secondItem="WND-r6-U8d" secondAttribute="trailing" id="og9-jb-6Ql"/>
                             <constraint firstItem="gBe-A6-Wwf" firstAttribute="top" secondItem="Z1q-oH-hpo" secondAttribute="bottom" constant="1" id="rLR-Tf-ic6"/>
@@ -418,9 +426,11 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
+                <outlet property="AlipayLayoutConstraint" destination="7Tl-0C-TOG" id="DBd-q7-jJX"/>
                 <outlet property="AlipayPayBut" destination="WND-r6-U8d" id="rP1-Af-U0o"/>
                 <outlet property="AlipayPayView" destination="ASU-Rs-nP8" id="yhm-7j-24E"/>
                 <outlet property="ApplePayBut" destination="h2v-rA-Nc0" id="nk2-ac-n7k"/>
+                <outlet property="ApplePayLayoutConstraint" destination="rLR-Tf-ic6" id="ke6-uG-awg"/>
                 <outlet property="ApplePayView" destination="gBe-A6-Wwf" id="W28-im-PzE"/>
                 <outlet property="DetermineBut" destination="mUZ-O0-ufu" id="WZo-RQ-XcT"/>
                 <outlet property="PayBut1" destination="XR5-XZ-rTw" id="DwW-BB-BOt"/>
@@ -429,6 +439,7 @@
                 <outlet property="PayBut4" destination="jdK-mL-yb2" id="o1N-eF-UDZ"/>
                 <outlet property="PayBut5" destination="TQI-Ks-3A8" id="BbO-us-5DE"/>
                 <outlet property="PayBut6" destination="Miy-4D-Hr2" id="G42-OP-tMF"/>
+                <outlet property="WeChatLayoutConstraint" destination="VhX-b0-y3J" id="XHS-mx-YUT"/>
                 <outlet property="WechatPayBut" destination="XBa-Ak-mDS" id="sQ0-GJ-DPr"/>
                 <outlet property="WechatPayView" destination="Z1q-oH-hpo" id="CvM-Ae-hvL"/>
             </connections>

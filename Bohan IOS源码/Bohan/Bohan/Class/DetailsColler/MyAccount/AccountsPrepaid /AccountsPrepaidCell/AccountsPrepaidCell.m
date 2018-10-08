@@ -10,6 +10,7 @@
 #import "DebuggingANDPublishing.pch"
 #import "PrefixHeader.pch"
 #import "WXApi.h"
+
 @implementation AccountsPrepaidCell
 
 - (void)awakeFromNib {
@@ -47,7 +48,6 @@
         ZPLog(@"选中");
         return;
     }
-    
 }
 
 - (IBAction)PayBut3:(UIButton *)sender {
@@ -129,8 +129,6 @@
             self.ApplePayBut.selected = NO;
             [self.DetermineBut setEnabled:YES]; //交互关闭
             self.DetermineBut.alpha= 100;//透明度
-//            ZPLog(@"选中");
-//            ZPLog(@"%@",self.AmountPay);
         }
     }
 }
@@ -150,11 +148,8 @@
             self.ApplePayBut.selected = NO;
             [self.DetermineBut setEnabled:YES]; //交互关闭
             self.DetermineBut.alpha= 100;//透明度
-//            ZPLog(@"选中");
-//            ZPLog(@"%@",self.AmountPay);
         }
     }
-    
 }
 
 // Pay
@@ -181,27 +176,19 @@
 
 //确定按钮
 - (IBAction)DetermineBut:(UIButton *)sender {
-//    if (self.AmountPay == nil || self.PayWay == nil) {
-//        ZPLog(@"失败");
-//        return;
-//    }else {
-//        ZPLog(@"成功");
     self.payBlockBlock(self.AmountPay, self.PayWay);
-//        ZPLog(@"%@充值%@元",self.PayWay,self.AmountPay);
-//    }
 }
 
-//// 监听是否安装微信或支付宝
+// 监听是否安装微信或支付宝
 - (void)Listening {
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weixin://"]]) {
-        ZPLog(@"没有安装");
+    if ([WXApi isWXAppInstalled]) {
+        ZPLog(@"安装");
+        self.WechatPayView.hidden = NO;
+        self.ApplePayLayoutConstraint.constant = +55;
     }else {
-        ZPLog(@"安装了");
-    }
-    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"alipay://"]]) {
-        ZPLog(@"没有安装");
-    }else {
-        ZPLog(@"安装了");
+        ZPLog(@"没有");
+        self.WechatPayView.hidden = YES;
+        self.ApplePayLayoutConstraint.constant = -55;
     }
 }
 

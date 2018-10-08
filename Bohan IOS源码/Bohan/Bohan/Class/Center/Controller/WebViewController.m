@@ -38,7 +38,7 @@
     [self.view startLoading];
     if (self.type == 555) {
         NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",self.StrKey]]];
-        self.title = Localize(@"最新信息");
+        self.title = Localize(@"最新消息");
         [self.wkwebView loadRequest:request];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"ic_details_cancel"] style:UIBarButtonItemStyleDone target:self action:@selector(back)];
 }

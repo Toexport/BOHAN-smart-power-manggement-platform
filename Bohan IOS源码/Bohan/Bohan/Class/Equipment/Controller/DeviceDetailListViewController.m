@@ -86,7 +86,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     NSString *key = self.isPos?@"PosName":@"LoadName";
     [[NetworkRequest sharedInstance] requestWithUrl:GET_DEVICE_LIST_URL parameter:@{key:self.name} completion:^(id response, NSError *error) {
         [self.view stopLoading];
-        
         if (!error) {
             self.datas = [[NSArray yy_modelArrayWithClass:[DeviceModel class] json:response[@"content"]] mutableCopy];
             
@@ -99,7 +98,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
                     }
                 }
             }
-            
             if (self.datas.count == 0) {
                 self.table.noDataTitle = Localize(@"暂无数据");
                 self.table.noDataDetail = Localize(@"过会再来吧");
@@ -108,7 +106,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
             self.table.noDataTitle = error.localizedDescription;
             self.table.noDataDetail = Localize(@"请稍后再试吧！");
         }
-        
         [self.table changeState];
         [self.table reloadData];
         [self.table noDataReload];
