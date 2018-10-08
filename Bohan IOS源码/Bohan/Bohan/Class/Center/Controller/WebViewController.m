@@ -35,13 +35,22 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.wkwebView];
-    
     [self.view startLoading];
+    if (self.type == 555) {
+        NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"%@",self.StrKey]]];
+        self.title = Localize(@"最新信息");
+        [self.wkwebView loadRequest:request];
+        self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"ic_details_cancel"] style:UIBarButtonItemStyleDone target:self action:@selector(back)];
+}
+}
+
+- (void)back {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    //    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-
 }
 
 
@@ -60,11 +69,23 @@
         //
         //        [_wkwebView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];//注册observer 拿到加载进度
     }
-    
     return _wkwebView;
 }
 
+
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
+//    [ webView evaluateJavaScript:@"var script = document.createElement('script');"
+//          "script.type = 'text/javascript';"
+//          "script.text = \"function ResizeImages() { "
+//          "var myimg,oldwidth;"
+//          "var maxwidth = 1000.0;" // UIWebView中显示的图片宽度
+//          "for(i=1;i <document.images.length;i++){"
+//          "myimg = document.images[i];"
+//          "oldwidth = myimg.width;"
+//          "myimg.width = maxwidth;"
+//          "}"
+//          "}\";"
+//          "document.getElementsByTagName('head')[0].appendChild(script);ResizeImages();" completionHandler:nil];
     [self.view stopLoading];
 
 }

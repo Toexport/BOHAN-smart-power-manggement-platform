@@ -12,6 +12,8 @@
 
 //@property (nonatomic, copy) NSString *url;
 //@property (nonatomic, copy) NSString *titleStr;
-
+@property (nonatomic, assign) NSInteger type; // 识别号
+@property (nonatomic, strong)NSDictionary * StrKey;
 - (instancetype)initWithTitle:(NSString *)name urlStr:(NSString *)url;
+
 @end

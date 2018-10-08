@@ -13,6 +13,7 @@
 #import "CenterViewController.h"
 #import "LoginViewController.h"
 #import "DetailsViewController.h"
+#import "WebViewController.h"
 #import "IQKeyboardManager.h"
 #import "WebSocket.h"
 #import "WXApi.h"
@@ -25,6 +26,8 @@
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 @property (nonatomic, strong) NSDictionary *userInfo;
+@property (nonatomic, strong) NSDictionary * StrKey;
+@property (nonatomic, strong) NSDictionary * Key;
 
 @end
 
@@ -38,66 +41,13 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
     [self keyBoardManage];
     [self createTabBar];
     [self onCheckVersion];
-    //    [self ThreeTouch];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutNotification:) name:LOGOUTNOTIFICATION object:nil];
     [WXApi registerApp:@"wx76320274b0800e51"];
-    
     return YES;
 }
 
-//-(void)ThreeTouch {
-//    CGFloat currentDeviceVersionFloat = [[[UIDevice currentDevice] systemVersion] floatValue];
-//    //判断版本号，3D Touch是从iOS9.0后开始使用
-//    if (currentDeviceVersionFloat >= 9.0) {
-//        UIApplicationShortcutIcon *iconFitness = [UIApplicationShortcutIcon iconWithTemplateImageName:@"qrcode_scan"];
-//        //菜单文字
-//        UIMutableApplicationShortcutItem *itemFitness = [[UIMutableApplicationShortcutItem alloc] initWithType:@"1" localizedTitle: Localize(@"扫描")];
-//        //绑定信息到指定菜单
-//        itemFitness.icon = iconFitness;
-//
-//        // 菜单图标
-//        UIApplicationShortcutIcon *iconRun = [UIApplicationShortcutIcon iconWithTemplateImageName:@"manage_device_share"];
-//        //菜单文字
-//        UIMutableApplicationShortcutItem *itemRun = [[UIMutableApplicationShortcutItem alloc] initWithType:@"2" localizedTitle:@"分享"];
-//        //绑定信息到指定菜单
-//        itemRun.icon = iconRun;
-//        //绑定到App icon
-////        UIApplication.shortcutItems = @[itemFitness,itemRun];
-//    }
-//
-//}
-
-//- (void)application:(UIApplication *)application performActionForShortcutItem:(nonnull UIApplicationShortcutItem *)shortcutItem completionHandler:(nonnull void (^)(BOOL))completionHandler{
-//    if ([shortcutItem.type isEqualToString:@"1"]) {
-//        //如果有导航栏参考下面注释部分
-//        UINavigationController *myNavi = self.window.rootViewController.childViewControllers[0];
-//        //        _tabBar.selectedIndex = 0;
-//        UIViewController * picker1 = [[UIViewController alloc]init];//进入窗口的初始化
-//        //利用NSUserDefaults 的标识，来防止重复初始化VC
-//        //    if ([[NSUserDefaults standardUserDefaults]boolForKey:@"3d"]) {
-//        //       [myNavi popViewControllerAnimated:NO];
-//        //      [myNavi pushViewController:_picker1 animated:YES ];
-//        //    }else{
-//        [myNavi pushViewController:picker1 animated:YES ];
-//
-//        //    }
-//
-//    }
-//    if ([shortcutItem.type isEqualToString:@"2"]) {
-//        / /   UINavigationController *myNavi = self.window.rootViewController.childViewControllers[1];
-//        //    _tabBar.selectedIndex = 1;
-//        UIViewController *vc = [[UIViewController1 alloc]init];//进入窗口的初始化
-//        //     if ([[NSUserDefaults standardUserDefaults]boolForKey:@"3d1"]) {
-//        //       [myNavi popViewControllerAnimated:NO];
-//        //      [myNavi pushViewController:_LJHVC animated:YES ];
-//        //    }else{
-//
-//        [myNavi pushViewController:vc animated:YES ];
-
-- (void)keyBoardManage
-{
+- (void)keyBoardManage {
     IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
-    
     [manager setEnable:YES];
     [manager setEnableAutoToolbar:NO];
     manager.shouldResignOnTouchOutside = YES;
@@ -112,7 +62,6 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
 - (void)initUM:(NSDictionary *)launchOptions {
     [UMConfigure setLogEnabled:YES];
     [UMConfigure initWithAppkey:UMessageAppKey channel:nil];
-    
     UMessageRegisterEntity * entity = [[UMessageRegisterEntity alloc] init];
     [UNUserNotificationCenter currentNotificationCenter].delegate = self;
     entity.types = UMessageAuthorizationOptionBadge|UMessageAuthorizationOptionSound;
@@ -178,37 +127,7 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     [[UINavigationBar appearance] setTitleTextAttributes:[NSDictionary dictionaryWithObjects:[NSArray arrayWithObjects:[UIColor whiteColor], nil] forKeys:[NSArray arrayWithObjects:NSForegroundColorAttributeName, nil]]];
     [[UITabBar appearance] setTintColor:kDefualtColor];
-    //    UIViewController.hidesBottomBarWhenPushed = YES;
-    //    [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0,0) forBarMetrics:UIBarMetricsDefault];
-    //    [[UIBarButtonItem appearance]setBackButtonBackgroundImage:[UIImage imageNamed:@"whiteBack"] forState:UIControlStateNormal barMetrics:UIBarMetricsCompact];
-    //    [[UIBarButtonItem appearance]setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -64) forBarMetrics:UIBarMetricsDefault];
-    //    [viewController setBackButton];
 }
-
-//- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
-//    if (self.childViewControllers.count > 0) {//非根控制器
-//        viewController.hidesBottomBarWhenPushed = YES;
-//        [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
-//        [viewController setBackButton];
-//    }
-//
-//    [super pushViewController:viewController animated:animated];
-//
-//    //根据栈顶控制器 设置导航条title
-//    //拿到tabbar控制器
-//    //    UITabBarController *tabbarVC = (UITabBarController *)self.tabBarController;
-//    //    viewController.navigationItem.title = tabbarVC.selectedViewController.tabBarItem.title;
-//}
-//
-//#pragma mark - 手势代理
-////手势是否应该被识别
-//- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
-//    if (self.childViewControllers.count > 1) {
-//        return YES;
-//    }else{
-//        return NO;
-//    }
-//}
 
 /**
  *  @brief  检测版本更新
@@ -256,8 +175,7 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
     
 }
 
-- (void)logoutNotification:(NSNotification*)notify
-{
+- (void)logoutNotification:(NSNotification*)notify {
     [[WebSocket socketManager].serverSockt webSocketClose];
     [UserInfoManager updateLoginState:NO];
     LoginViewController *login = [[LoginViewController alloc] init];
@@ -268,34 +186,14 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
         [HintView showHint:notify.userInfo[@"message"]];
         
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            
-            //            [self.window.rootViewController.view removeFromSuperview];
             self.window.rootViewController = loginNav;
         });
         
-    }else
-    {
-        
-        //        [self.window.rootViewController.view removeFromSuperview];
+    }else {
         self.window.rootViewController = loginNav;
     }
     
 }
-
-//- (void)pushViewController:(UIViewController *)viewController animated:(BOOL)animated {
-//    if (self.childViewControllers.count > 0) {//非根控制器
-//        viewController.hidesBottomBarWhenPushed = YES;
-//        [[UIBarButtonItem appearance] setBackButtonTitlePositionAdjustment:UIOffsetMake(0, -60) forBarMetrics:UIBarMetricsDefault];
-//        [viewController setBackButton];
-//    }
-//
-//    [super pushViewController:viewController animated:animated];
-//
-//    //根据栈顶控制器 设置导航条title
-//    //拿到tabbar控制器
-//    //    UITabBarController *tabbarVC = (UITabBarController *)self.tabBarController;
-//    //    viewController.navigationItem.title = tabbarVC.selectedViewController.tabBarItem.title;
-//}
 
 // 处理其他app调起的情况
 -(BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
@@ -310,11 +208,13 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
     [alertview show];
 }
 
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+    ZPLog(@"%@",deviceToken);
     NSLog(@"%@",[[[[deviceToken description] stringByReplacingOccurrencesOfString: @"<" withString: @""]
                   stringByReplacingOccurrencesOfString: @">" withString: @""]
                  stringByReplacingOccurrencesOfString: @" " withString: @""]);
 }
+
 
 //iOS10新增：处理前台收到通知的代理方法
 -(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
@@ -325,7 +225,7 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
         [UMessage setAutoAlert:NO];
         //必须加这句代码
         [UMessage didReceiveRemoteNotification:userInfo];
-    }else{
+    }else {
         //应用处于前台时的本地推送接受
     }
     //当应用处于前台时提示设置，需要哪个可以设置哪一个
@@ -339,15 +239,21 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
         //应用处于后台时的远程推送接受
         //必须加这句代码
         [UMessage didReceiveRemoteNotification:userInfo];
+//        ZPLog(@"跳转");
     }else{
         //应用处于后台时的本地推送接受
+//        ZPLog(@"111");
     }
+    NSDictionary * dic = [NSDictionary dictionaryWithDictionary:userInfo];
+    self.StrKey = dic[@"aps"];
+    self.Key = self.StrKey[@"StrKey"];
+    WebViewController *WebView = [[WebViewController alloc] init];
+    WebView.type = 555;
+    WebView.StrKey = self.Key;
+    UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:WebView];
+    [self.window.rootViewController presentViewController:nav animated:YES completion:nil];
 }
 
-
-- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
-    [UMessage didReceiveRemoteNotification:userInfo];
-}
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

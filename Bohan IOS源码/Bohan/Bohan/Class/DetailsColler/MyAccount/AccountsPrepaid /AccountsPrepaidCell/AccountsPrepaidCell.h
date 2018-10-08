@@ -16,10 +16,18 @@
 @property (weak, nonatomic) IBOutlet UIButton *PayBut4;
 @property (weak, nonatomic) IBOutlet UIButton *PayBut5;
 @property (weak, nonatomic) IBOutlet UIButton *PayBut6;
-@property (weak, nonatomic) IBOutlet UIButton *WechatPayBut;
+
+@property (weak, nonatomic) IBOutlet UIView *AlipayPayView;
 @property (weak, nonatomic) IBOutlet UIButton *AlipayPayBut;
+
+@property (weak, nonatomic) IBOutlet UIView *WechatPayView;
+@property (weak, nonatomic) IBOutlet UIButton *WechatPayBut;
+
+@property (weak, nonatomic) IBOutlet UIView *ApplePayView;
 @property (weak, nonatomic) IBOutlet UIButton *ApplePayBut;
+
 @property (weak, nonatomic) IBOutlet UIButton *DetermineBut;
+
 @property (nonatomic, strong) NSString * AmountPay;
 @property (nonatomic, strong) NSString * PayWay; // 方式
 

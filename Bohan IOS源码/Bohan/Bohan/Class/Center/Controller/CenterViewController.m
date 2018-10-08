@@ -233,7 +233,9 @@
         localeLanguageCode = [[localeLanguageCode componentsSeparatedByString:@"-"] firstObject];
         NSString *urlStr = @"http://www.bohanserver.top:8088/APPHelp_en.html";
         if ((language && [language isEqualToString:@"zh-Hans"]) || (!language && [localeLanguageCode isEqualToString:@"zh"])) {
-            urlStr = @"http://www.bohanserver.top:8088/APPHelp.html";        }
+            urlStr = @"http://www.bohanserver.top:8088/APPHelp.html";
+            
+        }
         WebViewController *help = [[WebViewController alloc] initWithTitle:Localize(@"操作指南") urlStr:urlStr];
         help.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:help animated:YES];

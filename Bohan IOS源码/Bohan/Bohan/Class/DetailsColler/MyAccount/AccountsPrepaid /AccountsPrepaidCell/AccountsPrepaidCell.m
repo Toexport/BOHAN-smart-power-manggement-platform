@@ -9,12 +9,14 @@
 #import "AccountsPrepaidCell.h"
 #import "DebuggingANDPublishing.pch"
 #import "PrefixHeader.pch"
+#import "WXApi.h"
 @implementation AccountsPrepaidCell
 
 - (void)awakeFromNib {
     [super awakeFromNib];
     [self.DetermineBut setEnabled:NO]; //交互关闭
     self.DetermineBut.alpha= 0.4;//透明度
+    [self Listening];
 }
 
 - (IBAction)PayBut1:(UIButton *)sender {
@@ -189,6 +191,19 @@
 //    }
 }
 
+//// 监听是否安装微信或支付宝
+- (void)Listening {
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"weixin://"]]) {
+        ZPLog(@"没有安装");
+    }else {
+        ZPLog(@"安装了");
+    }
+    if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString:@"alipay://"]]) {
+        ZPLog(@"没有安装");
+    }else {
+        ZPLog(@"安装了");
+    }
+}
 
 @end
 
