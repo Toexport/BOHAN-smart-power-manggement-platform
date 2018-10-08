@@ -43,6 +43,7 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
     [self onCheckVersion];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutNotification:) name:LOGOUTNOTIFICATION object:nil];
     [WXApi registerApp:@"wx76320274b0800e51"];
+
     return YES;
 }
 
@@ -67,10 +68,10 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
     entity.types = UMessageAuthorizationOptionBadge|UMessageAuthorizationOptionSound;
     [UMessage registerForRemoteNotificationsWithLaunchOptions:launchOptions Entity:entity completionHandler:^(BOOL granted, NSError * _Nullable error) {
         if (granted) {
-            NSLog(@"推送注册成功");
+            ZPLog(@"推送注册成功");
             
         } else {
-            NSLog(@"推送注册失败");
+            ZPLog(@"推送注册失败");
         }
     }];
 }
@@ -202,7 +203,7 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
 }
 
 #pragma mark WXApiDelegate
--(void) onResp:(BaseResp*)resp{
+-(void)onResp:(BaseResp*)resp {
     NSString *str = [NSString stringWithFormat:@"%d",resp.errCode];
     UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"微信返回结果" message:str delegate:self cancelButtonTitle:@"好的" otherButtonTitles:nil, nil];
     [alertview show];
@@ -215,9 +216,8 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
                  stringByReplacingOccurrencesOfString: @" " withString: @""]);
 }
 
-
 //iOS10新增：处理前台收到通知的代理方法
--(void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
     NSDictionary * userInfo = notification.request.content.userInfo;
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         //应用处于前台时的远程推送接受
@@ -239,10 +239,8 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
         //应用处于后台时的远程推送接受
         //必须加这句代码
         [UMessage didReceiveRemoteNotification:userInfo];
-//        ZPLog(@"跳转");
     }else{
         //应用处于后台时的本地推送接受
-//        ZPLog(@"111");
     }
     NSDictionary * dic = [NSDictionary dictionaryWithDictionary:userInfo];
     self.StrKey = dic[@"aps"];
@@ -253,7 +251,6 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
     UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:WebView];
     [self.window.rootViewController presentViewController:nav animated:YES completion:nil];
 }
-
 
 - (void)applicationWillResignActive:(UIApplication *)application {
     // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

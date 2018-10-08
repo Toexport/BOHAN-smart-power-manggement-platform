@@ -68,6 +68,11 @@
 		C485516B2169D5A800A292A6 /* SecurityEnvSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C48551602169D5A800A292A6 /* SecurityEnvSDK.framework */; };
 		C485516C2169D5A800A292A6 /* UMPush.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C48551632169D5A800A292A6 /* UMPush.framework */; };
 		C485516D2169D5A800A292A6 /* UMCommon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C48551672169D5A800A292A6 /* UMCommon.framework */; };
+		C48551D3216B57A900A292A6 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C46174CD215C846700DB55D1 /* CoreTelephony.framework */; };
+		C48551D4216B57B500A292A6 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C48551D12169E3E000A292A6 /* libz.tbd */; };
+		C48551D5216B57CB00A292A6 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = C48551CD2169E2F600A292A6 /* libsqlite3.tbd */; };
+		C48551D6216B57DC00A292A6 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C46174CB215C845F00DB55D1 /* SystemConfiguration.framework */; };
+		C48551D8216B57FF00A292A6 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C48551D7216B57FF00A292A6 /* UserNotifications.framework */; };
 		C490417121464362005652C9 /* LYSecurityField.m in Sources */ = {isa = PBXBuildFile; fileRef = C490415C21464362005652C9 /* LYSecurityField.m */; };
 		C490417221464362005652C9 /* LYPaymentAlertController.m in Sources */ = {isa = PBXBuildFile; fileRef = C490415E21464362005652C9 /* LYPaymentAlertController.m */; };
 		C490417321464362005652C9 /* LYPaymentAlertTheme.m in Sources */ = {isa = PBXBuildFile; fileRef = C490415F21464362005652C9 /* LYPaymentAlertTheme.m */; };
@@ -377,6 +382,7 @@
 		C48551CD2169E2F600A292A6 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		C48551CF2169E30F00A292A6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		C48551D12169E3E000A292A6 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		C48551D7216B57FF00A292A6 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		C490415B21464362005652C9 /* LYSecurityField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYSecurityField.h; sourceTree = "<group>"; };
 		C490415C21464362005652C9 /* LYSecurityField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYSecurityField.m; sourceTree = "<group>"; };
 		C490415E21464362005652C9 /* LYPaymentAlertController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYPaymentAlertController.m; sourceTree = "<group>"; };
@@ -780,6 +786,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C48551D8216B57FF00A292A6 /* UserNotifications.framework in Frameworks */,
+				C48551D6216B57DC00A292A6 /* SystemConfiguration.framework in Frameworks */,
+				C48551D5216B57CB00A292A6 /* libsqlite3.tbd in Frameworks */,
+				C48551D4216B57B500A292A6 /* libz.tbd in Frameworks */,
+				C48551D3216B57A900A292A6 /* CoreTelephony.framework in Frameworks */,
 				C46174D4215C84C700DB55D1 /* libc++.tbd in Frameworks */,
 				C46174D2215C84BB00DB55D1 /* libz.1.2.8.tbd in Frameworks */,
 				C46174D0215C84AF00DB55D1 /* libsqlite3.0.tbd in Frameworks */,
@@ -1404,6 +1415,7 @@
 		C7BFA176DDE33FCA740149C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C48551D7216B57FF00A292A6 /* UserNotifications.framework */,
 				C48551D12169E3E000A292A6 /* libz.tbd */,
 				C48551CF2169E30F00A292A6 /* CoreGraphics.framework */,
 				C48551CD2169E2F600A292A6 /* libsqlite3.tbd */,
@@ -2295,6 +2307,9 @@
 								enabled = 1;
 							};
 							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+							com.apple.Push = {
 								enabled = 1;
 							};
 						};
