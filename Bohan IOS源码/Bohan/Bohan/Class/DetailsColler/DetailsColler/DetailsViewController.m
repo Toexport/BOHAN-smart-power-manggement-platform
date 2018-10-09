@@ -9,6 +9,7 @@
 #import "DetailsViewController.h"
 #import "MyAccountViewController.h"
 #import "ScanViewController.h"
+#import "DebuggingANDPublishing.pch"
 #import "PrefixHeader.pch"
 #import "DetailsPayController.h"
 #import "MyAccountViewController.h"
@@ -17,7 +18,8 @@
 #import "EquipmentCell.h"
 #import "CostIntroducedCell.h"
 #import "AppLocationManager.h"
-
+#import "WXApi.h"
+#import "WXApiObject.h"
 @interface DetailsViewController ()<UITableViewDelegate, UITableViewDataSource> {
     NSString * latStr;
     NSString * linStr;
@@ -39,7 +41,7 @@
     [self.tableview registerNib:[UINib nibWithNibName:@"CostIntroducedCell" bundle:nil] forCellReuseIdentifier:@"CostIntroducedCell"];
     self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;  //隐藏tableview多余的线条
     self.edgesForExtendedLayout = UIRectEdgeNone; // 设置tabbar底部高度
-    latStr = @"22.944010";
+    latStr = @"22.948010";
     linStr = @"113.890100";
 //    22.948066, 113.890191
 //    [AppLocationManager shareAppLocationManager];
@@ -77,7 +79,6 @@
         cell.ShareButBlock = ^(id ShareBut) {
             ZPLog(@"点击了分享");
             [self sendUrl:@"https://www.baidu.com" To:WXSceneTimeline];
-//            [self UMShare];
         };
         return cell;
     }else
@@ -150,15 +151,5 @@
     [WXApi sendReq:req];
 }
 
-// 分享
-//- (void)UMShare {
-//    //显示分享面板
-//    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
-//        // 根据获取的platformType确定所选平台进行下一步操作
-//    }];
-//}
-//[UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_Sina),@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_WechatSession)]];
-//[UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
-//    // 根据获取的platformType确定所选平台进行下一步操作
-//}];
+
 @end

@@ -14,11 +14,8 @@
 #import "PrefixHeader.pch"
 #import "AccountsPrepaidController.h"
 #import "WithdrawalsController.h"
-@interface AccountCenterController () <UITableViewDelegate, UITableViewDataSource>{
-    NSTimer * timer;
-    UIScrollView * scrollViewText;
-}
-@property (nonatomic, strong) NSArray * arrData;
+@interface AccountCenterController () <UITableViewDelegate, UITableViewDataSource>
+
 @end
 
 @implementation AccountCenterController

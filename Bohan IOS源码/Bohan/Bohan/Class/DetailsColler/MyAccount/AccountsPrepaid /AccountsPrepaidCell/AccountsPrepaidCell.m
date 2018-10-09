@@ -17,7 +17,7 @@
     [super awakeFromNib];
     [self.DetermineBut setEnabled:NO]; //交互关闭
     self.DetermineBut.alpha= 0.4;//透明度
-    [self booWeixin];
+    [self Listening];
 }
 
 - (IBAction)PayBut1:(UIButton *)sender {
@@ -171,43 +171,25 @@
     }
 }
 
+
 //确定按钮
 - (IBAction)DetermineBut:(UIButton *)sender {
     self.payBlockBlock(self.AmountPay, self.PayWay);
 }
 
-// 设置好后再调用 判断是否安装微信
-- (BOOL)booWeixin {
-// 判断是否安装微信
-    if ([WXApi isWXAppInstalled] ){
-        //判断当前微信的版本是否支持OpenApi
-        if ([WXApi isWXAppSupportApi]) {
-            ZPLog(@"安装了");
-            self.WechatPayView.hidden = NO;
-//            self.ApplePayLayoutConstraint.constant = 55;
-            self.BackViewLayoutConstraint.constant = 170;
-            return YES;
-        }else{
-            ZPLog(@"请升级微信至最新版本！");
-            self.WechatPayView.hidden = NO;
-            self.ApplePayLayoutConstraint.constant = 55;
-            self.BackViewLayoutConstraint.constant = 170;
-            return NO;
-        }
+// 监听是否安装微信或支付宝
+- (void)Listening {
+    if ([WXApi isWXAppInstalled]) {
+        ZPLog(@"安装");
+        self.WechatPayView.hidden = NO;
+        self.ApplePayLayoutConstraint.constant = +55;
     }else {
-        ZPLog(@"请安装微信客户端");
+        ZPLog(@"没有");
         self.WechatPayView.hidden = YES;
         self.BackViewLayoutConstraint.constant = 118;
         self.ApplePayLayoutConstraint.constant = -55;
-        return NO;
     }
 }
-
-
-
-
-
-
 
 @end
 
