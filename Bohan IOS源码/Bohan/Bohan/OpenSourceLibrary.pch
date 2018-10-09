@@ -18,7 +18,9 @@
 #import <UserNotifications/UserNotifications.h>  // Push组件必须的系统库
 // 微信
 #import "WXApi.h"
-// 友盟推送
+#import "WXApiObject.h"
+// 友盟分享
+#import <UShareUI/UShareUI.h>
 
 
 
