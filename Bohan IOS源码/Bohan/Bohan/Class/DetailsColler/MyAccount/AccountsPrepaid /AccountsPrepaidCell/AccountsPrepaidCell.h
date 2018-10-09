@@ -17,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *PayBut5;
 @property (weak, nonatomic) IBOutlet UIButton *PayBut6;
 
+@property (weak, nonatomic) IBOutlet UIView *BackView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *BackViewLayoutConstraint;
+
 @property (weak, nonatomic) IBOutlet UIView *AlipayPayView;
 @property (weak, nonatomic) IBOutlet UIButton *AlipayPayBut;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *AlipayLayoutConstraint;

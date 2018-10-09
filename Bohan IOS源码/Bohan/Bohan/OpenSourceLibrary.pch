@@ -1,0 +1,28 @@
+//
+//  OpenSourceLibrary.pch
+//  Bohan
+//
+//  Created by summer on 2018/10/9.
+//  Copyright © 2018年 Bohan. All rights reserved.
+//
+
+#ifndef OpenSourceLibrary_pch
+#define OpenSourceLibrary_pch
+// PAy
+#import <PassKit/PassKit.h>                                 //用户绑定的银行卡信息
+#import <PassKit/PKPaymentAuthorizationViewController.h>    //Apple pay的展示控件
+// 友盟推送
+#import <UMPush/UMessage.h>
+#import <UMCommon/UMCommon.h>           // 公共组件是所有友盟产品的基础组件，必选
+#import <UMPush/UMessage.h>             // Push组件
+#import <UserNotifications/UserNotifications.h>  // Push组件必须的系统库
+// 微信
+#import "WXApi.h"
+// 友盟推送
+
+
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#endif /* OpenSourceLibrary_pch */

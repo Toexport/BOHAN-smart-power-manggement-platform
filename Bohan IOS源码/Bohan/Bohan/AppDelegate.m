@@ -16,13 +16,8 @@
 #import "WebViewController.h"
 #import "IQKeyboardManager.h"
 #import "WebSocket.h"
-#import "WXApi.h"
-#import "DebuggingANDPublishing.pch"
+#import "PrefixHeader.pch"
 
-#import <UMPush/UMessage.h>
-#import <UMCommon/UMCommon.h>           // 公共组件是所有友盟产品的基础组件，必选
-#import <UMPush/UMessage.h>             // Push组件
-#import <UserNotifications/UserNotifications.h>  // Push组件必须的系统库
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 @property (nonatomic, strong) NSDictionary *userInfo;

@@ -167,8 +167,6 @@
             self.AlipayPayBut.selected = NO;
             [self.DetermineBut setEnabled:YES]; //交互关闭
             self.DetermineBut.alpha= 100;//透明度
-//            ZPLog(@"选中");
-//            ZPLog(@"%@",self.AmountPay);
         }
     }
 }
@@ -188,6 +186,7 @@
     }else {
         ZPLog(@"没有");
         self.WechatPayView.hidden = YES;
+        self.BackViewLayoutConstraint.constant = 118;
         self.ApplePayLayoutConstraint.constant = -55;
     }
 }

@@ -232,7 +232,7 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TjU-H5-6k4">
                         <rect key="frame" x="0.0" y="198" width="320" height="170"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂时无支付方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYp-vK-kxl">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="暂时无支付方式" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYp-vK-kxl">
                                 <rect key="frame" x="99.5" y="74.5" width="121.5" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
@@ -432,6 +432,8 @@
                 <outlet property="ApplePayBut" destination="h2v-rA-Nc0" id="nk2-ac-n7k"/>
                 <outlet property="ApplePayLayoutConstraint" destination="rLR-Tf-ic6" id="ke6-uG-awg"/>
                 <outlet property="ApplePayView" destination="gBe-A6-Wwf" id="W28-im-PzE"/>
+                <outlet property="BackView" destination="TjU-H5-6k4" id="fmj-xv-Utb"/>
+                <outlet property="BackViewLayoutConstraint" destination="YCc-xg-cJE" id="yuG-dG-Vtn"/>
                 <outlet property="DetermineBut" destination="mUZ-O0-ufu" id="WZo-RQ-XcT"/>
                 <outlet property="PayBut1" destination="XR5-XZ-rTw" id="DwW-BB-BOt"/>
                 <outlet property="PayBut2" destination="k8X-wq-9Pi" id="ER1-C9-NsV"/>

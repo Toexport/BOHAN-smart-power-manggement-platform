@@ -84,6 +84,11 @@
 		C490417921464362005652C9 /* LYPaymentBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C490416F21464362005652C9 /* LYPaymentBaseViewController.m */; };
 		C490418521464657005652C9 /* BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = C490418421464657005652C9 /* BaseController.m */; };
 		C4A044962113F5C300656EC2 /* ParamsSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4A044982113F5C300656EC2 /* ParamsSettingViewController.xib */; };
+		C4A6CFC4216C34DF00B4113A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C48551CF2169E30F00A292A6 /* CoreGraphics.framework */; };
+		C4A6CFC6216C35CC00B4113A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A6CFC5216C35CB00B4113A /* ImageIO.framework */; };
+		C4A6CFC8216C35F700B4113A /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A6CFC7216C35F700B4113A /* Photos.framework */; };
+		C4A6CFCA216C361200B4113A /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A6CFC9216C361200B4113A /* CoreData.framework */; };
+		C4A6CFCC216C362500B4113A /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A6CFCB216C362500B4113A /* MessageUI.framework */; };
 		C4AD806C2143C29400CE8C66 /* ZJBLStoreShopTypeAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD80692143C29300CE8C66 /* ZJBLStoreShopTypeAlert.m */; };
 		C4AD806D2143C29400CE8C66 /* UIColor+JGHexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD806B2143C29400CE8C66 /* UIColor+JGHexColor.m */; };
 		C4AF059F214A014500176F29 /* MyAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4AF058F214A014500176F29 /* MyAccountViewController.xib */; };
@@ -405,6 +410,11 @@
 		C490418421464657005652C9 /* BaseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseController.m; sourceTree = "<group>"; };
 		C4A044972113F5C300656EC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ParamsSettingViewController.xib; sourceTree = "<group>"; };
 		C4A0449C2113F5C700656EC2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ParamsSettingViewController.strings"; sourceTree = "<group>"; };
+		C4A6CF6F216C327500B4113A /* OpenSourceLibrary.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenSourceLibrary.pch; sourceTree = "<group>"; };
+		C4A6CFC5216C35CB00B4113A /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		C4A6CFC7216C35F700B4113A /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
+		C4A6CFC9216C361200B4113A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C4A6CFCB216C362500B4113A /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		C4AD80682143C29300CE8C66 /* ZJBLStoreShopTypeAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZJBLStoreShopTypeAlert.h; sourceTree = "<group>"; };
 		C4AD80692143C29300CE8C66 /* ZJBLStoreShopTypeAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZJBLStoreShopTypeAlert.m; sourceTree = "<group>"; };
 		C4AD806A2143C29400CE8C66 /* UIColor+JGHexColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+JGHexColor.h"; sourceTree = "<group>"; };
@@ -786,12 +796,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C48551D8216B57FF00A292A6 /* UserNotifications.framework in Frameworks */,
-				C48551D6216B57DC00A292A6 /* SystemConfiguration.framework in Frameworks */,
-				C48551D5216B57CB00A292A6 /* libsqlite3.tbd in Frameworks */,
+				C4A6CFCC216C362500B4113A /* MessageUI.framework in Frameworks */,
+				C4A6CFCA216C361200B4113A /* CoreData.framework in Frameworks */,
+				C4A6CFC8216C35F700B4113A /* Photos.framework in Frameworks */,
 				C48551D4216B57B500A292A6 /* libz.tbd in Frameworks */,
+				C48551D5216B57CB00A292A6 /* libsqlite3.tbd in Frameworks */,
+				C4A6CFC6216C35CC00B4113A /* ImageIO.framework in Frameworks */,
 				C48551D3216B57A900A292A6 /* CoreTelephony.framework in Frameworks */,
+				C48551D6216B57DC00A292A6 /* SystemConfiguration.framework in Frameworks */,
 				C46174D4215C84C700DB55D1 /* libc++.tbd in Frameworks */,
+				C4A6CFC4216C34DF00B4113A /* CoreGraphics.framework in Frameworks */,
+				C48551D8216B57FF00A292A6 /* UserNotifications.framework in Frameworks */,
 				C46174D2215C84BB00DB55D1 /* libz.1.2.8.tbd in Frameworks */,
 				C46174D0215C84AF00DB55D1 /* libsqlite3.0.tbd in Frameworks */,
 				CC97ABD01FFBF4EB00B4A58C /* CFNetwork.framework in Frameworks */,
@@ -1415,6 +1430,10 @@
 		C7BFA176DDE33FCA740149C6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C4A6CFCB216C362500B4113A /* MessageUI.framework */,
+				C4A6CFC9216C361200B4113A /* CoreData.framework */,
+				C4A6CFC7216C35F700B4113A /* Photos.framework */,
+				C4A6CFC5216C35CB00B4113A /* ImageIO.framework */,
 				C48551D7216B57FF00A292A6 /* UserNotifications.framework */,
 				C48551D12169E3E000A292A6 /* libz.tbd */,
 				C48551CF2169E30F00A292A6 /* CoreGraphics.framework */,
@@ -1482,13 +1501,14 @@
 				CC2455AA1FF7450700616916 /* AppDelegate.m */,
 				CC2455AC1FF7450700616916 /* ViewController.h */,
 				CC2455AD1FF7450700616916 /* ViewController.m */,
+				CC2456931FF746BC00616916 /* PrefixHeader.pch */,
+				C4A6CF6F216C327500B4113A /* OpenSourceLibrary.pch */,
 				C4F1A24E20E605AE00052B24 /* DebuggingANDPublishing.pch */,
 				CC2455AF1FF7450700616916 /* Main.storyboard */,
 				CC2455B21FF7450700616916 /* Assets.xcassets */,
 				CC2455B41FF7450700616916 /* LaunchScreen.storyboard */,
 				CC2455B71FF7450700616916 /* Info.plist */,
 				CC3C6003202219F600C479C9 /* test.swift */,
-				CC2456931FF746BC00616916 /* PrefixHeader.pch */,
 				CC2455B81FF7450700616916 /* main.m */,
 				CC97ABBA1FFBE48C00B4A58C /* soap.xml */,
 				CC3C6002202219F600C479C9 /* Bohan-Bridging-Header.h */,
@@ -3024,6 +3044,7 @@
 					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Twitter",
 					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Facebook",
 					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/QQ/QQSDK",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Linkedin",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3054,6 +3075,7 @@
 					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Sina/SinaSDK",
 					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Email",
 					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/QQ",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Linkedin",
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
@@ -3135,6 +3157,7 @@
 					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Twitter",
 					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Facebook",
 					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/QQ/QQSDK",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Linkedin",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -3165,6 +3188,7 @@
 					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Sina/SinaSDK",
 					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Email",
 					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/QQ",
+					"$(PROJECT_DIR)/Bohan/Common/UMShare/iOS/share/share_ios_6.9.4/SocialLibraries/Linkedin",
 				);
 				OTHER_CFLAGS = (
 					"$(inherited)",
