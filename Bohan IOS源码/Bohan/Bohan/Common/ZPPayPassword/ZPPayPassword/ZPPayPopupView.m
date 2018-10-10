@@ -14,17 +14,8 @@
 #define kZJSupeViewAlpha 0.3
 
 @interface ZPPayPopupView ()<UITextFieldDelegate>
-
-@property (nonatomic, strong) UIView *superView;
-@property (nonatomic, strong) UIView *payPopupView;
-@property (nonatomic, strong) UILabel *titleLabel;
-@property (nonatomic, strong) UIButton *closeButton;
-@property (nonatomic, strong) UIView *lineView;
-@property (nonatomic, strong) UIButton *forgetPasswordButton;
-
 @property (nonatomic, strong) ZPPayPasswordView *payPasswordView;
-@property (nonatomic, assign) NSInteger index;
-@property (nonatomic, strong) UITextField *textField;
+
 
 
 @end
@@ -96,7 +87,7 @@
 #pragma mark -Private
 
 - (void)forgetPasswordAction {
-    [self hidePayPopView];
+    //    [self hidePayPopView];
     if ([self.delegate respondsToSelector:@selector(didClickForgetPasswordButton)]) {
         [self.delegate didClickForgetPasswordButton];
     }
@@ -112,12 +103,19 @@
 }
 
 - (void)hidePayPopView {
+    [self hidePayPopView:nil];
+}
+
+- (void)hidePayPopView:(BHFinishBlock)block {
     __weak typeof(self) weakSelf = self;
     [UIView animateWithDuration:kZJAnimationTimeInterval animations:^{
         __strong typeof(weakSelf) strongSelf = weakSelf;
         strongSelf.superView.alpha = 0.0;
         strongSelf.frame = CGRectMake(strongSelf.frame.origin.x, SCREEN_HEIGHT, strongSelf.frame.size.width, strongSelf.frame.size.height);
     } completion:^(BOOL finished) {
+        if (block) {
+            block(0);
+        }
         __strong typeof(weakSelf) strongSelf = weakSelf;
         [strongSelf.superView removeFromSuperview];
         strongSelf.superView = nil;
@@ -165,7 +163,11 @@
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textColor = UIColorFromHEX(0x444444);
         _titleLabel.font = Font_XX6(16);
-        _titleLabel.text = Localize(@"交易密码");
+        //        if (self.type == 555) {
+        //            _titleLabel.text = @"15118041624";
+        //        }else {
+        _titleLabel.text = Localize(@"1交易密码");
+        //        }
     }
     return _titleLabel;
 }

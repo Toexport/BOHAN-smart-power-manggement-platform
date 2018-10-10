@@ -50,8 +50,8 @@
     };
     cell.extractButBlock = ^(id ExtractBut) {
         ZPLog(@"点击了提款按钮");
-        [self SettingPay];
-//        [self buttonAction]; // 交易密码
+        //        [self SettingPay];
+        [self buttonAction]; // 交易密码
     };
     return cell;
 }
@@ -82,6 +82,16 @@
 }
 
 - (void)didClickForgetPasswordButton {
+    [self.payPopupView hidePayPopView:^(NSInteger selectIndex) {
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            self.payPopupView = [[ZPPayPopupView alloc] init];
+            NSString *string = @"13538613874";
+            self.payPopupView.titleLabel.text = [string stringByReplacingCharactersInRange:NSMakeRange(3, 5) withString:@"****"];
+            self.payPopupView.forgetPasswordButton.hidden = YES;
+            self.payPopupView.delegate = self;
+            [self.payPopupView showPayPopView];
+        });
+    }];
     NSLog(@"点击了忘记密码");
 }
 

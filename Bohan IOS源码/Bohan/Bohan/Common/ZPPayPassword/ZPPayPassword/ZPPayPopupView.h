@@ -18,9 +18,19 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface ZPPayPopupView : UIView
 @property (nonatomic, weak) id <ZPPayPopupViewDelegate> delegate;
+@property (nonatomic, strong) UIView *superView;
+@property (nonatomic, strong) UIView *payPopupView;
+@property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UIButton *closeButton;
+@property (nonatomic, strong) UIView *lineView;
+@property (nonatomic, strong) UIButton *forgetPasswordButton;
 
+
+@property (nonatomic, assign) NSInteger index;
+@property (nonatomic, strong) UITextField *textField;
+//@property (nonatomic, assign) NSInteger type; // 识别号
 - (void)showPayPopView;
-- (void)hidePayPopView;
+- (void)hidePayPopView:(BHFinishBlock)block;
 - (void)didInputPayPasswordError;
 
 @end
