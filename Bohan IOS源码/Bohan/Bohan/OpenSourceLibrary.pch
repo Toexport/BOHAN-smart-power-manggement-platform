@@ -20,7 +20,7 @@
 #import "WXApi.h"
 #import "WXApiObject.h"
 // 友盟分享
-#import <UShareUI/UShareUI.h>
+//#import <UShareUI/UShareUI.h>
 
 
 #endif /* OpenSourceLibrary_pch */
