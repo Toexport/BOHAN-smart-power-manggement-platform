@@ -8,13 +8,8 @@
 
 #ifndef PrefixHeader_pch
 #define PrefixHeader_pch
-
-// Include any system framework and library headers here that should be included in all compilation units.
-// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
-//#import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 #import "Macro.h"
-//#import <Masonry.h>
 #import "Masonry.h"
 #import "UIColor+Transform.h"
 #import "UIFont+Adaptation.h"
@@ -25,9 +20,6 @@
 #import "HintView.h"
 #import "DebuggingANDPublishing.pch"
 #import "OpenSourceLibrary.pch"
-//#import <YYModel.h>
-//#import <YYModel.h>
-//#import <NSObject+YYModel.h>
 
 #import "YYModel.h"
 #import "UserInfoManager.h"
@@ -39,5 +31,6 @@
 #import "WSDatePickerView.h"
 #import "NSArray+Safe.h"
 #import "NSDictionary+Safe.h"
+#import "ZPDefines.h"
 
 #endif /* PrefixHeader_pch */

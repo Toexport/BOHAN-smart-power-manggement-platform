@@ -19,15 +19,11 @@
 @implementation WebViewController
 
 
-- (instancetype)initWithTitle:(NSString *)name urlStr:(NSString *)url
-{
+- (instancetype)initWithTitle:(NSString *)name urlStr:(NSString *)url {
     self = [super init];
-    
     if (self) {
-        
         self.title = Localize(name);
         [self.wkwebView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:url]]];
-        
     }
     return self;
 }
@@ -41,12 +37,17 @@
         self.title = Localize(@"最新消息");
         [self.wkwebView loadRequest:request];
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"ic_details_cancel"] style:UIBarButtonItemStyleDone target:self action:@selector(back)];
-}
+    }else
+        if (self.type == 666) {
+            NSURLRequest *request =[NSURLRequest requestWithURL:[NSURL URLWithString:@"https://www.baidu.com"]];
+            self.title = Localize(@"红外设备介绍");
+            [self.wkwebView loadRequest:request];
+            self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc]initWithImage:[UIImage imageNamed:@"ic_details_cancel"] style:UIBarButtonItemStyleDone target:self action:@selector(back)];
+        }
 }
 
 - (void)back {
     [self dismissViewControllerAnimated:YES completion:nil];
-    //    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -64,10 +65,6 @@
 //        _wkwebView.UIDelegate = self;
         _wkwebView.navigationDelegate = self;
         _wkwebView.allowsBackForwardNavigationGestures =YES;//打开网页间的 滑动返回
-        //
-        //        [self initProgressView];
-        //
-        //        [_wkwebView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];//注册observer 拿到加载进度
     }
     return _wkwebView;
 }
@@ -93,14 +90,12 @@
 - (void)webView:(WKWebView *)webView didFailNavigation:(null_unspecified WKNavigation *)navigation withError:(NSError *)error {
     [self.view stopLoading];
 }
--(void)dealloc
-{
+
+-(void)dealloc {
     _wkwebView.navigationDelegate = nil;
     _wkwebView.UIDelegate = nil;
-    
     ZPLog(@"wkwebview dealloc");
 }
-
 
 
 @end

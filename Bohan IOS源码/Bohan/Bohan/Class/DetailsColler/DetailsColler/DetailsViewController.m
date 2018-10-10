@@ -76,7 +76,7 @@
         };
         cell.ShareButBlock = ^(id ShareBut) {
             ZPLog(@"点击了分享");
-            [self sendUrl:@"https://www.baidu.com" To:WXSceneTimeline];
+            [self sendUrl:nil To:WXSceneTimeline];
 //            [self UMShare];
         };
         return cell;
@@ -108,14 +108,21 @@
 //    DetailsPayController *  DetailsPay = [[DetailsPayController alloc]init];
 //    DetailsPay.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController: DetailsPay animated:YES];
-    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
+//    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
     ScanViewController *ScanView = [[ScanViewController alloc] init];
+    [ScanView getResultStr:^(NSString *result) {
+        if (result && result.length>0) {
+            
+        }
+    }];
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         NSLog(@"设备具备相机");
-        ScanView.type = 2;
+        ScanView.type = 222;
     ScanView.hidesBottomBarWhenPushed = YES;
-        ScanView.type = 555;
         [self.navigationController pushViewController:ScanView animated:YES];
+//        [self presentViewController:ScanView animated:YES completion:nil];
+//        UINavigationController * nav = [[UINavigationController alloc]   initWithRootViewController:WebView];
+//        [self presentViewController:nav animated:YES completion:nil];
     }else {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:Localize(@"提示") message:Localize(@"您的设备暂时不支持扫码") delegate:nil cancelButtonTitle:Localize(@"确定") otherButtonTitles:nil, nil];
         [alert show];
@@ -150,15 +157,14 @@
     [WXApi sendReq:req];
 }
 
-// 分享
+//// 分享
 //- (void)UMShare {
 //    //显示分享面板
 //    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
 //        // 根据获取的platformType确定所选平台进行下一步操作
 //    }];
 //}
-//[UMSocialUIManager setPreDefinePlatforms:@[@(UMSocialPlatformType_Sina),@(UMSocialPlatformType_QQ),@(UMSocialPlatformType_WechatSession)]];
-//[UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
-//    // 根据获取的platformType确定所选平台进行下一步操作
-//}];
+
+
+
 @end

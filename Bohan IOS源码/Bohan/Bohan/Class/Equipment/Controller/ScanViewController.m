@@ -33,13 +33,12 @@
     [cancel.titleLabel setFont:[UIFont systemFontOfSize:15.0f]];
     [cancel setTitle:Localize(@"取消") forState:UIControlStateNormal];
     [cancel addTarget:self action:@selector(cancelClick) forControlEvents:UIControlEventTouchUpInside];
-    if (self.type == 555) {
-//        [cancel setTitle:Localize(@"") forState:UIControlStateNormal];
+    if (self.type == 222) {
+        [cancel setTitle:Localize(@"") forState:UIControlStateNormal];
         cancel.hidden = YES;
     }else {
     [self.view addSubview:cancel];
     }
-    
     imageView = [[UIImageView alloc]initWithFrame:CGRectMake(40, (ScreenWidth + 80 - 64)/2, ScreenWidth-80, ScreenWidth -80)] ;
     imageView.image = [UIImage imageNamed:@"pick_bg"];
     [self.view addSubview:imageView];
@@ -78,11 +77,7 @@
     }
 
 }
-//-(void)viewWillAppear:(BOOL)animated
-//{
-//    [self setupCamera];
-//
-//}
+
 - (void)setupCamera {
     // Device
     _device = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
@@ -105,7 +100,6 @@
     if ([_session canAddInput:self.input]) {
         [_session addInput:self.input];
     }
-    
     if ([_session canAddOutput:self.output]) {
         [_session addOutput:self.output];
     }
@@ -119,7 +113,6 @@
     _preview.videoGravity = AVLayerVideoGravityResizeAspectFill;
     _preview.frame =CGRectMake(0,0,self.view.frame.size.width,self.view.frame.size.height);
     [self.view.layer insertSublayer:self.preview atIndex:0];
-    
     // Start
     [_session startRunning];
 }
@@ -127,7 +120,7 @@
 #pragma mark AVCaptureMetadataOutputObjectsDelegate
 - (void)captureOutput:(AVCaptureOutput *)captureOutput didOutputMetadataObjects:(NSArray *)metadataObjects fromConnection:(AVCaptureConnection *)connection {
     NSString *stringValue;
-    if (self.type == 1) {
+    if (self.type == 111) {
         if ([metadataObjects count] >0) {
             AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex:0];
             stringValue = metadataObject.stringValue;
@@ -137,7 +130,7 @@
         scanBlock(stringValue);
         [self dismissViewControllerAnimated:YES completion:nil];
     }else
-        if (self.type == 2) {
+        if (self.type == 222) {
             if ([metadataObjects count] >0) {
                 AVMetadataMachineReadableCodeObject * metadataObject = [metadataObjects objectAtIndex:0];
                 stringValue = metadataObject.stringValue;

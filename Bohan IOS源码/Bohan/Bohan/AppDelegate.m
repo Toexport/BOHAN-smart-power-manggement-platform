@@ -29,7 +29,6 @@
 @implementation AppDelegate
 static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
     [self initUM:launchOptions];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     [self initSocket];
@@ -228,14 +227,14 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
 }
 
 //iOS10新增：处理后台点击通知的代理方法
--(void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler{
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler{
     NSDictionary * userInfo = response.notification.request.content.userInfo;
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
-        //应用处于后台时的远程推送接受
-        //必须加这句代码
+//        应用处于后台时的远程推送接受
+//        必须加这句代码
         [UMessage didReceiveRemoteNotification:userInfo];
     }else{
-        //应用处于后台时的本地推送接受
+//        应用处于后台时的本地推送接受
     }
     NSDictionary * dic = [NSDictionary dictionaryWithDictionary:userInfo];
     self.StrKey = dic[@"aps"];

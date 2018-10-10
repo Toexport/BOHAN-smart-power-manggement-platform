@@ -10,12 +10,15 @@
 #import "WithdrawalsTableViewCell.h"
 #import "WithdrawalsView.h"
 #import "AppLocationManager.h"
-@interface WithdrawalsController () <UITableViewDelegate,UITableViewDataSource> {
+#import "PrefixHeader.pch"
+#import "ZPPayPopupView.h"
+#import "SettingPayController.h"
+@interface WithdrawalsController () <UITableViewDelegate,UITableViewDataSource,ZPPayPopupViewDelegate> {
     NSArray * images;
     NSArray * titles;
     NSInteger _selectIndex;
 }
-
+@property (nonatomic, strong) ZPPayPopupView * payPopupView;
 @end
 
 @implementation WithdrawalsController
@@ -47,7 +50,8 @@
     };
     cell.extractButBlock = ^(id ExtractBut) {
         ZPLog(@"点击了提款按钮");
-        
+        [self SettingPay];
+//        [self buttonAction]; // 交易密码
     };
     return cell;
 }
@@ -62,6 +66,34 @@
         [self.Tableview reloadData];
     }];
     [view show];
+}
+// 设置支付密码
+- (void)SettingPay {
+    SettingPayController * Pay = [[SettingPayController alloc]init];
+    Pay.secureEntry = YES;  // 暗文输入
+    [self.navigationController pushViewController:Pay animated:YES];
+}
+
+#pragma mark - ZJPayPopupViewDelegate
+- (void)buttonAction {
+    self.payPopupView = [[ZPPayPopupView alloc] init];
+    self.payPopupView.delegate = self;
+    [self.payPopupView showPayPopView];
+}
+
+- (void)didClickForgetPasswordButton {
+    NSLog(@"点击了忘记密码");
+}
+
+- (void)didPasswordInputFinished:(NSString *)password {
+    if ([password isEqualToString:@"911853"]){
+        [self didClickForgetPasswordButton];
+        NSLog(@"输入的密码正确");
+        [self.payPopupView showPayPopView];
+    }else {
+        NSLog(@"输入错误:%@",password);
+        [self.payPopupView didInputPayPasswordError];
+    }
 }
 
 @end

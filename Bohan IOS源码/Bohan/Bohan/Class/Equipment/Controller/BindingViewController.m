@@ -10,6 +10,7 @@
 #import "ScanViewController.h"
 #import <AVFoundation/AVFoundation.h>
 #import "CustomInputView.h"
+#import "WebViewController.h"
 #import "WifiConnectViewController.h"
 #import "DebuggingANDPublishing.pch"
 
@@ -86,7 +87,7 @@
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
         NSLog(@"设备具备相机");
         [self presentViewController:scan animated:YES completion:nil];
-        scan.type = 1;
+        scan.type = 111;
 //        [self.navigationController pushViewController:scan animated:YES];
     }else {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:NSLocalizedString(@"提示", nil) message:NSLocalizedString(@"您的设备暂时不支持扫码", nil) delegate:nil cancelButtonTitle:NSLocalizedString(@"确定", nil) otherButtonTitles:nil, nil];
@@ -95,13 +96,22 @@
     }
 }
 
+// 红外设备提示
+- (IBAction)InfraredBut:(UIButton *)sender {
+    WebViewController *WebView = [[WebViewController alloc] init];
+    WebView.type = 666;
+    // 包装一个导航栏控制器
+    UINavigationController * nav = [[UINavigationController alloc]   initWithRootViewController:WebView];
+    [self presentViewController:nav animated:YES completion:nil];
+}
+
+// 绑定按钮
 - (IBAction)bindAction {
     //    [self unBindDevice]; // 解绑设备
     if (deviceTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
         [HintView showHint:Localize(@"请填完整设备信息")];
         return;
     }else
-        
         if ([deviceTF.text hasPrefix:@"62"]) {
             if (deviceTF.text.length == 0 || typeInput2.contentTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
                 [HintView showHint:Localize(@"请填完整设备信息")];
@@ -138,14 +148,12 @@
         dispatch_group_enter(group);
         [[NetworkRequest sharedInstance] requestWithUrl:GET_BRAND_LIST_URL parameter:nil completion:^(id response, NSError *error) {
             dispatch_group_leave(group);
-            
             ZPLog(@"%@",response);
             if (!error) {
                 NSArray *brands = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
                 brandInput.datas = brands;
             }
         }];
-        
     });
 }
 
@@ -160,7 +168,6 @@
                 NSArray *names = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
                 typeInput.datas = names;
             }
-            
         }];
     });
 }
