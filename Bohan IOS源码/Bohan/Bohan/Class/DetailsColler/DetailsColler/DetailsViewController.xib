@@ -41,8 +41,9 @@
                                         <constraint firstAttribute="width" constant="160" id="fpg-2R-zcc"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                    <inset key="titleEdgeInsets" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="扫码" image="sao_sao">
+                                    <inset key="contentEdgeInsets" minX="35" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="titleEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="扫码" image="ic_mine_scanning@">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
@@ -72,8 +73,9 @@
                                         <constraint firstAttribute="width" constant="160" id="OlP-Fj-saW"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                    <inset key="titleEdgeInsets" minX="60" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                    <state key="normal" title="我的" image="account">
+                                    <inset key="contentEdgeInsets" minX="35" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="titleEdgeInsets" minX="30" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <state key="normal" title="我的" image="ic_tab_Persona_pressed@">
                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
                                     <connections>
@@ -121,7 +123,7 @@
         </view>
     </objects>
     <resources>
-        <image name="account" width="33" height="33"/>
-        <image name="sao_sao" width="45" height="45"/>
+        <image name="ic_mine_scanning@" width="45" height="45"/>
+        <image name="ic_tab_Persona_pressed@" width="36" height="36"/>
     </resources>
 </document>
