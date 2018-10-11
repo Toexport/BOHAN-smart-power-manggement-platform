@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "CountDownButton.h"
 NS_ASSUME_NONNULL_BEGIN
 @protocol ZPPayPopupViewDelegate <NSObject>
 
@@ -24,11 +24,10 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) UIButton *closeButton;
 @property (nonatomic, strong) UIView *lineView;
 @property (nonatomic, strong) UIButton *forgetPasswordButton;
-
+@property (nonatomic, strong) CountDownButton *sendBtn;
 
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic, strong) UITextField *textField;
-//@property (nonatomic, assign) NSInteger type; // 识别号
 - (void)showPayPopView;
 - (void)hidePayPopView:(BHFinishBlock)block;
 - (void)didInputPayPasswordError;

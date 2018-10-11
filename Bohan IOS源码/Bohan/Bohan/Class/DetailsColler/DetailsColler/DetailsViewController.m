@@ -76,8 +76,8 @@
         };
         cell.ShareButBlock = ^(id ShareBut) {
             ZPLog(@"点击了分享");
-            [self sendUrl:nil To:WXSceneTimeline];
-//            [self UMShare];
+//            [self sendUrl:nil To:WXSceneTimeline];
+            [self UMShare];
         };
         return cell;
     }else
@@ -142,28 +142,29 @@
 }
 
 // 网页分享
--(void)sendUrl:(NSString*)url To:(enum WXScene)scene{
-    SendMessageToWXReq *req = [[SendMessageToWXReq alloc]init];
-    req.bText = NO;
-    req.scene = WXSceneTimeline;// 分享到o朋友圈
-    WXMediaMessage *medMessage = [WXMediaMessage message];
-    medMessage.title = @"伯瀚智能用电管理平台"; // 标题
-    medMessage.description = @"伯瀚智能APP——一款智能、安全用电管理APP";// 描述
-    WXWebpageObject *webPageObj = [WXWebpageObject object];
-    [medMessage setThumbImage:[UIImage imageNamed:@"logo"]];// 缩略图
-    webPageObj.webpageUrl = @"https://itunes.apple.com/cn/app/id1384571471?mt=8";
-    medMessage.mediaObject = webPageObj;
-    req.message = medMessage;
-    [WXApi sendReq:req];
-}
+//-(void)sendUrl:(NSString*)url To:(enum WXScene)scene{
+//    SendMessageToWXReq *req = [[SendMessageToWXReq alloc]init];
+//    req.bText = NO;
+//    req.scene = WXSceneTimeline;// 分享到o朋友圈
+//    WXMediaMessage *medMessage = [WXMediaMessage message];
+//    medMessage.title = @"伯瀚智能用电管理平台"; // 标题
+//    medMessage.description = @"伯瀚智能APP——一款智能、安全用电管理APP";// 描述
+//    WXWebpageObject *webPageObj = [WXWebpageObject object];
+//    [medMessage setThumbImage:[UIImage imageNamed:@"logo"]];// 缩略图
+//    webPageObj.webpageUrl = @"https://itunes.apple.com/cn/app/id1384571471?mt=8";
+//    medMessage.mediaObject = webPageObj;
+//    req.message = medMessage;
+//    [WXApi sendReq:req];
+//}
 
 //// 分享
-//- (void)UMShare {
+- (void)UMShare {
 //    //显示分享面板
+    [[XMShare shareManager] showWithController:self];
 //    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
 //        // 根据获取的platformType确定所选平台进行下一步操作
 //    }];
-//}
+}
 
 
 

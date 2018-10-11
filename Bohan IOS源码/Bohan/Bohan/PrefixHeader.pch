@@ -32,5 +32,6 @@
 #import "NSArray+Safe.h"
 #import "NSDictionary+Safe.h"
 #import "ZPDefines.h"
+#import "XMshare.h"
 
 #endif /* PrefixHeader_pch */

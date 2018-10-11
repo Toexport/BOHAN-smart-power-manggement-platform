@@ -16,8 +16,6 @@
 @interface ZPPayPopupView ()<UITextFieldDelegate>
 @property (nonatomic, strong) ZPPayPasswordView *payPasswordView;
 
-
-
 @end
 
 @implementation ZPPayPopupView
@@ -60,6 +58,14 @@
         make.height.mas_equalTo(XX_6(14));
     }];
     
+    [self addSubview:self.sendBtn];
+    [self.sendBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.right.equalTo(self.mas_right).with.offset(XX_6(-8));
+        make.centerY.equalTo(self.titleLabel);
+        make.width.mas_equalTo(XX_6(120));
+        make.height.mas_equalTo(XX_6(30));
+    }];
+    
     [self addSubview:self.lineView];
     [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.right.equalTo(self);
@@ -85,9 +91,8 @@
 }
 
 #pragma mark -Private
-
 - (void)forgetPasswordAction {
-    //    [self hidePayPopView];
+//        [self hidePayPopView];
     if ([self.delegate respondsToSelector:@selector(didClickForgetPasswordButton)]) {
         [self.delegate didClickForgetPasswordButton];
     }
@@ -127,15 +132,13 @@
 }
 
 #pragma mark -Setter/Getter
-
 - (ZPPayPasswordView *)payPasswordView {
     if (!_payPasswordView) {
         _payPasswordView = [[ZPPayPasswordView alloc] init];
         __weak typeof(self) weakSelf = self;
         _payPasswordView.completionBlock = ^(NSString *password) {
             __strong typeof(weakSelf) strongSelf = weakSelf;
-            if ([strongSelf.delegate respondsToSelector:@selector(didPasswordInputFinished:)])
-            {
+            if ([strongSelf.delegate respondsToSelector:@selector(didPasswordInputFinished:)]) {
                 [strongSelf.delegate didPasswordInputFinished:password];
             }
         };
@@ -163,11 +166,7 @@
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textColor = UIColorFromHEX(0x444444);
         _titleLabel.font = Font_XX6(16);
-        //        if (self.type == 555) {
-        //            _titleLabel.text = @"15118041624";
-        //        }else {
-        _titleLabel.text = Localize(@"1交易密码");
-        //        }
+        _titleLabel.text = Localize(@"交易密码");
     }
     return _titleLabel;
 }
@@ -179,6 +178,17 @@
         [_closeButton addTarget:self action:@selector(hidePayPopView) forControlEvents:UIControlEventTouchUpInside];
     }
     return _closeButton;
+}
+
+- (CountDownButton *)sendBtn {
+    if (!_sendBtn) {
+        _sendBtn = [CountDownButton buttonWithType:UIButtonTypeCustom];
+        [_sendBtn setTitle:@"发送验证码" forState:UIControlStateNormal];
+        [_sendBtn setTitleColor:UIColorFromHEX(0x444444) forState:UIControlStateNormal];
+        _sendBtn.titleLabel.font = Font_XX6(12);
+        [_sendBtn addTarget:self action:@selector(sendBtn) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _sendBtn;
 }
 
 - (UIView *)lineView {

@@ -18,6 +18,7 @@
     NSArray * titles;
     NSInteger _selectIndex;
 }
+
 @property (nonatomic, strong) ZPPayPopupView * payPopupView;
 @end
 
@@ -50,7 +51,7 @@
     };
     cell.extractButBlock = ^(id ExtractBut) {
         ZPLog(@"点击了提款按钮");
-        //        [self SettingPay];
+//        [self SettingPay];
         [self buttonAction]; // 交易密码
     };
     return cell;
@@ -67,11 +68,16 @@
     }];
     [view show];
 }
+
 // 设置支付密码
 - (void)SettingPay {
-    SettingPayController * Pay = [[SettingPayController alloc]init];
-    Pay.secureEntry = YES;  // 暗文输入
-    [self.navigationController pushViewController:Pay animated:YES];
+    SettingPayController * SetPay = [[SettingPayController alloc]init];
+    SetPay.secureEntry = YES;  // 暗文输入
+    //    SetPay.isRegist = self.isRegist;
+    //    SetPay.username = accountTF.text;
+    //    SetPay.code = codeTF.text;
+    [self.navigationController pushViewController:SetPay animated:YES];
+    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
 }
 
 #pragma mark - ZJPayPopupViewDelegate
@@ -79,30 +85,105 @@
     self.payPopupView = [[ZPPayPopupView alloc] init];
     self.payPopupView.delegate = self;
     [self.payPopupView showPayPopView];
+    self.payPopupView.sendBtn.hidden = YES; // 默认隐藏发送验证码
 }
 
 - (void)didClickForgetPasswordButton {
     [self.payPopupView hidePayPopView:^(NSInteger selectIndex) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.payPopupView = [[ZPPayPopupView alloc] init];
-            NSString *string = @"13538613874";
+            NSString *string = USERNAME;
             self.payPopupView.titleLabel.text = [string stringByReplacingCharactersInRange:NSMakeRange(3, 5) withString:@"****"];
             self.payPopupView.forgetPasswordButton.hidden = YES;
+            self.payPopupView.sendBtn.hidden = NO; // 打开发送验证码
             self.payPopupView.delegate = self;
             [self.payPopupView showPayPopView];
         });
+        [self getCodeAction];
     }];
-    NSLog(@"点击了忘记密码");
+    ZPLog(@"点击了忘记密码");
 }
 
 - (void)didPasswordInputFinished:(NSString *)password {
     if ([password isEqualToString:@"911853"]){
-        [self didClickForgetPasswordButton];
-        NSLog(@"输入的密码正确");
+//        [self didClickForgetPasswordButton];
+        ZPLog(@"输入的密码正确");
         [self.payPopupView showPayPopView];
     }else {
-        NSLog(@"输入错误:%@",password);
+        ZPLog(@"输入错误:%@",password);
         [self.payPopupView didInputPayPasswordError];
+    }
+}
+
+//- (void)getCodeAction {
+//    NSUserDefaults *df = [NSUserDefaults standardUserDefaults];
+//    NSString *language = [df objectForKey:@"App_Language_Switch_Key"];
+//    NSString *localeLanguageCode = [NSLocale preferredLanguages][0];
+//    localeLanguageCode = [[localeLanguageCode componentsSeparatedByString:@"-"] firstObject];
+//    if ((language && [language isEqualToString:@"zh-Hans"]) || (!language && [localeLanguageCode isEqualToString:@"zh"])) {
+//        [self detaCode];
+//    }
+//}
+
+// 获取验证码
+- (void)getCodeAction {
+    NSUserDefaults *df = [NSUserDefaults standardUserDefaults];
+    NSString *language = [df objectForKey:@"App_Language_Switch_Key"];
+    NSString *localeLanguageCode = [NSLocale preferredLanguages][0];
+    localeLanguageCode = [[localeLanguageCode componentsSeparatedByString:@"-"] firstObject];
+    //    [self.view.window startLoading];
+    if ((language && [language isEqualToString:@"zh-Hans"]) || (!language && [localeLanguageCode isEqualToString:@"zh"])) {
+        NSDictionary *dic = @{@"mobileNum":USERNAME, @"flag":(self.isRegist?@"0":@"1")};
+        MyWeakSelf
+        [[NetworkRequest sharedInstance] requestWithUrl:GET_REGISTER_CODE_URL parameter:dic completion:^(id response, NSError *error) {
+            MyStrongSelf
+            //            [strongSelf.view.window stopLoading];
+            //请求成功
+            if (!error) {
+                [HintView showHint:Localize(@"验证码发送成功")];
+                [self.payPopupView.sendBtn startTime];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    //                    [codeTF becomeFirstResponder];
+                });
+            }else {
+                ZPLog(@"%@",error);
+                [HintView showHint:error.localizedDescription];
+            }
+        }];
+    }else {
+        NSDictionary *dic = @{@"reciver":USERNAME, @"flag":(self.isRegist?@"0":@"1")};
+        ZPLog(@"英文");
+        MyWeakSelf
+        [[NetworkRequest sharedInstance] requestWithUrl:GET_REGISTER_CODE_BY_MAIL_URL parameter:dic completion:^(id response, NSError *error) {
+            MyStrongSelf
+            //            [strongSelf.view.window stopLoading];
+            //请求成功
+            if (!error) {
+                [HintView showHint:Localize(@"验证码发送成功")];
+                [self.payPopupView.sendBtn startTime];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.7 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    //                    [codeTF becomeFirstResponder];
+                });
+            }else {
+                ZPLog(@"%@",error);
+                [HintView showHint:error.localizedDescription];
+            }
+        }];
+    }
+}
+
+// 检查验证码
+#pragma mark - action
+- (void)nextAction {
+    NSUserDefaults *df = [NSUserDefaults standardUserDefaults];
+    NSString *language = [df objectForKey:@"App_Language_Switch_Key"];
+    NSString *localeLanguageCode = [NSLocale preferredLanguages][0];
+    localeLanguageCode = [[localeLanguageCode componentsSeparatedByString:@"-"] firstObject];
+    if ((language && [language isEqualToString:@"zh-Hans"]) || (!language && [localeLanguageCode isEqualToString:@"zh"])) {
+        [self SettingPay];
+    }else {
+        [self SettingPay];
+        ZPLog(@"英文");
     }
 }
 

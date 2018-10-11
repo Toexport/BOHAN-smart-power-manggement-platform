@@ -24,7 +24,6 @@
 
 @implementation ZPPayPasswordView
 
-
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         self.frame = CGRectMake(frame.origin.x, frame.origin.y, SCREEN_WIDTH, XX_6(50));
@@ -47,7 +46,6 @@
         label.textAlignment = NSTextAlignmentCenter;
         label.font = Font_XX6(30);
         [self addSubview:label];
-        
         [self.labelBoxArray addObject:label];
     }
 }
@@ -64,7 +62,6 @@
     if (textField.text.length > kZJPasswordBoxNumber) {
         textField.text = [textField.text substringToIndex:kZJPasswordBoxNumber];
     }
-    
     [self updateLabelBoxWithText:textField.text];
     if (textField.text.length == kZJPasswordBoxNumber) {
         if (self.completionBlock) {
@@ -74,7 +71,6 @@
 }
 
 #pragma mark - Public
-
 - (void)updateLabelBoxWithText:(NSString *)text {
     //输入时
     if (text.length > self.currentText.length) {
@@ -84,8 +80,8 @@
                 //特殊字符不居中显示，设置文本向下偏移
                 NSAttributedString * att1 = [[NSAttributedString alloc] initWithString:@"*" attributes:@{NSBaselineOffsetAttributeName:@(-3)}];
                 label.attributedText = att1;
-            }
-            else if (i == text.length - 1) {
+            }else
+                if (i == text.length - 1) {
                 label.text = [text substringWithRange:NSMakeRange(i, 1)];
                 [self animationShowTextInLabel: label];
             }else {
@@ -138,13 +134,11 @@
 }
 
 #pragma mark - UITextFieldDelegate
-
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     return YES;
 }
 
 #pragma mark - Getter/Setter
-
 - (NSMutableArray *)labelBoxArray {
     if (!_labelBoxArray) {
         _labelBoxArray = [NSMutableArray array];

@@ -10,5 +10,7 @@
 
 @interface WithdrawalsController : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *Tableview;
+@property (nonatomic, assign) BOOL isRegist;
+//@property (nonatomic, strong) NSString * StringId;
 
 @end

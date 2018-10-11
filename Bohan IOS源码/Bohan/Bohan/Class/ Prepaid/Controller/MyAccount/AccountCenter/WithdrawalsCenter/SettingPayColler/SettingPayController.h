@@ -11,8 +11,12 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SettingPayController : UIViewController
+@property (nonatomic, assign) BOOL isRegist;
+@property (nonatomic, strong) NSString *username;
+@property (nonatomic, strong) NSString *code;
 /// 是否暗文输入
 @property (assign, nonatomic) BOOL secureEntry;
+
 @end
 
 NS_ASSUME_NONNULL_END

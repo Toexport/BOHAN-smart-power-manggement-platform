@@ -142,8 +142,7 @@
 
 #pragma mark - UITextFieldDelegate
 
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
     if ([textField isEqual:_holdOnF]) {
         return NO;
     }
@@ -153,7 +152,6 @@
 #pragma mark - 其他处理
 // 有文字输入会触发
 - (void)textFieldDidChange:(UITextField *)textField{
-    
     // 收集支付密码
     [self collectPayCode];
     
@@ -182,8 +180,7 @@
 }
 
 /// 收集支付密码
-- (void)collectPayCode
-{
+- (void)collectPayCode {
     NSString *payCode = _num1F.text;
     payCode = [payCode stringByAppendingString:_num2F.text];
     payCode = [payCode stringByAppendingString:_num3F.text];
