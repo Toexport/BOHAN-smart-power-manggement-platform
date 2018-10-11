@@ -14,12 +14,12 @@
 #define kZJPasswordBoxMargin XX_6(18)
 #define kZJPasswordBoxNumber 6
 
-@interface ZPPayPasswordView ()<UITextFieldDelegate>
+@interface ZPPayPasswordView ()<UITextFieldDelegate> {
+}
 @property (nonatomic, strong) NSMutableArray <UILabel*> *labelBoxArray;
 @property (nonatomic, assign) NSInteger index;
 @property (nonatomic, strong) UITextField *textField;
 @property (nonatomic, strong) NSString *currentText;
-
 @end
 
 @implementation ZPPayPasswordView
@@ -37,11 +37,14 @@
 - (void)initData {
     self.currentText = @"";
     for (int i = 0; i < kZJPasswordBoxNumber; i ++) {
+        UITapGestureRecognizer *labelTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(labelClick)];
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(kZJPasswordBoxMargin + i * (kZJPasswordBoxWidth + kZJPasswordBoxSpace), 0, kZJPasswordBoxWidth, kZJPasswordBoxWidth)];
         label.textColor = UIColorFromHEX(0x444444);
         label.layer.borderWidth = 0.5f;
         label.layer.borderColor = UIColorFromHEX(0xCCCCCC).CGColor;
         label.layer.cornerRadius = XX_6(2);
+        [label addGestureRecognizer:labelTapGestureRecognizer];
+        label.userInteractionEnabled = YES; // 可以理解为设置label可被点击
         label.layer.masksToBounds = YES;
         label.textAlignment = NSTextAlignmentCenter;
         label.font = Font_XX6(30);
@@ -62,7 +65,11 @@
     if (textField.text.length > kZJPasswordBoxNumber) {
         textField.text = [textField.text substringToIndex:kZJPasswordBoxNumber];
     }
-    [self updateLabelBoxWithText:textField.text];
+    if (_opretionType) {
+        [self updateLabelAccordingWithText:textField.text];
+    } else {
+        [self updateLabelBoxWithText:textField.text];
+    }
     if (textField.text.length == kZJPasswordBoxNumber) {
         if (self.completionBlock) {
             self.completionBlock(self.textField.text);
@@ -72,29 +79,60 @@
 
 #pragma mark - Public
 - (void)updateLabelBoxWithText:(NSString *)text {
-    //输入时
+        //输入时(隐藏)
+        if (text.length > self.currentText.length) {
+            for (int i = 0; i < kZJPasswordBoxNumber; i++) {
+                UILabel *label = self.labelBoxArray[i];
+                if (i < text.length - 1) {
+//                    特殊字符不居中显示，设置文本向下偏移
+                    NSAttributedString * att1 = [[NSAttributedString alloc] initWithString:@"*" attributes:@{NSBaselineOffsetAttributeName:@(-3)}];
+                    label.attributedText = att1;
+//                    label.text = text;
+                }else
+                    if (i == text.length - 1) {
+                        label.text = [text substringWithRange:NSMakeRange(i, 1)];
+                                        [self animationShowTextInLabel: label];
+                        
+                    }else {
+                        label.text = @"";
+                    }
+            }
+        }else {  //删除时
+            for (int i = 0; i < kZJPasswordBoxNumber; i++) {
+                UILabel *label = self.labelBoxArray[i];
+                if (i < text.length) {
+                    //特殊字符不居中显示，设置文本向下偏移
+                    NSAttributedString * att1 = [[NSAttributedString alloc] initWithString:@"*" attributes:@{NSBaselineOffsetAttributeName:@(-3)}];
+                    label.attributedText = att1;
+//                                        label.text = [text substringWithRange:NSMakeRange(i, 1)];
+                }else {
+                    label.text = @"";
+                }
+            }
+        }
+    self.textField.text = text;
+    self.currentText = text;
+}
+
+// 显示密码
+- (void)updateLabelAccordingWithText:(NSString *)text {
+    //输入时(显示)
     if (text.length > self.currentText.length) {
         for (int i = 0; i < kZJPasswordBoxNumber; i++) {
             UILabel *label = self.labelBoxArray[i];
             if (i < text.length - 1) {
-                //特殊字符不居中显示，设置文本向下偏移
-                NSAttributedString * att1 = [[NSAttributedString alloc] initWithString:@"*" attributes:@{NSBaselineOffsetAttributeName:@(-3)}];
-                label.attributedText = att1;
             }else
                 if (i == text.length - 1) {
-                label.text = [text substringWithRange:NSMakeRange(i, 1)];
-                [self animationShowTextInLabel: label];
-            }else {
-                label.text = @"";
-            }
+                    label.text = [text substringWithRange:NSMakeRange(i, 1)];
+                }else {
+                    label.text = @"";
+                }
         }
     }else {  //删除时
         for (int i = 0; i < kZJPasswordBoxNumber; i++) {
             UILabel *label = self.labelBoxArray[i];
             if (i < text.length) {
-                //特殊字符不居中显示，设置文本向下偏移
-                NSAttributedString * att1 = [[NSAttributedString alloc] initWithString:@"*" attributes:@{NSBaselineOffsetAttributeName:@(-3)}];
-                label.attributedText = att1;
+                label.text = [text substringWithRange:NSMakeRange(i, 1)];
             }else {
                 label.text = @"";
             }
@@ -156,5 +194,10 @@
     return _textField;
 }
 
+// 3. 在此方法中设置点击label后要触发的操作
+- (void)labelClick {
+    ZPLog(@"点击了");
+    
+}
 
 @end

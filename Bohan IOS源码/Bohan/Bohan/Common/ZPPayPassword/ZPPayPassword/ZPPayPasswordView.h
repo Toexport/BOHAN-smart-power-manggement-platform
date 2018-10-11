@@ -12,9 +12,7 @@ typedef void(^ZPInputPasswordCompletionBlock) (NSString *password);
 @interface ZPPayPasswordView : UIView
 
 @property (nonatomic, copy)ZPInputPasswordCompletionBlock completionBlock;
-
-// 更新输入框的数据
-- (void)updateLabelBoxWithText:(NSString *)text;
+@property (nonatomic ,assign) NSInteger opretionType;
 
 // 抖动输入框
 - (void)startShakeViewAnimation;

@@ -27,6 +27,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) CountDownButton *sendBtn;
 
 @property (nonatomic, assign) NSInteger index;
+@property (nonatomic, assign) NSInteger type;
 @property (nonatomic, strong) UITextField *textField;
 - (void)showPayPopView;
 - (void)hidePayPopView:(BHFinishBlock)block;

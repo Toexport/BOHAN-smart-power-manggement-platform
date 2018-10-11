@@ -17,9 +17,11 @@
     NSArray * images;
     NSArray * titles;
     NSInteger _selectIndex;
+    NSInteger oprentionType; //操作类型 ，0输入密码 1忘记密码
 }
 
 @property (nonatomic, strong) ZPPayPopupView * payPopupView;
+
 @end
 
 @implementation WithdrawalsController
@@ -94,6 +96,8 @@
             self.payPopupView = [[ZPPayPopupView alloc] init];
             NSString *string = USERNAME;
             self.payPopupView.titleLabel.text = [string stringByReplacingCharactersInRange:NSMakeRange(3, 5) withString:@"****"];
+            oprentionType = 1;
+            self.payPopupView.type = 1;
             self.payPopupView.forgetPasswordButton.hidden = YES;
             self.payPopupView.sendBtn.hidden = NO; // 打开发送验证码
             self.payPopupView.delegate = self;
@@ -105,13 +109,27 @@
 }
 
 - (void)didPasswordInputFinished:(NSString *)password {
-    if ([password isEqualToString:@"911853"]){
-//        [self didClickForgetPasswordButton];
-        ZPLog(@"输入的密码正确");
-        [self.payPopupView showPayPopView];
+    if (oprentionType) {
+        if ([password isEqualToString:@"911853"]){
+            //        [self didClickForgetPasswordButton];
+            ZPLog(@"输入的验证码正确");
+            oprentionType = 0;
+            [self.payPopupView hidePayPopView:nil];
+            [self SettingPay];
+
+        }else {
+            ZPLog(@"输入错误:%@",password);
+            [self.payPopupView didInputPayPasswordError];
+        }
     }else {
-        ZPLog(@"输入错误:%@",password);
-        [self.payPopupView didInputPayPasswordError];
+        if ([password isEqualToString:@"911855"]){
+            //        [self didClickForgetPasswordButton];
+            ZPLog(@"输入的密码正确");
+            //        [self.payPopupView showPayPopView];
+        }else {
+            ZPLog(@"输入错误:%@",password);
+            [self.payPopupView didInputPayPasswordError];
+        }
     }
 }
 

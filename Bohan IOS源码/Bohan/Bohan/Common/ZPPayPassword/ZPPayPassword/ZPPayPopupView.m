@@ -135,6 +135,7 @@
 - (ZPPayPasswordView *)payPasswordView {
     if (!_payPasswordView) {
         _payPasswordView = [[ZPPayPasswordView alloc] init];
+        _payPasswordView.opretionType = _type;
         __weak typeof(self) weakSelf = self;
         _payPasswordView.completionBlock = ^(NSString *password) {
             __strong typeof(weakSelf) strongSelf = weakSelf;
@@ -144,6 +145,11 @@
         };
     }
     return _payPasswordView;
+}
+
+- (void)setType:(NSInteger)type {
+    _type = type;
+    self.payPasswordView.opretionType = type;
 }
 
 - (UIView *)superView {
