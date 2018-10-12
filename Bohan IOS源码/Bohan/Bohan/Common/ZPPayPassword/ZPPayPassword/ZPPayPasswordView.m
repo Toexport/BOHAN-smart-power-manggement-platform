@@ -79,37 +79,34 @@
 
 #pragma mark - Public
 - (void)updateLabelBoxWithText:(NSString *)text {
-        //输入时(隐藏)
-        if (text.length > self.currentText.length) {
-            for (int i = 0; i < kZJPasswordBoxNumber; i++) {
-                UILabel *label = self.labelBoxArray[i];
-                if (i < text.length - 1) {
+    //输入时(隐藏)
+    if (text.length > self.currentText.length) {
+        for (int i = 0; i < kZJPasswordBoxNumber; i++) {
+            UILabel *label = self.labelBoxArray[i];
+            if (i < text.length - 1) {
 //                    特殊字符不居中显示，设置文本向下偏移
-                    NSAttributedString * att1 = [[NSAttributedString alloc] initWithString:@"*" attributes:@{NSBaselineOffsetAttributeName:@(-3)}];
-                    label.attributedText = att1;
-//                    label.text = text;
-                }else
-                    if (i == text.length - 1) {
-                        label.text = [text substringWithRange:NSMakeRange(i, 1)];
-                                        [self animationShowTextInLabel: label];
-                        
-                    }else {
-                        label.text = @"";
-                    }
-            }
-        }else {  //删除时
-            for (int i = 0; i < kZJPasswordBoxNumber; i++) {
-                UILabel *label = self.labelBoxArray[i];
-                if (i < text.length) {
-                    //特殊字符不居中显示，设置文本向下偏移
-                    NSAttributedString * att1 = [[NSAttributedString alloc] initWithString:@"*" attributes:@{NSBaselineOffsetAttributeName:@(-3)}];
-                    label.attributedText = att1;
-//                                        label.text = [text substringWithRange:NSMakeRange(i, 1)];
+                NSAttributedString * att1 = [[NSAttributedString alloc] initWithString:@"*" attributes:@{NSBaselineOffsetAttributeName:@(-3)}];
+                label.attributedText = att1;
+            }else
+                if (i == text.length - 1) {
+                    label.text = [text substringWithRange:NSMakeRange(i, 1)];
+                    [self animationShowTextInLabel: label];
                 }else {
                     label.text = @"";
                 }
+        }
+    }else {  //删除时
+        for (int i = 0; i < kZJPasswordBoxNumber; i++) {
+            UILabel *label = self.labelBoxArray[i];
+            if (i < text.length) {
+                //特殊字符不居中显示，设置文本向下偏移
+                NSAttributedString * att1 = [[NSAttributedString alloc] initWithString:@"*" attributes:@{NSBaselineOffsetAttributeName:@(-3)}];
+                label.attributedText = att1;
+            }else {
+                label.text = @"";
             }
         }
+    }
     self.textField.text = text;
     self.currentText = text;
 }
@@ -196,8 +193,8 @@
 
 // 3. 在此方法中设置点击label后要触发的操作
 - (void)labelClick {
-    ZPLog(@"点击了");
     
+    ZPLog(@"点击了");
 }
 
 @end
