@@ -11,6 +11,8 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NewFinancialCARDSCell : UITableViewCell
+@property (weak, nonatomic) IBOutlet UILabel *WhyLabel;
+@property (weak, nonatomic) IBOutlet UIButton *WhyBut;
 @property (weak, nonatomic) IBOutlet UITextField *NameTExtField;
 @property (weak, nonatomic) IBOutlet UITextField *AccountTextField;
 @property (weak, nonatomic) IBOutlet UITextField *ConfirmAccountTextField;
