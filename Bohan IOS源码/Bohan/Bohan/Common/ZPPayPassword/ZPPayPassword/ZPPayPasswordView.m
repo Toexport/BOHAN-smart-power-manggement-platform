@@ -193,7 +193,7 @@
 
 // 3. 在此方法中设置点击label后要触发的操作
 - (void)labelClick {
-    
+    [_textField becomeFirstResponder];
     ZPLog(@"点击了");
 }
 

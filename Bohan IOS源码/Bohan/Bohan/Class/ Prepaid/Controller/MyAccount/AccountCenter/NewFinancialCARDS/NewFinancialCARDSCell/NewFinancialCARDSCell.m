@@ -12,11 +12,18 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    // Initialization code
 }
 // 确定按钮
 - (IBAction)ConfirmBut:(UIButton *)sender {
-    ZPLog(@"111");
+    if (self.NameTExtField.text || self.AccountTextField.text || self.ConfirmAccountTextField.text == nil) {
+        ZPLog(@"为空");
+    }else {
+        if (self.AccountTextField.text != self.ConfirmAccountTextField.text) {
+            ZPLog(@"账号不一致");
+        }else {
+            ZPLog(@"成功2");
+        }
+    }
 }
 
 @end

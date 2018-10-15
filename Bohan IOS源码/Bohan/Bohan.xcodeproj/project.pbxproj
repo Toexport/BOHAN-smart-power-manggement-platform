@@ -157,7 +157,7 @@
 		C4F9276F216E49D300DAF6BE /* libSocialQQ.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C4F92753216E49D300DAF6BE /* libSocialQQ.a */; };
 		C4F92770216E49D300DAF6BE /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4F92755216E49D300DAF6BE /* TencentOpenAPI.framework */; };
 		C4F92773216E49F800DAF6BE /* XMShare.m in Sources */ = {isa = PBXBuildFile; fileRef = C4F92772216E49F700DAF6BE /* XMShare.m */; };
-		C4F92777216E4D5200DAF6BE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4F92775216E4D5200DAF6BE /* Main.storyboard */; };
+		C4FD58C621736B4C008AF0E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C4FD58C521736B4C008AF0E2 /* Main.storyboard */; };
 		CC0F4827200CFB9700E184F8 /* NSString+HeartDecode.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0F4826200CFB9700E184F8 /* NSString+HeartDecode.m */; };
 		CC0F482B200D2CC600E184F8 /* DeviceInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0F4829200D2CC600E184F8 /* DeviceInfoViewController.m */; };
 		CC0F482F200D342700E184F8 /* JHButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CC0F482D200D342700E184F8 /* JHButton.m */; };
@@ -559,7 +559,7 @@
 		C4F92755216E49D300DAF6BE /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		C4F92772216E49F700DAF6BE /* XMShare.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMShare.m; sourceTree = "<group>"; };
 		C4F92774216E4A0000DAF6BE /* XMShare.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMShare.h; sourceTree = "<group>"; };
-		C4F92776216E4D5200DAF6BE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C4FD58C521736B4C008AF0E2 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		CC0F4825200CFB9700E184F8 /* NSString+HeartDecode.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+HeartDecode.h"; sourceTree = "<group>"; };
 		CC0F4826200CFB9700E184F8 /* NSString+HeartDecode.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+HeartDecode.m"; sourceTree = "<group>"; };
 		CC0F4828200D2CC600E184F8 /* DeviceInfoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DeviceInfoViewController.h; sourceTree = "<group>"; };
@@ -1805,10 +1805,10 @@
 				CC2455AA1FF7450700616916 /* AppDelegate.m */,
 				CC2455AC1FF7450700616916 /* ViewController.h */,
 				CC2455AD1FF7450700616916 /* ViewController.m */,
-				C4F92775216E4D5200DAF6BE /* Main.storyboard */,
 				CC2456931FF746BC00616916 /* PrefixHeader.pch */,
 				C4A6CF6F216C327500B4113A /* OpenSourceLibrary.pch */,
 				C4F1A24E20E605AE00052B24 /* DebuggingANDPublishing.pch */,
+				C4FD58C521736B4C008AF0E2 /* Main.storyboard */,
 				CC2455B21FF7450700616916 /* Assets.xcassets */,
 				CC2455B41FF7450700616916 /* LaunchScreen.storyboard */,
 				CC2455B71FF7450700616916 /* Info.plist */,
@@ -2671,7 +2671,6 @@
 				C46EE614216E093000BF07A1 /* AccountsPrepaidCell.xib in Resources */,
 				C4AF05A3214A014500176F29 /* AccountsPrepaidTableViewCell.xib in Resources */,
 				CC2455B61FF7450700616916 /* LaunchScreen.storyboard in Resources */,
-				C4F92777216E4D5200DAF6BE /* Main.storyboard in Resources */,
 				C4AF05BB214A47B100176F29 /* RemindTableViewCell.xib in Resources */,
 				C4278398215B0B310088869E /* CustomTableViewCell.xib in Resources */,
 				C4F9275B216E49D300DAF6BE /* TwitterKitResources.bundle in Resources */,
@@ -2717,6 +2716,7 @@
 				C4AF05B5214A0C2000176F29 /* AccountCenterCell.xib in Resources */,
 				CC8090572047096500265FE0 /* DeviceInfoViewController.xib in Resources */,
 				C46EE608216E076F00BF07A1 /* XMPayCodeView.xib in Resources */,
+				C4FD58C621736B4C008AF0E2 /* Main.storyboard in Resources */,
 				CC8090662047109400265FE0 /* TimeSelectViewController.xib in Resources */,
 				CC349F3720A890DE00BD6C6A /* DeviceInfoCollectionCell.xib in Resources */,
 				C4E164B0213E82F600445E57 /* DetailsViewController.xib in Resources */,
@@ -3049,14 +3049,6 @@
 				C4F1A24D20E5D9F000052B24 /* zh-Hans */,
 			);
 			name = VerificationCodeViewController.xib;
-			sourceTree = "<group>";
-		};
-		C4F92775216E4D5200DAF6BE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				C4F92776216E4D5200DAF6BE /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 		CC1EFF33204BF061002811CB /* WifiView.xib */ = {

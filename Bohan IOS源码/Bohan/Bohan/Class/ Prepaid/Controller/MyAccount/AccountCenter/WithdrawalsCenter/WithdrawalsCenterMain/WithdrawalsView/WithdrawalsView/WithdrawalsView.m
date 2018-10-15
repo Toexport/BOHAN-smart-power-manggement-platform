@@ -118,6 +118,10 @@ typedef void(^doneBlock)(NSDate *data);
         }
         [self dismiss];
     }else {
+        if (_selectValue) {
+            _selectValue(-1);
+        }
+        [self dismiss];
         ZPLog(@"111");
     }
 }

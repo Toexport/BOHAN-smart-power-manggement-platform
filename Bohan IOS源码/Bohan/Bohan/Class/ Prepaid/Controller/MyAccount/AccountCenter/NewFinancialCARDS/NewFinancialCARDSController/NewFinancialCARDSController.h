@@ -11,6 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NewFinancialCARDSController : UIViewController
+@property (weak, nonatomic) IBOutlet UITableView *tableview;
 
 @end
 

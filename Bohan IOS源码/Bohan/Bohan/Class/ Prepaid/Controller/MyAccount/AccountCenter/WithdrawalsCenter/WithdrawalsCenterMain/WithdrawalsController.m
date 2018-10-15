@@ -13,6 +13,7 @@
 #import "PrefixHeader.pch"
 #import "ZPPayPopupView.h"
 #import "SettingPayController.h"
+#import "NewFinancialCARDSController.h"
 @interface WithdrawalsController () <UITableViewDelegate,UITableViewDataSource,ZPPayPopupViewDelegate> {
     NSArray * images;
     NSArray * titles;
@@ -65,8 +66,15 @@
 
 - (void)initUIView {
     WithdrawalsView *view = [[WithdrawalsView alloc] initWithDateStyle:0 BlankBlock:^(NSInteger selectIndex) {
-        _selectIndex = selectIndex;
-        [self.Tableview reloadData];
+        if (selectIndex >= 0) {
+            _selectIndex = selectIndex;
+            [self.Tableview reloadData];
+        } else {
+            NewFinancialCARDSController * NewFinancialCARDS = [[NewFinancialCARDSController alloc]init];
+            [self.navigationController pushViewController:NewFinancialCARDS animated:YES];
+            self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
+            
+        }
     }];
     [view show];
 }
