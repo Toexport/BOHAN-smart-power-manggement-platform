@@ -12,6 +12,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    self.DividerView1.hidden = YES;
+    self.BankView.hidden = YES;
+    self.BackViewLayoutConstraint.constant = 178;
 }
 
 // 到账方式

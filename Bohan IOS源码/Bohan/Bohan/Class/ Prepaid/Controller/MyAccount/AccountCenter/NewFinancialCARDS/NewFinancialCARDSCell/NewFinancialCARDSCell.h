@@ -11,12 +11,20 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface NewFinancialCARDSCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *WhyLabel;
-@property (weak, nonatomic) IBOutlet UIButton *WhyBut;
-@property (weak, nonatomic) IBOutlet UITextField *NameTExtField;
-@property (weak, nonatomic) IBOutlet UITextField *AccountTextField;
-@property (weak, nonatomic) IBOutlet UITextField *ConfirmAccountTextField;
-@property (weak, nonatomic) IBOutlet UIButton *ConfirmBut;
+
+@property (weak, nonatomic) IBOutlet UIImageView *WhyImageS; // 主图
+@property (weak, nonatomic) IBOutlet UILabel *WhyLabel; // 提款方式
+@property (weak, nonatomic) IBOutlet UIButton *WhyBut; // 选择按钮
+@property (weak, nonatomic) IBOutlet UITextField *NameTExtField; // 姓名
+@property (weak, nonatomic) IBOutlet UITextField *AccountTextField; // 账号
+@property (weak, nonatomic) IBOutlet UITextField *ConfirmAccountTextField; // 确认账号
+@property (weak, nonatomic) IBOutlet UITextField *BankTextField; // 银行
+@property (weak, nonatomic) IBOutlet UIButton *ConfirmBut; // 确定按钮
+
+@property (weak, nonatomic) IBOutlet UIView *BackView; // 背景View
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *BackViewLayoutConstraint;
+@property (weak, nonatomic) IBOutlet UIView *DividerView1; // 分割线
+@property (weak, nonatomic) IBOutlet UIView *BankView; // 银联View
 
 @end
 
