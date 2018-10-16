@@ -84,8 +84,22 @@
 
 // 提款
 - (IBAction)ExtractBut:(UIButton *)sender {
-    ZPLog(@"%@-%@",self.TitleLabel,self.InputBoxTextField);
-    self.extractButBlock(self.AllBut);
+    ZPLog(@"%@-%@",self.AmountLabel.text,self.InputBoxTextField.text);
+//    if (self.AmountLabel.text < self.InputBoxTextField.text) {
+//        return;
+//    }else {
+       self.extractButBlock(self.AllBut);
+//    }
+    
 }
 
+//首先从UITextField继承一个子类并重写以下方法：canPerformAction:withSender:
+// 设置禁止textField摄入其他功能
+-(BOOL)canPerformAction:(SEL)action withSender:(id)sender {
+    UIMenuController *menuController = [UIMenuController sharedMenuController];
+    if (menuController) {
+        [UIMenuController sharedMenuController].menuVisible = NO;
+    }
+    return NO;
+}
 @end

@@ -34,10 +34,10 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Jv-Ag-OOx">
-                                    <rect key="frame" x="8" y="8" width="35" height="35"/>
+                                    <rect key="frame" x="8" y="8" width="45" height="45"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="35" id="BUs-DV-NwS"/>
-                                        <constraint firstAttribute="height" constant="35" id="z36-nx-ZJP"/>
+                                        <constraint firstAttribute="width" constant="45" id="BUs-DV-NwS"/>
+                                        <constraint firstAttribute="height" constant="45" id="z36-nx-ZJP"/>
                                     </constraints>
                                     <color key="tintColor" red="0.70588235290000001" green="0.70588235290000001" blue="0.70588235290000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <state key="normal" image="payment_close.png">

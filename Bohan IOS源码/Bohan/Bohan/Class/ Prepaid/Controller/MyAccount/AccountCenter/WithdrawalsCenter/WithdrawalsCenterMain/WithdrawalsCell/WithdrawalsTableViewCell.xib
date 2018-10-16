@@ -120,8 +120,8 @@
                                 <color key="textColor" red="0.43921568630000002" green="0.43529411759999997" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rG-S3-rvr">
-                                <rect key="frame" x="72" y="95" width="49.5" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8rG-S3-rvr">
+                                <rect key="frame" x="72" y="95" width="27" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="Ndk-pr-WEP"/>
                                 </constraints>
@@ -130,7 +130,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dv1-ia-kyY">
-                                <rect key="frame" x="126.5" y="95" width="50" height="15"/>
+                                <rect key="frame" x="104" y="95" width="50" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="mEj-4p-Jnh"/>
                                 </constraints>
@@ -242,8 +242,8 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="Currency symbol" width="20" height="20"/>
-        <image name="ic_Forward" width="10" height="19"/>
+        <image name="Currency symbol" width="20.5" height="20.5"/>
+        <image name="ic_Forward" width="7" height="12.666666984558105"/>
         <image name="timg" width="500" height="500"/>
     </resources>
 </document>

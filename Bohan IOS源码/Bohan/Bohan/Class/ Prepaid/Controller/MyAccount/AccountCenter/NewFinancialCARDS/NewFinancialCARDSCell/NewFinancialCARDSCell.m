@@ -15,6 +15,9 @@
     self.DividerView1.hidden = YES;
     self.BankView.hidden = YES;
     self.BackViewLayoutConstraint.constant = 178;
+    self.NameTExtField.clearButtonMode = UITextFieldViewModeWhileEditing;  // 一键删除文字
+    self.AccountTextField.clearButtonMode = UITextFieldViewModeWhileEditing;  // 一键删除文字
+    self.ConfirmAccountTextField.clearButtonMode = UITextFieldViewModeWhileEditing;  // 一键删除文字
 }
 
 // 到账方式

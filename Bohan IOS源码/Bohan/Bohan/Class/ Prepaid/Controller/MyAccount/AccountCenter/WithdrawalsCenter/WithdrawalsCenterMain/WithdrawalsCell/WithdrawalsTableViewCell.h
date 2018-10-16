@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WithdrawalsTableViewCell : UITableViewCell
+@interface WithdrawalsTableViewCell : UITableViewCell 
 
 /**
  当输入框输入文字时需要隐藏
