@@ -68,7 +68,6 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
         cell.NavigationButBlock = ^(id NavigationBut) {
             ZPLog(@"点击了导航按钮");
-//            113.896598,22.954302
             [AppLocationManager jumpToMapWithLat:latStr lng:linStr title:@"伯瀚" content:@"Bohan" VC:self];
         };
         cell.CorrectionButBlock = ^(id CorrectionBut) {
@@ -76,7 +75,6 @@
         };
         cell.ShareButBlock = ^(id ShareBut) {
             ZPLog(@"点击了分享");
-//            [self sendUrl:nil To:WXSceneTimeline];
             [self UMShare];
         };
         return cell;
@@ -120,9 +118,7 @@
         ScanView.type = 222;
     ScanView.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:ScanView animated:YES];
-//        [self presentViewController:ScanView animated:YES completion:nil];
-//        UINavigationController * nav = [[UINavigationController alloc]   initWithRootViewController:WebView];
-//        [self presentViewController:nav animated:YES completion:nil];
+        self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
     }else {
         UIAlertView * alert = [[UIAlertView alloc] initWithTitle:Localize(@"提示") message:Localize(@"您的设备暂时不支持扫码") delegate:nil cancelButtonTitle:Localize(@"确定") otherButtonTitles:nil, nil];
         [alert show];
@@ -133,8 +129,6 @@
 // 我的
 - (IBAction)MyBUt:(UIButton *)sender {
     MyAccountViewController * MyAccount = [[MyAccountViewController alloc]init];
-    //        gestures.modalPresentationStyle = UIModalPresentationOverCurrentContext;
-    //        gestures.view.backgroundColor = [UIColor colorWithRed:5/255.0 green:20/255.0 blue:36/255.0 alpha:0.9];
     MyAccount.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController: MyAccount animated:YES];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字

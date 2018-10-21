@@ -89,6 +89,8 @@
 		C490417821464362005652C9 /* payment_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C490416B21464362005652C9 /* payment_close@2x.png */; };
 		C490417921464362005652C9 /* LYPaymentBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C490416F21464362005652C9 /* LYPaymentBaseViewController.m */; };
 		C490418521464657005652C9 /* BaseController.m in Sources */ = {isa = PBXBuildFile; fileRef = C490418421464657005652C9 /* BaseController.m */; };
+		C492AFB92179D95C0025D09F /* WithdrawalsPromptController.m in Sources */ = {isa = PBXBuildFile; fileRef = C492AFB72179D95C0025D09F /* WithdrawalsPromptController.m */; };
+		C492AFBA2179D95C0025D09F /* WithdrawalsPromptController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C492AFB82179D95C0025D09F /* WithdrawalsPromptController.xib */; };
 		C4A044962113F5C300656EC2 /* ParamsSettingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4A044982113F5C300656EC2 /* ParamsSettingViewController.xib */; };
 		C4A6CFC4216C34DF00B4113A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C48551CF2169E30F00A292A6 /* CoreGraphics.framework */; };
 		C4A6CFC6216C35CC00B4113A /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A6CFC5216C35CB00B4113A /* ImageIO.framework */; };
@@ -451,6 +453,9 @@
 		C490418121464549005652C9 /* Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		C490418321464657005652C9 /* BaseController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BaseController.h; sourceTree = "<group>"; };
 		C490418421464657005652C9 /* BaseController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BaseController.m; sourceTree = "<group>"; };
+		C492AFB62179D95C0025D09F /* WithdrawalsPromptController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WithdrawalsPromptController.h; sourceTree = "<group>"; };
+		C492AFB72179D95C0025D09F /* WithdrawalsPromptController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WithdrawalsPromptController.m; sourceTree = "<group>"; };
+		C492AFB82179D95C0025D09F /* WithdrawalsPromptController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WithdrawalsPromptController.xib; sourceTree = "<group>"; };
 		C4A044972113F5C300656EC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/ParamsSettingViewController.xib; sourceTree = "<group>"; };
 		C4A0449C2113F5C700656EC2 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ParamsSettingViewController.strings"; sourceTree = "<group>"; };
 		C4A6CF6F216C327500B4113A /* OpenSourceLibrary.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenSourceLibrary.pch; sourceTree = "<group>"; };
@@ -1404,6 +1409,16 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
+		C492AFB52179D9330025D09F /* Prompt  */ = {
+			isa = PBXGroup;
+			children = (
+				C492AFB62179D95C0025D09F /* WithdrawalsPromptController.h */,
+				C492AFB72179D95C0025D09F /* WithdrawalsPromptController.m */,
+				C492AFB82179D95C0025D09F /* WithdrawalsPromptController.xib */,
+			);
+			path = "Prompt ";
+			sourceTree = "<group>";
+		};
 		C4AD80672143C26900CE8C66 /* Pop-upView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1824,6 +1839,7 @@
 		CC2455BF1FF745DB00616916 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C492AFB52179D9330025D09F /* Prompt  */,
 				C46EE5F1216DF46500BF07A1 /* ZPPayPassword */,
 				C48551412169D4FB00A292A6 /* U-Push */,
 				C4854FEF215D150100A292A6 /* UMShare */,
@@ -2675,6 +2691,7 @@
 				C4278398215B0B310088869E /* CustomTableViewCell.xib in Resources */,
 				C4F9275B216E49D300DAF6BE /* TwitterKitResources.bundle in Resources */,
 				CC468D72206969D900506970 /* WSDatePickerView.xib in Resources */,
+				C492AFBA2179D95C0025D09F /* WithdrawalsPromptController.xib in Resources */,
 				C47E61A4214F5419008FA596 /* EquipmentCell.xib in Resources */,
 				C4F9276A216E49D300DAF6BE /* WeiboSDK.bundle in Resources */,
 				C490417821464362005652C9 /* payment_close@2x.png in Resources */,
@@ -2970,6 +2987,7 @@
 				C4AF05B4214A0C2000176F29 /* AccountCenterCell.m in Sources */,
 				CC2456711FF745DB00616916 /* UIScrollView+Refresh.m in Sources */,
 				CC0F482B200D2CC600E184F8 /* DeviceInfoViewController.m in Sources */,
+				C492AFB92179D95C0025D09F /* WithdrawalsPromptController.m in Sources */,
 				C46EE60D216E080D00BF07A1 /* SettingPayController.m in Sources */,
 				CC2455B91FF7450700616916 /* main.m in Sources */,
 				CC8154DF201B974300F72BFF /* STLoopProgressView+BaseConfiguration.m in Sources */,

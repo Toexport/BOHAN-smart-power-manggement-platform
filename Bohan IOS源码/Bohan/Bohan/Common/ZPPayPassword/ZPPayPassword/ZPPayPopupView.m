@@ -54,8 +54,8 @@
     [self.closeButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(self.mas_left).with.offset(XX_6(16));
         make.centerY.equalTo(self.titleLabel);
-        make.width.mas_equalTo(XX_6(14));
-        make.height.mas_equalTo(XX_6(14));
+        make.width.mas_equalTo(XX_6(15));
+        make.height.mas_equalTo(XX_6(15));
     }];
     
     [self addSubview:self.sendBtn];
@@ -86,8 +86,15 @@
         make.right.equalTo(self.mas_right).with.offset(XX_6(-16));
         make.top.equalTo(self.payPasswordView.mas_bottom).with.offset(XX_6(16));
         make.height.mas_equalTo(XX_6(20));
-        make.width.mas_equalTo(XX_6(60));
+        make.width.mas_equalTo(XX_6(120));
     }];
+}
+
+#pragma mark -Code
+- (void)sendVerificationCode {
+    if ([self.delegate respondsToSelector:@selector(sendBtn)]) {
+        [self.delegate didClickForgetPasswordButton];
+    }
 }
 
 #pragma mark -Private
@@ -189,10 +196,10 @@
 - (CountDownButton *)sendBtn {
     if (!_sendBtn) {
         _sendBtn = [CountDownButton buttonWithType:UIButtonTypeCustom];
-        [_sendBtn setTitle:@"发送验证码" forState:UIControlStateNormal];
+        [_sendBtn setTitle:Localize(@"发送验证码") forState:UIControlStateNormal];
         [_sendBtn setTitleColor:UIColorFromHEX(0x444444) forState:UIControlStateNormal];
         _sendBtn.titleLabel.font = Font_XX6(12);
-        [_sendBtn addTarget:self action:@selector(sendBtn) forControlEvents:UIControlEventTouchUpInside];
+        [_sendBtn addTarget:self action:@selector(sendVerificationCode) forControlEvents:UIControlEventTouchUpInside];
     }
     return _sendBtn;
 }
@@ -208,7 +215,7 @@
 - (UIButton *)forgetPasswordButton {
     if (!_forgetPasswordButton) {
         _forgetPasswordButton = [UIButton buttonWithType:UIButtonTypeCustom];
-        [_forgetPasswordButton setTitle:@"忘记密码" forState:UIControlStateNormal];
+        [_forgetPasswordButton setTitle:Localize(@"Forgot password?") forState:UIControlStateNormal];
         [_forgetPasswordButton setTitleColor:UIColorFromHEX(0xFF352E) forState:UIControlStateNormal];
         _forgetPasswordButton.titleLabel.font = Font_XX6(12);
         [_forgetPasswordButton addTarget:self action:@selector(forgetPasswordAction) forControlEvents:UIControlEventTouchUpInside];

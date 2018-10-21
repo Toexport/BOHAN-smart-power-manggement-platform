@@ -35,7 +35,6 @@
         NSString * str = [mutStr substringToIndex:5];
         textField.text = str;
     }
-    
     if (textField.text.length > 0) {
         self.TextLabel2.hidden = NO;
         self.TextLabel.hidden = YES;
@@ -62,7 +61,6 @@
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     [self.ChooseView endEditing:YES];
-    
 }
 - (void)ChooseViews {
     self.chooseViewBlock(self.ChooseView);
@@ -85,12 +83,12 @@
 // 提款
 - (IBAction)ExtractBut:(UIButton *)sender {
     ZPLog(@"%@-%@",self.AmountLabel.text,self.InputBoxTextField.text);
-//    if (self.AmountLabel.text < self.InputBoxTextField.text) {
-//        return;
-//    }else {
+    if (self.InputBoxTextField.text.longLongValue > self.AmountLabel.text.longLongValue) {
+        return;
+    }else {
+        
        self.extractButBlock(self.AllBut);
-//    }
-    
+    }
 }
 
 //首先从UITextField继承一个子类并重写以下方法：canPerformAction:withSender:
