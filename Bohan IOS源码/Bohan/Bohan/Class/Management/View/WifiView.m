@@ -42,7 +42,6 @@
 }
 - (IBAction)addAction:(UIButton *)sender {
     if (self.addBock) {
-        
         self.addBock(self.ssidTF.text, self.pwdTF.text);
     }
     

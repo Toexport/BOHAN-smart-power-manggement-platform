@@ -12,6 +12,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="WithdrawalsPromptController">
             <connections>
+                <outlet property="CheckCodeLabel" destination="sJH-qm-w7I" id="tvD-oY-mL6"/>
                 <outlet property="PoundageLabel" destination="3E1-7O-ONC" id="Kib-qx-dMj"/>
                 <outlet property="PrivateAccountLabel" destination="I0b-h2-Qid" id="gxM-ad-Hqv"/>
                 <outlet property="PromptLabel" destination="oNs-GC-9bV" id="HE5-z9-xBV"/>

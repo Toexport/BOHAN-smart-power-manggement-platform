@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.title = Localize(@"我的账户");
+    self.title = Localize(@"我的");
     self.TitleLabel.text = USERNAME;
     [self Registered];
 }
@@ -83,6 +83,7 @@
                 return cell;
             }
 }
+
 // cell的大小
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {

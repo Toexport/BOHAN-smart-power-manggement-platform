@@ -23,8 +23,7 @@
     NSString * titletext;
     NSString * InputBoxText;
 }
-
-@property (nonatomic, strong) ZPPayPopupView * payPopupView;
+@property (nonatomic, strong)ZPPayPopupView * payPopupView;
 
 @end
 
@@ -49,15 +48,16 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     WithdrawalsTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:@"WithdrawalsTableViewCell"];
-    cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果
     cell.TitleImages.image = [UIImage imageNamed:images[_selectIndex]];
+    cell.AmountLabel.text = [NSString stringWithFormat:@"%@",self.AmountStr];
     cell.TitleLabel.text = titles[_selectIndex];
     cell.chooseViewBlock = ^(id ChooseView) {
         [self initUIView];
     };
     cell.extractButBlock = ^(id ExtractBut) {
         ZPLog(@"点击了提款按钮");
-        [self buttonAction]; // 交易密码
+        [self buttonAction]; //交易密码
         titletext = cell.TitleLabel.text;
         InputBoxText = cell.InputBoxTextField.text;
     };
@@ -73,7 +73,7 @@
         if (selectIndex >= 0) {
             _selectIndex = selectIndex;
             [self.Tableview reloadData];
-        } else {
+        }else {
             NewFinancialCARDSController * NewFinancialCARDS = [[NewFinancialCARDSController alloc]init];
             [self.navigationController pushViewController:NewFinancialCARDS animated:YES];
             self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
@@ -99,7 +99,7 @@
             oprentionType = 1;
             self.payPopupView.type = 1;
             self.payPopupView.forgetPasswordButton.hidden = YES;
-            self.payPopupView.sendBtn.hidden = NO; // 打开发送验证码
+            self.payPopupView.sendBtn.hidden = NO; //打开发送验证码
             self.payPopupView.delegate = self;
             [self.payPopupView showPayPopView];
             [self getCodeAction];
@@ -135,7 +135,17 @@
     [self presentViewController:WithdrawalsPrompt animated:YES completion:nil];
     WithdrawalsPrompt.TotalAmountLabel.text = InputBoxText;
     WithdrawalsPrompt.PromptLabel.text = titletext;
-    WithdrawalsPrompt.PrivateAccountLabel.text = @"1624";
+    int ivalue = [InputBoxText intValue];
+    int Poundage = ivalue * 0.01;
+    WithdrawalsPrompt.PoundageLabel.text = [NSString stringWithFormat:@"%d.00",Poundage];
+    if ([USERNAME hasSuffix:@"com"]) {
+        NSString * EmailStr = [USERNAME substringWithRange:NSMakeRange(5, 7)];
+        WithdrawalsPrompt.PrivateAccountLabel.text = EmailStr;
+        WithdrawalsPrompt.CheckCodeLabel.text = Localize(@"末七码");
+    }else {
+    NSString * string = [USERNAME substringWithRange:NSMakeRange(7, 4)];
+    WithdrawalsPrompt.PrivateAccountLabel.text = string;
+    }
     ZPLog(@"输入的密码正确");
 }
 

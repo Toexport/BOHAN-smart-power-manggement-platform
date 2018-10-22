@@ -14,6 +14,7 @@
 #import "CommandModel.h"
 #import <SAMKeychain/SAMKeychain.h>
 #import "DebuggingANDPublishing.pch"
+#import<SystemConfiguration/CaptiveNetwork.h>
 @interface WifiConnectViewController ()<UIScrollViewDelegate> {
     
     NSUInteger currentIndex;
@@ -37,7 +38,6 @@
     }else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
-    
     self.title = Localize(@"连接WiFi");
     [self.view addSubview:self.sliderView];
     [self.view addSubview:self.mainScroll];
@@ -50,7 +50,6 @@
         make.top.mas_equalTo(weakSelf.sliderView.mas_bottom);
     }];
     [_mainScroll setContentSize:CGSizeMake(2*ScreenWidth, self.mainScroll.frame.size.height)];
-
     [self.autoConV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.mas_equalTo(0);
         make.width.mas_equalTo(weakSelf.mainScroll.mas_width);
@@ -63,7 +62,7 @@
         make.width.mas_equalTo(weakSelf.mainScroll.mas_width);
         make.height.mas_equalTo(@300);
     }];
-
+    
     self.autoConV.ssidTF.text = [self.espConnect fetchSsid];
     NSString * pwd = [SAMKeychain passwordForService:BUNDLEIDENTIFIER account:self.autoConV.ssidTF.text];
     if (pwd && pwd.length > 0) {
@@ -247,5 +246,36 @@
     [self.sliderView selectedWithIndex:scrollView.contentOffset.x /scrollView.bounds.size.width];
 }
 
+
+
+//+ (NSString *)ssid {
+//     NSString *ssid = @"Not Found";
+//    CFArrayRef myArray = CNCopySupportedInterfaces();
+//    if (myArray != nil) {
+//        CFDictionaryRef myDict = CNCopyCurrentNetworkInfo(CFArrayGetValueAtIndex(myArray, 0));
+//        if (myDict != nil) {
+//            NSDictionary *dict = (NSDictionary*)CFBridgingRelease(myDict);
+//            ssid = [dict valueForKey:@"SSID"];
+//             }
+//        }
+//     return ssid;
+//}
+//
+////获取MAC --MAC为网络接口物理地址，一般指电脑网卡的物理地址
+//
+//+ (NSString *)bssid //获取macIP
+//{
+//    NSString *bssid = @"Not Found";
+//    CFArrayRef myArray = CNCopySupportedInterfaces();
+//    if (myArray != nil) {
+//        CFDictionaryRef myDict = CNCopyCurrentNetworkInfo(CFArrayGetValueAtIndex(myArray, 0));
+//        if (myDict != nil) {
+//            NSDictionary *dict = (NSDictionary*)CFBridgingRelease(myDict);
+//            bssid = [dict valueForKey:@"BSSID"];
+//            }
+//        }
+//    return bssid;
+//
+//}
 
 @end

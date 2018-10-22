@@ -18,7 +18,7 @@
     self.NameTExtField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.AccountTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     self.ConfirmAccountTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
-    self.BankTextField.clearButtonMode = UITextFieldViewModeWhileEditing;// 一键删除文字
+    self.BankTextField.clearButtonMode = UITextFieldViewModeWhileEditing; // 一键删除文字
 }
 
 // 到账方式
@@ -42,6 +42,11 @@
         self.BankView.hidden = YES;
         self.BackViewLayoutConstraint.constant = 178;
     }
+    if ([newText isEqualToString:Localize(@"微信")]) {
+        self.RemindLabel.hidden = NO;
+    }else {
+        self.RemindLabel.hidden = YES;
+    }
 }
 
 // 确定按钮
@@ -55,21 +60,22 @@
             [HintView showHint:Localize(@"请填写名字")];
         }else
             if ([self.AccountTextField.text isEqualToString:@""]) {
-                ZPLog(@"请填写账号");
-                [HintView showHint:Localize(@"请填写账号")];
+                ZPLog(@"请填写手机号码");
+                [HintView showHint:Localize(@"请填写手机号码")];
             }else
                 if ([self.ConfirmAccountTextField.text isEqualToString:@""]) {
-                    ZPLog(@"请填写确认账号");
-                    [HintView showHint:Localize(@"请填写确认账号")];
+                    ZPLog(@"请填写账号");
+                    [HintView showHint:Localize(@"请填写账号")];
                 }else
-                    if (self.AccountTextField.text.longLongValue != self.ConfirmAccountTextField.text.longLongValue) {
-                        ZPLog(@"账号不一致");
-                        [HintView showHint:Localize(@"账号不一致")];
-                    }else
+//                    if (self.AccountTextField.text.longLongValue != self.ConfirmAccountTextField.text.longLongValue) {
+//                        ZPLog(@"账号不一致");
+//                        [HintView showHint:Localize(@"账号不一致")];
+//                    }else
                         [self AllDateS];
 }
 
 - (void)AllDateS {
+    
     ZPLog(@"成功");
 }
 

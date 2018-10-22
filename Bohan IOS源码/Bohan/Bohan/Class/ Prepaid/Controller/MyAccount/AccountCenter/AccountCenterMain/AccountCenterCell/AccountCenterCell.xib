@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -54,7 +54,7 @@
                                         <rect key="frame" x="0.0" y="1" width="100.5" height="124"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_record_bank" translatesAutoresizingMaskIntoConstraints="NO" id="W8v-gE-vUo">
-                                                <rect key="frame" x="25" y="10" width="50" height="50"/>
+                                                <rect key="frame" x="25.5" y="10" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="FKk-Gt-IxS"/>
                                                     <constraint firstAttribute="width" constant="50" id="b2s-bf-cP7"/>
@@ -87,7 +87,7 @@
                                         <rect key="frame" x="101.5" y="1" width="101" height="124"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="余额" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Ps-pm-xlh">
-                                                <rect key="frame" x="36.5" y="70" width="29" height="17"/>
+                                                <rect key="frame" x="36" y="70" width="29" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="17" id="Cfa-FL-scN"/>
                                                 </constraints>
@@ -102,10 +102,19 @@
                                                     <constraint firstAttribute="height" constant="50" id="XX9-I9-XR4"/>
                                                 </constraints>
                                             </imageView>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥1000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mbn-x4-dLC">
-                                                <rect key="frame" x="15.5" y="95" width="71.5" height="21"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="￥" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mbn-x4-dLC">
+                                                <rect key="frame" x="12" y="95" width="15.5" height="21"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="21" id="n5J-lv-RKC"/>
+                                                    <constraint firstAttribute="height" constant="21" id="RNb-sz-iJs"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000.00" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YjJ-0r-tWE">
+                                                <rect key="frame" x="27.5" y="95" width="56" height="21"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="21" id="yst-yj-uhv"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                 <nil key="textColor"/>
@@ -114,9 +123,11 @@
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
-                                            <constraint firstItem="Mbn-x4-dLC" firstAttribute="top" secondItem="1Ps-pm-xlh" secondAttribute="bottom" constant="8" id="7Z7-sE-TOU"/>
+                                            <constraint firstItem="YjJ-0r-tWE" firstAttribute="centerX" secondItem="a2M-ck-8m7" secondAttribute="centerX" constant="5" id="2ZM-5W-2Et"/>
+                                            <constraint firstItem="YjJ-0r-tWE" firstAttribute="leading" secondItem="Mbn-x4-dLC" secondAttribute="trailing" id="3U9-m4-I9r"/>
                                             <constraint firstItem="1Ps-pm-xlh" firstAttribute="centerX" secondItem="a2M-ck-8m7" secondAttribute="centerX" id="ggA-EU-oPt"/>
-                                            <constraint firstItem="Mbn-x4-dLC" firstAttribute="centerX" secondItem="a2M-ck-8m7" secondAttribute="centerX" id="uds-3C-FCf"/>
+                                            <constraint firstItem="Mbn-x4-dLC" firstAttribute="top" secondItem="1Ps-pm-xlh" secondAttribute="bottom" constant="8" id="jQ8-FV-jjv"/>
+                                            <constraint firstItem="YjJ-0r-tWE" firstAttribute="top" secondItem="Mbn-x4-dLC" secondAttribute="top" id="sOC-t6-Vi6"/>
                                             <constraint firstItem="usy-X9-Uxn" firstAttribute="centerX" secondItem="a2M-ck-8m7" secondAttribute="centerX" id="w3y-0s-XTo"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
@@ -129,14 +140,14 @@
                                         <rect key="frame" x="203.5" y="1" width="100.5" height="124"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_record_state" translatesAutoresizingMaskIntoConstraints="NO" id="3hB-HS-d67">
-                                                <rect key="frame" x="25.5" y="10" width="50" height="50"/>
+                                                <rect key="frame" x="25" y="10" width="50" height="50"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="50" id="2JY-9S-urA"/>
                                                     <constraint firstAttribute="width" constant="50" id="ORc-ph-tC0"/>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="提款" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yFZ-gS-3D7">
-                                                <rect key="frame" x="36.5" y="70" width="29" height="17"/>
+                                                <rect key="frame" x="35.5" y="70" width="29" height="17"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="17" id="G7b-Ab-Sp1"/>
                                                 </constraints>
@@ -211,14 +222,15 @@
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
             <connections>
                 <outlet property="ExtractView" destination="sri-dF-2PV" id="ybs-Aj-CPI"/>
+                <outlet property="PriceLabel" destination="YjJ-0r-tWE" id="ff7-AQ-M1e"/>
                 <outlet property="StoredValueView" destination="hwV-nn-VgV" id="Aeh-a9-1wv"/>
             </connections>
             <point key="canvasLocation" x="55" y="47"/>
         </tableViewCell>
     </objects>
     <resources>
-        <image name="icon_record_bank" width="20" height="20"/>
-        <image name="icon_record_money" width="20" height="20"/>
-        <image name="icon_record_state" width="20" height="20"/>
+        <image name="icon_record_bank" width="20.5" height="20.5"/>
+        <image name="icon_record_money" width="20.5" height="20.5"/>
+        <image name="icon_record_state" width="20.5" height="20.5"/>
     </resources>
 </document>

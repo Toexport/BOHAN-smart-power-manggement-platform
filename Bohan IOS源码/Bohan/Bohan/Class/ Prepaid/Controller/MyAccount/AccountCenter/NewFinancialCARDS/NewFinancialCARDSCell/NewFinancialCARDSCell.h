@@ -27,6 +27,8 @@ typedef void (^WhyButBlock)(id response);
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *BackViewLayoutConstraint;
 @property (weak, nonatomic) IBOutlet UIView *DividerView1; // 分割线
 @property (weak, nonatomic) IBOutlet UIView *BankView; // 银联View
+@property (weak, nonatomic) IBOutlet UILabel *RemindLabel; // 提示Label
+
 
 @property (nonatomic, strong) NSString * WhyWay; // 方式
 - (void)updateBalanceView:(NSInteger)type;

@@ -22,7 +22,6 @@
     NSString * latStr;
     NSString * linStr;
     NSInteger _selectIndex;
-    
 }
 
 @end
@@ -110,7 +109,6 @@
     ScanViewController *ScanView = [[ScanViewController alloc] init];
     [ScanView getResultStr:^(NSString *result) {
         if (result && result.length>0) {
-            
         }
     }];
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
@@ -132,7 +130,6 @@
     MyAccount.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController: MyAccount animated:YES];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
-    
 }
 
 // 网页分享

@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (weak, nonatomic) IBOutlet UILabel *PoundageLabel; // 手续费
 @property (weak, nonatomic) IBOutlet UILabel *PromptLabel; // 到账方式
 @property (weak, nonatomic) IBOutlet UILabel *PrivateAccountLabel; // 后四位尾号
+@property (weak, nonatomic) IBOutlet UILabel *CheckCodeLabel; // 校验码提示
 
 @end
 
