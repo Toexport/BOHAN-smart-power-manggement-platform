@@ -10,7 +10,6 @@
 
 /**
  設置UIBarItem
-
  - LLNavigationBarItemTypeLeftFirst: 左邊第一個
  - LLNavigationBarItemTypeLeftSecond: 左邊第二個
  - LLNavigationBarItemTypeRightFirst: 右邊第一個
@@ -18,7 +17,6 @@
  - LLNavigationBarItemTypeRightThird: 右邊第三個
  */
 typedef NS_ENUM(NSInteger,LLNavigationBarItemType) {
-    
     LLNavigationBarItemTypeLeftFirst,
     LLNavigationBarItemTypeLeftSecond,
     LLNavigationBarItemTypeRightFirst,

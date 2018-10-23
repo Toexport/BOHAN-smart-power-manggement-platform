@@ -937,11 +937,11 @@
 		C40837082133A4F50057C6E0 /* ZP_registrationTimerBut */ = {
 			isa = PBXGroup;
 			children = (
+				C408370C2133A4F50057C6E0 /* UIButton+countDown.h */,
 				C40837092133A4F50057C6E0 /* UIButton+countDown.m */,
 				C408370A2133A4F50057C6E0 /* CALayer+UIColor.h */,
-				C408370B2133A4F50057C6E0 /* UIViewController+LLProgress.h */,
-				C408370C2133A4F50057C6E0 /* UIButton+countDown.h */,
 				C408370D2133A4F50057C6E0 /* CALayer+UIColor.m */,
+				C408370B2133A4F50057C6E0 /* UIViewController+LLProgress.h */,
 				C408370E2133A4F50057C6E0 /* UIViewController+LLProgress.m */,
 			);
 			path = ZP_registrationTimerBut;

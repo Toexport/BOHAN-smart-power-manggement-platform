@@ -139,9 +139,10 @@
     int Poundage = ivalue * 0.01;
     WithdrawalsPrompt.PoundageLabel.text = [NSString stringWithFormat:@"%d.00",Poundage];
     if ([USERNAME hasSuffix:@"com"]) {
-        NSString * EmailStr = [USERNAME substringWithRange:NSMakeRange(5, 7)];
-        WithdrawalsPrompt.PrivateAccountLabel.text = EmailStr;
-        WithdrawalsPrompt.CheckCodeLabel.text = Localize(@"末七码");
+//        NSString * EmailStr = [USERNAME substringWithRange:NSMakeRange(5, 7)];
+        WithdrawalsPrompt.PrivateAccountLabel.text = USERNAME;
+//        WithdrawalsPrompt.CheckCodeLabel.text = Localize(@"末七码");
+        WithdrawalsPrompt.CheckCodeLabel.hidden = YES;
     }else {
     NSString * string = [USERNAME substringWithRange:NSMakeRange(7, 4)];
     WithdrawalsPrompt.PrivateAccountLabel.text = string;

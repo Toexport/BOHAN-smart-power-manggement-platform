@@ -41,17 +41,23 @@ if (sender.isOn) {
 }else {
     openSwitch.backgroundColor = [UIColor redColor];
 }
-
-if (self.delegate && [self.delegate respondsToSelector:@selector(didSwitchOpen:withIndexPath:)]) {
-    if (sender.on == NO) {
-        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    if (self.delegate && [self.delegate respondsToSelector:@selector(didSwitchOpen:withIndexPath:)]) {
+        if (sender.on == NO) {
+            [self alldate];
             [self.delegate didSwitchOpen:sender.on withIndexPath:self.indexPath];
-        });
-    }else {
-    [self.delegate didSwitchOpen:sender.on withIndexPath:self.indexPath];
+            //        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ //延时开关
+            //            [self.delegate didSwitchOpen:sender.on withIndexPath:self.indexPath];
+            //        });
+        }else {
+            [self.delegate didSwitchOpen:sender.on withIndexPath:self.indexPath];
+        }
     }
 }
+
+- (void)alldate {
+    ZPLog(@"我是单开UFO");
 }
+
 
 - (void)prepareForReuse {
 [super prepareForReuse];
@@ -166,8 +172,7 @@ if (self.model.powerinfo && self.model.powerinfo.length>0) {
                     
                 }
     }
-}else
-{
+}else {
     if ([self.model.sort containsString:@"QK01"] || [self.model.sort containsString:@"QK02"] || [self.model.sort containsString:@"QK03"] || [self.model.sort containsString:@"K"]) {
         typeImg.image = [UIImage imageNamed:@"Switch-close.png"];
     }

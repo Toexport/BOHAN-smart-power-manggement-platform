@@ -40,21 +40,21 @@
     }else {
         //全关
         if (self.delegate && [self.delegate respondsToSelector:@selector(openAndCloseAll: name:)]) {
+            [self.delegate openAndCloseAll:NO name:self.name.text];
             [self alldate];
 //             延时关闭
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ // GCD延时
-                [self.delegate openAndCloseAll:NO name:self.name.text];
-            });
+//            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{ // GCD延时
+//                [self.delegate openAndCloseAll:NO name:self.name.text];
+//            });
         }
     }
 }
 
 - (void)alldate {
-    ZPLog(@"我是UFO");
+    ZPLog(@"我是全关UFO");
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     [openBtn setTitle:Localize(@"全开") forState:UIControlStateNormal];
     [closeBtn setTitle:Localize(@"全关") forState:UIControlStateNormal];

@@ -153,7 +153,6 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
         
         DeviceModel *model = self.datas[indexPath.row];
         [devices addObject:model.id];
-        
     }
     NSString *shareDevices = [devices componentsJoinedByString:@","];
     NSDictionary *dic = @{@"deviceCodes":shareDevices,@"mobileNum":tel, @"password":pwd};
@@ -176,24 +175,19 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
 // 解绑设备
 - (void)unBindDeviceAtIndexPath:(NSIndexPath *)indexPath {
     [self.view startLoading];
-    
     DeviceModel *model = self.datas[indexPath.row];
     NSDictionary *dic = @{@"DeviceCode":model.id, @"DeviceKey":model.id};
     [[NetworkRequest sharedInstance] requestWithUrl:UNBINDING_DEVICE_URL parameter:dic completion:^(id response, NSError *error) {
-        
         [self.view stopLoading];
         //请求成功
         if (!error) {
             [self.datas removeObject:model];
             [self.deviceTable deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-            
         }else {
             [HintView showHint:error.localizedDescription];
         }
     }];
 }
-
-
 
 - (UITableView *)deviceTable {
     if (!_deviceTable) {
@@ -258,13 +252,11 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
             [weakSelf shareDeviceWithTel:tel pwd:pwd];
         };
     }
-    
     return _shareView;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.datas.count;
-    
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {

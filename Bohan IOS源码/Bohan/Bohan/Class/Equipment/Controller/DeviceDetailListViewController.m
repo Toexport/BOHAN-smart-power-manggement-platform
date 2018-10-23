@@ -54,7 +54,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     [self.view startLoading];
     [self loadData];
     MyWeakSelf
-    self.timer = [NSTimer scheduledTimerWithTimeInterval:8 block:^{ // 列表设置8秒自动刷新
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:5 block:^{ // 列表设置8秒自动刷新
         __strong typeof(self) strongSelf = weakSelf;
         [strongSelf deviceStatus];
     } repeats:YES];
@@ -350,6 +350,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
     return YES;
 }
+
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
     [_lisArr exchangeObjectAtIndex:sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];
 }

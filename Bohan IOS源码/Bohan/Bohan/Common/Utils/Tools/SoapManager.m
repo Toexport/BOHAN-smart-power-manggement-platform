@@ -4,7 +4,7 @@
 //
 //  Created by Yang Lin on 2018/1/5.
 //  Copyright © 2018年 Bohan. All rights reserved.
-//\]
+//
 
 #import "SoapManager.h"
 #import "DebuggingANDPublishing.pch"
@@ -67,7 +67,6 @@ static NSString *const defaultSoap12Message = @"<?xml version=\"1.0\" encoding=\
         if ([soapAction length]>0) {
             [dic setValue:soapAction forKey:@"SOAPAction"];
         }
-
     }
     if (self.soapType==SoapType_soap12) {
         [dic setValue:@"application/soap+xml; charset=utf-8" forKey:@"Content-Type"];
@@ -84,7 +83,7 @@ static NSString *const defaultSoap12Message = @"<?xml version=\"1.0\" encoding=\
 
 #pragma mark -
 #pragma mark 公有方法
--(NSString*)stringSoapMessage:(NSArray*)params{
+- (NSString*)stringSoapMessage:(NSArray*)params{
     
     NSString *soap = self.soapType==SoapType_soap?@"soap":@"soap12";
     
@@ -95,15 +94,12 @@ static NSString *const defaultSoap12Message = @"<?xml version=\"1.0\" encoding=\
     
     NSString *header = @"";
     if ([_headers count]>0) {
-        
         if (_soapHeader&&[_soapHeader length]>0) {
             header = [self soapName:_soapHeader xmlnStr:xmlnsStr params:_headers];
         }else {
             header=[self soapName:nil xmlnStr:xmlnsStr params:_headers];
-            
         }
         header=[NSString stringWithFormat:@"%@%@%@",startNode,header,endNode];;
-        
     }
     
     if ([self.parameters count]>0) {
@@ -114,37 +110,30 @@ static NSString *const defaultSoap12Message = @"<?xml version=\"1.0\" encoding=\
     return [NSString stringWithFormat:[self defaultSoapMesage],header,body];
 }
 
-- (NSString *)soapName:(NSString *)name xmlnStr:(NSString *)xmlnStr params:(NSDictionary *)params
-{
+- (NSString *)soapName:(NSString *)name xmlnStr:(NSString *)xmlnStr params:(NSDictionary *)params {
     if ([params count]>0) {
-        
         NSMutableString *soap = [@"" mutableCopy];
         if (name && name.length>0) {
-            
             soap=[NSMutableString stringWithFormat:@"<%@%@>",name,xmlnStr];
         }
-        
         for (NSString *key in params) {
-            
             [soap appendFormat:@"<%@>",key];
             [soap appendString:[params objectForKey:key]];
             [soap appendFormat:@"</%@>",key];
         }
-        
         //可有可无
 //        [soap appendString:[self paramsFormatString:self.soapParams]];
         
         if (name && name.length>0) {
             [soap appendFormat:@"</%@>",name];
         }
-        
         return soap;
     }
     
     return @"";
 }
 
--(NSString*)paramsFormatString:(NSArray*)params{
+-(NSString*)paramsFormatString:(NSArray*)params {
     NSMutableString *xml=[NSMutableString stringWithFormat:@""];
     for (NSDictionary *item in params) {
         NSString *key=[[item allKeys] objectAtIndex:0];

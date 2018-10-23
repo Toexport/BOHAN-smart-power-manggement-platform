@@ -65,6 +65,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self loadData];
+//    [self testS];
 }
 
 - (void)loadData {
@@ -72,7 +73,6 @@
     if (model.isload == NO) {
         [model.currentTable startLoading];
     }
-    
     NSString *url =currentIndex==0?GET_NAME_LIST_URL:GET_POS_NAME_LIST_URL;
     [[NetworkRequest sharedInstance] requestWithUrl:url parameter:nil completion:^(id response, NSError *error) {
         [model.currentTable stopLoading];
@@ -172,6 +172,20 @@
         ZPLog(@"--------%@",response);
         if (!error) {
             [HintView showHint:isOpen?Localize(@"已开启"):Localize(@"已关闭")];
+        }else {
+            [HintView showHint: error.localizedDescription];// 后台返回的提示
+        }
+    }];
+}
+
+- (void)testS {
+    WebSocket *socket = [WebSocket socketManager];
+    CommandModel *command = [[CommandModel alloc] init];
+    command.command = @"0001";
+    //    开关不知道是不是对的，修改的07，原来是01
+    [socket sendMultiDataWithModel:command resultBlock:^(id response, NSError *error) {
+        ZPLog(@"--------%@",response);
+        if (!error) {
         }else {
             [HintView showHint: error.localizedDescription];// 后台返回的提示
         }
