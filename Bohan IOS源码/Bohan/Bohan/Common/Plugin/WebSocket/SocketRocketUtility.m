@@ -116,11 +116,13 @@ dispatch_sync(dispatch_get_main_queue(), block);\
         
         if (self.socket.readyState == SR_OPEN) {
             [self.socket send:data];    // 发送数据
+//            NSString * str = [NSString stringWithFormat:@"%@",data];
+//            NSString  * string =[str substringWithRange:NSMakeRange(2, 34)];
+//            [self.socket send:string];    // 发送数据
+//             ZPLog(@"socketSendData --------------- %@",data);
         }
         
-        
     });
-    
 }
 
 #pragma mark - **************** private mothodes

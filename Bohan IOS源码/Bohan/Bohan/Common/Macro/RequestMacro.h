@@ -108,5 +108,5 @@ static NSString *const GET_YEAR_TOTAL_POWER = @"GetUserYearTotalPowerData";
 static NSString *const SERVER = @"http://www.bohanserver.top:8088/webservice.asmx?wsdl/";// 原始接口地址
 //static NSString *const SERVER = @"http://122.10.97.35/webservice.asmx?wsdl/";// 香港接口地址
 
-//static NSString *const SERVER = @"http://192.168.6.98:9999/";// 测试接口地址
+//static NSString *const SERVER = @"http://192.168.3.254:23/";// 测试接口地址
 #endif /* RequestMacro_h */

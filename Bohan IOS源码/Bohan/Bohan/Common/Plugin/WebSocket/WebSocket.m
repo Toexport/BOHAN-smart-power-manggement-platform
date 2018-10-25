@@ -19,25 +19,21 @@
 
 @implementation WebSocket
 
-
-+ (instancetype)socketManager
-{
++ (instancetype)socketManager {
     static WebSocket *instance = nil;
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
         instance = [[WebSocket alloc] init];
     });
     return instance;
-
 }
-
 
 - (SocketRocketUtility *)serverSockt {
     if (!_serverSockt) {
-        _serverSockt = [[SocketRocketUtility alloc] initWithUrl:@"ws://www.bohanserver.top:8888"]; // 原始地址
-//        _serverSockt = [[SocketRocketUtility alloc] initWithUrl:@"ws://122.10.97.35:8888"]; // 香港地址
+               _serverSockt = [[SocketRocketUtility alloc] initWithUrl:@"ws://www.bohanserver.top:8888"]; // 原始地址
+        //       _serverSockt = [[SocketRocketUtility alloc] initWithUrl:@"ws://122.10.97.35:8888"]; // 香港地址
+//        _serverSockt = [[SocketRocketUtility alloc] initWithUrl:@"ws://192.168.3.245:23"]; //测试
     }
-    
     return _serverSockt;
 }
 
@@ -53,11 +49,7 @@
 //    return _deviceSockt;
 //}
 
-
-
-- (void)sendSingleDataWithModel:(CommandModel *)model resultBlock:(CompletionBlock)block
-{
-    
+- (void)sendSingleDataWithModel:(CommandModel *)model resultBlock:(CompletionBlock)block {
     NSString *dataStr = [self singleDataStringWithModel:model];
     if (!dataStr || dataStr.length == 0) {
         return;
@@ -65,9 +57,7 @@
     [self.serverSockt sendData:dataStr resultBlock:block];
 }
 
-
-- (void)sendMultiDataWithModel:(CommandModel *)model resultBlock:(CompletionBlock)block
-{
+- (void)sendMultiDataWithModel:(CommandModel *)model resultBlock:(CompletionBlock)block {
     NSString *dataStr = [self multiDataStringWithModel:model];
     if (!dataStr || dataStr.length == 0) {
         return;
@@ -82,6 +72,5 @@
 //    [self.deviceSockt sendData:dataStr resultBlock:block];
 //
 //}
-
 
 @end
