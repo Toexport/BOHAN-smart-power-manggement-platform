@@ -36,12 +36,10 @@
     if (self.buttonAction) {
         self.buttonAction(sender);
     }
-    
 }
 
 // 获取当前年月日时间
 - (void)yyyyMMddHHmm {
-    
     NSDate *currentDate = [NSDate date];
     NSCalendar *currentCalendar = [NSCalendar currentCalendar];
     //IOS 8 之后
@@ -97,8 +95,7 @@
     MinutesTextField.text = [NSString stringWithString:self.string55];
     NSString * string = [NSString stringWithFormat:@"%@%@%@%@%@",YearTextField.text,MonthTextField.text,DayTextField.text,HoursTextField.text,MinutesTextField.text];
     str1 = [NSString stringWithFormat:@"%@",string];
-    ZPLog(@"%@",str1);
-    
+    ZPLog(@"%@",str1);  
 }
 
 

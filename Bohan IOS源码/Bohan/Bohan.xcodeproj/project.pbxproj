@@ -1049,20 +1049,6 @@
 			path = DetailsPayCell;
 			sourceTree = "<group>";
 		};
-		C42AE0B9212E354B006A6F84 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		C42AE0BA212E3553006A6F84 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 		C44DE77B2148BE5E007325FD /* ChargingStatus */ = {
 			isa = PBXGroup;
 			children = (
@@ -1518,8 +1504,6 @@
 				C429413C21428D9200E10921 /* DetailsPay */,
 				C44DE77B2148BE5E007325FD /* ChargingStatus */,
 				C4E164B1213E849B00445E57 /* MyAccount */,
-				C42AE0BA212E3553006A6F84 /* View */,
-				C42AE0B9212E354B006A6F84 /* Model */,
 			);
 			path = DetailsColler;
 			sourceTree = "<group>";

@@ -52,23 +52,6 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     [self UI];
 }
 
-
-//- (void)updateViewConstraints {
-//    [super updateViewConstraints];
-//    if (iPhone4) {
-//        _ViewLayoutHeight.constant += 90;
-//    }
-//    if (iPhone5) {
-//        _ViewLayoutHeight.constant += 90;
-//    }
-//    if (iPhone6) {
-//        _ViewLayoutHeight.constant += 45;
-//    }
-//    if (iPhone6splus) {
-//        _PatchViewLayoutConstraint.constant = 30;
-//    }
-//}
-
 - (void)loadData {
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
@@ -113,9 +96,9 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
             if (!startDate) {
                 return ;
             }
+            
             if ([statusStr isEqualToString:@"00"]) {
                 [status setText:Localize(@"设备关闭")];
-                
             }else {
                 [status setText:Localize(@"设备打开")];
             }

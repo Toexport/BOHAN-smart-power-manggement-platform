@@ -81,41 +81,41 @@
                 self.TurnOnSwitch2.selected = NO;
                 self.TurnOnSwitch3.selected = NO;
             }else
-                if ([String containsString:@"81"]) {
-                    self.TurnOnSwitch1.selected = YES;
-                    self.TurnOnSwitch2.selected = NO;
-                    self.TurnOnSwitch3.selected = NO;
-                }else
-                    if ([String containsString:@"82"]) {
-                        self.TurnOnSwitch1.selected = NO;
-                        self.TurnOnSwitch2.selected = YES;
-                        self.TurnOnSwitch3.selected = NO;
-                    }else
-                        if ([String containsString:@"83"]) {
-                            self.TurnOnSwitch1.selected = YES;
-                            self.TurnOnSwitch2.selected = YES;
-                            self.TurnOnSwitch3.selected = NO;
-                        }else
-                            if ([String containsString:@"84"]) {
-                                self.TurnOnSwitch1.selected = NO;
-                                self.TurnOnSwitch2.selected = NO;
-                                self.TurnOnSwitch3.selected = YES;
-                            }else
-                                if ([String containsString:@"85"]) {
-                                    self.TurnOnSwitch1.selected = YES;
-                                    self.TurnOnSwitch2.selected = NO;
-                                    self.TurnOnSwitch3.selected = YES;
-                                }else
-                                    if ([String containsString:@"86"]) {
-                                        self.TurnOnSwitch1.selected = NO;
-                                        self.TurnOnSwitch2.selected = YES;
-                                        self.TurnOnSwitch3.selected = YES;
-                                    }else
-                                        if ([String containsString:@"87"]) {
-                                            self.TurnOnSwitch1.selected = YES;
-                                            self.TurnOnSwitch2.selected = YES;
-                                            self.TurnOnSwitch3.selected = YES;
-                                        }
+            if ([String containsString:@"81"]) {
+                self.TurnOnSwitch1.selected = YES;
+                self.TurnOnSwitch2.selected = NO;
+                self.TurnOnSwitch3.selected = NO;
+            }else
+            if ([String containsString:@"82"]) {
+                self.TurnOnSwitch1.selected = NO;
+                self.TurnOnSwitch2.selected = YES;
+                self.TurnOnSwitch3.selected = NO;
+            }else
+            if ([String containsString:@"83"]) {
+                self.TurnOnSwitch1.selected = YES;
+                self.TurnOnSwitch2.selected = YES;
+                self.TurnOnSwitch3.selected = NO;
+            }else
+            if ([String containsString:@"84"]) {
+                self.TurnOnSwitch1.selected = NO;
+                self.TurnOnSwitch2.selected = NO;
+                self.TurnOnSwitch3.selected = YES;
+            }else
+            if ([String containsString:@"85"]) {
+                self.TurnOnSwitch1.selected = YES;
+                self.TurnOnSwitch2.selected = NO;
+                self.TurnOnSwitch3.selected = YES;
+            }else
+            if ([String containsString:@"86"]) {
+                self.TurnOnSwitch1.selected = NO;
+                self.TurnOnSwitch2.selected = YES;
+                self.TurnOnSwitch3.selected = YES;
+            }else
+            if ([String containsString:@"87"]) {
+                self.TurnOnSwitch1.selected = YES;
+                self.TurnOnSwitch2.selected = YES;
+                self.TurnOnSwitch3.selected = YES;
+            }
             [self TimingSwitchData]; // 获取开关状态
         }else {
             [HintView showHint:error.localizedDescription];// 后台返回的提示
@@ -175,7 +175,7 @@
                 self.Title1But.hidden = YES;
             }
             
-            //             开关2
+            //                         开关2
             NSString * string2 = [str substringWithRange:NSMakeRange(36, 10)];
             NSString * Years2 = [string2 substringWithRange:NSMakeRange(0, 2)];
             Years1TextField.text = [NSString stringWithFormat:@"%d%@",20,Years2];
@@ -218,7 +218,7 @@
                 }
             }
             
-            //            开关3
+//            开关3
             NSString * string3 = [str substringWithRange:NSMakeRange(48, 10)];
             NSString * Years3 = [string3 substringWithRange:NSMakeRange(0, 2)];
             Years1TextField.text = [NSString stringWithFormat:@"%d%@",20,Years3];

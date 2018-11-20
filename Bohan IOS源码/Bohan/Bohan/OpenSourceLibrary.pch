@@ -8,6 +8,7 @@
 
 #ifndef OpenSourceLibrary_pch
 #define OpenSourceLibrary_pch
+
 // PAy
 #import <PassKit/PassKit.h>                                 //用户绑定的银行卡信息
 #import <PassKit/PKPaymentAuthorizationViewController.h>    //Apple pay的展示控件
@@ -21,6 +22,4 @@
 #import "WXApiObject.h"
 // 友盟分享
 //#import <UShareUI/UShareUI.h>
-
-
 #endif /* OpenSourceLibrary_pch */

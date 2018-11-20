@@ -37,7 +37,6 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
     [self onCheckVersion];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(logoutNotification:) name:LOGOUTNOTIFICATION object:nil];
     [WXApi registerApp:@"wx76320274b0800e51"];
-
     return YES;
 }
 
@@ -58,7 +57,11 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
     [UMConfigure setLogEnabled:YES];
     [UMConfigure initWithAppkey:UMessageAppKey channel:nil];
     UMessageRegisterEntity * entity = [[UMessageRegisterEntity alloc] init];
-    [UNUserNotificationCenter currentNotificationCenter].delegate = self;
+    if (@available(iOS 10.0, *)) {
+        [UNUserNotificationCenter currentNotificationCenter].delegate = self;
+    } else {
+        // Fallback on earlier versions
+    }
     entity.types = UMessageAuthorizationOptionBadge|UMessageAuthorizationOptionSound;
     [UMessage registerForRemoteNotificationsWithLaunchOptions:launchOptions Entity:entity completionHandler:^(BOOL granted, NSError * _Nullable error) {
         if (granted) {
@@ -104,9 +107,7 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
         for (int i = 0; i<[tabBar.viewControllers count]; i++) {
             ((UINavigationController *)tabBar.viewControllers[i]).tabBarItem = [[UITabBarItem alloc] initWithTitle:titles[i] image:[[UIImage imageNamed:images[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[UIImage imageNamed:selectedImages[i]]];
         }
-        
         self.window.rootViewController = tabBar;
-        
     }else {
         LoginViewController *login = [[LoginViewController alloc] init];
         UINavigationController *loginNav = [[UINavigationController alloc] initWithRootViewController:login];
@@ -163,11 +164,8 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
                     }
                 }
             }
-            
         });
-        
     });
-    
 }
 
 - (void)logoutNotification:(NSNotification*)notify {
@@ -199,7 +197,7 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
 #pragma mark WXApiDelegate
 -(void)onResp:(BaseResp*)resp {
     NSString *str = [NSString stringWithFormat:@"%d",resp.errCode];
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:@"微信返回结果" message:str delegate:self cancelButtonTitle:@"好的" otherButtonTitles:nil, nil];
+    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:Localize(@"微信返回结果") message:str delegate:self cancelButtonTitle:Localize(@"好的") otherButtonTitles:nil, nil];
     [alertview show];
 }
 
@@ -211,7 +209,7 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
 }
 
 //iOS10新增：处理前台收到通知的代理方法
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
     NSDictionary * userInfo = notification.request.content.userInfo;
     if([notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
         //应用处于前台时的远程推送接受
@@ -227,7 +225,7 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
 }
 
 //iOS10新增：处理后台点击通知的代理方法
-- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler{
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
     NSDictionary * userInfo = response.notification.request.content.userInfo;
     if([response.notification.request.trigger isKindOfClass:[UNPushNotificationTrigger class]]) {
 //        应用处于后台时的远程推送接受

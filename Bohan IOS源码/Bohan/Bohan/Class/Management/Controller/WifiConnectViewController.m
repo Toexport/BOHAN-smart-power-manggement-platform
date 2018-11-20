@@ -71,8 +71,7 @@
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];
-    
+    [super viewDidDisappear:animated];  
 }
 
 -(void)viewWillAppear:(BOOL)animated {
