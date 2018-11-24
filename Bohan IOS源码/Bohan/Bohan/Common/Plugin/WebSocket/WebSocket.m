@@ -30,8 +30,8 @@
 
 - (SocketRocketUtility *)serverSockt {
     if (!_serverSockt) {
-//               _serverSockt = [[SocketRocketUtility alloc] initWithUrl:@"ws://www.bohanserver.top:8888"]; // 原始地址Sock
-               _serverSockt = [[SocketRocketUtility alloc] initWithUrl:@"ws://122.10.97.35:8888"]; // 香港地址Sock
+               _serverSockt = [[SocketRocketUtility alloc] initWithUrl:@"ws://www.bohanserver.top:8888"]; // 原始地址Sock
+//               _serverSockt = [[SocketRocketUtility alloc] initWithUrl:@"ws://122.10.97.35:8888"]; // 香港地址Sock
 
     }
     return _serverSockt;

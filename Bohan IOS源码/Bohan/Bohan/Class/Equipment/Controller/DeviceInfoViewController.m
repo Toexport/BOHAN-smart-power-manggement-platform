@@ -45,6 +45,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     [self GetsTime];
     
     formatter = [[NSDateFormatter alloc] init];
+    
     refreashBtn.titleLabel.numberOfLines = 2;
     UICollectionViewFlowLayout *lay = [[UICollectionViewFlowLayout alloc] init];
     lay.minimumLineSpacing = 1;
@@ -61,6 +62,8 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     
 //    [self deviceStatus];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStauts:) name:CHANGETIMEMODEL object:nil];
+    self.PayView.hidden = YES;
+    self.StateViewLayoutConstraint.constant = - 80;
 }
 
 // UI
@@ -89,9 +92,9 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [self deviceStatus];
     if ([self.sortt isEqualToString:@"YC"] || [self.sortt isEqualToString:@"YC10"] || [self.sortt isEqualToString:@"YC16 "] || [self.sortt isEqualToString:@"YCGP10"] || [self.sortt isEqualToString:@"YCGP16"] || [self.sortt isEqualToString:@"QC"] || [self.sortt isEqualToString:@"QC10"] || [self.sortt isEqualToString:@"QC16"] || [self.sortt isEqualToString:@"YC13"] || [self.sortt isEqualToString:@"QC13"] || [self.sortt isEqualToString:@"YC15"] || [self.sortt isEqualToString:@"QC15"]) {
         [self loadData];
-        [self deviceStatus];
     }else {
         
     }
@@ -199,7 +202,6 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     
     //    MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
-        
         if (!error) {
             NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 16, 12)];
             [formatter setDateFormat:@"yyMMddHHmmss"];
@@ -210,9 +212,8 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
                 electrictyModel = nil;
 //                [status setText:Localize(@"设备已结束倒计时模式")];
             } else {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)([startDate timeIntervalSinceDate:[NSDate date]] * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [self loadData];
-                });
+                
+            [self loadData];
             }
         }
         [deviceInfoCollection reloadData];
@@ -223,11 +224,9 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
 
 - (IBAction)refreashAction {
     [self deviceStatus];
-    
 }
 
 #pragma mark - UICollectionView Delegate
-
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
     return datas.count;
 }
@@ -242,7 +241,8 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
         if (indexPath.row == 5) {
             cell.discb.text = [electrictyModel isEqualToString:@"00"]?@"设备正处于关模式":@"设备正处于开模式";
         }
-    }else if (indexPath.row == 4 && ([electrictyModel isEqualToString:@"03"] || [electrictyModel isEqualToString:@"05"])) {
+    }else
+        if (indexPath.row == 4 && ([electrictyModel isEqualToString:@"03"] || [electrictyModel isEqualToString:@"05"])) {
         //运行时段模式、循环通断模式
         if (indexPath.row == 4) {
             cell.discb.text = [electrictyModel isEqualToString:@"03"]?Localize(@"设备正处于时段运行模式"):Localize(@"设备正处于循环通断模式");
@@ -256,7 +256,6 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
 #pragma mark - UICollectionViewDelegate
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (!isOnline) {
-        
         [HintView showHint:Localize(@"当前设备离线不可控制")];
         return;
     }
@@ -389,6 +388,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
             self.WeekStr = [NSString stringWithFormat:@"0%ld",(long)week];
         }
     }
+    
     if ([WeekStr containsString:@"2"]) {
         week = 1;
         if (week >= 10) {
@@ -397,6 +397,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
             self.WeekStr = [NSString stringWithFormat:@"0%ld",(long)week];
         }
     }
+    
     if ([WeekStr containsString:@"3"]) {
         week = 2;
         if (week >= 10) {
@@ -405,6 +406,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
             self.WeekStr = [NSString stringWithFormat:@"0%ld",(long)week];
         }
     }
+    
     if ([WeekStr containsString:@"4"]) {
         week = 3;
         if (week >= 10) {
@@ -413,6 +415,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
             self.WeekStr = [NSString stringWithFormat:@"0%ld",(long)week];
         }
     }
+    
     if ([WeekStr containsString:@"5"]) {
         week = 4;
         if (week >= 10) {
@@ -429,6 +432,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
             self.WeekStr = [NSString stringWithFormat:@"0%ld",(long)week];
         }
     }
+    
     if ([WeekStr containsString:@"7"]) {
         week = 6;
         if (week >= 10) {
@@ -440,7 +444,6 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     self.Ymdhms = [NSString stringWithFormat:@"%@%@%@%@%@%@%@",self.YearStr,self.MonthStr,self.DayStr,self.WeekStr,self.HourStr,self.MinuteStr,self.SecondStr];
     [self CheckTime];
 }
-
 
 // 校验时间
 - (void)CheckTime {
@@ -454,4 +457,5 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
         ZPLog(@"%@",response);
     }];
 }
+
 @end

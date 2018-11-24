@@ -100,8 +100,7 @@
                         [weakSelf updateViewWithDataas:response];
                     }
             }
-        }else
-        {
+        }else {
             [HintView showHint:error.localizedDescription];
         }
         
@@ -171,7 +170,12 @@
 
 // 不带点
 - (void)updateViewWithDataasNo:(NSString *)data {
-    [power setText:[data realTimePowwerrNo]];
+    NSString * PORT = [data substringWithRange:NSMakeRange(36, 1)];
+    if ([PORT isEqualToString:@"0"]) {
+        [power setText:[data realTimePowwerrYES]];
+    }else {
+        [power setText:[data realTimePowwerrNo]];
+    }
     [deviceNo setText:self.dNo];
     [time setText:[data time]];
     [week setText:[data week]];
@@ -186,7 +190,12 @@
 
 // 不带点
 - (void)updateViewWithDataaasNo:(NSString *)data {
-    [power setText:[data realTimePowwwerrNo]];
+    NSString * PORT = [data substringWithRange:NSMakeRange(36, 1)];
+    if ([PORT isEqualToString:@"0"]) {
+        [power setText:[data realTimePowwerrYES]];
+    }else {
+        [power setText:[data realTimePowwerrNo]];
+    }
     [deviceNo setText:self.dNo];
     [time setText:[data time]];
     [week setText:[data week]];

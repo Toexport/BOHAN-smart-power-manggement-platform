@@ -51,8 +51,12 @@
 - (NSString *)realTimePowerr;
 //  用电参数调用接口(4.0位，不带点)
 - (NSString *)realTimePowwerr;
+// GPRS电表（没有小数点去掉0）
+- (NSString *)powerrrrS;
 //  用电参数调用接口(4.0位)
 - (NSString *)realTimePowwerrNo;
+//  用电参数调用接口(5.去0位，不带点)
+- (NSString *)realTimePowwerrYES;
 
 //  用电参数调用接口(4.0位 不带点)
 - (NSString *)realTimePowerrNo;
@@ -60,6 +64,7 @@
 - (NSString *)realTimePowwwerrNo;
 // GPRS电表（没有小数点）
 - (NSString *)powwerrrrNo;
+
 
 // 一位开关
 - (NSString *)realTimePoerrr;

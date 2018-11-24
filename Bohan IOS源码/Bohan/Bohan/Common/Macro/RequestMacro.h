@@ -105,7 +105,7 @@ static NSString *const GET_MONTH_TOTAL_POWER = @"GetUserMonthTotalPowerData";
 //获取当前连接用户下所有设备某年按月分组统计用电总量 传入参数:年(如:2017)
 static NSString *const GET_YEAR_TOTAL_POWER = @"GetUserYearTotalPowerData";
 
-//static NSString *const SERVER = @"http://www.bohanserver.top:8088/webservice.asmx?wsdl/";// 原始接口地址
-static NSString *const SERVER = @"http://122.10.97.35:8088/webservice.asmx?wsdl/";// 香港接口地址
+static NSString *const SERVER = @"http://www.bohanserver.top:8088/webservice.asmx?wsdl/";// 原始接口地址
+//static NSString *const SERVER = @"http://122.10.97.35:8088/webservice.asmx?wsdl/";// 香港接口地址
 
 #endif /* RequestMacro_h */

@@ -148,7 +148,12 @@ if (self.model.powerinfo && self.model.powerinfo.length>0) {
                 }else if ([stringg hasPrefix:@"65"]){
                     if ([strin containsString:@"GP1P"]) {
                         ZPLog(@"有小数点");
-                        [power setText:[self.model.powerinfo powerrrr]];
+                        NSString * PORT = [self.model.powerinfo substringWithRange:NSMakeRange(5, 1)];
+                        if ([PORT isEqualToString:@"0"]) {
+                            [power setText:[self.model.powerinfo powerrrr]];
+                        }else {
+                            [power setText:[self.model.powerinfo powerrrrS]];
+                        }
                         [[NSUserDefaults standardUserDefaults] setObject:self.model.powerinfo forKey:@"powerinfo"];
                     }else {
                         ZPLog(@"没有小数点");
