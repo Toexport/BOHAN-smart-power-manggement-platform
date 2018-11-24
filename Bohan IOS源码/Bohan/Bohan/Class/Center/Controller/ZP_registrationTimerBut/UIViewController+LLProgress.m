@@ -29,7 +29,6 @@
 }
 
 - (UIButton *)getButtonWithType:(LLNavigationBarItemType)itemType {
-    
     if (itemType == LLNavigationBarItemTypeLeftFirst) {
         
         UIBarButtonItem *item = [self leftFirstBarButton];

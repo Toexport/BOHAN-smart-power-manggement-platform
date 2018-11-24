@@ -15,8 +15,7 @@
 @implementation WithdrawalsPromptController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
+    [super viewDidLoad];   
 }
 
 // 完成按钮

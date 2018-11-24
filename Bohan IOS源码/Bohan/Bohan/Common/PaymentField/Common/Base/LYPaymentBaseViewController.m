@@ -20,51 +20,43 @@ void *KVOContext;
 
 @implementation LYPaymentBaseViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
     [self.view addSubview:self.navigationBar];
 }
 
-- (void)viewWillAppear:(BOOL)animated
-{
+- (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     self.navigationController.interactivePopGestureRecognizer.delegate = self;
 }
 
-- (void)viewWillDisappear:(BOOL)animated
-{
+- (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     //    [MobClick endLogPageView:NSStringFromClass(self.class)];
 }
 
-- (void)viewDidAppear:(BOOL)animated
-{
+- (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
+- (void)viewDidDisappear:(BOOL)animated {
     [super viewDidDisappear:animated];
 }
 
-- (void)viewWillLayoutSubviews
-{
+- (void)viewWillLayoutSubviews {
     [super viewWillLayoutSubviews];
     if ([self.parentViewController isKindOfClass:UINavigationController.class]) {
         self.navigationBar.frame = CGRectMake(0, 0, CGRectGetWidth(self.view.bounds), 64);
     }
 }
 
-- (void)viewDidLayoutSubviews
-{
+- (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     [self.navigationBar setNeedsDisplay];
     [self.navigationBar setNeedsLayout];
 }
 
-- (void)willMoveToParentViewController:(UIViewController *)parent
-{
+- (void)willMoveToParentViewController:(UIViewController *)parent {
     [super willMoveToParentViewController:parent];
     if (![parent isKindOfClass:[UINavigationController class]]) {
         return;
@@ -82,13 +74,11 @@ void *KVOContext;
     }
 }
 
-- (void)didMoveToParentViewController:(UIViewController *)parent
-{
+- (void)didMoveToParentViewController:(UIViewController *)parent {
     [super didMoveToParentViewController:parent];
 }
 
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
-{
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     if (context == KVOContext) {
         if (!CGRectEqualToRect([change[NSKeyValueChangeOldKey] CGRectValue], [change[NSKeyValueChangeNewKey] CGRectValue])) {
             [self adjustScrollViewInsets];
@@ -98,15 +88,13 @@ void *KVOContext;
     }
 }
 
-- (void)dealloc
-{
+- (void)dealloc {
     [self.navigationBar removeObserver:self forKeyPath:@"frame"];
 }
 
 #pragma mark - UIGestureRecognizerDelegate
 
-- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer
-{
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
     if (gestureRecognizer == self.navigationController.interactivePopGestureRecognizer) {
         return self.navigationController.viewControllers.firstObject != self;
     }
@@ -115,8 +103,7 @@ void *KVOContext;
 
 #pragma mark - 私有方法
 
-- (void)adjustScrollViewInsets
-{
+- (void)adjustScrollViewInsets {
     __block UIScrollView *scrollView = nil;
     [self.view.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([obj isKindOfClass:UIScrollView.class]) {
@@ -139,8 +126,7 @@ void *KVOContext;
 
 @implementation LYPaymentBaseNavigationBar
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     if (@available(iOS 11.0, *)) {
         [self.subviews enumerateObjectsUsingBlock:^(__kindof UIView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {

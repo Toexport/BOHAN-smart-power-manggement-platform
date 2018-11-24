@@ -14,31 +14,31 @@
 #import "DebuggingANDPublishing.pch"
 @interface UpdateDeviceInfoViewController ()
 {
+    __weak IBOutlet UITextField * nameTF;
+    __weak IBOutlet UILabel * deviceId;
+    __weak IBOutlet CustomInputView * typeInput;
+    __weak IBOutlet CustomInputView * posInput;
+    __weak IBOutlet CustomInputView * brandInput;
     
-    __weak IBOutlet UITextField *nameTF;
-    __weak IBOutlet UILabel *deviceId;
-    __weak IBOutlet CustomInputView *typeInput;
-    __weak IBOutlet CustomInputView *posInput;
-    __weak IBOutlet CustomInputView *brandInput;
+    __weak IBOutlet UIButton * lookBtn;
+    __weak IBOutlet UIButton * connectBtn;
+    __weak IBOutlet UIButton * alternativeButt;
     
-    __weak IBOutlet UIButton *lookBtn;
-    __weak IBOutlet UIButton *connectBtn;
-    __weak IBOutlet UIButton *alternativeButt;
-    
-    __weak IBOutlet NSLayoutConstraint *MaimVIEwLayoutConstraint; // 主View
-    __weak IBOutlet NSLayoutConstraint *SecondViewLayoutConstraint;// 第一个View
-    __weak IBOutlet NSLayoutConstraint *ThreeViewLayoutConstraint; // 第二个View
-    __weak IBOutlet NSLayoutConstraint *ViewwLayoutConstraint;
-    __weak IBOutlet CustomInputView *SecondView;
-    __weak IBOutlet CustomInputView *ThreeView;
-    __weak IBOutlet UIView *divider1View;
-    __weak IBOutlet UIView *divider2View;
+    __weak IBOutlet NSLayoutConstraint * MaimVIEwLayoutConstraint; // 主View
+    __weak IBOutlet NSLayoutConstraint * SecondViewLayoutConstraint;// 第一个View
+    __weak IBOutlet NSLayoutConstraint * ThreeViewLayoutConstraint; // 第二个View
+    __weak IBOutlet NSLayoutConstraint * ViewwLayoutConstraint;
+    __weak IBOutlet CustomInputView * SecondView;
+    __weak IBOutlet CustomInputView * ThreeView;
+    __weak IBOutlet UIView * divider1View;
+    __weak IBOutlet UIView * divider2View;
     
     BOOL loadtType;
     BOOL loadtPos;
     BOOL loadtBrand;
     
 }
+
 @end
 
 @implementation UpdateDeviceInfoViewController
@@ -105,6 +105,7 @@
 
 // 判断是几位开关
 - (void)MoreSwitch {
+    
     if ([self.model.id containsString:@"61"]) {
         ZPLog(@"%@",self.model.id);
         typeInput.name.text = Localize(@"设备名称1");
@@ -155,9 +156,7 @@
 - (void)updateUI {
     
     if (loadtType && loadtType && loadtBrand) {
-        
         ZPLog(@"全部请求完毕");
-        
         [self.view stopLoading];
         
     }
@@ -165,7 +164,6 @@
 }
 
 - (void)loadPosList {
-    
     [[NetworkRequest sharedInstance] requestWithUrl:GET_POS_NAME_LIST_URL parameter:nil completion:^(id response, NSError *error) {
         //        dispatch_group_leave(group);
         ZPLog(@"%@",response);
@@ -176,7 +174,6 @@
             [self updateUI];
         }
     }];
-    
 }
 
 - (void)loadBrandList {
@@ -198,7 +195,7 @@
         loadtType = YES;
         ZPLog(@"%@",response);
         if (!error) {
-            NSArray *names = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
+            NSArray * names = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
             NSString * strarray = [names componentsJoinedByString:@"@"];
             SecondView.datas  = [strarray componentsSeparatedByString:@"@"];
             ThreeView.datas = [strarray componentsSeparatedByString:@"@"];
@@ -207,12 +204,13 @@
         }
     }];
 }
+
 - (void)updateDeviceInfo {
     [self.view startLoading];
     if ([deviceId.text hasPrefix:@"62"] || [deviceId.text hasPrefix:@"63"]) {
         if ([deviceId.text hasPrefix:@"62"]) {
             NSString * string = [NSString stringWithFormat:@"%@@%@",typeInput.contentTF.text,SecondView.contentTF.text];
-            NSDictionary *dic = @{@"DeviceName":nameTF.text,@"DeviceCode":deviceId.text, @"PosName":posInput.contentTF.text, @"LoadName":string, @"LoadBrand":brandInput.contentTF.text};
+            NSDictionary * dic = @{@"DeviceName":nameTF.text,@"DeviceCode":deviceId.text, @"PosName":posInput.contentTF.text, @"LoadName":string, @"LoadBrand":brandInput.contentTF.text};
             [[NetworkRequest sharedInstance] requestWithUrl:MODIFY_DEVICE_INFO_URL parameter:dic completion:^(id response, NSError *error) {
                 
                 [self.view stopLoading];
@@ -245,7 +243,7 @@
         
     }else{
         
-        NSDictionary *dic = @{@"DeviceName":nameTF.text,@"DeviceCode":deviceId.text, @"PosName":posInput.contentTF.text, @"LoadName":typeInput.contentTF.text, @"LoadBrand":brandInput.contentTF.text};
+        NSDictionary * dic = @{@"DeviceName":nameTF.text,@"DeviceCode":deviceId.text, @"PosName":posInput.contentTF.text, @"LoadName":typeInput.contentTF.text, @"LoadBrand":brandInput.contentTF.text};
         [[NetworkRequest sharedInstance] requestWithUrl:MODIFY_DEVICE_INFO_URL parameter:dic completion:^(id response, NSError *error) {
             
             [self.view stopLoading];
@@ -263,6 +261,7 @@
 }
 
 - (IBAction)saveAction {
+    
     if ([deviceId.text hasPrefix:@"62"]) {
         if (nameTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || SecondView.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
             [HintView showHint:Localize(@"请填完整设备信息")];
@@ -285,17 +284,17 @@
 }
 
 - (IBAction)deviceInfoAction {
-    DeviceInfoViewController *info = [[DeviceInfoViewController alloc] init];
+    DeviceInfoViewController * info = [[DeviceInfoViewController alloc] init];
     info.model = self.model;
     [self.navigationController pushViewController:info animated:YES];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
 }
 
 - (IBAction)connectAction {
-    WifiConnectViewController *connect = [[WifiConnectViewController alloc] init];
+    WifiConnectViewController * connect = [[WifiConnectViewController alloc] init];
     connect.deviceNo = self.model.id;
     [self.navigationController pushViewController:connect animated:YES];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
-    
 }
+
 @end

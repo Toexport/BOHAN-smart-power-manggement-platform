@@ -18,7 +18,7 @@
     
 }
 
-- (void)setUp{
+- (void)setUp {
     
     self.currentPage = 1;
     self.pageSize = 20;
@@ -50,8 +50,7 @@
     return [self initWithFrame:frame style:style shouldRefresh:fresh shouldPage:NO];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style shouldRefresh:(BOOL)fresh shouldPage:(BOOL)page
-{
+- (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style shouldRefresh:(BOOL)fresh shouldPage:(BOOL)page {
     self = [super initWithFrame:frame style:style];
     
     if (self) {
@@ -61,8 +60,7 @@
     return self;
 }
 
-- (void)shouldRefresh:(BOOL)fresh shouldPage:(BOOL)page
-{
+- (void)shouldRefresh:(BOOL)fresh shouldPage:(BOOL)page {
     [self setUp];
     
     MyWeakSelf
@@ -79,8 +77,7 @@
 }
 
 
-- (void)setupHeader
-{
+- (void)setupHeader {
     self.currentPage = 1;
     
     if (self.loadBlock) {
@@ -88,8 +85,7 @@
     }
 }
 
-- (void)setupFooter
-{
+- (void)setupFooter {
     self.currentPage++;
     if (self.loadBlock) {
         self.loadBlock();
@@ -97,8 +93,7 @@
     
 }
 
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     
     if (self.separatorInsetZero) {
@@ -112,12 +107,10 @@
     }
 }
 
-- (void)changeState
-{
+- (void)changeState {
     if (self.currentPage <= 1) {
         [self setState:RefreshStateHeaderEnd];
-    }else
-    {
+    }else {
         [self setState:RefreshStateFooterEnd];
     }
     
@@ -126,8 +119,7 @@
     }
 }
 
-- (void)resetCurrentPage
-{
+- (void)resetCurrentPage {
     if (self.currentPage > 1) {
         self.currentPage--;
     }
@@ -135,10 +127,9 @@
 
 
 #pragma mark - getter and setter 方法
-- (void)setDatas:(NSArray *)datas
-{
+- (void)setDatas:(NSArray *)datas {
     _datas = datas;
     [self reloadData];
-    
 }
+
 @end

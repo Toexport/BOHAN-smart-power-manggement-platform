@@ -14,7 +14,17 @@
 @property (nonatomic, strong) DeviceModel *model;
 @property (nonatomic, assign) NSString * type; // ID
 @property (nonatomic, strong) NSString * sortt;
+@property (nonatomic, strong) NSString * TitleStr;// 文字状态
 
 @property (weak, nonatomic) IBOutlet UIView *PayView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *StateViewLayoutConstraint; // 状态
+/***********校时**********/
+@property (nonatomic, strong) NSString * YearStr; // 年
+@property (nonatomic, strong) NSString * MonthStr; // 月
+@property (nonatomic, strong) NSString * DayStr; // 日
+@property (nonatomic, strong) NSString * WeekStr; // 星期
+@property (nonatomic, strong) NSString * HourStr; // 时
+@property (nonatomic, strong) NSString * MinuteStr; // 分
+@property (nonatomic, strong) NSString * SecondStr; // 秒
+@property (nonatomic, strong) NSString * Ymdhms;
 @end

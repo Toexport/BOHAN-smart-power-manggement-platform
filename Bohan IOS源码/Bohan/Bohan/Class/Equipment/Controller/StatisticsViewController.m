@@ -16,23 +16,23 @@
 #import "DebuggingANDPublishing.pch"
 @interface StatisticsViewController ()
 {
-    NSArray *dataArray;
+    NSArray * dataArray;
     NSUInteger currentIndex;
-    NSDateFormatter *formatter;
-    NSArray *urls;
-    NSArray *formatters;
-    NSArray *keys;
-    NSDate *selectedDate;
+    NSDateFormatter * formatter;
+    NSArray * urls;
+    NSArray * formatters;
+    NSArray * keys;
+    NSDate * selectedDate;
 }
-@property(nonatomic,strong)UIView *infoView;
-@property(nonatomic,strong)SliderView *sliderView;
-@property(nonatomic,strong)UIView *headerView;
-@property(nonatomic,strong)UILabel *dateLable;
-@property(nonatomic,strong)UIView *selectView;
-@property(nonatomic,strong)PowerHorizontalBarView *barView;
-@property(nonatomic,strong)PowerLineChartView *lineView;
-@property(nonatomic,copy)NSArray *titles;
-@property(nonatomic,copy)NSArray *titles2;
+@property(nonatomic,strong)UIView * infoView;
+@property(nonatomic,strong)SliderView * sliderView;
+@property(nonatomic,strong)UIView * headerView;
+@property(nonatomic,strong)UILabel * dateLable;
+@property(nonatomic,strong)UIView * selectView;
+@property(nonatomic,strong)PowerHorizontalBarView * barView;
+@property(nonatomic,strong)PowerLineChartView * lineView;
+@property(nonatomic,copy)NSArray * titles;
+@property(nonatomic,copy)NSArray * titles2;
 
 @end
 

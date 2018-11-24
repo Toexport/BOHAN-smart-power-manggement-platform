@@ -189,6 +189,7 @@
                 if (!error) {
                     [self POSTs];
                 }else {
+                    
                     [HintView showHint:error.localizedDescription];
                 }
             }];
@@ -258,7 +259,7 @@
         if (!error) {
             
         }else {
-            [HintView showHint:error.localizedDescription];
+        [HintView showHint:error.localizedDescription];
         }
     }];
 }
@@ -341,7 +342,6 @@
             typeInput3.hidden = YES;
             bdffLayoutConstraint.constant = - 59; // (隐藏两个text输入框的高度)
             return;
-            /****************************************************************************/
     }
 }
 
@@ -361,8 +361,6 @@
     }else{
         return NO;
     }
-    
-    
 }
 
 @end

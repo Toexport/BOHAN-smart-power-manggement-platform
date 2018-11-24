@@ -16,12 +16,10 @@
 #import "DebuggingANDPublishing.pch"
 #import<SystemConfiguration/CaptiveNetwork.h>
 @interface WifiConnectViewController ()<UIScrollViewDelegate> {
-    
     NSUInteger currentIndex;
 }
 @property(nonatomic,strong)SliderView *sliderView;
 @property (nonatomic, strong) UIScrollView *mainScroll;
-//@property(nonatomic,strong)PageCollectionView *pageCollection;
 @property (nonatomic, strong) WifiView *autoConV;
 @property (nonatomic, strong) WifiView *mantConV;
 @property (nonatomic, strong) ESPSmartConnect *espConnect;
@@ -71,7 +69,7 @@
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-    [super viewDidDisappear:animated];  
+    [super viewDidDisappear:animated];
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -85,7 +83,6 @@
     model.deviceNo = self.deviceNo;
     model.command = @"0001";
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
-        
         ZPLog(@"--------%@",response);
     }];
 }
@@ -114,9 +111,7 @@
                 //        {
                 //            [HintView showHint:Localize(@"连接失败")];
                 [self deviceStatus];
-                
             }
-
     });
 }
 //查询设备是否已经连接
@@ -141,7 +136,6 @@
                 dispatch_async(dispatch_get_main_queue(), ^{
                      [HintView showHint:Localize(@"WIFI连接成功！")];
                 });
-               
                 [self.navigationController popToRootViewControllerAnimated:YES];
                 return;
             }
@@ -149,9 +143,7 @@
         dispatch_async(dispatch_get_main_queue(), ^{
             [HintView showHint:Localize(@"连接失败")];
         });
-        
     }];
-    
 }
 
 - (ESPSmartConnect *)espConnect {
@@ -178,37 +170,31 @@
         _sliderView.block = ^(NSUInteger index) {
             currentIndex = index;
             [weakSelf.mainScroll setContentOffset:CGPointMake(currentIndex *ScreenWidth, 0) animated:YES];
-
         };
     }
-    
     return _sliderView;
 }
 
 
-- (UIScrollView *)mainScroll
-{
+- (UIScrollView *)mainScroll {
     if (!_mainScroll) {
         _mainScroll = [[UIScrollView alloc] initWithFrame:CGRectZero];
         _mainScroll.pagingEnabled = YES;
         _mainScroll.delegate = self;
         _mainScroll.showsHorizontalScrollIndicator = NO;
     }
-    
     return _mainScroll;
 }
 
 
-- (WifiView *)autoConV
-{
+- (WifiView *)autoConV {
     if (!_autoConV) {
         _autoConV = [self createWifiView];
     }
     return _autoConV;
 }
 
-- (WifiView *)mantConV
-{
+- (WifiView *)mantConV {
     if (!_mantConV) {
         _mantConV = [self createWifiView];
     }
@@ -240,11 +226,10 @@
     [self scrollViewDidEndScrollingAnimation:scrollView];
 }
 
--(void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
 
     [self.sliderView selectedWithIndex:scrollView.contentOffset.x /scrollView.bounds.size.width];
 }
-
 
 
 //+ (NSString *)ssid {

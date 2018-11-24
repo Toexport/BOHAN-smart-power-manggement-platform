@@ -10,10 +10,9 @@
 #import "DebuggingANDPublishing.pch"
 #import "PrefixHeader.pch"
 #import "AccountsPrepaidCell.h"
-@interface AccountsPrepaidController ()<UITableViewDelegate,UITableViewDataSource,PKPaymentAuthorizationViewControllerDelegate>
-{
-    NSMutableArray *summaryItems;
-    NSMutableArray *shippingMethods;
+@interface AccountsPrepaidController ()<UITableViewDelegate,UITableViewDataSource,PKPaymentAuthorizationViewControllerDelegate> {
+    NSMutableArray * summaryItems;
+    NSMutableArray * shippingMethods;
 }
 
 
@@ -26,9 +25,7 @@
     self.title = Localize(@"账户充值");
     [self.Tableview registerNib:[UINib nibWithNibName:@"AccountsPrepaidCell" bundle:nil] forCellReuseIdentifier:@"AccountsPrepaidCell"];
     self.Tableview.separatorStyle = UITableViewCellSeparatorStyleNone;  //隐藏tableview多余的线条
-    
 }
-
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
@@ -49,11 +46,10 @@
         }else
             if ([self.PayWayStr isEqualToString:@"WeChat"]) {
                 ZPLog(@"暂时不支持WeChat");
-            }else
-                if ([self.PayWayStr isEqualToString:@"Alipay"]) {
-                    ZPLog(@"暂时不支持Alipay");
-                }
-        
+        }else
+            if ([self.PayWayStr isEqualToString:@"Alipay"]) {
+                ZPLog(@"暂时不支持Alipay");
+        }
     }];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果
     return cell;
@@ -72,14 +68,14 @@
         [HintView showHint:Localize(@"操作系统不支持ApplePay，请升级至9.0以上版本，且iPhone6以上设备才支持")];
         return;
     }
-    //检查当前设备是否可以支付
+//    检查当前设备是否可以支付
     if (![PKPaymentAuthorizationViewController canMakePayments]) {
         //支付需iOS9.0以上支持
         [HintView showHint:Localize(@"设备不支持ApplePay，请升级至9.0以上版本，且iPhone6以上设备才支持")];
         NSLog(@"设备不支持ApplePay，请升级至9.0以上版本，且iPhone6以上设备才支持");
         return;
     }
-    //检查用户是否可进行某种卡的支付，是否支持Amex、MasterCard、Visa与银联四种卡，根据自己项目的需要进行检测
+//    检查用户是否可进行某种卡的支付，是否支持Amex、MasterCard、Visa与银联四种卡，根据自己项目的需要进行检测
 //    NSArray *supportedNetworks = @[PKPaymentNetworkAmex, PKPaymentNetworkMasterCard,PKPaymentNetworkVisa,PKPaymentNetworkChinaUnionPay];
      NSArray *supportedNetworks = @[PKPaymentNetworkAmex, PKPaymentNetworkMasterCard,PKPaymentNetworkVisa,PKPaymentNetworkChinaUnionPay];
     if (![PKPaymentAuthorizationViewController canMakePaymentsUsingNetworks:supportedNetworks]) {
@@ -96,10 +92,10 @@
     payRequest.supportedNetworks = supportedNetworks;   //用户可进行支付的银行卡
     payRequest.merchantCapabilities = PKMerchantCapability3DS|PKMerchantCapabilityEMV;      //设置支持的交易处理协议，3DS必须支持，EMV为可选，目前国内的话还是使用两者吧
 //    NSString * price = [NSNumber numberWithInteger:self.PriceStr];
-    NSDecimalNumber *subtotalAmount = [NSDecimalNumber decimalNumberWithMantissa:self.PriceStr.longLongValue exponent:0 isNegative:NO];   //12.75
-    PKPaymentSummaryItem *subtotal = [PKPaymentSummaryItem summaryItemWithLabel:Localize(@"商品价格") amount:subtotalAmount];
+    NSDecimalNumber * subtotalAmount = [NSDecimalNumber decimalNumberWithMantissa:self.PriceStr.longLongValue exponent:0 isNegative:NO];   //12.75
+    PKPaymentSummaryItem * subtotal = [PKPaymentSummaryItem summaryItemWithLabel:Localize(@"商品价格") amount:subtotalAmount];
     
-    NSDecimalNumber *totalAmount = [NSDecimalNumber zero];
+    NSDecimalNumber * totalAmount = [NSDecimalNumber zero];
     totalAmount = [totalAmount decimalNumberByAdding:subtotalAmount];
     PKPaymentSummaryItem *total = [PKPaymentSummaryItem summaryItemWithLabel:Localize(@"东莞伯瀚智能科技有限公司") amount:totalAmount];  //最后这个是支付
     
@@ -108,7 +104,7 @@
     payRequest.paymentSummaryItems = summaryItems;
     
     //ApplePay控件
-    PKPaymentAuthorizationViewController *view = [[PKPaymentAuthorizationViewController alloc]initWithPaymentRequest:payRequest];
+    PKPaymentAuthorizationViewController * view = [[PKPaymentAuthorizationViewController alloc]initWithPaymentRequest:payRequest];
     view.delegate = self;
     [self presentViewController:view animated:YES completion:nil];
 }
@@ -133,7 +129,7 @@
     
     PKPaymentToken *payToken = payment.token;
     //支付凭据，发给服务端进行验证支付是否真实有效
-    PKContact *billingContact = payment.billingContact;     //账单信息
+    PKContact * billingContact = payment.billingContact;     //账单信息
     //等待服务器返回结果后再进行系统block调用
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         //模拟服务器通信

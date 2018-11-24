@@ -10,15 +10,14 @@
 #import "DebuggingANDPublishing.pch"
 //static NSString *const defaultWebServiceNameSpace = @"http://bohansever.top/";
 
-static NSString *const httpServer=@"http://www.bohanserver.top:8088/webservice.asmx/wsdl"; // 原始地址接口
-//static NSString *const httpServer=@"http://122.10.97.35/webservice.asmx?wsdl"; // 香港地址接口
-//static NSString *const httpServer=@"192.168.3.254:23/"; // 测试
-static NSString *const nameSpace=@"http://bohansever.top/";
-//static NSString *const nameSpace=@"http://192.168.3.254:23/";// 测试
+//static NSString *const httpServer = @"http://www.bohanserver.top:8088/webservice.asmx/wsdl"; // 原始地址接口(错误)
 
-static NSString *const serviceURL=@"http://www.bohanserver.top:8088/"; // 原始接口
-//static NSString *const serviceURL=@"http://122.10.97.35:8088/"; // 香港接口
-//static NSString *const serviceURL=@"http://192.168.3.254:23/"; // 测试接口
+static NSString *const httpServer=@"http://122.10.97.35:8088/webservice.asmx?wsdl"; // 香港地址接口
+
+static NSString *const nameSpace=@"http://bohansever.top/";
+
+//static NSString *const serviceURL=@"http://www.bohanserver.top:8088/"; // 原始接口
+static NSString *const serviceURL=@"http://122.10.97.35:8088/"; // 香港接口
 
 //soap 1.1请求方式
 static NSString *const defaultSoap1Message = @"<?xml version=\"1.0\" encoding=\"utf-8\"?><soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">%@<soap:Body>%@</soap:Body></soap:Envelope>";

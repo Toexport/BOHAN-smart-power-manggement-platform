@@ -43,15 +43,10 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
-- (void)viewDidLayoutSubviews
-{
-//    [modelCollectionView.superview setFrame:CGRectChangeHeight(modelCollectionView.superview.frame, modelCollectionView.contentSize.height + 72)];
-//    [modelCollectionView setFrame:CGRectChangeHeight(modelCollectionView.frame, 260)];
-    
+- (void)viewDidLayoutSubviews {
     [(UIScrollView *)self.view setContentSize:CGSizeMake(ScreenWidth, 550)];
 }
 
@@ -65,8 +60,7 @@
 
             string = [cStartDate.text stringByAppendingString:[NSString stringWithFormat:@" %@",cStartTime.text]];
         }
-    }else
-    {
+    }else {
         if (![cEndDate.text isEqualToString:Localize(@"选择结束时间")]) {
 
             string = [cEndDate.text stringByAppendingString:[NSString stringWithFormat:@" %@",cEndTime.text]];
@@ -77,8 +71,7 @@
     [formatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:DateStyleShowYearMonthDayHourMinute scrollToDate:[formatter dateFromString:string] CompleteBlock:^(NSDate *selectDate) {
         
-        if (sender.tag == 300)
-        {
+        if (sender.tag == 300) {
             [formatter setDateFormat:@"yyyy-MM-dd"];
             [cStartDate setText:[formatter stringFromDate:selectDate]];
             
@@ -88,8 +81,7 @@
             [formatter setDateFormat:@"yyMMddHHmmss"];
             start = [formatter stringFromDate:selectDate];
             
-        }else
-        {
+        }else {
             [formatter setDateFormat:@"yyyy-MM-dd"];
             [cEndDate setText:[formatter stringFromDate:selectDate]];
             
@@ -114,10 +106,10 @@
     
 }
 
-- (void)loadData{
+- (void)loadData {
     
-    WebSocket *socket = [WebSocket socketManager];
-    CommandModel *model = [[CommandModel alloc] init];
+    WebSocket * socket = [WebSocket socketManager];
+    CommandModel * model = [[CommandModel alloc] init];
     model.command = @"0007";
     model.deviceNo = self.deviceNo;
     [self.view startLoading];
@@ -150,8 +142,7 @@
             }
 
             
-        }else
-        {
+        }else {
             [HintView showHint:error.localizedDescription];
         }
         
@@ -165,7 +156,7 @@
 
         [HintView showHint:Localize(@"选择时间")];
         return;
-    }else{
+    }else {
         
         [formatter setDateFormat:@"yyMMddHHmmss"];
         
@@ -173,14 +164,14 @@
         [HintView showHint:Localize(@"开始时间必须大于当前时间")];
         return;
             
-        }else if ([[formatter dateFromString:end] isEarlierThanDate:[formatter dateFromString:start]])
-        {
+        }else
+            if ([[formatter dateFromString:end] isEarlierThanDate:[formatter dateFromString:start]]) {
             [HintView showHint:Localize(@"结束时间必须大于开始时间")];
             return;
         }
     }
-    WebSocket *socket = [WebSocket socketManager];
-    CommandModel *model = [[CommandModel alloc] init];
+    WebSocket * socket = [WebSocket socketManager];
+    CommandModel * model = [[CommandModel alloc] init];
     model.command = @"0006";
     model.deviceNo = self.deviceNo;
     
@@ -193,8 +184,7 @@
         
         if (!error) {
             [HintView showHint:Localize(@"定时计量已提交")];
-        }else
-        {
+        }else {
             [HintView showHint:error.localizedDescription];
         }
         

@@ -12,7 +12,7 @@
 #import "DebuggingANDPublishing.pch"
 @interface TimeSelectViewController ()
 {
-    NSDateFormatter *formatter;
+    NSDateFormatter * formatter;
     NSString * string1;
     NSString * string11;
     NSString * strin;

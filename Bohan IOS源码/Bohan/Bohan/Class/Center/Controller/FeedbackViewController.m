@@ -14,7 +14,7 @@
 #import "SGActionView.h"
 @interface FeedbackViewController ()
 {
-    NSMutableArray *datas;
+    NSMutableArray * datas;
 }
 @end
 
@@ -77,17 +77,14 @@
 }
 
 
-- (void)hostoryAction
-{
+- (void)hostoryAction {
     
 }
 
-- (void)textViewDidChange:(UITextView *)textView
-{
+- (void)textViewDidChange:(UITextView *)textView {
     if (textView.text.length == 0) {
         self.placeHolder.hidden = NO;
-    }else
-    {
+    }else {
         self.placeHolder.hidden = YES;
     }
 }
@@ -115,11 +112,9 @@
             [HintView showHint:Localize(@"提交成功")];
             [self.navigationController popViewControllerAnimated:YES];
 
-        }else
-        {
+        }else {
             [HintView showHint:error.localizedDescription];
         }
-
     }];
     
 }
@@ -127,7 +122,6 @@
 - (IBAction)selectAction {
     [SGActionView showSheetWithTitle:nil itemTitles:datas itemSubTitles:nil selectedIndex:[datas indexOfObject:self.typeLab.text] selectedHandle:^(NSInteger index) {
         self.typeLab.text = datas[index];
-        
     }];
 
 }

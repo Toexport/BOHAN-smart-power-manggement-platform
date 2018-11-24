@@ -111,6 +111,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.TitleArray.count;
 }
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *cellid = @"ssss";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellid];
@@ -157,4 +158,5 @@
         appD.window.frame = CGRectMake(0, 0, ZP_Width, ZP_height);
     }
 }
+
 @end

@@ -16,13 +16,13 @@
 #import "DebuggingANDPublishing.pch"
 @interface CenterViewController ()<UITableViewDataSource,UITableViewDelegate>
 {
-    NSString *userImg;
-    UIImageView *headerImg;
+    NSString * userImg;
+    UIImageView * headerImg;
 }
 @property (nonatomic, strong)SelectPhotoManager * photoManager;
-@property (nonatomic,strong) UITableView *tableView;
-@property (nonatomic,strong) UIButton *footerBtn;
-@property (nonatomic,strong) NSMutableArray *data;
+@property (nonatomic,strong) UITableView * tableView;
+@property (nonatomic,strong) UIButton * footerBtn;
+@property (nonatomic,strong) NSMutableArray * data;
 @property (nonatomic, strong) UILabel * detailTextLabel; //电话
 @property (nonatomic, strong)UIImageView * HeadImage;
 
@@ -37,8 +37,7 @@
     self.hidesBottomBarWhenPushed = NO;
     if (@available(iOS 11.0, *)){
         [self.tableView setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
-    }else
-    {
+    }else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(languageChange) name:AppLanguageDidChangeNotification object:nil];
@@ -81,7 +80,7 @@
     
 }
 
--(NSMutableArray *)data{
+- (NSMutableArray *)data {
     if (_data == nil) {
         _data = [NSMutableArray array];
     }
@@ -92,7 +91,7 @@
 }
 
 
--(UITableView *)tableView{
+-(UITableView *)tableView {
     if (_tableView == nil) {
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavBarHeight+5, ScreenWidth, ScreenHeight- (kNavBarHeight+5)) style:UITableViewStyleGrouped];
         [_tableView setBackgroundColor:[UIColor clearColor]];
@@ -113,21 +112,20 @@
         _footerBtn.titleEdgeInsets = UIEdgeInsetsMake(0, -50, 0, 0);
         _footerBtn.imageEdgeInsets = UIEdgeInsetsMake(0, 180, 0, 0);
     }
-
     return _footerBtn;
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.data.count;
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    static NSString *cellIdentify = @"cellIdentify";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString * cellIdentify = @"cellIdentify";
+    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentify];
     }
-    NSDictionary *dict_ = self.data[indexPath.row];
+    NSDictionary * dict_ = self.data[indexPath.row];
     cell.textLabel.text = dict_[@"item"];
     cell.textLabel.textColor = kTextColor;
     cell.textLabel.font = Font(15);
@@ -155,11 +153,10 @@
     }else {
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
-    
     return cell;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if (indexPath.row == 0) {
         return 60;
@@ -202,7 +199,7 @@
 //    return 0.001;
 //}
 
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (indexPath.row == 0) {
         ZPLog(@"第一个cell被点击");
@@ -225,11 +222,11 @@
     
     if (indexPath.row == 1) {
         
-        NSUserDefaults *df = [NSUserDefaults standardUserDefaults];
-        NSString *language = [df objectForKey:@"App_Language_Switch_Key"];
+        NSUserDefaults * df = [NSUserDefaults standardUserDefaults];
+        NSString * language = [df objectForKey:@"App_Language_Switch_Key"];
         
 //        NSString *localeLanguageCode = [[NSLocale currentLocale] objectForKey:NSLocaleLanguageCode];
-        NSString *localeLanguageCode = [NSLocale preferredLanguages][0];
+        NSString * localeLanguageCode = [NSLocale preferredLanguages][0];
         localeLanguageCode = [[localeLanguageCode componentsSeparatedByString:@"-"] firstObject];
         NSString *urlStr = @"http://www.bohanserver.top:8088/APPHelp_en.html";
         if ((language && [language isEqualToString:@"zh-Hans"]) || (!language && [localeLanguageCode isEqualToString:@"zh"])) {
@@ -243,7 +240,7 @@
         
     }else
         if (indexPath.row == 2) {
-        FeedbackViewController *feedback = [[FeedbackViewController alloc] init];
+        FeedbackViewController * feedback = [[FeedbackViewController alloc] init];
         feedback.hidesBottomBarWhenPushed = YES;
         [self.navigationController pushViewController:feedback animated:YES];
             self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
@@ -257,15 +254,15 @@
             if (indexPath.row == 5) {
 //                LanguageController * Laguage = [[LanguageController alloc]init];
 //                [self.navigationController pushViewController:Laguage animated:YES];
-        UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:Localize(@"语言选择") message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController * actionSheetController = [UIAlertController alertControllerWithTitle:Localize(@"语言选择") message:nil preferredStyle:UIAlertControllerStyleAlert];
 
-        UIAlertAction *chinessAction = [UIAlertAction actionWithTitle:Localize(@"中文") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertAction * chinessAction = [UIAlertAction actionWithTitle:Localize(@"中文") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [NSBundle setCusLanguage:@"zh-Hans"];
         }];
-        UIAlertAction *englishAction = [UIAlertAction actionWithTitle:Localize(@"英文") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertAction * englishAction = [UIAlertAction actionWithTitle:Localize(@"英文") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [NSBundle setCusLanguage:@"en"];
         }];
-        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:Localize(@"取消") style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:Localize(@"取消") style:UIAlertActionStyleCancel handler:nil];
         [actionSheetController addAction:chinessAction];
         [actionSheetController addAction:englishAction];
         [actionSheetController addAction:cancelAction];

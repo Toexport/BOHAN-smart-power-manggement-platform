@@ -164,8 +164,7 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
 //            [self configRunModelWithModelStr:@"00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF00000000FF0005" isLoop:YES];
             [self configRunModelWithModelStr:@"00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000005" isLoop:YES];
 
-        }else
-        {
+        }else {
             [HintView showHint:error.localizedDescription];
         }
         
@@ -177,8 +176,8 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
 - (void)changeModel:(NSString *)content isParentCancel:(BOOL)cancel
 {
     
-    WebSocket *socket = [WebSocket socketManager];
-    CommandModel *model = [[CommandModel alloc] init];
+    WebSocket * socket = [WebSocket socketManager];
+    CommandModel * model = [[CommandModel alloc] init];
     model.command = @"0009";
     model.deviceNo = self.deviceNo;
     model.content = [content substringToIndex:content.length - 2];

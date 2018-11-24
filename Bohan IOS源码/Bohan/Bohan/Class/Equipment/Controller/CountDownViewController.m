@@ -32,8 +32,8 @@
 @property (assign, nonatomic) NSInteger selectedItemIndex;
 @property (nonatomic, weak)NSTimer *timer;//定时器
 //@property (weak, nonatomic) IBOutlet NSLayoutConstraint *ViewLayoutHeight;
-
 @end
+
 static NSString *countCellIdentifier = @"countCellIdentifier";
 
 @implementation CountDownViewController
@@ -48,35 +48,36 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     [progressView setPersentage:0];
     [self rightBarTitle:Localize(@"取消") color:[UIColor whiteColor] action:@selector(canceOperation)];
     [self getStatus];
-    [self loadData];
+//    [self loadData];
+    [self countDownTime];
     [self UI];
 }
 
-- (void)loadData {
-    WebSocket *socket = [WebSocket socketManager];
-    CommandModel *model = [[CommandModel alloc] init];
-    model.command = @"0008";
-    model.deviceNo = self.deviceNo;
-//    MyWeakSelf
-    [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
-        if (!error) {
-            if (((NSString *)response).length == 120) {
-                
-                NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 96, 92)];
-                NSString *electrictyModel = [content substringFromIndex:content.length - 2];
-                if ([electrictyModel isEqualToString:@"00"] || [electrictyModel isEqualToString:@"01"]) {
-                    [self countDownTime];
-                }
-            }
-        }else {
-        }
-        ZPLog(@"--------%@",response);
-    }];
-}
+//- (void)loadData {
+//    WebSocket * socket = [WebSocket socketManager];
+//    CommandModel * model = [[CommandModel alloc] init];
+//    model.command = @"0008";
+//    model.deviceNo = self.deviceNo;
+////    MyWeakSelf
+//    [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
+//        if (!error) {
+//            if (((NSString *)response).length == 120) {
+//
+//                NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 96, 92)];
+//                NSString *electrictyModel = [content substringFromIndex:content.length - 2];
+//                if ([electrictyModel isEqualToString:@"00"] || [electrictyModel isEqualToString:@"01"]) {
+//                    [self countDownTime];
+//                }
+//            }
+//        }else {
+//        }
+//        ZPLog(@"--------%@",response);
+//    }];
+//}
 
 - (void)countDownTime {
-    WebSocket *socket = [WebSocket socketManager];
-    CommandModel *model = [[CommandModel alloc] init];
+    WebSocket * socket = [WebSocket socketManager];
+    CommandModel * model = [[CommandModel alloc] init];
     model.command = @"0012";
     model.deviceNo = self.deviceNo;
     [self.view startLoading];
@@ -106,6 +107,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
             totalSecend = MAX(0, [startDate timeIntervalSinceDate:[NSDate date]]);
             [weakSelf showConfig];
             [self setUpTimer];
+            [self getStatus];
         }
         
         ZPLog(@"--------%@",response);
@@ -113,21 +115,22 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 }
 
 - (void)getStatus {
-    WebSocket *socket = [WebSocket socketManager];
-    CommandModel *model = [[CommandModel alloc] init];
+    WebSocket * socket = [WebSocket socketManager];
+    CommandModel * model = [[CommandModel alloc] init];
     model.command = @"0002";
     model.deviceNo = self.deviceNo;
     [self.view startLoading];
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
+        ZPLog(@"--0000-%@",response);
         [weakSelf.view stopLoading];
         if (!error) {
             if (((NSString *)response).length>26) {
-                NSString *status = [response substringWithRange:NSMakeRange(24, 2)];
-                NSString *binary = [Utils getBinaryByHex:status];
-                NSString *left = [binary substringWithRange:NSMakeRange(binary.length - 3, 1)];
-                NSString *center = [binary substringWithRange:NSMakeRange(binary.length - 2, 1)];
-                NSString *right = [binary substringFromIndex:binary.length - 1];
+                NSString * status = [response substringWithRange:NSMakeRange(24, 2)];
+                NSString * binary = [Utils getBinaryByHex:status];
+                NSString * left = [binary substringWithRange:NSMakeRange(binary.length - 3, 1)];
+                NSString * center = [binary substringWithRange:NSMakeRange(binary.length - 2, 1)];
+                NSString * right = [binary substringFromIndex:binary.length - 1];
 
                 //一位插座
                 if ([self.deviceNo hasPrefix:@"61"]) {
@@ -176,15 +179,11 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
                     closeBtn.backgroundColor = [UIColor getColor:@"BBBBBB"];
                     [closeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                     closeBtn.layer.borderColor = [UIColor getColor:@"BBBBBB"].CGColor;
-                    
                 }
-
+//                });
             }
-        
         }
-        
     }];
-    
 }
 
 // 隐藏与显示
@@ -194,16 +193,15 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
         PatchVIew.hidden = YES;
         openBtn.hidden = YES;
         closeBtn.hidden = YES;
-//        cancelBtn.hidden = NO;
     }else {
         _mainTable.hidden = NO;
         openBtn.hidden = NO;
         closeBtn.hidden = NO;
         PatchVIew.hidden = NO;
-        [self getStatus];
-//        cancelBtn.hidden = YES;
+        [self countDownTime];
     }
 }
+
 // 取消
 - (void)canceOperation {
     [CommonOperation cancelDeviceRunModel:self.deviceNo result:^(id response, NSError *error) {
@@ -215,7 +213,6 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
         }else {
             [HintView showHint:error.localizedDescription];
         }
-        
     }];
 }
 
@@ -241,7 +238,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 
 // 延时数据
 - (void)startAction {
-    NSString *content = [time.text stringByReplacingOccurrencesOfString:@":" withString:@""];
+    NSString * content = [time.text stringByReplacingOccurrencesOfString:@":" withString:@""];
     if ([content isEqualToString:@"000000"]) {
         [HintView showHint:Localize(@"请选择倒计时时间")];
         return;
@@ -252,8 +249,6 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     model.deviceNo = self.deviceNo;
     model.content = [content substringToIndex:4];
     [self.view startLoading];
-    
-    //    __weak typeof(NSString *) weakContent = model.content;
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
@@ -376,6 +371,5 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 
     }
 }
-
 
 @end

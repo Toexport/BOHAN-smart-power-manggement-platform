@@ -18,7 +18,7 @@
 #import "CostIntroducedCell.h"
 #import "AppLocationManager.h"
 
-@interface DetailsViewController ()<UITableViewDelegate, UITableViewDataSource> {
+@interface DetailsViewController ()<UITableViewDelegate,UITableViewDataSource> {
     NSString * latStr;
     NSString * linStr;
     NSInteger _selectIndex;
@@ -73,8 +73,7 @@
             ZPLog(@"点击了纠错按钮");
         };
         cell.ShareButBlock = ^(id ShareBut) {
-            ZPLog(@"点击了分享");
-            [self UMShare];
+            ZPLog(@"点击了分享");    
         };
         return cell;
     }else
@@ -106,7 +105,7 @@
 //    DetailsPay.hidesBottomBarWhenPushed = YES;
 //    [self.navigationController pushViewController: DetailsPay animated:YES];
 //    self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
-    ScanViewController *ScanView = [[ScanViewController alloc] init];
+    ScanViewController * ScanView = [[ScanViewController alloc] init];
     [ScanView getResultStr:^(NSString *result) {
         if (result && result.length>0) {
         }
@@ -133,29 +132,29 @@
 }
 
 // 网页分享
-//-(void)sendUrl:(NSString*)url To:(enum WXScene)scene{
-//    SendMessageToWXReq *req = [[SendMessageToWXReq alloc]init];
-//    req.bText = NO;
-//    req.scene = WXSceneTimeline;// 分享到o朋友圈
-//    WXMediaMessage *medMessage = [WXMediaMessage message];
-//    medMessage.title = @"伯瀚智能用电管理平台"; // 标题
-//    medMessage.description = @"伯瀚智能APP——一款智能、安全用电管理APP";// 描述
-//    WXWebpageObject *webPageObj = [WXWebpageObject object];
-//    [medMessage setThumbImage:[UIImage imageNamed:@"logo"]];// 缩略图
-//    webPageObj.webpageUrl = @"https://itunes.apple.com/cn/app/id1384571471?mt=8";
-//    medMessage.mediaObject = webPageObj;
-//    req.message = medMessage;
-//    [WXApi sendReq:req];
-//}
+-(void)sendUrl:(NSString *)url To:(enum WXScene)scene{
+    SendMessageToWXReq * req = [[SendMessageToWXReq alloc]init];
+    req.bText = NO;
+    req.scene = WXSceneTimeline;// 分享到朋友圈
+    WXMediaMessage * medMessage = [WXMediaMessage message];
+    medMessage.title = @"伯瀚智能用电管理平台"; // 标题
+    medMessage.description = @"伯瀚智能APP——一款智能、安全用电管理APP";// 描述
+    WXWebpageObject * webPageObj = [WXWebpageObject object];
+    [medMessage setThumbImage:[UIImage imageNamed:@"logo"]];// 缩略图
+    webPageObj.webpageUrl = @"https://itunes.apple.com/cn/app/id1384571471?mt=8";
+    medMessage.mediaObject = webPageObj;
+    req.message = medMessage;
+    [WXApi sendReq:req];
+}
 
 //// 分享
-- (void)UMShare {
-//    //显示分享面板
-    [[XMShare shareManager] showWithController:self];
-//    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
-//        // 根据获取的platformType确定所选平台进行下一步操作
-//    }];
-}
+//- (void)UMShare {
+////    显示分享面板
+//    [[XMShare shareManager] showWithController:self];
+////    [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMSocialPlatformType platformType, NSDictionary *userInfo) {
+////         根据获取的platformType确定所选平台进行下一步操作
+////    }];
+//}
 
 
 

@@ -182,10 +182,10 @@
     [controller dismissViewControllerAnimated:YES completion:nil];
 }
 
-
 //  输入完成打印的结果
 - (void)lYPaymentController:(LYPaymentAlertController *)paymentController securityTextOfCompeletion:(NSString *)securityText {
     ZPLog(@"现在使用的是：%@支付%@==密码是：%@",titles[_selectIndex],priceString,securityText);
 }
+
 
 @end

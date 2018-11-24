@@ -15,12 +15,12 @@
 
 @interface ParamsSettingViewController ()
 {
-    NSDateFormatter *formatter;
-    NSMutableArray *muniteArr;
-    NSMutableArray *powerArr;
-    NSIndexPath *selectedIndexPath;
+    NSDateFormatter * formatter;
+    NSMutableArray * muniteArr;
+    NSMutableArray * powerArr;
+    NSIndexPath * selectedIndexPath;
     BOOL isParentModel;
-    NSString *_content;
+    NSString * _content;
     NSString * TimeId;
     NSString * PowerId;
     NSString * protectId;
@@ -65,7 +65,7 @@
 }
 
 - (void)updateStauts:(NSNotification *)noti {
-    NSDictionary *dic = noti.object;
+    NSDictionary * dic = noti.object;
     ParentsModeBut.selected = dic;
     isParentModel = ParentsModeBut.selected;
 }
@@ -73,8 +73,8 @@
 // 获取数据
 - (void)GetDatas {
     self.datas = [NSMutableArray array];
-    WebSocket *socket = [WebSocket socketManager];
-    CommandModel *model = [[CommandModel alloc] init];
+    WebSocket * socket = [WebSocket socketManager];
+    CommandModel * model = [[CommandModel alloc] init];
     model.command = @"0023";
     model.deviceNo = self.dNo;
     [self.view startLoading];
@@ -92,39 +92,9 @@
             BackgroundView.hidden = YES;
             ParentsModeSettingBut.hidden = YES;
             ParentsModeBut.hidden = YES;
-//            [ParentsModeBut setEnabled:NO];
-//            ParentsModeBut.alpha = 0.4;
-//            [ParentsModeSettingBut setEnabled:NO];
-//            ParentsModeSettingBut.alpha = 0.4;
         }
         if ([self.Coedid isEqualToString:@"QK01"] || [self.Coedid isEqualToString:@"QK02"] || [self.Coedid isEqualToString:@"QK03"]) {
             BackgroundView.hidden = NO;
-//            [ParentsModeBut setEnabled:NO];
-//            ParentsModeBut.alpha = 0.4;
-            
-//            [ParentsModeSettingBut setEnabled:NO];
-//            ParentsModeSettingBut.alpha = 0.4;
-            
-//            [ChargingProtectionBut setEnabled:NO];
-//            ChargingProtectionBut.alpha = 0.4;
-            
-//            [PhoneChargingProtectionBut setEnabled:NO];
-//            PhoneChargingProtectionBut.alpha = 0.4;
-            
-//            [DDCChargingProtectionBut setEnabled:NO];
-//            DDCChargingProtectionBut.alpha = 0.4;
-            
-//            [ZNDDBut setEnabled:NO];
-//            ZNDDBut.alpha = 0.4;
-
-//            [SettingBut setEnabled:NO];
-//            SettingBut.alpha = 0.4;
-
-//            [timeBut setEnabled:NO];
-//            timeBut.alpha = 0.4;
-
-//            [PowerBut setEnabled:NO];
-//            PowerBut.alpha = 0.4;
 
         }
         if (!error) {
@@ -143,9 +113,6 @@
                 NSString * Power = [response substringWithRange:NSMakeRange(52, 2)];
                 PowerId = Power;
             }
-//            NSString * protectStr = [response substringWithRange:NSMakeRange(48, 2)];
-//            NSString * Time = [response substringWithRange:NSMakeRange(50, 2)];
-//            NSString * Power = [response substringWithRange:NSMakeRange(52, 2)];
             [time setText:[NSString stringWithFormat:@"%d%@",[[TimeId substringToIndex:2] intValue],Localize(@"分钟")]];
             [power setText:[NSString stringWithFormat:@"%d%@",[[PowerId substringToIndex:2] intValue],Localize(@"W")]];
             ZPLog(@"%@",self.Coedid);
@@ -160,8 +127,7 @@
                 NSString *powerStr = [response substringWithRange:NSMakeRange(28, 6)];
                 [limit setText:[NSString stringWithFormat:@"%d.%02d",[[powerStr substringToIndex:4] intValue],[[powerStr substringFromIndex:4] intValue]]];
             }
-           
-//            NSString * powerTest = [response substringWithRange:NSMakeRange(52, 2)];
+            
             if ([protectId  isEqual: @"01"]) {
                 ZPLog(@"%@",protectId);
                 if ([TimeId isEqual:@"03"] && [PowerId isEqual:@"02"]) {
@@ -292,25 +258,6 @@
     }
 }
 
-//- (void) TextFileTest {
-//    [priceTF addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
-//    [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(changeValue:)   name:@"changeValue"  object:nil];
-//}
-//
-//-(void)textFieldDidChange:(UITextField *)textField {
-//    [[NSNotificationCenter defaultCenter] postNotificationName:@"changeValue" object:textField];
-//}
-//
-//- (void)changeValue:(NSNotification *)notification {
-//    UITextField * textField = notification.object;
-//    //要实现的监听方法操作
-//    ZPLog(@"%@",textField.text);
-//    if (textField.text.length > 2) {
-//        ZPLog(@"输入有误");
-//        [HintView showHint:Localize(@"单价不能大于100")];
-//        return;
-//    }
-//}
 // 负荷门限BUt
 //options+command+ 左右箭头折叠/展开
 - (IBAction)saveAction:(UIButton *)sender {
@@ -454,10 +401,6 @@
     model.deviceNo = self.dNo;
     NSArray *contents;
     NSString *content;
-//    if (power.text.length == 0) {
-//        [HintView showHint:Localize(@"请输入负荷门限")];
-//        return;
-//    }
     if ([self.Coedid isEqualToString:@"WFMT"] || [self.Coedid isEqualToString:@"YFMT"] || [self.Coedid isEqualToString:@"CDMT60"] || [self.Coedid isEqualToString:@"GP1P"] || [self.Coedid isEqualToString:@"MC"] || [self.Coedid isEqualToString:@"GP3P"] || [self.Coedid isEqualToString:@"YFGPMT"]) {
         model.command = @"0020";
         contents = [limitTF.text componentsSeparatedByString:@"."];
@@ -527,8 +470,8 @@
 }
 
 - (void)loadData {
-    WebSocket *socket = [WebSocket socketManager];
-    CommandModel *model = [[CommandModel alloc] init];
+    WebSocket * socket = [WebSocket socketManager];
+    CommandModel * model = [[CommandModel alloc] init];
     model.command = @"0008";
     model.deviceNo = self.dNo;
     [self.view startLoading];
@@ -604,7 +547,6 @@
                     
                     isParentModel = YES;
                     isValidate = YES;
-//                    NSString * stringgggg = [week substringWithRange:NSMakeRange(0, 2)];
                     
                     if ([week hasSuffix:@"01"]) {
                         model.open = NO;

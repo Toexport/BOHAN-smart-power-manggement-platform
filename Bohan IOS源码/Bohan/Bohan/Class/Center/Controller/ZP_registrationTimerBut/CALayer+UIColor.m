@@ -11,7 +11,6 @@
 @implementation CALayer (UIColor)
 
 - (void) setBorderColorFromUIColor:(UIColor *)borderColorFromUIColor {
-    
     self.borderColor = borderColorFromUIColor.CGColor;
 }
 

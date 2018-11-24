@@ -55,6 +55,7 @@
 }
 
 - (NSString *)city {
+    
     if (!_city) {
         _city = [[NSUserDefaults standardUserDefaults] objectForKey:@"currentCity"] ? [[NSUserDefaults standardUserDefaults] objectForKey:@"currentCity"] : [[NSUserDefaults standardUserDefaults] objectForKey:@"locationCity"];
         

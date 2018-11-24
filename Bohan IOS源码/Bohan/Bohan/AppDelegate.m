@@ -20,14 +20,14 @@
 
 
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
-@property (nonatomic, strong) NSDictionary *userInfo;
+@property (nonatomic, strong) NSDictionary * userInfo;
 @property (nonatomic, strong) NSDictionary * StrKey;
 @property (nonatomic, strong) NSDictionary * Key;
 
 @end
 
 @implementation AppDelegate
-static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
+static NSString * UMessageAppKey  = @"5baee85eb465f5c3b200013e";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self initUM:launchOptions];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
@@ -49,7 +49,7 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
 }
 
 - (void)initSocket {
-    WebSocket *socketConnect = [WebSocket socketManager];
+    WebSocket * socketConnect = [WebSocket socketManager];
     [socketConnect.serverSockt webSocketOpen];
 }
 
@@ -75,42 +75,42 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
 
 - (void)createTabBar {
     if (ISLOGIN) {
-        EquipmentViewController *equipment = [[EquipmentViewController alloc] init];
+        EquipmentViewController * equipment = [[EquipmentViewController alloc] init];
         
-        ManagementViewController *management = [[ManagementViewController alloc] init];
+        ManagementViewController * management = [[ManagementViewController alloc] init];
         
-        ElectricityViewController *electricity = [[ElectricityViewController alloc] init];
+        ElectricityViewController * electricity = [[ElectricityViewController alloc] init];
         
         DetailsViewController * Details = [[DetailsViewController alloc]init];
         
-        CenterViewController *center = [[CenterViewController alloc] init];
+        CenterViewController * center = [[CenterViewController alloc] init];
         
-        UINavigationController *equipmentNav = [[UINavigationController alloc] initWithRootViewController:equipment];
+        UINavigationController * equipmentNav = [[UINavigationController alloc] initWithRootViewController:equipment];
         
-        UINavigationController *managementNav = [[UINavigationController alloc] initWithRootViewController:management];
+        UINavigationController * managementNav = [[UINavigationController alloc] initWithRootViewController:management];
         
-        UINavigationController *electricityNav = [[UINavigationController alloc] initWithRootViewController:electricity];
+        UINavigationController * electricityNav = [[UINavigationController alloc] initWithRootViewController:electricity];
         
-        UINavigationController *PrepaidNav = [[UINavigationController alloc] initWithRootViewController:Details];
+        UINavigationController * PrepaidNav = [[UINavigationController alloc] initWithRootViewController:Details];
         
-        UINavigationController *centerNav = [[UINavigationController alloc] initWithRootViewController:center];
-        UITabBarController *tabBar = [[UITabBarController alloc] init];
+        UINavigationController * centerNav = [[UINavigationController alloc] initWithRootViewController:center];
+        UITabBarController * tabBar = [[UITabBarController alloc] init];
         
         tabBar.viewControllers = @[equipmentNav, managementNav,electricityNav,PrepaidNav,centerNav];
         
-        NSArray *titles = @[Localize(@"设备列表"), Localize(@"设备管理"),Localize(@"所有用电"),Localize(@"付费充电"),Localize(@"个人中心")];
+        NSArray * titles = @[Localize(@"设备列表"), Localize(@"设备管理"),Localize(@"所有用电"),Localize(@"付费充电"),Localize(@"个人中心")];
         
-        NSArray *selectedImages = @[@"mainpage_main", @"mainpage_bang", @"mainpage_data",@"Pay_pay_me",@"mainpage_me"];
+        NSArray * selectedImages = @[@"mainpage_main", @"mainpage_bang", @"mainpage_data",@"Pay_pay_me",@"mainpage_me"];
         
-        NSArray *images = @[@"mainpage_main_off", @"mainpage_bang_off", @"mainpage_data_off",@"Pay_pay_off",@"mainpage_me_off"];
+        NSArray * images = @[@"mainpage_main_off", @"mainpage_bang_off", @"mainpage_data_off",@"Pay_pay_off",@"mainpage_me_off"];
         
         for (int i = 0; i<[tabBar.viewControllers count]; i++) {
             ((UINavigationController *)tabBar.viewControllers[i]).tabBarItem = [[UITabBarItem alloc] initWithTitle:titles[i] image:[[UIImage imageNamed:images[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[UIImage imageNamed:selectedImages[i]]];
         }
         self.window.rootViewController = tabBar;
     }else {
-        LoginViewController *login = [[LoginViewController alloc] init];
-        UINavigationController *loginNav = [[UINavigationController alloc] initWithRootViewController:login];
+        LoginViewController * login = [[LoginViewController alloc] init];
+        UINavigationController * loginNav = [[UINavigationController alloc] initWithRootViewController:login];
         
         self.window.rootViewController = loginNav;
     }
@@ -137,24 +137,24 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
         [request setHTTPMethod:@"POST"];
         [request setTimeoutInterval:15];
         
-        NSHTTPURLResponse *urlResponse;
-        NSError *error;
+        NSHTTPURLResponse * urlResponse;
+        NSError * error;
         
-        NSData *recervedData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
+        NSData * recervedData = [NSURLConnection sendSynchronousRequest:request returningResponse:&urlResponse error:&error];
         dispatch_async(dispatch_get_main_queue(), ^{
             
             if (recervedData) {
-                NSDictionary *results = [NSJSONSerialization JSONObjectWithData:recervedData options:NSJSONReadingAllowFragments error:nil];
-                NSArray *infoArray = [results objectForKey:@"results"];
+                NSDictionary * results = [NSJSONSerialization JSONObjectWithData:recervedData options:NSJSONReadingAllowFragments error:nil];
+                NSArray * infoArray = [results objectForKey:@"results"];
                 if ([infoArray count]) {
-                    NSDictionary *releaseInfo = [infoArray objectAtIndex:0];
-                    NSString *lastVersion = [releaseInfo objectForKey:@"version"];
+                    NSDictionary * releaseInfo = [infoArray objectAtIndex:0];
+                    NSString * lastVersion = [releaseInfo objectForKey:@"version"];
                     
                     if ([CURRENTSHORTVERSION compare:lastVersion options:NSNumericSearch] == NSOrderedAscending) {
-                        UIAlertController *alert = [UIAlertController alertControllerWithTitle:Localize(@"新版本提醒") message:Localize(@"有新的版本更新，是否前往更新？") preferredStyle:UIAlertControllerStyleAlert];
+                        UIAlertController * alert = [UIAlertController alertControllerWithTitle:Localize(@"新版本提醒") message:Localize(@"有新的版本更新，是否前往更新？") preferredStyle:UIAlertControllerStyleAlert];
                         [alert addAction:[UIAlertAction actionWithTitle:Localize(@"马上更新") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                            NSString *iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", BohanID];
-                            NSURL *iTunesURL = [NSURL URLWithString:iTunesString];
+                            NSString * iTunesString = [NSString stringWithFormat:@"https://itunes.apple.com/app/id%@", BohanID];
+                            NSURL * iTunesURL = [NSURL URLWithString:iTunesString];
                             [[UIApplication sharedApplication] openURL:iTunesURL];
                             
                         }]];
@@ -171,17 +171,14 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
 - (void)logoutNotification:(NSNotification*)notify {
     [[WebSocket socketManager].serverSockt webSocketClose];
     [UserInfoManager updateLoginState:NO];
-    LoginViewController *login = [[LoginViewController alloc] init];
-    UINavigationController *loginNav = [[UINavigationController alloc] initWithRootViewController:login];
+    LoginViewController * login = [[LoginViewController alloc] init];
+    UINavigationController * loginNav = [[UINavigationController alloc] initWithRootViewController:login];
     
     if (notify.object) {
-        
         [HintView showHint:notify.userInfo[@"message"]];
-        
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.window.rootViewController = loginNav;
         });
-        
     }else {
         self.window.rootViewController = loginNav;
     }
@@ -196,8 +193,8 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
 
 #pragma mark WXApiDelegate
 -(void)onResp:(BaseResp*)resp {
-    NSString *str = [NSString stringWithFormat:@"%d",resp.errCode];
-    UIAlertView *alertview = [[UIAlertView alloc] initWithTitle:Localize(@"微信返回结果") message:str delegate:self cancelButtonTitle:Localize(@"好的") otherButtonTitles:nil, nil];
+    NSString * str = [NSString stringWithFormat:@"%d",resp.errCode];
+    UIAlertView * alertview = [[UIAlertView alloc] initWithTitle:Localize(@"微信返回结果") message:str delegate:self cancelButtonTitle:Localize(@"好的") otherButtonTitles:nil, nil];
     [alertview show];
 }
 
@@ -237,7 +234,7 @@ static NSString *UMessageAppKey  = @"5baee85eb465f5c3b200013e";
     NSDictionary * dic = [NSDictionary dictionaryWithDictionary:userInfo];
     self.StrKey = dic[@"aps"];
     self.Key = self.StrKey[@"StrKey"];
-    WebViewController *WebView = [[WebViewController alloc] init];
+    WebViewController * WebView = [[WebViewController alloc] init];
     WebView.type = 555;
     WebView.StrKey = self.Key;
     UINavigationController * nav = [[UINavigationController alloc] initWithRootViewController:WebView];

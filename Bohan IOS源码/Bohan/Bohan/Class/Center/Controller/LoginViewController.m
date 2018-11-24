@@ -12,12 +12,12 @@
 #import "DebuggingANDPublishing.pch"
 @interface LoginViewController ()<UITextFieldDelegate>
 {
-    __weak IBOutlet EdgetTextField *accountTF;
-    __weak IBOutlet EdgetTextField *passwordTF;
-    __weak IBOutlet UIImageView *accountLeft;
-    __weak IBOutlet UIImageView *passwordLeft;
-    __weak IBOutlet UIButton *passwordRight;
-    __weak IBOutlet UIButton *moreInfoBtn;
+    __weak IBOutlet EdgetTextField * accountTF;
+    __weak IBOutlet EdgetTextField * passwordTF;
+    __weak IBOutlet UIImageView * accountLeft;
+    __weak IBOutlet UIImageView * passwordLeft;
+    __weak IBOutlet UIButton * passwordRight;
+    __weak IBOutlet UIButton * moreInfoBtn;
     
     
 }

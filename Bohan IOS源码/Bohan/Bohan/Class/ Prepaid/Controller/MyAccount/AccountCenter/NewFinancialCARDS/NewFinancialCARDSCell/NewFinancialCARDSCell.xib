@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -22,8 +22,8 @@
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9FG-Js-XQM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="399.5"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请绑定需要提款的支付宝或微信账号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooK-Rb-zH2">
-                                <rect key="frame" x="8" y="12" width="245" height="18"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请绑定需要提款的账号" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ooK-Rb-zH2">
+                                <rect key="frame" x="8" y="12" width="153" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="pnB-kM-2EG"/>
                                 </constraints>
@@ -76,8 +76,11 @@
                                                     <constraint firstAttribute="height" constant="30" id="Aey-2e-VaW"/>
                                                 </constraints>
                                                 <state key="normal" image="icon_business_down"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LLr-Y9-ofC">
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="42"/>
                                                 <connections>
-                                                    <action selector="WhyBut:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="oCY-N4-5GF"/>
+                                                    <action selector="WhyBut:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="BXE-L7-Ji1"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -85,13 +88,17 @@
                                         <constraints>
                                             <constraint firstItem="ncH-mf-UBq" firstAttribute="centerY" secondItem="el4-Ce-gNU" secondAttribute="centerY" id="2il-oe-4rA"/>
                                             <constraint firstItem="ncH-mf-UBq" firstAttribute="leading" secondItem="el4-Ce-gNU" secondAttribute="trailing" constant="55" id="2lO-dF-jRz"/>
+                                            <constraint firstItem="LLr-Y9-ofC" firstAttribute="top" secondItem="zzb-a1-lsG" secondAttribute="top" id="Ijn-Lf-A2s"/>
+                                            <constraint firstAttribute="bottom" secondItem="LLr-Y9-ofC" secondAttribute="bottom" id="KiY-2o-Hs3"/>
                                             <constraint firstItem="xaD-ue-8Ou" firstAttribute="centerY" secondItem="Zsw-8A-iI7" secondAttribute="centerY" id="Rem-eJ-6ca"/>
                                             <constraint firstItem="Zsw-8A-iI7" firstAttribute="centerY" secondItem="ncH-mf-UBq" secondAttribute="centerY" id="XKy-vp-Cnd"/>
                                             <constraint firstItem="el4-Ce-gNU" firstAttribute="top" secondItem="zzb-a1-lsG" secondAttribute="top" constant="11" id="XLN-s5-Luq"/>
                                             <constraint firstItem="Zsw-8A-iI7" firstAttribute="leading" secondItem="ncH-mf-UBq" secondAttribute="trailing" constant="5" id="YPr-21-45j"/>
                                             <constraint firstItem="el4-Ce-gNU" firstAttribute="leading" secondItem="zzb-a1-lsG" secondAttribute="leading" constant="8" id="bv6-AG-gEj"/>
+                                            <constraint firstAttribute="trailing" secondItem="LLr-Y9-ofC" secondAttribute="trailing" id="t1t-MB-oJ9"/>
                                             <constraint firstItem="xaD-ue-8Ou" firstAttribute="leading" secondItem="Zsw-8A-iI7" secondAttribute="trailing" constant="5" id="uzh-3R-rJg"/>
                                             <constraint firstAttribute="height" constant="42" id="x0C-92-9WW"/>
+                                            <constraint firstItem="LLr-Y9-ofC" firstAttribute="leading" secondItem="zzb-a1-lsG" secondAttribute="leading" id="yLh-Ib-fYp"/>
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ejw-Xb-1Q5">
@@ -323,7 +330,7 @@
                 <outlet property="DividerView1" destination="QIn-xe-Fs9" id="og4-vR-7gn"/>
                 <outlet property="NameTExtField" destination="QsY-lq-sr8" id="CQx-Ej-j9D"/>
                 <outlet property="RemindLabel" destination="ZAs-zQ-E9e" id="X7R-SX-bZB"/>
-                <outlet property="WhyBut" destination="xaD-ue-8Ou" id="hoa-Zx-HUG"/>
+                <outlet property="WhyBut" destination="LLr-Y9-ofC" id="uXr-W8-pxf"/>
                 <outlet property="WhyImageS" destination="ncH-mf-UBq" id="Qmp-EB-Tty"/>
                 <outlet property="WhyLabel" destination="Zsw-8A-iI7" id="K0n-fU-DxX"/>
             </connections>
