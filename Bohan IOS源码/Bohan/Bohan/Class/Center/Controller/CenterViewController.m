@@ -134,7 +134,8 @@
     self.HeadImage.image = cell.imageView.image;
     if (indexPath.row == 0) {
         cell.accessoryView = headerImg;
-    }else if(indexPath.row == 3 || indexPath.row == 4) {
+    }else
+        if(indexPath.row == 3 || indexPath.row == 4) {
         cell.accessoryType = UITableViewCellAccessoryNone;
         if (indexPath.row == 3) {
             cell.detailTextLabel.text = [NSString stringWithFormat:@"%@V%@",Localize(@"当前版本"),CURRENTSHORTVERSION];

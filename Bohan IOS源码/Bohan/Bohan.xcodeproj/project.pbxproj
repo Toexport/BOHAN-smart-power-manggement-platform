@@ -101,14 +101,8 @@
 		C4AD806D2143C29400CE8C66 /* UIColor+JGHexColor.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AD806B2143C29400CE8C66 /* UIColor+JGHexColor.m */; };
 		C4AF059F214A014500176F29 /* MyAccountViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4AF058F214A014500176F29 /* MyAccountViewController.xib */; };
 		C4AF05A0214A014500176F29 /* MyAccountViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AF0590214A014500176F29 /* MyAccountViewController.m */; };
-		C4AF05A1214A014500176F29 /* PrepaidRecordsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AF0592214A014500176F29 /* PrepaidRecordsTableViewCell.m */; };
-		C4AF05A2214A014500176F29 /* PrepaidRecordsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4AF0593214A014500176F29 /* PrepaidRecordsTableViewCell.xib */; };
-		C4AF05A3214A014500176F29 /* AccountsPrepaidTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4AF0595214A014500176F29 /* AccountsPrepaidTableViewCell.xib */; };
 		C4AF05A4214A014500176F29 /* MyAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4AF0596214A014500176F29 /* MyAccountTableViewCell.xib */; };
-		C4AF05A5214A014500176F29 /* AccountsPrepaidTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AF059A214A014500176F29 /* AccountsPrepaidTableViewCell.m */; };
-		C4AF05A6214A014500176F29 /* RechargeRecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4AF059B214A014500176F29 /* RechargeRecordTableViewCell.xib */; };
 		C4AF05A7214A014500176F29 /* MyAccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AF059C214A014500176F29 /* MyAccountTableViewCell.m */; };
-		C4AF05A8214A014500176F29 /* RechargeRecordTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AF059D214A014500176F29 /* RechargeRecordTableViewCell.m */; };
 		C4AF05AE214A020000176F29 /* AccountCenterController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AF05AC214A020000176F29 /* AccountCenterController.m */; };
 		C4AF05AF214A020000176F29 /* AccountCenterController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C4AF05AD214A020000176F29 /* AccountCenterController.xib */; };
 		C4AF05B4214A0C2000176F29 /* AccountCenterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4AF05B2214A0C2000176F29 /* AccountCenterCell.m */; };
@@ -469,18 +463,9 @@
 		C4AD806B2143C29400CE8C66 /* UIColor+JGHexColor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JGHexColor.m"; sourceTree = "<group>"; };
 		C4AF058F214A014500176F29 /* MyAccountViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyAccountViewController.xib; sourceTree = "<group>"; };
 		C4AF0590214A014500176F29 /* MyAccountViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountViewController.m; sourceTree = "<group>"; };
-		C4AF0592214A014500176F29 /* PrepaidRecordsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PrepaidRecordsTableViewCell.m; sourceTree = "<group>"; };
-		C4AF0593214A014500176F29 /* PrepaidRecordsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PrepaidRecordsTableViewCell.xib; sourceTree = "<group>"; };
-		C4AF0594214A014500176F29 /* AccountsPrepaidTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccountsPrepaidTableViewCell.h; sourceTree = "<group>"; };
-		C4AF0595214A014500176F29 /* AccountsPrepaidTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AccountsPrepaidTableViewCell.xib; sourceTree = "<group>"; };
 		C4AF0596214A014500176F29 /* MyAccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyAccountTableViewCell.xib; sourceTree = "<group>"; };
 		C4AF0597214A014500176F29 /* MyAccountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountTableViewCell.h; sourceTree = "<group>"; };
-		C4AF0598214A014500176F29 /* RechargeRecordTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RechargeRecordTableViewCell.h; sourceTree = "<group>"; };
-		C4AF0599214A014500176F29 /* PrepaidRecordsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrepaidRecordsTableViewCell.h; sourceTree = "<group>"; };
-		C4AF059A214A014500176F29 /* AccountsPrepaidTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AccountsPrepaidTableViewCell.m; sourceTree = "<group>"; };
-		C4AF059B214A014500176F29 /* RechargeRecordTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RechargeRecordTableViewCell.xib; sourceTree = "<group>"; };
 		C4AF059C214A014500176F29 /* MyAccountTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyAccountTableViewCell.m; sourceTree = "<group>"; };
-		C4AF059D214A014500176F29 /* RechargeRecordTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RechargeRecordTableViewCell.m; sourceTree = "<group>"; };
 		C4AF059E214A014500176F29 /* MyAccountViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyAccountViewController.h; sourceTree = "<group>"; };
 		C4AF05AB214A020000176F29 /* AccountCenterController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountCenterController.h; sourceTree = "<group>"; };
 		C4AF05AC214A020000176F29 /* AccountCenterController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountCenterController.m; sourceTree = "<group>"; };
@@ -1145,9 +1130,9 @@
 		C46EE60F216E093000BF07A1 /* AccountsPrepaidCell */ = {
 			isa = PBXGroup;
 			children = (
+				C46EE612216E093000BF07A1 /* AccountsPrepaidCell.h */,
 				C46EE610216E093000BF07A1 /* AccountsPrepaidCell.m */,
 				C46EE611216E093000BF07A1 /* AccountsPrepaidCell.xib */,
-				C46EE612216E093000BF07A1 /* AccountsPrepaidCell.h */,
 			);
 			path = AccountsPrepaidCell;
 			sourceTree = "<group>";
@@ -1433,15 +1418,6 @@
 				C4AF0597214A014500176F29 /* MyAccountTableViewCell.h */,
 				C4AF059C214A014500176F29 /* MyAccountTableViewCell.m */,
 				C4AF0596214A014500176F29 /* MyAccountTableViewCell.xib */,
-				C4AF0594214A014500176F29 /* AccountsPrepaidTableViewCell.h */,
-				C4AF059A214A014500176F29 /* AccountsPrepaidTableViewCell.m */,
-				C4AF0595214A014500176F29 /* AccountsPrepaidTableViewCell.xib */,
-				C4AF0599214A014500176F29 /* PrepaidRecordsTableViewCell.h */,
-				C4AF0592214A014500176F29 /* PrepaidRecordsTableViewCell.m */,
-				C4AF0593214A014500176F29 /* PrepaidRecordsTableViewCell.xib */,
-				C4AF0598214A014500176F29 /* RechargeRecordTableViewCell.h */,
-				C4AF059D214A014500176F29 /* RechargeRecordTableViewCell.m */,
-				C4AF059B214A014500176F29 /* RechargeRecordTableViewCell.xib */,
 			);
 			path = MyAccountCell;
 			sourceTree = "<group>";
@@ -2669,7 +2645,6 @@
 				C429413B21421DFF00E10921 /* PrepaidRecordsCell.xib in Resources */,
 				C46A43B1215A30F7002E8FFE /* NewFinancialCARDSController.xib in Resources */,
 				C46EE614216E093000BF07A1 /* AccountsPrepaidCell.xib in Resources */,
-				C4AF05A3214A014500176F29 /* AccountsPrepaidTableViewCell.xib in Resources */,
 				CC2455B61FF7450700616916 /* LaunchScreen.storyboard in Resources */,
 				C4AF05BB214A47B100176F29 /* RemindTableViewCell.xib in Resources */,
 				C4278398215B0B310088869E /* CustomTableViewCell.xib in Resources */,
@@ -2722,9 +2697,7 @@
 				CC349F3720A890DE00BD6C6A /* DeviceInfoCollectionCell.xib in Resources */,
 				C4E164B0213E82F600445E57 /* DetailsViewController.xib in Resources */,
 				C427839D215B0B7B0088869E /* NormalCustomCell.xib in Resources */,
-				C4AF05A2214A014500176F29 /* PrepaidRecordsTableViewCell.xib in Resources */,
 				C4AF05C5214A79AE00176F29 /* AbnormalStatisticsCell.xib in Resources */,
-				C4AF05A6214A014500176F29 /* RechargeRecordTableViewCell.xib in Resources */,
 				C4A044962113F5C300656EC2 /* ParamsSettingViewController.xib in Resources */,
 				C405AE4320E7465B00ED77E4 /* ShareView.xib in Resources */,
 				C429413521421DE100E10921 /* PrepaidRecordsController.xib in Resources */,
@@ -2874,7 +2847,6 @@
 				CCE9E597200644FD008439F3 /* ESPTouchGenerator.m in Sources */,
 				C427839C215B0B7B0088869E /* NormalCustomCell.m in Sources */,
 				CC2456861FF745DB00616916 /* XMLUtil.m in Sources */,
-				C4AF05A1214A014500176F29 /* PrepaidRecordsTableViewCell.m in Sources */,
 				CC176DB6201A3A8000C744C6 /* YLSheetView.m in Sources */,
 				CCE9E598200644FD008439F3 /* ESPTouchResult.m in Sources */,
 				CC2456701FF745DB00616916 /* UILabel+HTML.m in Sources */,
@@ -2907,7 +2879,6 @@
 				C44DE77421489825007325FD /* UIBarButtonItem+Button.m in Sources */,
 				CCE9E5A7200659DC008439F3 /* SocketRocketUtility.m in Sources */,
 				CC2456741FF745DB00616916 /* UIView+BlankTitleBack.m in Sources */,
-				C4AF05A8214A014500176F29 /* RechargeRecordTableViewCell.m in Sources */,
 				CC2456851FF745DB00616916 /* Utils.m in Sources */,
 				CC24566E1FF745DB00616916 /* UIImage+Color.m in Sources */,
 				CCE9E59C200644FD008439F3 /* ESPUDPSocketServer.m in Sources */,
@@ -2975,7 +2946,6 @@
 				C46EE60D216E080D00BF07A1 /* SettingPayController.m in Sources */,
 				CC2455B91FF7450700616916 /* main.m in Sources */,
 				CC8154DF201B974300F72BFF /* STLoopProgressView+BaseConfiguration.m in Sources */,
-				C4AF05A5214A014500176F29 /* AccountsPrepaidTableViewCell.m in Sources */,
 				CC2455AB1FF7450700616916 /* AppDelegate.m in Sources */,
 				CC2456A41FF91E8800616916 /* CustomInputView.m in Sources */,
 				C4E164C7213E929200445E57 /* AccountsPrepaidController.m in Sources */,

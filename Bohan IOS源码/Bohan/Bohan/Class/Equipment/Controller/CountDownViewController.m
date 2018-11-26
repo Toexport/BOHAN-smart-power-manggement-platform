@@ -47,34 +47,13 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     _mainTable.tintColor = [UIColor getColor:@"f03c4c"];
     [progressView setPersentage:0];
     [self rightBarTitle:Localize(@"取消") color:[UIColor whiteColor] action:@selector(canceOperation)];
+    
+}
+- (void)viewWillAppear:(BOOL)animated {
     [self getStatus];
-//    [self loadData];
     [self countDownTime];
     [self UI];
 }
-
-//- (void)loadData {
-//    WebSocket * socket = [WebSocket socketManager];
-//    CommandModel * model = [[CommandModel alloc] init];
-//    model.command = @"0008";
-//    model.deviceNo = self.deviceNo;
-////    MyWeakSelf
-//    [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
-//        if (!error) {
-//            if (((NSString *)response).length == 120) {
-//
-//                NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 96, 92)];
-//                NSString *electrictyModel = [content substringFromIndex:content.length - 2];
-//                if ([electrictyModel isEqualToString:@"00"] || [electrictyModel isEqualToString:@"01"]) {
-//                    [self countDownTime];
-//                }
-//            }
-//        }else {
-//        }
-//        ZPLog(@"--------%@",response);
-//    }];
-//}
-
 - (void)countDownTime {
     WebSocket * socket = [WebSocket socketManager];
     CommandModel * model = [[CommandModel alloc] init];
@@ -87,7 +66,6 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
         [weakSelf.view stopLoading];
         if (!error) {
             NSString *statusStr = [response substringWithRange:NSMakeRange(((NSString *)response).length - 18, 2)];
-            
             NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 16, 12)];
             if ([content hasPrefix:@"00"]) {
                 return ;
@@ -97,20 +75,17 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
             if (!startDate) {
                 return ;
             }
-            
             if ([statusStr isEqualToString:@"00"]) {
                 [status setText:Localize(@"设备关闭")];
             }else {
                 [status setText:Localize(@"设备打开")];
             }
-
             totalSecend = MAX(0, [startDate timeIntervalSinceDate:[NSDate date]]);
             [weakSelf showConfig];
             [self setUpTimer];
-            [self getStatus];
         }
+        ZPLog(@"--000-%@",response);
         
-        ZPLog(@"--------%@",response);
     }];
 }
 
@@ -180,7 +155,6 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
                     [closeBtn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
                     closeBtn.layer.borderColor = [UIColor getColor:@"BBBBBB"].CGColor;
                 }
-//                });
             }
         }
     }];
@@ -199,6 +173,7 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
         closeBtn.hidden = NO;
         PatchVIew.hidden = NO;
         [self countDownTime];
+        [self getStatus];
     }
 }
 
@@ -301,7 +276,9 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     [progressView setPersentage:0];
     [status setText:Localize(@"设备打开/关闭")];
     startDate = nil;
-    [self getStatus];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        [self getStatus];
+//    });
     [self showConfig];
     if ([_timer isValid]) {
         [_timer invalidate];
@@ -334,8 +311,6 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
         cell.accessoryType = UITableViewCellAccessoryNone;
         cell.textLabel.textColor = [UIColor getColor:@"5c5c5c"];
     }
-
-    
     return cell;
 }
 #pragma mark 按钮的点击事件
@@ -368,7 +343,6 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
             self.selectedItemIndex = indexPath.row;
             [tableView reloadData];
         }
-
     }
 }
 

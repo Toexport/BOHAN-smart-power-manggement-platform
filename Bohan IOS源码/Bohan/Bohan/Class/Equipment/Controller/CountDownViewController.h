@@ -15,7 +15,7 @@
     
 }
 
-@property (nonatomic, copy) NSString *deviceNo;
+@property (nonatomic, copy) NSString * deviceNo;
 @property (nonatomic, assign) BOOL *isCountDownModel;
 //- (IBAction)cancelAction;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *PatchViewLayoutConstraint;

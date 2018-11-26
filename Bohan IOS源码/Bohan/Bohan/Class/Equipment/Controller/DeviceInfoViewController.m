@@ -45,7 +45,6 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     [self GetsTime];
     
     formatter = [[NSDateFormatter alloc] init];
-    
     refreashBtn.titleLabel.numberOfLines = 2;
     UICollectionViewFlowLayout *lay = [[UICollectionViewFlowLayout alloc] init];
     lay.minimumLineSpacing = 1;
@@ -59,8 +58,6 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
         make.width.mas_equalTo(@(ScreenWidth));
     }];
     [deviceInfoCollection reloadData];
-    
-//    [self deviceStatus];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateStauts:) name:CHANGETIMEMODEL object:nil];
     self.PayView.hidden = YES;
     self.StateViewLayoutConstraint.constant = - 80;
@@ -92,11 +89,12 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [self loadData];
     [self deviceStatus];
     if ([self.sortt isEqualToString:@"YC"] || [self.sortt isEqualToString:@"YC10"] || [self.sortt isEqualToString:@"YC16 "] || [self.sortt isEqualToString:@"YCGP10"] || [self.sortt isEqualToString:@"YCGP16"] || [self.sortt isEqualToString:@"QC"] || [self.sortt isEqualToString:@"QC10"] || [self.sortt isEqualToString:@"QC16"] || [self.sortt isEqualToString:@"YC13"] || [self.sortt isEqualToString:@"QC13"] || [self.sortt isEqualToString:@"YC15"] || [self.sortt isEqualToString:@"QC15"]) {
-        [self loadData];
-    }else {
         
+    }else {
+      
     }
 }
 
@@ -212,8 +210,9 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
                 electrictyModel = nil;
 //                [status setText:Localize(@"设备已结束倒计时模式")];
             } else {
-                
-            [self loadData];
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)([startDate timeIntervalSinceDate:[NSDate date]] * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [self loadData];
+                });
             }
         }
         [deviceInfoCollection reloadData];
@@ -223,6 +222,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
 
 
 - (IBAction)refreashAction {
+    [self loadData];
     [self deviceStatus];
 }
 

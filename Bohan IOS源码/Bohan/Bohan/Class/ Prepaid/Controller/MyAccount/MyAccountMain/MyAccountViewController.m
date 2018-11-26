@@ -12,14 +12,12 @@
 #import "PrefixHeader.pch"
 #import "DebuggingANDPublishing.pch"
 #import "MyAccountTableViewCell.h"
-#import "AccountsPrepaidTableViewCell.h"
-#import "PrepaidRecordsTableViewCell.h"
-#import "RechargeRecordTableViewCell.h"
 #import "PrepaidRecordsController.h"
 #import "gesturesPasswordController.h"
 #import "AccountCenterController.h"
 #import "WithdrawalsController.h"
 @interface MyAccountViewController ()<UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic,strong) NSMutableArray * data;
 
 @end
 
@@ -31,118 +29,80 @@
     self.TitleLabel.text = USERNAME;
     [self Registered];
 }
-//- (void) gesturesPassword {
-//    gesturesPasswordController * gesturesPassword = [[gesturesPasswordController alloc]init];
-//    
-//}
+
+- (NSMutableArray *)data {
+    if (_data == nil) {
+        _data = [NSMutableArray array];
+    }
+    [_data setArray:@[@{@"item":Localize(@"我的账户"),@"image":@"",@"money":@"248.56"}, @{@"item":Localize(@"账户充值"),@"image":@"ic_Forward"},@{@"item":Localize(@"充值记录"),@"image":@"ic_Forward"}, @{@"item":Localize(@"充电记录"),@"image":@"ic_Forward"}]];
+    return _data;
+}
+
 // 注册Cell
 - (void)Registered {
     static NSString * MyAccount = @"MyAccountTableViewCell";
-    static NSString * AccountsPrepaid = @"AccountsPrepaidTableViewCell";
-    static NSString * PrepaidRecords = @"PrepaidRecordsTableViewCell";
-    static NSString * RechargeRecord = @"RechargeRecordTableViewCell";
     [self.Tableview registerNib:[UINib nibWithNibName:MyAccount bundle:nil] forCellReuseIdentifier:MyAccount];
-    [self.Tableview registerNib:[UINib nibWithNibName:AccountsPrepaid bundle:nil] forCellReuseIdentifier:AccountsPrepaid];
-    [self.Tableview registerNib:[UINib nibWithNibName:PrepaidRecords bundle:nil] forCellReuseIdentifier:PrepaidRecords];
-    [self.Tableview registerNib:[UINib nibWithNibName:RechargeRecord bundle:nil] forCellReuseIdentifier:RechargeRecord];
     self.Tableview.separatorStyle = UITableViewCellSeparatorStyleNone;  //隐藏tableview多余的线条
 }
 
 #pragma mark -- tabeView delegate
-// cell分组
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+// Cell分组
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
+
 // Cell的个数
--(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 4;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.data.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString * MyAccount = @"MyAccountTableViewCell";
-    static NSString * AccountsPrepaid = @"AccountsPrepaidTableViewCell";
-    static NSString * PrepaidRecords = @"PrepaidRecordsTableViewCell";
-    static NSString * RechargeRecord = @"RechargeRecordTableViewCell";
-    if (indexPath.section == 0) {
-        MyAccountTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:MyAccount];
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
-        return cell;
-    }else
-        if (indexPath.section == 1) {
-            AccountsPrepaidTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:AccountsPrepaid];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
-            return cell;
-        }else
-            if (indexPath.section == 2) {
-            PrepaidRecordsTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:PrepaidRecords];
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
-            return cell;
-            }else {
-                RechargeRecordTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:RechargeRecord];
-                cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
-                return cell;
-            }
+    MyAccountTableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:MyAccount];
+    NSDictionary * dict_ = self.data[indexPath.row];
+    cell.TitleLabel.text = dict_[@"item"];
+    cell.imageViewS.image = [UIImage imageNamed:dict_[@"image"]];
+    cell.MoneyLabel.text = [NSString stringWithFormat:@"￥%@",dict_[@"money"]];
+    if (indexPath.row == 0) {
+        cell.imageViewS.hidden = YES;
+    }
+    if (indexPath.row == 1 || indexPath.row == 2 || indexPath.row == 3) {
+        cell.MoneyLabel.hidden = YES;
+    }
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
+    return cell;
 }
 
 // cell的大小
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        return 55;
-    }else
-        if (indexPath.section == 1) {
-            return 55;
-        }else
-            if (indexPath.section == 2) {
-                
-                return 55;
-            }else {
-                
-            return 55;
-        }
+    return 55;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     return CGFLOAT_MIN;
 }
 
-// cell之间的距离
-- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
-    if (section == 0) {
-        return 2.0f;
-    }else
-        if (section == 1) {
-            return 2.0f;
-        }else
-            if (section == 2) {
-                return 2.0f;
-            }else {
-                
-            return 2.0f;
-        }
-}
-
 // cell的点击事件
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
+    if (indexPath.row == 0) {
         AccountCenterController * AccountCenter = [[AccountCenterController alloc]init];
         [self.navigationController pushViewController:AccountCenter animated:YES];
         self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
-//        return;
     }else
-        if (indexPath.section == 1) {
+        if (indexPath.row == 1) {
             AccountsPrepaidController * AccountsPrepaid = [[AccountsPrepaidController alloc]init];
             [self.navigationController pushViewController:AccountsPrepaid animated:YES];
             self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
         }else
-             if (indexPath.section == 2) {
-            PrepaidRecordsController * RechargeRecord = [[PrepaidRecordsController alloc]init];
-            [self.navigationController pushViewController:RechargeRecord animated:YES];
-            self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
-             }else {
-                 RechargeRecordController * RechargeRecord = [[RechargeRecordController alloc]init];
-                 [self.navigationController pushViewController:RechargeRecord animated:YES];
-                 self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
-    }
+            if (indexPath.row == 2) {
+                PrepaidRecordsController * RechargeRecord = [[PrepaidRecordsController alloc]init];
+                [self.navigationController pushViewController:RechargeRecord animated:YES];
+                self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
+            }else {
+                RechargeRecordController * RechargeRecord = [[RechargeRecordController alloc]init];
+                [self.navigationController pushViewController:RechargeRecord animated:YES];
+                self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
+            }
 }
 
 @end

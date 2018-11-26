@@ -117,7 +117,6 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
     }
 }
 
-
 //全部关闭则取消时段设置
 - (void)cancel {
     [CommonOperation cancelDeviceRunModel:self.deviceNo result:^(id response, NSError *error) {
@@ -175,7 +174,7 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
 }
 
 #pragma mark 按钮的点击事件
--(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     
@@ -189,7 +188,6 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
     };
     [self.navigationController pushViewController:select animated:YES];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
-    
 }
 
 
