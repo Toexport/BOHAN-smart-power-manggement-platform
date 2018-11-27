@@ -22,7 +22,6 @@
 @end
 
 @implementation MyAccountViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.title = Localize(@"我的");

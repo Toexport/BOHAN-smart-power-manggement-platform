@@ -14,12 +14,15 @@
 #import "PrefixHeader.pch"
 #import "AccountsPrepaidController.h"
 #import "WithdrawalsController.h"
+//#import "MarqueeView.h"
+
 @interface AccountCenterController () <UITableViewDelegate, UITableViewDataSource>{
     NSTimer * timer;
     UIScrollView * scrollViewText;
     NSString * AmountStr;
 }
 @property (nonatomic, strong) NSArray * arrData;
+//@property (nonatomic, strong) MarqueeView *marqueeView;
 @end
 
 @implementation AccountCenterController
@@ -28,10 +31,12 @@
     [super viewDidLoad];
     self.title = Localize(@"账户信息");
     [self initUI];
+    
 }
 
 // UI
 - (void)initUI {
+//     [self.view addSubview:self.marqueeView];
     static NSString *AccountCenter = @"AccountCenterCell";
     static NSString * Remind = @"RemindTableViewCell";
     static NSString * Earnings = @"EarningsTableViewCell";
@@ -42,6 +47,25 @@
     [self.tableview registerNib:[UINib nibWithNibName:AbnormalStatistics bundle:nil] forCellReuseIdentifier:AbnormalStatistics];
     self.tableview.separatorStyle = UITableViewCellSeparatorStyleNone;  //隐藏tableview多余的线条
 }
+
+//#pragma Lazy Methods
+//- (MarqueeView *)marqueeView{
+//
+//    if (!_marqueeView) {
+//        MarqueeView *marqueeView =[[MarqueeView alloc]initWithFrame:CGRectMake(10, 20, 400, 30) withTitle:@[@"1.我觉得封装好好玩",@"2.经常玩玩可以锻炼自己的技术耶",@"3.所以要经常经常玩玩，这样才能更加完美",@"4.你说对不对",@"end"]];
+//        marqueeView.titleColor = [UIColor blueColor];
+//        marqueeView.titleFont = [UIFont systemFontOfSize:16];
+//        marqueeView.backgroundColor = [UIColor yellowColor];
+//        __weak MarqueeView *marquee = marqueeView;
+//        marqueeView.handlerTitleClickCallBack = ^(NSInteger index){
+//
+//            NSLog(@"%@----%zd",marquee.titleArr[index-1],index);
+//        };
+//        _marqueeView = marqueeView;
+//    }
+//    return _marqueeView;
+//
+//}
 
 #pragma mark -- tabeView delegate
 // cell分组

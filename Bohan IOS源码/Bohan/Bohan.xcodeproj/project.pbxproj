@@ -17,6 +17,8 @@
 		C40837122133F0580057C6E0 /* ResetPwdViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C40837142133F0580057C6E0 /* ResetPwdViewController.xib */; };
 		C410507520FED0B9009A46F4 /* MultipleSwitchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C410507320FED0B9009A46F4 /* MultipleSwitchViewController.m */; };
 		C410507720FF1B1F009A46F4 /* MultipleSwitchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = C410507920FF1B1F009A46F4 /* MultipleSwitchViewController.xib */; };
+		C41E10A121ACD4B60096017D /* UIView+HHAddition.m in Sources */ = {isa = PBXBuildFile; fileRef = C41E109F21ACD4B60096017D /* UIView+HHAddition.m */; };
+		C41E10A221ACD4B60096017D /* MarqueeView.m in Sources */ = {isa = PBXBuildFile; fileRef = C41E10A021ACD4B60096017D /* MarqueeView.m */; };
 		C420F38321478B4B003B6AC0 /* gesturesPasswordController.m in Sources */ = {isa = PBXBuildFile; fileRef = C420F38221478B4B003B6AC0 /* gesturesPasswordController.m */; };
 		C420F38D2147B045003B6AC0 /* GesturesPasswordView.m in Sources */ = {isa = PBXBuildFile; fileRef = C420F38C2147B045003B6AC0 /* GesturesPasswordView.m */; };
 		C4278397215B0B310088869E /* CustomTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C4278395215B0B310088869E /* CustomTableViewCell.m */; };
@@ -332,6 +334,10 @@
 		C410507820FF1B1F009A46F4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MultipleSwitchViewController.xib; sourceTree = "<group>"; };
 		C418584B21016889002285F4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/ShareView.strings; sourceTree = "<group>"; };
 		C418584D21016992002285F4 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/ShareView.strings"; sourceTree = "<group>"; };
+		C41E109D21ACD4B60096017D /* MarqueeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MarqueeView.h; sourceTree = "<group>"; };
+		C41E109E21ACD4B60096017D /* UIView+HHAddition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+HHAddition.h"; sourceTree = "<group>"; };
+		C41E109F21ACD4B60096017D /* UIView+HHAddition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+HHAddition.m"; sourceTree = "<group>"; };
+		C41E10A021ACD4B60096017D /* MarqueeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MarqueeView.m; sourceTree = "<group>"; };
 		C420F38121478B4B003B6AC0 /* gesturesPasswordController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = gesturesPasswordController.h; sourceTree = "<group>"; };
 		C420F38221478B4B003B6AC0 /* gesturesPasswordController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = gesturesPasswordController.m; sourceTree = "<group>"; };
 		C420F38B2147B045003B6AC0 /* GesturesPasswordView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GesturesPasswordView.h; sourceTree = "<group>"; };
@@ -930,6 +936,17 @@
 				C408370E2133A4F50057C6E0 /* UIViewController+LLProgress.m */,
 			);
 			path = ZP_registrationTimerBut;
+			sourceTree = "<group>";
+		};
+		C41E109C21ACD4B60096017D /* Marquee */ = {
+			isa = PBXGroup;
+			children = (
+				C41E109D21ACD4B60096017D /* MarqueeView.h */,
+				C41E10A021ACD4B60096017D /* MarqueeView.m */,
+				C41E109E21ACD4B60096017D /* UIView+HHAddition.h */,
+				C41E109F21ACD4B60096017D /* UIView+HHAddition.m */,
+			);
+			path = Marquee;
 			sourceTree = "<group>";
 		};
 		C420F37721476B17003B6AC0 /* GesturesPassword */ = {
@@ -1799,6 +1816,7 @@
 		CC2455BF1FF745DB00616916 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C41E109C21ACD4B60096017D /* Marquee */,
 				C492AFB52179D9330025D09F /* Prompt  */,
 				C46EE5F1216DF46500BF07A1 /* ZPPayPassword */,
 				C48551412169D4FB00A292A6 /* U-Push */,
@@ -2902,6 +2920,7 @@
 				C490417921464362005652C9 /* LYPaymentBaseViewController.m in Sources */,
 				CC42E89D2020EF0B00A64160 /* NSDictionary+Safe.m in Sources */,
 				C4AF05AE214A020000176F29 /* AccountCenterController.m in Sources */,
+				C41E10A221ACD4B60096017D /* MarqueeView.m in Sources */,
 				C47E61A8214F965E008FA596 /* CostIntroducedCell.m in Sources */,
 				C47B4AB620F5DF9F00DAD5D3 /* CALayer+UIColor.m in Sources */,
 				CC0F4838200D407300E184F8 /* RealTimeParamTableViewCell.m in Sources */,
@@ -2918,6 +2937,7 @@
 				CC24567E1FF745DB00616916 /* SliderView.m in Sources */,
 				C47B4AAD20F5D3D500DAD5D3 /* NSBundle+Language.m in Sources */,
 				CC2456AA1FF94D7300616916 /* DeviceTableViewCell.m in Sources */,
+				C41E10A121ACD4B60096017D /* UIView+HHAddition.m in Sources */,
 				CC41853E20283D880006F457 /* FeedbackViewController.m in Sources */,
 				CC24565E1FF745DB00616916 /* BaseViewController.m in Sources */,
 				CCE9E59E200644FD008439F3 /* ESP_CRC8.m in Sources */,

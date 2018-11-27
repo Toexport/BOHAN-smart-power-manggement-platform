@@ -47,13 +47,14 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
     _mainTable.tintColor = [UIColor getColor:@"f03c4c"];
     [progressView setPersentage:0];
     [self rightBarTitle:Localize(@"取消") color:[UIColor whiteColor] action:@selector(canceOperation)];
-    
 }
+
 - (void)viewWillAppear:(BOOL)animated {
     [self getStatus];
     [self countDownTime];
     [self UI];
 }
+
 - (void)countDownTime {
     WebSocket * socket = [WebSocket socketManager];
     CommandModel * model = [[CommandModel alloc] init];

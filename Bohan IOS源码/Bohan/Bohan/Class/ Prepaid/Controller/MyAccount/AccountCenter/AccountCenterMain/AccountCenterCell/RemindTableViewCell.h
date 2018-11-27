@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "MarqueeView.h"
 @interface RemindTableViewCell : UITableViewCell
-
+@property (nonatomic, strong) MarqueeView *marqueeView;
 @end

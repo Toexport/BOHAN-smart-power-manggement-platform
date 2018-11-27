@@ -31,6 +31,7 @@
         return;
     }
 }
+
 // 总收益按钮
 - (IBAction)AllProceedsBut:(UIButton *)sender {
     if (sender.selected) {
@@ -96,7 +97,5 @@
     [self.CalendarBut setTitle:[NSString stringWithFormat:@"%@",self.DayStr] forState:UIControlStateNormal];
     self.EarningsLabel.text = [NSString stringWithFormat:Localize(@"昨日收益 (%@月%@日)"),self.MonthStr,self.DayStr];
 }
-
-
 
 @end

@@ -232,8 +232,7 @@
     return _sliderView;
 }
 
-- (UIView *)headerView
-{
+- (UIView *)headerView {
     if (!_headerView) {
         _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, self.sliderView.frame.origin.y + self.sliderView.frame.size.height, self.sliderView.frame.size.width, 45)];
         
@@ -261,8 +260,7 @@
 }
 
 
-- (UIView *)selectView
-{
+- (UIView *)selectView {
     if(!_selectView){
         
         _selectView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.headerView.frame), ScreenWidth, 35)];
@@ -300,9 +298,7 @@
     return _barView;
 }
 
-
-- (PowerLineChartView *)lineView
-{
+- (PowerLineChartView *)lineView {
     if (!_lineView) {
         _lineView = [[PowerLineChartView alloc] init];
         [_lineView setTitle:self.titles2[0]];
