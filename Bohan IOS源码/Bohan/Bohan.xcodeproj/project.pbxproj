@@ -512,6 +512,7 @@
 		C4F1A24B20E5D9EF00052B24 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/VerificationCodeViewController.strings; sourceTree = "<group>"; };
 		C4F1A24D20E5D9F000052B24 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/VerificationCodeViewController.strings"; sourceTree = "<group>"; };
 		C4F1A24E20E605AE00052B24 /* DebuggingANDPublishing.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DebuggingANDPublishing.pch; sourceTree = "<group>"; };
+		C4F82CF621AE855800BCAB03 /* MacroDefinition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MacroDefinition.h; sourceTree = "<group>"; };
 		C4F92721216E49D300DAF6BE /* UMSocialSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UMSocialSDKResources.bundle; sourceTree = "<group>"; };
 		C4F92722216E49D300DAF6BE /* UShareUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UShareUI.framework; sourceTree = "<group>"; };
 		C4F92723216E49D300DAF6BE /* UMShare.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UMShare.framework; sourceTree = "<group>"; };
@@ -1800,6 +1801,7 @@
 				CC2456931FF746BC00616916 /* PrefixHeader.pch */,
 				C4A6CF6F216C327500B4113A /* OpenSourceLibrary.pch */,
 				C4F1A24E20E605AE00052B24 /* DebuggingANDPublishing.pch */,
+				C4F82CF621AE855800BCAB03 /* MacroDefinition.h */,
 				C4FD58C521736B4C008AF0E2 /* Main.storyboard */,
 				CC2455B21FF7450700616916 /* Assets.xcassets */,
 				CC2455B41FF7450700616916 /* LaunchScreen.storyboard */,
