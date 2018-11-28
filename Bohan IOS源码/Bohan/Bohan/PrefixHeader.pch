@@ -20,6 +20,7 @@
 #import "HintView.h"
 #import "DebuggingANDPublishing.pch"
 #import "OpenSourceLibrary.pch"
+#import "MacroDefinition.h"
 //#import "UIButton+countDown.h"
 //#import "CALayer+UIColor.h"
 //#import "UIViewController+LLProgress.h"
