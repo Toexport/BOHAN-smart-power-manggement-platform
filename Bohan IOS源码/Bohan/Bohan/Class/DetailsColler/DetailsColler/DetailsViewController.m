@@ -73,7 +73,8 @@
             ZPLog(@"点击了纠错按钮");
         };
         cell.ShareButBlock = ^(id ShareBut) {
-            ZPLog(@"点击了分享");    
+            ZPLog(@"点击了分享");
+            [self sendUrl:nil To:WXSceneTimeline];
         };
         return cell;
     }else
@@ -95,8 +96,8 @@
         if (indexPath.section == 1) {
             return 400;
         }else {
-        return 280;
-    }
+            return 280;
+        }
 }
 
 // 扫描

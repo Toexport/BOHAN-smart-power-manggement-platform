@@ -81,7 +81,7 @@ static NSString * UMessageAppKey  = @"5baee85eb465f5c3b200013e";
         
         ElectricityViewController * electricity = [[ElectricityViewController alloc] init];
         
-        //        DetailsViewController * Details = [[DetailsViewController alloc]init];
+        DetailsViewController * Details = [[DetailsViewController alloc]init];
         
         CenterViewController * center = [[CenterViewController alloc] init];
         
@@ -91,22 +91,22 @@ static NSString * UMessageAppKey  = @"5baee85eb465f5c3b200013e";
         
         UINavigationController * electricityNav = [[UINavigationController alloc] initWithRootViewController:electricity];
         
-        //        UINavigationController * PrepaidNav = [[UINavigationController alloc] initWithRootViewController:Details];
+        UINavigationController * PrepaidNav = [[UINavigationController alloc] initWithRootViewController:Details];
         
         UINavigationController * centerNav = [[UINavigationController alloc] initWithRootViewController:center];
         UITabBarController * tabBar = [[UITabBarController alloc] init];
         
-        //        tabBar.viewControllers = @[equipmentNav, managementNav,electricityNav,PrepaidNav,centerNav];
-        tabBar.viewControllers = @[equipmentNav, managementNav,electricityNav,centerNav];
+        tabBar.viewControllers = @[equipmentNav, managementNav,electricityNav,PrepaidNav,centerNav];
+        //        tabBar.viewControllers = @[equipmentNav, managementNav,electricityNav,centerNav];
         
-        //        NSArray * titles = @[Localize(@"设备列表"), Localize(@"设备管理"),Localize(@"所有用电"),Localize(@"付费充电"),Localize(@"个人中心")];
-        NSArray * titles = @[Localize(@"设备列表"), Localize(@"设备管理"),Localize(@"所有用电"),Localize(@"个人中心")];
+        NSArray * titles = @[Localize(@"设备列表"), Localize(@"设备管理"),Localize(@"所有用电"),Localize(@"付费充电"),Localize(@"个人中心")];
+        //        NSArray * titles = @[Localize(@"设备列表"), Localize(@"设备管理"),Localize(@"所有用电"),Localize(@"个人中心")];
         
-        //        NSArray * selectedImages = @[@"mainpage_main", @"mainpage_bang", @"mainpage_data",@"Pay_pay_me",@"mainpage_me"];
-        NSArray * selectedImages = @[@"mainpage_main", @"mainpage_bang", @"mainpage_data",@"mainpage_me"];
+        NSArray * selectedImages = @[@"mainpage_main", @"mainpage_bang", @"mainpage_data",@"Pay_pay_me",@"mainpage_me"];
+        //        NSArray * selectedImages = @[@"mainpage_main", @"mainpage_bang", @"mainpage_data",@"mainpage_me"];
         
-        //        NSArray * images = @[@"mainpage_main_off", @"mainpage_bang_off", @"mainpage_data_off",@"Pay_pay_off",@"mainpage_me_off"];
-        NSArray * images = @[@"mainpage_main_off", @"mainpage_bang_off", @"mainpage_data_off",@"mainpage_me_off"];
+        NSArray * images = @[@"mainpage_main_off", @"mainpage_bang_off", @"mainpage_data_off",@"Pay_pay_off",@"mainpage_me_off"];
+        //        NSArray * images = @[@"mainpage_main_off", @"mainpage_bang_off", @"mainpage_data_off",@"mainpage_me_off"];
         
         for (int i = 0; i<[tabBar.viewControllers count]; i++) {
             ((UINavigationController *)tabBar.viewControllers[i]).tabBarItem = [[UITabBarItem alloc] initWithTitle:titles[i] image:[[UIImage imageNamed:images[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[UIImage imageNamed:selectedImages[i]]];

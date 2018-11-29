@@ -17,7 +17,7 @@
     [super awakeFromNib];
     [self.DetermineBut setEnabled:NO]; //交互关闭
     self.DetermineBut.alpha= 0.4;//透明度
-    [self booWeixin];
+//    [self booWeixin];
 }
 
 - (IBAction)PayBut1:(UIButton *)sender {

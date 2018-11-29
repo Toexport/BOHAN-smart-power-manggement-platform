@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -322,7 +322,7 @@
                                     <constraint firstItem="Mnj-80-IyT" firstAttribute="leading" secondItem="BAd-U1-dak" secondAttribute="trailing" constant="10" id="zfZ-rw-hey"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBe-A6-Wwf">
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gBe-A6-Wwf">
                                 <rect key="frame" x="0.0" y="113" width="320" height="55"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Apple Pay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8R4-z1-mkR">
@@ -451,8 +451,8 @@
     <resources>
         <image name="AlpayPay" width="42" height="42"/>
         <image name="ApplePay" width="60" height="60"/>
-        <image name="WechatPay" width="45" height="45"/>
-        <image name="ic_Shopping_Choice_normal" width="28" height="28"/>
-        <image name="ic_Shopping_Choice_pressed" width="28" height="28"/>
+        <image name="WechatPay" width="88.767120361328125" height="88.767120361328125"/>
+        <image name="ic_Shopping_Choice_normal" width="18.666666030883789" height="18.666666030883789"/>
+        <image name="ic_Shopping_Choice_pressed" width="18.666666030883789" height="18.666666030883789"/>
     </resources>
 </document>

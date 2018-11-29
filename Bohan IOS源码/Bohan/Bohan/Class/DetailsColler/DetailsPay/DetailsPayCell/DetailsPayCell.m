@@ -90,8 +90,8 @@
 //}
 
 - (void)updateBalanceView:(NSInteger)type {
-    NSArray *imageArray = @[@"yuePay",@"AlpayPay",@"WechatPay",@"ApplePay"];
-    NSArray *titleArray = @[@"余额",@"支付宝",@"微信",@"ApplePay"];
+    NSArray *imageArray = @[@"yuePay",@"AlpayPay",@"WechatPay"];
+    NSArray *titleArray = @[@"余额",@"支付宝",@"微信"];
     _MainImage.image = [UIImage imageNamed:imageArray[type]];
     _TitleLabel.text = titleArray[type];
     self.PayWay = [NSString stringWithFormat:@"%@",self.TitleLabel];
