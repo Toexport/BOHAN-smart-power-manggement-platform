@@ -28,6 +28,7 @@
 
 @implementation AppDelegate
 static NSString * UMessageAppKey  = @"5baee85eb465f5c3b200013e";
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     [self initUM:launchOptions];
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];

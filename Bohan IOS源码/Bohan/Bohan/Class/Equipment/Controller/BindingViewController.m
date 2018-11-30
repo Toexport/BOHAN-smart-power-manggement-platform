@@ -15,17 +15,17 @@
 #import "DebuggingANDPublishing.pch"
 
 @interface BindingViewController () {
-    __weak IBOutlet UITextField *deviceTF; // 设备ID输入框
-    __weak IBOutlet CustomInputView *typeInput; //文字输入1
-    __weak IBOutlet UIScrollView *scrollView; //scrollView
-    __weak IBOutlet CustomInputView *typeInput2;  //文字输入2
-    __weak IBOutlet CustomInputView *typeInput3;  //文字输入3
-    __weak IBOutlet CustomInputView *posInput;  // 设备位置
-    __weak IBOutlet CustomInputView *brandInput; // 电器品牌
-    __weak IBOutlet UITextField *InfraredText;  // 红外设备
-    __weak IBOutlet NSLayoutConstraint *TypeInput2LayoutConstraint; // 输入框2的高度
-    __weak IBOutlet NSLayoutConstraint *TypeInput3LayoutConstraint; // 输入框3的高度
-    __weak IBOutlet NSLayoutConstraint *bdffLayoutConstraint; // View的高度
+    __weak IBOutlet UITextField * deviceTF; // 设备ID输入框
+    __weak IBOutlet CustomInputView * typeInput; //文字输入1
+    __weak IBOutlet UIScrollView * scrollView; //scrollView
+    __weak IBOutlet CustomInputView * typeInput2;  //文字输入2
+    __weak IBOutlet CustomInputView * typeInput3;  //文字输入3
+    __weak IBOutlet CustomInputView * posInput;  // 设备位置
+    __weak IBOutlet CustomInputView * brandInput; // 电器品牌
+    __weak IBOutlet UITextField * InfraredText;  // 红外设备
+    __weak IBOutlet NSLayoutConstraint * TypeInput2LayoutConstraint; // 输入框2的高度
+    __weak IBOutlet NSLayoutConstraint * TypeInput3LayoutConstraint; // 输入框3的高度
+    __weak IBOutlet NSLayoutConstraint * bdffLayoutConstraint; // View的高度
     dispatch_group_t group;
     dispatch_queue_t queue;
 }
@@ -76,7 +76,7 @@
 
 // 二维码
 - (IBAction)scanAction {
-    ScanViewController *scan = [[ScanViewController alloc] init];
+    ScanViewController * scan = [[ScanViewController alloc] init];
     [scan getResultStr:^(NSString *result) {
         if (result && result.length>0) {
             deviceTF.text = result;
@@ -98,7 +98,7 @@
 
 // 红外设备提示
 - (IBAction)InfraredBut:(UIButton *)sender {
-    WebViewController *WebView = [[WebViewController alloc] init];
+    WebViewController * WebView = [[WebViewController alloc] init];
     WebView.type = 666;
     // 包装一个导航栏控制器
     UINavigationController * nav = [[UINavigationController alloc]   initWithRootViewController:WebView];
@@ -135,7 +135,7 @@
             dispatch_group_leave(group);
             ZPLog(@"%@",response);
             if (!error) {
-                NSArray *postions = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
+                NSArray * postions = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
                 posInput.datas = postions;
             }
         }];
@@ -150,7 +150,7 @@
             dispatch_group_leave(group);
             ZPLog(@"%@",response);
             if (!error) {
-                NSArray *brands = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
+                NSArray * brands = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
                 brandInput.datas = brands;
             }
         }];
@@ -165,7 +165,7 @@
             dispatch_group_leave(group);
             ZPLog(@"%@",response);
             if (!error) {
-                NSArray *names = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
+                NSArray * names = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
                 typeInput.datas = names;
             }
         }];
@@ -252,7 +252,7 @@
 //解绑设备 （传入参数：设备编号；设备Key）
 - (void)unBindDevice {
     [self.view startLoading];
-    NSDictionary *dic = @{@"DeviceCode":deviceTF.text, @"DeviceKey":deviceTF.text};
+    NSDictionary * dic = @{@"DeviceCode":deviceTF.text, @"DeviceKey":deviceTF.text};
     [[NetworkRequest sharedInstance] requestWithUrl:UNBINDING_DEVICE_URL parameter:dic completion:^(id response, NSError *error) {
         [self.view stopLoading];
         //请求成功
@@ -278,7 +278,7 @@
 
 
 // 监听输入框的文字
--(void)textFieldDidChangee:(UITextField *)textField {
+- (void)textFieldDidChangee:(UITextField *)textField {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"changeValuee" object:textField];
 }
 

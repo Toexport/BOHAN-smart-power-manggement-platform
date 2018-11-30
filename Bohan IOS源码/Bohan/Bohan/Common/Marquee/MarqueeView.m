@@ -13,9 +13,9 @@
 @property(assign, nonatomic)int index;
 @property (nonatomic) NSMutableArray *titles;
 /**第一个*/
-@property(nonatomic)UIButton *firstBtn;
+@property(nonatomic)UIButton * firstBtn;
 /**更多个*/
-@property(nonatomic)UIButton *moreBtn;
+@property(nonatomic)UIButton * moreBtn;
 @end
 @implementation MarqueeView
 
@@ -27,7 +27,7 @@
         self.titleColor = [UIColor blackColor];
         self.titleFont =  [UIFont systemFontOfSize:14];
         self.clipsToBounds = YES;
-        UILabel *tagLabel = [[UILabel alloc]initWithFrame:CGRectMake(15, (self.frame.size.height - 20 )/2, 40, 20)];
+        UILabel * tagLabel = [[UILabel alloc]initWithFrame:CGRectMake(0, (self.frame.size.height - 20 )/2, 40, 20)];
 //        tagLabel.text = @"资讯";
 //        tagLabel.textAlignment = NSTextAlignmentCenter;
 //        tagLabel.textColor = [UIColor orangeColor];
@@ -35,10 +35,8 @@
 //        tagLabel.layer.borderColor =  [UIColor colorWithRed:0.94f green:0.46f blue:0.27f alpha:1.00f].CGColor;
 //        tagLabel.layer.borderWidth = 1.0f;
         [self addSubview:tagLabel];
-        
-        
-        NSMutableArray *MutableTitles = [NSMutableArray arrayWithArray:titles];
-        NSString *str = @"";
+        NSMutableArray * MutableTitles = [NSMutableArray arrayWithArray:titles];
+        NSString * str = @"";
         self.titles = MutableTitles;
         [self.titles addObject:str]; //加一个空的,防止数组为空奔溃
         self.index = 1;
@@ -47,15 +45,13 @@
         [self.firstBtn  setTitle:self.titles[0] forState:UIControlStateNormal];
         [self addSubview:self.firstBtn];
         [NSTimer scheduledTimerWithTimeInterval:5.0 target:self selector:@selector(nextAd) userInfo:nil repeats:YES];
-        
     }
-    
     return self;
 }
 
 #pragma mark - SEL Methods
--(void)nextAd{
-    UIButton *firstBtn = [self viewWithTag:self.index];
+-(void)nextAd {
+    UIButton * firstBtn = [self viewWithTag:self.index];
     self.moreBtn = [self btnframe: CGRectMake(55, self.bounds.size.height,[UIScreen mainScreen].bounds.size.width -2 *30, self.bounds.size.height)  titleColor:_titleColor action:@selector(clickBtn:)];
     self.moreBtn.tag = self.index + 1;
     if ([self.titles[self.titleIndex+1] isEqualToString:@""]) {
@@ -80,17 +76,17 @@
     self.index++;
     self.titleIndex++;
 }
--(void)clickBtn:(UIButton *)btn{
-    
+
+-(void)clickBtn:(UIButton *)btn {
     if (self.handlerTitleClickCallBack) {
         self.handlerTitleClickCallBack(btn.tag);
     }
 }
 
 #pragma mark - Custom Methods
-- (UIButton *)btnframe:(CGRect)frame  titleColor:(UIColor *)titleColor action:(SEL)action{
+- (UIButton *)btnframe:(CGRect)frame  titleColor:(UIColor *)titleColor action:(SEL)action {
     
-    UIButton *btn = [[UIButton alloc]init];
+    UIButton * btn = [[UIButton alloc]init];
     btn.frame = frame;
     btn.titleLabel.font = _titleFont;
       //靠左 不居中显示
@@ -102,19 +98,18 @@
     
     return btn;
 }
+
 #pragma mark - Setter && Getter Methods
-- (void)setTitleColor:(UIColor *)titleColor{
+- (void)setTitleColor:(UIColor *)titleColor {
     _titleColor = titleColor;
      [self.firstBtn setTitleColor:titleColor forState:UIControlStateNormal];
      [self.moreBtn setTitleColor:titleColor forState:UIControlStateNormal];
-
 }
-- (void)setTitleFont:(UIFont *)titleFont{
 
+- (void)setTitleFont:(UIFont *)titleFont {
     _titleFont = titleFont;
    self.firstBtn.titleLabel.font = titleFont;
    self.moreBtn.titleLabel.font = titleFont;
-    
 }
 
 

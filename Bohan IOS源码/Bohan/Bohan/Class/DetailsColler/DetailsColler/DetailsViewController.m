@@ -148,7 +148,7 @@
     [WXApi sendReq:req];
 }
 
-//// 分享
+// 分享
 //- (void)UMShare {
 ////    显示分享面板
 //    [[XMShare shareManager] showWithController:self];

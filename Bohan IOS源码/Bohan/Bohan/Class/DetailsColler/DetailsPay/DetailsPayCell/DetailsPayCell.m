@@ -14,7 +14,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
+    UITapGestureRecognizer * tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(tapAction:)];
     [self.BalanceView addGestureRecognizer:tapGesturRecognizer];
 }
 
@@ -90,8 +90,8 @@
 //}
 
 - (void)updateBalanceView:(NSInteger)type {
-    NSArray *imageArray = @[@"yuePay",@"AlpayPay",@"WechatPay"];
-    NSArray *titleArray = @[@"余额",@"支付宝",@"微信"];
+    NSArray * imageArray = @[@"yuePay",@"AlpayPay",@"WechatPay"];
+    NSArray * titleArray = @[@"余额",@"支付宝",@"微信"];
     _MainImage.image = [UIImage imageNamed:imageArray[type]];
     _TitleLabel.text = titleArray[type];
     self.PayWay = [NSString stringWithFormat:@"%@",self.TitleLabel];
@@ -104,7 +104,7 @@
 //    }else {
 //        self.payBlockBlock(self.PriceLabel.text, self.PayWay, self.DeviceId.text);
 
-    NSString *string = [NSString stringWithFormat:@"%@",self.PriceLabel.text];
+    NSString * string = [NSString stringWithFormat:@"%@",self.PriceLabel.text];
     NSString * stringg = [NSString stringWithFormat:@"设备ID:%@",self.DeviceId.text];
     self.payBlockBlock(stringg, string);
 //        ZPLog(@"成功");
