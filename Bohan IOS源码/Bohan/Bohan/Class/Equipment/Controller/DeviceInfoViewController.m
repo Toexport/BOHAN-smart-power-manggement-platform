@@ -185,10 +185,8 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
             [statusImg setImage:[UIImage imageNamed:@"open_offline"]];
             [status setText:Localize(@"设备正处于离线状态")];
         }
-        
         ZPLog(@"--------%@",response);
     }];
-    
 }
 
 //倒计时时间
@@ -333,15 +331,14 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
     Details.deviceNo = self.model.id;
     ZPLog(@"1111");
-
 }
 
 - (void)GetsTime {
-    NSDate * currentDate = [NSDate date];
+    NSDate *currentDate = [NSDate date];
     NSCalendar *currentCalendar = [NSCalendar currentCalendar];
     //  IOS 8 之后
     NSUInteger integer = NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay | NSCalendarUnitWeekday | NSCalendarUnitHour | NSCalendarUnitMinute | NSCalendarUnitSecond;
-    NSDateComponents * dataCom = [currentCalendar components:integer fromDate:currentDate];
+    NSDateComponents *dataCom = [currentCalendar components:integer fromDate:currentDate];
     NSInteger year = [dataCom year]; // 年
     NSInteger month = [dataCom month]; // 月
     NSInteger day = [dataCom day]; // 日
@@ -378,7 +375,7 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
     }
     
     //   星期
-    NSString * WeekStr = [NSString stringWithFormat:@"%ld",(long)week];
+    NSString *WeekStr = [NSString stringWithFormat:@"%ld",(long)week];
     //    ZPLog(@"%@",WeekStr);
     if ([WeekStr containsString:@"1"]) {
         week = 0;
@@ -457,5 +454,6 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
         ZPLog(@"%@",response);
     }];
 }
+
 
 @end

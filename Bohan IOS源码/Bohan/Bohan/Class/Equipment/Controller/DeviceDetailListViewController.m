@@ -34,8 +34,8 @@ static const CGFloat SHAREBTNHIGHT = 50;
 
 @end
 
-static NSString *deviceDetailCellIdentifier = @"DeviceDetailListCell";
-static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCell";
+static NSString * deviceDetailCellIdentifier = @"DeviceDetailListCell";
+static NSString * deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCell";
 
 
 
@@ -98,6 +98,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
                     }
                 }
             }
+            
             if (self.datas.count == 0) {
                 self.table.noDataTitle = Localize(@"暂无数据");
                 self.table.noDataDetail = Localize(@"过会再来吧");
@@ -113,8 +114,8 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
 }
 
 - (void)deviceStatus {
-    WebSocket *socket = [WebSocket socketManager];
-    CommandModel *model = [[CommandModel alloc] init];
+    WebSocket * socket = [WebSocket socketManager];
+    CommandModel * model = [[CommandModel alloc] init];
     model.command = @"1001";
     model.content = USERNAME;
     MyWeakSelf
@@ -172,7 +173,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
             MyStrongSelf
             [strongSelf  loadData];
             [strongSelf  deviceStatus];
-            
         };
         [_table shouldRefresh:YES shouldPage:NO];
     }
@@ -224,7 +224,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
             return cell;
             //        这个是两个cell，一个是三个按钮，一个是一个按钮
         }else {
-            DeviceDetailListCell *cell = (DeviceDetailListCell*)[tableView dequeueReusableCellWithIdentifier:deviceDetailCellIdentifier];
+            DeviceDetailListCell * cell = (DeviceDetailListCell *)[tableView dequeueReusableCellWithIdentifier:deviceDetailCellIdentifier];
             cell.delegate = self;
             cell.indexPath = indexPath;
             [cell setModel:model];
@@ -242,7 +242,7 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
     [tableView deselectRowAtIndexPath:indexPath animated:NO];
     if (indexPath.section == 0) {
         DeviceInfoViewController * info = [[DeviceInfoViewController alloc] init];
-        DeviceModel *model = self.online[indexPath.row];
+        DeviceModel * model = self.online[indexPath.row];
         info.model = model;
         info.sortt = model.sort;
         info.type = model.id;
@@ -271,9 +271,9 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
 #pragma mark - DeviceDetailListCellDelegate
 - (void)didSwitchOpen:(BOOL)isOpen withIndexPath:(NSIndexPath *)indexPath {
     shouldNotUpdate = YES;
-    DeviceModel *model = self.online[indexPath.row];
-    WebSocket *socket = [WebSocket socketManager];
-    CommandModel *command = [[CommandModel alloc] init];
+    DeviceModel * model = self.online[indexPath.row];
+    WebSocket * socket = [WebSocket socketManager];
+    CommandModel * command = [[CommandModel alloc] init];
     command.command = @"0013";
     command.deviceNo = model.id;
     command.content = isOpen?@"00":@"01";
@@ -306,9 +306,9 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
 
 - (void)didSwitchOpen:(BOOL)isOpen switchCode:(NSString *)code withIndexPath:(NSIndexPath *)indexPath {
     shouldNotUpdate = YES;
-    DeviceModel *model = self.online[indexPath.row];
-    WebSocket *socket = [WebSocket socketManager];
-    CommandModel *command = [[CommandModel alloc] init];
+    DeviceModel * model = self.online[indexPath.row];
+    WebSocket * socket = [WebSocket socketManager];
+    CommandModel * command = [[CommandModel alloc] init];
     command.command = @"0013";
     command.deviceNo = model.id;
     command.content = code;
@@ -344,7 +344,6 @@ static NSString *deviceDetailMutableCellIdentifier = @"DeviceDetailMutableListCe
         origalY = ScreenHeight - kTabBarHeight - SHAREBTNHIGHT;
     }
     [self.table reloadData];
-    
 }
 
 - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {

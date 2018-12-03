@@ -8,8 +8,7 @@
 
 #import "MeteringViewController.h"
 #import "DebuggingANDPublishing.pch"
-@interface MeteringViewController ()
-{
+@interface MeteringViewController () {
     __weak IBOutlet UIView *lastView;
     __weak IBOutlet UILabel *startTime;
     __weak IBOutlet UILabel *startDate;
@@ -26,7 +25,6 @@
     NSDateFormatter *formatter;
     NSString *start;
     NSString *end;
-
 }
 @end
 
@@ -49,7 +47,6 @@
 - (void)viewDidLayoutSubviews {
     [(UIScrollView *)self.view setContentSize:CGSizeMake(ScreenWidth, 550)];
 }
-
 
 - (IBAction)timeSelect:(UIButton *)sender {
     
@@ -138,9 +135,7 @@
                 
                 [totalTime setText:[Utils gapDateFrom:startD toDate:endD]];
                 [totalElec setText:[NSString stringWithFormat:@"%d.%02dkWh",[[elecStr substringToIndex:6] intValue],[[elecStr substringFromIndex:2] intValue]]];
-
             }
-
             
         }else {
             [HintView showHint:error.localizedDescription];
@@ -153,17 +148,13 @@
 - (IBAction)startAction {
     
     if ([cStartDate.text isEqualToString:Localize(@"选择开始时间")] || [cEndDate.text isEqualToString:Localize(@"选择结束时间")]) {
-
         [HintView showHint:Localize(@"选择时间")];
         return;
     }else {
-        
         [formatter setDateFormat:@"yyMMddHHmmss"];
-        
         if ([[formatter dateFromString:start] isEarlierThanDate:[NSDate date]]){
         [HintView showHint:Localize(@"开始时间必须大于当前时间")];
-        return;
-            
+        return;   
         }else
             if ([[formatter dateFromString:end] isEarlierThanDate:[formatter dateFromString:start]]) {
             [HintView showHint:Localize(@"结束时间必须大于开始时间")];

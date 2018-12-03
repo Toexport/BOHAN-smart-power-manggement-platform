@@ -18,7 +18,6 @@
 #import "WebSocket.h"
 #import "PrefixHeader.pch"
 
-
 @interface AppDelegate ()<UNUserNotificationCenterDelegate>
 @property (nonatomic, strong) NSDictionary * userInfo;
 @property (nonatomic, strong) NSDictionary * StrKey;
@@ -42,11 +41,10 @@ static NSString * UMessageAppKey  = @"5baee85eb465f5c3b200013e";
 }
 
 - (void)keyBoardManage {
-    IQKeyboardManager *manager = [IQKeyboardManager sharedManager];
+    IQKeyboardManager * manager = [IQKeyboardManager sharedManager];
     [manager setEnable:YES];
     [manager setEnableAutoToolbar:NO];
     manager.shouldResignOnTouchOutside = YES;
-    
 }
 
 - (void)initSocket {
@@ -67,7 +65,6 @@ static NSString * UMessageAppKey  = @"5baee85eb465f5c3b200013e";
     [UMessage registerForRemoteNotificationsWithLaunchOptions:launchOptions Entity:entity completionHandler:^(BOOL granted, NSError * _Nullable error) {
         if (granted) {
             ZPLog(@"推送注册成功");
-            
         } else {
             ZPLog(@"推送注册失败");
         }

@@ -38,8 +38,6 @@
 #define iphoneX ((screenH==812)?1:0)
 
 
-
-
 //#define ZP_Graybackground [UIColor colorWithHexString:@"#eeeeee"]
 
 #endif /* MacroDefinition_h */

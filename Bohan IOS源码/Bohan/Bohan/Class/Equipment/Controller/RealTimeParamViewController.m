@@ -9,8 +9,8 @@
 #import "RealTimeParamViewController.h"
 #import "UIViewController+NavigationBar.h"
 #import "DebuggingANDPublishing.pch"
-@interface RealTimeParamViewController ()
-{
+@interface RealTimeParamViewController () {
+    
     __weak IBOutlet UILabel *deviceNo;
     __weak IBOutlet UILabel *time;
     __weak IBOutlet UILabel *week;
@@ -21,8 +21,7 @@
     __weak IBOutlet UILabel *elcAmount;
     __weak IBOutlet UILabel *carbon;
     __weak IBOutlet UILabel *money;
-    __weak IBOutlet UILabel *temperature;
-    
+    __weak IBOutlet UILabel *temperature;  
 }
 @end
 
@@ -30,16 +29,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
     self.title = Localize(@"用电参数");
     [self rightBarTitle:Localize(@"刷新") color:[UIColor whiteColor] action:@selector(deviceParams)];
-    
     [self deviceParams];
 }
 
-
 - (void)deviceParams {
-    
     WebSocket * socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0001";
@@ -48,7 +43,6 @@
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
-        
         if (!error) {
             NSString * string = response;
             NSString * strin  = self.CoedID;
@@ -80,7 +74,6 @@
                         }else {
                             ZPLog(@"带点");
                             [weakSelf updateViewWithDataas:response];
-                            
                         }
                     }else
                         if ([stringg hasPrefix:@"E760"]) {
@@ -106,11 +99,9 @@
         
         ZPLog(@"--------%@",response);
     }];
-    
 }
 
-- (void)updateViewWithData:(NSString *)data
-{
+- (void)updateViewWithData:(NSString *)data {
     [deviceNo setText:self.dNo];
     [time setText:[data time]];
     [week setText:[data week]];
@@ -122,8 +113,8 @@
     [money setText:[data money]];
     [temperature setText:[data temperature]];
     [power setText:[data realTimePower]];
-   
 }
+
 // 带点
 - (void)updateViewWithDataa:(NSString *)data {
     [power setText:[data realTimePowerr]];
@@ -138,6 +129,7 @@
     [money setText:[data money]];
     [temperature setText:[data temperature]];
 }
+
 // 不带点
 - (void)updateViewWithDataaNo:(NSString *)data {
     [power setText:[data realTimePowerrNo]];
@@ -221,4 +213,6 @@
     [money setText:[data money]];
     [temperature setText:[data temperature]];
 }
+
+
 @end

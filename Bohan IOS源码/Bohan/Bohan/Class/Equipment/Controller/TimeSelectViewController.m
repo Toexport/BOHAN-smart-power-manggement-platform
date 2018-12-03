@@ -27,6 +27,7 @@ self.title = Localize(@"时间选择");
 formatter = [[NSDateFormatter alloc] init];
 [formatter setDateFormat:@"HH:mm"];
 [self configView];
+    
 }
 
 - (void)configView {
@@ -85,6 +86,7 @@ sender.selected = !sender.selected;
 }
 
 - (IBAction)okAction {
+    
 if ([[formatter dateFromString:endTime.text] isLaterThanDate:[formatter dateFromString:startTime.text]] ||
     ([[formatter dateFromString:startTime.text] isLaterThanDate:[formatter dateFromString:@"11:59"]]&&
      [endTime.text isEqualToString:@"00:00"])) {

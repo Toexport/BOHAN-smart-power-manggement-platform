@@ -95,10 +95,8 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
         if (!error) {
             
             if (((NSString *)response).length == 120) {
-                
                 NSString *content = [response substringWithRange:NSMakeRange(((NSString *)response).length - 96, 92)];
                 [weakSelf caculateWithString:content];
-                
             }
             
         }else {
@@ -112,7 +110,6 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
 }
 
 - (void)loopOpenCloseTime {
-    
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0028";
@@ -124,14 +121,10 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
         [weakSelf.view stopLoading];
         
         if (!error) {
-            
             if (((NSString *)response).length > 32) {
-                
                 NSString *content = [response substringWithRange:NSMakeRange(24, 8)];
-                
                 NSMutableString *openTime = [NSMutableString stringWithString:[content substringToIndex:4]];
                 [openTime insertString:@":" atIndex:2];
-                
                 NSMutableString *closeTime = [NSMutableString stringWithString:[content substringFromIndex:4]];
                 [closeTime insertString:@":" atIndex:2];
                 [openBtn setTitle:openTime forState:UIControlStateNormal];
@@ -173,9 +166,7 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
 }
 
 
-- (void)changeModel:(NSString *)content isParentCancel:(BOOL)cancel
-{
-    
+- (void)changeModel:(NSString *)content isParentCancel:(BOOL)cancel {
     WebSocket * socket = [WebSocket socketManager];
     CommandModel * model = [[CommandModel alloc] init];
     model.command = @"0009";
@@ -200,14 +191,11 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
                 [customHeader setBackgroundColor:[UIColor whiteColor]];
                 [modelCollectionView reloadData];
 
-            }else
-            {
+            }else {
                 [HintView showHint:error.localizedDescription];
             }
-        }else
-        {
+        }else {
             if (!error) {
-                
                 UIButton *customHeader = [modelCollectionView viewWithTag:200];
                 customHeader.layer.borderColor = [UIColor getColor:@"cccccc"].CGColor;
                 [customHeader setBackgroundColor:[UIColor whiteColor]];
@@ -215,15 +203,11 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
                 [weakSelf caculateWithString:content];
                 [HintView showHint:Localize(@"模式已切换")];
                 
-            }else
-            {
+            }else {
                 [HintView showHint:Localize(@"模式切换失败")];
             }
         }
-        
-        
     }];
-    
 }
 
 
@@ -249,10 +233,7 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
 
     }
     [self.view updateConstraints];
-
-//    [];
     [status setTextColor:[UIColor greenColor]];
-
     UIButton *customHeader = [modelCollectionView viewWithTag:200];
     
     if (isParentModel || [modelContents containsObject:modelStr]) {
@@ -264,8 +245,8 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
         }else {
             selectedIndexPath = [NSIndexPath indexPathForItem:[modelContents indexOfObject:modelStr] inSection:0];
         }
-    }else if(!isLoop)
-    {
+    }else
+        if(!isLoop) {
         selectedIndexPath = nil;
         customHeader.layer.borderColor = RGBColor(61, 141, 241, 0.8).CGColor;
         [customHeader setBackgroundColor:RGBColor(61, 141, 241, 0.8)];
@@ -308,21 +289,16 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
             if (isParentModel) {
                 isValidate = YES;
                 model.open = [[week substringToIndex:1] isEqualToString:@"1"]?YES:NO;
-            }else
-            {
+            }else {
                 if (([start isEqualToString:end] || ([[time substringToIndex:4] integerValue] > [[time substringWithRange:NSMakeRange(4, 4)] integerValue])) || [[week substringFromIndex:1] isEqualToString:@"0000000"]) {
                     model.open = NO;
-                }else
-                {
+                }else {
                     model.open = YES;
                     isValidate = YES;
                 }
             }
-
             [self.datas addObject:model];
-//
         }
-//
         //有效的时段设置模式
         if (isValidate) {
             [self configRunModelWithModelStr:content isLoop:NO];
@@ -330,8 +306,8 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
             return;
         }
 
-    }else if([str isEqualToString:@"05"])
-    {
+    }else
+        if([str isEqualToString:@"05"]) {
         [self configRunModelWithModelStr:content isLoop:YES];
         return;
     }
@@ -354,11 +330,9 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
     [modelCollectionView reloadData];
 
     [self configNoData];
-    
 }
 
-- (void)configNoData
-{
+- (void)configNoData {
     NSMutableArray *arr = [NSMutableArray array];
     for (int i = 0; i < 9 ; i++) {
         TimeSettingModel *model = [[TimeSettingModel alloc] init];
@@ -374,8 +348,7 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
 }
 
 
-- (void)viewDidLayoutSubviews
-{
+- (void)viewDidLayoutSubviews {
     [modelCollectionView.superview setFrame:CGRectChangeHeight(modelCollectionView.superview.frame, modelCollectionView.contentSize.height + 72)];
     [modelCollectionView setFrame:CGRectChangeHeight(modelCollectionView.frame, 260)];
 
@@ -394,7 +367,6 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
     list.isParentModel = isParentModel;
     [self.navigationController pushViewController:list animated:YES];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
-
 }
 
 - (IBAction)openAction {
@@ -472,8 +444,7 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
 
         [self changeModel:contentStr isParentCancel:YES];
         
-    }else
-    {
+    }else  {
         [CommonOperation cancelDeviceRunModel:self.deviceNo result:^(id response, NSError *error) {
             if (!error) {
                 
@@ -550,7 +521,6 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
     
     return cell;
 }
-
 
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {

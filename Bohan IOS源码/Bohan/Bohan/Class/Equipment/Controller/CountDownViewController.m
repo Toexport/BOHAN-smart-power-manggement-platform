@@ -86,7 +86,6 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
             [self setUpTimer];
         }
         ZPLog(@"--000-%@",response);
-        
     }];
 }
 
@@ -116,14 +115,16 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
                         open = YES;
                     }
                  //二位插座
-                }else if ([self.deviceNo hasPrefix:@"62"]) {
+                }else
+                    if ([self.deviceNo hasPrefix:@"62"]) {
                     if ([left isEqualToString:@"0"] || [right isEqualToString:@"0"]) {
                         open = NO;
                     }else {
                         open = YES;
                     }
                 //三位插座
-                }else if ([self.deviceNo hasPrefix:@"63"]) {
+                }else
+                    if ([self.deviceNo hasPrefix:@"63"]) {
                     if ([left isEqualToString:@"0"] || [right isEqualToString:@"0"] || [center isEqualToString:@"0"]) {
                         open = NO;
                     }else {

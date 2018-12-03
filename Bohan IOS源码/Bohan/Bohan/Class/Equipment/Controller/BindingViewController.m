@@ -276,7 +276,6 @@
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(changeValuee:)   name:@"changeValuee"  object:nil];
 }
 
-
 // 监听输入框的文字
 - (void)textFieldDidChangee:(UITextField *)textField {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"changeValuee" object:textField];
@@ -346,7 +345,7 @@
 }
 
 //判断字符串为6～12位“字符”
-- (BOOL)isValidateName:(NSString *)name{
+- (BOOL)isValidateName:(NSString *)name {
     NSUInteger  character = 0;
     for(int i=0; i< [name length];i++){
         int a = [name characterAtIndex:i];

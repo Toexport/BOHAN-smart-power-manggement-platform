@@ -143,9 +143,7 @@
             self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
             DetailsPay.DataId = stringValue;
         }
-
     }
-
 
 -(void)getResultStr:(QRScanSuccess)resultBlock {
     scanBlock = resultBlock;
