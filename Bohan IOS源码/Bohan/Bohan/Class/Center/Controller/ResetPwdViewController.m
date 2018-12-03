@@ -49,7 +49,6 @@
 }
 
 - (IBAction)okAction {
-    
     if ([Utils vertifyThePassword:pwdTF.text]) {
         [self submit];
     }else

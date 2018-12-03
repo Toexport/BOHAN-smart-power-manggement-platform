@@ -11,6 +11,7 @@
 #import "CountDownButton.h"
 #import "UIButton+Disable.h"
 #import "DebuggingANDPublishing.pch"
+#import "ZPVerifyAlertView.h"
 @interface VerificationCodeViewController ()<UITextFieldDelegate> {
     __weak IBOutlet UITextField *accountTF;
     __weak IBOutlet UITextField *codeTF;
@@ -120,14 +121,22 @@
         if (![Utils isMobileNumber:accountTF.text]) {
             [HintView showHint:Localize(@"请输入正确手机号")];
         }else {
-            [self getData];
+            ZPVerifyAlertView *verifyView = [[ZPVerifyAlertView alloc] initWithMaximumVerifyNumber:3 results:^(ZPVerifyState state) {
+                NSLog(@"%zd", state);
+                [self getData];
+            }];
+            [verifyView show];
         }
     }else {
         if (![Utils validateEmail:accountTF.text]) {
             [HintView showHint:Localize(@"请输入正确的邮箱地址")];
             ZPLog(@"请输入正确的邮箱");
         }else {
-           [self getData];
+            ZPVerifyAlertView *verifyView = [[ZPVerifyAlertView alloc] initWithMaximumVerifyNumber:3 results:^(ZPVerifyState state) {
+                NSLog(@"%zd", state);
+                [self getData];
+            }];
+            [verifyView show];
         }
     }
     

@@ -56,8 +56,8 @@ static NSString *countCellIdentifier = @"countCellIdentifier";
 }
 
 - (void)countDownTime {
-    WebSocket * socket = [WebSocket socketManager];
-    CommandModel * model = [[CommandModel alloc] init];
+    WebSocket *socket = [WebSocket socketManager];
+    CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0012";
     model.deviceNo = self.deviceNo;
     [self.view startLoading];
