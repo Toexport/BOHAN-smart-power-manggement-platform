@@ -10,8 +10,7 @@
 #import "ZPPuzzlePathMaker.h"
 @implementation UIBezierPath (ZPPuzzlePathMaker)
 
-+ (instancetype)bezierPathWithPathMaker:(void(^)(ZPPuzzlePathMaker *maker))maker
-{
++ (instancetype)bezierPathWithPathMaker:(void(^)(ZPPuzzlePathMaker *maker))maker {
     UIBezierPath *path = [UIBezierPath bezierPath];
     if (maker) {
         ZPPuzzlePathMaker *pathMaker = [[ZPPuzzlePathMaker alloc] initWithBezierPath:path];

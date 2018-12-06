@@ -61,8 +61,8 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
 
 // 获取数据
 - (void)loadData {
-    WebSocket * socket = [WebSocket socketManager];
-    CommandModel * model = [[CommandModel alloc] init];
+    WebSocket *socket = [WebSocket socketManager];
+    CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0008";
     model.deviceNo = self.deviceNo;
     [self.view startLoading];

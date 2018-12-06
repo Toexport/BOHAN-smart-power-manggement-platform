@@ -93,6 +93,7 @@
         [model.currentTable changeState];
         [model.currentTable noDataReload];
     }];
+    
 }
 
 - (void)languageChange {

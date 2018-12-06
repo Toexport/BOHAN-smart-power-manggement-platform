@@ -14,17 +14,16 @@
 #import "SelectPhotoManager.h"
 #import "LanguageController.h"
 #import "DebuggingANDPublishing.pch"
-@interface CenterViewController ()<UITableViewDataSource,UITableViewDelegate>
-{
+@interface CenterViewController ()<UITableViewDataSource,UITableViewDelegate> {
     NSString * userImg;
     UIImageView * headerImg;
 }
 @property (nonatomic, strong)SelectPhotoManager * photoManager;
-@property (nonatomic,strong) UITableView * tableView;
-@property (nonatomic,strong) UIButton * footerBtn;
-@property (nonatomic,strong) NSMutableArray * data;
-@property (nonatomic, strong) UILabel * detailTextLabel; //电话
-@property (nonatomic, strong)UIImageView * HeadImage;
+@property (nonatomic,strong) UITableView *tableView;
+@property (nonatomic,strong) UIButton *footerBtn;
+@property (nonatomic,strong) NSMutableArray *data;
+@property (nonatomic, strong) UILabel *detailTextLabel; //电话
+@property (nonatomic, strong)UIImageView *HeadImage;
 
 @end
 
@@ -32,7 +31,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     self.title = Localize(@"个人中心");
     self.hidesBottomBarWhenPushed = NO;
     if (@available(iOS 11.0, *)){
@@ -41,17 +39,13 @@
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(languageChange) name:AppLanguageDidChangeNotification object:nil];
-
     headerImg = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 44, 44)];
     headerImg.image = [UIImage imageNamed:@"mini_avatar"];
     headerImg.layer.cornerRadius = 22;
     headerImg.layer.masksToBounds = YES;
     [headerImg setBackgroundColor:[UIColor getColor:@"eeeeee"]];
-    
     [self.view addSubview:self.tableView];
-    
 }
-
 
 - (void)languageChange {
 //    [super languageChange];
@@ -59,11 +53,10 @@
     self.title = Localize(@"个人中心");
     [self.tableView reloadData];
     [_footerBtn setTitle:Localize(@"注销登录") forState:UIControlStateNormal];
-
 }
 
 - (void)logoutAction:(UIButton *)sender {
-    UIAlertController * alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"提示", nil) message: NSLocalizedString(@"确定要注销登录吗?", nil)preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"提示", nil) message: NSLocalizedString(@"确定要注销登录吗?", nil)preferredStyle:UIAlertControllerStyleActionSheet];
     //  设置popover指向的item
     alert.popoverPresentationController.barButtonItem = self.navigationItem.leftBarButtonItem;
     //  確定按钮
@@ -77,21 +70,18 @@
         ZPLog(@"点击了取消按钮");
     }]];
     [self presentViewController:alert animated:YES completion:nil];
-    
 }
 
 - (NSMutableArray *)data {
     if (_data == nil) {
         _data = [NSMutableArray array];
     }
-    
     [_data setArray:@[@{@"item":USERNAME,@"image":@"small_user"}, @{@"item":Localize(@"操作指南"),@"image":@"small_info"},@{@"item":Localize(@"意见与反馈"),@"image":@"ic_launcher363"}, @{@"item":Localize(@"版本信息"),@"image":@"ic_launcher"}, @{@"item":Localize(@"客服电话"),@"image":@"phone"},@{@"item":Localize(@"语言设置"),@"image":@"small_version"}]];
 
     return _data;
 }
 
-
--(UITableView *)tableView {
+- (UITableView *)tableView {
     if (_tableView == nil) {
         _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, kNavBarHeight+5, ScreenWidth, ScreenHeight- (kNavBarHeight+5)) style:UITableViewStyleGrouped];
         [_tableView setBackgroundColor:[UIColor clearColor]];
@@ -120,12 +110,12 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString * cellIdentify = @"cellIdentify";
-    UITableViewCell * cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
+    static NSString *cellIdentify = @"cellIdentify";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
     if (!cell) {
         cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:cellIdentify];
     }
-    NSDictionary * dict_ = self.data[indexPath.row];
+    NSDictionary *dict_ = self.data[indexPath.row];
     cell.textLabel.text = dict_[@"item"];
     cell.textLabel.textColor = kTextColor;
     cell.textLabel.font = Font(15);
@@ -167,12 +157,12 @@
 
 // 3. 在此方法中设置点击label后要触发的操作
 - (void)handleTapOnLabel:(id)sender {
-    NSString * ph1 = @"tel:";
+    NSString *ph1 = @"tel:";
     ph1 = [ph1 stringByAppendingString:self.detailTextLabel.text];
     [[UIApplication sharedApplication] openURL:[NSURL URLWithString:ph1]];
 }
 
-//// 修改头像
+// 修改头像
 //- (void)headerImage:(id)sender {
 //    if (!_photoManager) {
 //        _photoManager = [[SelectPhotoManager alloc]init];
@@ -195,7 +185,8 @@
 //-(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
 //    return 10;
 //}
-//
+
+
 //-(CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
 //    return 0.001;
 //}
@@ -210,7 +201,7 @@
         [_photoManager startSelectPhotoWithImageName:NSLocalizedString(@"Choose photos", nil)];
         __weak typeof(self)mySelf = self;
         //  选取照片成功
-        _photoManager.successHandle=^(SelectPhotoManager *manager,UIImage * image){
+        _photoManager.successHandle=^(SelectPhotoManager *manager,UIImage * image) {
             image = [mySelf imageWithImage:image scaledToSize:CGSizeMake(150, 150)];
             
             //  保存到本地
@@ -220,14 +211,12 @@
             [[NSUserDefaults standardUserDefaults] setObject:data forKey:@"headerImage"];
         };
     }else
-    
     if (indexPath.row == 1) {
-        
-        NSUserDefaults * df = [NSUserDefaults standardUserDefaults];
-        NSString * language = [df objectForKey:@"App_Language_Switch_Key"];
+        NSUserDefaults *df = [NSUserDefaults standardUserDefaults];
+        NSString *language = [df objectForKey:@"App_Language_Switch_Key"];
         
 //        NSString *localeLanguageCode = [[NSLocale currentLocale] objectForKey:NSLocaleLanguageCode];
-        NSString * localeLanguageCode = [NSLocale preferredLanguages][0];
+        NSString *localeLanguageCode = [NSLocale preferredLanguages][0];
         localeLanguageCode = [[localeLanguageCode componentsSeparatedByString:@"-"] firstObject];
         NSString *urlStr = @"http://www.bohanserver.top:8088/APPHelp_en.html";
         if ((language && [language isEqualToString:@"zh-Hans"]) || (!language && [localeLanguageCode isEqualToString:@"zh"])) {
@@ -247,7 +236,7 @@
             self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
     }else
         if (indexPath.row == 4) {
-        NSString * ph1 = @"lte";
+        NSString *ph1 = @"lte";
         ph1 = [ph1 stringByAppendingString:self.detailTextLabel.text];
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:ph1]];
         
@@ -255,15 +244,15 @@
             if (indexPath.row == 5) {
 //                LanguageController * Laguage = [[LanguageController alloc]init];
 //                [self.navigationController pushViewController:Laguage animated:YES];
-        UIAlertController * actionSheetController = [UIAlertController alertControllerWithTitle:Localize(@"语言选择") message:nil preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *actionSheetController = [UIAlertController alertControllerWithTitle:Localize(@"语言选择") message:nil preferredStyle:UIAlertControllerStyleAlert];
 
-        UIAlertAction * chinessAction = [UIAlertAction actionWithTitle:Localize(@"中文") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertAction *chinessAction = [UIAlertAction actionWithTitle:Localize(@"中文") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [NSBundle setCusLanguage:@"zh-Hans"];
         }];
-        UIAlertAction * englishAction = [UIAlertAction actionWithTitle:Localize(@"英文") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        UIAlertAction *englishAction = [UIAlertAction actionWithTitle:Localize(@"英文") style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
             [NSBundle setCusLanguage:@"en"];
         }];
-        UIAlertAction * cancelAction = [UIAlertAction actionWithTitle:Localize(@"取消") style:UIAlertActionStyleCancel handler:nil];
+        UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:Localize(@"取消") style:UIAlertActionStyleCancel handler:nil];
         [actionSheetController addAction:chinessAction];
         [actionSheetController addAction:englishAction];
         [actionSheetController addAction:cancelAction];

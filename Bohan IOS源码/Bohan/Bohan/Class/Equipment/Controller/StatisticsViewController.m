@@ -14,8 +14,7 @@
 #import "DeviceModel.h"
 #import "UIImage+Color.h"
 #import "DebuggingANDPublishing.pch"
-@interface StatisticsViewController ()
-{
+@interface StatisticsViewController () {
     NSArray * dataArray;
     NSUInteger currentIndex;
     NSDateFormatter * formatter;
@@ -24,6 +23,7 @@
     NSArray * keys;
     NSDate * selectedDate;
 }
+
 @property(nonatomic,strong)UIView * infoView;
 @property(nonatomic,strong)SliderView * sliderView;
 @property(nonatomic,strong)UIView * headerView;
@@ -53,40 +53,33 @@
     [self.view addSubview:self.selectView];
     [self.view addSubview:self.barView];
     [self.view addSubview:self.lineView];
-
     MyWeakSelf
     [self.barView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.selectView.mas_bottom);
         make.left.right.equalTo(weakSelf.view);
         make.bottom.equalTo(weakSelf.view.mas_bottomMargin);
     }];
-    
     [self.lineView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.equalTo(weakSelf.selectView.mas_bottom);
         make.left.right.equalTo(weakSelf.view);
         make.bottom.equalTo(weakSelf.view.mas_bottomMargin);
     }];
     self.lineView.hidden = YES;
-
     [self loadData];
 }
 
 - (void)loadData {
     [self.view startLoading];
-    
     NSString *url = urls[currentIndex];
     [formatter setDateFormat:formatters[currentIndex]];
     NSDictionary *dic = @{@"deviceCode":self.model.id,keys[currentIndex]:[formatter stringFromDate:selectedDate]};
     
     [[NetworkRequest sharedInstance] requestWithUrl:url parameter:dic completion:^(id response, NSError *error) {
-
         [self.view stopLoading];
         ZPLog(@"%@",response);
         if (!error) {
             dataArray = [NSArray yy_modelArrayWithClass:[PowerModel class] json:response[@"content"]];
-            
-        }else
-        {
+        }else  {
             [HintView showHint:error.localizedDescription];
             dataArray = nil;
         }
@@ -95,26 +88,21 @@
         }];
         [self.barView setDatas:dataArray];
         [self.lineView setDatas:dataArray];
-        
     }];
 }
 
-- (void)selectAction
-{
+- (void)selectAction {
     MyWeakSelf
     WSDateStyle type;
     if (currentIndex == 0) {
         type = DateStyleShowYearMonthDay;
-    }else if (currentIndex == 1)
-    {
-        type = DateStyleShowYearMonth;
     }else
-    {
+        if (currentIndex == 1) {
+        type = DateStyleShowYearMonth;
+    }else {
         type = DateStyleShowYear;
     }
-    
     WSDatePickerView *datepicker = [[WSDatePickerView alloc] initWithDateStyle:type scrollToDate:[formatter dateFromString:self.dateLable.text] CompleteBlock:^(NSDate *selectDate) {
-        
         selectedDate = selectDate;
         [formatter setDateFormat:formatters[currentIndex]];
         [weakSelf.dateLable setText:[formatter stringFromDate:selectedDate]];
@@ -124,7 +112,6 @@
     datepicker.dateLabelColor = kDefualtColor;
     datepicker.doneButtonColor = kDefualtColor;
     [datepicker show];
-    
 }
 
 - (void)changeViewAction:(UIButton *)btn {
@@ -175,8 +162,6 @@
         MyWeakSelf
         __weak typeof(NSDateFormatter *) weakFormatter = formatter;
         __weak typeof(NSArray *) weakFormatters = formatters;
-//        __weak typeof(NSUInteger) weakIndex = currentIndex;
-        
         _sliderView.block = ^(NSUInteger index) {
             
             if (index == 2) {
@@ -195,8 +180,6 @@
                     make.left.right.equalTo(weakSelf.view);
                     make.bottom.equalTo(weakSelf.view.mas_bottomMargin);
                 }];
-
-                
             }else {
                 weakSelf.selectView.hidden = NO;
                 
@@ -215,20 +198,14 @@
                     make.bottom.equalTo(weakSelf.view.mas_bottomMargin);
                 }];
             }
-
             currentIndex = index;
             [weakFormatter setDateFormat:weakFormatters[index]];
             [weakSelf.dateLable setText:[weakFormatter stringFromDate:selectedDate]];
             [weakSelf.barView setTitle:weakSelf.titles[index]];
             [weakSelf.lineView setTitle:weakSelf.titles2[index]];
-
             [weakSelf loadData];
-            
-//                        [weakSelf loadData];
-//                        [weakSelf.pageCollection setContentOffset:CGPointMake(currentIndex *ScreenWidth, 0) animated:YES];
         };
     }
-    
     return _sliderView;
 }
 
@@ -255,19 +232,13 @@
         [_headerView addSubview:selectBtn];
     }
     [_dateLable setText:[formatter stringFromDate:selectedDate]];
-    
     return _headerView;
 }
 
-
 - (UIView *)selectView {
-    if(!_selectView){
-        
+    if(!_selectView) {
         _selectView = [[UIView alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.headerView.frame), ScreenWidth, 35)];
-        
-        
         NSArray *titles = @[Localize(@"用电量"), Localize(@"功率")];
-        
         for (int i = 0; i<2; i++) {
             UIButton *btn = [[UIButton alloc] initWithFrame:CGRectMake(i==0?50:(ScreenWidth - 125), 2.5, 90, 30)];
             [btn setTitle:titles[i] forState:UIControlStateNormal];
@@ -285,7 +256,6 @@
             }
         }
     }
-    
     return  _selectView;
 }
 
@@ -293,7 +263,6 @@
     if (!_barView) {
         _barView = [[PowerHorizontalBarView alloc] init]; // 这个是底部View的View
         [_barView setTitle:self.titles[0]];
-//        [_barView setTitle:@"0"];
     }
     return _barView;
 }
@@ -303,7 +272,6 @@
         _lineView = [[PowerLineChartView alloc] init];
         [_lineView setTitle:self.titles2[0]];
     }
-    
     return _lineView;
 }
 

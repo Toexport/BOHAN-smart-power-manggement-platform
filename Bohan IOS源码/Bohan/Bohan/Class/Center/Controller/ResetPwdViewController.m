@@ -9,8 +9,7 @@
 #import "ResetPwdViewController.h"
 #import "UIButton+Disable.h"
 #import "DebuggingANDPublishing.pch"
-@interface ResetPwdViewController ()<UITextFieldDelegate>
-{
+@interface ResetPwdViewController ()<UITextFieldDelegate> {
     __weak IBOutlet UITextField * pwdTF;
     __weak IBOutlet UIButton * okBtn;
     
@@ -29,9 +28,7 @@
 }
 
 - (void)submit {
-    
     [self.view.window startLoading];
-    
     NSDictionary *parameter = @{@"userName":self.username, @"password":pwdTF.text, @"checkCode":self.code, @"flag":(self.isRegist?@"0":@"1")};
     [[NetworkRequest sharedInstance] requestWithUrl:REGISTER_URL parameter:parameter completion:^(id response, NSError *error) {
         [self.view.window stopLoading];
@@ -51,19 +48,16 @@
 - (IBAction)okAction {
     if ([Utils vertifyThePassword:pwdTF.text]) {
         [self submit];
-    }else
-    {
+    }else {
         [HintView showHint:Localize(@"请输入英文或数字(6到12位)")];
     }
 }
 
 #pragma mark - UITextFildDelegate
 - (void)textDidChanged:(NSNotification *)notify {
-    
-    if (pwdTF.text.length >0)
-    {
+    if (pwdTF.text.length >0) {
         [okBtn enable];
-    }else{
+    }else {
         [okBtn disable];
     }
 }

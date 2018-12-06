@@ -94,12 +94,6 @@
     [[NSUserDefaults standardUserDefaults] synchronize];
 
     [self.navigationController popViewControllerAnimated:YES];
-
-////  我们要把系统windown的rootViewController替换掉
-//    BaseViewController * tabBar = [[BaseViewController alloc] init];
-//    [UIApplication sharedApplication].keyWindow.rootViewController = tabBar;
-//    //  跳转到设置页
-//    tabBar.selectedIndex = 4;
 }
 
 //适当的位置移除通知

@@ -99,7 +99,6 @@
 
 #pragma mark -Private
 - (void)forgetPasswordAction {
-//        [self hidePayPopView];
     if ([self.delegate respondsToSelector:@selector(didClickForgetPasswordButton)]) {
         [self.delegate didClickForgetPasswordButton];
     }

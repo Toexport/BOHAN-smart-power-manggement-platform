@@ -61,7 +61,6 @@
 }
 
 - (void)setupBarLineChartView:(HorizontalBarChartView *)chartView {
-    
     chartView.chartDescription.enabled = YES;//显示x轴描述
     chartView.maxVisibleCount = 31;
 

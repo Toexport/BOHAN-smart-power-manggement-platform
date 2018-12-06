@@ -40,18 +40,15 @@
 @implementation ZPVerifyAlertView
 
 #pragma mark -- Init
-- (instancetype)init
-{
+- (instancetype)init {
     return [self initWithMaximumVerifyNumber:1 results:nil];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     return [self initWithMaximumVerifyNumber:1 results:nil];
 }
 
-- (instancetype)initWithMaximumVerifyNumber:(NSUInteger)maxNumber results:(nullable VerificationResults)results
-{
+- (instancetype)initWithMaximumVerifyNumber:(NSUInteger)maxNumber results:(nullable VerificationResults)results {
     if (self = [super initWithFrame:CGRectZero]) {
         
         self.alpha = 0.f;
@@ -69,8 +66,7 @@
     return [super initWithCoder:aDecoder];
 }
 
-- (void)setupContentView
-{
+- (void)setupContentView {
     [self addSubview:({
         _contentView = [[UIView alloc] init];
         _contentView.backgroundColor = [UIColor whiteColor];
@@ -190,14 +186,12 @@
     _resultImageView.frame = CGRectMake(resultImageViewX, resultImageViewY, 48.f, 48.f);
 }
 
-+ (BOOL)accessInstanceVariablesDirectly
-{
++ (BOOL)accessInstanceVariablesDirectly {
     return NO; // 返回NO时，外部不能通过KVC赋值
 }
 
 #pragma mark -- Public Methods
-- (void)show
-{
+- (void)show {
     _contentView.transform = CGAffineTransformMakeScale(0.5, 0.5);
     [[UIApplication sharedApplication].delegate.window addSubview:self];
     
@@ -208,13 +202,11 @@
 }
 
 #pragma mark -- Action
-- (void)closeButtonAction:(UIButton *)button
-{
+- (void)closeButtonAction:(UIButton *)button {
     [self dismissWithDelay:0.f];
 }
 
-- (void)refreshButtonAction:(UIButton *)button
-{
+- (void)refreshButtonAction:(UIButton *)button {
     _slider.value = 0.f;
     _slider.enabled = YES;
     _resultImageView.hidden = YES;
@@ -223,13 +215,11 @@
     [_puzzleView refresh];
 }
 
-- (void)sliderValueDidChange:(UISlider *)slider
-{
+- (void)sliderValueDidChange:(UISlider *)slider {
     _puzzleView.translation = slider.value;
 }
 
-- (void)dismissWithDelay:(NSTimeInterval)delay
-{
+- (void)dismissWithDelay:(NSTimeInterval)delay {
     [UIView animateKeyframesWithDuration:0.2 delay:delay options:(UIViewKeyframeAnimationOptionLayoutSubviews |UIViewKeyframeAnimationOptionCalculationModeCubic) animations:^{
         self.alpha = 0.f;
         _contentView.transform = CGAffineTransformMakeScale(0.5, 0.5);
@@ -239,8 +229,7 @@
     }];
 }
 
-- (void)performCallback
-{
+- (void)performCallback {
     if (!_isVerified) {
         if (_remainingVerifyNumber == 0) {
             _state = ZKVerifyStateFail; // 验证失败
@@ -256,8 +245,7 @@
 }
 
 #pragma mark -- KVO
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context
-{
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context {
     if([keyPath isEqualToString:@"tracking"]) {
         NSInteger oldValue = [change[@"old"] integerValue];
         NSInteger newValue = [change[@"new"] integerValue];
@@ -314,14 +302,11 @@
 #pragma mark -- Other
 - (NSAttributedString *)attributedString:(NSString *)string {
     if (string == nil) return nil;
-    
     NSMutableParagraphStyle *paraStyle = [[NSMutableParagraphStyle alloc] init];
     paraStyle.lineSpacing = 3;
     paraStyle.alignment = NSTextAlignmentCenter;
-    
     NSDictionary *attributes = @{NSParagraphStyleAttributeName:paraStyle};
     NSAttributedString *attString = [[NSAttributedString alloc] initWithString:string attributes:attributes];
-    
     return attString;
 }
 

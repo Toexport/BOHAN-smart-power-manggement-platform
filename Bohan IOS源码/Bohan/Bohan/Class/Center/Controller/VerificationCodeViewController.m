@@ -85,10 +85,9 @@
     NSString *localeLanguageCode = [NSLocale preferredLanguages][0];
     localeLanguageCode = [[localeLanguageCode componentsSeparatedByString:@"-"] firstObject];
     if ((language && [language isEqualToString:@"zh-Hans"]) || (!language && [localeLanguageCode isEqualToString:@"zh"])) {
-        
         if (![Utils isMobileNumber:accountTF.text]) {
             [HintView showHint:Localize(@"请输入正确手机号")];
-        }else{
+        }else {
             ResetPwdViewController *reset = [[ResetPwdViewController alloc] init];
             reset.isRegist = self.isRegist;
             reset.username = accountTF.text;
@@ -99,7 +98,7 @@
     }else {
         if (![Utils validateEmail:accountTF.text]) {
             [HintView showHint:Localize(@"请输入正确的邮箱地址")];
-        }else{
+        }else {
             ResetPwdViewController *reset = [[ResetPwdViewController alloc] init];
             reset.isRegist = self.isRegist;
             reset.username = accountTF.text;
@@ -111,7 +110,6 @@
     }
 }
 
-
 - (IBAction)getCodeAction {
     NSUserDefaults *df = [NSUserDefaults standardUserDefaults];
     NSString *language = [df objectForKey:@"App_Language_Switch_Key"];
@@ -122,8 +120,21 @@
             [HintView showHint:Localize(@"请输入正确手机号")];
         }else {
             ZPVerifyAlertView *verifyView = [[ZPVerifyAlertView alloc] initWithMaximumVerifyNumber:3 results:^(ZPVerifyState state) {
-                NSLog(@"%zd", state);
-                [self getData];
+                switch (state) {
+                    case ZKVerifyStateSuccess: {
+                        [self getData];
+                    }
+                        break;
+                    case ZKVerifyStateFail: {
+                        [HintView showHint:Localize(@"验证失败 (达到验证失败次数上限)")];
+                        NSLog(@"验证失败（达到验证失败次数上限");
+                    }
+                        break;
+                    default:
+                        [HintView showHint:Localize(@"验证取消")];
+                        NSLog(@"验证取消");
+                        break;
+                }
             }];
             [verifyView show];
         }
@@ -133,23 +144,33 @@
             ZPLog(@"请输入正确的邮箱");
         }else {
             ZPVerifyAlertView *verifyView = [[ZPVerifyAlertView alloc] initWithMaximumVerifyNumber:3 results:^(ZPVerifyState state) {
-                NSLog(@"%zd", state);
-                [self getData];
+                switch (state) {
+                    case ZKVerifyStateSuccess: {
+                        [self getData];
+                    }
+                        break;
+                    case ZKVerifyStateFail: {
+                        [HintView showHint:Localize(@"验证失败 (达到验证失败次数上限)")];
+                        NSLog(@"验证失败（达到验证失败次数上限");
+                    }
+                        break;
+                    default:
+                        [HintView showHint:Localize(@"验证取消")];
+                        NSLog(@"验证取消");
+                        break;
+                }
             }];
             [verifyView show];
         }
     }
-    
 }
 
 
 #pragma mark - UITextFildDelegate
-
 - (void)textDidChanged:(NSNotification *)notify {
-    
     if (accountTF.text.length > 0 && codeTF.text.length > 0) {
         [nextBtn enable];
-    }else{
+    }else {
         [nextBtn disable];
     }
 }

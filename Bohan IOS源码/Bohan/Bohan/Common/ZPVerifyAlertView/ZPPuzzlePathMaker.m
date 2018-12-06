@@ -15,13 +15,11 @@
     return [self initWithBezierPath:nil];
 }
 
-+ (instancetype)makerWithBezierPath:(UIBezierPath *)path
-{
++ (instancetype)makerWithBezierPath:(UIBezierPath *)path {
     return [[self alloc] initWithBezierPath:path];
 }
 
-- (instancetype)initWithBezierPath:(UIBezierPath *)path
-{
+- (instancetype)initWithBezierPath:(UIBezierPath *)path {
     if (self = [super init]) {
         
         self.path = path;
@@ -30,48 +28,42 @@
 }
 
 #pragma mark -- Getter
-- (ZPPuzzlePathMaker *(^)(CGFloat, CGFloat))moveTo
-{
+- (ZPPuzzlePathMaker *(^)(CGFloat, CGFloat))moveTo {
     return ^(CGFloat x, CGFloat y){
         [self.path moveToPoint:CGPointMake(x, y)];
         return self;
     };
 }
 
-- (ZPPuzzlePathMaker *(^)(CGFloat, CGFloat))addLineTo
-{
+- (ZPPuzzlePathMaker *(^)(CGFloat, CGFloat))addLineTo {
     return ^(CGFloat x, CGFloat y){
         [self.path addLineToPoint:CGPointMake(x, y)];
         return self;
     };
 }
 
-- (ZPPuzzlePathMaker *(^)(CGFloat, CGFloat, CGFloat, CGFloat))addQuadCurveTo
-{
+- (ZPPuzzlePathMaker *(^)(CGFloat, CGFloat, CGFloat, CGFloat))addQuadCurveTo {
     return ^(CGFloat endX, CGFloat endY, CGFloat controlX, CGFloat controlY){
         [self.path addQuadCurveToPoint:CGPointMake(endX, endY) controlPoint:CGPointMake(controlX, controlY)];
         return self;
     };
 }
 
-- (ZPPuzzlePathMaker *(^)(CGFloat, CGFloat, CGFloat, CGFloat, CGFloat, CGFloat))addCurveTo
-{
+- (ZPPuzzlePathMaker *(^)(CGFloat, CGFloat, CGFloat, CGFloat, CGFloat, CGFloat))addCurveTo {
     return ^(CGFloat endX, CGFloat endY, CGFloat controlX1, CGFloat controlY1, CGFloat controlX2, CGFloat controlY2){
         [self.path addCurveToPoint:CGPointMake(endX, endY) controlPoint1:CGPointMake(controlX1, controlY1) controlPoint2:CGPointMake(controlX2, controlY2)];
         return self;
     };
 }
 
-- (ZPPuzzlePathMaker *(^)(CGFloat, CGFloat, CGFloat, CGFloat, CGFloat, BOOL))addArcWithCenter
-{
+- (ZPPuzzlePathMaker *(^)(CGFloat, CGFloat, CGFloat, CGFloat, CGFloat, BOOL))addArcWithCenter {
     return ^(CGFloat centerX, CGFloat centerY, CGFloat radius, CGFloat startAngle, CGFloat endAngle, BOOL clockwise){
         [self.path addArcWithCenter:CGPointMake(centerX, centerY) radius:radius startAngle:startAngle endAngle:endAngle clockwise:clockwise];
         return self;
     };
 }
 
-- (ZPPuzzlePathMaker *(^)(CGFloat, CGFloat, CGFloat, CGFloat, CGFloat, BOOL, BOOL))addArcWithPoint
-{
+- (ZPPuzzlePathMaker *(^)(CGFloat, CGFloat, CGFloat, CGFloat, CGFloat, BOOL, BOOL))addArcWithPoint {
     return ^(CGFloat startX, CGFloat startY, CGFloat endX, CGFloat endY, CGFloat radius, BOOL clockwise, BOOL moreThanHalf){
         [self addArcPathWithStartPoint:CGPointMake(startX, startY) endPoint:CGPointMake(endX, endY) radius:radius clockwise:clockwise moreThanHalf:moreThanHalf];
         return self;
@@ -79,56 +71,49 @@
 }
 
 
-- (ZPPuzzlePathMaker *(^)(void))closePath
-{
+- (ZPPuzzlePathMaker *(^)(void))closePath {
     return ^(void){
         [self.path closePath];
         return self;
     };
 }
 
-- (ZPPuzzlePathMaker *(^)(CGFloat, CGFloat, CGFloat, CGFloat, CGFloat))addSin
-{
+- (ZPPuzzlePathMaker *(^)(CGFloat, CGFloat, CGFloat, CGFloat, CGFloat))addSin {
     return ^(CGFloat A, CGFloat Omega, CGFloat Phi, CGFloat K, CGFloat deltaX){
         [self addSinPathWithA:A Omega:Omega Phi:Phi K:K deltaX:deltaX];
         return self;
     };
 }
 
-- (ZPPuzzlePathMaker *(^)(ZPPathMirrorAxis, CGFloat, CGFloat, CGFloat, CGFloat))mirror
-{
+- (ZPPuzzlePathMaker *(^)(ZPPathMirrorAxis, CGFloat, CGFloat, CGFloat, CGFloat))mirror {
     return ^(ZPPathMirrorAxis axis, CGFloat x, CGFloat y, CGFloat width, CGFloat height){
         [self mirrorPathWithAxis:axis rect:CGRectMake(x, y, width, height)];
         return self;
     };
 }
 
-- (ZPPuzzlePathMaker *(^)(CGFloat))scale
-{
+- (ZPPuzzlePathMaker *(^)(CGFloat))scale {
     return ^(CGFloat scale){
         [self scalePathWithScale:scale];
         return self;
     };
 }
 
-- (ZPPuzzlePathMaker *(^)(CGFloat))rotate
-{
+- (ZPPuzzlePathMaker *(^)(CGFloat))rotate {
     return ^(CGFloat angle){
         [self rotatePathWithAngle:angle];
         return self;
     };
 }
 
-- (ZPPuzzlePathMaker *(^)(CGFloat, CGFloat))translate
-{
+- (ZPPuzzlePathMaker *(^)(CGFloat, CGFloat))translate {
     return ^(CGFloat offsetX, CGFloat offsetY){
         [self translatePathWithOffset:CGPointMake(offsetX, offsetY)];
         return self;
     };
 }
 
-- (ZPPuzzlePathMaker *(^)(void))moveToOrigin
-{
+- (ZPPuzzlePathMaker *(^)(void))moveToOrigin {
     return ^(void){
         [self translatePathWithOffset:CGPointMake(-CGRectGetMinX(self.path.bounds), -CGRectGetMinY(self.path.bounds))];
         return self;
@@ -136,8 +121,7 @@
 }
 
 #pragma mark -- Pravite Methods
-- (void)addSinPathWithA:(CGFloat)A Omega:(CGFloat)Omega Phi:(CGFloat)Phi K:(CGFloat)K deltaX:(CGFloat)deltaX
-{
+- (void)addSinPathWithA:(CGFloat)A Omega:(CGFloat)Omega Phi:(CGFloat)Phi K:(CGFloat)K deltaX:(CGFloat)deltaX {
     CGPoint originPoint = self.path.currentPoint;
     CGPoint currentPoint = self.path.currentPoint;
     CGFloat currentX = 0.f;
@@ -161,8 +145,7 @@
     }
 }
 
-- (void)mirrorPathWithAxis:(ZPPathMirrorAxis)axis rect:(CGRect)rect
-{
+- (void)mirrorPathWithAxis:(ZPPathMirrorAxis)axis rect:(CGRect)rect {
     switch (axis) {
         case ZKPathMirrorAxisX:
             [self.path applyTransform:CGAffineTransformMakeScale(-1.f, 1.f)];
@@ -175,14 +158,12 @@
     }
 }
 
-- (void)translatePathWithOffset:(CGPoint)offset
-{
+- (void)translatePathWithOffset:(CGPoint)offset {
     if (CGPointEqualToPoint(offset, CGPointZero)) return;
     [self.path applyTransform:CGAffineTransformMakeTranslation(offset.x, offset.y)];
 }
 
-- (void)scalePathWithScale:(CGFloat)scale
-{
+- (void)scalePathWithScale:(CGFloat)scale {
     if (scale == 1) return;
     
     CGFloat marginX = CGRectGetWidth(self.path.bounds) * (1.f - scale) * 0.5;
@@ -191,8 +172,7 @@
     [self translatePathWithOffset:CGPointMake(marginX * 3, marginY * 3)];
 }
 
-- (void)rotatePathWithAngle:(CGFloat)angle
-{
+- (void)rotatePathWithAngle:(CGFloat)angle {
     angle = fmod(angle, M_PI * 2);
     if (angle == 0) return;
     
@@ -203,8 +183,7 @@
     [self translatePathWithOffset:CGPointMake(offsetX, offsetY)];
 }
 
-- (void)addArcPathWithStartPoint:(CGPoint)startP endPoint:(CGPoint)endP radius:(CGFloat)radius clockwise:(BOOL)clockwise moreThanHalf:(BOOL)moreThanHalf
-{
+- (void)addArcPathWithStartPoint:(CGPoint)startP endPoint:(CGPoint)endP radius:(CGFloat)radius clockwise:(BOOL)clockwise moreThanHalf:(BOOL)moreThanHalf {
     CGPoint center = [self getCenterFromFirstPoint:startP secondPoint:endP radius:radius clockwise:clockwise moreThanhalf:moreThanHalf];
     CGFloat startA = [self getAngleFromFirstPoint:center secondP:startP];
     CGFloat endA = [self getAngleFromFirstPoint:center secondP:endP];
@@ -212,8 +191,7 @@
 }
 
 // 根据两点、半径、顺逆时针获取圆心
-- (CGPoint)getCenterFromFirstPoint:(CGPoint)firstP secondPoint:(CGPoint)secondP radius:(CGFloat)radius clockwise:(BOOL)clockwise moreThanhalf:(BOOL)moreThanHalf
-{
+- (CGPoint)getCenterFromFirstPoint:(CGPoint)firstP secondPoint:(CGPoint)secondP radius:(CGFloat)radius clockwise:(BOOL)clockwise moreThanhalf:(BOOL)moreThanHalf {
     CGFloat centerX = 0.5 * secondP.x - 0.5 * firstP.x;
     CGFloat centerY = 0.5 * firstP.y - 0.5 * secondP.y;
     centerX = round6f(centerX);
@@ -230,8 +208,7 @@
 }
 
 // 获取第二点相对第一点的角度
-- (CGFloat)getAngleFromFirstPoint:(CGPoint)firstP secondP:(CGPoint)secondP
-{
+- (CGFloat)getAngleFromFirstPoint:(CGPoint)firstP secondP:(CGPoint)secondP {
     CGFloat deltaX = secondP.x - firstP.x;
     CGFloat deltaY = secondP.y - firstP.y;
     deltaX = round6f(deltaX);

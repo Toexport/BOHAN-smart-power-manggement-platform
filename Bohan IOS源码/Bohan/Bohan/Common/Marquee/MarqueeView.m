@@ -20,7 +20,7 @@
 @implementation MarqueeView
 
 #pragma mark - init Methods
--(instancetype)initWithFrame:(CGRect)frame withTitle:(NSArray *)titles{
+-(instancetype)initWithFrame:(CGRect)frame withTitle:(NSArray *)titles {
 
     if (self = [super initWithFrame:frame]) {
         _titleArr  = titles;

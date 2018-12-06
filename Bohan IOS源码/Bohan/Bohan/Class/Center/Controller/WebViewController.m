@@ -18,7 +18,6 @@
 
 @implementation WebViewController
 
-
 - (instancetype)initWithTitle:(NSString *)name urlStr:(NSString *)url {
     self = [super init];
     if (self) {
@@ -54,13 +53,9 @@
     [super didReceiveMemoryWarning];
 }
 
-
-
 - (WKWebView *)wkwebView {
     if (!_wkwebView) {
-        
         _wkwebView = [WKWebView initWithFrame:CGRectMake(0, 0, ScreenWidth, ScreenHeight)];
-        
         _wkwebView.backgroundColor = [UIColor clearColor];
 //        _wkwebView.UIDelegate = self;
         _wkwebView.navigationDelegate = self;

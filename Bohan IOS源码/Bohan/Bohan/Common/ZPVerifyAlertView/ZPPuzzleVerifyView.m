@@ -25,18 +25,15 @@
 
 @implementation ZPPuzzleVerifyView
 #pragma mark --  Init
-- (instancetype)init
-{
+- (instancetype)init {
     return [self initWithFrame:CGRectZero style:ZPPuzzleVerifyStyleClassic];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     return [self initWithFrame:frame style:ZPPuzzleVerifyStyleClassic];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame style:(ZPPuzzleVerifyStyle)style
-{
+- (instancetype)initWithFrame:(CGRect)frame style:(ZPPuzzleVerifyStyle)style {
     if (self = [super initWithFrame:frame]) {
         
         [self initWithStyle:style];
@@ -44,13 +41,11 @@
     return self;
 }
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
-{
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
     return [super initWithCoder:aDecoder];
 }
 
-- (void)initWithStyle:(ZPPuzzleVerifyStyle)style
-{
+- (void)initWithStyle:(ZPPuzzleVerifyStyle)style {
     self.clipsToBounds = YES;
     self.enable = YES;
     self.style = style;
@@ -77,16 +72,14 @@
 }
 
 #pragma mark -- Public Methods
-- (void)refresh
-{
+- (void)refresh {
     _enable = YES;
     
     [self setTranslation:0.f];
     [self setContainerInsert:_containerInsert];
 }
 
-- (void)checkVerificationResults:(nullable void (^)(BOOL isVerified))result animated:(BOOL)animated
-{
+- (void)checkVerificationResults:(nullable void (^)(BOOL isVerified))result animated:(BOOL)animated {
     _isVerified = (fabs(_puzzlePosition.x - _blankPosition.x) <= _tolerance);
     
     if (_isVerified) {
@@ -101,8 +94,7 @@
 }
 
 #pragma mark -- Override
-- (void)layoutSubviews
-{
+- (void)layoutSubviews {
     [super layoutSubviews];
     
     [self setContainerInsert:_containerInsert];
@@ -116,16 +108,14 @@
     [self updatePuzzleMask];
 }
 
-- (void)willMoveToSuperview:(UIView *)newSuperview
-{
+- (void)willMoveToSuperview:(UIView *)newSuperview {
     [super willMoveToSuperview:newSuperview];
     
     if (newSuperview) [self updatePuzzleMask];
 }
 
 #pragma mark -- Setter && Getter
-- (void)setImage:(UIImage *)image
-{
+- (void)setImage:(UIImage *)image {
     _image = image;
     
     _backImageView.image = image;
@@ -135,13 +125,11 @@
     [self updatePuzzleMask];
 }
 
-- (void)setTolerance:(CGFloat)tolerance
-{
+- (void)setTolerance:(CGFloat)tolerance {
     _tolerance = fabs(tolerance);
 }
 
-- (void)setContainerInsert:(UIEdgeInsets)containerInsert
-{
+- (void)setContainerInsert:(UIEdgeInsets)containerInsert {
     _containerInsert = containerInsert;
     
     // 计算容器范围
@@ -164,8 +152,7 @@
     [self setPuzzlePath:_originalPath];
 }
 
-- (void)setContainerPosition:(CGPoint)containerPosition
-{
+- (void)setContainerPosition:(CGPoint)containerPosition {
     _containerPosition = containerPosition;
     
     CGRect frame = _puzzleImageContainerView.frame;
@@ -173,14 +160,12 @@
     _puzzleImageContainerView.frame = frame;
 }
 
-- (void)setPuzzleSize:(CGSize)puzzleSize
-{
+- (void)setPuzzleSize:(CGSize)puzzleSize {
     _puzzleSize = puzzleSize;
     [self setContainerInsert:_containerInsert];
 }
 
-- (void)setStyle:(ZPPuzzleVerifyStyle)style
-{
+- (void)setStyle:(ZPPuzzleVerifyStyle)style {
     _style = style;
     
     if (style == ZPPuzzleVerifyStyleCustom) return;
@@ -196,8 +181,7 @@
     [self updatePuzzleMask];
 }
 
-- (void)setPuzzlePath:(UIBezierPath *)puzzlePath
-{
+- (void)setPuzzlePath:(UIBezierPath *)puzzlePath {
     _originalPath = puzzlePath; // 保留原始值
     
     if (_style != ZPPuzzleVerifyStyleCustom) return;
@@ -210,8 +194,7 @@
     [self updatePuzzleMask];
 }
 
-- (void)setTranslation:(CGFloat)translation
-{
+- (void)setTranslation:(CGFloat)translation {
     if (!_enable) return;
     
     translation = MAX(0.f, translation);
@@ -225,8 +208,7 @@
 }
 
 #pragma mark -- Other
-- (void)updatePuzzleMask
-{
+- (void)updatePuzzleMask {
     if (self.superview == nil) return;
     
     UIBezierPath *maskPath = [UIBezierPath bezierPathWithRect:self.bounds];
@@ -252,8 +234,7 @@
     _puzzleImageView.layer.mask = puzzleMaskLayer;
 }
 
-- (void)showSuccessfulAnimation
-{
+- (void)showSuccessfulAnimation {
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"opacity"];
     animation.duration = 0.2;
     animation.autoreverses = YES;
@@ -262,8 +243,7 @@
     [self.layer addAnimation:animation forKey:@"successfulAnimation"];
 }
 
-- (void)showFailedAnimation
-{
+- (void)showFailedAnimation {
     CGFloat positionX = _puzzleImageContainerView.layer.position.x;
     CAKeyframeAnimation * animation = [CAKeyframeAnimation animationWithKeyPath:@"position.x"];
     animation.duration = 0.2;
@@ -272,8 +252,7 @@
     [_puzzleImageContainerView.layer addAnimation:animation forKey:@"failedAnimation"];
 }
 
-- (UIBezierPath *)pathForStyle:(ZPPuzzleVerifyStyle)style
-{
+- (UIBezierPath *)pathForStyle:(ZPPuzzleVerifyStyle)style {
     switch (style) {
         case ZPPuzzleVerifyStyleClassic:
             return [self classicPuzzlePath];
@@ -286,8 +265,7 @@
     }
 }
 
-- (UIBezierPath *)classicPuzzlePath
-{
+- (UIBezierPath *)classicPuzzlePath {
     static UIBezierPath *classicPath;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -310,8 +288,7 @@
     return classicPath;
 }
 
-- (UIBezierPath *)squarePuzzlePath
-{
+- (UIBezierPath *)squarePuzzlePath {
     static UIBezierPath *squarePath;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -320,8 +297,7 @@
     return squarePath;
 }
 
-- (UIBezierPath *)circlePuzzlePath
-{
+- (UIBezierPath *)circlePuzzlePath {
     static UIBezierPath *circlePath;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
@@ -329,4 +305,5 @@
     });
     return circlePath;
 }
+
 @end

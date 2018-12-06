@@ -146,7 +146,6 @@
 }
 
 - (IBAction)startAction {
-    
     if ([cStartDate.text isEqualToString:Localize(@"选择开始时间")] || [cEndDate.text isEqualToString:Localize(@"选择结束时间")]) {
         [HintView showHint:Localize(@"选择时间")];
         return;
@@ -161,8 +160,8 @@
             return;
         }
     }
-    WebSocket * socket = [WebSocket socketManager];
-    CommandModel * model = [[CommandModel alloc] init];
+    WebSocket *socket = [WebSocket socketManager];
+    CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0006";
     model.deviceNo = self.deviceNo;
     

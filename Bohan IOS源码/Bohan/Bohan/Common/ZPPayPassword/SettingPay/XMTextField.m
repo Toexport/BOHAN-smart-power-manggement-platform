@@ -10,10 +10,9 @@
 
 @implementation XMTextField
 
-/// 实现删除方法
+// 实现删除方法
 - (void)deleteBackward {
     [super deleteBackward];
-    
     BOOL conform = [self.xmDelegate conformsToProtocol:@protocol(XMTextFieldDelegate)];
     BOOL canResponse = [self.xmDelegate respondsToSelector:@selector(xmTextFeildDeleteBackward:)];
     if (self.xmDelegate && conform && canResponse) {

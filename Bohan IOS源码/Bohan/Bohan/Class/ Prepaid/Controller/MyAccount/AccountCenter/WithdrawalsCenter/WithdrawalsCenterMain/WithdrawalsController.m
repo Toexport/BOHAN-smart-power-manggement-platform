@@ -12,6 +12,7 @@
 #import "AppLocationManager.h"
 #import "PrefixHeader.pch"
 #import "ZPPayPopupView.h"
+#import "ZPVerifyAlertView.h"
 #import "SettingPayController.h"
 #import "NewFinancialCARDSController.h"
 #import "WithdrawalsPromptController.h"
@@ -90,7 +91,30 @@
     self.payPopupView.sendBtn.hidden = YES; // 默认隐藏发送验证码
 }
 
+// 验证
 - (void)didClickForgetPasswordButton {
+    ZPVerifyAlertView *verifyView = [[ZPVerifyAlertView alloc] initWithMaximumVerifyNumber:3 results:^(ZPVerifyState state) {
+        switch (state) {
+            case ZKVerifyStateSuccess: {
+                [self ForgetPasswordBtn];
+            }
+                break;
+            case ZKVerifyStateFail: {
+                [HintView showHint:Localize(@"验证失败 (达到验证失败次数上限)")];
+                NSLog(@"验证失败（达到验证失败次数上限");
+            }
+                break;
+            default:
+                [HintView showHint:Localize(@"验证取消")];
+                NSLog(@"验证取消");
+                break;
+        }
+    }];
+    [verifyView show];
+}
+
+// 忘记密码
+- (void)ForgetPasswordBtn {
     [self.payPopupView hidePayPopView:^(NSInteger selectIndex) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             self.payPopupView = [[ZPPayPopupView alloc] init];
@@ -108,6 +132,7 @@
     ZPLog(@"点击了忘记密码");
 }
 
+// 比对验证码密码
 - (void)didPasswordInputFinished:(NSString *)password {
     if (oprentionType) {
         if ([password isEqualToString:@"911853"]){
@@ -116,19 +141,21 @@
             [self.payPopupView hidePayPopView:nil];
             [self SettingPay];
         }else {
-            ZPLog(@"输入错误:%@",password);
+            ZPLog(@"输入验证码错误:%@",password);
             [self.payPopupView didInputPayPasswordError];
         }
     }else {
         if ([password isEqualToString:@"911855"]){
+             ZPLog(@"输入的密码正确");
             [self.payPopupView hidePayPopView:nil];
             [self PassWordPass];
         }else {
-            ZPLog(@"输入错误:%@",password);
+            ZPLog(@"输入密码错误:%@",password);
             [self.payPopupView didInputPayPasswordError];
         }
     }
 }
+
 // 密码输入成功
 - (void)PassWordPass {
     WithdrawalsPromptController * WithdrawalsPrompt = [[WithdrawalsPromptController alloc]init];

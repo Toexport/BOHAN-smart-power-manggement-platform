@@ -10,8 +10,7 @@
 #import "VerificationCodeViewController.h"
 #import "WebViewController.h"
 #import "DebuggingANDPublishing.pch"
-@interface LoginViewController ()<UITextFieldDelegate>
-{
+@interface LoginViewController ()<UITextFieldDelegate> {
     __weak IBOutlet EdgetTextField * accountTF;
     __weak IBOutlet EdgetTextField * passwordTF;
     __weak IBOutlet UIImageView * accountLeft;
@@ -19,8 +18,8 @@
     __weak IBOutlet UIButton * passwordRight;
     __weak IBOutlet UIButton * moreInfoBtn;
     
-    
 }
+
 @end
 
 @implementation LoginViewController
@@ -31,8 +30,7 @@
     self.navigationController.navigationBarHidden = YES;
     if (@available(iOS 11.0, *)){
         [(UIScrollView *)self.view setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
-    }else
-    {
+    }else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }
     accountTF.keyboardType = UIKeyboardTypeASCIICapable;
@@ -57,19 +55,16 @@
 
     accountTF.rightViewMode = UITextFieldViewModeWhileEditing;
     passwordTF.rightViewMode = UITextFieldViewModeAlways;
-    
     if (USERNAME) {
         accountTF.text = USERNAME;
     }
     if (PASSWORD) {
         passwordTF.text = PASSWORD;
     }
-    
     NSString *moreStr = Localize(@"了解更多伯瀚:");
     NSMutableAttributedString *attr = [[NSMutableAttributedString alloc] initWithString:moreInfoBtn.titleLabel.text];
     [attr addAttribute:NSUnderlineStyleAttributeName value:[NSNumber numberWithInteger:NSUnderlineStyleSingle] range:NSMakeRange(moreStr.length, attr.length-moreStr.length)];
     moreInfoBtn.titleLabel.attributedText = attr;
-//    [moreInfoBtn.titleLabel setFont:Font(15)];
     moreInfoBtn.titleLabel.numberOfLines = 2;
 }
 
@@ -79,9 +74,7 @@
 }
 
 #pragma mark - action
-
 - (IBAction)loginAction {
-    //    [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"ISLOGIN"];
     if ([accountTF.text rangeOfString:@"@"].location != NSNotFound) {
         ZPLog(@"包含");
         if ([Utils validateEmail:accountTF.text]) {
@@ -93,7 +86,6 @@
         }else {
             [HintView showHint:Localize(@"请输入正确邮箱地址")];
         }
-        
     }else {
         ZPLog(@"不包含");
         if ([Utils isMobileNumber:accountTF.text]) {
@@ -117,7 +109,6 @@
     VerificationCodeViewController *code = [[VerificationCodeViewController alloc] init];
     [self.navigationController pushViewController:code animated:YES];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
-    
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
 }
 
@@ -126,7 +117,6 @@
     code.isRegist = YES;
     [self.navigationController pushViewController:code animated:YES];
     [self.navigationController setNavigationBarHidden:NO animated:YES];
-
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
 }
 
@@ -143,7 +133,6 @@
     [self.view.window startLoading];
     NSDictionary *dic = @{@"userName":accountTF.text, @"password":passwordTF.text};
     [[NetworkRequest sharedInstance] requestWithUrl:LOGIN_URL parameter:dic completion:^(id response, NSError *error) {
-        
         [self.view.window stopLoading];
         //请求成功
         if (!error) {
@@ -154,18 +143,16 @@
             [UserInfoManager savePassword:passwordTF.text];
             [UserInfoManager updateLoginState:YES];
             [(AppDelegate *)[[UIApplication sharedApplication] delegate] createTabBar];
-
         }else {
             [HintView showHint:error.localizedDescription];
         }
-        
     }];
 }
-
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self.view endEditing:YES];
     [self loginRequest];
     return YES;
 }
+
 @end

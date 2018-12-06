@@ -13,8 +13,7 @@
 #import "CommonOperation.h"
 #import "TimeSettingListViewController.h"
 
-@interface ParamsSettingViewController ()
-{
+@interface ParamsSettingViewController () {
     NSDateFormatter * formatter;
     NSMutableArray * muniteArr;
     NSMutableArray * powerArr;
@@ -510,7 +509,6 @@
         
         contentStr = [contentStr stringByAppendingString:item];
     }
-    
     model.content = contentStr;
     [self.view startLoading];
     MyWeakSelf
@@ -629,7 +627,6 @@
     if (sender.selected) {
         if (sender == ChargingProtectionBut) {
             ChargingProtectionBut.selected = YES;
-            //            [self checkClose:ChargingProtectionBut.selected];
         }
         ZNDDBut.selected = NO;
         [DDCChargingProtectionBut setEnabled:YES]; //交互开启
@@ -699,7 +696,6 @@
     if (sender.selected) {
         if (sender == ZNDDBut) {
             ZNDDBut.selected = YES;
-            //            [self checkClose:ZNDDBut.selected];
         }
         ChargingProtectionBut.selected = NO;
         [DDCChargingProtectionBut setEnabled:NO]; //交互关闭

@@ -10,7 +10,6 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-
 typedef NS_ENUM(NSInteger, ZPVerifyState) {
     ZKVerifyStateNot,         // 未验证（弹出验证码弹窗后，用户未进行验证，直接点击关闭按钮））
     ZKVerifyStateFail,        // 验证失败（达到验证失败次数上限）

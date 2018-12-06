@@ -9,68 +9,65 @@
 #import "UIView+HHAddition.h"
 
 @implementation UIView (HHAddition)
--(void)setSize:(CGSize)size{
+-(void)setSize:(CGSize)size {
     CGRect frame = self.frame;
     frame.size = size;
     self.frame = frame;
     
 }
 
--(CGSize)size{
+-(CGSize)size {
     return self.frame.size;
-    
 }
-- (CGFloat)top
-{
+
+- (CGFloat)top {
     return self.frame.origin.y;
 }
 
-
-- (void)setTop:(CGFloat)y
-{
+- (void)setTop:(CGFloat)y {
     CGRect frame = self.frame;
     frame.origin.y = y;
     self.frame = frame;
 }
-- (CGFloat)left
-{
+
+- (CGFloat)left {
     return self.frame.origin.x;
 }
-- (void)setLeft:(CGFloat)x
-{
+
+- (void)setLeft:(CGFloat)x {
     CGRect frame = self.frame;
     frame.origin.x = x;
     self.frame = frame;
 }
 
--(void)setWidth:(CGFloat)width{
+-(void)setWidth:(CGFloat)width {
     CGRect frame = self.frame;
     frame.size.width  =width;
     self.frame = frame;
     
 }
--(void)setHeight:(CGFloat)height{
-    
+
+-(void)setHeight:(CGFloat)height {
     CGRect  frame = self.frame;
     frame.size.height = height;
     self.frame =frame;
     
-    
 }
--(void)setX:(CGFloat)x{
+
+-(void)setX:(CGFloat)x {
     CGRect frame = self.frame;
     frame.origin.x = x;
     self.frame = frame;
     
 }
 
--(void)setY:(CGFloat)y{
-    
+-(void)setY:(CGFloat)y {
     CGRect frame = self.frame;
     frame.origin.y = y;
     self.frame = frame;
 }
--(void)setCenterX:(CGFloat)centerX{
+
+-(void)setCenterX:(CGFloat)centerX {
     if (isnan(centerX)) {
         centerX = 0;
     }
@@ -79,47 +76,40 @@
     
     self.center  =center;
 }
--(void)setCenterY:(CGFloat)centerY{
-    
+
+-(void)setCenterY:(CGFloat)centerY {
     CGPoint center = self.center;
     center.y = centerY;
     
     self.center  =center;
-    
-    
 }
--(CGFloat)centerX{
-    
+
+-(CGFloat)centerX {
     return self.center.x;
     
 }
--(CGFloat)centerY{
-    
+
+-(CGFloat)centerY {
     return self.center.y;
-    
 }
 
--(CGFloat)width{
-    
+-(CGFloat)width {
     return self.frame.size.width;
-    
 }
 
--(CGFloat)height{
+-(CGFloat)height {
     
     return self.frame.size.height;
 }
--(CGFloat)x{
-    
+
+-(CGFloat)x {
     return self.frame.origin.x;
-    
 }
--(CGFloat)y{
+
+-(CGFloat)y {
     
     return self.frame.origin.y;
 }
-
-
 
 -(CGFloat)right{
     
@@ -133,13 +123,13 @@
     
 }
 
--(CGFloat)bottom{
+-(CGFloat)bottom {
     
     return CGRectGetMaxY(self.frame);
 }
--(void)setBottom:(CGFloat)bottom{
+
+-(void)setBottom:(CGFloat)bottom {
     self.y = bottom- self.height;
-    
     
 }
 
@@ -157,7 +147,7 @@
 
 
 /**判断一个空间是否是真正显示在主窗口 */
--(BOOL)isShowingOnKeyWindow{
+-(BOOL)isShowingOnKeyWindow {
     
     UIWindow *keyWindow =[UIApplication sharedApplication].keyWindow;
     
@@ -169,7 +159,6 @@
     
     return !self.isHidden && self.alpha > 0.01 && self.window == keyWindow && intersects;
     
-    
 }
 /**
  ** lineView:	   需要绘制成虚线的view
@@ -177,8 +166,7 @@
  ** lineSpacing:	虚线的间距
  ** lineColor:	  虚线的颜色
  **/
-+ (void)drawDashLine:(UIView *)lineView lineLength:(int)lineLength lineSpacing:(int)lineSpacing lineColor:(UIColor *)lineColor
-{
++ (void)drawDashLine:(UIView *)lineView lineLength:(int)lineLength lineSpacing:(int)lineSpacing lineColor:(UIColor *)lineColor {
     CAShapeLayer *shapeLayer = [CAShapeLayer layer];
     [shapeLayer setBounds:lineView.bounds];
     [shapeLayer setPosition:CGPointMake(CGRectGetWidth(lineView.frame) / 2, CGRectGetHeight(lineView.frame))];
@@ -200,13 +188,13 @@
     [lineView.layer addSublayer:shapeLayer];
 }
 
-+(instancetype)viewFromXib{
++(instancetype)viewFromXib {
     return [[[NSBundle mainBundle] loadNibNamed:NSStringFromClass(self) owner:nil options:nil] lastObject];
     
 }
 
 //输出所有子控件
-+ (UIView *)hh_foundViewInView:(UIView *)view clazzName:(NSString *)clazzName{
++ (UIView *)hh_foundViewInView:(UIView *)view clazzName:(NSString *)clazzName {
     
     // 递归出口
     if ([view isKindOfClass:NSClassFromString(clazzName)]) {

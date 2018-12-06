@@ -35,7 +35,6 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(languageChange) name:AppLanguageDidChangeNotification object:nil];
         
     }

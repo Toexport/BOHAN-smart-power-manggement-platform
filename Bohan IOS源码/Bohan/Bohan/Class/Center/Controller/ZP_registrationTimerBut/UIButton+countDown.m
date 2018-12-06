@@ -44,7 +44,6 @@
 }
 
 - (void)startWithTime:(NSInteger)timeLine title:(NSString *)title titleColor:(UIColor *)tColor countDownTitle:(NSString *)subTitle countDownTitleColor:(UIColor *)cColor mainColor:(UIColor *)mColor countColor:(UIColor *)color {
-    
     __weak typeof(self) weakSelf = self;
 //  倒计时时间
     __block NSInteger timeOut = timeLine;

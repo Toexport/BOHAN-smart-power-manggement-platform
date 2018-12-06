@@ -60,7 +60,6 @@
     NSArray *array = self.navigationItem.leftBarButtonItems;
     UIBarButtonItem *item = [self findBarButtonItemInArray:array tag:1];
     if (!item) {
-        
         item = [self creteBarButtonItem];
         item.tag = 1;
         NSMutableArray *newArray = [NSMutableArray arrayWithArray:array];;
@@ -88,11 +87,9 @@
 
 //右邊第一個UIBarButtonItem
 - (UIBarButtonItem *)rightFirstBarButton {
-    
     NSArray *array = self.navigationItem.rightBarButtonItems;
     UIBarButtonItem *item = [self findBarButtonItemInArray:array tag:1];
     if (!item) {
-        
         item = [self creteBarButtonItem];
         item.tag = 1;
         NSMutableArray *newArray = [NSMutableArray arrayWithArray:array];
@@ -110,7 +107,6 @@
     NSArray *array = self.navigationItem.rightBarButtonItems;
     UIBarButtonItem *item = [self findBarButtonItemInArray:array tag:2];
     if (!item) {
-        
         item = [self creteBarButtonItem];
         item.tag = 2;
         NSMutableArray *newArray = [NSMutableArray arrayWithArray:array];;

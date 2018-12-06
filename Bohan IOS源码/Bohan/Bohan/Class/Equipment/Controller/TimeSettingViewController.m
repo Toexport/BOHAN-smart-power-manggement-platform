@@ -524,9 +524,7 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
 
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath {
-    
     if ([kind isEqualToString:UICollectionElementKindSectionFooter]) {
-        
         UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionFooter withReuseIdentifier:footerReuseIdentifier forIndexPath:indexPath];
         
         if (!header) {

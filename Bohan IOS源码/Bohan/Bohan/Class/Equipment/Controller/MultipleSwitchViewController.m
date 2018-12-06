@@ -497,7 +497,6 @@
     Day1textField.text = [NSString stringWithString:self.string3];
     Day2textField.text = [NSString stringWithString:self.string33];
     Day3textField.text = [NSString stringWithString:self.string333];
-    
     if (hour >= 10) {
         self.string4 = [[NSNumber numberWithInteger:hour] stringValue];
         self.string44 = [[NSNumber numberWithInteger:hour] stringValue];

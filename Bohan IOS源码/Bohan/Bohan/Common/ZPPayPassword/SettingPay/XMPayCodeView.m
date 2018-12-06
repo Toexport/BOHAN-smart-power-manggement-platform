@@ -24,8 +24,7 @@
 
 @implementation XMPayCodeView
 
-- (instancetype)initWithFrame:(CGRect)frame
-{
+- (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
         self = [[[NSBundle mainBundle]loadNibNamed:NSStringFromClass([self class]) owner:nil options:nil]lastObject];
         self.frame = CGRectMake(0, frame.origin.y, [UIScreen mainScreen].bounds.size.width, frame.size.height);
@@ -42,14 +41,12 @@
     return self;
 }
 
-+ (instancetype)payCodeView
-{
++ (instancetype)payCodeView {
     XMPayCodeView *payCodeView = [[XMPayCodeView alloc]initWithFrame:CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, 65)];
     return payCodeView;
 }
 
-- (void)awakeFromNib
-{
+- (void)awakeFromNib {
     [super awakeFromNib];
     
     _num1F.xmDelegate = self;
@@ -67,8 +64,7 @@
 }
 
 /// 设置第一响应者
-- (void)setFirstResponderForIndex:(NSInteger)index
-{
+- (void)setFirstResponderForIndex:(NSInteger)index {
 //    NSLog(@"setFirstResponderForIndex==%ld",index);
     switch (index) {
         case 0:
@@ -88,14 +84,12 @@
 }
 
 /// 让第一格输入成为键盘响应者
-- (void)becomeKeyBoardFirstResponder
-{
+- (void)becomeKeyBoardFirstResponder {
     [self setFirstResponderForIndex:0];
 }
 
 /// 设置是否暗文显示
-- (void)setSecureTextEntry:(BOOL)secureTextEntry
-{
+- (void)setSecureTextEntry:(BOOL)secureTextEntry {
     [self.bgContentView.subviews enumerateObjectsUsingBlock:^(__kindof XMTextField * _Nonnull textF, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([textF isKindOfClass:[XMTextField class]]) {
             textF.secureTextEntry = secureTextEntry;
@@ -105,7 +99,7 @@
 
 #pragma mark - XMTextFieldDelegate
 /// 删除键监听
-- (void)xmTextFeildDeleteBackward:(UITextField *)textField{
+- (void)xmTextFeildDeleteBackward:(UITextField *)textField {
     
 //    NSLog(@"xmTextFeildDeleteBackward textField.text==%@",textField.text);
     
@@ -151,21 +145,26 @@
 
 #pragma mark - 其他处理
 // 有文字输入会触发
-- (void)textFieldDidChange:(UITextField *)textField{
+- (void)textFieldDidChange:(UITextField *)textField {
     // 收集支付密码
     [self collectPayCode];
     
     if ([textField isEqual:_num1F]) {
         [self setFirstResponderForIndex:1];
-    }else if ([textField isEqual:_num2F] ) {
+    }else
+        if ([textField isEqual:_num2F] ) {
         [self setFirstResponderForIndex:2];
-    }else if ([textField isEqual:_num3F] ) {
+    }else
+        if ([textField isEqual:_num3F] ) {
         [self setFirstResponderForIndex:3];
-    }else if ([textField isEqual:_num4F] ) {
+    }else
+        if ([textField isEqual:_num4F] ) {
         [self setFirstResponderForIndex:4];
-    }else if ([textField isEqual:_num5F] ) {
+    }else
+        if ([textField isEqual:_num5F] ) {
         [self setFirstResponderForIndex:5];
-    }else if ([textField isEqual:_num6F]){
+    }else
+        if ([textField isEqual:_num6F]){
         
         if (self.endEditingOnFinished) { // 是否退下键盘
             [_num6F resignFirstResponder];
@@ -179,7 +178,7 @@
     }
 }
 
-/// 收集支付密码
+// 收集支付密码
 - (void)collectPayCode {
     NSString *payCode = _num1F.text;
     payCode = [payCode stringByAppendingString:_num2F.text];
@@ -187,8 +186,6 @@
     payCode = [payCode stringByAppendingString:_num4F.text];
     payCode = [payCode stringByAppendingString:_num5F.text];
     payCode = [payCode stringByAppendingString:_num6F.text];
-    
-//    NSLog(@"收集支付密码payCode==%@",payCode);
     _payCode = payCode;
     
     if (self.endEditingOnFinished) return;

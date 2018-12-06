@@ -10,7 +10,6 @@
 #import "UIViewController+NavigationBar.h"
 #import "DebuggingANDPublishing.pch"
 @interface RealTimeParamViewController () {
-    
     __weak IBOutlet UILabel *deviceNo;
     __weak IBOutlet UILabel *time;
     __weak IBOutlet UILabel *week;
