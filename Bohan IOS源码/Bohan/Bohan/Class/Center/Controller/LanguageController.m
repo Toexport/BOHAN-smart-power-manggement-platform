@@ -21,7 +21,6 @@
 @end
 
 @implementation LanguageController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self addNavigationBar];
@@ -37,6 +36,7 @@
     }
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(adjustStatusBar:) name:UIApplicationDidChangeStatusBarFrameNotification object:nil];
 }
+
 // UI
 - (void)initUI {
     self.title = NSLocalizedString(@"Language", nil);
@@ -47,7 +47,7 @@
     self.TitleArray = [NSArray arrayWithObjects:@"English",@"简体中文", nil];
 }
 
-// Nav按钮
+// NavigationBar按钮
 - (void)addNavigationBar {
     __weak LanguageController  * Language = self;
     [self addNavigationBarItemWithType:LLNavigationBarItemTypeRightFirst handler:^(UIButton * button) {
@@ -67,13 +67,9 @@
         }
     }
     if (a == 0) {
-//                [SVProgressHUD showErrorWithStatus:@"请选择"];
         return;
     }
     switch (a) {
-            //        case 1:
-            //            [self changeLanguageTo:@"en"];
-            //            break;
         case 1:
             [self changeLanguageTo:@"en"];
             break;
@@ -92,7 +88,6 @@
     //  然后将设置好的语言存储好，下次进来直接加载
     [[NSUserDefaults standardUserDefaults] setObject:language forKey:@"Language"];
     [[NSUserDefaults standardUserDefaults] synchronize];
-
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -152,5 +147,6 @@
         appD.window.frame = CGRectMake(0, 0, ZP_Width, ZP_height);
     }
 }
+
 
 @end

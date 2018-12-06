@@ -75,7 +75,6 @@
         if (!error) {
             [HintView showHint:Localize(@"提交成功")];
             [self.navigationController popViewControllerAnimated:YES];
-
         }else {
             [HintView showHint:error.localizedDescription];
         }
