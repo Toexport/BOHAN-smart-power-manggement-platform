@@ -68,7 +68,11 @@
 "The unit price must not be more than 100" = "单价不能大于99";
 "Alipay" = "支付宝";
 "WeChat" = "微信";
-//"" = "";
+"Drag slider to Complete" = "拖动下方滑块完成拼图";
+"Security verification" = "安全验证";
+"Validation failed, you still have %zd chance! Please click the refresh button to refresh the verification code." = "验证失败，您还有%zd次机会！请点击刷新按钮，刷新验证码。";
+"You have failed to validate 3 times. You will not be able to continue!" = "您已3次验证失败，将不能继续操作！";
+
 //"设备管理" = "设备管理";
 //"所有用电" = "所有用电";
 //"个人中心" = "个人中心";

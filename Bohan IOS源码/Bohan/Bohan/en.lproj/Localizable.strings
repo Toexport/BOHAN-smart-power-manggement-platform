@@ -268,6 +268,12 @@
 "设备正处于关闭状态" = "the device is in a closed state";
 "设备正处于离线状态" = "the device is in an offline state";
 
+"拖动下方滑块完成拼图" = "Drag slider to Complete";
+"安全验证" = "Security verification";
+"验证失败，您还有%zd次机会！请点击刷新按钮，刷新验证码。" = "Validation failed, you still have %zd chance! Please click the refresh button to refresh the verification code.";
+"您已3次验证失败，将不能继续操作！" = "You have failed to validate 3 times. You will not be able to continue!";
+
+
 "名称 :" = "Name :";
 "ID :" = "ID :";
 "类型 :" = "Type:";

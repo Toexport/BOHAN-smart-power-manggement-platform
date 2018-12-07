@@ -85,7 +85,7 @@
     [_contentView addSubview:({
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.font = [UIFont systemFontOfSize:18.f];
-        _titleLabel.text = @"拖动下方滑块完成拼图";
+        _titleLabel.text = Localize(@"拖动下方滑块完成拼图");
         _titleLabel;
     })];
     
@@ -119,7 +119,7 @@
     [_contentView addSubview:({
         _tipLabel = [[UILabel alloc] init];
         _tipLabel.font = [UIFont boldSystemFontOfSize:18.f];
-        _tipLabel.text = @"安全验证";
+        _tipLabel.text = Localize(@"安全验证") ;
         _tipLabel;
     })];
     
@@ -273,11 +273,11 @@
                     _slider.enabled = NO;
                     _puzzleView.enable = NO;
                     _refreshButton.enabled = NO;
-                    _messageLabel.text = [NSString stringWithFormat:@"您已3次验证失败，将不能继续操作！"];
+                    _messageLabel.text = [NSString stringWithFormat:Localize(@"您已3次验证失败，将不能继续操作！") ];
                 } else {
                     _slider.enabled = NO;
                     _puzzleView.enable = NO;
-                    _messageLabel.text = [NSString stringWithFormat:@"验证失败，您还有%zd次机会！请点击刷新按钮，刷新验证码。", _remainingVerifyNumber];
+                    _messageLabel.text = [NSString stringWithFormat:Localize(@"验证失败，您还有%zd次机会！请点击刷新按钮，刷新验证码。"), _remainingVerifyNumber];
                 }
                 [self updateLayout:YES];
             }
