@@ -118,7 +118,7 @@
         [self.navigationController pushViewController:ScanView animated:YES];
         self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
     }else {
-        UIAlertView * alert = [[UIAlertView alloc] initWithTitle:Localize(@"提示") message:Localize(@"您的设备暂时不支持扫码") delegate:nil cancelButtonTitle:Localize(@"确定") otherButtonTitles:nil, nil];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:Localize(@"提示") message:Localize(@"您的设备暂时不支持扫码") delegate:nil cancelButtonTitle:Localize(@"确定") otherButtonTitles:nil, nil];
         [alert show];
         ZPLog(@"没有摄像");
     }

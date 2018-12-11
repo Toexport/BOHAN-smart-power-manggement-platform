@@ -13,15 +13,16 @@
 #import "ZJBLStoreShopTypeAlert.h"
 #import "ViewFrame.h"
 #import "LYPaymentAlertController.h"
+//LYPaymentAlertControllerDelegate,PKPaymentAuthorizationViewControllerDelegate
 
-@interface DetailsPayController ()<UITableViewDelegate,UITableViewDataSource,LYPaymentAlertControllerDelegate,PKPaymentAuthorizationViewControllerDelegate> {
+@interface DetailsPayController ()<UITableViewDelegate,UITableViewDataSource> {
      NSArray *titles;
     NSArray * images;
     NSInteger _selectIndex;
     NSString * priceString;
     NSMutableArray *summaryItems;
     NSMutableArray *shippingMethods;
-    NSString * Pay;
+    NSString *Pay;
 }
 
 @end
@@ -33,8 +34,8 @@
     self.title = self.DataId;
     [self.Tableview registerNib:[UINib nibWithNibName:@"DetailsPayCell" bundle:nil] forCellReuseIdentifier:@"DetailsPayCell"];
     self.Tableview.separatorStyle = UITableViewCellSeparatorStyleNone;  //隐藏tableview多余的线条
-    images = @[@"yuePay",@"AlpayPay",@"WechatPay",@"ApplePay"];
-    titles = @[@"余额",@"支付宝",@"微信",@"ApplePay"];
+    images = @[@"yuePay",@"AlpayPay",@"WechatPay"];
+    titles = @[@"余额",@"支付宝",@"微信"];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -64,7 +65,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    __block DetailsPayCell * cell = [tableView dequeueReusableCellWithIdentifier:@"DetailsPayCell" forIndexPath:indexPath];
+    __block DetailsPayCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DetailsPayCell" forIndexPath:indexPath];
     cell.DeviceId.text = self.DataId;
     MyWeakSelf
     [cell setBalanceViewBlock:^(id response) {
@@ -81,9 +82,9 @@
 //        self.PayWayStr = [NSString stringWithFormat:@"%@",PayWay];
         self.PriceStr = PriceLabel;
         ZPLog(@"%@",Pay);// 此处选中的是余额需要输入密码，不是余额直接跳过去
-        if ([Pay isEqualToString:@"3"]) {
-//            [self ApplePay];
-        }
+//        if ([Pay isEqualToString:@"3"]) {
+////            [self ApplePay];
+//        }
         LYPaymentAlertController *paymentAlert = [LYPaymentAlertController alertControllerWithTitle:@"请输入支付密码" numberOfCharacters:6 amount:PriceLabel remarks:DeviceId];
         paymentAlert.delegate = weakSelf;
         paymentAlert.contentOffset = CGSizeMake(0, 50);
@@ -99,7 +100,7 @@
     return 360;
 }
 
-//// PAy
+// PAy
 //- (void)ApplePay {
 //    ZPLog(@"%@%@",self.PayWayStr,self.PriceStr);
 //    if (![PKPaymentAuthorizationViewController class]) {

@@ -104,8 +104,8 @@
 //    }else {
 //        self.payBlockBlock(self.PriceLabel.text, self.PayWay, self.DeviceId.text);
 
-    NSString * string = [NSString stringWithFormat:@"%@",self.PriceLabel.text];
-    NSString * stringg = [NSString stringWithFormat:@"设备ID:%@",self.DeviceId.text];
+    NSString *string = [NSString stringWithFormat:@"%@",self.PriceLabel.text];
+    NSString *stringg = [NSString stringWithFormat:@"设备ID:%@",self.DeviceId.text];
     self.payBlockBlock(stringg, string);
 //        ZPLog(@"成功");
 //    }

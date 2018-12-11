@@ -18,7 +18,6 @@
 
 - (void)addNavigationBarItemWithType:(LLNavigationBarItemType)itemType
                              handler:(void (^)(UIButton *))handler {
-    
     UIButton *button = [self getButtonWithType:itemType];
     if (handler) {
         handler(button);
@@ -30,33 +29,30 @@
 
 - (UIButton *)getButtonWithType:(LLNavigationBarItemType)itemType {
     if (itemType == LLNavigationBarItemTypeLeftFirst) {
-        
         UIBarButtonItem *item = [self leftFirstBarButton];
         return item.customView;
-    }else if (itemType == LLNavigationBarItemTypeLeftSecond) {
-        
+    }else
+        if (itemType == LLNavigationBarItemTypeLeftSecond) {
         UIBarButtonItem *item = [self leftSecondBarButton];
         return item.customView;
-    }else if (itemType == LLNavigationBarItemTypeRightFirst) {
-        
+    }else
+        if (itemType == LLNavigationBarItemTypeRightFirst) {
         UIBarButtonItem *item = [self rightFirstBarButton];
         return item.customView;
-    }else if (itemType == LLNavigationBarItemTypeRightSecond) {
-        
+    }else
+        if (itemType == LLNavigationBarItemTypeRightSecond) {
         UIBarButtonItem *item = [self rightSecondBarButton];
         return item.customView;
-    }else if (itemType == LLNavigationBarItemTypeRightThird) {
-        
+    }else
+        if (itemType == LLNavigationBarItemTypeRightThird) {
         UIBarButtonItem *item = [self rightThirdBarButton];
         return item.customView;
     }
-    
     return nil;
 }
 
 //左邊第一個UIBarButtonItem
 - (UIBarButtonItem *)leftFirstBarButton {
-    
     NSArray *array = self.navigationItem.leftBarButtonItems;
     UIBarButtonItem *item = [self findBarButtonItemInArray:array tag:1];
     if (!item) {
@@ -71,11 +67,9 @@
 
 //左邊第二個UIBarButtonItem
 - (UIBarButtonItem *)leftSecondBarButton {
-
     NSArray *array = self.navigationItem.leftBarButtonItems;
     UIBarButtonItem *item = [self findBarButtonItemInArray:array tag:2];
     if (!item) {
-        
         item = [self creteBarButtonItem];
         item.tag = 2;
         NSMutableArray *newArray = [NSMutableArray arrayWithArray:array];;
@@ -93,7 +87,6 @@
         item = [self creteBarButtonItem];
         item.tag = 1;
         NSMutableArray *newArray = [NSMutableArray arrayWithArray:array];
-        
 //        UIBarButtonItem *item1 = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
         [newArray insertObject:item atIndex:0];
         self.navigationItem.rightBarButtonItems = newArray;
@@ -103,7 +96,6 @@
 
 //右邊第二個UIBarButtonItem
 - (UIBarButtonItem *)rightSecondBarButton {
-    
     NSArray *array = self.navigationItem.rightBarButtonItems;
     UIBarButtonItem *item = [self findBarButtonItemInArray:array tag:2];
     if (!item) {
@@ -111,10 +103,8 @@
         item.tag = 2;
         NSMutableArray *newArray = [NSMutableArray arrayWithArray:array];;
         if (newArray.count == 2) {
-            
             [newArray insertObject:item atIndex:1];
         }else {
-            
             [newArray addObject:item];
         }
         self.navigationItem.rightBarButtonItems = newArray;
@@ -123,11 +113,9 @@
 }
 
 - (UIBarButtonItem *)rightThirdBarButton {
-    
     NSArray *array = self.navigationItem.rightBarButtonItems;
     UIBarButtonItem *item = [self findBarButtonItemInArray:array tag:3];
     if (!item) {
-        
         item = [self creteBarButtonItem];
         item.tag = 3;
         NSMutableArray *newArray = [NSMutableArray arrayWithArray:array];;
@@ -139,7 +127,6 @@
 
 //創建UIBarButtonItem
 - (UIBarButtonItem *)creteBarButtonItem {
-    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     button.titleLabel.font = [UIFont systemFontOfSize:16];
@@ -149,7 +136,6 @@
 
 //根據tag 查找UIBarButtonItem
 - (UIBarButtonItem *)findBarButtonItemInArray:(NSArray *)array tag:(NSInteger)tag {
-    
     if (array.count == 0) {
         return nil;
     }
@@ -159,7 +145,6 @@
 }
 
 - (UIFont *) getTitltFont {
-    
     return [UIFont systemFontOfSize:16];
 }
 

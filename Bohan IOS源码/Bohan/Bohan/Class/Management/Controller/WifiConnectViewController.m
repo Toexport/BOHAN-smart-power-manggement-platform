@@ -47,6 +47,7 @@
         make.left.right.bottom.mas_equalTo(0);
         make.top.mas_equalTo(weakSelf.sliderView.mas_bottom);
     }];
+    
     [_mainScroll setContentSize:CGSizeMake(2*ScreenWidth, self.mainScroll.frame.size.height)];
     [self.autoConV mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.left.mas_equalTo(0);
@@ -98,7 +99,8 @@
                     [HintView showHint:Localize(@"WIFI连接成功！")];
                      [self.navigationController popToRootViewControllerAnimated:YES];
                 });
-            } else if(resultType != ESPConnectResultTypeCancel){
+            } else
+                if(resultType != ESPConnectResultTypeCancel){
                 //            if (resultType == ESPConnectResultTypePwdError)
                 //        {
                 //            [HintView showHint:@"WiFi和密码不匹配"];
@@ -116,7 +118,6 @@
 }
 //查询设备是否已经连接
 - (void)deviceStatus {
-    
     WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"1001";
@@ -155,14 +156,12 @@
 //            if (resultType == ESPConnectResultTypeSucceed && server && port && server.length>0 && port.length>0) {
 //                [weakSelf connectDeviceipAddress:server];
 //            }
-//
         };
     }
     return _espConnect;
 }
 
 - (SliderView *)sliderView {
-    
     if (!_sliderView) {
         _sliderView = [[SliderView alloc] initWithFrame:CGRectMake(0, kTopHeight, ScreenWidth, 45) datas:@[Localize(@"极速添加"), Localize(@"手动添加")]];
         [_sliderView setBackgroundColor:kBackBackroundColor];
@@ -174,7 +173,6 @@
     }
     return _sliderView;
 }
-
 
 - (UIScrollView *)mainScroll {
     if (!_mainScroll) {
@@ -201,17 +199,17 @@
     return _mantConV;
 }
 
-
 - (WifiView *)createWifiView {
-    WifiView * view = [[[NSBundle mainBundle] loadNibNamed:@"WifiView" owner:nil options:nil] lastObject];
+    WifiView *view = [[[NSBundle mainBundle] loadNibNamed:@"WifiView" owner:nil options:nil] lastObject];
     MyWeakSelf
     view.addBock = ^(NSString *ssid, NSString *pwd) {
         if (ssid.length == 0 || pwd.length == 0) {
             [HintView showHint:@"请输入wifi账号"];
             return ;
         }else {
-                //设备配网
-                [weakSelf.view startLoading];
+        // 设备配网
+        [weakSelf.view startLoading];
+            
         }
       dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
           [weakSelf.espConnect connectWithApSsid:ssid apPwd:pwd];
@@ -222,15 +220,13 @@
 
 //681609050268
 #pragma mark -UIScrollView delegate
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView{
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self scrollViewDidEndScrollingAnimation:scrollView];
 }
 
-- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView{
-
+- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
     [self.sliderView selectedWithIndex:scrollView.contentOffset.x /scrollView.bounds.size.width];
 }
-
 
 //+ (NSString *)ssid {
 //     NSString *ssid = @"Not Found";

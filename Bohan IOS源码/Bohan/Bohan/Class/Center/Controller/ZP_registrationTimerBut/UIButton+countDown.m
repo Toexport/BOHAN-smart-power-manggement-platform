@@ -9,8 +9,8 @@
 #import "UIButton+countDown.h"
 
 @implementation UIButton (countDown)
+
 - (void)startWithTime:(NSInteger)timeLine title:(NSString *)title countDownTitle:(NSString *)subTitle mainColor:(UIColor *)mColor countColor:(UIColor *)color {
-    
     __weak typeof(self) weakSelf = self;
 //  倒计时时间
     __block NSInteger timeOut = timeLine;
@@ -65,7 +65,7 @@
             [weakSelf setTitleColor:tColor forState:UIControlStateNormal];
                 
         });
-    } else {
+    }else {
         int allTime = (int)timeLine + 1;
         int seconds = timeOut % allTime;
         NSString *timeStr = [NSString stringWithFormat:@"%0.2d", seconds];

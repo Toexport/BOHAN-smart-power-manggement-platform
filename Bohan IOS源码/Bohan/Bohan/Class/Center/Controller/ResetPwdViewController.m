@@ -32,17 +32,14 @@
     NSDictionary *parameter = @{@"userName":self.username, @"password":pwdTF.text, @"checkCode":self.code, @"flag":(self.isRegist?@"0":@"1")};
     [[NetworkRequest sharedInstance] requestWithUrl:REGISTER_URL parameter:parameter completion:^(id response, NSError *error) {
         [self.view.window stopLoading];
-        
         //请求成功
         if (!error) {
             [HintView showHint:self.isRegist?Localize(@"注册成功"):Localize(@"重置密码成功")];
             [self.navigationController popToRootViewControllerAnimated:YES];
-            
         }else {
             [HintView showHint:error.localizedDescription];
         }
     }];
-
 }
 
 - (IBAction)okAction {

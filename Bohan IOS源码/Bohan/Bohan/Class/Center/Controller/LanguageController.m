@@ -31,7 +31,8 @@
     if ([la isEqualToString:@"zh-Hans"]) {
         index = [NSIndexPath indexPathForRow:0 inSection:0];
         [self.tableview cellForRowAtIndexPath:index].accessoryType = UITableViewCellAccessoryCheckmark;
-    }else{
+        
+    }else {
         [self.tableview cellForRowAtIndexPath:[NSIndexPath indexPathForRow:1 inSection:0]].accessoryType = UITableViewCellAccessoryCheckmark;
     }
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(adjustStatusBar:) name:UIApplicationDidChangeStatusBarFrameNotification object:nil];
@@ -143,7 +144,7 @@
     CGFloat height = statusRect.size.height;
     if (height > 20) {
         appD.window.frame = CGRectMake(0, 0, ZP_Width, ZP_height);
-    }else{
+    }else {
         appD.window.frame = CGRectMake(0, 0, ZP_Width, ZP_height);
     }
 }

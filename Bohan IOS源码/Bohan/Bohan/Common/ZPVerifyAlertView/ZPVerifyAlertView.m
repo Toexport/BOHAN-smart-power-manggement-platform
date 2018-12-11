@@ -61,8 +61,7 @@
     return self;
 }
 
-- (instancetype)initWithCoder:(NSCoder *)aDecoder
-{
+- (instancetype)initWithCoder:(NSCoder *)aDecoder {
     return [super initWithCoder:aDecoder];
 }
 
@@ -88,7 +87,6 @@
         _titleLabel.text = Localize(@"拖动下方滑块完成拼图");
         _titleLabel;
     })];
-    
     
     [_contentView addSubview:({
         _puzzleView = [[ZPPuzzleVerifyView alloc] init];
@@ -150,11 +148,11 @@
     CGFloat contentViewX = (CGRectGetWidth(self.bounds) - contentViewW) * 0.5;
     CGFloat contentViewY = (CGRectGetHeight(self.bounds) - contentViewH) * 0.5;
     
-    if (animated) {
+    if(animated) {
         [UIView animateWithDuration:0.2 animations:^{
             _contentView.frame = CGRectMake(contentViewX, contentViewY, contentViewW, contentViewH);
         }];
-    } else {
+    }else {
         _contentView.frame = CGRectMake(contentViewX, contentViewY, contentViewW, contentViewH);
     }
     
@@ -263,7 +261,7 @@
                     strongSelf.resultImageView.image = [UIImage imageNamed:@"ic_成功图标"];
                 });
                 [strongSelf dismissWithDelay:0.6];
-            } else {
+            }else {
                 _isVerified = NO;
                 _remainingVerifyNumber --;
                 _resultImageView.hidden = NO;
@@ -282,7 +280,7 @@
                 [self updateLayout:YES];
             }
         } animated:YES];
-    } else {
+    }else {
         return [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
