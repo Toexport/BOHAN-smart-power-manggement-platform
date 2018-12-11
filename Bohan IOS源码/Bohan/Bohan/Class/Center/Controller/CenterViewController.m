@@ -15,8 +15,8 @@
 #import "LanguageController.h"
 #import "DebuggingANDPublishing.pch"
 @interface CenterViewController ()<UITableViewDataSource,UITableViewDelegate> {
-    NSString * userImg;
-    UIImageView * headerImg;
+    NSString *userImg;
+    UIImageView *headerImg;
 }
 @property (nonatomic, strong)SelectPhotoManager * photoManager;
 @property (nonatomic,strong) UITableView *tableView;
@@ -48,7 +48,6 @@
 }
 
 - (void)languageChange {
-//    [super languageChange];
     _data = nil;
     self.title = Localize(@"个人中心");
     [self.tableView reloadData];
@@ -56,17 +55,17 @@
 }
 
 - (void)logoutAction:(UIButton *)sender {
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:NSLocalizedString(@"提示", nil) message: NSLocalizedString(@"确定要注销登录吗?", nil)preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:Localize(@"提示") message: Localize(@"确定要注销登录吗?")preferredStyle:UIAlertControllerStyleActionSheet];
     //  设置popover指向的item
     alert.popoverPresentationController.barButtonItem = self.navigationItem.leftBarButtonItem;
     //  確定按钮
-    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"确定", nil)  style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+    [alert addAction:[UIAlertAction actionWithTitle:Localize(@"确定")  style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
         [[NSNotificationCenter defaultCenter] postNotificationName:LOGOUTNOTIFICATION object:nil];
         //        清除所有的数据
         
         ZPLog(@"点击了确定按钮");
     }]];
-    [alert addAction:[UIAlertAction actionWithTitle:NSLocalizedString(@"取消",nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
+    [alert addAction:[UIAlertAction actionWithTitle:Localize(@"取消") style:UIAlertActionStyleCancel handler:^(UIAlertAction *action) {
         ZPLog(@"点击了取消按钮");
     }]];
     [self presentViewController:alert animated:YES completion:nil];
@@ -77,7 +76,6 @@
         _data = [NSMutableArray array];
     }
     [_data setArray:@[@{@"item":USERNAME,@"image":@"small_user"}, @{@"item":Localize(@"操作指南"),@"image":@"small_info"},@{@"item":Localize(@"意见与反馈"),@"image":@"ic_launcher363"}, @{@"item":Localize(@"版本信息"),@"image":@"ic_launcher"}, @{@"item":Localize(@"客服电话"),@"image":@"phone"},@{@"item":Localize(@"语言设置"),@"image":@"small_version"}]];
-
     return _data;
 }
 
@@ -148,7 +146,6 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
     if (indexPath.row == 0) {
         return 60;
     }
@@ -198,7 +195,7 @@
         if (!_photoManager) {
             _photoManager = [[SelectPhotoManager alloc]init];
         }
-        [_photoManager startSelectPhotoWithImageName:NSLocalizedString(@"Choose photos", nil)];
+        [_photoManager startSelectPhotoWithImageName:Localize(@"Choose photos")];
         __weak typeof(self)mySelf = self;
         //  选取照片成功
         _photoManager.successHandle=^(SelectPhotoManager *manager,UIImage * image) {
