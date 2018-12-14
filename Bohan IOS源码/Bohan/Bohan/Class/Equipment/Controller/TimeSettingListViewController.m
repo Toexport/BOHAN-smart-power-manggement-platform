@@ -80,13 +80,11 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
     }];
 }
 
-
 - (void)openAction {
     NSString *contentStr = @"";
     BOOL isClose = YES;
     for (TimeSettingModel *model in self.datas) {
         NSString *week = [Utils getBinaryByHex:model.week];
-        
         if (model.open) {
             isClose = NO;
             if (![[formatter dateFromString:model.endTime] isLaterThanDate:[formatter dateFromString:model.startTime]] &&
@@ -109,7 +107,6 @@ static NSString *timeCellIdentifier = @"TimeListTableViewCell";
         item = [item stringByAppendingString:model.week];
         contentStr = [contentStr stringByAppendingString:item];
     }
-
     if (isClose) {
         [self cancel];
     }else {

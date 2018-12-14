@@ -22,6 +22,7 @@
     __weak IBOutlet UILabel *money;
     __weak IBOutlet UILabel *temperature;  
 }
+
 @end
 
 @implementation RealTimeParamViewController
@@ -34,7 +35,7 @@
 }
 
 - (void)deviceParams {
-    WebSocket * socket = [WebSocket socketManager];
+    WebSocket *socket = [WebSocket socketManager];
     CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0001";
     model.deviceNo = self.dNo;
@@ -43,17 +44,16 @@
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
         if (!error) {
-            NSString * string = response;
-            NSString * strin  = self.CoedID;
+            NSString *string = response;
+            NSString *strin  = self.CoedID;
             ZPLog(@"%@",strin);
             if ([string substringToIndex:4]) {
-                NSString * stringg = string;
+                NSString *stringg = string;
                 if ([stringg hasPrefix:@"E766"]|| [stringg hasPrefix:@"E764"]) {
                     ZPLog(@"包含");
                     if ([strin containsString:@"WFMT"]) {
                         [weakSelf updateViewWithDataaNo:response];
                         ZPLog(@"不带点");
-                        
                     }else {
                         [weakSelf updateViewWithDataa:response];
                         ZPLog(@"带点");
@@ -95,7 +95,6 @@
         }else {
             [HintView showHint:error.localizedDescription];
         }
-        
         ZPLog(@"--------%@",response);
     }];
 }

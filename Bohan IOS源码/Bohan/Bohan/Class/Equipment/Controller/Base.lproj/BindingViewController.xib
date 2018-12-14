@@ -198,7 +198,7 @@
                                                 <action selector="bindAction" destination="-1" eventType="touchUpInside" id="D9G-qa-rs6"/>
                                             </connections>
                                         </button>
-                                        <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxT-GS-gyl">
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oxT-GS-gyl">
                                             <rect key="frame" x="235" y="185" width="99" height="25"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="25" id="yRn-N9-Tg4"/>

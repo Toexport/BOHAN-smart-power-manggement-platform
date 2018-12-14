@@ -97,7 +97,7 @@ static NSString * UMessageAppKey  = @"5baee85eb465f5c3b200013e";
         tabBar.viewControllers = @[equipmentNav, managementNav,electricityNav,PrepaidNav,centerNav];
         //        tabBar.viewControllers = @[equipmentNav, managementNav,electricityNav,centerNav];
         
-        NSArray * titles = @[Localize(@"设备列表"), Localize(@"设备管理"),Localize(@"所有用电"),Localize(@"付费充电"),Localize(@"个人中心")];
+        NSArray * titles = @[Localize(@"设备列4表"), Localize(@"设备管理"),Localize(@"所有用电"),Localize(@"付费充电"),Localize(@"个人中心")];
         //        NSArray * titles = @[Localize(@"设备列表"), Localize(@"设备管理"),Localize(@"所有用电"),Localize(@"个人中心")];
         
         NSArray * selectedImages = @[@"mainpage_main", @"mainpage_bang", @"mainpage_data",@"Pay_pay_me",@"mainpage_me"];
@@ -105,7 +105,7 @@ static NSString * UMessageAppKey  = @"5baee85eb465f5c3b200013e";
         
         NSArray * images = @[@"mainpage_main_off", @"mainpage_bang_off", @"mainpage_data_off",@"Pay_pay_off",@"mainpage_me_off"];
         //        NSArray * images = @[@"mainpage_main_off", @"mainpage_bang_off", @"mainpage_data_off",@"mainpage_me_off"];
-        
+//
         for (int i = 0; i<[tabBar.viewControllers count]; i++) {
             ((UINavigationController *)tabBar.viewControllers[i]).tabBarItem = [[UITabBarItem alloc] initWithTitle:titles[i] image:[[UIImage imageNamed:images[i]] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] selectedImage:[UIImage imageNamed:selectedImages[i]]];
         }
@@ -173,8 +173,8 @@ static NSString * UMessageAppKey  = @"5baee85eb465f5c3b200013e";
 - (void)logoutNotification:(NSNotification*)notify {
     [[WebSocket socketManager].serverSockt webSocketClose];
     [UserInfoManager updateLoginState:NO];
-    LoginViewController * login = [[LoginViewController alloc] init];
-    UINavigationController * loginNav = [[UINavigationController alloc] initWithRootViewController:login];
+    LoginViewController *login = [[LoginViewController alloc] init];
+    UINavigationController *loginNav = [[UINavigationController alloc] initWithRootViewController:login];
     
     if (notify.object) {
         [HintView showHint:notify.userInfo[@"message"]];

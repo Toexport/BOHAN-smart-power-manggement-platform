@@ -35,24 +35,19 @@
     self.title = Localize(@"设备列表");
     [self rightBarImage:@"qrcode_scan" action:@selector(bindDevice)];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(languageChange) name:AppLanguageDidChangeNotification object:nil];
-
     dataArray = [NSMutableArray array];
-
     if (@available(iOS 11.0, *)){
     }else {
         self.automaticallyAdjustsScrollViewInsets = NO;
     }    for (int i = 0; i<2; i++) {
-        
         TablePageModel * model= [[TablePageModel alloc] init];
         model.datas = [NSMutableArray array];
         model.isload = NO;
         [dataArray addObject:model];
     }
-    
     [self.view addSubview:self.sliderView];
     [self.view addSubview:self.pageCollection];
     [self.pageCollection setDatas:dataArray];
-
 }
 
 - (void)bindDevice {
@@ -93,7 +88,6 @@
         [model.currentTable changeState];
         [model.currentTable noDataReload];
     }];
-    
 }
 
 - (void)languageChange {

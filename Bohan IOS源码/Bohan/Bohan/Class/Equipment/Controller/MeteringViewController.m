@@ -104,21 +104,16 @@
 }
 
 - (void)loadData {
-    
-    WebSocket * socket = [WebSocket socketManager];
-    CommandModel * model = [[CommandModel alloc] init];
+    WebSocket *socket = [WebSocket socketManager];
+    CommandModel *model = [[CommandModel alloc] init];
     model.command = @"0007";
     model.deviceNo = self.deviceNo;
     [self.view startLoading];
-    
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
-        
         if (!error) {
-            
             if (((NSString *)response).length>56) {
-                
                 [formatter setDateFormat:@"yyMMddHHmmss"];
 
                 NSDate *startD = [formatter dateFromString:[response substringWithRange:NSMakeRange(24, 12)]];
@@ -136,11 +131,9 @@
                 [totalTime setText:[Utils gapDateFrom:startD toDate:endD]];
                 [totalElec setText:[NSString stringWithFormat:@"%d.%02dkWh",[[elecStr substringToIndex:6] intValue],[[elecStr substringFromIndex:2] intValue]]];
             }
-            
         }else {
             [HintView showHint:error.localizedDescription];
         }
-        
         ZPLog(@"--------%@",response);
     }];
 }
@@ -171,13 +164,11 @@
     MyWeakSelf
     [socket sendSingleDataWithModel:model resultBlock:^(id response, NSError *error) {
         [weakSelf.view stopLoading];
-        
         if (!error) {
             [HintView showHint:Localize(@"定时计量已提交")];
         }else {
             [HintView showHint:error.localizedDescription];
         }
-        
     }];
 }
 @end
