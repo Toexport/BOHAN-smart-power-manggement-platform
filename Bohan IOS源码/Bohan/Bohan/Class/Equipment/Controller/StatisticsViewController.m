@@ -143,7 +143,6 @@
         _infoView = [[UIView alloc] initWithFrame:CGRectMake(0, kTopHeight, ScreenWidth, 30)];
         NSArray *contens = @[[NSString stringWithFormat:@"%@:%@",Localize(@"名称"),self.model.name], [NSString stringWithFormat:@"%@:%@",Localize(@"位置"),self.model.position], [NSString stringWithFormat:@"ID:%@",self.model.id]];
         for (int i = 0; i<3; i++) {
-            
             UILabel *lab = [[UILabel alloc] initWithFrame:CGRectMake(i*ScreenWidth/3, 0, ScreenWidth/3, _infoView.frame.size.height)];
             [lab setText:contens[i]];
             [lab setTextColor:kTextColor];

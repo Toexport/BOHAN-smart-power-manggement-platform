@@ -80,7 +80,6 @@
     [scan getResultStr:^(NSString *result) {
         if (result && result.length>0) {
             deviceTF.text = result;
-            
         }
     }];
     
@@ -189,7 +188,6 @@
                 if (!error) {
                     [self POSTs];
                 }else {
-                    
                     [HintView showHint:error.localizedDescription];
                 }
             }];
@@ -209,7 +207,6 @@
                     }
                 }];
             }
-        
     }else {
         NSDictionary * dic = @{@"DeviceCode":deviceTF.text, @"DeviceKey":deviceTF.text, @"PosName":posInput.contentTF.text, @"LoadName":typeInput.contentTF.text, @"LoadBrand":brandInput.contentTF.text};
         [[NetworkRequest sharedInstance] requestWithUrl:BINDING_DEVICE_URL parameter:dic completion:^(id response, NSError *error) {

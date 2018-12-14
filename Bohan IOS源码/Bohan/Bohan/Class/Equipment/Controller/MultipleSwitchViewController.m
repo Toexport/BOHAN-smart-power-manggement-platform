@@ -525,7 +525,6 @@
 
 // 按钮1
 - (IBAction)switchButton:(UIButton *)sender {
-    //    ZPLog(@"开1");
     NSString *string;
     if (!formatter) {
         formatter = [[NSDateFormatter alloc] init];
@@ -566,7 +565,6 @@
 
 // 按钮2
 - (IBAction)switch2Button:(UIButton *)sender {
-    //    ZPLog(@"开1");
     NSString *string;
     if (!formatters) {
         formatters = [[NSDateFormatter alloc] init];
@@ -611,7 +609,6 @@
 
 // 按钮3
 - (IBAction)switch3Button:(UIButton *)sender {
-    //    ZPLog(@"开1");
     NSString *string;
     if (!formatterd) {
         formatterd = [[NSDateFormatter alloc] init];

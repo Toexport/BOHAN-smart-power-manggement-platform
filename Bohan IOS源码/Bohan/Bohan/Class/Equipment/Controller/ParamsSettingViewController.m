@@ -26,7 +26,9 @@
 }
 
 @property (nonatomic, strong)NSMutableArray *datas;
+
 @end
+
 @implementation ParamsSettingViewController
 
 - (void)viewDidLoad {

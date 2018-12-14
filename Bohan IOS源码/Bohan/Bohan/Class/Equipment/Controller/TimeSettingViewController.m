@@ -554,20 +554,18 @@ static NSString * const apparatusModel = @"180023597F000006007F000000007F0000000
         }
         
         return header;
-        
     }
     return nil;
     
 }
 
-- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
-{
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     selectedIndexPath = indexPath;
     [collectionView reloadData];
     [self changeModel:modelContents[indexPath.row] isParentCancel:NO];
 }
-- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
-{
-    
-}
+
+//- (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//}
 @end
