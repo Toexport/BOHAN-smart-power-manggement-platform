@@ -501,7 +501,7 @@
         self.string4 = [[NSNumber numberWithInteger:hour] stringValue];
         self.string44 = [[NSNumber numberWithInteger:hour] stringValue];
         self.string444 = [[NSNumber numberWithInteger:hour] stringValue];
-    }else{
+    }else {
         self.string4 = [NSString stringWithFormat:@"0%ld",(long)hour];
         self.string44 = [NSString stringWithFormat:@"0%ld",(long)hour];
         self.string444 = [NSString stringWithFormat:@"0%ld",(long)hour];

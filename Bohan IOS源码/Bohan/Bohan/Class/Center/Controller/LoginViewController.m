@@ -10,6 +10,7 @@
 #import "VerificationCodeViewController.h"
 #import "WebViewController.h"
 #import "DebuggingANDPublishing.pch"
+#import "KeyBoard.h"
 @interface LoginViewController ()<UITextFieldDelegate> {
     __weak IBOutlet EdgetTextField * accountTF;
     __weak IBOutlet EdgetTextField * passwordTF;
@@ -102,6 +103,7 @@
 
 - (IBAction)showAction:(UIButton *)sender {
     passwordTF.secureTextEntry = sender.selected;
+    
     sender.selected = !sender.selected;
 }
 

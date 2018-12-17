@@ -50,6 +50,7 @@
 		C438AFB121B52C5800CC1648 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C438AFA521B52C5800CC1648 /* 2.jpg */; };
 		C438AFB221B52C5800CC1648 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C438AFA621B52C5800CC1648 /* 3.jpg */; };
 		C438AFB321B52C5800CC1648 /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C438AFA721B52C5800CC1648 /* 1.jpg */; };
+		C4392BF921C728500057BEB1 /* KeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = C4392BF821C728500057BEB1 /* KeyBoard.m */; };
 		C44DE77421489825007325FD /* UIBarButtonItem+Button.m in Sources */ = {isa = PBXBuildFile; fileRef = C44DE77321489825007325FD /* UIBarButtonItem+Button.m */; };
 		C44DE77A21489DFC007325FD /* UIView+Frame.m in Sources */ = {isa = PBXBuildFile; fileRef = C44DE77921489DFB007325FD /* UIView+Frame.m */; };
 		C44DE77F2148BE7D007325FD /* ChargingStatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = C44DE77D2148BE7D007325FD /* ChargingStatusController.m */; };
@@ -398,6 +399,8 @@
 		C438AFA521B52C5800CC1648 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		C438AFA621B52C5800CC1648 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 		C438AFA721B52C5800CC1648 /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
+		C4392BF721C728500057BEB1 /* KeyBoard.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = KeyBoard.h; sourceTree = "<group>"; };
+		C4392BF821C728500057BEB1 /* KeyBoard.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = KeyBoard.m; sourceTree = "<group>"; };
 		C44DE77221489825007325FD /* UIBarButtonItem+Button.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+Button.h"; sourceTree = "<group>"; };
 		C44DE77321489825007325FD /* UIBarButtonItem+Button.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+Button.m"; sourceTree = "<group>"; };
 		C44DE77821489DFB007325FD /* UIView+Frame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Frame.h"; sourceTree = "<group>"; };
@@ -1121,6 +1124,15 @@
 				C438AF9E21B52C5800CC1648 /* 12.jpg */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		C4392BF621C728150057BEB1 /* KeyBoard */ = {
+			isa = PBXGroup;
+			children = (
+				C4392BF721C728500057BEB1 /* KeyBoard.h */,
+				C4392BF821C728500057BEB1 /* KeyBoard.m */,
+			);
+			path = KeyBoard;
 			sourceTree = "<group>";
 		};
 		C44DE77B2148BE5E007325FD /* ChargingStatus */ = {
@@ -1889,6 +1901,7 @@
 		CC2455BF1FF745DB00616916 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				C4392BF621C728150057BEB1 /* KeyBoard */,
 				C438AF8921B527FA00CC1648 /* ZPVerifyAlertView */,
 				C41E109C21ACD4B60096017D /* Marquee */,
 				C492AFB52179D9330025D09F /* Prompt  */,
@@ -2922,6 +2935,7 @@
 				CC24569C1FF8F30200616916 /* ScanViewController.m in Sources */,
 				CC42E89C2020EF0B00A64160 /* NSArray+Safe.m in Sources */,
 				C438AF9421B52A5C00CC1648 /* UIBezierPath+ZPPuzzlePathMaker.m in Sources */,
+				C4392BF921C728500057BEB1 /* KeyBoard.m in Sources */,
 				C4AD806C2143C29400CE8C66 /* ZJBLStoreShopTypeAlert.m in Sources */,
 				C490417521464362005652C9 /* ScrollViewFrame.m in Sources */,
 				CC1C6CCB2027292A00980693 /* PowerLineChartView.m in Sources */,
