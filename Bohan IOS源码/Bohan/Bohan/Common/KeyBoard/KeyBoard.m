@@ -36,7 +36,7 @@ enum {
 @end
 
 #define ZPKBH                  216
-#define ZPICONH                35
+#define ZPICONH                40
 #define ZPCHAR_CORNER          8
 #define ZPKBFontSize           18
 #define ZPKBFont(s)             [UIFont fontWithName:@"HelveticaNeue-Light" size:s]
@@ -454,9 +454,9 @@ static inline int random_int(int low, int high) {
 #define Characters @[@"q",@"w",@"e",@"r",@"t",@"y",@"u",@"i",@"o",@"p",@"a",@"s",@"d",@"f",@"g",@"h",@"j",@"k",@"l",@"z",@"x",@"c",@"v",@"b",@"n",@"m"]
 #define Symbols  @[@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9",@"0",@"-",@"/",@":",@";",@"(",@")",@"$",@"&",@"@",@"\"",@".",@",",@"?",@"!",@"'"]
 #define moreSymbols  @[@"[",@"]",@"{",@"}",@"#",@"%",@"^",@"*",@"+",@"=",@"_",@"\\",@"|",@"~",@"<",@">",@"€",@"£",@"¥",@"•",@".",@",",@"?",@"!",@"'"]
+
 //布局键盘
 - (void)setupASCIICapableLayout:(BOOL)init {
-    
     if (!init) {
         //不是初始化创建 重新布局字母或字符界面
         NSArray *subviews = self.subviews;
@@ -714,6 +714,7 @@ static inline int random_int(int low, int high) {
         }];
     }
 }
+
 //字母 符号切换
 - (void)charSymbolSwitch:(UIButton *)btn {
     self.showSymbol = !self.showSymbol;
@@ -902,7 +903,6 @@ static inline int random_int(int low, int high) {
 }
 
 #pragma mark -- 键盘Pan --
-
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     //NSLog(@"_%s_",__FUNCTION__);
     CGPoint touchPoint = [[touches anyObject] locationInView:self];
@@ -1091,13 +1091,10 @@ static inline int random_int(int low, int high) {
 #define _WIDTH   (_UPPER_WIDTH + _PADDING_X*2)
 #define _HEIGHT   (_PAN_UPPER_HEIGHT + _PAN_MIDDLE_HEIGHT + _PAN_LOWER_HEIGHT + _PADDING_Y*2)
 
-
 #define _OFFSET_X    -20 * [[UIScreen mainScreen] scale])
 #define _OFFSET_Y    59 * [[UIScreen mainScreen] scale])
 
-
-- (CGImageRef)createKeytopImageWithKind:(int)kind
-{
+- (CGImageRef)createKeytopImageWithKind:(int)kind {
     CGMutablePathRef path = CGPathCreateMutable();
     
     CGPoint p = CGPointMake(_PADDING_X, _PADDING_Y);
@@ -1213,16 +1210,12 @@ static inline int random_int(int low, int high) {
     CGContextAddPath(context, path);
     CGContextClip(context);
     
-    //----
-    
-    // draw gradient
     CGColorSpaceRef colorSpaceRef = CGColorSpaceCreateDeviceGray();
     CGFloat components[] = {
         0.25f, 0.258f,
         0.266, 1.0f,
         0.48f, 0.48f,
         0.48f, 1.0f};
-    
     
     size_t count = sizeof(components)/ (sizeof(CGFloat)* 2);
     
@@ -1259,8 +1252,8 @@ static inline int random_int(int low, int high) {
     if ([self.chars isEqualToString:@"q"]||[self.chars isEqualToString:@"a"]) {
         keyPop = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:[self createKeytopImageWithKind:ZPKBImageRight] scale:[[UIScreen mainScreen] scale] orientation:UIImageOrientationDown]];
         keyPop.frame = CGRectMake(-16, -71, keyPop.frame.size.width, keyPop.frame.size.height);
-    }
-    else if ([self.chars isEqualToString:@"p"]||[self.chars isEqualToString:@"l"]) {
+    } else
+        if ([self.chars isEqualToString:@"p"]||[self.chars isEqualToString:@"l"]) {
         keyPop = [[UIImageView alloc] initWithImage:[UIImage imageWithCGImage:[self createKeytopImageWithKind:ZPKBImageLeft] scale:[[UIScreen mainScreen] scale] orientation:UIImageOrientationDown]];
         keyPop.frame = CGRectMake(-38, -71, keyPop.frame.size.width, keyPop.frame.size.height);
     }

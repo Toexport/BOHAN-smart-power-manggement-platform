@@ -10,7 +10,7 @@
 #import "VerificationCodeViewController.h"
 #import "WebViewController.h"
 #import "DebuggingANDPublishing.pch"
-#import "KeyBoard.h"
+
 @interface LoginViewController ()<UITextFieldDelegate> {
     __weak IBOutlet EdgetTextField * accountTF;
     __weak IBOutlet EdgetTextField * passwordTF;
@@ -20,6 +20,7 @@
     __weak IBOutlet UIButton * moreInfoBtn;
     
 }
+@property (nonatomic, strong) KeyBoard *KeyBoard;
 
 @end
 
@@ -37,6 +38,9 @@
     accountTF.keyboardType = UIKeyboardTypeASCIICapable;
     accountTF.clearButtonMode = UITextFieldViewModeWhileEditing;  // 一键删除文字
     passwordTF.keyboardType = UIKeyboardTypeASCIICapable;
+    self.KeyBoard = [KeyBoard keyboardWithType:ZPKBTypeASCIICapable];
+    passwordTF.inputView = self.KeyBoard;
+    self.KeyBoard.inputSource = passwordTF;
     passwordTF.clearButtonMode = UITextFieldViewModeWhileEditing;  // 一键删除文字
     
     accountTF.leftViewSpacing = 8;

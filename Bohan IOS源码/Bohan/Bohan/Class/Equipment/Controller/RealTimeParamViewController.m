@@ -10,9 +10,14 @@
 #import "UIViewController+NavigationBar.h"
 #import "DebuggingANDPublishing.pch"
 @interface RealTimeParamViewController () {
+    
     __weak IBOutlet UILabel *deviceNo;
     __weak IBOutlet UILabel *time;
+    __weak IBOutlet UILabel *timeS;
+    
     __weak IBOutlet UILabel *week;
+    __weak IBOutlet UILabel *weekS;
+    
     __weak IBOutlet UILabel *voltage;
     __weak IBOutlet UILabel *electric;
     __weak IBOutlet UILabel *power;
@@ -21,6 +26,11 @@
     __weak IBOutlet UILabel *carbon;
     __weak IBOutlet UILabel *money;
     __weak IBOutlet UILabel *temperature;  
+    __weak IBOutlet UILabel *temperatureS;
+    
+    __weak IBOutlet UILabel *humidity;
+    __weak IBOutlet UIView *TemperatureView;
+    __weak IBOutlet UIView *TimeView;
 }
 
 @end
@@ -101,61 +111,108 @@
 
 - (void)updateViewWithData:(NSString *)data {
     [deviceNo setText:self.dNo];
-    [time setText:[data time]];
-    [week setText:[data week]];
     [voltage setText:[data voltage]];
     [electric setText:[data electric]];
     [factor setText:[data realTimePowerFactor]];
     [elcAmount setText:[data elcAmount]];
     [carbon setText:[data carbon]];
     [money setText:[data money]];
-    [temperature setText:[data temperature]];
     [power setText:[data realTimePower]];
+    if ([self.dNo hasPrefix:@"70"]) {
+        ZPLog(@"%@",self.dNo);
+        TemperatureView.hidden = NO;
+        TimeView.hidden = NO;
+        [timeS setText:[data time]];
+        [weekS setText:[data week]];
+        [temperatureS setText:[data temperature]];
+    }else {
+        TemperatureView.hidden = YES;
+        TimeView.hidden = YES;
+        [time setText:[data time]];
+        [week setText:[data week]];
+        [temperature setText:[data temperature]];
+    }
 }
 
 // 带点
 - (void)updateViewWithDataa:(NSString *)data {
     [power setText:[data realTimePowerr]];
     [deviceNo setText:self.dNo];
-    [time setText:[data time]];
-    [week setText:[data week]];
     [voltage setText:[data voltage]];
     [electric setText:[data electric]];
     [factor setText:[data realTimePowerFactor]];
     [elcAmount setText:[data elcAmount]];
     [carbon setText:[data carbon]];
     [money setText:[data money]];
-    [temperature setText:[data temperature]];
+    if ([self.dNo hasPrefix:@"70"]) {
+        ZPLog(@"%@",self.dNo);
+        TemperatureView.hidden = NO;
+        TimeView.hidden = NO;
+        [timeS setText:[data time]];
+        [weekS setText:[data week]];
+        [temperatureS setText:[data temperature]];
+    }else {
+        TemperatureView.hidden = YES;
+        TimeView.hidden = YES;
+        [time setText:[data time]];
+        [week setText:[data week]];
+        [temperature setText:[data temperature]];
+    }
+    
 }
 
 // 不带点
 - (void)updateViewWithDataaNo:(NSString *)data {
     [power setText:[data realTimePowerrNo]];
     [deviceNo setText:self.dNo];
-    [time setText:[data time]];
-    [week setText:[data week]];
     [voltage setText:[data voltage]];
     [electric setText:[data electric]];
     [factor setText:[data realTimePowerFactor]];
     [elcAmount setText:[data elcAmount]];
     [carbon setText:[data carbon]];
     [money setText:[data money]];
-    [temperature setText:[data temperature]];
+    if ([self.dNo hasPrefix:@"70"]) {
+        ZPLog(@"%@",self.dNo);
+        TemperatureView.hidden = NO;
+        TimeView.hidden = NO;
+        [timeS setText:[data time]];
+        [weekS setText:[data week]];
+        [temperatureS setText:[data temperature]];
+    }else {
+        TemperatureView.hidden = YES;
+        TimeView.hidden = YES;
+        [time setText:[data time]];
+        [week setText:[data week]];
+        [temperature setText:[data temperature]];
+    }
+    
 }
 
 // 带点
 - (void)updateViewWithDataas:(NSString *)data {
     [power setText:[data realTimePowwerr]];
     [deviceNo setText:self.dNo];
-    [time setText:[data time]];
-    [week setText:[data week]];
     [voltage setText:[data voltage]];
     [electric setText:[data electric]];
     [factor setText:[data realTimePowerFactor]];
     [elcAmount setText:[data elcAmount]];
     [carbon setText:[data carbon]];
     [money setText:[data money]];
-    [temperature setText:[data temperature]];
+    if ([self.dNo hasPrefix:@"70"]) {
+        ZPLog(@"%@",self.dNo);
+        TemperatureView.hidden = NO;
+        TimeView.hidden = NO;
+        [timeS setText:[data time]];
+        [weekS setText:[data week]];
+        [temperatureS setText:[data temperature]];
+    }else {
+        TemperatureView.hidden = YES;
+        TimeView.hidden = YES;
+        [time setText:[data time]];
+        [week setText:[data week]];
+        [temperature setText:[data temperature]];
+    }
+    
 }
 
 // 不带点
@@ -167,15 +224,27 @@
         [power setText:[data realTimePowwerrNo]];
     }
     [deviceNo setText:self.dNo];
-    [time setText:[data time]];
-    [week setText:[data week]];
     [voltage setText:[data voltage]];
     [electric setText:[data electric]];
     [factor setText:[data realTimePowerFactor]];
     [elcAmount setText:[data elcAmount]];
     [carbon setText:[data carbon]];
     [money setText:[data money]];
-    [temperature setText:[data temperature]];
+    if ([self.dNo hasPrefix:@"70"]) {
+        ZPLog(@"%@",self.dNo);
+        TemperatureView.hidden = NO;
+        TimeView.hidden = NO;
+        [timeS setText:[data time]];
+        [weekS setText:[data week]];
+        [temperatureS setText:[data temperature]];
+    }else {
+        TemperatureView.hidden = YES;
+        TimeView.hidden = YES;
+        [time setText:[data time]];
+        [week setText:[data week]];
+        [temperature setText:[data temperature]];
+    }
+    
 }
 
 // 不带点
@@ -187,30 +256,52 @@
         [power setText:[data realTimePowwerrNo]];
     }
     [deviceNo setText:self.dNo];
-    [time setText:[data time]];
-    [week setText:[data week]];
     [voltage setText:[data voltage]];
     [electric setText:[data electric]];
     [factor setText:[data realTimePowerFactor]];
     [elcAmount setText:[data elcAmount]];
     [carbon setText:[data carbon]];
     [money setText:[data money]];
-    [temperature setText:[data temperature]];
+    if ([self.dNo hasPrefix:@"70"]) {
+        ZPLog(@"%@",self.dNo);
+        TemperatureView.hidden = NO;
+        TimeView.hidden = NO;
+        [timeS setText:[data time]];
+        [weekS setText:[data week]];
+        [temperatureS setText:[data temperature]];
+    }else {
+        TemperatureView.hidden = YES;
+        TimeView.hidden = YES;
+        [time setText:[data time]];
+        [week setText:[data week]];
+        [temperature setText:[data temperature]];
+    }
+    
 }
 
 - (void)updateViewWithDataaa:(NSString *)data {
     [power setText:[data realTimePoerrr]];
     [deviceNo setText:self.dNo];
-    [time setText:[data time]];
-    [week setText:[data week]];
     [voltage setText:[data voltage]];
     [electric setText:[data electric]];
     [factor setText:[data realTimePowerFactor]];
     [elcAmount setText:[data elcAmount]];
     [carbon setText:[data carbon]];
     [money setText:[data money]];
-    [temperature setText:[data temperature]];
+    if ([self.dNo hasPrefix:@"70"]) {
+        ZPLog(@"%@",self.dNo);
+        TemperatureView.hidden = NO;
+        TimeView.hidden = NO;
+        [timeS setText:[data time]];
+        [weekS setText:[data week]];
+        [temperatureS setText:[data temperature]];
+    }else {
+        TemperatureView.hidden = YES;
+        TimeView.hidden = YES;
+        [time setText:[data time]];
+        [week setText:[data week]];
+        [temperature setText:[data temperature]];
+    }
 }
-
 
 @end
