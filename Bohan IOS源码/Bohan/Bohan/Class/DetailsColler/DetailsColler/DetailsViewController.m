@@ -82,7 +82,7 @@
             EquipmentCell * cell = [tableView dequeueReusableCellWithIdentifier:@"EquipmentCell"];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
             return cell;
-        }else {
+    }else {
             CostIntroducedCell * cell = [tableView dequeueReusableCellWithIdentifier:@"CostIntroducedCell"];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;  //取消Cell点击变灰效果、
             return cell;
@@ -126,7 +126,7 @@
 
 // 我的
 - (IBAction)MyBUt:(UIButton *)sender {
-    MyAccountViewController * MyAccount = [[MyAccountViewController alloc]init];
+    MyAccountViewController *MyAccount = [[MyAccountViewController alloc]init];
     MyAccount.hidesBottomBarWhenPushed = YES;
     [self.navigationController pushViewController: MyAccount animated:YES];
     self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
@@ -134,7 +134,7 @@
 
 // 网页分享
 -(void)sendUrl:(NSString *)url To:(enum WXScene)scene{
-    SendMessageToWXReq * req = [[SendMessageToWXReq alloc]init];
+    SendMessageToWXReq *req = [[SendMessageToWXReq alloc]init];
     req.bText = NO;
     req.scene = WXSceneTimeline;// 分享到朋友圈
     WXMediaMessage * medMessage = [WXMediaMessage message];
@@ -156,7 +156,5 @@
 ////         根据获取的platformType确定所选平台进行下一步操作
 ////    }];
 //}
-
-
 
 @end
