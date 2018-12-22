@@ -158,7 +158,6 @@
         [week setText:[data week]];
         [temperature setText:[data temperature]];
     }
-    
 }
 
 // 不带点
@@ -185,7 +184,6 @@
         [week setText:[data week]];
         [temperature setText:[data temperature]];
     }
-    
 }
 
 // 带点
@@ -212,7 +210,6 @@
         [week setText:[data week]];
         [temperature setText:[data temperature]];
     }
-    
 }
 
 // 不带点
@@ -244,7 +241,6 @@
         [week setText:[data week]];
         [temperature setText:[data temperature]];
     }
-    
 }
 
 // 不带点
@@ -275,8 +271,7 @@
         [time setText:[data time]];
         [week setText:[data week]];
         [temperature setText:[data temperature]];
-    }
-    
+    } 
 }
 
 - (void)updateViewWithDataaa:(NSString *)data {

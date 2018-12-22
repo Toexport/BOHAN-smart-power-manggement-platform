@@ -77,7 +77,14 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UPV-Y3-1nY">
                             <rect key="frame" x="0.0" y="65" width="375" height="50"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="设备时钟" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Es-zK-s3T">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="7To-a5-iZ4">
+                                    <rect key="frame" x="20" y="7.5" width="38" height="35"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="38" id="HGh-jU-phP"/>
+                                        <constraint firstAttribute="height" constant="35" id="aqK-Xn-drv"/>
+                                    </constraints>
+                                </imageView>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" text="设备时钟" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Es-zK-s3T">
                                     <rect key="frame" x="20" y="16" width="155" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <nil key="textColor"/>
@@ -180,6 +187,8 @@
                                 <constraint firstAttribute="height" constant="50" id="ace-BT-tmM"/>
                                 <constraint firstItem="5Es-zK-s3T" firstAttribute="centerY" secondItem="UPV-Y3-1nY" secondAttribute="centerY" id="ak1-fa-Obe"/>
                                 <constraint firstAttribute="trailing" secondItem="myP-X6-Pmx" secondAttribute="trailing" id="bo2-Uf-eZI"/>
+                                <constraint firstItem="7To-a5-iZ4" firstAttribute="leading" secondItem="UPV-Y3-1nY" secondAttribute="leading" constant="20" id="crB-Fh-SAN"/>
+                                <constraint firstItem="7To-a5-iZ4" firstAttribute="centerY" secondItem="UPV-Y3-1nY" secondAttribute="centerY" id="qVr-VE-auY"/>
                                 <constraint firstItem="XQB-jD-sMq" firstAttribute="leading" secondItem="cAY-zu-nM0" secondAttribute="trailing" constant="10" id="teD-4v-Zat"/>
                                 <constraint firstAttribute="trailing" secondItem="XQB-jD-sMq" secondAttribute="trailing" constant="20" id="vjD-UA-kOU"/>
                                 <constraint firstItem="myP-X6-Pmx" firstAttribute="leading" secondItem="UPV-Y3-1nY" secondAttribute="leading" id="wS0-of-Gm4"/>
@@ -419,7 +428,14 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vXx-Lc-jSn">
                             <rect key="frame" x="0.0" y="465" width="375" height="65"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="设备温度" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGd-G2-0hP">
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="temperature" translatesAutoresizingMaskIntoConstraints="NO" id="zF9-6F-mLh">
+                                    <rect key="frame" x="20" y="12.5" width="35" height="40"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="35" id="5ob-jE-ErL"/>
+                                        <constraint firstAttribute="height" constant="40" id="qhk-Dt-J99"/>
+                                    </constraints>
+                                </imageView>
+                                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" text="设备温度" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FGd-G2-0hP">
                                     <rect key="frame" x="20" y="23.5" width="155" height="18"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                     <nil key="highlightedColor"/>
@@ -437,12 +453,13 @@
                                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hm0-Cp-9hC">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="65"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="设备时钟" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a8w-2t-HLn">
-                                            <rect key="frame" x="20" y="23.5" width="155" height="18"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="clock" translatesAutoresizingMaskIntoConstraints="NO" id="2cp-HG-m67">
+                                            <rect key="frame" x="20" y="15" width="38" height="35"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="35" id="tHz-uP-hQ1"/>
+                                                <constraint firstAttribute="width" constant="38" id="tqN-WI-L9M"/>
+                                            </constraints>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tva-hI-Ati">
                                             <rect key="frame" x="185" y="23.5" width="90" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -459,9 +476,10 @@
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <constraints>
                                         <constraint firstItem="ZWH-9I-tAd" firstAttribute="centerY" secondItem="Tva-hI-Ati" secondAttribute="centerY" id="AE7-jE-rRR"/>
+                                        <constraint firstItem="2cp-HG-m67" firstAttribute="centerY" secondItem="hm0-Cp-9hC" secondAttribute="centerY" id="H2B-PW-tO7"/>
+                                        <constraint firstItem="2cp-HG-m67" firstAttribute="leading" secondItem="hm0-Cp-9hC" secondAttribute="leading" constant="20" id="OPN-Vr-jwh"/>
                                         <constraint firstAttribute="trailing" secondItem="ZWH-9I-tAd" secondAttribute="trailing" constant="20" id="TBL-M0-yCt"/>
-                                        <constraint firstItem="Tva-hI-Ati" firstAttribute="centerY" secondItem="a8w-2t-HLn" secondAttribute="centerY" id="UrE-z9-JA3"/>
-                                        <constraint firstItem="a8w-2t-HLn" firstAttribute="centerY" secondItem="hm0-Cp-9hC" secondAttribute="centerY" id="xwL-Hy-KVh"/>
+                                        <constraint firstItem="Tva-hI-Ati" firstAttribute="centerY" secondItem="2cp-HG-m67" secondAttribute="centerY" id="tqy-Nj-0qn"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -471,20 +489,22 @@
                                 <constraint firstAttribute="trailing" secondItem="hm0-Cp-9hC" secondAttribute="trailing" id="5Vu-w2-Bnw"/>
                                 <constraint firstItem="hm0-Cp-9hC" firstAttribute="top" secondItem="vXx-Lc-jSn" secondAttribute="top" id="7hj-Vr-7rL"/>
                                 <constraint firstAttribute="height" constant="65" id="CEB-kJ-6PE"/>
+                                <constraint firstItem="zF9-6F-mLh" firstAttribute="top" secondItem="vXx-Lc-jSn" secondAttribute="top" constant="12.5" id="CFz-iL-Ka0"/>
                                 <constraint firstAttribute="trailing" secondItem="NBr-Ju-NFA" secondAttribute="trailing" constant="20" id="JQV-FE-Qu7"/>
                                 <constraint firstAttribute="bottom" secondItem="hm0-Cp-9hC" secondAttribute="bottom" id="QI9-OH-B6c"/>
                                 <constraint firstItem="NBr-Ju-NFA" firstAttribute="top" secondItem="ZM9-ZL-Abc" secondAttribute="top" id="T6O-Et-goQ"/>
                                 <constraint firstItem="ZM9-ZL-Abc" firstAttribute="top" secondItem="FGd-G2-0hP" secondAttribute="top" id="TFp-IN-4I1"/>
+                                <constraint firstItem="zF9-6F-mLh" firstAttribute="centerY" secondItem="vXx-Lc-jSn" secondAttribute="centerY" id="Uav-NL-Jnn"/>
                                 <constraint firstItem="hm0-Cp-9hC" firstAttribute="leading" secondItem="vXx-Lc-jSn" secondAttribute="leading" id="exH-xd-dnZ"/>
                                 <constraint firstItem="NBr-Ju-NFA" firstAttribute="leading" secondItem="ZM9-ZL-Abc" secondAttribute="trailing" constant="10" id="fEQ-OC-zM5"/>
                                 <constraint firstItem="ZM9-ZL-Abc" firstAttribute="leading" secondItem="FGd-G2-0hP" secondAttribute="trailing" constant="10" id="owB-Af-xDW"/>
                                 <constraint firstItem="FGd-G2-0hP" firstAttribute="leading" secondItem="vXx-Lc-jSn" secondAttribute="leading" constant="20" id="veN-9e-4Lm"/>
+                                <constraint firstItem="zF9-6F-mLh" firstAttribute="leading" secondItem="vXx-Lc-jSn" secondAttribute="leading" constant="20" id="wQT-ih-hyK"/>
                             </constraints>
                         </view>
                     </subviews>
                     <constraints>
                         <constraint firstItem="doM-sQ-mpW" firstAttribute="width" secondItem="GuA-Dh-H1P" secondAttribute="width" id="048-5g-jxs"/>
-                        <constraint firstItem="a8w-2t-HLn" firstAttribute="leading" secondItem="JyF-Ci-uby" secondAttribute="leading" id="1HN-9i-xae"/>
                         <constraint firstItem="BNW-la-i9N" firstAttribute="width" secondItem="xwE-xq-0p1" secondAttribute="width" id="3eB-8v-lDK"/>
                         <constraint firstItem="FGd-G2-0hP" firstAttribute="width" secondItem="JyF-Ci-uby" secondAttribute="width" id="3i3-f3-VbO"/>
                         <constraint firstItem="5Es-zK-s3T" firstAttribute="width" secondItem="T60-nF-YxV" secondAttribute="width" id="4lK-D8-tMc"/>
@@ -517,7 +537,6 @@
                         <constraint firstItem="vXx-Lc-jSn" firstAttribute="top" secondItem="Mkx-fA-5K4" secondAttribute="bottom" id="XkV-hh-COS"/>
                         <constraint firstAttribute="trailing" secondItem="Rqw-qK-K5g" secondAttribute="trailing" id="Ydb-sG-4iQ"/>
                         <constraint firstItem="QqO-dM-JIe" firstAttribute="leading" secondItem="fVX-S8-5c7" secondAttribute="leading" id="ZJv-yg-IUo"/>
-                        <constraint firstItem="a8w-2t-HLn" firstAttribute="trailing" secondItem="JyF-Ci-uby" secondAttribute="trailing" id="cM9-FO-ssW"/>
                         <constraint firstItem="Mkx-fA-5K4" firstAttribute="top" secondItem="Rqw-qK-K5g" secondAttribute="bottom" id="chc-CF-X5b"/>
                         <constraint firstItem="Tva-hI-Ati" firstAttribute="leading" secondItem="cAY-zu-nM0" secondAttribute="leading" id="cqg-VB-F8t"/>
                         <constraint firstItem="6KI-YX-ohL" firstAttribute="top" secondItem="Uy2-HA-iod" secondAttribute="bottom" id="cxT-70-vrf"/>
@@ -552,6 +571,7 @@
         </view>
     </objects>
     <resources>
+        <image name="clock" width="269" height="255"/>
         <image name="humidityt" width="328" height="427"/>
         <image name="temperature" width="311" height="383"/>
     </resources>
