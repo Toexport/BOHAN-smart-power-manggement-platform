@@ -74,6 +74,7 @@
         model.isload = YES;
         model.currentTable.noDatadelegate = self;
         ZPLog(@"%@",response);
+        
         if (!error) {
             model.datas = [[response[@"content"] componentsSeparatedByString:@","] mutableCopy];
             if (model.datas.count == 0) {

@@ -95,17 +95,14 @@
     
 }
 
-- (void)selectAction
-{
+- (void)selectAction {
     MyWeakSelf
     WSDateStyle type;
     if (currentIndex == 0) {
         type = DateStyleShowYearMonthDay;
-    }else if (currentIndex == 1)
-    {
+    }else if (currentIndex == 1) {
         type = DateStyleShowYearMonth;
-    }else
-    {
+    }else {
         type = DateStyleShowYear;
     }
     
@@ -123,8 +120,7 @@
 
 }
 
-- (void)languageChange{
-
+- (void)languageChange {
     self.title = Localize(@"所有用电");
     [_sliderView setDatas:@[Localize(@"日数据"), Localize(@"月数据"), Localize(@"年数据")]];
 
@@ -135,6 +131,7 @@
     [_barView setTitle:self.titles[currentIndex]];
 
 }
+
 //- (void)viewDidAppear:(BOOL)animated
 //{
 //    [super viewDidAppear:animated];
@@ -163,7 +160,6 @@
         _sliderView = [[SliderView alloc] initWithFrame:CGRectMake(0, kTopHeight, ScreenWidth, 45) datas:@[Localize(@"日数据"), Localize(@"月数据"), Localize(@"年数据")]];
         [_sliderView setBackgroundColor:kBackBackroundColor];
         MyWeakSelf
-        
         
         __weak typeof(NSDateFormatter *) weakFormatter = formatter;
         __weak typeof(NSArray *) weakFormatters = formatters;

@@ -12,4 +12,5 @@
 
 @property (nonatomic, assign) BOOL isRegist;
 @property (nonatomic, strong) NSString * strId;
+
 @end

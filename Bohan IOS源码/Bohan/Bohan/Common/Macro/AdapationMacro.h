@@ -52,5 +52,4 @@
 #define MyStrongSelf __weak typeof(self) strongSelf = weakSelf;
 
 
-
 #endif /* AdapationMacro_h */

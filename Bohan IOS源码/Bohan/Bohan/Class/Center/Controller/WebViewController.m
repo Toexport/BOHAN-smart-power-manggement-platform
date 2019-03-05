@@ -64,7 +64,6 @@
     return _wkwebView;
 }
 
-
 - (void)webView:(WKWebView *)webView didFinishNavigation:(null_unspecified WKNavigation *)navigation {
 //    [ webView evaluateJavaScript:@"var script = document.createElement('script');"
 //          "script.type = 'text/javascript';"

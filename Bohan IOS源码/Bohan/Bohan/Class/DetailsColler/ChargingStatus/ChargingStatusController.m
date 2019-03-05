@@ -31,7 +31,7 @@
      0 .. 1.0. -1.0 if UIDeviceBatteryStateUnknown
      */
     float level = device.batteryLevel;
-    NSLog(@"level = %lf",level);
+    ZPLog(@"level = %lf",level);
     //2、monitor
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(didChangeBatteryLevel:) name:@"UIDeviceBatteryLevelDidChangeNotification" object:device];
 }
@@ -41,7 +41,7 @@
     UIDevice *myDevice = [UIDevice currentDevice];
     [myDevice setBatteryMonitoringEnabled:YES];
     float batteryLevel = [myDevice batteryLevel];
-    NSLog(@"电池剩余比例：%@", [NSString stringWithFormat:@"%f",batteryLevel*100]);
+    ZPLog(@"电池剩余比例：%@", [NSString stringWithFormat:@"%f",batteryLevel*100]);
 }
 
 - (IBAction)BackBut:(UIButton *)sender {

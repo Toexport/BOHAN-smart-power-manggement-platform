@@ -101,12 +101,12 @@
                 break;
             case ZKVerifyStateFail: {
                 [HintView showHint:Localize(@"验证失败 (达到验证失败次数上限)")];
-                NSLog(@"验证失败（达到验证失败次数上限");
+                ZPLog(@"验证失败（达到验证失败次数上限");
             }
                 break;
             default:
                 [HintView showHint:Localize(@"验证取消")];
-                NSLog(@"验证取消");
+                ZPLog(@"验证取消");
                 break;
         }
     }];

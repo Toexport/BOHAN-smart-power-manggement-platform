@@ -306,12 +306,10 @@ static NSString *deviceCellIdentifier = @"DeviceTableViewCell";
     }
 }
 
-
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-
+    
+    
 }
-
-
 
 #pragma mark - NoDataViewDelegate
 - (void)reloadDidClick {

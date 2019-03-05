@@ -154,7 +154,6 @@
 }
 
 - (void)updateUI {
-    
     if (loadtType && loadtType && loadtBrand) {
         ZPLog(@"全部请求完毕");
         [self.view stopLoading];
@@ -241,7 +240,7 @@
                 }];
             }
         
-    }else{
+    }else {
         
         NSDictionary * dic = @{@"DeviceName":nameTF.text,@"DeviceCode":deviceId.text, @"PosName":posInput.contentTF.text, @"LoadName":typeInput.contentTF.text, @"LoadBrand":brandInput.contentTF.text};
         [[NetworkRequest sharedInstance] requestWithUrl:MODIFY_DEVICE_INFO_URL parameter:dic completion:^(id response, NSError *error) {
@@ -261,12 +260,12 @@
 }
 
 - (IBAction)saveAction {
-    
     if ([deviceId.text hasPrefix:@"62"]) {
         if (nameTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || SecondView.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {
             [HintView showHint:Localize(@"请填完整设备信息")];
             return;
         }
+        
         [self updateDeviceInfo];
     }else
         if ([deviceId.text hasPrefix:@"63"]) {
@@ -274,6 +273,7 @@
                 [HintView showHint:Localize(@"请填完整设备信息")];
                 return;
             }
+            
             [self updateDeviceInfo];
         }else
             if (nameTF.text.length == 0 || posInput.contentTF.text.length == 0 || typeInput.contentTF.text.length == 0 || brandInput.contentTF.text.length == 0) {

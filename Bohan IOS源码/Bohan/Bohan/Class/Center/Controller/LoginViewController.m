@@ -135,7 +135,7 @@
 }
 
 #pragma mark - Request
-- (void)loginRequest {
+ - (void)loginRequest {
     [self.view.window startLoading];
     NSDictionary *dic = @{@"userName":accountTF.text, @"password":passwordTF.text};
     [[NetworkRequest sharedInstance] requestWithUrl:LOGIN_URL parameter:dic completion:^(id response, NSError *error) {

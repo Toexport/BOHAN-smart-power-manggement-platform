@@ -89,7 +89,7 @@
             self.navigationItem.backBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:nil];  // 隐藏返回按钮上的文字
         };
         cell.ExtractBlockBlock = ^(id ExtractView) {
-            NSLog(@"提款");
+            ZPLog(@"提款");
             WithdrawalsController * Withdrawals = [[WithdrawalsController alloc]init];
             AmountStr = cell.PriceLabel.text;
             Withdrawals.AmountStr = [NSString stringWithFormat:@"%@",AmountStr];

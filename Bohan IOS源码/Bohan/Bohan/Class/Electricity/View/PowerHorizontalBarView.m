@@ -188,12 +188,12 @@
 
 //            _chartBarView.xAxis.labelCount = self.datas.count *_chartBarView.frame.size.height/(self.datas.count *(15 + _chartBarView.xAxis.spaceMin) + 30);//x轴刻度个数
             [_chartBarView setVisibleXRangeMinimum:self.datas.count /ceilf((self.datas.count *15)/(1.0*_chartBarView.frame.size.height -20))];
-            NSLog(@"----%f",self.datas.count /ceilf((self.datas.count *15)/(1.0*_chartBarView.frame.size.height -20)));
+            ZPLog(@"----%f",self.datas.count /ceilf((self.datas.count *15)/(1.0*_chartBarView.frame.size.height -20)));
                                                 
                                                 
             [_chartBarView setVisibleXRangeMaximum:self.datas.count /ceilf((self.datas.count *15)/(1.0*_chartBarView.frame.size.height -20))];
             
-            NSLog(@"---%f",self.datas.count /ceilf((self.datas.count *15)/(1.0*_chartBarView.frame.size.height -20)));
+            ZPLog(@"---%f",self.datas.count /ceilf((self.datas.count *15)/(1.0*_chartBarView.frame.size.height -20)));
             
 //            [_chartBarView setVisibleXRangeMinimum:self.datas.count *_chartBarView.frame.size.height/(1.0 * self.datas.count *(15 + _chartBarView.xAxis.spaceMin) + 30)];
 

@@ -12,8 +12,8 @@
 @interface ResetPwdViewController ()<UITextFieldDelegate> {
     __weak IBOutlet UITextField * pwdTF;
     __weak IBOutlet UIButton * okBtn;
-    
 }
+
 @end
 
 @implementation ResetPwdViewController

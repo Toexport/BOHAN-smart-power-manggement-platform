@@ -31,6 +31,9 @@
     [nextBtn disable];
 }
 
+- (IBAction)sendBtn:(UIButton *)sender {
+    [codeTF resignFirstResponder];
+}
 
 - (void)getData {
     NSUserDefaults *df = [NSUserDefaults standardUserDefaults];
@@ -126,6 +129,7 @@
                     }
                         break;
                     case ZKVerifyStateFail: {
+                        
                         [HintView showHint:Localize(@"验证失败 (达到验证失败次数上限)")];
                         NSLog(@"验证失败（达到验证失败次数上限");
                     }

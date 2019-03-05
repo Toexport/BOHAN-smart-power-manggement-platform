@@ -64,7 +64,7 @@
         return;
     }else
         if ([Utils convertToInt:_emotiontext.text] < 20) {
-        [HintView showHint:Localize(@"请输入10个字以上的反馈意见")];
+        [HintView showHint:Localize(@"请输入10个文字以上的反馈意见")];
         return;
     }
     [self.view startLoading];

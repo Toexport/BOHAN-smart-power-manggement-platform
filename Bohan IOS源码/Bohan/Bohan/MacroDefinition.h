@@ -11,10 +11,13 @@
 
 //全局
 #define appD ((AppDelegate*)[[UIApplication sharedApplication] delegate])
+
 #define NavBarHeight ([[UIApplication sharedApplication] statusBarFrame].size.height + 44)
+
 #define TabbarHeight ([[UIApplication sharedApplication] statusBarFrame].size.height>20?83:49) // 适配iPhone x 底栏高度
 //尺寸
 #define ZP_Width [UIScreen mainScreen].bounds.size.width
+
 #define ZP_height [UIScreen mainScreen].bounds.size.height
 
 

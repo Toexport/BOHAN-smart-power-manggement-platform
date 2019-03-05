@@ -14,14 +14,12 @@
 
 #define kTagHintView 5000000
 
-+ (void)showHint:(NSString *)text
-{
++ (void)showHint:(NSString *)text {
     [HintView showHintWithText:text type:HintType_Botton];
 }
 
 
-+ (void)showHintWithText:(NSString *)text type:(HintType)type
-{
++ (void)showHintWithText:(NSString *)text type:(HintType)type {
     if (!text || text.length == 0) {
         return;
     }
@@ -34,8 +32,7 @@
     if (type == HintType_Top) {
         theCenter = CGPointMake(ScreenWidth/2, 84);
         color = RGBColor(218, 117, 213, 0.8);
-    }else
-    {
+    }else {
         theCenter = CGPointMake(ScreenWidth/2, ScreenHeight - size.height - kNavBarHeight);
         color = RGBColor(61, 141, 241, 0.8);
     }
