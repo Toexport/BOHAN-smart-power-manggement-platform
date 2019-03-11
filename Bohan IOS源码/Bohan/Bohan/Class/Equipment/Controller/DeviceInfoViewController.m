@@ -71,11 +71,13 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
         self.StateViewLayoutConstraint.constant = - 80;
     }else
         if ([self.sortt isEqualToString:@"YFMT"] ||[self.sortt isEqualToString:@"YFGPMT"]) {
+            [self loadData];
             datas = @[@{@"image" :@"ic_launch", @"name": Localize(@"实时参数")}, @{@"image" :@"ic_l", @"name": Localize(@"增值服务")}, @{@"image" :@"ic_laun", @"name": Localize(@"定时计量")}, @{@"image" :@"menu_summery", @"name": Localize(@"用电统计")}, @{@"image" :@"ic_launcher2", @"name": Localize(@"时段设置")}, @{@"image" :@"ic_launch1", @"name": Localize(@"延时/定时开关")},
                       @{@"image" :@"ic_launch1", @"name": Localize(@"充值")}];
             UITapGestureRecognizer *tapGesturRecognizer=[[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(TopUpBut:)];
             [self.PayView addGestureRecognizer:tapGesturRecognizer];
         }else {
+            [self loadData];
         datas = @[@{@"image" :@"ic_launch", @"name": Localize(@"实时参数")}, @{@"image" :@"ic_l", @"name": Localize(@"增值服务")}, @{@"image" :@"ic_laun", @"name": Localize(@"定时计量")}, @{@"image" :@"menu_summery", @"name": Localize(@"用电统计")}, @{@"image" :@"ic_launcher2", @"name": Localize(@"时段设置")}, @{@"image" :@"ic_launch1", @"name": Localize(@"延时/定时开关")}];
             self.PayView.hidden = YES;
             self.StateViewLayoutConstraint.constant = - 80;
@@ -89,7 +91,6 @@ static NSString *const reuseIdentifier = @"DeviceInfoCollectionCell";
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self loadData];
     [self deviceStatus];
     if ([self.sortt isEqualToString:@"YC"] || [self.sortt isEqualToString:@"YC10"] || [self.sortt isEqualToString:@"YC16 "] || [self.sortt isEqualToString:@"YCGP10"] || [self.sortt isEqualToString:@"YCGP16"] || [self.sortt isEqualToString:@"QC"] || [self.sortt isEqualToString:@"QC10"] || [self.sortt isEqualToString:@"QC16"] || [self.sortt isEqualToString:@"YC13"] || [self.sortt isEqualToString:@"QC13"] || [self.sortt isEqualToString:@"YC15"] || [self.sortt isEqualToString:@"QC15"]) {
         

@@ -20,6 +20,7 @@
     __weak IBOutlet UIButton * moreInfoBtn;
     
 }
+
 @property (nonatomic, strong) KeyBoard *KeyBoard;
 
 @end
